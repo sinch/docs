@@ -1,9 +1,6 @@
 ---
 title: MM7 Service
 excerpt: ''
-next:
-  pages:
-    - mm7-service-introduction
 ---
 MMS APIs are currently offered via an implementation of the MM7 protocol. MM7 is the standard protocol used by the carriers to send and receive MMS messages. It is a SOAP based protocol sent over HTTP. MM7 supports the following API actions:
 
