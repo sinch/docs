@@ -14,7 +14,7 @@ Sinch is now offering a limited beta trial of our new A2P RCS solution. RCS allo
 
 ## What are the supported APIs?
 
-RCS is supported over our [REST API](doc:rcs-http-rest).
+RCS is supported over our [REST API](doc:rcs-http-rest-toto).
 
 ## How do I get started?
 
