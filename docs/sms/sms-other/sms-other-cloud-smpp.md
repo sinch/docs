@@ -158,7 +158,7 @@ The SMS Gateway supports the following SMPP commands:
 | bind\_transmitter\_resp | Response to bind\_transmitter      | 0x80000002  |
 | submit\_sm              | Submit an SMS message              | 0x00000004  |
 | submit\_sm\_resp        | Response to submit\_sm\_resp       | 0x80000004  |
-| deliver\_sm\            | Receive an SMS or delivery receipt | 0x00000005  |
+| deliver\_sm             | Receive an SMS or delivery receipt | 0x00000005  |
 | deliver\_sm\_resp       | Response to deliver\_sm\_resp      | 0x80000005  |
 | unbind                  | Close bind response                | 0x00000006  |
 | unbind\_resp            | Response to unbind                 | 0x80000006  |
