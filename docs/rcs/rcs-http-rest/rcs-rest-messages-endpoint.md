@@ -42,10 +42,6 @@ The message was successfully accepted by the system. The response body contains 
 
 This error is returned when either the JSON is malformed or one or more parameters in the JSON failed validation. The body contains an `Error` object further describing the error.
 
-**409 Conflict**
-
-Duplicate message id, make sure `message_id` in `AgentMessage` is unique. The body contains an `Error` object further describing the error.
-
 ##### Examples
 
 ###### Send text message
@@ -333,10 +329,10 @@ JSON Representation
             <tr class="odd">
                 <td>message_id</td>
                 <td>string</td>
-                <td>Provide a globally unique id for this message</td>
+                <td>Client provided unique message id. If absent an id will be generated for you and will be seen in the response</td>
                 <td>No</td>
                 <td>^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</td>
-                <td>Yes</td>
+                <td>No</td>
             </tr>
             <tr class="even">
                 <td>to</td>

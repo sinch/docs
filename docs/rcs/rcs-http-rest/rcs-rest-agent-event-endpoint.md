@@ -118,10 +118,10 @@ JSON Representation
             <tr class="even">
                 <td>event_id</td>
                 <td>string</td>
-                <td>Globally unique event ID</td>
+                <td>Client provided unique event id. If absent an id will be generated for you and will be seen in the response</td>
                 <td>No</td>
                 <td>^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</td>
-                <td>Yes</td>
+                <td>No</td>
             </tr>
             <tr class="odd">
                 <td>event</td>
