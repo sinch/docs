@@ -69,6 +69,8 @@ The types of messages that can be sent are one of the following:
 
 #### Template message
 
+Accepted language codes can be found in the [introduction](doc:whatsapp-introduction#section-supported-language-codes).
+
 JSON object parameters:
 
 | Name          | Description                                                          | JSON Type    | Default    | Constraints           | Required |

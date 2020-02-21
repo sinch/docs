@@ -74,6 +74,82 @@ The following WhatsApp URLs can be used by the WhatsApp API. We have servers in 
 | video         | `video/mp4`, `video/3gpp`                                                     | 16 MB   |
 | sticker       | `image/webp`                                                                  | 100 KB  |
 
+## Supported language codes
+
+Following language codes are supported for template messages
+
+| Language         | Code  |
+| ---------------- | ----- |
+| Afrikaans        | af    |
+| Albanian         | sq    |
+| Arabic           | ar    |
+| Azerbaijani      | az    |
+| Bengali          | bn    |
+| Bulgarian        | bg    |
+| Catalan          | ca    |
+| Chinese (CHN)    | zh_CN |
+| Chinese (HKG)    | zh_HK |
+| Chinese (TAI)    | zh_TW |
+| Croatian         | hr    |
+| Czech            | cs    |
+| Danish           | da    |
+| Dutch            | nl    |
+| English          | en    |
+| English (UK)     | en_GB |
+| English (US)     | en_US |
+| Estonian         | et    |
+| Filipino         | fil   |
+| Finnish          | fi    |
+| French           | fr    |
+| German           | de    |
+| Greek            | el    |
+| Gujarati         | gu    |
+| Hausa            | ha    |
+| Hebrew           | he    |
+| Hindi            | hi    |
+| Hungarian        | hu    |
+| Indonesian       | id    |
+| Irish            | ga    |
+| Italian          | it    |
+| Japanese         | ja    |
+| Kannada          | kn    |
+| Kazakh           | kk    |
+| Korean           | ko    |
+| Lao              | lo    |
+| Latvian          | lv    |
+| Lithuanian       | lt    |
+| Macedonian       | mk    |
+| Malay            | ms    |
+| Malayalam        | ml    |
+| Marathi          | mr    |
+| Norwegian        | nb    |
+| Persian          | fa    |
+| Polish           | pl    |
+| Portuguese (BR)  | pt_BR |
+| Portuguese (POR) | pt_PT |
+| Punjabi          | pa    |
+| Romanian         | ro    |
+| Russian          | ru    |
+| Serbian          | sr    |
+| Slovak           | sk    |
+| Slovenian        | sl    |
+| Spanish          | es    |
+| Spanish (ARG)    | es_AR |
+| Spanish (SPA)    | es_ES |
+| Spanish (MEX)    | es_MX |
+| Swahili          | sw    |
+| Swedish          | sv    |
+| Tamil            | ta    |
+| Telugu           | te    |
+| Thai             | th    |
+| Turkish          | tr    |
+| Ukrainian        | uk    |
+| Urdu             | ur    |
+| Uzbek            | uz    |
+| Vietnamese       | vi    |
+| Zulu             | zu    |
+
+
 ## Click to WhatsApp
 A business can provide a simple method via a Web Page, or embedded within a QR-Code to enable an end user to initiate a conversation through the WhatsApp Business API.
 While not a specific endpoint of the WhatsApp Business API, this method has been tested to work.
