@@ -17,6 +17,35 @@ Integrating the Sinch WhatsApp Business Messaging API with your own backend syst
 >
 > Try out the WhatsApp API live in our new tutorial here [WhatsApp Tutorial](doc:send-your-first-whatsapp-message).
 
+## Click to WhatsApp
+A business can provide a simple method via a Web Page, or embedded within a QR-Code to enable an end user to initiate a conversation through the WhatsApp Business API.
+While not a specific endpoint of the WhatsApp Business API, this method has been tested to work.
+From the businesses perspective, this avoids initial notification charges as the conversation is customer initiated.
+Furthermore, because the customer care session is immediately activated, an implicit 24hour Opt-In enables the business to reply during that time period.
+
+The business would be advised to obtain an explicit, compliant  opt-in during that initial customer care session to enable the business to initiate a future conversation using a notification (Template)
+
+To make it work, all you have to do is to put following link in your website:
+
+`GET https://api.whatsapp.com/send`
+
+With path variable parameters:
+
+| Name    | Description                                 | Constraints                                      | Required |
+| ------- | ------------------------------------------- | ------------------------------------------------ | :------: |
+| phone   | Your WhatsApp Business Account phone number | E.164 format without '+' sign. E.g. 447537453580 | Yes      |
+| text    | Message content to be sent to your account  | Any text                                         | No       |
+
+Example to open conversation with +44 7537 453580:
+```
+https://api.whatsapp.com/send?phone=447537453580
+```
+
+Example to send message with content "Text message content" to +44 7537 453580:
+```
+https://api.whatsapp.com/send?phone=447537453580&text=Text%20message%20content
+```
+
 ## Authentication
 The Sinch WhatsApp API securely authenticates via a bot identifier and bearer token pair. During the initial client on boarding process, these will be provided by your account manager.
 
