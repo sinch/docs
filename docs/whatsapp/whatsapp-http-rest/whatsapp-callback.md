@@ -9,15 +9,20 @@ A callback is a HTTP POST request with a notification made by the Sinch WhatsApp
 
 A callback from the Sinch WhatsApp API will always have the following structure:
 
-|Name          | Description                    | JSON Type     |
-|--------------|--------------------------------|---------------|
-|type          | Will always be `whatsapp`      | String        |
-|statuses      | Array of delivery reports      | Array[Object] |
-|notifications | Array of inbound messages      | Array[Object] |
+|Name          | Description                       | JSON Type     |
+|--------------|-----------------------------------|---------------|
+|type          | Will always be `whatsapp`         | String        |
+|statuses      | Array of delivery reports         | Array[Object] |
+|contacts      | Array of inbound messages contact | Array[Object] |
+|notifications | Array of inbound messages         | Array[Object] |
 
 > **Note**
 >
 > A callback from the Sinch WhatsApp API can contain both delivery reports and inbound messages
+
+> **Note**
+>
+> Contacts occurs only for text, contact and location inbound messages
 
 ### Delivery report callback
 
@@ -25,7 +30,7 @@ A delivery report contains the status and state of each message sent through the
 The format of a delivery report is as follows:
 
 |Name       | Description                                                           | JSON Type |
-|-----------|-----------------------------------------------------------------------|-----------|
+|-----------|---------------------------------------------------------------------- |-----------|
 |status     | The status of the message, either `success` or `failure`              | String    |
 |state      | The state of the message                                              | String    |
 |message_id | The message id of the message to which this delivery report belong to | String    |
@@ -68,6 +73,21 @@ Where the states means:
 An inbound message or MO (Mobile Originated) is a message sent to one of your bots from a WhatsApp user.
 The format is as follows:
 
+**Contacts**
+
+|Name      | Description                                                             | JSON Type |
+|----------|------------------------------------------------------------------------ |-----------|
+|profile   | Profile details of message sender                                       | Object    |
+|wa_id     | WhatsApp account id (phone number)                                      | String    |
+
+**Profile**
+
+|Name      | Description                                                | JSON Type |
+|----------|----------------------------------------------------------- |-----------|
+|name      | Sender name of message                                     | String    |
+
+**Notifications**
+
 |Name        | Description                                                                 | JSON Type |
 |------------|---------------------------------------------------------------------------- |-----------|
 |from        | MSISDN of the user sending the message                                      | String    |
@@ -97,6 +117,13 @@ The format is as follows:
 ```json
 {
   "type":"whatsapp",
+  "contacts":[
+    {
+      "profile":{
+        "name":"John Smith"
+    },
+    "wa_id":"0732001122"
+  ],
   "notifications":[
     {
       "from":"0732001122",
@@ -127,6 +154,13 @@ The format is as follows:
 ```json
 {
   "type":"whatsapp",
+  "contacts":[
+    {
+      "profile":{
+        "name":"John Smith"
+    },
+    "wa_id":"0732001122"
+  ],
   "notifications":[
     {
       "from":"0732001122",
@@ -228,6 +262,13 @@ The format is as follows:
 ```json
 {
   "type":"whatsapp",
+  "contacts":[
+    {
+      "profile":{
+        "name":"John Smith"
+    },
+    "wa_id":"0732001122"
+  ],
   "notifications":[
     {
       "from":"0732001122",
