@@ -154,7 +154,7 @@ Following language codes are supported for template messages
 A business can provide a simple method via a Web Page, or embedded within a QR-Code to enable an end user to initiate a conversation through the WhatsApp Business API.
 While not a specific endpoint of the WhatsApp Business API, this method has been tested to work.
 From the businesses perspective, this avoids initial notification charges as the conversation is customer initiated.
-Furthermore, because the customer care session is immediately activated, an implicit 24hour Opt-In enables the business to reply during that time period.
+Furthermore, because the customer care session is immediately activated, an implicit 24 hour opt-in enables the business to reply during that time period.
 
 The business would be advised to obtain an explicit, compliant  opt-in during that initial customer care session to enable the business to initiate a future conversation using a notification (Template)
 
