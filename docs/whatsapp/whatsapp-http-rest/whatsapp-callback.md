@@ -22,7 +22,7 @@ A callback from the Sinch WhatsApp API will always have the following structure:
 
 > **Note**
 >
-> Contacts occurs only for text, contact and location inbound messages
+> Contacts might be placed only for text, contact and location inbound messages
 
 ### Delivery report callback
 
