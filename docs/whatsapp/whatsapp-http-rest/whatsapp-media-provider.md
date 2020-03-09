@@ -14,6 +14,10 @@ WhatsApp API allows you to have different media providers for the same type of a
 >
 > Be sure to give each provider a unique name as reusing a name will overwrite the previous entry.
 
+> **Note**
+>
+> With the 2020-03-09 release constraints for the name of a media provider are added. It is recommended to update any existing media provider configurations to use `name` parameters that meet these constraints.
+
 #### Request
 `POST whatsapp/v1/{bot-id}/provision/provider`
 
