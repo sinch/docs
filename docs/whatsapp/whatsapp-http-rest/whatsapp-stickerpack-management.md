@@ -284,8 +284,6 @@ Use this endpoint to delete a third-party stickerpack.
 #### Request
 `DELETE whatsapp/v1/{bot-id}/stickerpacks/{stickerpack-id}`
 
-```
-
 #### Response
 
 `200 OK`
@@ -363,10 +361,10 @@ Accepted content types can be found in the [introduction](doc:whatsapp-introduct
 
 The request body is a JSON object with the following contents:
 
-| Name    | Description                                 | JSON Type     | Constraints                         | Required |
-| ------- | ------------------------------------------- | ------------- | ----------------------------------- | -------- |
-| url     | Public URL of sticker                       | String        | Valid URL and accepted content type | No       | 
-| emojis  | Array of emojis included in the stickerpack | Array[String] | N/A                                 | No       | 
+| Name    | Description                                 | JSON Type     | Constraints                                                    | Required |
+| ------- | ------------------------------------------- | ------------- | -------------------------------------------------------------- | -------- |
+| url     | Public URL of sticker                       | String        | Valid URL and accepted content type                            | No       | 
+| emojis  | Array of emojis included in the stickerpack | Array[String] | Each emoji should be a single character. Three emojis maximum. | No       | 
 
 ```json
 {
