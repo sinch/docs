@@ -4,7 +4,7 @@ excerpt: >-
   Get to know how to use your own file storage service for sending secured media links.
 next:
     pages:
-        - whatsapp-stickerpack-management
+      - whatsapp-stickerpack-management
 ---
 You can send media files that are downloadable from URLs secured by Basic or Bearer Authentication to WhatsApp users.
 WhatsApp API allows you to have different media providers for the same type of authentication and decide which one to use on a per request basis.
