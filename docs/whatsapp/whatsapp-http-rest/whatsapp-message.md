@@ -414,11 +414,16 @@ Accepted content types can be found in the [introduction](doc:whatsapp-introduct
 
 JSON object parameters:
 
-| Name        | Description                                                               | JSON Type    | Default    | Constraints                  | Required |
-| ----------- | ------------------------------------------------------------------------- | ------------ | ---------- | ---------------------------- | :------: |
-| type        | Constant value `sticker`.                                                 | String       | N/A        | `sticker`                    | Yes      |
-| url         | Public url of the sticker file. Should be either HTTP or HTTPS link.      | String       | N/A        | Accepted Content-Type header | Yes      |
-| provider    | Optional name of a provider to be used when trying to download the file.  | String       | None       | N/A                          | No       |
+| Name        | Description                                                                    | JSON Type    | Default    | Constraints                                                               | Required |
+| ----------- | ------------------------------------------------------------------------------ | ------------ | ---------- | ------------------------------------------------------------------------- | :------: |
+| type        | Constant value `sticker`.                                                      | String       | N/A        | `sticker`                                                                 | Yes      |
+| url         | Public url of the sticker file. Should be either HTTP or HTTPS link.           | String       | N/A        | Accepted Content-Type header. Must not be used in combination with `id`.  | Yes      |
+| id          | ID of a sticker. Can be found using the stickerpack management endpoints.      | String       | N/A        | Accepted Content-Type header. Must not be used in combination with `url`. | Yes      |
+| provider    | Optional name of a media provider to be used when trying to download the file. | String       | None       | Can only be used in combination with `url`, not with `id`.                | No       |
+
+> **Note**
+>
+> Only one of the parameters `url` and `id` may be used in a single request.
 
 ```json
 {

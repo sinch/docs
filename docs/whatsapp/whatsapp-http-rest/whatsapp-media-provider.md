@@ -19,11 +19,11 @@ WhatsApp API allows you to have different media providers for the same type of a
 
 JSON object parameters:
 
-| Name    | Description                      | JSON Type    | Default    | Constraints           | Required |
-| ------- | -------------------------------- | ------------ | ---------- | --------------------- | :------: |
-| name    | Name of the provider             | String       | N/A        | N/A                   | Yes      |
-| type    | The type the provider            | String       | N/A        | `www`                 | Yes      |
-| config  | The config object                | Object       | N/A        | N/A                   | Yes      |
+| Name    | Description                      | JSON Type    | Default    | Constraints                                         | Required |
+| ------- | -------------------------------- | ------------ | ---------- | --------------------------------------------------- | :------: |
+| name    | Name of the provider             | String       | N/A        | A-Z, a-z, -, and _ allowed. 200 characters maximum. | Yes      |
+| type    | The type the provider            | String       | N/A        | `www`                                               | Yes      |
+| config  | The config object                | Object       | N/A        | N/A                                                 | Yes      |
 
 #### Response
 
