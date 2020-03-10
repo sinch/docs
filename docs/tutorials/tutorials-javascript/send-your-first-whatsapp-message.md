@@ -33,6 +33,23 @@ Right, that’s all the boring stuff out of the way, lets send some messages\!
 
 ## The code
 
+> **Warning**
+>
+> If you encounter an error:  **ReferenceError: fetch is not defined** then you probably lack of fetch API installed.
+> Follow instructions below in order to fix this problem
+>
+
+> 1. Install external module that uses fetch API, like [node-fetch](https://github.com/node-fetch/node-fetch)
+
+```
+npm -i node-fetch --save
+```
+
+> 2. Add reference to fetch at the top of your js file
+```javascript
+const fetch = require("node-fetch");
+```
+
 ### 1. Opt-in
 
 > **Note**
