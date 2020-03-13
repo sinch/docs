@@ -57,6 +57,12 @@ The following WhatsApp URLs can be used by the WhatsApp API. We have servers in 
 | US Production | https://us1.whatsapp.api.sinch.com     |
 | EU Production | https://eu1.whatsapp.api.sinch.com     |
 
+## Headers
+
+| Header name     |  Description                                                                     | Required           |
+| ----------------| -------------------------------------------------------------------------------- | ------------------ |
+| Authorization   | Bearer token described [above](doc:whatsapp-introduction#section-authentication) | Always             |
+| Content-Type    | Should be `application/json` when sending data through request body              | When body provided |
 
 ## Accepted media types
 
