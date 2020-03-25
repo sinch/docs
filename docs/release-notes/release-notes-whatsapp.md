@@ -4,6 +4,11 @@ excerpt: >-
   See how the Sinch WhatsApp API is evolving and find out about new features
   and bug fixes.
 ---
+<h3>2020-03-31</h3>
+  - Improvements for status update events timestamps calculation returned in callbacks (sometimes later events had earlier timestamp e.g. SENT before DISPATCHED).
+  - Improvements in error handling when adding admin to chat group.
+  - Improvements in recipient phone number validation.
+
 <h3>2020-03-10</h3>
   - New Sticker pack management API - business can now create, update or delete stickers pack group and use it in Customer Care messages.
   - Support for stickers in incoming messages from end user - Sticker messages are now sent back to business’s callback as other media Customer Care messages.
