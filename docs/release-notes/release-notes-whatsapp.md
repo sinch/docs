@@ -5,7 +5,7 @@ excerpt: >-
   and bug fixes.
 ---
 <h3>2020-03-31</h3>
-  - Improvements for status update events timestamps calculation returned in callbacks (sometimes later events had earlier timestamp e.g. SENT before DISPATCHED).
+  - Improvements for processing of status update event timestamps returned in callbacks (sometimes later events had earlier timestamps e.g. SENT before DISPATCHED).
   - Improvements in error handling when adding admin to chat group.
   - Improvements in recipient phone number validation.
 
