@@ -59,6 +59,15 @@ The following WhatsApp URLs can be used by the WhatsApp API. We have servers in 
 | US Production | https://us1.whatsapp.api.sinch.com     |
 | EU Production | https://eu1.whatsapp.api.sinch.com     |
 
+## Swagger
+
+The following Swagger UI URLs can be used to test our API. 
+
+| Server        |  URL                                                  |
+|---------------|-------------------------------------------------------|
+| US Production | https://us1.whatsapp.api.sinch.com/swagger-ui.html    |
+| EU Production | https://eu1.whatsapp.api.sinch.com/swagger-ui.html    |
+
 ## Headers
 
 | Header name     |  Description                                                                     | Required           |

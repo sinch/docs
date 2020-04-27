@@ -4,6 +4,14 @@ excerpt: >-
   See how the Sinch WhatsApp API is evolving and find out about new features and
   bug fixes.
 ---
+<h3>2020-04-28</h3>
+  - Add POST method to the capability endpoint
+  - Add Swagger UI to the API. It's accessible in [introduction](doc:whatsapp-introduction#section-swagger)
+  - Fix bug with delayed FAILED status when sent media file is not accessible because of SSL certificate error.
+  - Improve error handling for video files with incorrect codecs.
+  - Fix response code when calling the capability endpoint with empty body
+   
+
 <h3>2020-03-31</h3>
   - Improvements for processing of status update event timestamps returned in callbacks (sometimes later events had earlier timestamps e.g. SENT before DISPATCHED).
   - Improvements in error handling when adding admin to chat group.
