@@ -9,12 +9,13 @@ next:
 ---
 ## Capability endpoint
 
-The Sinch WhatsApp API offers an endpoint where you can request the WhatsApp capability status for a
+The Sinch WhatsApp API offers two endpoints where you can request the WhatsApp capability status for a
 list of numbers.
 
 #### Request
 
 `GET whatsapp/v1/{bot-id}/capability`
+`POST whatsapp/v1/{bot-id}/capability`
 
 JSON object parameters:
 
