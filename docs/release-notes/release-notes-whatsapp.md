@@ -7,7 +7,7 @@ excerpt: >-
 
 ## 2020-05-12
 
-  - Implement interactive message templates. See [Sending template message](doc:whatsapp-message#template-message).
+  - New interactive message templates. See [Sending template message](doc:whatsapp-message#template-message).
   - Fix issue with missing DELETED status for MO messages.
   - Improve error handling for sending messages.
   - Upgrade google libphonenumber library.
