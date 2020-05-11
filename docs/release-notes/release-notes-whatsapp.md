@@ -12,7 +12,6 @@ excerpt: >-
   - Improve error handling for sending messages.
   - Upgrade google libphonenumber library.
 
-
 ## 2020-04-28
 
   - Add POST method to the capability endpoint
