@@ -4,14 +4,22 @@ excerpt: >-
   See how the Sinch WhatsApp API is evolving and find out about new features and
   bug fixes.
 ---
+
+## 2020-05-12
+
+  - Implement interactive message templates. See [introduction](doc:whatsapp-message#template-message).
+  - Fix issue with missing DELETED status for MO messages.
+  - Improve error handling for sending messages.
+  - Upgrade google libphonenumber library.
+
+
 ## 2020-04-28
 
   - Add POST method to the capability endpoint
   - Add Swagger UI to the API. See [introduction](doc:whatsapp-introduction#swagger).
   - Fix bug with delayed FAILED status when sent media file is not accessible because of SSL certificate error.
   - Improve error handling for video files with incorrect codecs.
-  - Fix response code when calling the capability endpoint with empty body
-   
+  - Fix response code when calling the capability endpoint with empty body.
 
 ## 2020-03-31
 
