@@ -5,6 +5,22 @@ next:
   pages:
     - whatsapp-group-management
 ---
+
+> **Warning**
+>
+> Facebook has announced the deprecation of their WhatsApp Group Management API:
+>
+> 
+> "We have re-evaluated our feature of Groups on the API and have announced that we will remove this feature in the coming months. We know some businesses have valued using Groups to connect with users and appreciate the potential this feature will have. We will re-evaluate opening up Groups to businesses on the API at a later date after conducting some additional development.
+> 
+> The Groups API node will stop accepting any new WhatsApp Business API client phone numbers on July 6, 2020 and end for all WhatsApp Business API client phone numbers on Oct 6, 2020. Please begin migrating calls using this endpoint to avoid any disruption."
+>
+>
+>  
+>  Sending messages to groups will become unavailable for any new registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
+> 
+
+
 The message endpoint is used as the primary endpoint of the API and this is where all the messages are sent through.
 
 **WhatsApp message flow**
