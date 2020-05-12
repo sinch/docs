@@ -7,6 +7,13 @@ next:
   pages:
     - whatsapp-media-provider
 ---
+
+> **Warning**
+>
+> Facebook has announced the deprecation of Groups Management API.
+> Sinch WhatsApp API will stop accepting any new registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
+> 
+
 A collection of endpoints used to manage groups that are linked to a specific bot.
   - [Creating a new group](doc:whatsapp-group-management#create-group-endpoint)
   - [Listing all groups associated with your bot](doc:whatsapp-group-management#list-groups-endpoint)
