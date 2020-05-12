@@ -18,7 +18,7 @@ next:
 > The Groups API node will stop accepting any new WhatsApp Business API client phone numbers on July 6, 2020 and end for all WhatsApp Business API client phone numbers on Oct 6, 2020. Please begin migrating calls using this endpoint to avoid any disruption."
 >
 >
-> Sinch WhatsApp Group Management API will stop accepting any new registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
+> Sinch WhatsApp Group Management API will stop accepting any newly registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
 > 
 
 A collection of endpoints used to manage groups that are linked to a specific bot.

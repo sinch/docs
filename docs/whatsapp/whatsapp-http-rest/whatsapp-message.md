@@ -17,7 +17,7 @@ next:
 >
 >
 >  
->  Sending messages to groups will become unavailable for any new registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
+>  Sending messages to groups will become unavailable for any newly registered phone number on July 6, 2020 and for all phone numbers on October 6, 2020.
 > 
 
 
