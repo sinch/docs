@@ -18,7 +18,7 @@ A callback from the Sinch WhatsApp API will always have the following structure:
 |contacts      | Array of inbound messages contact | Array[Object] |
 |notifications | Array of inbound messages         | Array[Object] |
 
-> **Note**
+> 📘 Note
 >
 > A callback from the Sinch WhatsApp API can contain both delivery reports and inbound messages.
 >

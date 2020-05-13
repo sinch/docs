@@ -14,7 +14,7 @@ You can record a [opt-in](doc:whatsapp-opt-in-and-outs#opt-in-endpoint) by the A
 
 Businesses must provide a method by which customers may opt-out of receiving future messages from your organization. The [opt-out-endpoint](doc:whatsapp-opt-in-and-outs#opt-out-endpoint-deprecated) should be handled using the API call below.
 
-> **Note**
+> 📘 Note
 >
 > If a customer initiates contact with a WhatsApp Business, this will constitute as a temporary opt-in meaning that the business is allowed to send messages to that customer for 24 hours since the last received message. After that period has expired, a active opt-in is required before the business is allowed to send messages to that customer again.
 

@@ -101,7 +101,7 @@ JSON object parameters:
 | buttons | A list of buttons to include in the template message. | List of button objects | N/A        | N/A                   | Yes, if the template definition includes either at least one quick reply button or a dynamic URL button. |
 | ttl           | Time to live of the template message. If the receiver has not opened the template message before the time to live expires, the message will be deleted and a failed callback will be sent. The time to live can be specified in ISO-8601 Duration format or in seconds as a string. | String       | 30 Days    | See description | No      |
 
-> **Note**
+> 📘 Note
 >
 > The `caption` parameter is not supported for media in template messages. For document media, the `filename` parameter can be used to describe the file. If the `filename` parameter is not explicitly used, it will take the default value "Filename".
 
@@ -245,7 +245,7 @@ JSON object parameters:
 
 #### Image message
 
-> **Note**
+> 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
 
@@ -276,7 +276,7 @@ JSON object parameters:
 
 #### Video message
 
-> **Note**
+> 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
 
@@ -308,7 +308,7 @@ JSON object parameters:
 
 #### Document message
 
-> **Note**
+> 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
 
@@ -341,7 +341,7 @@ JSON object parameters:
 
 #### Audio message
 
-> **Note**
+> 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
 
@@ -469,7 +469,7 @@ Custom sticker must comply with WhatsApp requirements:
 2. Stickers must be exactly 512x512 pixels.
 3. Each sticker must be less than 100 KB.
 
-> **Note**
+> 📘 Note
 >
 > For more information on using a custom sticker, please visit [WhatsApp sticker page](https://faq.whatsapp.com/en/general/26000345) 
 >
@@ -485,7 +485,7 @@ JSON object parameters:
 | id          | ID of a sticker. Can be found using the stickerpack management endpoints.      | String       | N/A        | Accepted Content-Type header. Must not be used in combination with `url`. | Yes      |
 | provider    | Optional name of a media provider to be used when trying to download the file. | String       | None       | Can only be used in combination with `url`, not with `id`.                | No       |
 
-> **Note**
+> 📘 Note
 >
 > Only one of the parameters `url` and `id` may be used in a single request.
 
@@ -502,6 +502,6 @@ JSON object parameters:
 }
 ```
  
-> **Note**
+> 📘 Note
 >
 > Stickers can be organized in stickerpacks. See [Stickerpack Management](doc:whatsapp-stickerpack-management) for more on this.

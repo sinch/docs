@@ -10,7 +10,7 @@ next:
 Blacklist numbers, preventing them from generating inbound message callbacks.
 
 
-> **Note**
+> 📘 Note
 >
 > It can take up to five minutes for all caches to get up to date after blacklisting a number.
 
@@ -58,7 +58,7 @@ There was an error with your request. The body is a JSON object described in the
 
 Remove numbers from blacklist.
 
-> **Note**
+> 📘 Note
 >
 > It can take up to five minutes for all caches to get up to date after removing a number from the blacklist.
 
@@ -106,7 +106,7 @@ There was an error with your request. The body is a JSON object described in the
 
 Get the numbers that are on the blacklist.
 
-> **Note**
+> 📘 Note
 >
 > The blacklist is divided into pages, with one hundred numbers per page. A successful request returns a single page.
 

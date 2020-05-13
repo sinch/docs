@@ -15,7 +15,7 @@ With over 1.5bn users globally using WhatsApp regularly to communicate with frie
 
 Integrating the Sinch WhatsApp Business Messaging API with your own backend systems enables Rich, High fidelity, contextual conversations to be established via the WhatsApp channel.
 
-> **Note**
+> 📘 Note
 >
 > Try out the WhatsApp API live in our new tutorial here [WhatsApp Tutorial](doc:send-your-first-whatsapp-message).
 
@@ -47,7 +47,7 @@ It has the following structure:
 
 ## Base URL
 
-> **Note**
+> 📘 Note
 >
 > We recently added support for a EU server. We are currently working to add a production server in Asia, so stay tuned!
 
@@ -77,7 +77,7 @@ The following Swagger UI URLs can be used to test our API.
 
 ## Accepted media types
 
-> **Note**
+> 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API will be processed before it's sent to the recipient.
 > While the maximum file size for every uploaded media is 100 mb, be aware that the file can be compressed to meet the post-processing limits listed below.
@@ -92,7 +92,7 @@ The following Swagger UI URLs can be used to test our API.
 | sticker       | `image/webp`                                                                  | 100 KB  |
 
 
-> **Note**
+> 📘 Note
 >
 > Video files must have H.264 video codec and AAC audio codec.
 > 

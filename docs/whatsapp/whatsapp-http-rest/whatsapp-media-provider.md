@@ -10,12 +10,12 @@ next:
 You can send media files that are downloadable from URLs secured by Basic or Bearer Authentication to WhatsApp users.
 WhatsApp API allows you to have different media providers for the same type of authentication and decide which one to use on a per request basis.
 
-> **Note**
+> 📘 Note
 >
 > With the 2020-03-10 release constraints for the name of a media provider are added. It is recommended to update any existing media provider configurations to use `name` parameters that meet these constraints.
 
 ### Adding/Updating a provider
-> **Note**
+> 📘 Note
 >
 > Be sure to give each provider a unique name as reusing a name will overwrite the previous entry.
 
