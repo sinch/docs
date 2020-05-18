@@ -97,13 +97,15 @@ JSON object parameters:
 | params        | Parameters to inject into the template.                              | String array | N/A        | This parameter can only be used for template messages with only a body of text. | No      |
 | header_params | Parameters to inject into the header of the template.                | String array | N/A        | N/A                   | No      |
 | body_params   | Parameters to inject into the body of the template.                    | String array | N/A        | N/A                   | No      |
-| media | An object describing the document or image to include in the header of the template. The objects are the same as described under Image message and Document message below, except that the `caption` parameter is not allowed. Also see the note below. For a message without media, set the media type to `text`.       | String array | N/A        | N/A                   | No      |
+| media | An object describing the document, image or video to include in the header of the template. The objects are the same as described under Document message, Image message and Video message below, except that the `caption` parameter is not allowed. Also see the note below. For a message without media, set the media type to `text`.       | String array | N/A        | N/A                   | No      |
 | buttons | A list of buttons to include in the template message. | List of button objects | N/A        | N/A                   | Yes, if the template definition includes either at least one quick reply button or a dynamic URL button. |
 | ttl           | Time to live of the template message. If the receiver has not opened the template message before the time to live expires, the message will be deleted and a failed callback will be sent. The time to live can be specified in ISO-8601 Duration format or in seconds as a string. | String       | 30 Days    | See description | No      |
 
 > 📘 Note
 >
 > The `caption` parameter is not supported for media in template messages. For document media, the `filename` parameter can be used to describe the file. If the `filename` parameter is not explicitly used, it will take the default value "Filename".
+> 
+> Audio template messages are not supported.
 
 Button objects:
 

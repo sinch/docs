@@ -225,16 +225,17 @@ The format is as follows:
 
 **Contact object**
 
-|Name       | Description                                                        | JSON Type     |
-|-----------|------------------------------------------------------------------- |---------------|
-|addresses  | Array of contact address(e)                                        | Array[Object] |
-|birthday   | Contact's birthday, YYYY-MM-DD formatted string                    | String        |
-|emails     | Array of contact email address(es)                                 | Array[Object] |
-|ims        | Array of message contact information                               | Array[Object] |
-|name       | Contact full name information                                      | Object        |
-|org        | Contact organization information                                   | Object        |
-|phones     | Array of contact phone number(s)                                   | Array[Object] |
-|urls       | Array of contact URL(s)                                            | Array[Object] |
+|Name              | Description                                                 | JSON Type     |
+|----------------- |------------------------------------------------------------ |---------------|
+|addresses         | Array of contact address(e)                                 | Array[Object] |
+|birthday          | Contact's birthday, YYYY-MM-DD formatted string             | String        |
+|emails            | Array of contact email address(es)                          | Array[Object] |
+|ims               | Array of message contact information                        | Array[Object] |
+|name              | Contact full name information                               | Object        |
+|org               | Contact organization information                            | Object        |
+|phones            | Array of contact phone number(s)                            | Array[Object] |
+|urls              | Array of contact URL(s)                                     | Array[Object] |
+|contact_image_url | The public URL of the contact image                         | String        |
 
 **Contact address**
 
