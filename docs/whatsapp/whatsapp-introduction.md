@@ -98,6 +98,23 @@ The following Swagger UI URLs can be used to test our API.
 > 
 > 
 
+## Formatting Text Messages
+
+WhatsApp allows formatting your messages. Use these formatting symbols to format a message:
+
+| Symbol                | Formatting         | Example                   |
+| --------------------- | ------------------ | ------------------------- |
+| Asterisk (*)          | **Bold**           | This is *nice*.           |
+| Underscore (_)        | *Italics*          | She said _yes_!           |
+| Tilde (~)             | ~~Strikethrough~~  | What a ~rainy~ sunny day! |
+| Three backticks (```) | `Code`             | ```print 'Success';```    |
+
+To use emojis in text, encode them with UTF-16 unicode.
+
+| Symbol     | Example         |
+| ---------- | --------------- |
+| :grinning: | Hi \ud83d\ude00 |
+
 ## Supported language codes
 
 Following language codes are supported for template messages

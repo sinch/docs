@@ -243,6 +243,8 @@ JSON object parameters:
 }
 ```
 
+Available formatting for the text message content can be found in the [introduction](doc:whatsapp-introduction#formatting-text-messages).
+
 #### Image message
 
 > 📘 Note
