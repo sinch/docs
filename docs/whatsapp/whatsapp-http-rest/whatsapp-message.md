@@ -221,6 +221,8 @@ Button objects:
 
 #### Text message
 
+Available formatting for the text message content can be found in the [introduction](doc:whatsapp-introduction#formatting-text-messages).
+
 JSON object parameters:
 
 | Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
@@ -242,8 +244,6 @@ JSON object parameters:
   }
 }
 ```
-
-Available formatting for the text message content can be found in the [introduction](doc:whatsapp-introduction#formatting-text-messages).
 
 #### Image message
 
