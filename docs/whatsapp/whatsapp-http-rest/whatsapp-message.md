@@ -221,7 +221,7 @@ Button objects:
 
 #### Text message
 
-Available formatting for the text message content can be found in the [introduction](doc:whatsapp-introduction#formatting-text-messages).
+Available formatting and using emojis for the text message content can be found in the [introduction](doc:whatsapp-introduction#formatting-text-messages).
 
 JSON object parameters:
 
