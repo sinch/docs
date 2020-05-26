@@ -5,6 +5,14 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2020-05-26
+
+  - Video files are now supported in media template
+  - Profile images are now available for inbound contact type messages in customer’s callback
+  - Improvements for inbound sticker messages - auto cleanup for old stickers file enabled
+  - Improvements for Customer Care Session management - deleting messages and system messages are not starting CC Session any more
+
+
 ## 2020-05-12
 
   - New interactive message templates. See [Sending template message](doc:whatsapp-message#template-message).
