@@ -230,7 +230,7 @@ The format is as follows:
 |addresses         | Array of contact address(e)                                 | Array[Object] |
 |birthday          | Contact's birthday, YYYY-MM-DD formatted string             | String        |
 |emails            | Array of contact email address(es)                          | Array[Object] |
-|ims               | Array of message contact information                        | Array[Object] |
+|ims               | Array of message contact information                        | Array[String] |
 |name              | Contact full name information                               | Object        |
 |org               | Contact organization information                            | Object        |
 |phones            | Array of contact phone number(s)                            | Array[Object] |
