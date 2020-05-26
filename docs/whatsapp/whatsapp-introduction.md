@@ -111,9 +111,11 @@ WhatsApp allows formatting your messages. Use these formatting symbols to format
 
 To use emojis in text, encode them with UTF-16 unicode.
 
-| Symbol     | Example         |
-| ---------- | --------------- |
-| :grinning: | Hi \ud83d\ude00 |
+| Symbol             | Example               |
+| ------------------ | --------------------- |
+| :grinning:         | Hi \ud83d\ude00       |
+| :white_check_mark: | \u2705 repair the car |
+| :musical_keyboard: | I like \uD83C\uDFB9   |
 
 ## Supported language codes
 
