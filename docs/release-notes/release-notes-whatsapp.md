@@ -8,10 +8,9 @@ excerpt: >-
 ## 2020-05-26
 
   - Video files are now supported in media template
-  - Profile images are now available for inbound contact type messages in customer’s callback
+  - A profile image can now be included in a contact message sent to the customer's callback URL
   - Improvements for inbound sticker messages - auto cleanup for old stickers file enabled
-  - Improvements for Customer Care Session management - deleting messages and system messages are not starting CC Session any more
-
+  - Improvements for Customer Care Session management - DELETED and SYSTEM statuses do not start a CC Session anymore
 
 ## 2020-05-12
 
