@@ -471,7 +471,7 @@ Custom sticker must comply with WhatsApp requirements:
 2. Stickers must be exactly 512x512 pixels.
 3. Each sticker must be less than 100 KB.
 
-Please note that that WhatsApp doesn't support animated stickers.
+Please note that WhatsApp does not support animated stickers.
 
 > 📘 Note
 >
