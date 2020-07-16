@@ -19,17 +19,17 @@ Set up the Sinch client, using _SinchClientBuilder_ (see [Reference](https://sin
 // Instantiate a SinchClient using the SinchClientBuilder.
 android.content.Context context = this.getApplicationContext();
 SinchClient sinchClient = Sinch.getSinchClientBuilder().context(context)
-                                                  .applicationKey("<application key>")
-                                                  .environmentHost("ocra.api.sinch.com")
-                                                  .userId("<user id>")
-                                                  .build();
+                                                       .applicationKey("<application key>")
+                                                       .environmentHost("ocra.api.sinch.com")
+                                                       .userId("<user id>")
+                                                       .build();
 ```
 
 * The _Application Key_ is obtained from the [Sinch Developer Dashboard - Apps](https://portal.sinch.com/#/apps). 
 * The _User ID_ should uniquely identify the user on the particular device.
 * (The term _Ocra_ in the hostname `ocra.api.sinch.com` is just the name for the Sinch API that the SDK clients target)
 
-## Specify capabilities
+## Specify Capabilities
 
 The _SinchClient_ can be configured to enable or disable certain functionality. Please see the [Reference](reference\index.html?com\sinch\android\rtc\SinchClient.html) for a comprehensive description of each capability. To enable support for _push notifications_, use the method `sinchClient.setSupportManagedPush(true)`. Also see [Push Notifications](doc:voice-android-cloud-push-notifications) for additional steps that are required to fully implement support for push notifications.
 
@@ -53,7 +53,7 @@ Calling `startListeningOnActiveConnection` allows your application to receive in
 >
 > If the application is meant to receive incoming calls while not running in foreground, [Push Notifications](doc:voice-android-cloud-push-notifications) are required. Listening on an active connection in the background service is not possible due to new Android 9 requirements for such services, and the execution of such services is not guaranteed - the Android OS can 'kill' them at any time.
 
-## Start the Sinch client
+## Start the Sinch Client
 
 Before starting the client, add a client listener (see [Reference](reference\com\sinch\android\rtc\SinchClientListener.html) documentation):
 
@@ -61,11 +61,8 @@ Before starting the client, add a client listener (see [Reference](reference\com
 sinchClient.addSinchClientListener(new SinchClientListener() {
 
     public void onClientStarted(SinchClient client) { }
-
     public void onClientFailed(SinchClient client, SinchError error) { }
-
     public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration registrationCallback) { }
-
     public void onLogMessage(int level, String area, String message) { }
 });
 
@@ -108,11 +105,11 @@ Look for specifics in [Application Authentication](doc:voice-android-cloud-appli
 >
 > When deploying your application to production, do not embed the Application Secret in the application. The example above is only meant to show how to provide a signed JWT to the _SinchClient_. Implement the required functionality on your backend and fetch signed registration token when required.
 
-### Registering the Client / User via UserController API
+## Registering the Client / User via UserController API
 
 You can also register a user towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). This lightweight component provides a way to register the user without starting the _SinchClient_. You can also register push token for _Managed Push_ to receive incoming calls even when the application is closed/in background. The _UserController_ uses the very same authentication scheme as the _SinchClient_ based on the signed JWT registration token that you provide in response to _onRegistrationCredentialsRequired()_ method of [UserRegistrationCallback](reference\com\sinch\android\rtc\UserRegistrationCallback.html). The _UserController_ provides better control over the registration process than the _SinchClient_ by providing callbacks for each step of the registration.
 
-### Lifecycle Management of a _SinchClient_-instance
+## Lifecycle Management of a _SinchClient_-Instance
 
 We recommend that you initiate the _SinchClient_, start it, but not terminate it, during the lifetime of the running application. That also implies that the _SinchClient_-instance should be _retained_ by the application code. It is best to keep the client instance alive and started unless there are reasons specific to your application. 
 
@@ -122,7 +119,7 @@ The _SinchClient_ can of course be completely stopped and also disposed.
 >
 > Stopping / disposing of _SinchClient_ won't affect receiving incoming calls if the user was previously registered towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). Upon receiving _incoming call_ push notification instantiate and forward the push payload to the new _SinchClient_ instance. 
 
-### Terminate the Sinch client
+**Terminate the Sinch client**
 
 When the app is done using the SinchClient, it can be stopped. If the client is currently listening for incoming events, it needs to stop listening as well. After `terminateGracefully()` is called, any object retrieved directly from the client object (that is, `CallClient`, `AudioController` and `VideoController`) is considered invalid.
 
