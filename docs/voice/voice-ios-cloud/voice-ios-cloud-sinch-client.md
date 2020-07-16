@@ -76,7 +76,7 @@ The sample applications included in the Sinch SDK includes a class `SINJWT` that
 
 > ⚠
 >
-> When deploying your application to production, do __not__ embed the _Appliation Secret_ in the application. The example above is only meant to show how to provide a signed JWT to the `SINClient`.
+> When deploying your application to production, do __not__ embed the _Application Secret_ in the application. The example above is only meant to show how to provide a signed JWT to the `SINClient`.
 
 ### Lifecycle Management of a _SINClient_-instance
 
