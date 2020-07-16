@@ -81,11 +81,11 @@ public void onIncomingCall(CallClient callClient, Call call) {
 
 To get events related to the call, add a call listener. The call object contains details about participants, start time, potential error codes, and error messages.
 
-### Incoming Video Call
+### Incoming video call
 
 When an incoming call is a video call, the `onIncomingCall` callback will be executed, just like for the incoming audio call. The `CallDetails` object provides an `isVideoOffered()` method to check whether the call offers a video track. See the \[Video calling\] section for details on how to add video views.
 
-### Answer Incoming Call
+### Answer incoming call
 
 To answer the call, use the `answer` method on the call to accept it. If a ringtone was previously played, it should be stopped now.
 
@@ -101,7 +101,7 @@ call.answer();
 
 Now, the clients on both ends establish the connection. When the call is established and the voice streams are running in both directions, the `onCallEstablished` listener method is called.
 
-### Decline Incoming Call
+### Decline incoming call
 
 If the call should not be answered, use the `hangup` method on the call to decline. The caller is notified that the incoming call was denied. If a ringtone was previously played, it should be stopped now.
 
@@ -167,7 +167,7 @@ _AudioController_ interface allows you to control audio routing. Aquire _AudioCo
 | `enableAutomaticAudioRouting()`   | Enables automatic audio (AAR).|
 | `disableAutomaticAudioRouting()`   | Disables automatic audio routing (AAR).|
 
-### Automatic Audio Routing
+### Automatic audio routing
 
 You can enable automatic audio routing using `AudioController.enableAutomaticAudioRouting()` method.
 It enables automatic audio routing between earpiece, speakerphone, wired headset and Bluetooth audio devices.
