@@ -1,5 +1,5 @@
 ---
-title: Application authentication with expiration time
+title: Application Authentication with Expiration Time
 excerpt: Application authentication with the Sinch SDK.
 hidden: false
 next:
