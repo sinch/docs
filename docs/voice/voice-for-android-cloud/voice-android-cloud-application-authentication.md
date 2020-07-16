@@ -51,9 +51,9 @@ The JWT must contain the following _claims_:
 | `exp`   | See [JWT RFC 7519 section-4.1.4](https://tools.ietf.org/html/rfc7519#4.1.4)       |
 | `nonce` | A unique cryptographic [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) |
 
-> **IMPORTANT**
+> ❗️
 >
-> The expiration time for the token itself (`exp`) should be set so that the _Time-to-Live_ of the token is not less than 1 minute.
+> The expiration time for the token itself (`exp`) should be set so that the _Time-to-Live_ of the token is not less than 1 minute. Also, don't confuse the token expiration time (`exp`), which should be relatively short for security reasons (e.g. 10 mins), with the _application instance_ expiration time, set by optional claim `sinch:rtc:instance:exp`, which can be days, weeks or even months long. More on the topic in the next chapter [Application authentication with expiration time](doc:voice-android-cloud-authentication-expiration).
 
 ### Signing the JWT
 
@@ -64,7 +64,7 @@ The _JWT_ should be signed using a _signing key_ derived from the _Sinch Applica
 - The current date as variable `now`.
 - _Sinch Application Secret_ as variable `applicationSecret`, holding the secret as a _base64_ encoded string.
 
-, derive the signing key as follows:
+Derive the signing key as follows:
 
 ```
 signingKey = HMAC256(BASE64-DECODE(applicationSecret), UTF8-ENCODE(FormatDate(now, "YYYYMMDD")))
@@ -110,7 +110,7 @@ The derived signing key would in this case be `AZj5EsS8S7wb06xr5jERqPHsraQt3w/+I
 
 __Final Encoded JWT__:
 
-> **Note**
+> 📘
 >
 > JWT below is only one of many possible JWT encodings of the input above. The example below is with the JSON header and payload as shown above, but with compact/minified JSON serialization and with dictionary key ordering preserved.
 ```
@@ -154,10 +154,13 @@ In your `SinchClientListener` class:
     }
 ```
 
-> **Note**
+> 📘
+>
 > The client _MAY_ also ask for a registration token on subsequent starts.
 
 ## Providing a Registration Token to `UserController`
+
+_UserController_ is a component that serves the purpose of registration against the _Sinch Backend_ to receive incoming calls via _Managed Push_. More about it can be found later in the chapter [UserController](doc:voice-android-cloud-user-controller).
 
 To provide the registration token to `UserController` use the similar sheme:
 
