@@ -59,9 +59,13 @@ A minimum set of permissions are needed for the app to use the Sinch SDK. These 
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 
-> **Note**
+> 📘
 >
 > By default, the Sinch SDK hangs up any Sinch call if the regular phone app has an active call. This functionality requires the permission READ_PHONE_STATE. However, if this default functionality isn’t wanted, turn it off by calling `sinchClient.getCallClient().setRespectNativeCalls(false);` and the permission READ_PHONE_STATE is not needed.
+
+> 📘
+>
+> If you are intending to use `Automatic Audio Routing` (see the apropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
 
 ## Verify manifest in runtime during development
 

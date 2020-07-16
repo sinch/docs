@@ -10,17 +10,11 @@ next:
     - voice-android-cloud-video-calling
 ---
 
-The Sinch SDK supports four types of calls: _app-to-app (audio or video)_, _app-to-phone_, _app-to-sip_ and _conference_ calls. The CallClient is the entry point for the calling functionality of the Sinch SDK.
+The Sinch SDK supports four types of calls: _app-to-app (audio or video)_, _app-to-phone_, _app-to-sip_ and _conference_ calls. The _CallClient_ is the entry point for the calling functionality of the Sinch SDK.
 
-Calls are placed through the `CallClient` and events are received using the `CallClientListener`. The call client is owned by the SinchClient and accessed using `sinchClient.getCallClient()`. Calling is not enabled by default.
+Calls are placed through the _CallClient_ and events are received using the _CallClientListener_. The call client is owned by the SinchClient and accessed using `sinchClient.getCallClient()`.
 
-Enable calling with the following method before starting the `SinchClient`:
-
-```java
-sinchClient.setSupportCalling(true);
-```
-
-## Set up an _app-to-app_ call
+## Set Up an _App-to-App_ Call
 
 Use the CallClient to start the call (the `callUser` method). Pass the user identifier of the callee (the user receiving the call) to the call method, so that Sinch services can connect the call to the callee.
 
@@ -37,7 +31,7 @@ Assuming the callee’s device is available, the method `onCallProgressing` is c
 
 When the other party answers, the `onCallEstablished` method is called. Now, the users can start talking. If a progress tone was previously played, it should be stopped now.
 
-## Set up an _app-to-phone_ call
+## Set Up an _App-to-Phone_ Call
 
 An _app-to-phone_ call is a call that is made to a phone on the regular telephone network. Setting up an _app-to-phone_ call is not much different than setting up an _app-to-app_ call. Instead of invoking the `callUser` method, invoke the `callPhoneNumber` method on the `CallClient` object. Sufficient funds must be available on the Sinch account and a valid phone number specified for the call to connect successfully. The phone number should be specified according to the E.164 number formatting (<http://en.wikipedia.org/wiki/E.164> ) recommendation and should be prefixed with a ‘+’. E.g. to call the US phone number 415 555 0101, the phone number should be specified as “+14155550101”. The ‘+’ is the required prefix and the US country code ‘1’ prepended to the local subscriber number.
 
@@ -45,11 +39,11 @@ Placing an _app-to-phone_ call requires a developer account with credits. Toppin
 
 _App-to-phone_ calls can be tested by calling the following test number: _+46000000000_. When placing a call to this number, you will hear a voice prompt stating that the call has been connected, and shortly after that the call will automatically be ended.
 
-## Set up an _app-to-sip_ call
+## Set Up an _App-to-sip_ Call
 
 An _app-to-sip_ call is a call that is made to a SIP server. Setting up an _app-to-sip_ call is not much different from setting up an _app-to-app_ call. Instead of invoking the `callUser` method, invoke the `callSip` method on the `CallClient` object. The SIP identity should be in the form “<user@server>”. By convention, when passing custom headers in the SIP call, the headers should be prefixed with “x-”. If the SIP server reported any errors, the `CallDetails` object will provide an error with the `SIP` error type.
 
-## Set up a _conference_ call
+## Set Up a _Conference_ Call
 
 A _conference_ call can be made to connect a user to a conference room where multiple users can be connected at the same time. The identifier for a conference room may not be longer than 64 characters.
 
@@ -61,7 +55,7 @@ call.addCallListener(...);
 
 It is also possible to connect users to a conference call via the [Sinch REST API](doc:voice-rest-api-onprem-calling-api#conference-and-text-to-speech-callouts).
 
-## Handle incoming calls
+## Handle Incoming Calls
 
 To answer calls, the application must be notified when the user receives an incoming call.
 
@@ -87,11 +81,11 @@ public void onIncomingCall(CallClient callClient, Call call) {
 
 To get events related to the call, add a call listener. The call object contains details about participants, start time, potential error codes, and error messages.
 
-### Incoming video call
+### Incoming Video Call
 
-When incoming call is a video call, the `onIncomingCall` callback will be executed, just like for the incoming audio call. The `CallDetails` object provides a `isVideoOffered()` method to check whether the call offers a video track. See the \[Video calling\] section for details on how to add video views.
+When an incoming call is a video call, the `onIncomingCall` callback will be executed, just like for the incoming audio call. The `CallDetails` object provides an `isVideoOffered()` method to check whether the call offers a video track. See the \[Video calling\] section for details on how to add video views.
 
-### Answer incoming call
+### Answer Incoming Call
 
 To answer the call, use the `answer` method on the call to accept it. If a ringtone was previously played, it should be stopped now.
 
@@ -107,7 +101,7 @@ call.answer();
 
 Now, the clients on both ends establish the connection. When the call is established and the voice streams are running in both directions, the `onCallEstablished` listener method is called.
 
-### Decline incoming call
+### Decline Incoming Call
 
 If the call should not be answered, use the `hangup` method on the call to decline. The caller is notified that the incoming call was denied. If a ringtone was previously played, it should be stopped now.
 
@@ -145,7 +139,7 @@ Call call = callClient.callUser("<remote user id>");
 call.hangup();
 ```
 
-## Volume control
+## Volume Control
 
 To make sure that the volume of the call can be modified by the hardware volume controls, `setVolumeControlStream(AudioManager.STREAM_VOICE_CALL)` must be called on the `Activity` where the call is handled. Make sure that `volumeControlStream` is reset to a suitable value when the call has ended.
 
@@ -159,3 +153,32 @@ public void onCallEnded(Call call) {
     setVolumeControlStream(AudioManager.USE_DEFAULT_STREAM_TYPE);
 }
 ```
+
+## Audio Routing
+
+_AudioController_ interface allows you to control audio routing. Aquire _AudioController_ using `SinchClient.getAudioController()` method, and use following methods:
+
+| Method   | Description                                                               |
+| :------ | :-------------------------------------------------------------------------------- |
+| `mute()`   | Mutes audio input.              |
+| `unmute()`   | Unmutes audio input.          |
+| `enableSpeaker()`   | Enables speaker mode.  |
+| `disableSpeaker()`   | Disables speaker mode.|
+| `enableAutomaticAudioRouting()`   | Enables automatic audio (AAR).|
+| `disableAutomaticAudioRouting()`   | Disables automatic audio routing (AAR).|
+
+### Automatic Audio Routing
+
+You can enable automatic audio routing using `AudioController.enableAutomaticAudioRouting()` method.
+It enables automatic audio routing between earpiece, speakerphone, wired headset and Bluetooth audio devices.
+
+It takes two parameters: 
+* `boolean manageBluetoothAudio` if set to true, allows to automatically reroute audio to Bluetooth headset when available. Fires `MissingPermissionException` if `android.Manifest.permission.BLUETOOTH` is not granted.
+* `AudioController.UseSpeakerphone useSpeakerphone` can be set to `AUTO`, `TRUE` or `FALSE`. The `AUTO` mode uses a proximity sensor to operate.
+
+Priorities are following:
+* Bluetooth (if available and manageBluetoothAudio == true)
+* Wired Headset
+* Default audio device if `useSpeakerphone` is `TRUE` or `FALSE`; or Proximity sensor's based decision (speakerphone / earpiece) if `useSpeakerphone` is `AUTO`.
+
+Default audio device (speakerphone/ earpiece) is set using `useSpeakerphone` parameter.
