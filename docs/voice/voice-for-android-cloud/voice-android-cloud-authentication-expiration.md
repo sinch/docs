@@ -4,7 +4,7 @@ excerpt: Application authentication with the Sinch SDK.
 hidden: false
 next:
   pages:
-    - voice-android-cloud-miscellaneous
+    - voice-android-cloud-calling
 ---
 
 **User Instance (or Instance)**: is an _Application instance_ on a particular device registered with some _user identity_ against Sinch Service. A User might be registered on several devices, effectively having several registered _User Instances_.

@@ -4,7 +4,7 @@ excerpt: ''
 hidden: false
 next:
   pages:
-    - voice-android-cloud-application-authentication
+    - voice-android-cloud-miscellaneous
 ---
 
 ### Push token registration via _UserController_ API

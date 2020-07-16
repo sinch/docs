@@ -6,7 +6,7 @@ excerpt: >-
 hidden: false
 next:
   pages:
-    - voice-android-cloud-calling
+    - voice-android-cloud-application-authentication
 ---
 
 The _SinchClient_ is the Sinch SDK entry point. It is used to configure the user’s and device’s capabilities, as well as to provide access to feature classes such as the _CallClient_, _AudioController_ and _VideoController_.
