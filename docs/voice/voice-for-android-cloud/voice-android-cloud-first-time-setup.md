@@ -67,7 +67,7 @@ A minimum set of permissions are needed for the app to use the Sinch SDK. These 
 >
 > If you are intending to use `Automatic Audio Routing` (see the apropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
 
-## Verify manifest in runtime during development
+## Verify Manifest in Runtime
 
 To verify that the manifest has the necessary permissions the `sinchClient.checkManifest()` method can be used. This method should be called before starting the client and will throw an `MissingPermissionException` exception if the manifest isn’t setup correctly. `sinchClient.checkManifest()` can also be used to check whether required permissions are granted by the user in runtime. An example of how to dynamically request missing permissions can be found in the sample applications that comes with the SDK.
 
