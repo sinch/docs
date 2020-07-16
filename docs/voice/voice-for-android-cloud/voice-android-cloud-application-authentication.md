@@ -1,5 +1,5 @@
 ---
-title: Application authentication
+title: Application Authentication
 excerpt: Application authentication with the Sinch SDK.
 hidden: false
 next:
@@ -129,10 +129,10 @@ When starting the client (`SinchClient.start()`) the client will ask for a token
     // Instantiate a SinchClient using the SinchClientBuilder.
     android.content.Context context = this.getApplicationContext();
     SinchClient sinchClient = Sinch.getSinchClientBuilder().context(context)
-                                                    .applicationKey("<application key>")
-                                                    .environmentHost("ocra.api.sinch.com")
-                                                    .userId("<user id>")
-                                                    .build();
+                                   .applicationKey("<application key>")
+                                   .environmentHost("ocra.api.sinch.com")
+                                   .userId("<user id>")
+                                   .build();
 
     sinchClient.addSinchClientListener(sinchClientListener);
     sinchClient.start()
