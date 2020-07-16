@@ -1,5 +1,5 @@
 ---
-title: Push notifications
+title: User Controller
 excerpt: ''
 hidden: false
 next:
@@ -7,7 +7,7 @@ next:
     - voice-android-cloud-miscellaneous
 ---
 
-### Push token registration via _UserController_ API
+### Push Token Registration via _UserController_ API
 
 > 📘
 >
@@ -22,12 +22,12 @@ Both situations should be handled using the new _UserController API_ (see [Refer
 
 ```java
 public UserController getUserController(String userId) {
-     Sinch.getUserControllerBuilder()
-                .context(getApplicationContext())
-                .applicationKey(applicationKey)
-                .userId(userId)
-                .environmentHost("ocra.api.sinch.com")
-                .build();
+     return Sinch.getUserControllerBuilder()
+                 .context(getApplicationContext())
+                 .applicationKey(applicationKey)
+                 .userId(userId)
+                 .environmentHost("ocra.api.sinch.com")
+                 .build();
 }
 ```
 
@@ -38,13 +38,13 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
 
     private void loginClicked() {
         ...
-        UserController uc = Sinch.getUserControllerBuilder()
-                .context(getApplicationContext())
-                .applicationKey(APP_KEY)
-                .userId(mUserId)
-                .environmentHost(ENVIRONMENT)
-                .build();
-        uc.registerUser(this, this);
+        UserController userController = Sinch.getUserControllerBuilder()
+                                             .context(getApplicationContext())
+                                             .applicationKey(APP_KEY)
+                                             .userId(mUserId)
+                                             .environmentHost(ENVIRONMENT)
+                                             .build();
+        userController.registerUser(this, this);
     }
 
     @Override
@@ -107,7 +107,7 @@ are met, the authentication process has finished and e.g. UI can advance.
 >
 > It is safe to close application right after receiving _tokenRegistered()_ callback - you'll keep receiving incoming calls unless you _force stop_ the application or unregister the push token using _UserController_.
 
-### Push token un-registration via _UserController_ API
+### Push Token un-Registration via _UserController_ API
 
 When you want to _logout_ and stop receiving incoming calls via push, unregister the push token using _UserController_:
 
