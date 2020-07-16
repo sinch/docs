@@ -12,7 +12,7 @@ next:
 The application may receive incoming calls only when:
 
 - the application is in the foreground AND listening on active connection;
-- the application is registered to receive incoming calls via the Push Notifications.
+- the application is registered to receive incoming calls via the Push Notifications via _SinchClient_ capabilities, or, better, using `UserController.registerUser()` API (see [UserController](doc:voice-android-cloud-user-controller)).
 
 When an application is not running, or the `Active Connection` feature is not enabled, the user must be notified of an incoming call by a push notification.
 
@@ -28,13 +28,13 @@ The following sections cover how to support receiving calls and messages via pus
 
 ## FCM configuration file required (google-services.json)
 
-You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup you first need to register your application in [firebase console](https://console.firebase.google.com/). If your project already uses GCM, the console will prompt you to import it as new Firebase Cloud Messaging project. Register your application using the console, and download relevant google-services.json into your project’s main folder.
+You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup you first need to register your application in [firebase console](https://console.firebase.google.com/). If your project already uses FCM, the console will prompt you to import it as a new Firebase Cloud Messaging project. Register your application using the console, and download relevant _google-services.json_ into your project’s main folder.
 
-Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ will require you to supply your own _google-services.json_ in order to be built. In the absence of this file, gradle will show relevant error with explanation and relevant links and stop the build. That _google-services.json_ file is the main mean of automatization of support of Firebase services to your app. Android Studio’s _‘com.google.gms.google-services’_ plugin parses and adds relevant resources and permissions to your applications manifest automatically.
+Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ will require you to supply your own _google-services.json_ in order to be built. In the absence of this file, gradle will show a relevant error with explanation and relevant links and stop the build. That _google-services.json_ file is the main mean of automatization of support of Firebase services to your app. Android Studio’s _‘com.google.gms.google-services’_ plugin parses and adds relevant resources and permissions to your applications manifest automatically.
 
 ## Permissions required
 
-Unlike GCM setup, FCM application developer does not need to manually add any permission to application manifest. For relevant changes in you application’s manifest when migrating from GCM to FCM please consult official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)
+Unlike GCM setup, FCM application developer does not need to manually add any permission to the application manifest. For relevant changes in you application’s manifest when migrating from GCM to FCM please consult official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)
 
 ## Enable push notifications
 
@@ -45,7 +45,9 @@ sinchClient.setSupportManagedPush(true);
 sinchClient.start();
 ```
 
-> **Note**
+Or, better use `UserController.registerUser()` API (see [UserController](doc:voice-android-cloud-user-controller)) which provides callbacks with the registration status.
+
+> 📘
 >
 > - You must catch the `MissingGCMException` if you distribute your app to devices without _Google Play Services_.
 > - Using `setSupportManagedPush(true)` will register a token with Firebase Cloud Messaging using a Sender ID connected to Sinch, which will _NOT_ unregister your own token, so you _CAN_ use Firebase Cloud Messages for your own purpose filtering them in _onMessageReceived(RemoteMessage remoteMessage)_ method of your FCM Listening Service using Sinch helper API _SinchHelpers.isSinchPushPayload_.
@@ -113,7 +115,7 @@ NotificationResult result = sinchClient.relayRemotePushNotificationPayload(remot
 }
 ```
 
-> **Note**
+> 📘
 >
 > It is possible to retrieve custom headers from the push message using _SinchHelpers.queryPushNotificationPayload_ without starting the client.
 
@@ -130,29 +132,13 @@ if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
 }
 ```
 
-### Show local notifications for missed calls
-
-When the push notification is enabled on a Sinch client, besides the incoming call notification, the Sinch SDK will also send a push notification for a canceled call when the caller cancels the call before it is answered. This gives developers a good opportunity to present local notifications for missed calls in their apps:
-
-```java
-NotificationResult result = sinchService.relayRemotePushNotificationPayload(payload);
-// handle result, e.g. show a notification for a missed call:
-if (result.isValid() && result.isCall()) {
-    CallNotificationResult callResult = result.getCallResult();
-    if (callResult.isCallCanceled()) {
-        // user-defined method to show notification
-        createNotification(callResult.getRemoteUserId());
-    }
-}
-```
-
-> **Note**
->
-> If the message forwarded to the Sinch client happened to be _call cancel_ message, the client arranges the termination of the call automatically resulting in `CallListener.onCallEnded()` event being triggered, allowing UI to handle canceling the call.
-
 ## Unregister a device
 
 If the user of the application logs out or performs a similar action, the push notification device token can be unregistered via `SinchClient.unregisterManagedPush()` to prevent further notifications to be sent to the device. Starting a client with `setSupportManagedPush(true)` will register the device again.
+
+> ❗️
+>
+> If your application assumes frequent change of users (logging in and out), it's imperative to unregister device via `SinchClient.unregisterManagedPush()` or, better, using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one. 
 
 ## Active Connection
 
