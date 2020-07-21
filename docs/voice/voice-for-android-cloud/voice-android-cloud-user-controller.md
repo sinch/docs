@@ -78,7 +78,7 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
 
     @Override
     public void onCredentialsRequired(ClientRegistration clientRegistration) {
-        // NB: This implementation just emulates what should be an async procedure, with JWT.create() being
+        // NOTE: This implementation just emulates what should be an async procedure, with JWT.create() being
         // run on your backend.
         clientRegistration.register(JWT.create(APP_KEY, APP_SECRET,mUserId));
     }
