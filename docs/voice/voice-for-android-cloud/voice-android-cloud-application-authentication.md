@@ -1,10 +1,10 @@
 ---
-title: Application Authentication
+title: Application & Authentication
 excerpt: Application authentication with the Sinch SDK.
 hidden: false
 next:
   pages:
-    - voice-android-cloud-authentication-expiration
+    - voice-android-cloud-calling
 ---
 
 When you initiate `SinchClient`, or register user via `UserController` you have to provide _user identity_. The first time the application instance and the Sinch client are running on behalf of a particular user, it is required to register against the Sinch service. The step of registering a user identity against the Sinch service requires the application instance to provide a token that authenticates the _Application_ and grants permission (authorizes) the user to register. Once the application instance has successfully registered the user identity, the client will have obtained the necessary credentials to perform further authorized requests on behalf of the _Application_ and for that specific user to make and receive calls.
@@ -53,8 +53,7 @@ The JWT must contain the following _claims_:
 
 > ❗️
 >
-> The expiration time for the token itself (`exp`) should be set so that the _Time-to-Live_ of the token is not less than 1 minute. Also, don't confuse the token expiration time (`exp`), which should be relatively short for security reasons (e.g. 10 mins), with the _application instance_ expiration time, set by optional claim `sinch:rtc:instance:exp`, which can be days, weeks or even months long. More on the topic in the next chapter [Application authentication with expiration time](doc:voice-android-cloud-authentication-expiration).
-
+> The expiration time for the token itself (`exp`) should be set so that the _Time-to-Live_ of the token is not less than 1 minute.
 ### Signing the JWT
 
 The _JWT_ should be signed using a _signing key_ derived from the _Sinch Application Secret_ as follows. Given:
@@ -201,3 +200,40 @@ Provide signed registration token in your `UserRegistrationCallback.onCredential
         //notify failed registration
     }
 ```
+
+## Limiting Client Registration with Expiration Time
+
+Depending on your security requirements, you may want to limit a client registration time-to-live (TTL). Limiting the client registration will effectively limit the Sinch client acting on behalf of the _User_ on the particular device after the TTL has expired. I.e. effectively preventing the client to make or receive calls after the registration TTL has expired.
+
+To limit the registration in time, create the _JWT_ as described in the sections above, but with the additional claim `sinch:rtc:instance:exp`. The value for this claim should be in the same format as claims `iat` and `exp`, i.e. a JSON numeric value representing the number of seconds since _Unix Epoch_ (UTC).
+
+__Example JWT Payload__:
+
+```
+{
+  "iss": "//rtc.sinch.com/applications/a32e5a8d-f7d8-411c-9645-9038e8dd051d",
+  "sub": "//rtc.sinch.com/applications/a32e5a8d-f7d8-411c-9645-9038e8dd051d/users/foo",
+  "iat": 1514862245,
+  "exp": 1514862845,
+  "nonce":"6b438bda-2d5c-4e8c-92b0-39f20a94b34e",
+  "sinch:rtc:instance:exp": 1515035045
+}
+```
+
+**IMPORTANT**: TTL of the registration must be `>=` 48 hours. In other words: `sinch:rtc:instance:exp - iat >= 48 * 3600`.
+
+> 📘
+> When a Sinch client registers with a _User_ registration token, the registration is also bound to the particular device. I.e. limiting the TTL of the registration is device-specific and does not affect other potential registrations for the same _User_ but on other devices.
+
+> ❗️
+> Do not mix up the claim `sinch:rtc:instance:exp` with the standard JWT claim [`exp`](https://tools.ietf.org/html/rfc7519#section-4.1.4). The former is for limiting the client registration. The latter is only for limiting the TTL of the JWT itself.
+
+
+### Automatic Extension of Client Registration Time-to-Live (TTL)
+
+The Sinch client will automatically request to extend the TTL of its registration by invoking `onRegistrationCredentialsRequired()` (just as it does on the initial start and first registration.)
+
+The request to extend the client registration TTL is triggered when the Sinch client is started and the expiry of TTL is detected to be _near_ in the future. _"Near in the future"_ is subject to internal implementation details, but the Sinch client will try to eagerly extend its registration and will adjust the interval according to the TTL.
+
+> ❗️
+> It is not allowed to provide a JWT without specifying registration TTL if a JWT _with_ a limited TTL has been used before for the given _User_ on the specific device. I.e. once a Sinch client registration has initially been constrained with a TTL, the registration can be extended in time, but not extended indefinitely.
