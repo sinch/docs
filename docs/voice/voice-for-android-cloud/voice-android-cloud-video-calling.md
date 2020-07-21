@@ -40,40 +40,26 @@ public void onCallEnded(Call call) {
 }
 ```
 
-### Pausing Video Stream
+### Pausing and Resuming a Video Stream
 
-To pause the local video stream, use the `pauseVideo()` method on the call.
+To pause the local video stream, use the method `Call.pauseVideo()`. To resume the local video stream, use method `Call.resumeVideo()`.
 
 ```java
-// User pause the video stream
+// User pauses the video stream
 call.pauseVideo();
-```
 
-### Resuming Video Stream 
-
-To resume the local video stream, use the `resumeVideo()` method on the call.
-
-```java
 // User resumes the video stream
 call.resumeVideo();
 ```
 
-### Pausing Video Stream Delegates
-
-Once you have created a `VideoCallListener` and added it to a call, the `onVideoTrackPaused()` method will be called when the remote user pause the video stream.
+The call listeners will be notified of pause- and resume events via the callback methods `VideoCallListener.onVideoTrackPaused()` and `VideoCallListener.onVideoTrackResumed()`. Based on these events it is, for example, appropriate to update the UI with a pause indicator, and subsequently remove such pause indicator.
 
 ```java
 @Override
 public void onVideoTrackPaused(Call call) {
      // Implement what to be done when remote user pause video stream.
 }
-```
 
-### Resuming Video Stream Delegates
-
-Once you have created a `VideoCallListener` and added it to a call, the `onVideoTrackResumed()` method will be called when the remote user resumes the video stream.
-
-```java
 @Override
 public void onVideoTrackResumed(Call call) {
      // Implement what to be done when remote user resumes video stream.
