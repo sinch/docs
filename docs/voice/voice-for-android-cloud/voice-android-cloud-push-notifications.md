@@ -67,7 +67,7 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 ### Explicit Push Token Registration
 
-There are certain situations where it is either desirable to explicitly register push token and/or get assurance that the push token is indeed registered. These situations should be handled using new [UserController API](doc:voice-android-cloud-user-controller).
+There are certain situations where it is either desirable to explicitly register push token and/or get assurance that the push token is indeed registered. These situations should be handled using the [UserController API](doc:voice-android-cloud-user-controller).
 
 ## Receive and Forward Push Notifications to a Sinch Client
 
