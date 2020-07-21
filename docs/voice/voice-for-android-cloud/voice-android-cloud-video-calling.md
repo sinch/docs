@@ -11,7 +11,7 @@ next:
 
 ## Setting Up a Video Call
 
-Just like audio calls, video calls are placed through the `CallClient` and events are received using the `CallClientListener`. The call client is owned by the SinchClient and accessed using `sinchClient.getCallClient()`. Calling is not enabled by default.
+Just like audio calls, video calls are placed through the `CallClient` and events are received using the `CallClientListener`. The call client is owned by the SinchClient and accessed using `sinchClient.getCallClient()`. 
 For a more general introduction to calling with the SinchClient, see [here](doc:voice-android-cloud-calling).
 
 ## Showing the Video Streams
