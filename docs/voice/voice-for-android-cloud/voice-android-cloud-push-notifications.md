@@ -20,7 +20,7 @@ By invoking `setSupportManagedPush(true)` the Sinch SDK will automatically regis
 
 If using the Sinch backend and _Firebase Cloud Messaging_ is not viable in the application, please see [Active connection](https://developers.sinch.com/docs/voice-android-cloud-active-connection).
 
-As a developer, you will be responsible for implementing the code that receives the FCM push message. For an example implementation, please see the sample app “Sinch Push” which is bundled with the SDK.
+As a developer, you will be responsible for implementing the code that receives the FCM push message. For an example implementation, please see the sample app `sinch-rtc-sample-push` which is bundled with the SDK.
 
 Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to-date and Google-recommended version _Firebase Cloud Messaging_ (FCM), which requires client app to be modified in accordance with the Google’s official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)
 
