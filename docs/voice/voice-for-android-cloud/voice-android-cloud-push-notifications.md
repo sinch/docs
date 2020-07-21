@@ -83,9 +83,9 @@ if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
 }
 ```
 
-The returned `result` can be inspected to further confirm that the push was a call using `result.isCall()`.
+The returned `result` can be inspected to further confirm that the push is valid and associated with an incoming call using `NotificationResult.isCall()`.
 
-If the payload that was forwarded to the Sinch client was for a Sinch call, the `onIncomingCall` callback will automatically be triggered as for any other call. The `CallNotificationResult` object provides details about participants, whether the call timed out and whether the call offers video.
+If the payload that was forwarded to the Sinch client is a valid Sinch call, the `onIncomingCall` callback will automatically be triggered as for any other call. The `CallNotificationResult` object provides details about participants, whether the call timed out and whether the call offers video.
 
 ## Send and Receive Custom Headers via Sinch Managed Push
 
