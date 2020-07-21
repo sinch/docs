@@ -65,7 +65,7 @@ A minimum set of permissions are needed for the app to use the Sinch SDK. These 
 
 > 📘
 >
-> If you are intending to use `Automatic Audio Routing` (see the apropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
+> If you intend to use `Automatic Audio Routing` (see the apropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
 
 ## Verify Manifest in Runtime
 
