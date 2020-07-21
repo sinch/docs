@@ -84,8 +84,10 @@ class MySinchClientListener implements SinchClientListener {
 
         @Override
         public void onRegistrationCredentialsRequired(SinchClient client,
-                                                      ClientRegistration clientRegistration) {
-            clientRegistration.register(JWT.create(APP_KEY, APP_SECRET, client.getLocalUserId()));
+                                                      ClientRegistration registrationCallback) {
+            String jwt = JWT.create("<application key>", "<application secret>", client.getLocalUserId());
+            
+            registrationCallback.register(jwt);
         }
 }
 ```
