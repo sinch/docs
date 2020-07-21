@@ -14,4 +14,4 @@ This document provides an overview for developers integrating with Sinch SDK for
 
 Please see the [Reference Documentation](voice-for-android-cloud\reference) for a comprehensive description of all the classes.
 
-Please see the [Glossary](doc:voice-ios-cloud-glossary) for descriptions of the technical and Sinch-specific terminology used throughout this documentation.
+Please see the [Glossary](doc:voice-android-cloud-glossary) for descriptions of the technical and Sinch-specific terminology used throughout this documentation.
