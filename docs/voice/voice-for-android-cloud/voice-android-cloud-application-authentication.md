@@ -1,6 +1,6 @@
 ---
-title: Application & Authentication
-excerpt: Application authentication with the Sinch SDK.
+title: Authentication & Authorization
+excerpt: Secure your application and authorize Sinch client (user) registrations.
 hidden: false
 next:
   pages:
@@ -161,7 +161,7 @@ In your `SinchClientListener` class:
 
 _UserController_ is a component that serves the purpose of registration against the _Sinch Backend_ to receive incoming calls via _Managed Push_. More about it can be found later in the chapter [UserController](doc:voice-android-cloud-user-controller).
 
-To provide the registration token to `UserController` use the similar sheme:
+To provide the registration token to `UserController` use the similar scheme:
 
 ```java
 UserController uc = Sinch.getUserControllerBuilder()
@@ -173,7 +173,8 @@ UserController uc = Sinch.getUserControllerBuilder()
         uc.registerUser(userRegistrationCallback, pushTokenRegistrationCallback);
 ```
 
-Provide signed registration token in your `UserRegistrationCallback.onCredentialsRequired()`
+Provide signed registration token in your [UserRegistrationCallback.onCredentialsRequired()](reference\com\sinch\android\rtc\UserRegistrationCallback.html)
+
 
 ```java
     // your UserRegistrationCallback implementation
@@ -231,7 +232,9 @@ __Example JWT Payload__:
 
 ### Automatic Extension of Client Registration Time-to-Live (TTL)
 
-The Sinch client will automatically request to extend the TTL of its registration by invoking `onRegistrationCredentialsRequired()` (just as it does on the initial start and first registration.)
+The Sinch client will automatically request to extend the TTL of its registration by invoking [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html#onRegistrationCredentialsRequired-com.sinch.android.rtc.SinchClient-com.sinch.android.rtc.ClientRegistration-) (just as it does on the initial start and first registration.)
+
+
 
 The request to extend the client registration TTL is triggered when the Sinch client is started and the expiry of TTL is detected to be _near_ in the future. _"Near in the future"_ is subject to internal implementation details, but the Sinch client will try to eagerly extend its registration and will adjust the interval according to the TTL.
 
