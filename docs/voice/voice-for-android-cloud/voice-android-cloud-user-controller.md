@@ -24,8 +24,8 @@ Both situations should be handled using the _UserController API_ (see [Reference
 public UserController getUserController(String userId) {
      return Sinch.getUserControllerBuilder()
                  .context(getApplicationContext())
-                 .applicationKey(applicationKey)
-                 .userId(userId)
+                 .applicationKey("<application key>")
+                 .userId("<user id>")
                  .environmentHost("ocra.api.sinch.com")
                  .build();
 }
@@ -40,9 +40,9 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
         ...
         UserController userController = Sinch.getUserControllerBuilder()
                                              .context(getApplicationContext())
-                                             .applicationKey(<application key>)
-                                             .userId(mUserId)
-                                             .environmentHost(<environment>)
+                                             .applicationKey("<application key>")
+                                             .userId("<user id>")
+                                             .environmentHost("ocra.api.sinch.com")
                                              .build();
         userController.registerUser(this, this);
     }
