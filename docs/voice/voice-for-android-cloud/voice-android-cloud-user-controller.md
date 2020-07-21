@@ -11,7 +11,7 @@ next:
 
 > 📘
 >
-> [UserController](reference/com/sinch/android/rtc/UserController.html) provides a way to register a user for incoming calls via push notifications, while providing the callback about a success/failure of such registration. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
+> [UserController](reference/com/sinch/android/rtc/UserController.html) provides a way, independently from the `SinchClient` lifecycle, to register a user for incoming calls via push notifications. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
 
 There are certain situations where it is either desirable to explicitly register push token and/or get assurance that the push token is indeed registered, e.g.:
 

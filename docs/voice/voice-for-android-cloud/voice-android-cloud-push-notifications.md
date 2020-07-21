@@ -14,15 +14,13 @@ The application may receive incoming calls only when:
 - the application is in the foreground AND listening on active connection.
 - the application is registered to receive incoming calls via the Push Notifications via _SinchClient_ capabilities, or, better, using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html#registerUser-com.sinch.android.rtc.UserRegistrationCallback-com.sinch.android.rtc.PushTokenRegistrationCallback-).
 
-When an application is not running, or the [Active Connection](doc:voice-android-cloud-active-connection) feature is not enabled, the user must be notified of an incoming call by a push notification.
+When an application is not running, the user must be notified of an incoming call by a push notification.
 
 By invoking [SinchClient.setSupportManagedPush(true)](reference/com/sinch/android/rtc/SinchClient.html#setSupportManagedPush-boolean-) the Sinch SDK will automatically register to _Firebase Cloud Messaging_ and the Sinch backend will initiate push messages to your application when needed. This feature requires _Google Play Services_ on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_.
 
 If using the Sinch backend and _Firebase Cloud Messaging_ is not viable in the application, please see [Active Connection](doc:voice-android-cloud-active-connection).
 
-As a developer, you will be responsible for implementing the code that receives the FCM push message. For an example implementation, please see the sample app `sinch-rtc-sample-push` which is bundled with the SDK.
-
-Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to-date and Google-recommended version _Firebase Cloud Messaging_ (FCM), which requires client app to be modified in accordance with the Google’s official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)
+As a developer, you will be responsible for implementing the code that receives the FCM push message. For an example, please see the sample app `sinch-rtc-sample-push` which is bundled with the SDK.
 
 The following sections cover how to support receiving calls and messages via push notifications.
 
@@ -34,7 +32,7 @@ Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ wi
 
 ## Permissions Required
 
-Unlike GCM setup, FCM application developer does not need to manually add any permission to the application manifest. For relevant changes in you application’s manifest when migrating from GCM to FCM please consult official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)
+You don't need to manually add any permission to the application manifest.
 
 ## Enable Push Notifications
 
@@ -142,3 +140,7 @@ If the user of the application logs out or performs a similar action, the push n
 > ❗️
 >
 > If your application assumes frequent change of users (logging in and out), it's imperative to unregister device via `SinchClient.unregisterManagedPush()` or, better, using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one.
+
+## GCM to FCM Migration
+
+Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to-date and Google-recommended version _Firebase Cloud Messaging_ (FCM), which requires client app to be modified in accordance with the Google’s official [GCM to FCM migration guide](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)

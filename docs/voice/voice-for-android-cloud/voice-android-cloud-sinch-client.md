@@ -57,12 +57,18 @@ sinchClient.addSinchClientListener(new SinchClientListener() {
 
     public void onClientStarted(SinchClient client) { }
     public void onClientFailed(SinchClient client, SinchError error) { }
-    public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration registrationCallback) { }
+    public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration registrationCallback) { 
+      // You have to implement this method, it can't be no-op. 
+    }
     public void onLogMessage(int level, String area, String message) { }
 });
 
 sinchClient.start();
 ```
+
+When starting the client (`sinchClient.start()`) the client will ask for a token via [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html).
+See section [Authentication & Authorization](doc:voice-android-cloud-application-authentication) for the details.
+
 
 > 📘
 >
@@ -87,7 +93,7 @@ class MySinchClientListener implements SinchClientListener {
 }
 ```
 
-Look for specifics in [Authentication & Authorization](doc:voice-android-cloud-application-authentication)
+See section [Authentication & Authorization](doc:voice-android-cloud-application-authentication) for the details.
 
 > ⚠
 >
@@ -95,7 +101,7 @@ Look for specifics in [Authentication & Authorization](doc:voice-android-cloud-a
 
 ## Registering the Client / User via UserController API
 
-You can also register a user towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). This lightweight component provides a way to register the user without starting the _SinchClient_. You can also register push token for _Managed Push_ to receive incoming calls even when the application is closed/in background. The _UserController_ uses the very same authentication scheme as the _SinchClient_ based on the signed JWT registration token that you provide in response to _onRegistrationCredentialsRequired()_ method of [UserRegistrationCallback](reference\com\sinch\android\rtc\UserRegistrationCallback.html). The _UserController_ provides better control over the registration process than the _SinchClient_ by providing callbacks for each step of the registration.
+You can also register a user towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). This lightweight component provides a way to register the user without starting the _SinchClient_. You can also register push token for [Managed Push](doc:voice-android-cloud-push-notifications) to receive incoming calls even when the application is closed/in background. The _UserController_ uses the very same authentication scheme as the _SinchClient_ based on the signed JWT registration token that you provide in response to _onRegistrationCredentialsRequired()_ method of [UserRegistrationCallback](reference\com\sinch\android\rtc\UserRegistrationCallback.html). The _UserController_ provides better control over the registration process than the _SinchClient_ by providing callbacks for each step of the registration.
 
 ## Lifecycle Management of a _SinchClient_-Instance
 
