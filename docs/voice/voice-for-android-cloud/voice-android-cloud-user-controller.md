@@ -107,11 +107,12 @@ are met, the authentication process has finished and e.g. UI can advance.
 When you want to _logout_ and stop receiving incoming calls via push, unregister the push token using _UserController_:
 
 ```java
-    UserController uc = Sinch.getUserControllerBuilder()
+    UserController userController = Sinch.getUserControllerBuilder()
         .context(getApplicationContext())
         .applicationKey("<application key>")
         .userId("<user id>")
         .environmentHost("ocra.api.sinch.com")
         .build();
-    uc.unregisterPushToken();
+
+    userController.unregisterPushToken();
 ```
