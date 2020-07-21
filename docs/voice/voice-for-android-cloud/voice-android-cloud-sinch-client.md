@@ -81,7 +81,6 @@ The sample applications included in the Sinch SDK includes a class `JWT` that de
 
 ```java
 class MySinchClientListener implements SinchClientListener {
-  @Override
         ...
         // The following code demonstrates how the JWT that serves as credential should
         // be created, provided the Application Key (APP_KEY), Application Secret
