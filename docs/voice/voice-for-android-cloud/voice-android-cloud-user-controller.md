@@ -11,14 +11,14 @@ next:
 
 > 📘
 >
-> UserController provides a way to register a user for incoming calls via push notifications, while providing the callback about a success/failure of such registration. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
+> [UserController](reference/com/sinch/android/rtc/UserController.html) provides a way to register a user for incoming calls via push notifications, while providing the callback about a success/failure of such registration. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
 
 There are certain situations where it is either desirable to explicitly register push token and/or get assurance that the push token is indeed registered, e.g.:
 
 - The application is designed to receive calls only, and thus must register push token with the Sinch backend on the very first start, while it's desirable to terminate `SinchClient` as soon as the registration concludes (e.g. to free resources). In this situation, the application should be notified by a specific callback on the registration result.
 - The application detects that FCM push token is invalidated and should be refreshed and re-registered with Sinch backend. Here, if `SinchClient` is running, it would take care of re-registering of the push token itself, otherwise the application is responsible for re-registering.
 
-Both situations should be handled using the _UserController API_ (see [Reference](reference\com\sinch\android\rtc\UserController.html)), which can be used independently from the _SinchClient_ (i.e., it does not require creating and starting the _SinchClient_).
+Both situations should be handled using the [UserController](reference\com\sinch\android\rtc\UserController.html), which can be used independently from the _SinchClient_ (i.e., it does not require creating and starting the _SinchClient_).
 
 ```java
 public UserController getUserController(String userId) {
