@@ -18,7 +18,7 @@ There are certain situations where it is either desirable to explicitly register
 - The application is designed to receive calls only, and thus must register push token with the Sinch backend on the very first start, while it's desirable to terminate `SinchClient` as soon as the registration concludes (e.g. to free resources). In this situation, the application should be notified by a specific callback on the registration result.
 - The application detects that FCM push token is invalidated and should be refreshed and re-registered with Sinch backend. Here, if `SinchClient` is running, it would take care of re-registering of the push token itself, otherwise the application is responsible for re-registering.
 
-Both situations should be handled using the new _UserController API_ (see [Reference](reference\com\sinch\android\rtc\UserController.html)), which can be used independently from the _SinchClient_ (i.e., it does not require creating and starting the _SinchClient_).
+Both situations should be handled using the _UserController API_ (see [Reference](reference\com\sinch\android\rtc\UserController.html)), which can be used independently from the _SinchClient_ (i.e., it does not require creating and starting the _SinchClient_).
 
 ```java
 public UserController getUserController(String userId) {
