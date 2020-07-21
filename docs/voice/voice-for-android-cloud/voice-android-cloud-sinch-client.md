@@ -81,16 +81,6 @@ The sample applications included in the Sinch SDK includes a class `JWT` that de
 
 ```java
 class MySinchClientListener implements SinchClientListener {
-        ...
-        // The following code demonstrates how the JWT that serves as credential should
-        // be created, provided the Application Key (APP_KEY), Application Secret
-        // (APP_SECRET) and User ID.
-
-        // NB: Since storing the Application Secret in the client app is not safe,
-        // JWT.create() should run on your backend, and either return a valid JWT or
-        // signal that the user can't be registered. In the first case, register the
-        // user with Sinch using the aquired JWT via clientRegistration.register(...).
-        // In the latter - report the failure calling clientRegistration.registerFailed()
 
         @Override
         public void onRegistrationCredentialsRequired(SinchClient client,
