@@ -75,7 +75,9 @@ sinchClient.start();
 
 ### Authorizing the Client / User
 
-When the _SinchClient_ is started with a given _User ID_ it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement `SinchClientListener.onRegistrationCredentialsRequired()` and provide a token (a [JSON Web Token](https://jwt.io/)) that is cryptographically signed with the _Application Secret_. The sample applications included in the Sinch SDK includes a class `JWT` that describes how to create the _JWT_ and sign it with the _Application Secret_.
+When the _SinchClient_ is started with a given _User ID_ it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement `SinchClientListener.onRegistrationCredentialsRequired()` and provide a token (a [JSON Web Token](https://jwt.io/)) that is cryptographically signed with the _Application Secret_. 
+
+The sample applications included in the Sinch SDK includes a class `JWT` that describes how to create the _JWT_ and sign it with the _Application Secret_.
 
 ```java
 class MySinchClientListener implements SinchClientListener {
