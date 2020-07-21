@@ -71,11 +71,6 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
         startClientAndOpenPlaceCallActivity();
     }
 
-    // The most secure way is to obtain the credentials from the backend,
-    // since storing the Application Secret in the app is not safe.
-    // Following code demonstrates how the JWT that serves as credential should be created,
-    // provided the Application Key (APP_KEY), Application Secret (APP_SECRET) and User ID.
-
     @Override
     public void onCredentialsRequired(ClientRegistration clientRegistration) {
         // NOTE: This implementation just emulates what should be an async procedure, with JWT.create() being
