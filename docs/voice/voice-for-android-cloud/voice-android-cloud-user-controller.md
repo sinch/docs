@@ -102,7 +102,7 @@ are met, the authentication process has finished and e.g. UI can advance.
 >
 > It is safe to close application right after receiving _tokenRegistered()_ callback - you'll keep receiving incoming calls unless you _force stop_ the application or unregister the push token using _UserController_.
 
-### Push Token un-Registration via _UserController_ API
+### Push Token Unregistration via _UserController_ API
 
 When you want to _logout_ and stop receiving incoming calls via push, unregister the push token using _UserController_:
 
