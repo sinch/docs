@@ -122,7 +122,7 @@ For additional information about _JWT_, along with a list of available libraries
 
 ## Providing a Registration Token to `SinchClient`
 
-When starting the client (`SinchClient.start()`) the client will ask for a token via [SinchClientListener.onRegistrationCredentialsRequired()](reference\index.html?com\sinch\android\rtc\SinchClientListener.html)
+When starting the client (`SinchClient.start()`) the client will ask for a token via [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
 
 ```java
     // Instantiate a SinchClient using the SinchClientBuilder.
