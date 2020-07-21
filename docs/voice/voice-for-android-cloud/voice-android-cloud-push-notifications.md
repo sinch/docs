@@ -12,13 +12,13 @@ next:
 The application may receive incoming calls only when:
 
 - the application is in the foreground AND listening on active connection.
-- the application is registered to receive incoming calls via the Push Notifications via _SinchClient_ capabilities, or, better, using `UserController.registerUser()` API (see [UserController](doc:voice-android-cloud-user-controller)).
+- the application is registered to receive incoming calls via the Push Notifications via _SinchClient_ capabilities, or, better, using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html#registerUser-com.sinch.android.rtc.UserRegistrationCallback-com.sinch.android.rtc.PushTokenRegistrationCallback-).
 
-When an application is not running, or the `Active Connection` feature is not enabled, the user must be notified of an incoming call by a push notification.
+When an application is not running, or the [Active Connection](doc:voice-android-cloud-active-connection) feature is not enabled, the user must be notified of an incoming call by a push notification.
 
-By invoking `setSupportManagedPush(true)` the Sinch SDK will automatically register to _Firebase Cloud Messaging_ and the Sinch backend will initiate push messages to your application when needed. This feature requires _Google Play Services_ on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_.
+By invoking [SinchClient.setSupportManagedPush(true)](reference/com/sinch/android/rtc/SinchClient.html#setSupportManagedPush-boolean-) the Sinch SDK will automatically register to _Firebase Cloud Messaging_ and the Sinch backend will initiate push messages to your application when needed. This feature requires _Google Play Services_ on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_.
 
-If using the Sinch backend and _Firebase Cloud Messaging_ is not viable in the application, please see [Active connection](https://developers.sinch.com/docs/voice-android-cloud-active-connection).
+If using the Sinch backend and _Firebase Cloud Messaging_ is not viable in the application, please see [Active Connection](doc:voice-android-cloud-active-connection).
 
 As a developer, you will be responsible for implementing the code that receives the FCM push message. For an example implementation, please see the sample app `sinch-rtc-sample-push` which is bundled with the SDK.
 
@@ -41,11 +41,15 @@ Unlike GCM setup, FCM application developer does not need to manually add any pe
 To enable push notifications, set the following capability before starting the Sinch client:
 
 ```java
+SinchClient sinchClient = Sinch.getSinchClientBuilder().context(context)
+                              ...
+                              .build();
+...                              
 sinchClient.setSupportManagedPush(true);
 sinchClient.start();
 ```
 
-Or, better use `UserController.registerUser()` API (see [UserController](doc:voice-android-cloud-user-controller)) which provides callbacks with the registration status.
+Or, better use [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html#registerUser-com.sinch.android.rtc.UserRegistrationCallback-com.sinch.android.rtc.PushTokenRegistrationCallback-) which provides callbacks with the registration status.
 
 > 📘
 >
@@ -73,7 +77,7 @@ There are certain situations where it is either desirable to explicitly register
 
 For more details regarding how to implement receiving a FCM downstream message, please see the [Android developer site for FCM](https://firebase.google.com/docs/cloud-messaging/android/receive).
 
-Once you have received the `RemoteMessage` in your `FirebaseMessagingService`, forward it to the Sinch client using the method `SinchClient.relayRemotePushNotificationPayload`.
+Once you have received the `RemoteMessage` in your `FirebaseMessagingService`, forward it to the Sinch client using the method [SinchClient.relayRemotePushNotificationPayload](reference/com/sinch/android/rtc/SinchClient.html#relayRemotePushNotificationPayload-java.util.Map-).
 
 ```java
 // (Ensure you have created a SinchClient)
@@ -83,9 +87,9 @@ if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
 }
 ```
 
-The returned `result` can be inspected to further confirm that the push is valid and associated with an incoming call using `NotificationResult.isCall()`.
+The returned [NotificationResult](reference/com/sinch/android/rtc/NotificationResult.html) can be inspected to further confirm that the push is valid and associated with an incoming call using [NotificationResult.isCall()](reference/com/sinch/android/rtc/NotificationResult.html#isCall--).
 
-If the payload that was forwarded to the Sinch client is a valid Sinch call, the `onIncomingCall` callback will automatically be triggered as for any other call. The `CallNotificationResult` object provides details about participants, whether the call timed out and whether the call offers video.
+If the payload that was forwarded to the Sinch client is a valid Sinch call, the `onIncomingCall` callback will automatically be triggered as for any other call. Notification result can be further examined using [NotificationResult.getCallResult()](reference/com/sinch/android/rtc/NotificationResult.html#getCallResult--). The [CallNotificationResult](reference/com/sinch/android/rtc/calling/CallNotificationResult.html) object provides details about participants, whether the call timed out and whether the call offers video.
 
 ## Send and Receive Custom Headers via Sinch Managed Push
 
@@ -133,12 +137,8 @@ if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
 
 ## Unregister a Device
 
-If the user of the application logs out or performs a similar action, the push notification device token can be unregistered via `SinchClient.unregisterManagedPush()` to prevent further notifications to be sent to the device. Starting a client with `setSupportManagedPush(true)` will register the device again.
+If the user of the application logs out or performs a similar action, the push notification device token can be unregistered via [SinchClient.unregisterManagedPush()](reference/com/sinch/android/rtc/SinchClient.html#unregisterManagedPush--) or [UserController.unregisterPushToken](reference/com/sinch/android/rtc/UserController.html#unregisterPushToken-com.sinch.android.rtc.PushTokenRegistrationCallback-) to prevent further notifications to be sent to the device. Starting a client with `setSupportManagedPush(true)` will register the device again.
 
 > ❗️
 >
-> If your application assumes frequent change of users (logging in and out), it's imperative to unregister device via `SinchClient.unregisterManagedPush()` or, better, using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one. 
-
-## Active Connection
-
-If push notifications are not desired, the alternative is to call `startListeningOnActiveConnection()` to enable incoming calls. Don’t forget to call `stopListeningOnActiveConnection()` when the user is no longer available for calls (for example if the application is no longer active).
+> If your application assumes frequent change of users (logging in and out), it's imperative to unregister device via `SinchClient.unregisterManagedPush()` or, better, using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one.
