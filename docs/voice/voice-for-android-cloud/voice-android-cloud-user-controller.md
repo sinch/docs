@@ -40,9 +40,9 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
         ...
         UserController userController = Sinch.getUserControllerBuilder()
                                              .context(getApplicationContext())
-                                             .applicationKey(APP_KEY)
+                                             .applicationKey(<application key>)
                                              .userId(mUserId)
-                                             .environmentHost(ENVIRONMENT)
+                                             .environmentHost(<environment>)
                                              .build();
         userController.registerUser(this, this);
     }
@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
     public void onCredentialsRequired(ClientRegistration clientRegistration) {
         // NOTE: This implementation just emulates what should be an async procedure, with JWT.create() being
         // run on your backend.
-        clientRegistration.register(JWT.create(APP_KEY, APP_SECRET,mUserId));
+        clientRegistration.register(JWT.create(<application key>, <application secret>, mUserId));
     }
 }
 ```
