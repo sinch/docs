@@ -11,7 +11,7 @@ next:
 
 The application may receive incoming calls only when:
 
-- the application is in the foreground AND listening on active connection;
+- the application is in the foreground AND listening on active connection.
 - the application is registered to receive incoming calls via the Push Notifications via _SinchClient_ capabilities, or, better, using `UserController.registerUser()` API (see [UserController](doc:voice-android-cloud-user-controller)).
 
 When an application is not running, or the `Active Connection` feature is not enabled, the user must be notified of an incoming call by a push notification.
