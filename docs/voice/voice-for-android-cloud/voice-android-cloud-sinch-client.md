@@ -107,13 +107,11 @@ The _SinchClient_ can of course be completely stopped and also disposed.
 >
 > Stopping / disposing of _SinchClient_ won't affect receiving incoming calls if the user was previously registered towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). Upon receiving _incoming call_ push notification instantiate and forward the push payload to the new _SinchClient_ instance. 
 
-**Terminate the Sinch client**
+When the app is done using the `SinchClient`, it can be stopped and disposed using `SinchClient.terminateGracefully()`. After `terminateGracefully()` is called, any object retrieved directly from the client object (that is, `CallClient`, `AudioController` and `VideoController`) is considered invalid.
 
-When the app is done using the SinchClient, it can be stopped. If the client is currently listening for incoming events, it needs to stop listening as well. After `terminateGracefully()` is called, any object retrieved directly from the client object (that is, `CallClient`, `AudioController` and `VideoController`) is considered invalid.
-
-Terminating the client:
+Example of how to completely dispose the `SinchClient`:
 
 ```java
-sinchClient.stopListeningOnActiveConnection();
 sinchClient.terminateGracefully();
+sinchClient = null;
 ```
