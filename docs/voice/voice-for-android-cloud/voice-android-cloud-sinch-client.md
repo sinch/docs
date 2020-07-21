@@ -38,20 +38,15 @@ The following example shows how to set up the client with voice calling enabled.
 ```java
 // Specify the client capabilities.
 sinchClient.setSupportManagedPush(true);
-// or
-sinchClient.setSupportActiveConnectionInBackground(true);
-sinchClient.startListeningOnActiveConnection()
 ```
 
-Calling `startListeningOnActiveConnection` allows your application to receive incoming calls and messages without using push notifications.
+> 📘
+>
+> If the application is meant to only make outbound calls but not receive incoming calls, the client will be ready to make calls after calling the start method and receiving `SinchClientListener.onClientStarted(...)` callback.
 
 > 📘
 >
-> If the application is meant to only make outgoing calls but not receive incoming calls, don’t call `startListeningOnActiveConnection` or `setSupportManagedPush`. Outgoing calls can be made after calling the start method and receiving `SinchClientListener.onClientStarted(...)` callback.
-
-> 📘
->
-> If the application is meant to receive incoming calls while not running in foreground, [Push Notifications](doc:voice-android-cloud-push-notifications) are required. Listening on an active connection in the background service is not possible due to new Android 9 requirements for such services, and the execution of such services is not guaranteed - the Android OS can 'kill' them at any time.
+> If the application is meant to receive incoming calls while not running in foreground, [Push Notifications](doc:voice-android-cloud-push-notifications) are required.
 
 ## Start the Sinch Client
 
