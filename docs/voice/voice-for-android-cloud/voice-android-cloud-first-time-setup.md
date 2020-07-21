@@ -61,14 +61,14 @@ A minimum set of permissions are needed for the app to use the Sinch SDK. These 
 
 > 📘
 >
-> By default, the Sinch SDK hangs up any Sinch call if the regular phone app has an active call. This functionality requires the permission READ_PHONE_STATE. However, if this default functionality isn’t wanted, turn it off by calling `sinchClient.getCallClient().setRespectNativeCalls(false);` and the permission READ_PHONE_STATE is not needed.
+> By default, the Sinch SDK hangs up any Sinch call if the regular phone app has an active call. This functionality requires the permission READ_PHONE_STATE. However, if this default functionality isn’t wanted, turn it off by calling [SinchClient.getCallClient().setRespectNativeCalls(false)](reference/com/sinch/android/rtc/calling/CallClient.html#setRespectNativeCalls-boolean-) and the permission READ_PHONE_STATE is not needed.
 
 > 📘
 >
-> If you intend to use `Automatic Audio Routing` (see the apropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
+> If you intend to use `Automatic Audio Routing` (see the appropriate section in the [Voice Calling](doc:voice-android-cloud-calling)), you have to provide  `android.Manifest.permission.BLUETOOTH` in the manifest and manually check that this permission is granted by the user.
 
 ## Verify Manifest in Runtime
 
-To verify that the manifest has the necessary permissions the `SinchClient.checkManifest()` method can be used. This method should be called before starting the client and will throw an `MissingPermissionException` exception if the manifest isn’t setup correctly. `SinchClient.checkManifest()` can also be used to check whether required permissions are granted by the user in runtime. An example of how to dynamically request missing permissions can be found in the sample applications that comes with the SDK.
+To verify that the manifest has the necessary permissions the [SinchClient.checkManifest()](reference/com/sinch/android/rtc/SinchClient.html#checkManifest--) method can be used. This method should be called before starting the client and will throw an `MissingPermissionException` exception if the manifest isn’t setup correctly. `SinchClient.checkManifest()` can also be used to check whether required permissions are granted by the user in runtime. An example of how to dynamically request missing permissions can be found in the sample applications that comes with the SDK.
 
 _Note:_ This method takes into consideration the capabilities which were enabled for the app (for example, calling, respecting native calls, and so on). Call `SinchClient.checkManifest()` after the setup but before the start of the SinchClient.
