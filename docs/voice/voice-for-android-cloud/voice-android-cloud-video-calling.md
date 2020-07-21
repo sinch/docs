@@ -23,7 +23,7 @@ Once you have created a `VideoCallListener` and added it to a call, the `onVideo
 public void onVideoTrackAdded(Call call) {
     // Get a reference to your SinchClient, in the samples this is done through the service interface:
     VideoController vc = getSinchServiceInterface().getVideoController();
-    View myPreview = vc.getLocalView();
+    View localPreviewView = vc.getLocalView();
     View remoteView = vc.getRemoteView();
 
     // Add the views to your view hierarchy
