@@ -13,7 +13,7 @@ The _SinchClient_ is the Sinch SDK entry point. It is used to configure the user
 
 ## Create the _SinchClient_
 
-Set up the Sinch client, using _SinchClientBuilder_ (see [Reference](https://sinch.github.io/docs/voice/voice-for-android-cloud/reference/com/sinch/android/rtc/SinchClientBuilder.html) documentation):
+Set up the Sinch client, using [SinchClientBuilder](https://sinch.github.io/docs/voice/voice-for-android-cloud/reference/com/sinch/android/rtc/SinchClientBuilder.html):
 
 ```java
 // Instantiate a SinchClient using the SinchClientBuilder.
@@ -31,7 +31,7 @@ SinchClient sinchClient = Sinch.getSinchClientBuilder().context(context)
 
 ## Specify Capabilities
 
-The _SinchClient_ can be configured to enable or disable certain functionality. Please see the [Reference](reference\index.html?com\sinch\android\rtc\SinchClient.html) for a comprehensive description of each capability. To enable support for _push notifications_, use the method `sinchClient.setSupportManagedPush(true)`. Also see [Push Notifications](doc:voice-android-cloud-push-notifications) for additional steps that are required to fully implement support for push notifications.
+The [SinchClient](reference\com\sinch\android\rtc\SinchClient.html) can be configured to enable or disable certain functionality. To enable support for _push notifications_, use the method [SinchClient.setSupportManagedPush(true)](reference/com/sinch/android/rtc/SinchClient.html#setSupportManagedPush-boolean-). Also see [Push Notifications](doc:voice-android-cloud-push-notifications) for additional steps that are required to fully implement support for push notifications.
 
 The following example shows how to set up the client with voice calling enabled.
 
@@ -42,7 +42,7 @@ sinchClient.setSupportManagedPush(true);
 
 > 📘
 >
-> If the application is meant to only make outbound calls but not receive incoming calls, the client will be ready to make calls after calling the start method and receiving `SinchClientListener.onClientStarted(...)` callback.
+> If the application is meant to only make outbound calls but not receive incoming calls, the client will be ready to make calls after calling the start method and receiving [SinchClientListener.onClientStarted(...)](reference/com/sinch/android/rtc/SinchClientListener.html#onClientStarted-com.sinch.android.rtc.SinchClient-) callback.
 
 > 📘
 >
@@ -50,7 +50,7 @@ sinchClient.setSupportManagedPush(true);
 
 ## Start the Sinch Client
 
-Before starting the client, add a client listener (see [Reference](reference\com\sinch\android\rtc\SinchClientListener.html) documentation):
+Before starting the client, add a [SinchClientListener](reference\com\sinch\android\rtc\SinchClientListener.html):
 
 ```java
 sinchClient.addSinchClientListener(new SinchClientListener() {
@@ -70,7 +70,7 @@ sinchClient.start();
 
 ### Authorizing the Client / User
 
-When the _SinchClient_ is started with a given _User ID_ it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement `SinchClientListener.onRegistrationCredentialsRequired()` and provide a token (a [JSON Web Token](https://jwt.io/)) that is cryptographically signed with the _Application Secret_. 
+When the _SinchClient_ is started with a given _User ID_ it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement [SinchClientListener.onRegistrationCredentialsRequired()](reference/com/sinch/android/rtc/SinchClientListener.html#onRegistrationCredentialsRequired-com.sinch.android.rtc.SinchClient-com.sinch.android.rtc.ClientRegistration-) and provide a token (a [JSON Web Token](https://jwt.io/)) that is cryptographically signed with the _Application Secret_. 
 
 The sample applications included in the Sinch SDK includes a class `JWT` that describes how to create the _JWT_ and sign it with the _Application Secret_.
 
@@ -87,7 +87,7 @@ class MySinchClientListener implements SinchClientListener {
 }
 ```
 
-Look for specifics in [Application Authentication](doc:voice-android-cloud-application-authentication)
+Look for specifics in [Authentication & Authorization](doc:voice-android-cloud-application-authentication)
 
 > ⚠
 >
@@ -107,7 +107,7 @@ The _SinchClient_ can of course be completely stopped and also disposed.
 >
 > Stopping / disposing of _SinchClient_ won't affect receiving incoming calls if the user was previously registered towards the _Sinch backend_ via [UserController API](doc:voice-android-cloud-user-controller). Upon receiving _incoming call_ push notification instantiate and forward the push payload to the new _SinchClient_ instance. 
 
-When the app is done using the `SinchClient`, it can be stopped and disposed using `SinchClient.terminateGracefully()`. After `terminateGracefully()` is called, any object retrieved directly from the client object (that is, `CallClient`, `AudioController` and `VideoController`) is considered invalid.
+When the app is done using the `SinchClient`, it can be stopped and disposed using [SinchClient.terminateGracefully()](reference/com/sinch/android/rtc/SinchClient.html#terminateGracefully--). After `terminateGracefully()` is called, any object retrieved directly from the client object (that is, `CallClient`, `AudioController` and `VideoController`) is considered invalid.
 
 Example of how to completely dispose the `SinchClient`:
 
