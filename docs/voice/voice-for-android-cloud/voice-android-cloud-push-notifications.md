@@ -73,10 +73,11 @@ There are certain situations where it is either desirable to explicitly register
 
 For more details regarding how to implement receiving a FCM downstream message, please see the [Android developer site for FCM](https://firebase.google.com/docs/cloud-messaging/android/receive).
 
-Once you have received the `RemoteMessage` in your `FirebaseMessagingService`, forward it to the Sinch client using the method `relayRemotePushNotificationPayload`.
+Once you have received the `RemoteMessage` in your `FirebaseMessagingService`, forward it to the Sinch client using the method `SinchClient.relayRemotePushNotificationPayload`.
 
 ```java
-// make sure you have created a SinchClient
+// (Ensure you have created a SinchClient)
+
 if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
     NotificationResult result = sinchClient.relayRemotePushNotificationPayload(remoteMessage.getData());
 }
