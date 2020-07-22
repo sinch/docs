@@ -321,4 +321,4 @@ When using Sinch calling, you can immediately tell when a call has established o
 
 ![Call-Out.png](images\21285e0-Call-Out.png)
 
-That’s it! You’ve created a fully functional app that lets you call your tennis friends using Sinch calling. There are even more features that you can add to this project such as Managed Push to help receive calls when the app is not open. [Learn more about Managed Push with Sinch service here](doc:voice-ios-local-and-remote-push-notifications). To find more tutorials, be sure to check out the `Sinch Tutorial Site](doc:tutorials-introduction) or the [Sinch GitHub](https://github.com/sinch).
+That’s it! You’ve created a fully functional app that lets you call your tennis friends using Sinch calling. There are even more features that you can add to this project such as Managed Push to help receive calls when the app is not open. [Learn more about Managed Push with Sinch service here](doc:voice-ios-push-notifications-callkit). To find more tutorials, be sure to check out the `Sinch Tutorial Site](doc:tutorials-introduction) or the [Sinch GitHub](https://github.com/sinch).
