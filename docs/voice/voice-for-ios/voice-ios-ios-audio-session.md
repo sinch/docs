@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 next:
   pages:
-    - voice-ios-cloud-miscellaneous
+    - voice-ios-miscellaneous
 ---
 
 If the application plays audio that does not originate from the Sinch SDK, certain guidelines should be followed. Additional information on _Audio Session_-related topics is available in the [Audio Session Programming Guide](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html).

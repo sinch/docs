@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 next:
   pages:
-    - voice-ios-cloud-ios-audio-session
+    - voice-ios-ios-audio-session
 ---
 
 ## Playing Ringtones
