@@ -90,14 +90,9 @@ Apple has since iOS 10 discontinued support for maintaining a _VoIP_ control con
 
 ### Missed Call Push Notifications
 
-Sinch SDK primarily use VoIP push notifications. Since iOS 13, Apple
-and iOS imposed stricter limitations and requirements on how each VoIP
-push notification that an application received must be reported to
-_CallKit_ as an incoming call. This has the implication that Sinch SDK
-no longer supports separate "Missed Call" push notifications.
+Sinch SDK primarily use VoIP push notifications. Since iOS 13, Apple and iOS imposed stricter limitations and requirements on how each VoIP push notification that an application received must be reported to _CallKit_ as an incoming call. This has the implication that Sinch SDK no longer supports separate "Missed Call" push notifications.
 
-We recommend using your own non-VoIP push notification mechanism to
-deliver "Missed Call" push notifications.
+We recommend using your own non-VoIP push notification mechanism to deliver "Missed Call" push notifications.
 
 ## Push Notifications sent via your application server
 
