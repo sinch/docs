@@ -7,7 +7,7 @@ next:
     - voice-android-cloud-user-controller
 ---
 
-If push notifications are not desired, the alternative is to use _active connection_. Invoke [SinchClient.startListeningOnActiveConnection()](reference/com/sinch/android/rtc/SinchClient.html#startListeningOnActiveConnection--) to enable incoming calls. Don’t forget to call [SinchClient.stopListeningOnActiveConnection()](reference/com/sinch/android/rtc/SinchClient.html#stopListeningOnActiveConnection--) when the user is no longer available for calls (for example if the application is no longer active).
+If push notifications are not desired, the alternative is to use _active connection_. Invoke [SinchClient.startListeningOnActiveConnection()](reference/com/sinch/android/rtc/SinchClient.html).
 
 > ❗️
 >

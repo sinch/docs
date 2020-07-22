@@ -232,7 +232,7 @@ __Example JWT Payload__:
 
 ### Automatic Extension of Client Registration Time-to-Live (TTL)
 
-The Sinch client will automatically request to extend the TTL of its registration by invoking [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html#onRegistrationCredentialsRequired-com.sinch.android.rtc.SinchClient-com.sinch.android.rtc.ClientRegistration-) (just as it does on the initial start and first registration.)
+The Sinch client will automatically request to extend the TTL of its registration by invoking [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
 
 
 
