@@ -78,12 +78,10 @@ To act on the incoming calls, implement the protocol `SINCallClientDelegate` and
 
 To get events related to the call, assign a call delegate. The call object contains details about participants, start time, potential error codes, and error messages. See `-[SINCall details]` and [SINCallDetails](reference\html\Protocols\SINCallDetails.html).
 
-If you using _VoIP Push Notifications_ and [CallKit](https://developer.apple.com/documentation/callkit), use `didReceiveIncomingCall:` primarily to associate the `SINCall` with the _CallKit_-call. E.g. this may be implemented by keeping a mapping between _CallKit_ calls and `SINCall`. Example:
+If you using _VoIP Push Notifications_ and [CallKit](https://developer.apple.com/documentation/callkit), please see [Push Notifications and CallKit](doc:voice-ios-push-notifications-callkit#callkit) for details on how to report a push notification as a call to _CallKit_. Further, use `willReceiveIncomingCall:` primarily to associate the `SINCall` with the _CallKit_-call. E.g. this may be implemented by keeping a mapping between _CallKit_ calls and `SINCall`. Example:
 
 ```objectivec
-- (void)client:(id<SINCallClient>)client didReceiveIncomingCall:(id<SINCall>)call {
-    // Assign delegate
-    call.delegate = self;
+- (void)client:(id<SINCallClient>)client willReceiveIncomingCall:(id<SINCall>)call {
 
     // Store in a NSDictionary for later, to be able to act on CXCallAction (CallKit action).
     [self.calls setObject:call forKey: [[NSUUID alloc] initWithUUIDString:call.callId]];
