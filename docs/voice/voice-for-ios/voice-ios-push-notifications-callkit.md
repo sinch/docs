@@ -165,7 +165,7 @@ __Example__
 
 ```
 
-Also see reference documentation for [SINManagedPush](reference\html\Classes\SINManagedPush.html) and [SINCallNotificationResult](reference\html\Protocols\SINCallNotificationResult.html).
+Also see reference documentation for [SINManagedPush](reference\html\Protocols\SINManagedPush.html) and [SINCallNotificationResult](reference\html\Protocols\SINCallNotificationResult.html).
 
 ## Unregister a Push Device Token
 
