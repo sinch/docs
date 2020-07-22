@@ -3,6 +3,8 @@ title: WhatsApp FAQ
 excerpt: Some frequently asked questions about the Sinch WhatsApp API.
 ---
 
+## Sinch WhatsApp API
+
 ### How do I register my WhatsApp Business Account (WABA) with Sinch?
 
 The process is described [here](https://clxgroup.sharepoint.com/:b:/s/CLX_Support_Anonymous_link/EfVIyWv9QSNBmGcIjIlbGtMBVAG_9li2TERg6xSCuvo56Q?e=bktwqU).
