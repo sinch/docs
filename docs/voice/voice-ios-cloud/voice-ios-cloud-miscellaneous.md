@@ -63,3 +63,12 @@ Please see [Encryption and Export Administration Regulations (EAR)](https://www.
 ### Active Connection in Background
 
 Apple has since iOS 10 discontinued support for maintaining a _VoIP_ control connection alive via `-[UIApplication setKeepAliveTimeout:handler:]`. Attempting to use this method on an iOS device running iOS 10 results in the following warning log: `Legacy VoIP background mode is deprecated and no longer supported`. The Sinch feature _Active connection in background_ was using the keep alive handler API and is as a consequence no longer supported on iOS. It is recommended to use [VoIP Push Notifications and CallKit](doc:voice-ios-cloud-push-notifications-callkit) to achieve the equivalent functionality.
+
+### Missed Call Push Notifications
+
+Sinch SDK primarily use VoIP push notifications. Since iOS 13, Apple and iOS imposed stricter limitations and requirements on how each VoIP push notification that an application receive must be reported to _CallKit_ as an incoming call. This has the implication that Sinch SDK no longer supports separate "Missed Call" push notifications.
+
+We recommend using your own non-VoIP push notification mechanism to deliver "Missed Call" push notifications.
+
+Please also see [Apple Developer documentation on this topic](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry).
+
