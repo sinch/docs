@@ -518,6 +518,13 @@ JSON object parameters:
 | type          | Fixed value `read`         | String       | N/A        | `read`                | Yes      |
 | message_id    | ID of incoming message     | String       | N/A        | Valid message ID      | Yes      |
 
+```json
+{
+  "type": "read",
+  "message_id": "01E7SP2FX8E16R0X3GE8Z41VSQABGGSFATkBVvAgo61AND5uEmlo54"
+}
+```
+
 #### Response
 
 `201 CREATED`
