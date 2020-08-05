@@ -112,7 +112,7 @@ The format is as follows:
 |type       | Fixed value `text`                                                    | String    |
 |body       | The text of the text message                                          | String    |
 
-##### Sample inbound text message
+#### Sample inbound text message
 
 ```json
 {
@@ -150,7 +150,7 @@ The format is as follows:
 |name       | Name of the location                                                   | String    |
 |url        | URL for the website where the user downloaded the location information | String    |
 
-##### Sample inbound location message
+#### Sample inbound location message
 
 ```json
 {
@@ -189,7 +189,7 @@ The format is as follows:
 |text       | The button text.                                                       | String    |
 |payload    | The payload that was sent with the button.                             | String    |
 
-##### Sample inbound quick reply button reply message
+#### Sample inbound quick reply button reply message
 
 ```json
 {
@@ -296,7 +296,7 @@ The format is as follows:
 |type         | Type of URL `HOME`,  `WORK`                                           | String        |
 |url          | URL                                                                   | String        |
 
-##### Sample inbound contact message
+#### Sample inbound contact message
 
 ```json
 {
@@ -391,7 +391,7 @@ The sticker metadata object has the following parameters:
 |android-app-store-link | A link to the stickerpack the sticker belongs to in the Google Play store   | String        |
 |is-first-party-sticker | 1 if the sticker is part of a first-party stickerpack, 0 otherwise          | Integer       |
 
-##### Sample inbound image message
+#### Sample inbound image message
 
 ```json
 {
@@ -445,7 +445,7 @@ The event types can be one of the following:
 | `group_ended`                       |
 | `group_error_blocked_adding_user`   |
 
-##### Sample user joined a group
+#### Sample user joined a group
 
 ```json
 {
@@ -480,7 +480,7 @@ In case an error happens, an error notification can be sent.
 |type       | Fixed value `error`.                                                   | String    |
 |details    | A description of the error.                                            | String    |
 
-##### Error notification
+#### Error notification
 
 ```json
 {
@@ -502,3 +502,37 @@ In case an error happens, an error notification can be sent.
     ]
 }
 ```
+
+### Mark inbound message as read
+
+For each incoming message you can inform a WhatsApp User that his message has been read.
+
+#### Request
+
+`POST /whatsapp/v1/{bot-id}/events`
+
+JSON object parameters:
+
+| Name    | Description                      | JSON Type    | Default    | Constraints           | Required |
+| ------------- | -------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type          | Fixed value `read`         | String       | N/A        | `read`                | Yes      |
+| message_id    | ID of incoming message     | String       | N/A        | Valid message ID      | Yes      |
+
+#### Response
+
+`201 CREATED`
+
+Message has been marked as read and WhatsApp user will now see two blue ticks under this message.
+
+`400 Bad Request`
+
+There was an error with your request. The body is a JSON object described in the [introduction](doc:whatsapp-introduction#http-errors)
+
+`401 Unauthorized`
+
+There was an authentication error with your request. Either you're using incorrect credentials or you're attempting to authenticate
+in a region where your bot does not reside. The body is a JSON object described in the [introduction](doc:whatsapp-introduction#http-errors)
+
+`500 Internal Server Error`
+
+There was an error with your request. The body is a JSON object described in the [introduction](doc:whatsapp-introduction#http-errors)
