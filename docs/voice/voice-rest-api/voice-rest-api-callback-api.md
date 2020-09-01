@@ -978,7 +978,7 @@ You can find more information on callback request signing [here](doc:using-rest#
 
 **from** shows information of the initiator of the call.
 
-**callHeaders** is the call headers specified by an initiating Sinch SDK Client, or headers specified in a `connectMXP` action in a ICE response.
+**callHeaders** is the call headers specified by an initiating Sinch SDK Client, or headers specified in a `connectMXP` action in the ICE response.
 
 ### Response
 
