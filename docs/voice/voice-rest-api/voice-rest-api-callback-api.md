@@ -1149,7 +1149,7 @@ The maximum size for the value of call headers is 1024 bytes (counted as the UTF
 
 __WARNING__: This is a deprecated feature.
 
-The _ICE_ and _DICE_ events have a field named `custom`. If call headers are specified at call initation on SDK client or via ICE response, the call headers will be available in the `custom` in a JSON encoded format. E.g. if a call is initiated with headers `{"foo": "x"}` then the value of `custom` will be `"{\"foo\":\"x\"}"`.
+The _ICE_ and _DICE_ events have a field named `custom`. If call headers are specified at call initation on SDK client or via ICE response, the call headers will be available in `custom` in a JSON encoded format. E.g. if a call is initiated with headers `{"foo": "x"}` then the value of `custom` will be `"{\"foo\":\"x\"}"`.
 
 Note that call headers are only mapped to `custom` for Sinch SDK client calls and it is considered a legacy feature. It is *strongly recommended* to use `callHeaders` as specify/override call headers in _ICE_ and _DICE_.
 
