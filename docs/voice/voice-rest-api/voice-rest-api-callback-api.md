@@ -742,6 +742,7 @@ You can find more information on callback request signing [here](doc:using-rest#
         string - callid
         time - timestamp
         int - version
+        string - custom
         string - user
         money - userRate
         string - cli
@@ -765,6 +766,8 @@ You can find more information on callback request signing [here](doc:using-rest#
 **timestamp** shows the timestamp of the call
 
 **version** shows the current API version
+
+**custom** is a string that can be used to pass custom information related to the call.
 
 **user** shows the user Id that initiated the call
 
@@ -871,6 +874,7 @@ You can find more information on callback request signing [here](doc:using-rest#
         string - callid
         time - timestamp
         int - version
+        string - custom
         string - user
     }
 
@@ -881,6 +885,8 @@ You can find more information on callback request signing [here](doc:using-rest#
 **timestamp** shows the timestamp of the call
 
 **version** shows the current API version
+
+**custom** is a string that can be used to pass custom information related to the call.
 
 **user** shows the user Id that initiated the call
 
@@ -915,6 +921,7 @@ You can find more information on callback request signing [here](doc:using-rest#
         string - reason
         string - result
         int - version
+        string - custom
         string - user
         money - debit
         money - userRate
@@ -956,6 +963,8 @@ You can find more information on callback request signing [here](doc:using-rest#
 > - “FAILED”
 
 **version** shows the current API version.
+
+**custom** is a string that can be used to pass custom information related to the call.
 
 **user** shows the user Id that initiated the call.
 
