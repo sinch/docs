@@ -18,7 +18,15 @@ When a call is established, the Sinch client activates the shared audio session 
 
 When a call is established the audio session category will be set to `PlayAndRecord`. 
 
-The Sinch SDK applies the audio session category mode [`AVAudioSessionModeVoiceChat`](https://developer.apple.com/documentation/avfoundation/avaudiosessionmodevoicechat?language=objc) for improved voice quality.
+The Sinch SDK applies the audio session mode [`AVAudioSessionModeVoiceChat`](https://developer.apple.com/documentation/avfoundation/avaudiosessionmodevoicechat?language=objc) for improved voice quality.
+
+At the end of each call, Sinch SDK restores:
+- audio session category
+- audio session category options
+- audio session mode
+
+to their original values.
+
 
 ## Audio Session Interruptions
 
