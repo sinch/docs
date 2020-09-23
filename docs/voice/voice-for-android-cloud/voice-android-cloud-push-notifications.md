@@ -58,7 +58,7 @@ sinchClient.start();
 
 ### 2. Provision the Application with the Support Code
 
-Provisioning your application with the support code to receive the FCM Push Notifications is easy. You'll need to acquire a configuration file __google-services.json__ from the FCM console, add it to your project, and implement __FirebaseMessagingService__.
+Provisioning your application with the support code to receive the FCM Push Notifications is easy. You'll need to acquire a configuration file __google-services.json__ from the FCM console, and add it to your project.
 
 You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup you first need to register your application in [firebase console](https://console.firebase.google.com/). If your project already uses FCM, the console will prompt you to import it as a new Firebase Cloud Messaging project. Register your application using the console, and download relevant _google-services.json_ into your project’s main folder.
 
@@ -66,11 +66,11 @@ Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ wi
 
 ### 3. Acquire FCM Device Token
 
-This step is performed automatically by the Sinch Client when you call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) on the next step.
+This step is performed automatically when you call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) on the next step.
 
 ### 4. Register FCM Device Token on Sinch Backend
 
-Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. See [User Controller](doc:voice-android-cloud-user-controller).
+Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
 
 ```java
 UserController uc = Sinch.getUserControllerBuilder()
@@ -79,7 +79,7 @@ UserController uc = Sinch.getUserControllerBuilder()
                 .userId("<user id>")
                 .environmentHost("ocra.api.sinch.com")
                 .build();
-        uc.registerUser(this, this);
+uc.registerUser(this, this); // parameters are `UserRegistrationCallback` and `PushTokenRegistrationCallback`
 ```
 
 ### 5. Implement _Listening Service_
@@ -119,7 +119,7 @@ sinchClient.start();
 
 > 📘
 >
-> - Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HNS_ will appear automatically the very first time  a unique _HMS device token_ is being acquired. 
+> - Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HMS_ will appear automatically the very first time  a unique _HMS device token_ is being acquired. 
 > - If neither _Firebase Cloud Messaging_ nor _HMS Push_ is viable for the application, please consider deprecated [Active Connection](doc:voice-android-cloud-active-connection).
 
 ### 2. Provision the Application with the Support Code
@@ -128,13 +128,13 @@ Please follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.
 
 ### 3. Acquire HMS Device Token
 
-Unlike FCM, there is no way Sinch SDK can acquire a unique _HMS device token_. So, it should be acquired by the application __before__ creating _UserController_. A good example how to acquire an _HMS device token_ asynchronously is provided in the `RegisterToHmsTask` class of the `sinch-rtc-sample-hms-push` sample application.
+Unlike FCM, Sinch SDK expects the application to acquire the _HMS device token_ __before__ creating _UserController_. A good example how to acquire an _HMS device token_ asynchronously is provided in the `RegisterToHmsTask` class of the `sinch-rtc-sample-hms-push` sample application.
 
 The task extends `AsyncTask` and returns both known beforehand `mHmsApplicationId` and unique `mHmsDeviceToken`, which Huawei recommends to re-acquire on each application start. To read the  HMS Application ID and acquire HMS Device token use following methods: 
 
 ```java
-    String hmsApplicationId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
-    String hmsDeviceToken = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
+String hmsApplicationId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
+String hmsDeviceToken = HmsInstanceId.getInstance(context).getToken(appId, "HCM");
 ```
 
 > ❗️
@@ -153,7 +153,7 @@ The task extends `AsyncTask` and returns both known beforehand `mHmsApplicationI
 
 ### 4. Register HMS Device Token on Sinch Backend
 
-Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and sub-builder [HmsPushBuilder](reference/com/sinch/android/rtc/HmsPushBuilder.html), accessible via `UserControllerBuilder.hms()` method. Then call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. See [User Controller](doc:voice-android-cloud-user-controller):
+Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and sub-builder [HmsPushBuilder](reference/com/sinch/android/rtc/HmsPushBuilder.html), accessible via `UserControllerBuilder.hms()` method. Then call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
 
 ```java
 UserController uc = Sinch.getUserControllerBuilder()
@@ -167,7 +167,7 @@ UserController uc = Sinch.getUserControllerBuilder()
                         .done()
                     .build();
 
-        uc.registerUser(this, this);
+uc.registerUser(this, this); // parameters are `UserRegistrationCallback` and `PushTokenRegistrationCallback`
 ```        
 
 ### 5. Implement _Listening Service_
@@ -192,8 +192,8 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 ## Sample Applications
 
-As a developer, you will be responsible for implementing the code that receives the FCM push message. 
-- For FCM example, please see the sample apps `sinch-rtc-sample-push` and `sinch-rtc-sample-video-push` which are bundled with the SDK.
+As a developer, you will be responsible for implementing the code that receives the push message. 
+- For FCM example, please see the sample apps `sinch-rtc-sample-push` and `sinch-rtc-sample-video-push`.
 - For HMS example, please see the sample app `sinch-rtc-sample-hms-push`.
 
 The following sections cover how to support receiving calls and messages via push notifications.
@@ -254,7 +254,7 @@ if (SinchHelpers.isSinchPushPayload(remoteMessage.getData())) {
 
 ## Unregister a Device
 
-If the user of the application logs out or performs a similar action, which implies that this device should not receive an incoming calls push notifications any longer, the push notification device token can be unregistered via [UserController.unregisterPushToken()](reference/com/sinch/android/rtc/UserController.html).
+If the user of the application logs out or performs a similar action, which implies that this device should not receive incoming calls push notifications any longer, the push notification device token can be unregistered via [UserController.unregisterPushToken()](reference/com/sinch/android/rtc/UserController.html).
 
 > ❗️
 >
@@ -266,7 +266,7 @@ Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to
 
 ## Permissions Required
 
-You don't need to manually add any permission to the application manifest - all required changes will be added automatically by the gradle depending on the configuration file you provide (__google-service.json__ or __agconnect-services.json__).
+You don't need to manually add any permission to the application manifest - all required changes will be added automatically by the __gradle__ depending on the configuration file you provide (__google-service.json__ or __agconnect-services.json__).
 
 ## FCM Vs HMS Push Registration Steps Comparison
 
@@ -274,7 +274,7 @@ You don't need to manually add any permission to the application manifest - all 
 | ------------------------------------------------------------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
 |1. Enable support of the Managed Push in _Sinch Client_|||Steps are identical|
 |2. Provision your application with FCM / HMS support code.| Use __gooogle-services.json__| Use __agconnect-services.json__| Acquire files online in FCM/HMS Consoles|
-|3. Acquire a unique _device token_ from FCM / MHS| automatic|[example](doc:voice-android-cloud-push-notifications#3-acquire-hms-device-token)||
-|4. Register the _device token_ on the Sinch Backend| automatic|automatic||
-|5. Implement _listening service_ | derive from `FirebaseMessagingService`| derive from `HmsMessageService`| Minor differences in the `RemoteMessage` API|
-|| use `RemoteMessage.getData()`| use `RemoteMessage.getDataOfMap()`| |
+|3. Acquire a unique _device token_ from FCM / MHS| Automatic|[Example](doc:voice-android-cloud-push-notifications#3-acquire-hms-device-token)||
+|4. Register the _device token_ on the Sinch Backend| Automatic|Automatic||
+|5. Implement _listening service_ | Derive from `FirebaseMessagingService`,| Derive from `HmsMessageService`,| Minor differences in the `RemoteMessage` API|
+|| use `RemoteMessage.getData()`.| use `RemoteMessage.getDataOfMap()`.| |
