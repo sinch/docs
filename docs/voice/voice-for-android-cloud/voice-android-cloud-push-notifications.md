@@ -16,7 +16,7 @@ The application may receive incoming calls only when:
 
 The latter option is the only way the application can be notified of an incoming call if the phone is locked, or the application is in the background or closed.
 
-Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#section-Google-FCM-Push-Notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#section-Huawei-HMS-Notifications)  (later HCM, Huawei Push or HMS Push). 
+Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications)  (later HCM, Huawei Push or HMS Push). 
 
 > 📘
 >
