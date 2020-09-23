@@ -110,7 +110,7 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 ### 2. Provisioning the Application with the Support Code
 
-Please follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-dev-process-0000001050263396-V5) to acquire __agconnect-services.json__. Please refer to [How to Integrate HMS Core SDK](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-integrating-sdk-0000001050040084-V5) for the necessary changes in the gradle build files.
+Please follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-dev-process-0000001050263396-V5) to acquire __agconnect-services.json__. Please refer to [How to Integrate HMS Core SDK](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-integrating-sdk-0000001050040084-V5) for the necessary changes in the __gradle__ build files.
 
 ### 3. Acquire HMS Device Token
 
@@ -125,7 +125,17 @@ The task extends `AsyncTask` and returns both known beforehand `mHmsApplicationI
 
 > ❗️
 >
-> To make this operation succeed, your application needs to be signed, and its signature fingerprint uploaded to the `Huawei AGConnect` console. To learn more, please follow this [link](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-config-agc-0000001050170137-V5#EN-US_TOPIC_0000001050170137__section193351110105114).
+> To make this operation succeed, your application needs to be signed, and its signature fingerprint registered in the `Huawei AGConnect` console. To learn more, please follow this [link](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-config-agc-0000001050170137-V5#EN-US_TOPIC_0000001050170137__section193351110105114).
+
+> 📘
+>
+> Checklist for Obtaining the HMS Device Token
+> - Application is registered on Huawei AGConnect Console (IMPORTANT: package name should match)
+> - The AGConnect Console's application _project_ has PushKit enabled
+> - The application is __signed__
+> - Fingerprint of the signature is registered in the AGConnect Console 
+> - HMS is installed on the device (User will get UI Prompt automatically)
+> - Device is connected to the Internet
 
 ### 4. Register HMS Device Token on Sinch Backend
 
@@ -170,7 +180,7 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 As a developer, you will be responsible for implementing the code that receives the FCM push message. 
 - For FCM example, please see the sample apps `sinch-rtc-sample-push` and `sinch-rtc-sample-video-push` which are bundled with the SDK.
-- For HMS exmaple, please see the sample app `sinch-rtc-sample-hms-push`.
+- For HMS example, please see the sample app `sinch-rtc-sample-hms-push`.
 
 The following sections cover how to support receiving calls and messages via push notifications.
 

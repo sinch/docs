@@ -7,18 +7,22 @@ next:
     - voice-android-cloud-miscellaneous
 ---
 
-### Push Token Registration via _UserController_ API
+## Push Token Registration via _UserController_ API
 
 > 📘
 >
 > [UserController](reference/com/sinch/android/rtc/UserController.html) provides a way, independently from the `SinchClient` lifecycle, to register a user for incoming calls via push notifications. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
 
-There are certain situations where it is either desirable to explicitly register push token and/or get assurance that the push token is indeed registered, e.g.:
+Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#section-Google-FCM-Push-Notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#section-Huawei-HMS-Notifications)  (later HCM, Huawei Push or HMS Push). 
+
+`UserController` provides a way explicitly register push token and get assurance that the push token is indeed registered, e.g.:
 
 - The application is designed to receive calls only, and thus must register push token with the Sinch backend on the very first start, while it's desirable to terminate `SinchClient` as soon as the registration concludes (e.g. to free resources). In this situation, the application should be notified by a specific callback on the registration result.
-- The application detects that FCM push token is invalidated and should be refreshed and re-registered with Sinch backend. Here, if `SinchClient` is running, it would take care of re-registering of the push token itself, otherwise the application is responsible for re-registering.
+- The application detects that FCM/HCM push token is invalidated and should be refreshed and re-registered with Sinch backend. Here, if `SinchClient` is running, it would take care of re-registering of the push token itself, otherwise the application is responsible for re-registering.
 
 Both situations should be handled using the [UserController](reference\com\sinch\android\rtc\UserController.html), which can be used independently from the _SinchClient_ (i.e., it does not require creating and starting the _SinchClient_).
+
+### Create UserController for the Registration for Google FCM Push
 
 ```java
 public UserController getUserController(String userId) {
@@ -30,6 +34,28 @@ public UserController getUserController(String userId) {
                  .build();
 }
 ```
+
+### Create UserController for the Registration for Huawei HCM Push
+
+```java
+public UserController getUserController(String userId) {
+     return Sinch.getUserControllerBuilder()
+                 .context(getApplicationContext())
+                 .applicationKey("<application key>")
+                 .userId("<user id>")
+                 .environmentHost("ocra.api.sinch.com")
+                 .hms()
+                    .deviceToken(hmsDeviceToken)
+                    .applicationId(hmsApplicationId)
+                    .done()
+                 .build();
+}
+```
+> 📘
+>
+> - Your application can be built to support both Push Notification platforms, but each _application instance_ should 
+> register itself towards Sinch backend to receive Push Notification using either one way or another.
+> - Please observe the only difference between FCM and HCM registrations is the use of the [hms()](reference/com/sinch/android/rtc/HmsPushBuilder.html) sub-builder.
 
 The former situation is showcased in _LoginActivity.java_ in _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ sample applications. The activity implements [UserRegistrationCallback](reference\com\sinch\android\rtc\UserRegistrationCallback.html) and [PushTokenRegistrationCallback](reference\com\sinch\android\rtc\PushTokenRegistrationCallback.html) interfaces:
 
@@ -80,7 +106,7 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
 }
 ```
 
-User registration is a two-step process, where first the step is registering _user_ (after which you can make outgoing calls using the _SinchClient_), and second is registering the push token for receiving incoming calls via FCM push notifications. Each step has correspondent _success_ and _failure_ callbacks, where you are mostly interested in the _tokenRegistered_, After receiving it, you can terminate / close the application and be sure that incoming calls will be received.
+User registration is a two-step process, where first the step is registering _user_ (after which you can make outgoing calls using the _SinchClient_), and second is registering the push token for receiving incoming calls via FCM/HCM push notifications. Each step has correspondent _success_ and _failure_ callbacks, where you are mostly interested in the _tokenRegistered_, After receiving it, you can terminate / close the application and be sure that incoming calls will be received.
 
 ![Token-based User Registration](images\20200221-user_and_push_registration.png)
 
@@ -107,12 +133,6 @@ are met, the authentication process has finished and e.g. UI can advance.
 When you want to _logout_ and stop receiving incoming calls via push, unregister the push token using _UserController_:
 
 ```java
-    UserController userController = Sinch.getUserControllerBuilder()
-        .context(getApplicationContext())
-        .applicationKey("<application key>")
-        .userId("<user id>")
-        .environmentHost("ocra.api.sinch.com")
-        .build();
-
+    UserController userController = getUserController(<user id>);
     userController.unregisterPushToken();
 ```
