@@ -13,7 +13,7 @@ next:
 >
 > [UserController](reference/com/sinch/android/rtc/UserController.html) provides a way, independently from the `SinchClient` lifecycle, to register a user for incoming calls via push notifications. You can also use it to un-register push token if receiving of incoming calls is no longer desirable (e.g. on logout, or changing users).
 
-Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications)  (later HCM, Huawei Push or HMS Push). 
+Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#google-fcm-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#huawei-hms-notifications)  (later HCM, Huawei Push or HMS Push). 
 
 `UserController` provides a way explicitly register push token and get assurance that the push token is indeed registered, e.g.:
 
