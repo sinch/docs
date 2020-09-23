@@ -272,8 +272,9 @@ You don't need to manually add any permission to the application manifest - all 
 
 | Step                                                              | FCM Specific            | HMS Specific                | Notes                                                             | 
 | ------------------------------------------------------------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
-|1. Enable support of the Managed Push in _Sinch Client_|||Done the same way for both|
+|1. Enable support of the Managed Push in _Sinch Client_|||Steps are identical|
 |2. Provision your application with FCM / HMS support code.| Use __gooogle-services.json__| Use __agconnect-services.json__| Acquire files online in FCM/HMS Consoles|
-|3. Acquire a unique _device token_ from FCM / MHS| done automatically|example provided||
-|4. Register the _device token_ on the Sinch Backend| done automatically|done automatically||
-|5. Implement _listening service_ | FirebaseMessagingService| HmsMessageService| Minor differences|
+|3. Acquire a unique _device token_ from FCM / MHS| automatic|[example](doc:voice-android-cloud-push-notifications#3-acquire-hms-device-token)||
+|4. Register the _device token_ on the Sinch Backend| automatic|automatic||
+|5. Implement _listening service_ | derive from `FirebaseMessagingService`| derive from `HmsMessageService`| Minor differences in the `RemoteMessage` API|
+|| use `RemoteMessage.getData()`| use `RemoteMessage.getDataOfMap()`| |
