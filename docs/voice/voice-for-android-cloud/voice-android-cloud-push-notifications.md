@@ -9,32 +9,32 @@ next:
 
 ## Receiving Incoming Calls via Push Notifications
 
-The application may receive incoming calls only when:
+The application can receive incoming calls only when:
 
 - the application is in the foreground AND listening on an _active connection_ (_deprecated_)
-- the application is registered to receive incoming calls via the using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html).
+- the application is registered to receive incoming calls via Push Notifications the using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html).
 
 The latter option is the only way the application can be notified of an incoming call if the phone is locked, or the application is in the background or closed.
 
-Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#google-fcm-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#huawei-hms-notifications)  (later HCM, Huawei Push or HMS Push). 
+Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#google-fcm-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#huawei-hms-notifications)  (Huawei Push or HMS Push). 
 
 > 📘
 >
 > - Your application can be built to support both Push Notification platforms, but each _application instance_ should 
 > register itself towards Sinch backend to receive Push Notification using either one way or another.
 
-Registering towards Sinch backend to receive an incoming call push notifications via FCM or HMS Push is quite similar and consist of the following steps, and most of the work is done automatically:
+Registering towards Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
+The sections below will describe how to:
+- Enable Support for the Managed Push
+- Provision the Application with the Support Code
+- Acquire a unique Device Token
+- Register this Device Token on Sinch Backend
+- Implement _Listening Service_
 
-| Step                                                              | FCM Specific            | HMS Specific                | Notes                                                             | 
-| ------------------------------------------------------------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
-|1. Enable support of the Managed Push in _Sinch Client_|||Done the same way for both|
-|2. Provision your application with FCM / HMS support code.| Use __gooogle-services.json__| Use __agconnect-services.json__| Acquire files online in FCM/HMS Consoles|
-|3. Acquire a unique _device token_ from FCM / MHS| done automatically|example provided||
-|4. Register the _device token_ on the Sinch Backend| done automatically|done automatically||
-|5. Implement _listening service_ | FirebaseMessagingService| HmsMessageService| Minor differences|
-|
 
-### 1. Enable support if the Managed Push
+## Google FCM Push Notifications
+
+### 1. Enable Support for the Managed Push
 
 This step is the same for both FCM and HMS. To enable push notifications, set the following capability before starting the Sinch client:
 
@@ -53,14 +53,10 @@ sinchClient.start();
 
 > 📘
 >
-> Pre-Requisites
-> - Using the FCM Push platform requires that the _Google Play Services_ is installed on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_.
-> - Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HNS_ will appear automatically the very first time  a unique _HMS device token_ is being acquired. 
+> - Using the FCM Push platform requires that the _Google Play Services_ is installed on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_. 
 > - If neither _Firebase Cloud Messaging_ nor _HMS Push_ is viable for the application, please consider deprecated [Active Connection](doc:voice-android-cloud-active-connection).
 
-## Google FCM Push Notifications
-
-### 2. Provisioning the Application with the Support Code
+### 2. Provision the Application with the Support Code
 
 Provisioning your application with the support code to receive the FCM Push Notifications is easy. You'll need to acquire a configuration file __google-services.json__ from the FCM console, add it to your project, and implement __FirebaseMessagingService__.
 
@@ -108,7 +104,25 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 ## Huawei HMS Notifications
 
-### 2. Provisioning the Application with the Support Code
+### 1. Enable Support for the Managed Push
+
+This step is the same for both FCM and HMS. To enable push notifications, set the following capability before starting the Sinch client:
+
+```java
+SinchClient sinchClient = Sinch.getSinchClientBuilder().context(context)
+                              ...
+                              .build();
+...                              
+sinchClient.setSupportManagedPush(true);
+sinchClient.start();
+```
+
+> 📘
+>
+> - Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HNS_ will appear automatically the very first time  a unique _HMS device token_ is being acquired. 
+> - If neither _Firebase Cloud Messaging_ nor _HMS Push_ is viable for the application, please consider deprecated [Active Connection](doc:voice-android-cloud-active-connection).
+
+### 2. Provision the Application with the Support Code
 
 Please follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-dev-process-0000001050263396-V5) to acquire __agconnect-services.json__. Please refer to [How to Integrate HMS Core SDK](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-integrating-sdk-0000001050040084-V5) for the necessary changes in the __gradle__ build files.
 
@@ -253,3 +267,13 @@ Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to
 ## Permissions Required
 
 You don't need to manually add any permission to the application manifest - all required changes will be added automatically by the gradle depending on the configuration file you provide (__google-service.json__ or __agconnect-services.json__).
+
+## FCM Vs HMS Push Registration Steps Comparison
+
+| Step                                                              | FCM Specific            | HMS Specific                | Notes                                                             | 
+| ------------------------------------------------------------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
+|1. Enable support of the Managed Push in _Sinch Client_|||Done the same way for both|
+|2. Provision your application with FCM / HMS support code.| Use __gooogle-services.json__| Use __agconnect-services.json__| Acquire files online in FCM/HMS Consoles|
+|3. Acquire a unique _device token_ from FCM / MHS| done automatically|example provided||
+|4. Register the _device token_ on the Sinch Backend| done automatically|done automatically||
+|5. Implement _listening service_ | FirebaseMessagingService| HmsMessageService| Minor differences|
