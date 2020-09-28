@@ -19,8 +19,7 @@ The latter option is the only way the application can be notified of an incoming
 Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#google-fcm-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#huawei-hms-notifications)  (Huawei Push or HMS Push). 
 
 > 📘
->
-> - Your application can be built to support both Push Notification platforms, but each _application instance_ should 
+> Your application can be built to support both Push Notification platforms, but each _application instance_ should 
 > register itself towards Sinch backend to receive Push Notification using either one way or another.
 
 Registering towards Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
@@ -47,13 +46,13 @@ sinchClient.setSupportManagedPush(true);
 sinchClient.start();
 ```
 > ❗️
->
-> - You must catch the `MissingFCMException` if you distribute your app to devices without _Google Play Services_ and using _Firebase Cloud Messages_
-> - Using `setSupportManagedPush(true)` will register a token with the _Firebase Cloud Messaging_ using a Sender ID connected to Sinch, which will _NOT_ unregister your own FCM token, so you _CAN_ use Firebase Cloud Messages for your own purpose filtering them in _onMessageReceived(RemoteMessage remoteMessage)_ method of your FCM Listening Service using Sinch helper API _SinchHelpers.isSinchPushPayload_.
+> You must catch the `MissingFCMException` if you distribute your app to devices without _Google Play Services_ and using _Firebase Cloud Messages_
 
 > 📘
->
-> - Using FCM requires that the _Google Play Services_ is installed on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_. 
+> Using `setSupportManagedPush(true)` will register a token with the _Firebase Cloud Messaging_ using a _sender ID_ connected to Sinch. It will __not__ unregister FCM tokens associated with your own _sender ID_. This means you can use FCM for your own purpose, filtering them in _onMessageReceived(RemoteMessage remoteMessage)_ method of your FCM Listening Service using Sinch helper API _SinchHelpers.isSinchPushPayload_.
+
+> 📘
+> Using FCM requires that the _Google Play Services_ is installed on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_. 
 
 ### 2. Provision the Application with the Support Code
 
