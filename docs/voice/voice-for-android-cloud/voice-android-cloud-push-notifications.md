@@ -54,7 +54,6 @@ sinchClient.start();
 > 📘
 >
 > - Using the FCM Push platform requires that the _Google Play Services_ is installed on the device. If you distribute your application through other channels than Google Play, push notifications will not be available on devices that do not have _Google Play Services_. 
-> - If neither _Firebase Cloud Messaging_ nor _HMS Push_ is viable for the application, please consider deprecated [Active Connection](doc:voice-android-cloud-active-connection).
 
 ### 2. Provision the Application with the Support Code
 
