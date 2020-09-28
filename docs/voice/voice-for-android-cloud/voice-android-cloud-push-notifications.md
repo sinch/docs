@@ -268,7 +268,7 @@ Sinch SDK moved from deprecated _Google Cloud Messaging_ (GCM) to its most up-to
 
 You don't need to manually add any permission to the application manifest - all required changes will be added automatically by the __gradle__ depending on the configuration file you provide (__google-service.json__ or __agconnect-services.json__).
 
-## FCM Vs HMS Push Registration Steps Comparison
+## FCM vs HMS Push Registration Steps Comparison
 
 | Step                                                              | FCM Specific            | HMS Specific                | Notes                                                             | 
 | ------------------------------------------------------------------|-------------------------|-----------------------------|-------------------------------------------------------------------|
