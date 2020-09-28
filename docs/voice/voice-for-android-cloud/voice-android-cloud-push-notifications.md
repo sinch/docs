@@ -277,4 +277,4 @@ You don't need to manually add any permission to the application manifest - all 
 |3. Acquire a unique _device token_ from FCM / MHS| Automatic|[Example](doc:voice-android-cloud-push-notifications#3-acquire-hms-device-token)||
 |4. Register the _device token_ on the Sinch Backend| Automatic|Automatic||
 |5. Implement _listening service_ | Derive from `FirebaseMessagingService`,| Derive from `HmsMessageService`,| Minor differences in the `RemoteMessage` API|
-|| use `RemoteMessage.getData()`.| use `RemoteMessage.getDataOfMap()`.| |
+|| Use `RemoteMessage.getData()`.| Use `RemoteMessage.getDataOfMap()`.| |
