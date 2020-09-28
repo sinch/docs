@@ -25,7 +25,7 @@ Sinch SDK supports both currently available major Push Notification platforms on
 
 Registering towards Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
 The sections below will describe how to:
-- Enable _Sinch Managed Push_
+- Enable support for _Sinch Managed Push_
 - Provision the Application with the Support Code
 - Acquire a unique Device Token
 - Register this Device Token on Sinch Backend
@@ -34,7 +34,7 @@ The sections below will describe how to:
 
 ## Google FCM Push Notifications
 
-### 1. Enable Support for the Managed Push
+### 1. Enable Support for Managed Push
 
 This step is the same for both FCM and HMS. To enable push notifications, set the following capability before starting the Sinch client:
 
@@ -104,7 +104,7 @@ public void onMessageReceived(RemoteMessage remoteMessage){
 
 ## Huawei HMS Notifications
 
-### 1. Enable Support for the Managed Push
+### 1. Enable Support for Managed Push
 
 This step is the same for both FCM and HMS. To enable push notifications, set the following capability before starting the Sinch client:
 
