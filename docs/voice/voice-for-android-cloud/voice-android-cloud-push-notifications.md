@@ -11,7 +11,7 @@ next:
 
 The application can receive incoming calls only when:
 
-- the application is in the foreground AND listening on an _active connection_ (_deprecated_)
+- the application is in the foreground AND listening on an _Active Connection_ (_deprecated_)
 - the application is registered to receive incoming calls via Push Notifications the using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html).
 
 The latter option is the only way the application can be notified of an incoming call if the phone is locked, or the application is in the background or closed.
