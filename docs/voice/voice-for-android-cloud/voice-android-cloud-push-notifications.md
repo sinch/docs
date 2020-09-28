@@ -60,7 +60,7 @@ Provisioning your application with the support code to receive the FCM Push Noti
 
 You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup you first need to register your application in [firebase console](https://console.firebase.google.com/). If your project already uses FCM, the console will prompt you to import it as a new Firebase Cloud Messaging project. Register your application using the console, and download relevant _google-services.json_ into your project’s main folder.
 
-Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ will require you to supply your own _google-services.json_ in order to be built. In the absence of this file, gradle will show a relevant error with explanation and relevant links and stop the build. That _google-services.json_ file is the main mean of automatization of support of Firebase services to your app. Android Studio’s _‘com.google.gms.google-services’_ plugin parses and adds relevant resources and permissions to your applications manifest automatically.
+Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ will require you to supply your own _google-services.json_ in order to be built. In the absence of this file, gradle will show a relevant error with explanation and relevant links and stop the build. That _google-services.json_ file is the main mean of automatization of support of Firebase services to your app. Android Studio’s plugin `com.google.gms.google-services` parses and adds relevant resources and permissions to your applications manifest automatically.
 
 ### 3. Acquire FCM Device Token
 
