@@ -25,7 +25,7 @@ Sinch SDK supports both currently available major Push Notification platforms on
 
 Registering towards Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
 The sections below will describe how to:
-- Enable Support for the Managed Push
+- Enable _Sinch Managed Push_
 - Provision the Application with the Support Code
 - Acquire a unique Device Token
 - Register this Device Token on Sinch Backend
