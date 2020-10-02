@@ -2234,7 +2234,7 @@ To start using RCS through Conversation API you need to first have a Sinch RCS b
 
 Sending a RCS message requires a Conversation API **app** with
 `channel_credentials` for RCS channel (You can create an **app** either in the 
-portal or thorough API call - [read more](https://developers.sinch.com/reference/#app_createapp)). Example, **app** is given in the following snippet:
+portal or through API call - [read more](https://developers.sinch.com/reference/#app_createapp)). Example, **app** is given in the following snippet:
 
 ```json
 {
@@ -2262,16 +2262,17 @@ from RCS requires setting the Callback URL of the RCS bot to
 point to your Conversation API **app**. The URL is the following:
 
 ```
-https://rcs-adapter.conversation-api.int.prod.sinch.com/adapter/v1/{{CONV_API_APP_ID}}/callback
+https://rcs-adapter.{{REGION}}.conversation-api.int.prod.sinch.com/adapter/v1/{{CONV_API_APP_ID}}/callback
 ```
 
 Where:
 
+- `{{REGION}}` is one of `eu1` or `us1` and must match the region of your app.
 - `{{CONV_API_APP_ID}}` is your **app** id.
 
 You also need to configure at least one Conversation API webhook which
 will trigger POST callbacks to the given URL (You can create a **webhook** 
-either in the portal or thorough API call - [read more](https://developers.sinch.com/reference/#webhooks_createwebhook)).
+either in the portal or through API call - [read more](https://developers.sinch.com/reference/#webhooks_createwebhook)).
 
 #### Rich Message Support
 
@@ -2350,7 +2351,7 @@ The rendered message:
 
 ![Media Message](images/channel-support/rcs/RCS_Video_Media_Message.jpg)
 
-##### Choice Messages
+###### Choice Messages
 
 RCS channel provides native support for Choice Messages. As a user you can select from four choice types:
 - Text Choice
@@ -2358,7 +2359,7 @@ RCS channel provides native support for Choice Messages. As a user you can selec
 - Call Choice
 - Location Choice  
 
-Below snippets presents all representations of above choice types. You can send at least 3 choices in one message.
+Below snippets presents all representations of above choice types. You can send maximum 3 choices in one message.
 
 ---
 
@@ -2433,7 +2434,7 @@ The rendered message:
 
 ###### Card Messages
 
-RCS supports natively Card Messages with at least 3 choices.
+RCS supports natively Card Messages with maximum 3 choices.
 The media message in the Card should point to an image or a video.
 
 ---
@@ -2486,8 +2487,8 @@ The rendered message:
 
 RCS supports natively Carousel Messages. You can put from 1 to 10 cards in one message.
 Each card can consist of the elements described in "Card Messages" section. If you send only one card, 
-the message will be render as a normal Card Message.
-
+the message will be render as a normal Card Message. Additionally, RCS channel supports maximum 3 outer choices. You can put outer choices into 
+the `carousel_message.choices` array field, and these choices will be rendered right after the displayed cards.
 ---
 
 Conversation API POST `messages:send`
