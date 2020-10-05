@@ -309,7 +309,7 @@ The format is as follows:
 |org               | Contact organization information                            | Object        |
 |phones            | Array of contact phone number(s)                            | Array[Object] |
 |urls              | Array of contact URL(s)                                     | Array[Object] |
-|contact_image_url | The public URL of the contact image. Works only with non-WhatsApp profile image  | String |
+|contact_image_url | The public URL of the contact image. Doesn't contain WhatsApp profile picture, but the image in the phone itself  | String |
 
 **Contact address**
 
