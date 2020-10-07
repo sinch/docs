@@ -21,8 +21,6 @@ next:
 
 #### Traffic Management Methods
 
-    [PATCH]     /calls/id/{callId}
-    [GET]       /calls/id/{callId}
     [GET]       /conferences/id/{conferenceId}
     [PATCH]     /conferences/id/{conferenceId}/{callId}
     [DELETE]    /conferences/id/{conferenceId}
@@ -30,6 +28,7 @@ next:
     [POST]      /callouts
     [GET]       /calls/id/{callId}
     [PATCH]     /calls/id/{callId}
+	[PATCH]     /calls/id/{callId}/leg/{callLeg}
     [GET]       /recording?from=timestamp&to=timestamp&page=int&pageSize=int
     [GET]       /recording/{key}
     [DELETE]    /recording/{key}
@@ -941,9 +940,18 @@ Again, the final option is to specify your SVML inline as a (JSON escaped) strin
 
 ## Manage Call
 
-**[Patch] calling/v1/calls/id/{callId}**
+**[PATCH] calling/v1/calls/id/{callId}**
+**[PATCH] calling/v1/calls/id/{callId}/leg/{callLeg}**
 
-This method can be used to manage ongoing, connected calls or to unpark parked calls.
+This method can be used to manage ongoing, connected calls.
+
+**callId** The ID of the on-going call that will be managed.
+
+**callLeg** Identifier specifying which part of the call will be managed. This option is used only by the `PlayFiles` and `Say` instructions to indicate which channel the sound will be played on. Valid options are `caller`, `callee` or `both`. If not specified, the default value is `caller`.
+
+> 📘
+>
+> The `callLeg` identifier is ignored for calls that are part of a conference and calls initiated using the Callout API.
 
 ### Request
 
@@ -962,7 +970,7 @@ This is a protected resource and requires an [application signed request](doc:us
 
 ### Managing Ongoing, Connected Calls
 
-For ongoing, connected calls, you can use this endpoint to play messages and/or optionally hang up the call. There are two instructions available to play messages. The _PlayFiles_ instruction can be used to play an IVR message, while the _Say_ instruction can be used to play a text-to-speech message. The message, if specified, is played only on the caller side. A caller can, for example, hear a message saying the total minutes have expired and that the call will be disconnected.
+For ongoing, connected calls, you can use this endpoint to play messages and/or optionally hang up the call. There are two instructions available to play messages. The _PlayFiles_ instruction can be used to play an IVR message, while the _Say_ instruction can be used to play a text-to-speech message. The message, if specified, is played on the side specified by the `callLeg` identifier. A caller can, for example, hear a message saying the total minutes have expired and that the call will be disconnected.
 
 For more information on playing messages and performing actions on calls see the [Callback API](doc:voice-rest-api-callback-api).
 
