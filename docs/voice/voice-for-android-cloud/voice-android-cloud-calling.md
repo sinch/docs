@@ -45,7 +45,7 @@ _App-to-phone_ calls can be tested by calling the following test number: _+46000
 
 > ⚠ Testing DTMF
 >
-> In _App-to-Phone_ scenario, it is possible to issue DTMF sequences using Sinch SDK. Please note that if the receiving end of the call is an iOS device, you might have to disable _VoLTE_ ("Voice over LTE") option in the phone at the receiving end of the call in order to be able to hear DTMF tones.
+> In _App-to-Phone_ scenario, it is possible to issue DTMF sequences using Sinch SDK. Please note that if the receiving end of the call is an iOS device, you might have to disable _VoLTE_ ("Voice over LTE") option in the settings of the phone at the receiving end of the call in order to be able to hear DTMF tones.
 
 
 ## Set Up an _App-to-sip_ Call
