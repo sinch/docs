@@ -127,6 +127,20 @@ The format is as follows:
 |type       | Fixed value `text`                                                    | String    |
 |body       | The text of the text message                                          | String    |
 
+**Replying to**
+
+This object is included in the MO notification if it is in reply to a message.
+The object looks like this:
+
+```json
+{
+  "from": "16315558011",
+  "message_id": "01DPNXZ0WCF9XD19MH84XD0P62"
+}
+```
+
+where from is a WhatsApp number and message_id is the Sinch message ID of the original message.
+
 #### Sample inbound text message
 
 ```json
