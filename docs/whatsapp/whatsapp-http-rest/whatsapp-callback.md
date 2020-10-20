@@ -113,9 +113,9 @@ The format is as follows:
 |forwarded              | Boolean object stating if message was forwarded                             | Boolean   |
 |frequently_forwarded   | Boolean object stating if message was frequently forwarded                  | Boolean   |
 
-**Replying to**
+**Context**
 
-This object is included in the MO notification if it is in reply to a message. It contains information about the original message.
+This object (namely ```replying_to```) is included in the MO notification if it is in reply to a message. It contains information about the original message.
 
 |Name        | Description                                                                 | JSON Type |
 |------------|---------------------------------------------------------------------------- |-----------|
@@ -146,6 +146,10 @@ This object is included in the MO notification if it is in reply to a message. I
     {
       "from":"0732001122",
       "to":"sinchbot",
+      "replying_to":{
+        "from": "447537817391",
+        "message_id": "01E7Q9AVTRB5A30JD7D9ZN0HTE"
+      },
       "message_id":"01DPNXZ0WCF9XD19MH84XD0P62",
       "message":{
         "type":"text",
