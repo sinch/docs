@@ -6,7 +6,7 @@ excerpt: >-
   This can be done through Sms, flashcall, callout and seamlessly.
 next:
   pages:
-    - verification-android-phone-numbers
+    - verification-android-all
 ---
 Verification of a phone number is performed in two steps: requesting a verification code and verifying the received code.
 
