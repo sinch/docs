@@ -129,7 +129,7 @@ The format is as follows:
 
 **Replying to**
 
-This object is included in the MO notification if it is in reply to a message.
+This object is included in the MO notification if it is in reply to a message. It contains information about the original message.
 The object looks like this:
 
 ```json
@@ -139,7 +139,7 @@ The object looks like this:
 }
 ```
 
-where from is a WhatsApp number and message_id is the Sinch message ID of the original message.
+where `from` is a WhatsApp sender number and `message_id` is the Sinch message ID of the original message.
 
 #### Sample inbound text message
 
