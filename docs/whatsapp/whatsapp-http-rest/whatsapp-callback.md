@@ -115,6 +115,8 @@ The format is as follows:
 
 **Context**
 
+This object (namely ```replying_to```) is included in the MO notification if it is in reply to a message. It contains information about the original message.
+
 |Name        | Description                                                                 | JSON Type |
 |------------|---------------------------------------------------------------------------- |-----------|
 |message_id  | Message Id of the message which is being replied directly to                | String    |
@@ -144,6 +146,10 @@ The format is as follows:
     {
       "from":"0732001122",
       "to":"sinchbot",
+      "replying_to":{
+        "from": "447537817391",
+        "message_id": "01E7Q9AVTRB5A30JD7D9ZN0HTE"
+      },
       "message_id":"01DPNXZ0WCF9XD19MH84XD0P62",
       "message":{
         "type":"text",
