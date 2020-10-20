@@ -113,7 +113,9 @@ The format is as follows:
 |forwarded              | Boolean object stating if message was forwarded                             | Boolean   |
 |frequently_forwarded   | Boolean object stating if message was frequently forwarded                  | Boolean   |
 
-**Context**
+**Replying to**
+
+This object is included in the MO notification if it is in reply to a message. It contains information about the original message.
 
 |Name        | Description                                                                 | JSON Type |
 |------------|---------------------------------------------------------------------------- |-----------|
@@ -126,20 +128,6 @@ The format is as follows:
 |-----------|---------------------------------------------------------------------- |-----------|
 |type       | Fixed value `text`                                                    | String    |
 |body       | The text of the text message                                          | String    |
-
-**Replying to**
-
-This object is included in the MO notification if it is in reply to a message. It contains information about the original message.
-The object looks like this:
-
-```json
-{
-  "from": "16315558011",
-  "message_id": "01DPNXZ0WCF9XD19MH84XD0P62"
-}
-```
-
-where `from` is a WhatsApp sender number and `message_id` is the Sinch message ID of the original message.
 
 #### Sample inbound text message
 
