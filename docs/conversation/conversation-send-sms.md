@@ -27,7 +27,7 @@ To create a new Conversations App, simply sign in to your [*Sinch Dashboard acco
 
 Click on the *New App* button on the right, "Name" your App, choose an appropriate region for it, and click *Create*.
 
-![dashboard image](images/channel-support/sms/sinch_conversations_apps.png)
+![dashboard image](images/dashboard/dashboard_new_app.png)
 
 ### Add an SMS Channel to your Conversations App
 
@@ -37,7 +37,7 @@ In your Sinch Dashboard, navigate to Conversations > Apps.  Click on the *"App N
 
 Under *Set up channels* find SMS channel and click on *"Set Up Channel"*. 
 
-![new sms channel](images/channel-support/sms/sinch_conversations_new_app_add_channels.png)
+![new sms channel](images/dashboard/dashboard_add_channels.png)
 
 For setting up the SMS channel you need to choose your SMS *Service Plan ID* from the drop-down and click *"Save"*.
 
@@ -51,7 +51,7 @@ You have added an SMS Channel to your App.  Just a few more steps to go.
 
 Go to the Access Keys page under Settings and create new key by pressing the "New Key" button:
 
-![access keys](images/channel-support/sms/sinch_conversation_access_keys.png)
+![access keys](images/dashboard/dashboard_access_keys.png)
 
 Be sure to copy and store in a safe place the Key Secret you will get. You will not be able to retrieve it again once you’ve created the key.
 
