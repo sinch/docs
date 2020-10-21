@@ -164,13 +164,13 @@ _UserController_ is a component that serves the purpose of registration against 
 To provide the registration token to `UserController` use the similar scheme:
 
 ```java
-UserController uc = Sinch.getUserControllerBuilder()
-                .context(getApplicationContext())
-                .applicationKey("<application key>")
-                .userId("<user id>")
-                .environmentHost("ocra.api.sinch.com")
-                .build();
-        uc.registerUser(userRegistrationCallback, pushTokenRegistrationCallback);
+    UserController userController = Sinch.getUserControllerBuilder()
+        .context(getApplicationContext())
+        .applicationKey("<application key>")
+        .userId("<user id>")
+        .environmentHost("ocra.api.sinch.com")
+        .build();
+    userController.registerUser(userRegistrationCallback, pushTokenRegistrationCallback);
 ```
 
 Provide signed registration token in your [UserRegistrationCallback.onCredentialsRequired()](reference\com\sinch\android\rtc\UserRegistrationCallback.html)

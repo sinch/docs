@@ -5,6 +5,10 @@ excerpt: >-
   fixes.
 ---
 
+<h3>2020/09/23 | SINCH SDK IOS 4.2.6</h3>
+
+- Use CallKit for outbound calls in sample application SinchCallKit.
+
 <h3>2020/05/15 | SINCH SDK IOS 4.2.5</h3>
 
 - Fix ObjectiveC symbol clashes between internal and system

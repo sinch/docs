@@ -5,6 +5,7 @@ excerpt: >-
   consists of different software development kits – the Sinch SDKs. Find out
   more now.
 ---
+
 Sinch offers a platform for real time communication over the Internet. It consists of different software development kits – the Sinch SDKs – that you integrate with your smartphone or web application and cloud based back-end services. Together, they enable Voice based communication in your application.
 
 Apart from real time communication between smartphone or web applications, the Sinch back-end services also integrate with the public switched telephone network(PSTN) in form of high quality voice termination at low rates, making it possible to connect calls to any phone number in more than 150 countries.
@@ -13,9 +14,9 @@ Apart from real time communication between smartphone or web applications, the S
 
 When using Sinch for Voice calling, the Sinch platform can be seen as a big telephony switch. It receives incoming phone calls, sets up outgoing phone calls and bridges the two. The incoming call may come from a mobile or web application (over data) or through a local phone number. Similarly, the outgoing call can be terminated to another mobile or web application (over data) or to a phone number (via the PSTN network), hence the following classification:
 
->   - App to app calling
->   - App to phone calling
->   - Phone to phone calling
+> - App to app calling
+> - App to phone calling
+> - Phone to phone calling
 
 ## What are the supported platforms?
 

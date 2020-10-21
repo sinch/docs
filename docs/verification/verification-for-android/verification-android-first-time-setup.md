@@ -2,7 +2,7 @@
 title: First time setup
 excerpt: >-
   Setup phone number verification in Android for the first time with the Sinch
-  Verification SDK. Verify through SMS and/or flash calls.
+  Verification SDK.
 next:
   pages:
     - verification-android-the-verification-process
@@ -15,26 +15,52 @@ This is a step-by-step guide about setting up the Sinch Verification SDK for the
 2.  Set up a new Application using the Dashboard, where you can then obtain an *Application Key*.
 3.  Enable Verification for the application by selecting: *Authentication* \> *Public* under *App* \> *Settings* \> *Verification*
 
-## Download
-
-The Sinch Verification SDK can be downloaded [here](https://sinch.readme.io/page/downloads). It contains: the library aar, this user guide, reference documentation, and a sample app.
-
 ## Add the Sinch library
 
-The Verification SDK library is distributed in [AAR](http://tools.android.com/tech-docs/new-build-system/aar-format) format. To use it in your project either:
+The Sinch Verification SDK is available publicly on jCenter. To include it in your Android application make sure your **project** level build.gradle file contains:
 
-  - Copy the **.aar** file to the `libs` folder and edit the build.gradle file to include
 ```text
-repositories {
-    flatDir {
-        dirs 'libs'
+buildscript {
+    repositories {
+        google()
+        jcenter()
     }
 }
 
-dependencies {
-    compile(name:'sinch-android-verification-1.6.0', ext:'aar')
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
 }
 ```
 
+Now in your **module** level build.gradle file you can add Sinch SDK as a dependency:
 
-  - Or using Android Studio choose `File -> New -> New Module -> Import .JAR/.AAR Package` option
+```text
+dependencies {
+    implementation 'com.sinch.android.sdk.verification:verification-all:*.*.*'
+  }
+```
+
+If your application uses all the verification methods it's easiest to add _verification-all_ package. If you intend to use only specific verification types, you may include only their dependencies.
+- verification-sms
+- verification-flashcall
+- verification-callout
+- verification-seamless
+
+##### Example:
+
+Your application relies only on sms verification and doesn't use any other verificaiton methods. Then you should simply add:
+
+```text
+dependencies {
+    implementation 'com.sinch.android.sdk.verification:verification-sms:*.*.*'
+  }
+```
+
+The latest version of the SDK can be checked on [Bintray](https://bintray.com/sinch/com.sinch.android.sdk.verification).
+
+## Samples
+
+A repository with fully functional samples is available on [GitHub](https://github.com/sinch/verification-samples/tree/master/Android-Verification-SDK).

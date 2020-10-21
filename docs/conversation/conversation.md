@@ -130,26 +130,14 @@ The metadata is an opaque field for the Conversation API and can be used by the 
 retrieve a context when receiving a callback from the API.
 The metadata fields are currently restricted to 1024 characters.
 
-### Authentication
-
-The Conversation API uses OAuth2 **access tokens** to authenticate API calls. The first step to obtaining an **access token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/convapi/keys). A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The credential pair can then be used to obtain an **access token**, given in the response, in the following way:
-
-```console
-curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
-```
-
-A call to the Conversation API can then be done by including the obtained **access_token** in the request header. See below for an example:
-
-```console
-curl -H "Authorization: Bearer <access token>" https://eu.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps
-```
-
 ### Supported channels
 
 - <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
 - <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> WhatsApp
 - <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> RCS
 - <img src="https://files.readme.io/41a20d1-messenger.svg" width="20" height="20" /> Facebook messenger
+- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
+- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
 
 And more on the roadmap for 2020.
 
@@ -159,7 +147,29 @@ Currently Sinch Conversation API is available in:
 
 | Region | Host                                  |
 | ------ | ------------------------------------- |
+| US     | https://us.conversation.api.sinch.com |
 | EU     | https://eu.conversation.api.sinch.com |
+
+### Authentication
+
+The Conversation API uses OAuth2 **Access Tokens** to authenticate API calls. The first step to obtaining an **Access Token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/settings/access-keys) under Settings -> Access Keys. A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The created **Access Key** can be used in the different authentication flows in both regions. The following snippet illustrates how to obtain an **Access Token** that can be used to authenticate towards the Conversation API in the US. Please note that it is not possible to use the obtained **Access Token** to authenticate towards the Conversation API in the EU. One should instead obtain a valid **Access Token** for the corresponding EU endpoint.
+
+```console
+curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
+```
+
+A call to the Conversation API, in the US, can then be done by including the obtained **Access Token**, valid for US, in the request header. See below for an example:
+
+```console
+curl -H "Authorization: Bearer <access token>" https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps
+```
+
+#### Support for Basic Authentication
+It is also possible to use Basic Authentication to authenticate towards the Conversation API. The recommendation is to use the OAuth2 flow, as described above, for increased security and throughput. The **username** and **password** correspond to the **client_id** and **client_secret** obtained when creating an **Access Key**. See below for an example of how to authenticate towards the Conversation API, in the US, using Basic Authentication. It is possible to authenticate towards the Conversation API, in the EU, in the same way since the created **Access Key** is valid for the EU region as well.
+
+```console
+curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --user <client_id>:<client_secret>
+```
 
 ### Postman collection
 

@@ -80,12 +80,12 @@ We’re currently managing the Sinch client from our AppDelegate, so we’re goi
 We’ve now got a property that’s accessible globally within our class—exactly what we want. If you check out our docs, you will see that it’s best to init the push client as early as possible in the app’s lifecycle. Because of this, we’ll go ahead and add this code to the top of the method didFinishLaunchingWithOptions.
 
 ```objectivec
-self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentAutomatic];
-  self.push.delegate = self;
-  [self.push setDesiredPushTypeAutomatically];
+self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentDevelopment];
+self.push.delegate = self;
+[self.push setDesiredPushTypeAutomatically];
 ```
 
-Here you can see we’re setting the APS Environment to automatic, our delegate, and then the desired push type to automatic. When automatic is available, use it\!
+Here you can see we’re setting the APS Environment to development, our delegate, and then the desired push type to automatic.
 
 ## Run the code
 

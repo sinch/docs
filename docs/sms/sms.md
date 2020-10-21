@@ -4,9 +4,10 @@ excerpt: >-
   This guide will show you how to send and receive SMS with the Sinch API in
   minutes.
 ---
+
 ## Send your first SMS
 
-Learn how to send SMS messages with the Sinch API in a few minutes. In this guide, we  show you how to:
+Learn how to send SMS messages with the Sinch API in a few minutes. In this guide, we show you how to:
 
 1. Create an account and get your free test number (US only)
 2. Send your first SMS
@@ -14,17 +15,16 @@ Learn how to send SMS messages with the Sinch API in a few minutes. In this guid
 ### Sign up for a Sinch account
 
 Before you can send your first SMS, you need a [Sinch
-account](https://dashboard.sinch.com/signup). (If you are in the United States, you also need a [free test phone  number](https://dashboard.sinch.com/numbers/your-numbers/numbers).)
-
+account](https://dashboard.sinch.com/signup). (If you are in the United States, you also need a [free test phone number](https://dashboard.sinch.com/numbers/your-numbers/numbers).)
 
 ![Image of configure number](images\new-number\activateyournumber.png)
 Click on activate
 
-
 ![Image of configure number](images\new-number\select-rest.png)
-To use the number with the rest API select REST and click ***Get Free number***.
+To use the number with the rest API select REST and click **_Get Free number_**.
 
 ### Installing Java helper library
+
 If you want to use java, [install our helper library](doc:sms-java-library)
 
 ### Send SMS
@@ -36,7 +36,7 @@ var options = {
   method: 'POST',
   url: 'https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches',
   headers: {accept: 'application/json', 'content-type': 'application/json',
-      "Authentication: Bearer {your token}"},
+      "Authorization": "Bearer {your token}"},
   body: '{"to":"[{To Number}]","from":"{your free test number}","body":"This is a test message"}'
 };
 
@@ -45,6 +45,7 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 ```
+
 ```java Java
 ApiConnection conn =
         ApiConnection.builder()
@@ -73,8 +74,6 @@ Replace the values `{service_plan_id}`, `{your token}`, `{your free test number}
 To find the From-number, click on the service plan id link and scroll to the bottom of the page.
 
 Change the `{To number}` to your phone number.
-
-That's all that is needed, run your app. When you are using a test number, the body of the message is replaced with sample text. If you want to send any message content [contact](https://dashboard.sinch.com/sms/overview) your account manager.
 
 Read more about the [batches endpoint](https://developers.sinch.com/reference/#sendsms)
 
@@ -109,20 +108,19 @@ Refresh your request bin page to see the request data we send on incoming SMS.
 create a new node app and paste this into app.js
 
 ```javascript
-const url = require('url');
-const http = require('http');
-const server = http.createServer((req, res) =>
-{
-    let data = []
-    req.on('data', chunk => {
-      data.push(chunk)
-    })
-    req.on('end', () => {
-        console.log(JSON.parse(data));
-    })
-    res.end();
-  })
-  server.listen(3000);
+const url = require("url");
+const http = require("http");
+const server = http.createServer((req, res) => {
+  let data = [];
+  req.on("data", (chunk) => {
+    data.push(chunk);
+  });
+  req.on("end", () => {
+    console.log(JSON.parse(data));
+  });
+  res.end();
+});
+server.listen(3000);
 ```
 
 Before you can handle incoming traffic to your local server, you need open up a tunnel to your local server, for that you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`

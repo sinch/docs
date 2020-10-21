@@ -5,6 +5,10 @@ excerpt: >-
   bug fixes.
 ---
 
+<h3>2020-09-30 | SINCH SDK ANDROID 3.17.5</h3>
+  - Add VideoController.setLocalVideoResizeBehaviour() to control local video scaling.
+  - Fix potential crash in logging when receiving weird-looking media streams.
+
 <h3>2020-03-20 | SINCH SDK ANDROID 3.17.4</h3>
   - Fix video-related crash on selected devices that do not expose required HW codecs.
 

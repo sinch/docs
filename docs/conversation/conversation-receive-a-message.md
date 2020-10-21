@@ -7,7 +7,7 @@ next:
     - conversation-send-rich-messages-with-fb-messenger
 hidden: false 
 ---
-In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-with-fb-messsenger), if you like you can use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
+In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger), if you like you can use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
 
 ## Create a simple webhook using Node.js
 
@@ -81,7 +81,7 @@ Now your webhook is setup with the Conversation App.
 ## Start a Conversation
 
 Now that your webhook is setup with the Conversation App and ngrok along with your node app are running and listening to port 3000- it's time to test the webhook.
-For this demo, we will be using Facebook Messenger channel as our example. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please look into [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messsenger) before proceeding.
+For this demo, we will be using Facebook Messenger channel as our example. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please look into [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger) before proceeding.
 
 ![SendingMessage](images/channel-support/messenger/fb_message_firstmsg.png)
 

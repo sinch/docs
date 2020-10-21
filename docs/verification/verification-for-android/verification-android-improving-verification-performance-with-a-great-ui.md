@@ -7,12 +7,16 @@ next:
   pages:
     - verification-android-miscellaneous
 ---
-For better verification performance, it should be straightforward and easy for users to enter their phone phone numbers. To simplify this step and build a UI that accurately captures the correct input from the users, the Sinch SDK provides some utility APIs.
+For better verification performance, it should be straightforward and easy for users to enter their phone phone numbers. To simplify this step and build a UI that accurately captures the correct input from the users, both Android (starting from API level 21) and Sinch SDK provide some utility APIs.
 
 ## PhoneNumberFormattingTextWatcher
 
-The Sinch SDK provides a `PhoneNumberFormattingTextWatcher` class that behaves exactly like the system android version [PhoneNumberFormattingTextWatcher](http://developer.android.com/reference/android/telephony/PhoneNumberFormattingTextWatcher.html), but allows specifying a region other than the system one when using APIs before 21. This watcher can be added as a text changed listener to a text field and will format it automatically if a phone number is entered in local or international format.
+The Android SDK provides a [PhoneNumberFormattingTextWatcher](http://developer.android.com/reference/android/telephony/PhoneNumberFormattingTextWatcher.html). This watcher can be added as a text changed listener to a text field and will format it automatically if a phone number is entered in local or international format.
 
-## Viable phone number check
+## SinchPhoneNumberUtils
 
-The `isPossibleNumber` method in `PhoneNumberUtils` can be used to give the user a hint whether the entered phone number is a viable one in the specified region by for example highlighting the text field with a different color.
+Another convenient helper utility class available in Sinch SDK is `SinchPhoneNumberUtils`. The function `isPossiblePhoneNumber` is especially useful to check phone number typed by the user seems to be correct. If it's not the text field could be highlighted with a different color (red).
+
+> **WARNING: Important**    
+>
+> `isPossiblePhoneNumber` internally uses Android SDK and its [Telephony](https://developer.android.com/reference/android/telephony/package-summary) API. I some rare cases it has been reported that for some numbers it acted as numbers that were actually valid were treated as incorrect. For that reason you should use these APIs only as a hint and do not disable the UI completely even if that function returns _false_.

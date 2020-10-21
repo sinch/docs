@@ -972,7 +972,7 @@ For a parked call (see [Callback API](doc:voice-rest-api-callback-api) on how to
 
 _Example IVR_
 
-    [PATCH] https://calling.api.sinch.com/calling/v1/call/id/4398599d1ba84ef3bde0a82dfb61abed
+    [PATCH] https://calling.api.sinch.com/calling/v1/calls/id/4398599d1ba84ef3bde0a82dfb61abed
     {
       "instructions": [
         {
@@ -990,7 +990,7 @@ _Example IVR_
 
 _Example text-to-speech_
 
-    [PATCH] https://calling.api.sinch.com/calling/v1/call/id/4398599d1ba84ef3bde0a82dfb61abed
+    [PATCH] https://calling.api.sinch.com/calling/v1/calls/id/4398599d1ba84ef3bde0a82dfb61abed
     {
       "instructions": [
         {
@@ -1006,7 +1006,7 @@ _Example text-to-speech_
 
 _Example Start Recording_
 
-    [PATCH] https://calling.api.sinch.com/calling/v1/call/id/4398599d1ba84ef3bde0a82dfb61abed
+    [PATCH] https://calling.api.sinch.com/calling/v1/calls/id/4398599d1ba84ef3bde0a82dfb61abed
     {
       "action": {
         "name": "startRecording",
@@ -1021,7 +1021,7 @@ _Example Start Recording_
 
 _Example Stop Recording_
 
-    [PATCH] https://calling.api.sinch.com/calling/v1/call/id/4398599d1ba84ef3bde0a82dfb61abed
+    [PATCH] https://calling.api.sinch.com/calling/v1/calls/id/4398599d1ba84ef3bde0a82dfb61abed
     {
       "action": {
         "name": "stopRecording"

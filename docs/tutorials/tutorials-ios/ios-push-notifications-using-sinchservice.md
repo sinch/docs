@@ -62,12 +62,12 @@ SinchService can take care of a lot of this setup for you. Since it houses most 
 Getting SinchService up and running is easy. Its initializer looks very similar to the `SINClient` but differs in that we’ll want to do some configuration upfront. Once we’ve set our configuration options, we’ll call the initializer to get our instance of SinchService ready to go:
 
 ```objectivec
-id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>" applicationSecret:@"<YOUR_APP_SECRET>"      environmentHost:@"clientapi.sinch.com"]        pushNotificationsWithEnvironment:SINAPSEnvironmentAutomatic];
+id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>" applicationSecret:@"<YOUR_APP_SECRET>"      environmentHost:@"clientapi.sinch.com"]        pushNotificationsWithEnvironment:SINAPSEnvironmentDevelopment];
 
 id<SINService> sinch = [SinchService serviceWithConfig:config];
 ```
 
-At this point, you’ve already offloaded the work `SINClient` would normally do over to the SinchService instance. Plus, using the `SINAPSEnvironmentAutomatic` macro, we don’t have to worry about accidentally supplying the incorrect device token to the Apple Push Notification Service Environment. It’ll detect whether the environment is debug or production and take the right action automatically.
+At this point, you’ve already offloaded the work `SINClient` would normally do over to the SinchService instance. Using the `SINAPSEnvironmentDevelopment` value we are making sure we supply device token to the Apple Push Notification Service Sandbox Environment. You are responsible for specifying correct APNSEnvironment depending on your build type and distribution. Environment must always match signing identity.
 
 ## SinchService delegate
 
@@ -130,7 +130,7 @@ The `SINManagedPush` object is used to simplify the process of working with push
 Keep in mind that we’ll want to create an instance of `SINManagedPush` as early as possible in the application lifecycle. Normally, that code would look something like this inside `application:DidFinishLaunchingWithOptions`:
 
 ```objectivec
-self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentAutomatic];
+self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentDevelopment];
 self.push.delegate = self;
 [self.push setDesiredPushTypeAutomatically];
 [self.push registerUserNotificationSettings];
@@ -141,7 +141,7 @@ The `SINManagedPush` does quite a bit of work for us. It simplifies the iOS SDK 
 Even so, SinchService makes this even easier. When you initialize SinchService, we saw earlier that you do so with an initial configuration. To refresh your memory, it looked like this:
 
 ```objectivec
-id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>" applicationSecret:@"<YOUR_APP_SECRET>"                                 environmentHost:@"clientapi.sinch.com"]        pushNotificationsWithEnvironment:SINAPSEnvironmentAutomatic];
+id config = [[SinchService configWithApplicationKey:@"<YOUR_APP_KEY>" applicationSecret:@"<YOUR_APP_SECRET>"                                 environmentHost:@"clientapi.sinch.com"]        pushNotificationsWithEnvironment:SINAPSEnvironmentDevelopment];
 ```
 
 By using SinchService , the `SINManagedPush` setup is done and out of the way. All that we need to do is give it the appropriate environment. Since the Sinch API now provides push notification services, you do not need to worry about spinning up a server to handle them. Even better, you can use SinchService to quickly register them.

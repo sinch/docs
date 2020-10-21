@@ -3,69 +3,77 @@ title: The verification process
 excerpt: >-
   The verification process in the Android Verification SDK. It is performed in
   two steps: requesting a verification code and verifying the received code.
-  This can be done through SMS or flash calls. Read more.
+  This can be done through Sms, flashcall, callout and seamlessly.
 next:
   pages:
-    - verification-android-phone-numbers
+    - verification-android-all
 ---
-Verification of a phone number is performed in two steps: requesting a verification code and verifying the received code. If all of the permissions are provided (see [Permissions](#permissions)), the Verification SDK attempts to automatically verify any matching code that is received through SMS or flash call during the verification process. This means that during a flash call verification, the Verification SDK will automatically hang up the incoming call if (and only if) it matches the expected pattern. During an SMS verification, if enabled, any received messages text will be matched against the template, and if it matches, the code will be extracted and automatically sent to the Sinch backend. The Verification SDK will callback to the `VerificationListener` during the process, see [VerificationListener](#verification-listener) for more information.
+Verification of a phone number is performed in two steps: requesting a verification code and verifying the received code.
 
-If the permissions needed for automatic verification are not provided, the `verify` method on the `Verification` object should be invoked with a user-supplied verification code to verify the phone number.
+Depending on chosen verification method, the SDK can automatically verify any matching code (assuming all the required permissions were provided (see [Permissions](#permissions))) or wait for manual code input.
+
+ - SMS Verification - Received text message will be matched against the expected template. If it matches, the code will be extracted and sent to Sinch backend.
+ - Flashcall Verification - Any incoming phone call number will be checked if it matches expected mask. If it does, the full number will be sent to the backend thus passing the verification process. If the process finishes successfully, the call will be hung up automatically.
+ - Callout Verification - No automatic code extraction is possible. SDK expects the code to be passed manually. User can obtain the code by answering the incoming phone call, during which text-to-speech software will speak it out loud.
+ - Seamless Verification - Completely automatic method. Two steps of verification mentioned earlier are unified into one. Sinch uses telephony provider infrastructure to verify the phone number without any user interaction. Because of that, for this method to work, the mobile data should be enabled (in case both WiFi and mobile data are on, SDK will try to force usage of the latter for API calls).
+
+During the process of every verification, SDK will callback first to the `InitiationListener` (with the result of the verification request) and then to the `VerificationListener` (result of specific code verification), see [InitiationListener](#initiation-listener) and [VerificationListener](#verification-listener) for more information.
+
+If the permissions needed for automatic verification are not provided, method does not provide automatic verification or for some other reason automatic code extraction fails the `verify` method on the `Verification` object should be invoked with a user-supplied verification code to verify the phone number.
 
 > **Note**    
 >
-> The SDK will abort verification process and trigger the \`\`onVerificationFailed\`\` callback after a certain time, typically around 20 seconds. However, the SDK will continue to listen for calls for an additional time after the verification has failed, in order to intercept and report any possible late calls.
+> The SDK will abort verification process and trigger the `onVerificationFailed` passing `CodeInterceptionTimeoutException` after a certain time, typically around 20 seconds. However, in case of flashcall the SDK will continue to listen for calls for an additional time after the verification has failed, in order to intercept and report any possible late calls.
 
 ## Permissions
 
-The `android.permission.INTERNET` permission is required for the Verification SDK to work. To handle flash call verification automatically, use `READ_PHONE_STATE`, and `CALL_PHONE`. `CALL_PHONE` is used to automatically hang up the call.
-
-The full list of permissions:
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-<uses-permission android:name="android.permission.CALL_PHONE" />
-```
-
+The `android.permission.INTERNET` permission is required for the Verification SDK to work.
+To handle flash call verification automatically `android.permission.READ_CALL_LOG` is needed.
+In case of seamless method SDK needs `android.permission.CHANGE_NETWORK_STATE` to be able to automatically switch to mobile data for API calls connected with the verification process.
+Additionally, SDK collects phone metadata information connected with sim cards or phone software version, which are then used to handle early verification rejection rules. For this module to be fully functional `android.permission.ACCESS_NETWORK_STATE` and  `android.permission.READ_PHONE_STATE` should be granted. These permissions however are not essential.
 
 ### Permissions handling on API levels 23 or later.
 
-If your application targets API 23 or later the permissions have to be requested at runtime, see [Runtime Permissions](https://developer.android.com/training/permissions/requesting.html).   It is recommended to ask the user for corresponding permissions just before initiating verification. See the sample application for an example.   If the verification SDK fails to intercept the code automatically due to missing permissions, the `onVerificationFailed` callback will be executed with an instance of `CodeInterceptionException`. In this case it is still possible to proceed with verification by asking the user to enter the code manually.
+If your application targets API 23 or later the permissions have to be requested at runtime, see [Runtime Permissions](https://developer.android.com/training/permissions/requesting.html). It is recommended to ask the user for corresponding permissions just before initiating verification. If the verification SDK fails to intercept the code automatically due to missing permissions, the `onVerificationFailed` callback will be executed with an instance of `CodeInterceptionException`. In this case it is still possible to proceed with verification by asking the user to enter the code manually.
 
-## Flash Call Verification
+## Creating a Verification
 
-To initiate a flash call verification, start by creating a `Verification` object through `SinchVerification.createFlashCallVerification`, then start the verification process by invoking `initiate()` on the `Verification` object. This method can be called multiple times, for example if another call should be placed.
+To initiate a verification process a `Verification` object needs to be created. Depending on chosen verification method this can be accomplished by calling method specific builder, passing configuration object instance and optionally initiation and verification listeners.
+
 ```java
-Config config = SinchVerification.config().applicationKey(APPLICATION_KEY).context(getApplicationContext()).build();
-VerificationListener listener = new MyVerificationListener();
-String defaultRegion = PhoneNumberUtils.getDefaultCountryIso();
-String phoneNumberInE164 = PhoneNumberUtils.formatNumberToE164(phoneNumberString, defaultRegion);
-Verification verification = SinchVerification.createFlashCallVerification(config, phoneNumberInE164, listener);
-verification.initiate();
+val verification = SmsVerificationMethod.Builder() //Use FlashcallVerificationMethod for flashcalls, CalloutVerificationMethod for callout etc.
+  .config(/* Method config instance */)
+  .initiationListener(/* Initiation listener instance */)
+  .verificationListener(/* Verification listener instance */)
+  .build()
 ```
 
+[Fluent Builder Pattern](https://dzone.com/articles/fluent-builder-pattern) is used for every object creation so the process should be self explanatory and straightforward.
 
+### Verification configuration objects
 
+Every verification method requires a specific configuration object to be passed during the building process. Similarly to creating a verification this is done by calling config specific builder and passing the arguments requested by the [Fluent Builder Pattern](https://dzone.com/articles/fluent-builder-pattern).
+
+```java
+val configuration = SmsVerificationConfig.Builder()
+  .globalConfig(/* Global config instance */)
+  .number(/* Number to be verified */)
+  // Other optional arguments
+  .build()
+```
+
+### Global Configuration
+Contrary to configurations specified for each verification request, for SDK to work, a single, global verification object needs to be created once and then passed to each verification method configuration. This object is simply a holder for the Android `Context` instance and `AuthorizationMethod` used to authorize the application against Sinch API (currently only `AppKeyAuthorizationMethod` is supported).
+```java
+SinchGlobalConfig.Builder()
+  .applicationContext(this)
+  .authorizationMethod(AppKeyAuthorizationMethod(/*Application Key*/))
+  .build()
+```
 
 > **WARNING: Important**    
 >
-> It is important to pass `ApplicationContext` to the verification config builder, as the verification object might outlive the activity or fragment it is instantiated from.
-
-## SMS Verification
-
-To initiate an SMS verification, start by creating a `Verification` object through `SinchVerification.createSmsVerification`, then start the verification process by invoking `initiate()` on the `Verification` object. This method can be called multiple times, for example, if another SMS should be sent.
-```java
-Config config = SinchVerification.config().applicationKey(APPLICATION_KEY).context(getApplicationContext()).build();
-VerificationListener listener = new MyVerificationListener();
-String defaultRegion = PhoneNumberUtils.getDefaultCountryIso();
-String phoneNumberInE164 = PhoneNumberUtils.formatNumberToE164(phoneNumberString, defaultRegion);
-Verification verification = SinchVerification.createSmsVerification(config, phoneNumberInE164, listener);
-verification.initiate();
-```
-
-
-A `VerificationListener` object must be provided.
+> It is important to pass `ApplicationContext` to the global config builder, as the object might outlive the activity or fragment it is instantiated from.
 
 ### Automatic code extraction from SMS
 
@@ -74,80 +82,57 @@ Due to newly introduced [restrictions for accessing SMS logs](https://support.go
 1.  Calculate application hash from your release key: ``keytool -exportcert -alias KEY_ALIAS -keystore MY_KEY.jks | xxd -p | tr -d "[:space:]" | echo -n MY.APPLICATION.PACKAGE `cat` | sha256sum | tr -d "[:space:]-" | xxd -r -p | base64 | cut -c1-11``
 Example result: `XtNB5qNssI/`
 
-2.  Include generated application hash in SinchVerification config: `Config config = SinchVerification.config() .applicationKey(APPLICATION_KEY) .appHash(APPLICATION_HASH) .context(getApplicationContext()) .build();`
-
-3.  In your project’s `build.gradle`, add dependency for `play-services-auth-api-phone`: `dependencies{ implementation "com.google.android.gms:play-services-auth-api-phone:11.0.0" }`
-    Minimal supported version is `11.0.0`.
+2.  Include generated application hash in SmsVerificationConfig:
+```java
+val smsMethodConfiguration = SmsVerificationConfig.Builder()
+  .globalConfig(/* Global config instance */)
+  .number(/* Number to be verified */)
+  .appHash(/* generated hash */)
+  // Other optional arguments
+  .build()
+```
 
 That’s it\! When this configuration is applied, SDK will be able to automatically parse incoming verification messages across all Android versions without the need of declaring SMS permissions in app’s manifest.
 
-### Set the language of an SMS verification
+### Verification Language
+Although it possible to specify the language that will be used during the verification process, currently only sms method supports this feature. In order to to that, a list of `VerificationLanguage` objects should be passed to the configuration builder.
 
-It is possible to specify the content language for SMS verification. This is specified via a list of [IETF](https://tools.ietf.org/html/rfc3282) language tags in order of priority. If the first language is not available, the next one will be selected and so forth. The default is ‘en-US’. The actual language selected can be retrieved by calling `selectedLanguage()` method of the `InitiationResult` object passed to `onInitiated()` callback. For example:
 ```java
-List<String> languages = new ArrayList();
-languages.add("es-ES");
-Verification verification = SinchVerification.createSmsVerification(config, phoneNumberInE164, null, languages, new VerificationListener() {
-    @Override
-    public void onInitiated(InitiationResult result) {
-        // Verification initiated
-        Log.i("Selected sms language: " + result.selectedLanguage());
-    }
-    ...
-});
+val topPriorityLanguage = VerificationLanguage(language = "pl", region = "PL", weight = 1)
+val secondaryLanguage = VerificationLanguage(language = "es", region = "ES", weight = 0.33)
+val smsMethodConfiguration = SmsVerificationConfig.Builder()
+  .globalConfig(/* Global config instance */)
+  .number(/* Number to be verified */)
+  .appHash(/* generated hash */)
+  .acceptedLanguages(listOf(topPriorityLanguage, secondaryLanguage))
+  // Other optional arguments
+  .build()
 ```
-
-
-
 
 > **Note**    
 >
 > The content language specified can be overridden by carrier provider specific templates, due to compliance and legal requirements, such as [US shortcode requirements (pdf)](https://www.wmcglobal.com/storage/us_resources/ctia-short-code-monitoring-handbook-current-Short-Code-Monitoring-Handbook-v1.7.pdf).
 
+
+See [IETF](https://tools.ietf.org/html/rfc3282) language tags to find all possible values that can be passed as region and language parameters of `VerificationLanguage` constructor. The weight argument should be within range 0 - 1 (lowest to highest priority). To find out what language was actually selected check `contentLanguage` property of `SmsInitiationResponseData` passed to `onInitiated` callback of the initiation listener.
+
+### Initiating the verification process
+
+After creating a verification method object instance simply call it's `initiate` method to start the verification process.
+
+
+## Initiation listener
+
+The `InitiationListener` provides callbacks during the initiation phase of the verification process (requesting the verification code). If initiation is successful, the `onInitiated` callback is triggered passing the method specific initiation data (such as selected verification language, sms template, incoming call mask or verification id).
+If initiated method supports automatic code interception SDK starts the process automatically. Otherwise it waits for manual code input via the `verify` method.
+If initiation fails, the `onInitializationFailed()` callback runs and the exception describing the error is passed.
+
 ## Verification listener
 
-The `VerificationListener` provides callbacks during the verification process. If initiation is successful, the `onInitiated()` callback runs and the verification code interceptor is started automatically. If initiation fails, the `onInitiationError()` callback runs and the exception describing the error is passed. If code verification is successful, the `onVerified()` callback is called. If verification fails, `onVerificationError()` callback runs and the exception describing the error is passed.
-```java
-VerificationListener listener = new VerificationListener() {
-    @Override
-    public void onInitiated(InitiationResult result) {
-        // Verification initiated
-    }
-    @Override
-    public void onInitiationFailed(Exception e) {
-        if (e instanceof InvalidInputException) {
-            // Incorrect number provided
-        } else if (e instanceof ServiceErrorException) {
-            // Verification initiation aborted due to early reject feature,
-            // client callback denial, or some other Sinch service error.
-            // Fallback to other verification method here.
-        } else {
-            // Other system error, such as UnknownHostException in case of network error
-        }
-    }
-    @Override
-    public void onVerified() {
-        // Verification successful
-    }
-    @Override
-    public void onVerificationFailed(Exception e) {
-        if (e instanceof InvalidInputException) {
-            // Incorrect number or code provided
-        } else if (e instanceof CodeInterceptionException) {
-            // Intercepting the verification code automatically failed, input the code manually with verify()
-        } else if (e instanceof IncorrectCodeException) {
-            // The verification code provided was incorrect
-        } else if (e instanceof ServiceErrorException) {
-            // Sinch service error
-        } else {
-            // Other system error, such as UnknownHostException in case of network error
-        }
-    }
-}
-```
+The `VerificationListener` provides callbacks for the second stage of the verification process - checking if passed code is correct. If it is the `onVerified` callback is called. If it is not or some other error occurs `onVerificationFailed` callback runs and the exception describing the error is passed.
 
 
-### Phone numbers
+## Phone numbers
 
 > **WARNING: Important**    
 >
@@ -155,22 +140,23 @@ VerificationListener listener = new VerificationListener() {
 
 ## Validate code manually
 
-To complete the verification of the phone number, the code should be passed to `verify`. For SMS verification, the code is in the message body. For flash calls, the caller id is the code. Example:
+To complete the verification of the phone number manually, the verification code should be passed to `verify` method. Depending on the method the code is:
+1. For SMS verification - number received in the sms message.
+2. For Flashcall - full phone number of the caller.
+3. For Callout - digits spoken by text-to-speech software after answering the call.
+
+Example:
 ```java
 verification.verify(code);
 ```
 
 
-The method `verify` may be invoked multiple times. For example, if the verification listener is invoked with an `IncorrectCodeException`, the application may hint to the user that the code was incorrect, let the user adjust it, and call `verify` again on the same verification instance.
+The method `verify` may be invoked multiple times. For example, if the verification listener is invoked with an incorrect code exception, the application may hint to the user that the code was incorrect, let the user adjust it, and call `verify` again on the same verification instance.
 
-## Early reject.
+## Early reject
 
-If Sinch knows that verification is most likely to fail, an application can be configured to catch this condition and provide means to fallback fast to other verification methods. In this case the verification listener `onInitiationFailed()` callback will be executed with an instance of `ServiceErrorException`. To enable this feature contact us at <dev@sinch.com>
-
-## Network connectivity errors
-
-The Sinch Verification SDK will try to resend HTTP requests to the Sinch backend if a request failed due to a network related error. The SDK schedules a number of retries for approximately 30 seconds. If sending the HTTP request is still unsuccessful, it eventually invokes the verification listener `onInitiationError` or `onVerificationError` with an exception that indicates the problem, for example, `java.net.UnknownHostException`.
+If Sinch knows that verification is most likely to fail, an application can be configured to catch this condition and provide means to fallback fast to other verification methods. In this case the verification listener `onInitializationFailed` callback will be executed with an instance of `ApiCallException`. To enable this feature contact us at <dev@sinch.com>.
 
 ## Pass data to your backend
 
-For each call to `Verification.initiate()`, the Sinch backend can perform a callback to the application backend to allow or disallow an SMS or flashcall being initiated. By using the optional parameter `custom` on `SinchVerification.createFlashCallVerification` and `createSmsVerification`, any unique identifier can be passed from the application to the application backend. The data will be passed as a string. If there is a need for a more complex datatype, it needs to be stringified or encoded before being sent.
+For each call to `Verification.initiate()`, the Sinch backend can perform a callback to the application backend to allow or disallow verification being initiated. By using the optional parameter `custom` on method configuration objects, any unique identifier can be passed from the application to the application backend. The data will be passed as a string. If there is a need for a more complex datatype, it needs to be stringified or encoded before being sent.

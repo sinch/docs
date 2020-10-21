@@ -5,7 +5,7 @@ hidden: false
 next:
  pages:
   - conversation-receive-a-message
-  - conversation-send-a-message-with-fb-messsenger
+  - conversation-send-a-message-with-fb-messenger
 ---
 
 
@@ -23,11 +23,11 @@ If you are missing any of items 1-3 above you should begin by registering online
 
 ### Create a New Conversations App
 
-To create a new Conversations App, simply sign in to your [*Sinch Dashboard account*](https://dashboard.sinch.com) and use the left hand navigation to access Conversations > Apps.
+To create a new Conversations App, simply sign in to your [*Sinch Dashboard account*](https://dashboard.sinch.com) and use the menu on the left to access Conversations > Apps.
 
-![dashboard image](images/channel-support/sms/sinch_conversations_apps.png))
+Click on the *New App* button on the right, "Name" your App, choose an appropriate region for it, and click *Create*.
 
-Click on the *New App* button on the right, "Name" your App and click *Create*.
+![dashboard image](images/channel-support/sms/sinch_conversations_apps.png)
 
 ### Add an SMS Channel to your Conversations App
 
@@ -35,19 +35,25 @@ In your Sinch Dashboard, navigate to Conversations > Apps.  Click on the *"App N
 
 ![app added](images/channel-support/sms/sinch_conversations_apps_added.png)
 
-Under *Channels* click on *"Add Channel"*.  Use the drop down to select *"SMS"*, add your SMS *Service Plan ID* to the *"Sender ID"* field, and your SMS Service Plan *API Token* to the channel and click *"Save"*.
+Under *Set up channels* find SMS channel and click on *"Set Up Channel"*. 
+
+![new sms channel](images/channel-support/sms/sinch_conversations_new_app_add_channels.png)
+
+For setting up the SMS channel you need to choose your SMS *Service Plan ID* from the drop-down and click *"Save"*.
 
 ![new sms channel](images/channel-support/sms/sinch_conversations_new_app_add_sms_channel_form.png)
 
 You have added an SMS Channel to your App.  Just a few more steps to go.
 
+![new sms channel](images/channel-support/sms/sinch_conversations_sms_channel_done.png)
+
 ### Fetch Oauth2 Token needed for authentication
 
-Go to the Access Keys page and create new key by pressing the "New Key" button:
+Go to the Access Keys page under Settings and create new key by pressing the "New Key" button:
 
 ![access keys](images/channel-support/sms/sinch_conversation_access_keys.png)
 
-Be sure to to copy and store in a safe place the Key Secret you will get. You will not be able to retrieve it again once you’ve created the key.
+Be sure to copy and store in a safe place the Key Secret you will get. You will not be able to retrieve it again once you’ve created the key.
 
 Then use the key id and key secret to obtain an access token:
 

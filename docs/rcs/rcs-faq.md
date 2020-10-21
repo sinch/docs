@@ -41,13 +41,6 @@ Please note: the location of some of the UI elements described in the steps belo
 6.  If the Enable chat features toggle is turned off, turn it on by tapping it once.    
 7.  If the Enable chat features toggle is already on, you’re all set!
 
-### Verify your connection
-In this step you will verify your connection to the Google RCS Sandbox Servers:  
-1. Enter ``*xyzzy*``  (make sure to include the asterisks *) into the search field in Google Messages. 
-2. A message will appear stating that the debug menu has been enabled.
-3. Go to Android Messages Settings -> Debug -> RCS -> Report RCS connection state 
-4. A message should appear stating ‘RCS Appears to be Active’
-
 ### Receiving your first test message
 Once your device is configured and you have verified RCS is action, your Sinch account manager will need to make you a tester.
 

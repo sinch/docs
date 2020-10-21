@@ -17,3 +17,7 @@ hidden: false
 | User                 | An end user. |
 | User ID              | Identity of a User in the application domain. |
 | Active Connection    | A socket connection for signaling purposes where incoming calls are received. |
+| FCM|Firebase Cloud Messaging - Google Push Notification Platform|
+| HCM|Huawei Cloud Messaging - Huawei Push Notification Platform|
+| HMS|Huawei Mobile Services|
+| HMS Push|The same as HCM|

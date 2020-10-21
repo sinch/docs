@@ -218,7 +218,7 @@ Then, add the following code to
 id config = [[SinchService configWithApplicationKey:@"application-key"
                                   applicationSecret:@"application-secret"
                                     environmentHost:@"clientapi.sinch.com"]
-             pushNotificationsWithEnvironment:SINAPSEnvironmentAutomatic];
+             pushNotificationsWithEnvironment:SINAPSEnvironmentDevelopment];
 
 id<SINService> sinch = [SinchService serviceWithConfig:config];
 sinch.delegate = self;

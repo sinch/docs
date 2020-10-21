@@ -87,19 +87,19 @@ The REST API returns an HTTP status and code each time a request is made.
 
 The following HTTP status codes are used by the API. Additional codes might be added in the future and if you encounter a code not in this list please consult the [HTTP specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10/) for a definition.
 
-| Status                                    | Description                                                                                                                 |
-|-- -                                       | ---                                                                                                                       --|
-| 200&nbsp;OK                               | The request was successful.                                                                                                 |
-| 201&nbsp;Created                          | The `POST` request was successful and a new resource was created.                                                           |
-| 400&nbsp;Bad&nbsp;Request                 | The request does not conform to the API. The response body should provide more information.                                 |
-| 401&nbsp;Unauthorized                     | Authentication token is invalid for this service plan.                                                                      |
-| 403&nbsp;Forbidden                        | The request syntax is valid but cannot be performed. This could for example be because a referenced resource doesn't exist. |
-| 404&nbsp;Not&nbsp;Found                   | The path is invalid or no resource exists with the given ID.                                                                |
-| 405&nbsp;Method&nbsp;Not&nbsp;Allowed     | The path is valid but not for this method.                                                                                  |
-| 415&nbsp;Unsupported&nbsp;Media&nbsp;Type | The `Content-Type` header is missing or unsupported. Most operations expect `application/json`.                             |
-| 429&nbsp;Too&nbsp;Many&nbsp;Requests      | The user or path has too many outstanding requests.                                                                         |
-| 500&nbsp;Internal&nbsp;Server&nbsp;Error  | An unexpected internal error occurred and the request was not processed.                                                    |
-| 503&nbsp;Service&nbsp;Unavailable         | The service is unable to perform the request at this point. Most likely due to a required subsystem being unavailable.      |
+| Status    | Reason                           | Description                                                                                                                 |
+|-- -       | ---                              | ---                                                                                                                       --|
+| 200       | OK                               | The request was successful.                                                                                                 |
+| 201       | Created                          | The `POST` request was successful and a new resource was created.                                                           |
+| 400       | Bad&nbsp;Request                 | The request does not conform to the API. The response body should provide more information.                                 |
+| 401       | Unauthorized                     | Authentication token is invalid for this service plan.                                                                      |
+| 403       | Forbidden                        | The request syntax is valid but cannot be performed. This could for example be because a referenced resource doesn't exist. |
+| 404       | Not&nbsp;Found                   | The path is invalid or no resource exists with the given ID.                                                                |
+| 405       | Method&nbsp;Not&nbsp;Allowed     | The path is valid but not for this method.                                                                                  |
+| 415       | Unsupported&nbsp;Media&nbsp;Type | The `Content-Type` header is missing or unsupported. Most operations expect `application/json`.                             |
+| 429       | Too&nbsp;Many&nbsp;Requests      | The user or path has too many outstanding requests.                                                                         |
+| 500       | Internal&nbsp;Server&nbsp;Error  | An unexpected internal error occurred and the request was not processed.                                                    |
+| 503       | Service&nbsp;Unavailable         | The service is unable to perform the request at this point. Most likely due to a required subsystem being unavailable.      |
 
 
 ##### HTTP Errors
@@ -115,14 +115,15 @@ Responses with status `400 Bad Request` and `403 Forbidden` will present a JSON 
 
 The following error codes can be returned as values for the `code` field:
 
-| HTTP Status | Code                              | Description                                                                                                         |
-|-- -         | ---                               | ---                                                                                                               --|
-| 400         | `syntax_invalid_json`             | The JSON in the request is invalid or does not conform to the API specification.                                    |
-| 400         | `syntax_invalid_parameter_format` | The format of a field value is invalid. For example if a MSISDN is not correctly formatted.                         |
-| 400         | `syntax_constraint_violation`     | The request body doesn't fulfill all of the constraints set by the API. For example if a required field is missing. |
-| 403         | `unknown_group`                   | A referenced group ID is unknown. This could happen if the ID is invalid or if the group has been deleted.          |
-| 403         | `unknown_campaign`                | The campaign ID does not match the specified originator.                                                            |
-| 403         | `missing_callback_url`            | Callback has been requested but no URL is provided.                                                                 |
+| HTTP Status | Code                                | Description                                                                                                         |
+|-- -         | ---                                 | ---                                                                                                               --|
+| 400         | `syntax_invalid_json`               | The JSON in the request is invalid or does not conform to the API specification.                                    |
+| 400         | `syntax_invalid_parameter_format`   | The format of a field value is invalid. For example if a MSISDN is not correctly formatted.                         |
+| 400         | `syntax_constraint_violation`       | The request body doesn't fulfill all of the constraints set by the API. For example if a required field is missing. |
+| 403         | `unknown_group`                     | A referenced group ID is unknown. This could happen if the ID is invalid or if the group has been deleted.          |
+| 403         | `unknown_campaign`                  | The campaign ID does not match the specified originator.                                                            |
+| 403         | `missing_callback_url`              | Callback has been requested but no URL is provided.                                                                 |
+| 403         | `llegal_number_type`                | Illegal phone number type of MSISDN for a chosen region was used.                                                   |
 
 ## Send SMS Messages
 
@@ -142,7 +143,7 @@ JSON body fields:
 
 |Name                               |Description                                                                                                        |JSON Type         |Default             |Constraints                                                                    |Required                                      |
 |-----------------------------------|-------------------------------------------------------------------------------------------------------------------|:----------------:|--------------------|:-----------------------------------------------------------------------------:|:--------------------------------------------:|
-|to                                 |List of MSISDNs and group IDs that will receive the batch                                                          |   String array   |N/A                 |                               1 to 1000 elements                               |                     Yes                      |
+|to                                 |List of MSISDNs and group IDs that will receive the batch                                                          |   String array   |N/A                 |                               1 to 1000 elements                              |                     Yes                      |
 |from                               |Sender number                                                                                                      |      String      |N/A                 |               Must be valid MSISDN, short code or alphanumeric.               |If Automatic Default Originator not configured|
 |type                               |Identifies the type of batch message                                                                               |      String      |mt_text             |                     Valid types are mt_text and mt_binary                     |                     Yes                      |
 |body                               |The message content. Normal text string for mt_text and Base64 encoded for mt_binary                               |      String      |N/A                 | Max 2000 chars for mt_text and max 140 bytes together with udh for mt_binary  |                     Yes                      |
@@ -157,7 +158,7 @@ JSON body fields:
 |parameters.{parameter_key}         |The name of the parameter that will be replaced in the message body                                                |      String      |N/A                 |    Letters A-Z and a-z, digits 0-9 and .-_ allowed. Max 16 characters long    |                      No                      |
 |parameters.{parameter_key}.{msisdn}|The recipient that should get this value                                                                           |      String      |N/A                 |                            Max 160 characters long                            |                      No                      |
 |parameters.{parameter_key}.default |The fall back value for omitted recipient MSISDNs                                                                  |      String      |None                |                            Max 160 characters long                            |                      No                      |
-|client_reference                   |The client identifier of batch message. If set, it will be added in the delivery report/callback of this batch     |      String      |N/A                 |                            Max 128 characters long                            |                      No                      |
+|client_reference                   |The client identifier of batch message. If set, it will be added in the delivery report/callback of this batch     |      String      |N/A                 |        Max 128 characters long. No personally identifiable information        |                      No                      |
 |max_number_of_message_parts        |Message will be dispatched only if it is not split to more parts than Max Number of Message Parts                  |      String      |N/A                 |                           Must be higher or equal 1                           |                      No                      |
 |feedback_enabled                   |If set to true then [feedback](#send-a-delivery-feedback) is expected after successful delivery.                   |      Boolean     |false               |                            true or false                                      |                      No                      |
 

@@ -35,7 +35,7 @@ _SINManagedPush_ should be created as early as possible in the application’s l
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentAutomatic];
+    self.push = [Sinch managedPushWithAPSEnvironment:SINAPSEnvironmentDevelopment];
     self.push.delegate = self;
 
     [self.push setDesiredPushTypeAutomatically];
@@ -271,7 +271,6 @@ Certificates configured with Sinch can be replaced or renewed by uploading new o
 
 ### Apple Push Service environments and provisioning
 
-When an iOS application is code signed, it is the embedded _Provisioning Profile_ that will specify which _Apple Push Notification Service Environment_ (_APS Environment_) the acquired push notification device token will be bound to. Depending on how an application is provisioned it has an effect on what should be passed to `[Sinch managedPushWithAPSEnvironment:]`. For example if your application is signed with a _Development_ provisioning profile it will be bound to the APS _Development_ environment. If it’s code signed with a _Distribution_ provisioning profile (also referred to as _Universal_) it will be bound
-to the APS _Production_ environment.
+When an iOS application is code signed, it is the embedded _Provisioning Profile_ that will specify which _Apple Push Notification Service Environment_ (_APS Environment_) the acquired push notification device token will be bound to. Depending on how an application is provisioned it has an effect on what should be passed to `[Sinch managedPushWithAPSEnvironment:]`. For example if your application is signed with a _Development_ provisioning profile it will be bound to the APS _Development_ environment. If it’s code signed with a _Distribution_ provisioning profile (also referred to as _Universal_) it will be bound to the APS _Production_ environment.
 
-Typically a _Debug_ build will be code signed with a _Development_ provisioning profile and thus `SINAPSEnvironmentDevelopment` should be used. And typically a _Release_ build will be code signed with a _Distribution_ provisioning profile and thus `SINAPSEnvironmentProduction` should be used. Instead of changing this manually for each build, the macro `SINAPSEnvironmentAutomatic` is available which automatically expands to _Development_ for _Debug_ builds and _Production_ for _Release_ builds.
+Typically a _Debug_ build will be code signed with a _Development_ provisioning profile and thus `SINAPSEnvironmentDevelopment` should be used. And typically a _Release_ build will be code signed with a _Distribution_ provisioning profile and thus `SINAPSEnvironmentProduction` should be used. **You are responsible for selecting proper entitlements depending on your build type and signing profile.**

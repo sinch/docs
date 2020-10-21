@@ -51,7 +51,7 @@ It has the following structure:
 >
 > We recently added support for a EU server. We are currently working to add a production server in Asia, so stay tuned!
 
-The following WhatsApp URLs can be used by the WhatsApp API. We have servers in the US and EU.
+The following WhatsApp URLs can be used by the WhatsApp API. We have servers in the US and the EU. Link related to the region in which the Sender ID has been provisioned should be used. Note, those URLs cannot be used interchangeably.
 
 
 | Server        |  URL                                   |
