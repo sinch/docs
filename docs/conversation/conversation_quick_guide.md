@@ -42,7 +42,9 @@ The callback URL of the underlying channel should be updated to point to the cha
 Conversation API will try to send messages on the channels based on the priority preference you set. If there is no preference set, the API will try the order priority based on the following criteria: 
 
 1. If a conversation with the contact exists: the active channel of the conversation is tried first.
+
 2. The existing channels for the contact, that are ordered by contact channel preferences (if given).
+
 3. Lastly the existing channels for the contact are ordered by the App priority.
 
 You can define the App channel priority by reordering the channels that you have set up.
@@ -75,14 +77,15 @@ You can obtain an Access Token to Conversation API by using your client_id and c
 
 EU region:
 
-```console
+```
 curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
 ```
 
 US region:
 
-```console
+```
 curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
 ```
 
 The access token can be used in conjunction with your project ID to interact with the Conversation API. Read more about possible authentication methods at [**Authentication**](doc:conversation#authentication).
+
