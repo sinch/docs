@@ -3,7 +3,7 @@ title: Send WhatsApp Messages
 excerpt: Send messages via WhatsApp with Sinch WhatsApp API. Get more information here.
 next:
   pages:
-    - whatsapp-group-management
+    - whatsapp-media-provider
 ---
 
 > ⚠️Warning
@@ -45,7 +45,7 @@ JSON object parameters:
 
 | Name    | Description                                                          | JSON Type    | Default    | Constraints           | Required |
 | ------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
-| to      | List of MSISDNs and group IDs                                        | String array | N/A        | 1 to 20 elements      | Yes      |
+| to      | List of MSISDNs                                                      | String array | N/A        | 1 to 20 elements      | Yes      |
 | message | Message object                                                       | Object       | N/A        | Valid Message object  | Yes      |
 | callback| Callback URL to overwrite configured callback URL for status updates | String       | N/A        | Valid URL             | No       |
 
@@ -174,8 +174,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "template",
@@ -210,8 +209,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "template",
@@ -255,8 +253,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "text",
@@ -286,8 +283,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "image",
@@ -317,8 +313,7 @@ JSON object parameters:
 ```json
 {
   "to":[
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message":{
     "type": "video",
@@ -350,8 +345,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "document",
@@ -381,8 +375,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "audio",
@@ -407,8 +400,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "location",
@@ -431,8 +423,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "contacts",
@@ -517,8 +508,7 @@ JSON object parameters:
 ```json
 {
   "to": [
-    "46732001122",
-    "group:447506616260-1565342732"
+    "46732001122"
   ],
   "message": {
     "type": "sticker",

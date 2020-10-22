@@ -11,7 +11,6 @@ next:
     - whatsapp-blacklist-callback
     - whatsapp-callback-store
     - whatsapp-message
-    - whatsapp-group-management
     - whatsapp-media-provider
 ---
 The WhatsApp REST API is designed to be a simple and powerful tool with features as:
@@ -20,6 +19,5 @@ The WhatsApp REST API is designed to be a simple and powerful tool with features
    - Blacklisting of WhatsApp users
    - Sending all WhatsApp message types
    - Receiving all WhatsApp inbound message types
-   - WhatsApp group creation and management
    - Checking the WhatsApp capability of numbers
    - Managing packs of stickers

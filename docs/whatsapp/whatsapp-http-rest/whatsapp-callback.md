@@ -104,7 +104,6 @@ The format is as follows:
 |Name                   | Description                                                                 | JSON Type |
 |---------------------- |---------------------------------------------------------------------------- |-----------|
 |from                   | MSISDN of the user sending the message                                      | String    |
-|in_group               | Identifier of a group if this message is sent to one of your owned groups   | String    |
 |to                     | The identifier of the receiving bot                                         | String    |
 |replying_to            | A context object, present only if the user is replying to a specific thread | Object    |
 |message_id             | Generated message id for the inbound message                                | String    |
@@ -489,65 +488,6 @@ The sticker metadata object has the following parameters:
         "caption":"Fantastic headphones"
       },
       "timestamp": "2020-05-02T15:43:52Z"
-    }
-  ]
-}
-```
-
-**Group event notifications**
-
-|Name       | Description                                                            | JSON Type |
-|-----------|------------------------------------------------------------------------|-----------|
-|type       | Fixed value `group_event`                                              | String    |
-|body       | Message describing the event                                           | String    |
-|members    | MSISDNs of the users involved in the event                             | String    |
-|event_type | Event type                                                             | String    |
-|in_group   | Identifier of the group involved in the notification                   | String    |
-
-The event types can be one of the following:
-
-| Event type                          |
-| ----------------------------------- |
-| `group_created`                     |
-| `group_user_promoted`               |
-| `group_user_demoted`                |
-| `group_user_joined`                 |
-| `group_user_left`                   |
-| `group_subject_changed`             |
-| `group_description_changed`         |
-| `group_icon_changed`                |
-| `group_icon_deleted`                |
-| `group_invite_link_revoked`         |
-| `group_user_changed_number`         |
-| `group_error_fetching_photo`        |
-| `group_error_adding_users`          |
-| `group_error_adding_user`           |
-| `group_error_full_adding_users`     |
-| `group_error_removing_user`         |
-| `group_ended`                       |
-| `group_error_blocked_adding_user`   |
-
-#### Sample user joined a group
-
-```json
-{
-  "type": "whatsapp",
-  "notifications": [
-    {
-      "from": "46732619989",
-      "message_id": "ACELGAWCUJAqFWkiU4IDM3N5cy0xODA1ODI1MDkwMi0xNTY5MjI1MzgyQGcudXMtMTU3MTE0NzMxMjY3Ni1hZGQtMBGGRnMmGZif",
-      "message": {
-        "type": "group_event",
-        "body": "\u200e\u200e+46 73 200 11 22 was added\u200e",
-        "members": [
-          "46732001122"
-        ],
-        "event_type": "group_user_joined",
-        "in_group": "group:18058333222-1569225382"
-      },
-      "timestamp": "2019-10-15T13:48:32Z",
-      "in_group": "group:18058333222-1569225382",
-      "to": "demo1"
     }
   ]
 }
