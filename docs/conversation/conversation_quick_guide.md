@@ -1,5 +1,5 @@
 ---
-title: Quick Guide
+title: Quick Start Guide
 excerpt: >-
   Getting started with a quick guide for Conversation API.
 hidden: false
@@ -13,6 +13,10 @@ Go to the [Apps page](https://dashboard.sinch.com/convapi/apps) to get started o
  
 Once you’ve started to create a new App you are prompted to specify an internal display name as well as in which [**region**](doc:conversation#regions) the App should be stored. 
 
+> 📘 Note
+>
+> Please note that once an App is created it cannot be migrated to another region.
+
 ![New App](images/dashboard/dashboard_new_app.png)
 
 Once a display name is created, and a region is selected, a unique App ID will be generated for you.
@@ -25,9 +29,9 @@ Select the channel you wish to set up. Keep in mind that you need to register ea
 
 ![New Channel](images/dashboard/dashboard_add_channels.png)
 
-Depending on the channel, select your ID/Identity to configure your channel to work with your Conversation API App. Note that you must first set up a Service plan ID/Service ID/Sender Identity at corresponding channel portals.
+Depending on the channel, select your channel sender identity to configure your channel to work with your Conversation API App. Note that you must first set up a Service plan ID/Service ID/Sender Identity at corresponding channel portals.
 
-After choosing your ID/identity, the underlying channel needs to update the callback URL which will automatically overwrite and update any current callback URL setup.
+The callback URL of the underlying channel should be updated to point to the channel adapter of the Conversation API. Note: the callback URL for most channels will be updated automatically which will overwrite the current callback URL.
 
 > 📘 Note
 >
@@ -67,4 +71,18 @@ You can generate an access key under Settings -> Access Keys page by clicking on
 
 A **client_id** and **client_secret** will be provided when creating an Access Key in the portal. The secret is only shown after generation, copy and store it in a safe place. 
 
-A generated access key can be used in conjunction with your project ID to interact with the Conversation API. Read more about possible authentication methods at [**Authentication**](doc:conversation#authentication).
+You can obtain an Access Token to Conversation API by using your client_id and client_secret in the appropriate region:
+
+EU region:
+
+```console
+curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
+```
+
+US region:
+
+```console
+curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
+```
+
+The access token can be used in conjunction with your project ID to interact with the Conversation API. Read more about possible authentication methods at [**Authentication**](doc:conversation#authentication).
