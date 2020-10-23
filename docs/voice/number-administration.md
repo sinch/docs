@@ -7,19 +7,20 @@ next:
   pages:
     - log-in
 ---
+
 This document outlines how to administrate numbers through the same endpoints used by the Sinch dashboard. It has two logical steps:
 
-  - Starting a session:
-      - Logging in
-      - Creating an instance
-      - Retrieving your account’s organisation data
-  - Working with the “number” endpoints.
-      - Listing available numbers
-      - Reserving a quantity of numbers
-      - Checking out the reservation
-      - Listing numbers on the account or attached to an application
-      - Assigning to an application
-      - Unassigning from an application
+- Starting a session:
+  - Logging in
+  - Creating an instance
+  - Retrieving your account’s organisation data
+- Working with the “number” endpoints.
+  - Listing available numbers
+  - Reserving a quantity of numbers
+  - Checking out the reservation
+  - [Listing numbers on the account or attached to an application](doc:voice-rest-api-calling-api#get-numbers)
+  - [Assigning to an application](doc:voice-rest-api-calling-api#update-numbers)
+  - [Unassigning from an application](doc:voice-rest-api-calling-api#un-assign-number)
 
 For general information on how to use the Sinch APIs including methods, types, errors and authorization, please check the [Using REST](doc:using-rest) page.
 
@@ -62,9 +63,10 @@ When logging in, you should always pass in the header the “number administrati
         string - password
 
     eg:
+
 ```json
 {
-    "password":"YOUR_ACCOUNT_PASSWORD"
+  "password": "YOUR_ACCOUNT_PASSWORD"
 }
 ```
 
@@ -74,32 +76,33 @@ When logging in, you should always pass in the header the “number administrati
     User   - user
 
     eg:
+
 ```json
 {
-   "authorization":"eyJhcHBsaWNhdGlvbktleSI6IllPVVJfQVBQTElDQVRJT05fS0VZIiwiaWRlbnRpdHkiOnsidHlwZSI6ImVtYWlsIiwiZW5kcG9pbnQiOiJhZGRyZXNzQGV4YW1wbGUuY29tIn0sImNyZWF0ZWQiOiIyMDE1LTA2LTI0VDA4OjMyOjMyLjk0MTc2MDVaIn0=:Uc3UQ6tnextCCXiuieizBGNf16SDKFGFWMpu6LKbOwA=",
-   "user":{
-      "id":123456789,
-      "identities":[
-         {
-            "type":"email",
-            "endpoint":"address@example.com"
-         },
-         {
-            "type":"number",
-            "endpoint":"+12055500000"
-         }
-      ],
-      "profile":{
-         "name":{
-            "first":"Jane",
-            "last":"Bloggs",
-            "full":"Jane Bloggs"
-         },
-         "contact":{
-            "email":"address@example.com"
-         }
+  "authorization": "eyJhcHBsaWNhdGlvbktleSI6IllPVVJfQVBQTElDQVRJT05fS0VZIiwiaWRlbnRpdHkiOnsidHlwZSI6ImVtYWlsIiwiZW5kcG9pbnQiOiJhZGRyZXNzQGV4YW1wbGUuY29tIn0sImNyZWF0ZWQiOiIyMDE1LTA2LTI0VDA4OjMyOjMyLjk0MTc2MDVaIn0=:Uc3UQ6tnextCCXiuieizBGNf16SDKFGFWMpu6LKbOwA=",
+  "user": {
+    "id": 123456789,
+    "identities": [
+      {
+        "type": "email",
+        "endpoint": "address@example.com"
+      },
+      {
+        "type": "number",
+        "endpoint": "+12055500000"
       }
-   }
+    ],
+    "profile": {
+      "name": {
+        "first": "Jane",
+        "last": "Bloggs",
+        "full": "Jane Bloggs"
+      },
+      "contact": {
+        "email": "address@example.com"
+      }
+    }
+  }
 }
 ```
 
@@ -127,24 +130,24 @@ This is a protected resource and requires a [user signed request](doc:using-rest
     URL:
     https://api.sinch.com/v1/instance
 
-
 [body]
-    string   - authorization
-    Version  - version
+string - authorization
+Version - version
 
 [Version]
-    string - os
-    string - platform
+string - os
+string - platform
 
 eg:
+
 ```json
 {
-   "authorization":"eyJhcHBsaWNhdGlvbktleSI6IllPVVJfQVBQTElDQVRJT05fS0VZIiwiaWRlbnRpdHkiOnsidHlwZSI6ImVtYWlsIiwiZW5kcG9pbnQiOiJhZGRyZXNzQGV4YW1wbGUuY29tIn0sImNyZWF0ZWQiOiIyMDE1LTA2LTI0VDA4OjMyOjMyLjk0MTc2MDVaIn0=:Uc3UQ6tnextCCXiuieizBGNf16SDKFGFWMpu6LKbOwA=",
-   "version":{
-      "os":"{os}",
-      "platform":"{platform}"
-   }
-}  
+  "authorization": "eyJhcHBsaWNhdGlvbktleSI6IllPVVJfQVBQTElDQVRJT05fS0VZIiwiaWRlbnRpdHkiOnsidHlwZSI6ImVtYWlsIiwiZW5kcG9pbnQiOiJhZGRyZXNzQGV4YW1wbGUuY29tIn0sImNyZWF0ZWQiOiIyMDE1LTA2LTI0VDA4OjMyOjMyLjk0MTc2MDVaIn0=:Uc3UQ6tnextCCXiuieizBGNf16SDKFGFWMpu6LKbOwA=",
+  "version": {
+    "os": "{os}",
+    "platform": "{platform}"
+  }
+}
 ```
 
 > **Note**
@@ -162,9 +165,9 @@ eg:
 
 ```json
 {
-   "id":"00a3ffb1-0808-4dd4-9c7d-e4383d82e445",
-   "secret":"bRo76GRddEyetgJDTgkLHA==",
-   "expiresIn":172800
+  "id": "00a3ffb1-0808-4dd4-9c7d-e4383d82e445",
+  "secret": "bRo76GRddEyetgJDTgkLHA==",
+  "expiresIn": 172800
 }
 ```
 
@@ -253,9 +256,7 @@ This is a protected resource and requires an [instance signed request](doc:using
     eg:
 
 ```json
-    {
-
-    }
+{}
 ```
 
 ### Response
@@ -274,50 +275,51 @@ This is a protected resource and requires an [instance signed request](doc:using
         string[] - capabilities
 
     eg:
+
 ```json
 [
-   {
-      "groupId":1,
-      "country":"France",
-      "countryId":"FR",
-      "city":"PARIS",
-      "type":"Voice",
-      "availability":7,
-      "areaCode":"01",
-      "cost":{
-            "amount":2.00,
-            "currencyId":"USD"
-      },
-      "capabilities":["voice"]
-   },
-   {
-      "groupId":2,
-      "country":"UK",
-      "countryId":"GB",
-      "city":"LONDON",
-      "type":"Voice",
-      "availability":2,
-      "areaCode":"020",
-      "cost":{
-            "amount":2.00,
-            "currencyId":"USD"
-      },
-      "capabilities":["voice"]
-   },
-   {
-      "groupId":75,
-      "country":"US",
-      "countryId":"US",
-      "city":"New Orleans",
-      "type":"Sms",
-      "availability":5,
-      "areaCode":"504",
-      "cost":{
-            "amount":2.00,
-            "currencyId":"USD"
-      },
-      "capabilities":["sms"]
-   }
+  {
+    "groupId": 1,
+    "country": "France",
+    "countryId": "FR",
+    "city": "PARIS",
+    "type": "Voice",
+    "availability": 7,
+    "areaCode": "01",
+    "cost": {
+      "amount": 2.0,
+      "currencyId": "USD"
+    },
+    "capabilities": ["voice"]
+  },
+  {
+    "groupId": 2,
+    "country": "UK",
+    "countryId": "GB",
+    "city": "LONDON",
+    "type": "Voice",
+    "availability": 2,
+    "areaCode": "020",
+    "cost": {
+      "amount": 2.0,
+      "currencyId": "USD"
+    },
+    "capabilities": ["voice"]
+  },
+  {
+    "groupId": 75,
+    "country": "US",
+    "countryId": "US",
+    "city": "New Orleans",
+    "type": "Sms",
+    "availability": 5,
+    "areaCode": "504",
+    "cost": {
+      "amount": 2.0,
+      "currencyId": "USD"
+    },
+    "capabilities": ["sms"]
+  }
 ]
 ```
 
@@ -364,11 +366,12 @@ This is a protected resource and requires an [instance signed request](doc:using
 
 ```json
 {
-    "groupId":13,
-    "quantity":1,
-    "capabilities":["voice","sms"]
+  "groupId": 13,
+  "quantity": 1,
+  "capabilities": ["voice", "sms"]
 }
 ```
+
 ### Response
 
     string - referenceId
@@ -377,7 +380,7 @@ This is a protected resource and requires an [instance signed request](doc:using
 
 ```json
 {
-    "referenceId":"c8b27491-3379-44f3-af31-fbbfbb2ba510"
+  "referenceId": "c8b27491-3379-44f3-af31-fbbfbb2ba510"
 }
 ```
 
@@ -422,9 +425,10 @@ This is a protected resource and requires an [instance signed request](doc:using
         string[] - referenceIds
 
     eg:
+
 ```json
 {
-    "referenceIds":["c8b27491-3379-44f3-af31-fbbfbb2ba510"]
+  "referenceIds": ["c8b27491-3379-44f3-af31-fbbfbb2ba510"]
 }
 ```
 
@@ -491,36 +495,38 @@ This is a protected resource and requires an [instance signed request](doc:using
         Money    - cost
 
     eg:
+
 ```json
 [
-    {
-        "number" : 14150005550,
-        "groupId" : 13,
-        "capabilities" : ["voice"],
-        "countryId" : "US",
-        "city" : "SAN FRANCISCO",
-        "country" : "US",
-        "areaCode" : "415",
-        "expires" : "2015-12-31T23:59:59+00:00",
-        "cost":{
-            "amount":0.00,
-            "currencyId":"USD"
-        }
-    }, {
-        "number" : 14150005551,
-        "groupId" : 13,
-        "capabilities" : ["voice"],
-        "applicationKey" : "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
-        "countryId" : "US",
-        "city" : "SAN FRANCISCO",
-        "country" : "US",
-        "areaCode" : "415",
-        "expires" : "2015-12-31T23:59:59+00:00",
-        "cost":{
-            "amount":0.00,
-            "currencyId":"USD"
-        }
+  {
+    "number": 14150005550,
+    "groupId": 13,
+    "capabilities": ["voice"],
+    "countryId": "US",
+    "city": "SAN FRANCISCO",
+    "country": "US",
+    "areaCode": "415",
+    "expires": "2015-12-31T23:59:59+00:00",
+    "cost": {
+      "amount": 0.0,
+      "currencyId": "USD"
     }
+  },
+  {
+    "number": 14150005551,
+    "groupId": 13,
+    "capabilities": ["voice"],
+    "applicationKey": "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
+    "countryId": "US",
+    "city": "SAN FRANCISCO",
+    "country": "US",
+    "areaCode": "415",
+    "expires": "2015-12-31T23:59:59+00:00",
+    "cost": {
+      "amount": 0.0,
+      "currencyId": "USD"
+    }
+  }
 ]
 ```
 
@@ -582,25 +588,27 @@ This is a protected resource and requires an [instance signed request](doc:using
         Money    - cost
 
     eg:
+
 ```json
 [
-    {
-        "number" : 14150005551,
-        "groupId" : 13,
-        "capabilities" : ["voice"],
-        "applicationKey" : "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
-        "countryId" : "US",
-        "city" : "SAN FRANCISCO",
-        "country" : "US",
-        "areaCode" : "415",
-        "expires" : "2015-12-31T23:59:59+00:00",
-        "cost":{
-            "amount":0.00,
-            "currencyId":"USD"
-        }
+  {
+    "number": 14150005551,
+    "groupId": 13,
+    "capabilities": ["voice"],
+    "applicationKey": "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
+    "countryId": "US",
+    "city": "SAN FRANCISCO",
+    "country": "US",
+    "areaCode": "415",
+    "expires": "2015-12-31T23:59:59+00:00",
+    "cost": {
+      "amount": 0.0,
+      "currencyId": "USD"
     }
+  }
 ]
 ```
+
 The “capabilities” can either be “voice” or “sms”.
 
 ### Error Codes
@@ -609,7 +617,6 @@ The “capabilities” can either be “voice” or “sms”.
         InvalidScheme (40301)       - The authorization scheme 'instance' is required.
         ResourceNotFound (40400)    - Application with the key {KEY_HERE} was not found.
         TemporaryDown (50300)       - Service is temporarily unavailable, please try again later.
-
 
 ---
 
@@ -673,39 +680,42 @@ This is a protected resource and requires an [instance signed request](doc:using
         Money    - cost
 
     eg:
+
 ```json
 [
-    {
-        "number" : 14150005550,
-        "groupId" : 13,
-        "capabilities" : ["voice"],
-        "applicationKey" : "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
-        "countryId" : "US",
-        "city" : "SAN FRANCISCO",
-        "country" : "US",
-        "areaCode" : "415",
-        "expires" : "2015-12-31T23:59:59+00:00",
-        "cost":{
-            "amount":0.00,
-            "currencyId":"USD"
-        }
-    }, {
-        "number" : 14150005551,
-        "groupId" : 13,
-        "capabilities" : ["voice"],
-        "applicationKey" : "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
-        "countryId" : "US",
-        "city" : "SAN FRANCISCO",
-        "country" : "US",
-        "areaCode" : "415",
-        "expires" : "2015-12-31T23:59:59+00:00",
-        "cost":{
-            "amount":0.00,
-            "currencyId":"USD"
-        }
+  {
+    "number": 14150005550,
+    "groupId": 13,
+    "capabilities": ["voice"],
+    "applicationKey": "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
+    "countryId": "US",
+    "city": "SAN FRANCISCO",
+    "country": "US",
+    "areaCode": "415",
+    "expires": "2015-12-31T23:59:59+00:00",
+    "cost": {
+      "amount": 0.0,
+      "currencyId": "USD"
     }
+  },
+  {
+    "number": 14150005551,
+    "groupId": 13,
+    "capabilities": ["voice"],
+    "applicationKey": "bb7b4e39-4227-4913-8c81-2db4abb54fb3",
+    "countryId": "US",
+    "city": "SAN FRANCISCO",
+    "country": "US",
+    "areaCode": "415",
+    "expires": "2015-12-31T23:59:59+00:00",
+    "cost": {
+      "amount": 0.0,
+      "currencyId": "USD"
+    }
+  }
 ]
 ```
+
 ### Error Codes
 
     [Error Codes]
