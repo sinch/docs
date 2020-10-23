@@ -45,7 +45,7 @@ next:
         40400 - Unable to get user
         50000 - Internal error
 
-### Get Numbers
+## Get Numbers
 
 **[GET] /configuration/numbers/**
 
