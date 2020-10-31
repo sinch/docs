@@ -1,36 +1,39 @@
 ---
-title: Handle incoming messages 
+title: Handle incoming messages
 excerpt: |
-  This guide you will learn how to handle incoming messages. 
+  This guide you will learn how to handle incoming messages.
 next:
   pages:
     - conversation-send-rich-messages-with-fb-messenger
-hidden: false 
+hidden: false
 ---
+
 In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger), if you like you can use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
 
 ## Create a simple webhook using Node.js
 
 First create a new node app and then run the following on the command line to create the needed dependency.
 
-`npm install express body-parser --save` This will install the [Express](https://www.npmjs.com/package/express) http server framework module. 
+**Note**: You would need to use the right region api endpoint where your Conversation App resides. In this tutorial, we assume our app resides in EU region.
+
+`npm install express body-parser --save` This will install the [Express](https://www.npmjs.com/package/express) http server framework module.
 
 Now add the following code to your index.js
 
 ```javascript
 const express = require("express"),
-      bodyParser = require("body-parser"),
-      app = express().use(bodyParser.json());
-      port = 3000;
+  bodyParser = require("body-parser"),
+  app = express().use(bodyParser.json());
+port = 3000;
 
 app.post("/webhook", (req, res) => {
-     let body = req.body;
-     let {
-     message: {
-       contact_message: {
-         text_message: { text },
-       },
-     },
+  let body = req.body;
+  let {
+    message: {
+      contact_message: {
+        text_message: { text },
+      },
+    },
   } = body;
   console.log(text);
   res.sendStatus(200);
@@ -38,6 +41,7 @@ app.post("/webhook", (req, res) => {
 
 app.listen(port, () => console.log(`Listening to ${port}..`));
 ```
+
 This code will allow you to listen for incoming messages and will parse out the text message content.
 If you want to see the payload not parsed, add `console.log(JSON.stringify(body, null, 2));`
 
@@ -47,21 +51,20 @@ The Node app and Ngrok should be running at the same time at port 3000.
 
 ![ngrok screenshot](https://i.imgur.com/HHpIHIp.png)
 
-
 ## Configure a webhook
 
 Go to your Conversation App dashboard and select
 `Conversations` on the left side menu.
 
- Then select `Apps` from the drop-down menu and select the App you want to add a webhook too. 
+Then select `Apps` from the drop-down menu and select the App you want to add a webhook too.
 
- ![LeftMenu](images/dashboard/dashboard_leftMenu.jpg)
+![LeftMenu](images/dashboard/dashboard_leftMenu.jpg)
 
- For this example, I will be using **Test** as my app.
+For this example, I will be using **Test** as my app.
 
- Once you have selected your App, scroll down to **Webhook** section and select the **Add Webhook** button. There will be a pop-up with empty required fields.
+Once you have selected your App, scroll down to **Webhook** section and select the **Add Webhook** button. There will be a pop-up with empty required fields.
 
- ![Webhook](images/dashboard/dashboard_configPage.jpg)
+![Webhook](images/dashboard/dashboard_configPage.jpg)
 
 Fill in the following:
 
@@ -69,8 +72,7 @@ Select **Target Type** to HTTP
 
 Select **Target URL** as your ngrok url
 
-Select `MESSAGE_INBOUND` as **Trigger**
-
+Select `MESSAGE_INBOUND`, `MESSAGE_DELIVERY`, `EVENT_DELIVERY`, `MESSAGE_INBOUND`, `EVENT_INBOUND`, `CONVERSATION_START`, `CONVERSATION_STOP`, `UNSUPPORTED` as **Trigger**
 
 ![WebhookPopup](images/dashboard/dashboard_webhookPopup.png)
 
@@ -95,27 +97,26 @@ if you did everything correctly, you will receive a `status 200 OK` on ngrok and
 
 Copy the following code on top of your current webhook and then re-run your node application.
 
-```javascript 
-const express = require('express');
-const request = require('request-promise');
-const bodyParser = require('body-parser');
+```javascript
+const express = require("express");
+const request = require("request-promise");
+const bodyParser = require("body-parser");
 app = express().use(bodyParser.json());
 port = 3000;
 
-const APP_ID = 'APP_ID_HERE',
-      PROJECT_ID = 'PROJECT_ID_HERE',
-      client_id = 'CLIENT_ID_HERE',
-      client_secret = 'CLIENT_SECRET_HERE';
+const APP_ID = "APP_ID_HERE",
+  PROJECT_ID = "PROJECT_ID_HERE",
+  client_id = "CLIENT_ID_HERE",
+  client_secret = "CLIENT_SECRET_HERE";
 
-  /* Please note that client id and secret are essentially equivalent to a username and password. This code is for example purposes and is not meant for production.*/
-
+/* Please note that client id and secret are essentially equivalent to a username and password. This code is for example purposes and is not meant for production.*/
 
 const getAuthToken = () => {
   return request({
-    url: 'https://auth.sinch.com/oauth2/token',
-    method: 'POST',
+    url: "https://eu.auth.sinch.com/oauth2/token",
+    method: "POST",
     auth: { user: client_id, pass: client_secret },
-    form: { grant_type: 'client_credentials' },
+    form: { grant_type: "client_credentials" },
     json: true,
   });
 };
@@ -126,9 +127,9 @@ const sendMessage = async (contact_id, text) => {
   const token = res.access_token;
   return request({
     url: `https://eu.conversation.api.sinch.com/v1beta/projects/${PROJECT_ID}/messages:send`,
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json text/plain',
+      "Content-Type": "application/json text/plain",
       Authorization: `${token_type} ${token}`,
     },
     body: {
@@ -141,32 +142,33 @@ const sendMessage = async (contact_id, text) => {
           text,
         },
       },
-      channel_priority_order: ['MESSENGER'],
+      channel_priority_order: ["MESSENGER"],
     },
     json: true,
   });
 };
 
-app.post('/webhook', (req, res) => {
+app.post("/webhook", (req, res) => {
   let body = req.body;
   let {
     message: {
       contact_message: {
         text_message: { text },
       },
+      contact_id,
     },
   } = body;
   if (text) {
-    sendMessage('Contact_ID', 'Hello World').then((res) => console.log(res));
+    sendMessage(contact_id, "Hello World").then((res) => console.log(res));
   }
   console.log(`MESSAGE RECEIVED: ${text}`);
   res.sendStatus(200);
 });
 
 app.listen(port, () => console.log(`Listening to ${port}..`));
-
 ```
-if everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and  `accepted time`
+
+if everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and `accepted time`
 
 ![Received](images/channel-support/messenger/fb_message_replied.png)
 
