@@ -233,6 +233,7 @@ SMPP message states and their meanings are listed here for your convenience:
 | UNDELIV | Message is undelivered              |
 | UNKNOWN | Message is in unknown state         |
 | REJECTD | Message is in rejected state        |
+| ENROUTE  | Message is in ENROUTE state        |
 
 Please note some SMSCs will still return a delivery receipt when a message has been accepted or if the message is buffered in the SMSC, for example if the handset is switched off. This will use the UNKNOWN state and sets the buffered special parameter in the deliver\_sm under SMPP 3.4
 
