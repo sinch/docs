@@ -47,17 +47,17 @@ Sinch delivers messages from end users to your platform by supplying the MMS as 
 
 |   **Element**  |     *Description**                                                                                                                                                                     |                                       |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| TransactionID  | It is a Sinch generated transaction ID.Identifies the DeliverReq/DeliverRsp pair.                                                                                                      | Always                                |
+| TransactionID  | It is a Sinch generated transaction ID. Identifies the DeliverReq/DeliverRsp pair.                                                                                                      | Always                                |
 | DeliverReq     | Identifies the message as an MM7 deliver request.                                                                                                                                      | Always                                |
-| MM7Version     | Identifies the MM7 Version.(Supported versions are ver-5.3.0 and ver-6.8.0)                                                                                                            | Always                                |
-| Sender         | The mobile phone number of the end user. This must be a valid mobile,number in international format without a leading + symbol; for <example:,12515550123> (US) and 447700900750 (UK). | Always                                |
+| MM7Version     | Identifies the MM7 Version. (Supported versions are ver-5.3.0 and ver-6.8.0)                                                                                                            | Always                                |
+| Sender         | The mobile phone number of the end user. This must be a valid mobile number in international format without a leading + symbol; for <example:12515550123> (US) and 447700900750 (UK). | Always                                |
 | Recipients     | The address of the message recipients i.e., Shortcode/Longcode                                                                                                                         | Always                                |
 | LinkedID       | Identifier for the MO message. This is a Sinch generated ID.                                                                                                                           | Always                                |
 | TimeStamp      | The date and time of the submission of the MO message. This value is in UTC.                                                                                                           | Always                                |
 | Priority       | The priority (importance) of the message. Possible values: High, Normal, Low                                                                                                           | Only when provided by mobile operator |
 | Subject        | Title of the whole multimedia message.                                                                                                                                                 | Only when provided by mobile operator |
-| Content        | A reference to the content of the MM7 message. Contains an “href:cid”,attribute that links to the content ID of the first attachment in the,MM7 message.                               | Only when provided by mobile operator |
-| UACapabilities | Information about the capabilities of the MMS user agent that originated,the multimedia message. In this context, the associated timestamp is,not populated.                           | Only when provided by mobile operator |
+| Content        | A reference to the content of the MM7 message. Contains an “href:cid” attribute that links to the content ID of the first attachment in the MM7 message.                               | Only when provided by mobile operator |
+| UACapabilities | Information about the capabilities of the MMS user agent that originated,the multimedia message. In this context, the associated timestamp is not populated.                           | Only when provided by mobile operator |
 
 See unsupported elements: `unsupported_MM7_SOAP_Elements_Deliver`
 
