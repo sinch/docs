@@ -67,7 +67,7 @@ Your available host options will be visible in the Customer Account Details docu
 |%i          |the message identity.|
 |%I          |the user provided identity for this message, i.e. the id provided via ‘id’ parameter in sendsms request|
 |%e          |the error code of the SMS delivery|
-|%s          |the status of the SMS delivery. Following statuses can be returned:  UNDELIV  DELIVRD  ENROUTE  DELETED  UNKNOWN|
+|%s          |the status of the SMS delivery. Following statuses can be returned:  UNDELIV  DELIVRD  ENROUTE  DELETED EXPIRED UNKNOWN |
 |%u          |the done date, formatted as as “YYYY-MM-DD HH:MM”, e.g., “1999- 09-21 14:18”|
 |%U          |the done date, in UNIX epoch timestamp format|
 |%m          |the MCC + MNC of the receiver for the SMS message|
