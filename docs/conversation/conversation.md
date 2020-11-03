@@ -49,8 +49,7 @@ A **retention policy** is defined by the following properties:
 | Field           | Description                                                                                          |
 | --------------- | ---------------------------------------------------------------------------------------------------- |
 | Retention Policy Type             | The available options are MESSAGE_EXPIRE_POLICY, CONVERSATION_EXPIRE_POLICY, and PERSIST_RETENTION_POLICY. The default is MESSAGE_EXPIRE_POLICY.                                      |
-| TTL days                        | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the
-default value is 180.               |
+| TTL days                        | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the default value is 180.               |
 
 The MESSAGE_EXPIRE_POLICY policy option will remove all messages, sent or received by the **app**, older than the TTL days specified in the policy.
 The CONVERSATION_EXPIRE_POLICY policy option only takes the last message, in a [**conversation**](doc:conversation#conversation), into consideration when deciding if a [**conversation**](doc:conversation#conversation) should
