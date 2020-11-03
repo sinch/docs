@@ -38,10 +38,25 @@ An **app** has the following configurable properties:
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Display name                      | The name visible in [Sinch Portal](https://dashboard.sinch.com/convapi/apps)                                                       |
 | Conversation metadata report view | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that will be returned as part of each callback. |
-| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an app, should be stored by the Conversation API             |
+| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an **app**, should be stored by the Conversation API             |
 
 ##### Retention policy
-TBA
+Each **App** have a retention policy that specifies for how long messages, sent to or from the **App**,  should be stored.
+The **retention policy** can be changed, programmatically, via the API by updating the corresponding **app**, or via the
+[Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**.
+A **retention policy** is defined by the following properties:
+
+| Field           | Description                                                                                          |
+| --------------- | ---------------------------------------------------------------------------------------------------- |
+| Retention Policy Type             | The available options are MESSAGE_EXPIRE_POLICY, CONVERSATION_EXPIRE_POLICY, and PERSIST_RETENTION_POLICY. The default is MESSAGE_EXPIRE_POLICY.                                      |
+| TTL days                        | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the
+default value is 180.               |
+
+The MESSAGE_EXPIRE_POLICY policy option will remove all messages, sent or received by the **app**, older than the TTL days specified in the policy.
+The CONVERSATION_EXPIRE_POLICY policy option only takes the last message, in a [**conversation**](doc:conversation#conversation), into consideration when deciding if a [**conversation**](doc:conversation#conversation) should
+be removed or not. The entire [**conversation**](doc:conversation#conversation) will be removed if the last message is older than the TTL days specified in the policy. The entire [**conversation**](doc:conversation#conversation)
+will be kept otherwise. The PERSIST_RETENTION_POLICY option persists all messages, and [**conversations**](doc:conversation#conversation) until they are explicitly deleted. Note that this option
+will be subject to additional charges in the future.
 
 #### Channel credential
 
