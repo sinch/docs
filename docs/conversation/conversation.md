@@ -38,6 +38,10 @@ An **app** has the following configurable properties:
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Display name                      | The name visible in [Sinch Portal](https://dashboard.sinch.com/convapi/apps)                                                       |
 | Conversation metadata report view | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that will be returned as part of each callback. |
+| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an app, should be stored by the Conversation API             |
+
+##### Retention policy
+TBA
 
 #### Channel credential
 
