@@ -730,6 +730,7 @@ The batch ID is not known to the system or the recipient is not a target of this
 Send a feedback if your system can confirm successful message delivery. 
 Feedback can only be provided if `feedback_enabled` was set when batch was submitted. 
 It is possible to submit feedback multiple times for the same batch for different recipients.
+Feedback without specified recipients is treated as successful message delivery to all recipients referenced in the batch.
 
 #### Request
 
@@ -737,9 +738,9 @@ It is possible to submit feedback multiple times for the same batch for differen
 
 JSON body fields:
 
-|Name        |Description                                              |JSON Type         |Default  |Constraints                                     |Required   |
-|------------|---------------------------------------------------------|:----------------:|---------|:----------------------------------------------:|:---------:|
-|recipients  |List of MSISDNs that successfully received the message   |   String array   |N/A      |    Elements must be MSISDNs. Min 1 element.    |    Yes    |
+|Name        |Description                                              |JSON Type         |Default                                  |Constraints                                     |Required   |
+|------------|---------------------------------------------------------|:----------------:|-----------------------------------------|:-------------------------------:|:---------:|
+|recipients  |List of MSISDNs that successfully received the message   |   String array   | All recipients referenced in the batch  |    Elements must be MSISDNs.    |    No    |
 
 **Notify about successful delivery to two recipients**
 ```shell
