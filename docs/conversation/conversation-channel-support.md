@@ -16,8 +16,8 @@ The page cannot initiate the conversation; it must be started by a contact. To c
 Facebook Page and connect it to Conversation API **app**, follow the instructions below:
 
 - Go to <https://developers.facebook.com/> and log in with your personal/developer account.
-- Click on **My Apps** on the top right corner and select **Create App**.
-- Fill in the display name for your app and contact Email, then click the **Create App ID** button.
+- Click on **My Apps** on the top right corner and select Pages App and click **Create App**.
+- Fill in the display name for your app and contact Email, then click the **Create App** button.
 - Once the app is created, you will see a dashboard with various products that you may add to your app.
   Click **Set Up** button inside a box with **Messenger** title.
 - Scroll down to the **Access Tokens** section, and click the **Create New Page** button.

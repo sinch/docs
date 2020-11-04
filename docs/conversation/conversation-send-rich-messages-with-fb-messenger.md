@@ -7,6 +7,8 @@ hidden: false
 
 ## Sending Media Message <span class="betabadge">Beta</span>
 
+Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation_quick_guide#5-project-id-and-access-keys) to obtain your AccessToken
+
 ```shell Curl
 curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/projects/{project_id}/messages:send' \
 -H 'Content-Type: application/json' \
@@ -64,16 +66,6 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
                         "title": "Call Choice Message:Q",
                         "phone_number": "46732000000"
                     }
-                },
-                {
-                    "location_message": {
-                        "title": "Location Choice Message",
-                        "label": "Enriching Engagement",
-                        "coordinates": {
-                            "latitude": 55.610479,
-                            "longitude": 13.002873
-                        }
-                    }
                 }
             ]
         }
@@ -120,16 +112,6 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
                     "call_message": {
                         "title": "Call Choice Message:Q",
                         "phone_number": "46732000000"
-                    }
-                },
-                {
-                    "location_message": {
-                        "title": "Location Choice Message",
-                        "label": "Enriching Engagement",
-                        "coordinates": {
-                            "latitude": 55.610479,
-                            "longitude": 13.002873
-                        }
                     }
                 }
             ]
