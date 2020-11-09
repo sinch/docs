@@ -120,10 +120,10 @@ A **contact** has the following configurable properties:
 #### Channel recipient identity
 
 A **channel recipient identity** is an identifier for the [**contact**](doc:conversation#contact) for a specific channel. E.g. an international phone number is used as identifier for _SMS_ and _RCS_ while a PSID (Page-Scoped ID) is used as the identifier for _Facebook Messenger_.
-Some channels use app-scoped channel identity. Currently, FaceBook Messenger and Viber are using app-scoped channel identities
+Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber are using app-scoped channel identities
 which means contacts will have different channel identities for different [**apps**](doc:conversation#app).
 For Facebook Messenger this means that the contact channel identity is associated with the [**app**](doc:conversation#app)
-linked to the FaceBook page for which this PSID is issued.
+linked to the Facebook page for which this PSID is issued.
 
 A **channel recipient identity** has the following configurable properties:
 
