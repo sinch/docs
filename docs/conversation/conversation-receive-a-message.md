@@ -10,6 +10,10 @@ hidden: false
 
 In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger), if you like you can use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
 
+> 🚧 Warning
+>
+> Please note that there's a standard messaging window of 24h on Messneger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info. 
+
 ## Create a simple webhook using Node.js
 
 First create a new node app and then run the following on the command line to create the needed dependency.

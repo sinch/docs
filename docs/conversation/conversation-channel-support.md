@@ -163,6 +163,8 @@ Here we give a mapping between Conversation API generic message format
 and the Messenger rendering on mobile devices.
 Please note that for the sake of brevity the JSON snippets do not include
 the **recipient** and **app_id** which are both required when sending a message.
+If you want to send messages outside the standard 24h response window you can do that by adding Messenger channel specific properties in your message request.
+For more info check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties).
 
 ###### Text Messages
 
@@ -1799,6 +1801,7 @@ Here we give a mapping between Conversation API generic message format
 and the Viber rendering on mobile devices.
 Please note that for the sake of brevity the JSON snippets do not include
 the **recipient** and **app_id** which are both required when sending a message.
+When sending messages on Viber Bot you can use some channel specific properties, like Viber sender avatar. Check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info.
 
 ###### Text Messages
 
