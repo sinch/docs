@@ -7,7 +7,7 @@ hidden: false
 
 ### Set up a Facebook Page <span class="betabadge">Beta</span>
 
-A Facebook Page is required to use the Facebook Messenger API. It is used as the identity of your Messenger experience. When people chat with your app, they will see the Page name and the Page profile picture. To create a new Page, visit https://www.facebook.com/pages/create. If you already have one, you can skip to (#create-your-facebook-app).
+A Facebook Page is required to use the Facebook Messenger API. It is used as the identity of your Messenger experience. When people chat with your app, they will see the Page name and the Page profile picture. To create a new Page, visit https://www.facebook.com/pages/create. If you already have one, you can skip to [**Creating your Facebook App**](doc:conversation-send-a-message-with-fb-messenger#create-your-facebook-app).
 
 ![Create New Page](images/channel-support/messenger/fb_create_new_page.png)
 
@@ -124,6 +124,10 @@ OK, you are ready for some action! Visit your FB Page, click on **"Send Message"
 ![Facebook test send message button](images/channel-support/messenger/fb_page_test_send_message_button.png)
 
 Enter a message into the **Messenger** chat window and **Send**.
+
+> 🚧 Warning
+>
+> Please note that there's a standard messaging window of 24h on Messneger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info. 
 
 ![Facebook Messenger Pop up](images/channel-support/messenger/fb_page_messenger_pop_up.png)
 
