@@ -55,7 +55,6 @@ Authorization level can be specified in the Sinch dashboard, under your app sett
         object? - metadata
         FlashCallOptions? - flashCallOptions
     [FlashCallOptions]
-        string? - cli
         int? - dialTimeout
 
 **identity** indicates type of endpoint that will be verified and specifies the particular endpoint. The support endpoint type currently is only "number".
@@ -70,9 +69,9 @@ Authorization level can be specified in the Sinch dashboard, under your app sett
 
 **custom** can be used to pass custom data in the request.
 
-**FlashCallOptions** is an optional object for flashCall verifications. It allows you to specify Cli and dial time out parameters for flashCall. Cli is a particular number to be used as caller Id in the flashCall. The number that you specify needs to be a number that you have rented from the Sinch portal. DialTimeout should be specified in seconds and must be between 5 and 120. FlashCallOptions object can be specified optionally, and only if the verification request was triggered from your backend (no SDK client) through an [Application signed request](doc:using-rest#application-signed-request).
+**FlashCallOptions** is an optional object for flashCall verifications. It allows you to specify dial time out parameter for flashCall. DialTimeout should be specified in seconds and must be between 5 and 120. FlashCallOptions object can be specified optionally, and only if the verification request was triggered from your backend (no SDK client) through an [Application signed request](doc:using-rest#application-signed-request).
 
-By default you do not need to specify what CLI and dial time out to use. Sinch will pick a random CLI and optimize dial time out for your flashCall.
+By default you do not need to specify what dial time out to use. Sinch will optimize dial time out for your flashCall.
 
 *Example* - FlashCall
 
@@ -98,7 +97,7 @@ Request
 {
     "identity": { "type":"number", "endpoint":"+46700000000" },
     "method": "flashCall",
-    "flashCallOptions":{"cli":"+1234567890", "dialTimeout":10}
+    "flashCallOptions":{ "dialTimeout":10 }
 }
 ```
 
