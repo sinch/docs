@@ -19,17 +19,25 @@ next:
 The Sinch Closed BETA SDKs can only be obtained after direct contact with Sinch Voice & Video Team.  
 Contact [Sinch support](mailto:support@sinch.com). Please add the phrase _"CLOSED BETA REQUEST"_ on your email subject.
 
+Both _ObjC_ and _Swift_ SDKs are accessible as a part of closed beta program. Once you signup as a Beta customer, you will have access to both versions of our IOS SDKs.
+
+Both SDK's comes with sample apps. Read more about them [here](doc:voice-ios-cloud/voice-ios-cloud-samples)
+
 ### Sinch SDK as a CocoaPod
 
 > 📘
 >
 > CocoaPods version will be available only for Production releases (i.e. not closed beta releases)
 
-## Add the _Sinch.framework_
+## Add the _Sinch.framework_ (ObjC version)
 
 Drag the _Sinch.framework_ bundle from the SDK distribution package folder into the Frameworks section in the Xcode Project Navigator.
 
-The Sinch SDK depends on the following frameworks which must be linked with the application target:
+## Add the _SinchRTC.xcframework_ (Swift version)
+
+Drag the _SinchRTC.xcframework_ bundle from the SDK distribution package folder into the Frameworks section in the Xcode Project Navigator.
+
+Both versions of Sinch SDKs depends on the following frameworks which must be linked with the application target:
 
 > _libc++.dylib_ (_libc++.tbd_), _libz.tbd_, _Security.framework_, _AVFoundation.framework_, _AudioToolbox.framework_, _VideoToolbox.framework_, _CoreMedia.framework_, _CoreVideo.framework_, _CoreImage.framework_, _GLKit.framework_, _OpenGLES.framework_, _QuartzCore.framework_, _Metal.framework_
 
