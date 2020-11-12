@@ -19,9 +19,13 @@ This section will show you how to get started to use the Numbers API to search, 
 
 To get the project id, client id and key id you will need to log into your self-serve account (dashboard.sinch.com) and visit https://dashboard.sinch.com/settings/project-management.
 
+![Project management](images/project_management.png)
+
 The project ID
 
 Then go Access Keys section https://dashboard.sinch.com/settings/access-keys. Here you need to click the “New Key” to generate an client id and key id.
+
+![Access Keys](images/access_keys.png)
 
 Make sure to write down the key since it will not be possible to retrieve after creation
 
