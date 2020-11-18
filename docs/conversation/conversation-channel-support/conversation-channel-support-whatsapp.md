@@ -1,466 +1,21 @@
 ---
 title: Channel Support
 excerpt: >-
-  Sinch Conversation API channel specific configurations and message transcoding.
+  Sinch Conversation API WhatsApp specific configurations and message transcoding.
 hidden: false
 ---
 
-## Conversation API Channel Support <span class="betabadge">Beta</span>
+### Conversation API WhatsApp Support <span class="betabadge">Beta</span>
 
-This document gives detailed description of Conversation API channel support.
-
-Currently, the following channels are integrated into Conversation API. Please follow the links to the subpages to learn more:
-
-* [**SMS**](doc:conversation-channel-support#channel-specific-properties) 
-
-* [**WhatsApp**](doc:conversation-channel-support#channel-specific-properties) 
-
-* [**RCS**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Facebook Messenger**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Viber Business Messages**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Viber Bot**](doc:conversation-channel-support#channel-specific-properties)
-
-
-### Facebook Messenger
-
-Conversation API supports Facebook Messenger and allows sending messages from Facebook Pages.
-The page cannot initiate the conversation; it must be started by a contact. To create and configure a
-Facebook Page and connect it to Conversation API **app**, follow the instructions below:
-
-- Go to <https://developers.facebook.com/> and log in with your personal/developer account.
-- Click on **My Apps** on the top right corner and select Pages App and click **Create App**.
-- Fill in the display name for your app and contact Email, then click the **Create App** button.
-- Once the app is created, you will see a dashboard with various products that you may add to your app.
-  Click **Set Up** button inside a box with **Messenger** title.
-- Scroll down to the **Access Tokens** section, and click the **Create New Page** button.
-- Provide a page name and category, then click the **Create Page** button.
-- Go back to the **Messenger Setup** page. Now click **Add or Remove pages** in the **Access Tokens** section.
-  Select the previously created page and link it to your app (just **Next**, **Done**, **Ok**).
-- You should now see a table row in a table in the **Access Tokens** modal. Click on **Generate Token** for that row.
-  Copy this token (from now on referred as **FACEBOOK_PAGE_TOKEN**) and save it somewhere safe.
-  This is the access token that you need to specify when setting up a Conversation API **app**.
-- Then you need to configure a Messenger integration for your Conversation API **app**.
-  The easiest way to do that is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
-  Just select your **app** and click on "SET UP CHANNEL" beside the Messenger channel.
-  Alternatively you can use the management API and specify the `channel_credentials` for Facebook Messenger
-  when creating or updating your app. Example channel configuration is given in the snippet below:
-
-```json
-{
-  "channel_credentials": [
-    {
-      "channel": "MESSENGER",
-      "static_token": {
-        "token": "{{FACEBOOK_PAGE_TOKEN}}"
-      }
-    }
-  ],
-  "display_name": "App name"
-}
-```
-
-- Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find
-  **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with
-  the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**):  
-  Callback URL: `https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`  
-  Verify Token: `5651d9fd-5c33-4d7a-aa37-5e3e151c2a92`
-- After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks** section will appear,
-  with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
-- Now you need to enable **pages_messaging** for your App. Scroll down to the **App review for Messenger**
-  section and click **Add to submission** on the **pages_messaging** row.
-- Scroll down further and you should see a **Current Submissions** section. You will most likely see
-  a little **Additional Information Required** alert notifying you that you need to complete some details before submitting
-- Follow the instructions and go to the settings to add the required pieces, which should be:
-  - App Icon
-  - Privacy Policy URL (for test and development purposes you may use a generator for it)
-  - Category
-  - Business Use
-- This is enough for test and development purposes, you don't have to fill **Details** section nor
-  submit it for review. Now you can send messages anyone that has been granted either the Administrator,
-  Developer or Tester role for your app.
-- Add webhook to your Conversation API **app** using [Sinch Portal](https://dashboard.sinch.com/convapi/overview)
-  or the management API. Example snippet for creating webhook programmatically:
-
-```json
-{
-  "app_id": "{{APP}}",
-  "target": "{{WEBHOOK_URL}}",
-  "target_type": "HTTP",
-  "triggers": [
-    "MESSAGE_DELIVERY",
-    "EVENT_DELIVERY",
-    "MESSAGE_INBOUND",
-    "EVENT_INBOUND",
-    "CONVERSATION_START",
-    "CONVERSATION_STOP",
-    "UNSUPPORTED"
-  ]
-}
-```
-
-- And finally, visit your Facebook Page as a user with proper role granted (preferably the one who created the page)
-  and try sending a message to it - remember that a user has to start the conversation. If everything works
-  fine, you should receive two callbacks, one with `conversation_start_notification`
-
-```json
-{
-  "app_id": "01E9DQJFPWGZ2T05XTVZAD0BYB",
-  "conversation_start_notification": {
-    "conversation": {
-      "id": "01E9DV2N8C6CK41XFPGQPN0NWE",
-      "app_id": "01E9DQJFPWGZ2T05XTVZAD0BYB",
-      "contact_id": "01E9DV2N7TYPJ50V0FYC08110D",
-      "last_received": "2020-05-28T14:30:48Z",
-      "active_channel": "CHANNEL_UNSPECIFIED",
-      "active": true,
-      "metadata": "",
-      "active_channel_senders": []
-    }
-  }
-}
-```
-
-- and one with the message you've just sent
-
-```json
-{
-  "app_id": "01E9DQJFPWGZ2T05XTVZAD0BYB",
-  "accepted_time": "2020-05-28T14:30:47.850538Z",
-  "message": {
-    "id": "01E9DV2N92BMDD034JZ0AQ0VKB",
-    "direction": "TO_APP",
-    "contact_message": {
-      "text_message": {
-        "text": "Hello World"
-      }
-    },
-    "channel": "MESSENGER",
-    "conversation_id": "01E9DV2N8C6CK41XFPGQPN0NWE",
-    "contact_id": "01E9DV2N7TYPJ50V0FYC08110D",
-    "metadata": "",
-    "accept_time": "2020-05-28T14:30:47.841429Z"
-  }
-}
-```
-
-- Now, with a conversation created automatically, you can use received **contact_id** to send a response
-  for this user:
-
-```json
-{
-  "app_id": "{{APP_ID}}",
-  "recipient": {
-    "contact_id": "{{CONTACT_ID}}"
-  },
-  "message": {
-    "text_message": {
-      "text": "Text message from Sinch Conversation API."
-    }
-  },
-  "channel_priority_order": ["MESSENGER"]
-}
-```
-
-- You should receive callbacks with information that message has been delivered and read. The channel is now configured.
-
-#### Rich Message Support
-
-This section provides detailed information about which rich messages are
-natively supported by Facebook Messenger channel and what transcoding is applied in
-other cases.
-
-##### Sending Messages
-
-Here we give a mapping between Conversation API generic message format
-and the Messenger rendering on mobile devices.
-Please note that for the sake of brevity the JSON snippets do not include
-the **recipient** and **app_id** which are both required when sending a message.
-If you want to send messages outside the standard 24h response window you can do that by adding Messenger channel specific properties in your message request.
-For more info check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties).
-
-###### Text Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "text_message": {
-      "text": "Text message from Sinch Conversation API."
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Text Message](images/channel-support/messenger/messenger_text.jpg)
-
-###### Media Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "media_message": {
-      "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/favicon.png"
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Media Message](images/channel-support/messenger/messenger_media.jpg)
-
-###### Choice Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "choice_message": {
-      "text_message": {
-        "text": "What do you want to do?"
-      },
-      "choices": [
-        {
-          "text_message": {
-            "text": "Suggested Reply Text"
-          }
-        },
-        {
-          "url_message": {
-            "title": "URL Choice Message:",
-            "url": "https://www.sinch.com"
-          }
-        },
-        {
-          "call_message": {
-            "title": "Call Choice Message:Q",
-            "phone_number": "46732000000"
-          }
-        },
-        {
-          "location_message": {
-            "title": "Location Choice Message",
-            "label": "Enriching Engagement",
-            "coordinates": {
-              "latitude": 55.610479,
-              "longitude": 13.002873
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Choice Message](images/channel-support/messenger/messenger_choice.jpg)
-
-###### Card Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "card_message": {
-      "title": "This is the card title",
-      "description": "This is the card description",
-      "media_message": {
-        "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-      },
-      "choices": [
-        {
-          "text_message": {
-            "text": "Suggested Reply Text"
-          }
-        },
-        {
-          "url_message": {
-            "title": "URL Choice Message:",
-            "url": "https://www.sinch.com"
-          }
-        },
-        {
-          "call_message": {
-            "title": "Call Choice Message:Q",
-            "phone_number": "46732000000"
-          }
-        },
-        {
-          "location_message": {
-            "title": "Location Choice Message",
-            "label": "Enriching Engagement",
-            "coordinates": {
-              "latitude": 55.610479,
-              "longitude": 13.002873
-            }
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Card Message](images/channel-support/messenger/messenger_card.jpg)
-
-###### Carousel Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "carousel_message": {
-      "cards": [
-        {
-          "title": "This is the card 1 title",
-          "description": "This is the card 1 description",
-          "media_message": {
-            "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          },
-          "choices": [
-            {
-              "text_message": {
-                "text": "Suggested Reply 1 Text"
-              }
-            },
-            {
-              "text_message": {
-                "text": "Suggested Reply 2 Text"
-              }
-            },
-            {
-              "text_message": {
-                "text": "Suggested Reply 3 Text"
-              }
-            }
-          ]
-        },
-        {
-          "title": "This is the card 2 title",
-          "description": "This is the card 2 description",
-          "media_message": {
-            "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          },
-          "choices": [
-            {
-              "url_message": {
-                "title": "URL Choice Message:",
-                "url": "https://www.sinch.com"
-              }
-            }
-          ]
-        },
-        {
-          "title": "This is the card 3 title",
-          "description": "This is the card 3 description",
-          "media_message": {
-            "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          },
-          "choices": [
-            {
-              "call_message": {
-                "title": "Call Choice Message:Q",
-                "phone_number": "46732000000"
-              }
-            }
-          ]
-        },
-        {
-          "title": "This is the card 4 title",
-          "description": "This is the card 4 description",
-          "media_message": {
-            "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          },
-          "choices": [
-            {
-              "location_message": {
-                "title": "Location Choice Message",
-                "label": "Enriching Engagement",
-                "coordinates": {
-                  "latitude": 55.610479,
-                  "longitude": 13.002873
-                }
-              }
-            }
-          ]
-        }
-      ]
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Carousel Message](images/channel-support/messenger/messenger_carousel.jpg)
-
-###### Location Messages
-
----
-
-Conversation API POST `messages:send`
-
-```json
-{
-  "message": {
-    "location_message": {
-      "title": "Location Message",
-      "label": "Enriching Engagement",
-      "coordinates": {
-        "latitude": 55.610479,
-        "longitude": 13.002873
-      }
-    }
-  }
-}
-```
-
-The rendered message:
-
-![Location Message](images/channel-support/messenger/messenger_location.jpg)
-
-### WhatsApp
-
-Conversation API provides support for WhatsApp channel through Sinch WhatsApp Business Messaging API.
-To start using WhatsApp through Conversation API you need to first have a Sinch WhatsApp bot -
-[read more](https://developers.sinch.com/docs/whatsapp-introduction).
+Conversation API provides support for WhatsApp channel through Sinch WhatsApp Business Messaging API. To start using WhatsApp through Conversation API you need to first have a Sinch WhatsApp bot - [read more](https://developers.sinch.com/docs/whatsapp-introduction).
 
 #### Channel Configuration
 
-The easiest way to configure your Conversation API **app** with WhatsApp support is to use
-[Sinch Portal](https://dashboard.sinch.com/convapi/overview). Just select your **app** and
-click on "SET UP CHANNEL" beside the WhatsApp channel.
+The easiest way to configure your Conversation API **app** with WhatsApp support is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview). Just select your **app** and click on "SET UP CHANNEL" beside the WhatsApp channel.
 
 ##### Setup WhatsApp integration using the API
 
-Sending a WhatsApp message requires a Conversation API **app** with
-`channel_credentials` for WHATSAPP channel. Example, **app** is given in the
-following snippet:
+Sending a WhatsApp message requires a Conversation API **app** with `channel_credentials` for WHATSAPP channel. Example **app** is given in the following snippet:
 
 ```json
 {
@@ -476,21 +31,17 @@ following snippet:
 }
 ```
 
-You need to replace `{{WHATSAPP_BOT_ID}}` with your Sinch WhatsApp bot ID and
-`{{WHATSAPP_BEARER_TOKEN}}` with the bot's access token.
+You need to replace `{{WHATSAPP_BOT_ID}}` with your Sinch WhatsApp bot ID and `{{WHATSAPP_BEARER_TOKEN}}` with the bot's access token.
 
-Receiving contact messages (replies) and delivery receipts
-from WhatsApp requires setting the Callback URL of the WhatsApp bot to
-point to your Conversation API **app**. This step is done automatically if the
-integration is enabled from the [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
+Receiving contact messages (replies) and delivery receipts from WhatsApp requires setting the Callback URL of the WhatsApp bot to point to your Conversation API **app**. This step is done automatically if the integration is enabled from the [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
+
 The URL is the following:
 
 ```
 https://whatsapp-adapter.{{REGION}}.conversation-api.int.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback
 ```
 
-Where {{REGION}} is one of `eu1` or `us1` and must match the region of your **app** while
-{{CONVERSATION_APP_ID}} is the id of your Conversation API **app**.
+Where `{{REGION}}` is one of `eu1` or `us1` and must match the region of your **app** while `{{CONVERSATION_APP_ID}}` is the id of your Conversation API **app**.
 
 Do not forget that for receiving messages you also need to configure at least one Conversation API webhook which will trigger POST callbacks to the given URL. The most important triggers for your conversation applications are:
 
@@ -499,20 +50,15 @@ Do not forget that for receiving messages you also need to configure at least on
 
 #### Rich Message Support
 
-Conversation API supports all capabilities of WhatsApp API: rich template messages,
-media and location messages.
+Conversation API supports all capabilities of WhatsApp API: rich template messages, media and location messages.
 
 ##### Sending Messages
 
-All business initiated conversations on the WhatsApp channel must start with an “Opt-In” by the user.
-This can be collected through any third party channel. For example in an SMS message, a web form, email etc.
-You need to register the collected user opt-in by invoking the opt-in service
-provided by Conversation API - `/optins:register`. A successful registration or opt-in errors will be
-announced by a callback to webhooks with trigger `OPT_IN`.
+All business initiated conversations on the WhatsApp channel must start with an “Opt-In” by the user. This can be collected through any third party channel. For example in an SMS message, a web form, email etc.
 
-Businesses must also provide a method by which customers may opt-out of receiving future messages from your organization.
-Registering the user opt-out is done through the Conversation API `/optouts:register` endpoint.
-The outcome of the opt-out registration is delivered by a callback to webhooks with trigger `OPT_OUT`.
+You need to register the collected user opt-in by invoking the opt-in service provided by Conversation API - `/optins:register`. A successful registration or opt-in errors will be announced by a callback to webhooks with trigger `OPT_IN`.
+
+Businesses must also provide a method by which customers may opt-out of receiving future messages from your organization. Registering the user opt-out is done through the Conversation API `/optouts:register` endpoint. The outcome of the opt-out registration is delivered by a callback to webhooks with trigger `OPT_OUT`.
 
 An example payload for opt-in/out registration (POST to `/optins:register` or `/optouts:register`) is the following snipped:
 
@@ -526,28 +72,16 @@ An example payload for opt-in/out registration (POST to `/optins:register` or `/
 }
 ```
 
-where {{APP_ID}} is the ID of your **app** and the {{CONTACT_ID}} is the contact with WhatsApp channel identity
-for which this opt-in/out is preformed.
+where {{APP_ID}} is the ID of your **app** and the {{CONTACT_ID}} is the contact with WhatsApp channel identity for which this opt-in/out is preformed.
 
-The rest of this section provides examples of various messaging capabilities of WhatsApp channel,
-and how to utilize them using Conversation API generic message format.
-Please note that for the sake of brevity the JSON snippets do not include
-the **recipient** and **app_id** which are both required when sending a message.
+The rest of this section provides examples of various messaging capabilities of WhatsApp channel, and how to utilize them using Conversation API generic message format. Please note that for the sake of brevity the JSON snippets do not include the **recipient** and **app_id** which are both required when sending a message.
 
 ###### Template messages
 
-Sending a message outside of the customer care session requires an approved template
-([read more](https://developers.sinch.com/docs/whatsapp-introduction)).
-You need to specify the template name, language code, and the set of parameters
-defined in the template. Conversation API provides capability to send
-channel-specific templates that use a key-value dictionary to
-specify the template parameters. Each key in the dictionary corresponds to
-a property of a template parameter as they are defined in WhatsApp public
-documentation for [media](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/media-message-templates)
-and [interactive](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/interactive-message-templates)
-templates.
+Sending a message outside of the customer care session requires an approved template ([read more](https://developers.sinch.com/docs/whatsapp-introduction)). You need to specify the template name, language code, and the set of parameters defined in the template. Conversation API provides capability to send channel-specific templates that use a key-value dictionary to specify the template parameters. Each key in the dictionary corresponds to a property of a template parameter as they are defined in WhatsApp public documentation for [media](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/media-message-templates) and [interactive](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates/interactive-message-templates) templates.
 
 The format of the keys in the parameter dictionary is of the following form:
+
 ```
 <component_type>[<component_index>]<component_sub_type>[<parameter_index>]<parameter_field>
 ```
@@ -564,8 +98,7 @@ where:
 
 **Text Template**
 
-Below is an example of sending a text-only template with three body parameters i.e., no header.
-The template name is *text_template* and it is available for *en* language code.
+Below is an example of sending a text-only template with three body parameters i.e., no header. The template name is *text_template* and it is available for *en* language code.
 
 Conversation API POST `messages:send`
 
@@ -629,6 +162,7 @@ The parameter fields are:
 | header[1]document.filename      | The filename of the document              | No        |
 
 Below is an example of sending a template with a document header and a single body parameter.
+
 The template name is *document_template* available for *en* language code.
 
 Conversation API POST `messages:send`
@@ -663,6 +197,7 @@ The parameter fields are:
 | header[1]video.provider.name    | Provider to use when downloading the file | No        |
 
 Below is an example of sending a template with a video header and a single body parameter.
+
 The template name is *video_template* available for *en* language code.
 
 Conversation API POST `messages:send`
@@ -696,6 +231,7 @@ The parameter fields are:
 | header[1]image.provider.name    | Provider to use when downloading the file | No        |
 
 Below is an example of sending a template with an image header and a single body parameter.
+
 The template name is *image_template* available for *en* language code.
 
 Conversation API POST `messages:send`
@@ -733,16 +269,17 @@ The parameter fields used to configure the buttons in the template are:
 | button[m]quick_reply[1]payload  | Postback payload to be returned           | Yes, if button at index *m* is quick_reply button |
 
 where *n* and *m* are indices of the buttons in the template.
-The quick_reply payload field must be set even when empty. For example for quick_reply button
-at index 0 this can be done by adding the following entry in the parameter dictionary:
+
+The quick_reply payload field must be set even when empty. For example for quick_reply button at index 0 this can be done by adding the following entry in the parameter dictionary:
 
  ```
     "button[0]quick_reply[1]payload": ""
  ```
 
-Below is an example of sending a template with a quick reply button at index 0 and two
-URL buttons at index 1 and 2 respectively. The template have also one header and one body
-parameters. The template name is *interactive_template* available for *en* language code.
+Below is an example of sending a template with a quick reply button at index 0 and two URL buttons at index 1 and 2 respectively. The template have also one header and one body
+parameters.
+
+The template name is *interactive_template* available for *en* language code.
 
 Conversation API POST `messages:send`
 

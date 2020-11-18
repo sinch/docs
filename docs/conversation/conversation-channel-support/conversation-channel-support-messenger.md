@@ -1,52 +1,31 @@
 ---
 title: Channel Support
 excerpt: >-
-  Sinch Conversation API channel specific configurations and message transcoding.
+  Sinch Conversation API Facebook Messenger specific configurations and message transcoding.
 hidden: false
 ---
 
-## Conversation API Channel Support <span class="betabadge">Beta</span>
+### Conversation API Facebook Messenger Support <span class="betabadge">Beta</span>
 
-This document gives detailed description of Conversation API channel support.
-
-Currently, the following channels are integrated into Conversation API. Please follow the links to the subpages to learn more:
-
-* [**SMS**](doc:conversation-channel-support#channel-specific-properties) 
-
-* [**WhatsApp**](doc:conversation-channel-support#channel-specific-properties) 
-
-* [**RCS**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Facebook Messenger**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Viber Business Messages**](doc:conversation-channel-support#channel-specific-properties)
-
-* [**Viber Bot**](doc:conversation-channel-support#channel-specific-properties)
-
-
-### Facebook Messenger
-
-Conversation API supports Facebook Messenger and allows sending messages from Facebook Pages.
-The page cannot initiate the conversation; it must be started by a contact. To create and configure a
-Facebook Page and connect it to Conversation API **app**, follow the instructions below:
+Conversation API supports Facebook Messenger and allows sending messages from Facebook Pages. The page cannot initiate the conversation; it must be started by a contact. To create and configure a Facebook Page and connect it to Conversation API **app**, follow the instructions below:
 
 - Go to <https://developers.facebook.com/> and log in with your personal/developer account.
-- Click on **My Apps** on the top right corner and select Pages App and click **Create App**.
+
+- Click on **My Apps** in the top right corner and select Pages App and click **Create App**.
+
 - Fill in the display name for your app and contact Email, then click the **Create App** button.
-- Once the app is created, you will see a dashboard with various products that you may add to your app.
-  Click **Set Up** button inside a box with **Messenger** title.
+
+- Once the app is created, you will see a dashboard with various products that you may add to your app. Click **Set Up** button inside a box with **Messenger** title.
+
 - Scroll down to the **Access Tokens** section, and click the **Create New Page** button.
+
 - Provide a page name and category, then click the **Create Page** button.
-- Go back to the **Messenger Setup** page. Now click **Add or Remove pages** in the **Access Tokens** section.
-  Select the previously created page and link it to your app (just **Next**, **Done**, **Ok**).
-- You should now see a table row in a table in the **Access Tokens** modal. Click on **Generate Token** for that row.
-  Copy this token (from now on referred as **FACEBOOK_PAGE_TOKEN**) and save it somewhere safe.
-  This is the access token that you need to specify when setting up a Conversation API **app**.
-- Then you need to configure a Messenger integration for your Conversation API **app**.
-  The easiest way to do that is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
-  Just select your **app** and click on "SET UP CHANNEL" beside the Messenger channel.
-  Alternatively you can use the management API and specify the `channel_credentials` for Facebook Messenger
-  when creating or updating your app. Example channel configuration is given in the snippet below:
+
+- Go back to the **Messenger Setup** page. Now click **Add or Remove pages** in the **Access Tokens** section. Select the previously created page and link it to your app (just **Next**, **Done**, **Ok**).
+
+- You should now see a table row in a table in the **Access Tokens** modal. Click on **Generate Token** for that row. Copy this token (from now on referred as **FACEBOOK_PAGE_TOKEN**) and save it somewhere safe. This is the access token that you need to specify when setting up a Conversation API **app**.
+
+- Then you need to configure a Messenger integration for your Conversation API **app**. The easiest way to do that is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview). Just select your **app** and click on "SET UP CHANNEL" beside the Messenger channel. Alternatively you can use the management API and specify the `channel_credentials` for Facebook Messenger when creating or updating your app. Example channel configuration is given in the snippet below:
 
 ```json
 {
@@ -62,27 +41,22 @@ Facebook Page and connect it to Conversation API **app**, follow the instruction
 }
 ```
 
-- Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find
-  **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with
-  the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**):  
-  Callback URL: `https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`  
+- Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**): 
+  
+  Callback URL: `https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
+  
   Verify Token: `5651d9fd-5c33-4d7a-aa37-5e3e151c2a92`
-- After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks** section will appear,
-  with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
-- Now you need to enable **pages_messaging** for your App. Scroll down to the **App review for Messenger**
-  section and click **Add to submission** on the **pages_messaging** row.
-- Scroll down further and you should see a **Current Submissions** section. You will most likely see
-  a little **Additional Information Required** alert notifying you that you need to complete some details before submitting
+  
+- After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
+- Now you need to enable **pages_messaging** for your App. Scroll down to the **App review for Messenger** section and click **Add to submission** on the **pages_messaging** row.
+- Scroll down further and you should see a **Current Submissions** section. You will most likely see a little **Additional Information Required** alert notifying you that you need to complete some details before submitting
 - Follow the instructions and go to the settings to add the required pieces, which should be:
   - App Icon
   - Privacy Policy URL (for test and development purposes you may use a generator for it)
   - Category
   - Business Use
-- This is enough for test and development purposes, you don't have to fill **Details** section nor
-  submit it for review. Now you can send messages anyone that has been granted either the Administrator,
-  Developer or Tester role for your app.
-- Add webhook to your Conversation API **app** using [Sinch Portal](https://dashboard.sinch.com/convapi/overview)
-  or the management API. Example snippet for creating webhook programmatically:
+- This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you can send messages anyone that has been granted either the Administrator, Developer or Tester role for your app.
+- Add webhook to your Conversation API **app** using [Sinch Portal](https://dashboard.sinch.com/convapi/overview) or the management API. Example snippet for creating webhook programmatically:
 
 ```json
 {
@@ -101,9 +75,7 @@ Facebook Page and connect it to Conversation API **app**, follow the instruction
 }
 ```
 
-- And finally, visit your Facebook Page as a user with proper role granted (preferably the one who created the page)
-  and try sending a message to it - remember that a user has to start the conversation. If everything works
-  fine, you should receive two callbacks, one with `conversation_start_notification`
+- And finally, visit your Facebook Page as a user with proper role granted (preferably the one who created the page) and try sending a message to it - remember that a user has to start the conversation. If everything works fine, you should receive two callbacks, one with `conversation_start_notification`:
 
 ```json
 {
@@ -123,7 +95,7 @@ Facebook Page and connect it to Conversation API **app**, follow the instruction
 }
 ```
 
-- and one with the message you've just sent
+- and one with the message you've just sent:
 
 ```json
 {
@@ -146,8 +118,7 @@ Facebook Page and connect it to Conversation API **app**, follow the instruction
 }
 ```
 
-- Now, with a conversation created automatically, you can use received **contact_id** to send a response
-  for this user:
+- Now, with a conversation created automatically, you can use received **contact_id** to send a response for this user:
 
 ```json
 {
@@ -168,17 +139,16 @@ Facebook Page and connect it to Conversation API **app**, follow the instruction
 
 #### Rich Message Support
 
-This section provides detailed information about which rich messages are
-natively supported by Facebook Messenger channel and what transcoding is applied in
-other cases.
+This section provides detailed information about which rich messages are natively supported by Facebook Messenger channel and what transcoding is applied in other cases.
 
 ##### Sending Messages
 
-Here we give a mapping between Conversation API generic message format
-and the Messenger rendering on mobile devices.
-Please note that for the sake of brevity the JSON snippets do not include
-the **recipient** and **app_id** which are both required when sending a message.
+Here we give a mapping between Conversation API generic message format and the Messenger rendering on mobile devices.
+
+Please note that for the sake of brevity the JSON snippets do not include the **recipient** and **app_id** which are both required when sending a message.
+
 If you want to send messages outside the standard 24h response window you can do that by adding Messenger channel specific properties in your message request.
+
 For more info check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties).
 
 ###### Text Messages
