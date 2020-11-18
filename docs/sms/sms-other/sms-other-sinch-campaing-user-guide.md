@@ -13,6 +13,8 @@ excerpt: >-
 
 [CTIA Short Code Monitoring Handbook Addendum v1.7](https://www.sinch.com/wp-content/uploads/2019/10/CTIA-Short-Code-Monitoring-Handbook-v1.7-Addendum.pdf) - This is the CTIA handbook addendum which covers the guidelines/requirements for US Short Code campaigns.
 
+[CTIA Short Code Monitoring Handbook v1.8](https://www.sinch.com/wp-content/uploads/2019/10/CTIA_Short_Code_Monitoring_Handbook_v1_8.pdf) - This is the CTIA handbook version 1.8 which covers the guidelines/requirements for US Short Code campaigns effective January 1, 2021.
+
 [CTIA Messaging Principles and Best Practices](https://www.sinch.com/wp-content/uploads/2019/10/CTIA-Messaging-Principles-and-Best-Practices.pdf) - This is the CTIA handbook which covers best practices guidelines for US Short Code campaigns.
 
 [AT&T Code of Conduct](downloads\ATT_Code_of_Conduct_062020.pdf) - Code of Conduct for the AT&T Short Code and 10-Digit A2P SMS Messages 06/01/2020.
