@@ -1,7 +1,7 @@
 ---
 title: Verification API
 excerpt: >-
-  Verify users with SMS, flash calls (missed calls) or a regular call. hThis
+  Verify users with SMS, flash calls (missed calls) or a regular call. This
   document serves as a user guide and documentation on how to use the Sinch
   Verification REST APIs. Find out more information about our API today.
 next:

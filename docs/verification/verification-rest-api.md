@@ -22,7 +22,7 @@ curl --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.
 ### SMS Report
 
 ```
-curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications/number/+1555123123 -H "Content-Type: application/json" --data '{"method": "sms", "sms": {"code": "OTPCODE"}}''
+curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications/number/+1555123123 -H "Content-Type: application/json" --data '{"method": "sms", "sms": {"code": "OTPCODE"}}'
 ```
 
 ### Flashcall Request
