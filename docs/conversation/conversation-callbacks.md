@@ -48,6 +48,29 @@ curl -X POST \
 }'
 ```
 
+## Validating Callbacks
+
+Conversation API callbacks triggered by a registered **webhook**, with a secret set, will contain the following headers:
+
+| Field                               | Description                                                                                            |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| x-sinch-webhook-signature-timestamp | Timestamp, in UTC, of when the signature was computed                                                  |
+| x-sinch-webhook-signature-nonce     | A unique nonce that can be used to protect against reply attacks                                       |
+| x-sinch-webhook-signature-algorithm | The HMAC signature algorithm that was used to compute the signature. For now it is set to HmacSHA256.  |
+| x-sinch-webhook-signature           | The signature of the raw HTTP body, the timestamp, and the nonce as computed by the Conversation API.  |
+
+The receiver of signed callbacks should perform the following steps:
+
+1. Compute the signature using `base64(HMAC(secret, signed_data))` where `signed_data` is UTF-8 encoded dot-separated concatenation of the raw HTTP body, the timestamp, and the nonce:
+
+  > raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp
+
+  ***Please note:*** do not disable padding when creating the `base64` encoding of the signature.
+
+2. Compare the computed signature with the one included in the `x-sinch-webhook-signature` header. The callback should be discarded in case of mismatching signatures.
+3. Make sure that the timestamp is within an acceptable time window. I.e., the difference between the current time, in UTC, and the timestamp in the headers is sufficiently small.
+4. Make sure that the nonce is unique. This could be done by keeping track of previously received nonces.
+
 ## Callback Format
 
 Each callback dispatched by Conversation API has a JSON payload with the following top-level properties:
@@ -166,7 +189,7 @@ The table below shows the properties of the `channel_identity` field in Conversa
 
 | Field         | Type               | Description                                                                                                                                                                              |
 | ------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| channel       | string             | Conversation API identifier of the underlying channel e.g., SMS, RCS, MESSENGER.                                                                                                         |
+| channel       | string             | Conversation API identifier of the underlying channel e.g., `SMS`, `RCS`, `MESSENGER`.                                                                                                   |
 | identity      | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                                                                          |
 | app_id        | string             | The app ID if this is an app-scoped channel identity. Empty string otherwise. See [App-scoped Channel Identities](doc:conversation-callbacks#app-scoped-channel-identities) for details. |
 

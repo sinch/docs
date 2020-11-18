@@ -78,29 +78,14 @@ Beside URL, each **webhook** includes a set of triggers which dictates which eve
 
 A **webhook** has the following configurable properties:
 
-| Field       | Description                                                                                                                                                                   |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Target      | The target URL where events should be sent to                                                                                                                                 |
-| Target type | Type of the target URL. Currently only DISMISS and HTTP are supported values. DISMISS indicates the events will not be sent                                                   |
-| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks                                            |
-| Triggers    | A set of triggers that this webhook is listening to. Example triggers include MESSAGE_DELIVERY for message delivery receipts and MESSAGE_INBOUND for inbound contact messages |
+| Field       | Description                                                                                                                                                                                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Target      | The target URL where events should be sent to                                                                                                                                                                                |
+| Target type | Type of the target URL. Currently only DISMISS and HTTP are supported values. DISMISS indicates the events will not be sent                                                                                                  |
+| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks. See [Validating Callbacks](doc:conversation-callbacks#validating-callbacks) for details. |
+| Triggers    | A set of triggers that this webhook is listening to. Example triggers include MESSAGE_DELIVERY for message delivery receipts and MESSAGE_INBOUND for inbound contact messages                                                |
 
-##### Validating callbacks
-
-Callbacks triggered by a registered **webhook**, with a secret set, will contain the following headers:
-
-| Field       | Description                                                                                                                                                                   |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| x-sinch-webhook-signature-timestamp | Timestamp, in UTC, of when the signature was computed                                             |
-| x-sinch-webhook-signature-nonce      | A unique nonce that can be used to protect against reply attacks                                         |
-| x-sinch-webhook-signature-algorithm    | The HMAC signature algorithm that was used to compute the signature |
-| x-sinch-webhook-signature      |  The signature computed by the Conversation API. The raw HTTP body, the timestamp, and the nonce are signed by the signature. More concretely, the signature is computed as HMAC(secret, raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp). The inputs to the HMAC function should be encoded in UTF-8                                                      |
-
-The receiver of signed callbacks should perform the following steps:
-
-1. Compute a signature, as described above, and compare it with the signature included in the headers. The callback should be discarded in case of mismatching signatures.
-2. Make sure that the timestamp is within an acceptable time window. I.e., the difference between the current time, in UTC, and the timestamp in the headers is sufficiently small.
-3. Make sure that the nonce is unique. This could be done by keeping track of previously received nonces.
+[Conversation API Callbacks](doc:conversation-callbacks) provides more information about managing webhooks and the format of the callbacks.
 
 #### Contact
 
