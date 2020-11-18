@@ -33,7 +33,7 @@ Click on the *New App* button on the right, "Name" your App, choose an appropria
 
 In your Sinch Dashboard, navigate to Conversations > Apps.  Click on the *"App Name"* you wish to add the SMS Channel to.
 
-![app added](images/channel-support/sms/sinch_conversations_apps_added.png)
+![app added](conversation-channel-support/images/channel-support/sms/sinch_conversations_apps_added.png)
 
 Under *Set up channels* find SMS channel and click on *"Set Up Channel"*. 
 
@@ -41,11 +41,11 @@ Under *Set up channels* find SMS channel and click on *"Set Up Channel"*.
 
 For setting up the SMS channel you need to choose your SMS *Service Plan ID* from the drop-down and click *"Save"*.
 
-![new sms channel](images/channel-support/sms/sinch_conversations_new_app_add_sms_channel_form.png)
+![new sms channel](conversation-channel-support/images/channel-support/sms/sinch_conversations_new_app_add_sms_channel_form.png)
 
 You have added an SMS Channel to your App.  Just a few more steps to go.
 
-![new sms channel](images/channel-support/sms/sinch_conversations_sms_channel_done.png)
+![new sms channel](conversation-channel-support/images/channel-support/sms/sinch_conversations_sms_channel_done.png)
 
 ### Fetch Oauth2 Token needed for authentication
 
@@ -91,4 +91,4 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-When sending SMS messages you can use a channel specific property called `SMS_FLASH_MESSAGE`, check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info.
+When sending SMS messages you can use a channel specific property called `SMS_FLASH_MESSAGE`, check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info.

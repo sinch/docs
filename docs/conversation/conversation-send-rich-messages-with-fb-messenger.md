@@ -29,7 +29,7 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Media Message](images/channel-support/messenger/fb_message_media.jpg)
+![Facebook Media Message](conversation-channel-support/images/channel-support/messenger/fb_message_media.jpg)
 
 ## Sending Choice Message
 
@@ -76,7 +76,7 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Message Choice](images/channel-support/messenger/fb_message_choice.jpg)
+![Facebook Message Choice](conversation-channel-support/images/channel-support/messenger/fb_message_choice.jpg)
 
 ## Sending Card Message
 
@@ -124,7 +124,7 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Card Message](images/channel-support/messenger/fb_message_card.jpg)
+![Facebook Card Message](conversation-channel-support/images/channel-support/messenger/fb_message_card.jpg)
 
 ## Sending Carousel Message
 
@@ -222,7 +222,7 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Carousel Message](images/channel-support/messenger/fb_message_carousel.jpg)
+![Facebook Carousel Message](conversation-channel-support/images/channel-support/messenger/fb_message_carousel.jpg)
 
 ## Sending Location Message
 
@@ -251,4 +251,4 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Location Message](images/channel-support/messenger/fb_message_location.jpg)
+![Facebook Location Message](conversation-channel-support/images/channel-support/messenger/fb_message_location.jpg)
