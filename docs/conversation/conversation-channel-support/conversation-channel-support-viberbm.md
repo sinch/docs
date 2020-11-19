@@ -93,7 +93,7 @@ The rendered message:
 
 ###### Media Messages
 
-VIBERBM support Image messages natively. Supported image types are JPG, JPEG and PNG.
+VIBERBM supports Image messages natively. Supported image types are JPG, JPEG and PNG.
 
 ---
 
@@ -412,9 +412,9 @@ The rendered message:
 
 ##### Receiving Messages
 
-VIBERBM support only text replies or contact initiated messages.
+VIBERBM supports contact initiated messages and choice responses.
 
-Conversation API POST to `MESSAGE_INBOUND` webhook:
+Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
 
 ```json
 {
@@ -427,6 +427,30 @@ Conversation API POST to `MESSAGE_INBOUND` webhook:
       "text_message": {
         "text": "Hi from contact"
       }
+    },
+    "channel": "VIBERBM",
+    "conversation_id": "01E6K4A8PGZ6MV0GD3C7M901MZ",
+    "contact_id": "01E6K4A8N3NANZ05VM0FS80EHD",
+    "metadata": "",
+    "accept_time": "2020-04-24T08:02:50.179021Z"
+  }
+}
+```
+
+Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
+
+```json
+{
+  "app_id": "01E3S8B6YCMRNR0GGM94H80ACX",
+  "accepted_time": "2020-04-24T08:02:50.184581Z",
+  "message": {
+    "id": "01E6NKBV63YG6K01ENEW7S1N80",
+    "direction": "TO_APP",
+    "contact_message": {
+      "choice_response_message": {
+        "message_id": "01EKJ2SWHGDMYA0F0F1PQJ09WQ",
+        "postback_data": "postback"
+       }
     },
     "channel": "VIBERBM",
     "conversation_id": "01E6K4A8PGZ6MV0GD3C7M901MZ",
