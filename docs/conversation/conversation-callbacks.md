@@ -10,7 +10,7 @@ hidden: false
 Conversation API delivers contact messages, delivery receipts for app messages and various notifications through callbacks.
 API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app
 through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) or using **/webhooks** management endpoint.
-Each webhook defines a subscription for events defined by a list of triggers. The events are delivered by Conversation API
+Each webhook represents a subscription for events defined by a list of triggers. The events are delivered by Conversation API
 to the webhook target URL. The callbacks are signed with the webhook secret if such is provided. The signature can be
 used to verify the authenticity and integrity of the callbacks.
 
@@ -172,10 +172,10 @@ All of these properties are JSON objects described in the sections below.
 
 The choice response message represents a contact response to a choice message.
 
-| Field         | Type               | Description                                       |
-| ------------- | ------------------ | ------------------------------------------------- |
-| message_id    | string             | The message id containing the choice.             |
-| postback_data | string             | The postback data defined in the selected choice. |
+| Field         | Type               | Description                                                                                              |
+| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| message_id    | string             | The message id containing the choice.                                                                    |
+| postback_data | string             | The postback data if defined in the selected choice. Otherwise the default is `message_id_{text, title}` |
 
 ##### ReplyTo
 
@@ -332,7 +332,7 @@ Each message and event sent by the API clients to contacts go through the follow
 2. The message is successfully dispatched to an underlying channel. It has status `QUEUED_ON_CHANNEL`.
 3. A delivery report is sent from the underlying channel detailing the delivery status on the channel. Depending on the channel response and the processing state of the message the message is transitioned to one of following states:
 
-    3.1 `DELIVERED` - the channel delivery report indicated the message has reached the end user. Some channels can later sent new delivery report with status `READ`.
+    3.1 `DELIVERED` - the channel delivery report indicated the message has reached the end user. Some channels can later send new delivery report with status `READ`.
 
     3.2 `READ` - the channel delivery report indicated the message was seen or read by the end user. This is a terminal state. There cannot be more state changes after the message is in `READ` state. Some channel will omit sending `DELIVERED` when the message is seen immediately by the user. In such cases the `DELIVERED` status is implicit.
 
@@ -629,6 +629,8 @@ It is a JSON object with the following properties:
 | channel_capabilities | string array       | Optional. When status `CAPABILITY_PARTIAL`, a list of channel-specific capabilities reported by the channel if supported.               |
 | reason               | object             | Error reason if the capability check failed. See [Reason](doc:conversation-callbacks#reason) for details.                               |
 
+You can get more information about the capability check endpoint provided by Conversation API at [Introduction to Capability](doc:conversation-capability).
+
 #### Example of Capability Check Callback
 
 ```json
@@ -661,6 +663,8 @@ The opt-in details are given in a top level `opt_in_notification` field with the
 | status            | string             | Status of the opt-in registration. One of `OPT_IN_SUCCEEDED` or `OPT_IN_FAILED`.                                                        |
 | error_details     | object             | It is set in case of errors. It contains a single string property `description` containing a human-readable error description.          |
 
+You can get more information about the opt-in endpoint provided by Conversation API at [Opt-In & Opt-Out](doc:conversation-optin).
+
 #### Example of Opt In Callback
 
 ```json
@@ -692,6 +696,8 @@ The opt-out details are given in a top level `opt_out_notification` field with t
 | identity          | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                         |
 | status            | string             | Status of the opt-out registration. One of `OPT_OUT_SUCCEEDED` or `OPT_OUT_FAILED`.                                                     |
 | error_details     | object             | It is set in case of errors. It contains a single string property `description` containing a human-readable error description.          |
+
+You can get more information about the opt-out endpoint provided by Conversation API at [Opt-In & Opt-Out](doc:conversation-optin).
 
 #### Example of Opt Out Callback
 
