@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: Facebook Messenger
 excerpt: >-
   Sinch Conversation API Facebook Messenger specific configurations and message transcoding.
 hidden: false

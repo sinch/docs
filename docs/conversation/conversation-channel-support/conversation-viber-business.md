@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: Viber Business Messages
 excerpt: >-
   Sinch Conversation API Viber Business Messages specific configurations and message transcoding.
 hidden: false

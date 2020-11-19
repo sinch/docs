@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: SMS
 excerpt: >-
   Sinch Conversation API SMS specific configurations and message transcoding.
 hidden: false

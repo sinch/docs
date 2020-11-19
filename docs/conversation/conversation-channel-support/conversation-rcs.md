@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: RCS
 excerpt: >-
   Sinch Conversation API RCS specific configurations and message transcoding.
 hidden: false
