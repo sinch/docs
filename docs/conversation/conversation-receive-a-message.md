@@ -12,7 +12,7 @@ In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-wi
 
 > 🚧 Warning
 >
-> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info. 
+> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info. 
 
 ## Create a simple webhook using Node.js
 
@@ -89,11 +89,11 @@ Now your webhook is setup with the Conversation App.
 Now that your webhook is setup with the Conversation App and ngrok along with your node app are running and listening to port 3000- it's time to test the webhook.
 For this demo, we will be using Facebook Messenger channel as our example. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please look into [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger) before proceeding.
 
-![SendingMessage](images/channel-support/messenger/fb_message_firstmsg.png)
+![SendingMessage](conversation-channel-support/images/channel-support/messenger/fb_message_firstmsg.png)
 
 if you did everything correctly, you will receive a `status 200 OK` on ngrok and the text message on your console log.
 
-![Logged](images/channel-support/messenger/fb_message_log.jpg)
+![Logged](conversation-channel-support/images/channel-support/messenger/fb_message_log.jpg)
 
 ---
 
@@ -174,7 +174,7 @@ app.listen(port, () => console.log(`Listening to ${port}..`));
 
 if everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and `accepted time`
 
-![Received](images/channel-support/messenger/fb_message_replied.png)
+![Received](conversation-channel-support/images/channel-support/messenger/fb_message_replied.png)
 
 Now your webhook is ready to receive and send a message back!
 
