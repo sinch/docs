@@ -91,7 +91,7 @@ Here we give a mapping between Conversation API generic message format
 and the Viber rendering on mobile devices.
 Please note that for the sake of brevity the JSON snippets do not include
 the **recipient** and **app_id** which are both required when sending a message.
-When sending messages on Viber Bot you can use some channel specific properties, like Viber sender avatar. Check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info.
+When sending messages on Viber Bot you can use some channel specific properties, like Viber sender avatar. Check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info.
 
 ###### Text Messages
 
