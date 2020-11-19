@@ -9,46 +9,46 @@ hidden: false
 
 A Facebook Page is required to use the Facebook Messenger API. It is used as the identity of your Messenger experience. When people chat with your app, they will see the Page name and the Page profile picture. To create a new Page, visit https://www.facebook.com/pages/create. If you already have one, you can skip to [**Creating your Facebook App**](doc:conversation-send-a-message-with-fb-messenger#create-your-facebook-app).
 
-![Create New Page](images/channel-support/messenger/fb_create_new_page.png)
+![Create New Page](conversation-channel-support/images/channel-support/messenger/fb_create_new_page.png)
 
 Next, choose to create a **"Business or Brand"** and fill out the ensuing page name and contact form.
 
-![Create Business Page](images/channel-support/messenger/fb_create_business_page.png)
+![Create Business Page](conversation-channel-support/images/channel-support/messenger/fb_create_business_page.png)
 
 You can choose to **"Skip"** adding 'Profile' and 'Background' pictures as well as **"Not Now"** for the option to 'Add online booking'. You have now completed creating your Facebook Business Page. Remember while your Facebook App is 'In development' the Facebook Business Page is not visible to anyone except you and other developers you invite to your Facebook developer account.
 
 Make sure to bookmark your Facebook Business Page. You will head back there to send messages later.
 
-![Business Page](images/channel-support/messenger/fb_business_page.png)
+![Business Page](conversation-channel-support/images/channel-support/messenger/fb_business_page.png)
 
 #### Add a Messenger Chat Button to your Facebook Business Page
 
 Click on **"+ Add Button"**.
 
-![Facebook Page Add Button](images/channel-support/messenger/fb_page_add_button.png)
+![Facebook Page Add Button](conversation-channel-support/images/channel-support/messenger/fb_page_add_button.png)
 
 Choose **Send Message** and click **"Next"**.
 
-![Fb Add Send Message Button](images/channel-support/messenger/fb_add_send_message_button.png)
+![Fb Add Send Message Button](conversation-channel-support/images/channel-support/messenger/fb_add_send_message_button.png)
 
 Click on **"Messenger"** and then click **"Finish"**.
 
-![Fb Add Button Messenger](images/channel-support/messenger/fb_add_button_messenger.png)
+![Fb Add Button Messenger](conversation-channel-support/images/channel-support/messenger/fb_add_button_messenger.png)
 
 ### Create your Facebook App
 
 If you have an existing Facebook Developer Account and a Facebook App, you can skip to [Add Messenger Product to your FB App](#add-messenger-to-your-app).
 To register for a Facebook Developer account, go to **[Facebook Developer Account](https://developers.facebook.com)** and click **"Get Started"** on the upper right menu.
 
-[](images/channel-support/messenger/fb_for_developers.png)
+[](conversation-channel-support/images/channel-support/messenger/fb_for_developers.png)
 
 Once you have created your Facebook developer account, you can choose to **"Create First App"**.
 
-![Create App Form](images/channel-support/messenger/fb_create_first_app.png)
+![Create App Form](conversation-channel-support/images/channel-support/messenger/fb_create_first_app.png)
 
 Your new _APP ID_ will be displayed at the top left of your Facebook App Dashboard.
 
-![Facebook App Dashboard](images/channel-support/messenger/fb_app_dashboard.png)
+![Facebook App Dashboard](conversation-channel-support/images/channel-support/messenger/fb_app_dashboard.png)
 
 #### Add Messenger to your app
 
@@ -58,23 +58,23 @@ From your Facebook Developer Dashboard, under _Add Product_, click on the Messen
 
 To generate your Messenger API Token, add the Facebook Page you created earler. Scroll down to **Access Tokens** and click **"Add or Remove Pages"**.
 
-![Add Remove Page](images/channel-support/messenger/fb_add_remove_page.png)
+![Add Remove Page](conversation-channel-support/images/channel-support/messenger/fb_add_remove_page.png)
 
 Next, follow the prompts and choose the new Facebook Page you just created. Make sure that you leave the default setting **Manage and access Page conversations in Messenger** set to YES.
 
-![Manage and Access Conversations](images/channel-support/messenger/fb_manage_and_access_conversations.png)
+![Manage and Access Conversations](conversation-channel-support/images/channel-support/messenger/fb_manage_and_access_conversations.png)
 
 You should see your Facebook Page listed under **Access Tokens**. Click on the **"Generate Token"** button.
 
 Copy and store your Messenger Token somewhere safe, we will need it to add the Messenger Channel to your **Sinch Conversations App**.
 
-![Generate Messenger Token](images/channel-support/messenger/fb_generate_messenger_token.png)
+![Generate Messenger Token](conversation-channel-support/images/channel-support/messenger/fb_generate_messenger_token.png)
 
 #### Configure your Facebook Messenger Channel on Sinch Conversation API
 
 The easiest way to configure your channel is through the App Details page in the [Sinch Portal](https://dashboard.sinch.com/convapi/apps):
 
-![Generate Messenger Token](images/channel-support/messenger/fb_channel_config.png)
+![Generate Messenger Token](conversation-channel-support/images/channel-support/messenger/fb_channel_config.png)
 
 Another way is to use the **app** management API  to **Patch** your Sinch Conversations App with the newly created **Messenger Token**, this will allow the Sinch Conversations App to send messages to visitors of your Facebook Page.
 
@@ -99,7 +99,7 @@ curl --location --request PATCH 'https://eu.conversation.api.sinch.com/v1beta/pr
 
 The Messenger Webhook Settings configuration forwards message events posted on your **Facebook Page** to your **Sinch Conversations App**. To set the configuration, click on **"Add Callback URL"** in the Facebook App Dashboard > Products > Messenger > Settings **Webhooks**.
 
-![Facebook Messenger Webhooks](images/channel-support/messenger/fb_messenger_webhooks.png)
+![Facebook Messenger Webhooks](conversation-channel-support/images/channel-support/messenger/fb_messenger_webhooks.png)
 
 Then add the following **Callback URL** and **Verify Token**:
 
@@ -109,11 +109,11 @@ https://messenger-adapter.conversation-api.prod.sinch.com/adapter/v1/{{YOUR_SINC
 Verify Token: 5651d9fd-5c33-4d7a-aa37-5e3e151c2a92
 ```
 
-![Facebook Messenger Edit Webhook](images/channel-support/messenger/fb_messenger_edit_webhook.png)
+![Facebook Messenger Edit Webhook](conversation-channel-support/images/channel-support/messenger/fb_messenger_edit_webhook.png)
 
 To complete your **Webhooks** configuration, click on **"Add Subscriptions"**. Select **"messages"** and **"message_deliveries"** fields and click on **"Save"**.
 
-![Facebook Webhook Subscription](images/channel-support/messenger/fp_messenger_webhook_subscriptions.png)
+![Facebook Webhook Subscription](conversation-channel-support/images/channel-support/messenger/fp_messenger_webhook_subscriptions.png)
 
 Great! You're almost there. Just a couple more steps.
 
@@ -121,15 +121,15 @@ Great! You're almost there. Just a couple more steps.
 
 OK, you are ready for some action! Visit your FB Page, click on **"Send Message"** and choose **"Test Button"**.
 
-![Facebook test send message button](images/channel-support/messenger/fb_page_test_send_message_button.png)
+![Facebook test send message button](conversation-channel-support/images/channel-support/messenger/fb_page_test_send_message_button.png)
 
 Enter a message into the **Messenger** chat window and **Send**.
 
 > 🚧 Warning
 >
-> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support#channel-specific-properties) for more info. 
+> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info. 
 
-![Facebook Messenger Pop up](images/channel-support/messenger/fb_page_messenger_pop_up.png)
+![Facebook Messenger Pop up](conversation-channel-support/images/channel-support/messenger/fb_page_messenger_pop_up.png)
 
 Use **Sinch Conversation API** to **List Contacts**, you should now see a new contact entry generated when the **Messenger Message** was posted from your Facebook Page.
 
@@ -180,7 +180,7 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-![Facebook Message Text](images/channel-support/messenger/fb_message_text.jpg)
+![Facebook Message Text](conversation-channel-support/images/channel-support/messenger/fb_message_text.jpg)
 
 **ALRIGHT!! CONGRATULATIONS**, you have just sent your first Sinch Conversations Messenger Message!
 
