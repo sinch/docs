@@ -149,7 +149,7 @@ Please note that for the sake of brevity the JSON snippets do not include the **
 
 If you want to send messages outside the standard 24h response window you can do that by adding Messenger channel specific properties in your message request.
 
-For more info check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties).
+For more info check out [**Channel Specific Properties**](doc:conversation-channel-properties).
 
 ###### Text Messages
 

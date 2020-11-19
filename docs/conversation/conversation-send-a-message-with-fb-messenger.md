@@ -127,7 +127,7 @@ Enter a message into the **Messenger** chat window and **Send**.
 
 > 🚧 Warning
 >
-> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info. 
+> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-properties) for more info. 
 
 ![Facebook Messenger Pop up](conversation-channel-support/images/channel-support/messenger/fb_page_messenger_pop_up.png)
 

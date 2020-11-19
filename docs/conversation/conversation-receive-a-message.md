@@ -12,7 +12,7 @@ In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-wi
 
 > 🚧 Warning
 >
-> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info. 
+> Please note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-properties) for more info. 
 
 ## Create a simple webhook using Node.js
 
