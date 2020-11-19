@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: Viber Bot
 excerpt: >-
   Sinch Conversation API Viber Bot specific configurations and message transcoding.
 hidden: false

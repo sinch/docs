@@ -1,5 +1,5 @@
 ---
-title: Channel Support
+title: WhatsApp
 excerpt: >-
   Sinch Conversation API WhatsApp specific configurations and message transcoding.
 hidden: false
