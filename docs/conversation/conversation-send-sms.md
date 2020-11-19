@@ -91,4 +91,4 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 }'
 ```
 
-When sending SMS messages you can use a channel specific property called `SMS_FLASH_MESSAGE`, check out [**Channel Specific Properties**](doc:conversation-channel-support-channel-properties) for more info.
+When sending SMS messages you can use a channel specific property called `SMS_FLASH_MESSAGE`, check out [**Channel Specific Properties**](doc:conversation-channel-properties) for more info.
