@@ -49,6 +49,14 @@ given in the example snippet below:
 
 You need to replace {{VIBER_BOT_TOKEN}} with your Viber bot's access token.
 
+> 📘 Note
+>
+> For Viber Bot you can configure Callback Validation between Viber Bot API and Conversation API so that we can make sure, that the callbacks are valid.
+>
+> This can be done via the portal when configuring your Viber Bot channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
+>
+> The secret for this validation in the case of Viber Bot is the same as your VIBER_BOT_TOKEN.
+
 2. Set the webhook for your Viber bot to the URL of the Conversation API adapter
 using the instructions in the [Viber Bot documentation](https://developers.viber.com/docs/api/rest-bot-api/#setting-a-webhook).
 This step is done automatically when configuring the Viber integration through
