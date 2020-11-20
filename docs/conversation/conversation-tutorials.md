@@ -13,6 +13,7 @@ Here we collected a few tutorials to help you get started with Conversation API.
 
 * [**Set up your Facebook page**](doc:conversation-send-a-message-with-fb-messenger) 
 
-* [**Sending messages on Facebook Messenger**](doc:conversation-rich-messages-with-fb-messenger)
+* [**Sending messages on Facebook Messenger**](doc:conversation-send-rich-messages-with-fb-messenger)
 
 * [**Receive a message with Facebook Messenger**](doc:conversation-receive-a-message)
+
