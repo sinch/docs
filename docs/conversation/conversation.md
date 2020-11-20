@@ -19,6 +19,8 @@ Put simply, with the Sinch Conversation API, you are always in control of your c
 
 Currently, Sinch Conversation API is in closed beta. If you are interested in the early access program please contact a [Sinch representative](https://www.sinch.com/contact-us/).
 
+---
+
 ### Key concepts
 
 ![ER Diagram](images/convapi-er-diagram.png)
@@ -38,24 +40,28 @@ An **app** has the following configurable properties:
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Display name                      | The name visible in [Sinch Portal](https://dashboard.sinch.com/convapi/apps)                                                       |
 | Conversation metadata report view | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that will be returned as part of each callback. |
-| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an **app**, should be stored by the Conversation API             |
+| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an **app**, should be stored by the Conversation API         |
 
 ##### Retention policy
-Each **App** have a retention policy that specifies for how long messages, sent to or from the **App**,  should be stored.
+
+Each **App** has a retention policy that specifies for how long messages - sent to or from the **App** - should be stored.
 The **retention policy** can be changed, programmatically, via the API by updating the corresponding **app**, or via the
 [Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**.
+
 A **retention policy** is defined by the following properties:
 
-| Field           | Description                                                                                          |
-| --------------- | ---------------------------------------------------------------------------------------------------- |
-| Retention Policy Type             | The available options are MESSAGE_EXPIRE_POLICY, CONVERSATION_EXPIRE_POLICY, and PERSIST_RETENTION_POLICY. The default is MESSAGE_EXPIRE_POLICY.                                      |
-| TTL days                        | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the default value is 180.               |
+| Field                             | Description                                                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Retention Policy Type             | Type of the policy. See options below the table. The default is `MESSAGE_EXPIRE_POLICY`.                                              |
+| TTL days                          | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the default value is 180 days.|
 
-The MESSAGE_EXPIRE_POLICY policy option will remove all messages, sent or received by the **app**, older than the TTL days specified in the policy.
-The CONVERSATION_EXPIRE_POLICY policy option only takes the last message, in a [**conversation**](doc:conversation#conversation), into consideration when deciding if a [**conversation**](doc:conversation#conversation) should
-be removed or not. The entire [**conversation**](doc:conversation#conversation) will be removed if the last message is older than the TTL days specified in the policy. The entire [**conversation**](doc:conversation#conversation)
-will be kept otherwise. The PERSIST_RETENTION_POLICY option persists all messages, and [**conversations**](doc:conversation#conversation) until they are explicitly deleted. Note that this option
-will be subject to additional charges in the future.
+###### Retention policy types
+
+* `MESSAGE_EXPIRE_POLICY` - this option will remove all messages, sent or received by the **app**, older than the TTL days specified in the policy.
+
+* `CONVERSATION_EXPIRE_POLICY` - this option only takes the last message in a [**conversation**](doc:conversation#conversation) into consideration when deciding if a [**conversation**](doc:conversation#conversation) should be removed or not. The entire [**conversation**](doc:conversation#conversation) will be removed if the last message is older than the TTL days specified in the policy. The entire [**conversation**](doc:conversation#conversation) will be kept otherwise. 
+
+* `PERSIST_RETENTION_POLICY` -  this option persists all messages, and [**conversations**](doc:conversation#conversation) until they are explicitly deleted. Note that this option will be subject to additional charges in the future.
 
 #### Channel credential
 
@@ -65,11 +71,11 @@ The app channel priority is overridden by contact channel priority order and by 
 
 A **channel credential** has the following configurable properties:
 
-| Field           | Description                                                                                          |
-| --------------- | ---------------------------------------------------------------------------------------------------- |
-| Channel         | Which channel these credentials are used with.                                                       |
-| Credential      | Specifies the type and values for the credentials used for a channel.                                |
-| Channel senders | A list of sender identities to use when sending a message. It is used for example with `SMS` channel.|
+| Field           | Description                                                                                                           |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Channel         | Which channel these credentials are used with.                                                                        |
+| Credential      | Specifies the type and values for the credentials used for a channel.                                                 |
+| Callback Secret | Optional. A secret for certain channels where Conversation API can validate callbacks coming from the channels.       |
 
 #### Webhook
 
@@ -89,7 +95,7 @@ A **webhook** has the following configurable properties:
 
 #### Contact
 
-The **contact** entity is a collection entity that groups together underlying connected **channel recipient identities**. It is tied to a specific [**project**](doc:conversation#project) and is therefore considered public to all [**apps**](doc:conversation#app) sharing the same [**project**](doc:conversation#project).
+The **contact** entity is a collection entity that groups together underlying connected [**channel recipient identities**](doc:conversation#channel-recipient-identity). It is tied to a specific [**project**](doc:conversation#project) and is therefore considered public to all [**apps**](doc:conversation#app) sharing the same [**project**](doc:conversation#project).
 
 A **contact** has the following configurable properties:
 
@@ -105,10 +111,9 @@ A **contact** has the following configurable properties:
 #### Channel recipient identity
 
 A **channel recipient identity** is an identifier for the [**contact**](doc:conversation#contact) for a specific channel. E.g. an international phone number is used as identifier for _SMS_ and _RCS_ while a PSID (Page-Scoped ID) is used as the identifier for _Facebook Messenger_.
-Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber are using app-scoped channel identities
-which means contacts will have different channel identities for different [**apps**](doc:conversation#app).
-For Facebook Messenger this means that the contact channel identity is associated with the [**app**](doc:conversation#app)
-linked to the Facebook page for which this PSID is issued.
+
+Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber Bot are using app-scoped channel identities, which means contacts will have different channel identities for different [**apps**](doc:conversation#app).
+For Facebook Messenger this means that the contact channel identity is associated with the [**app**](doc:conversation#app) linked to the Facebook page for which this PSID is issued.
 
 A **channel recipient identity** has the following configurable properties:
 
@@ -128,10 +133,7 @@ An individual message, part of a specific [**conversation**](doc:conversation#co
 
 #### Metadata
 
-There are currently three entities which can hold metadata: [**message**](doc:conversation#conversation-message), [**conversation**](doc:conversation#conversation) and [**contact**](doc:conversation#contact).
-The metadata is an opaque field for the Conversation API and can be used by the API clients to
-retrieve a context when receiving a callback from the API.
-The metadata fields are currently restricted to 1024 characters.
+There are currently three entities which can hold metadata: [**message**](doc:conversation#conversation-message), [**conversation**](doc:conversation#conversation) and [**contact**](doc:conversation#contact). The metadata is an opaque field for the Conversation API and can be used by the API clients to retrieve a context when receiving a callback from the API. The metadata fields are currently restricted to 1024 characters.
 
 ### Supported channels
 
@@ -142,7 +144,9 @@ The metadata fields are currently restricted to 1024 characters.
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
 
-And more on the roadmap for 2020.
+Read more about them at [**Channel Support**](doc:conversation#conversation-channel-support).
+
+And more on the roadmap for 2021!
 
 ### Regions
 
@@ -155,11 +159,16 @@ Currently Sinch Conversation API is available in:
 
 ### Authentication
 
-The Conversation API uses OAuth2 **Access Tokens** to authenticate API calls. The first step to obtaining an **Access Token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/settings/access-keys) under Settings -> Access Keys. A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The created **Access Key** can be used in the different authentication flows in both regions. The following snippet illustrates how to obtain an **Access Token** that can be used to authenticate towards the Conversation API in the US. Please note that it is not possible to use the obtained **Access Token** to authenticate towards the Conversation API in the EU. One should instead obtain a valid **Access Token** for the corresponding EU endpoint.
+The Conversation API uses OAuth2 **Access Tokens** to authenticate API calls. The first step to obtaining an **Access Token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/settings/access-keys) under Settings -> Access Keys. A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The created **Access Key** can be used in the different authentication flows in both regions. The following snippet illustrates how to obtain an **Access Token** that can be used to authenticate towards the Conversation API in the US.
 
 ```console
 curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
 ```
+
+> 📘 Note
+>
+> It is not possible to use the **Access Token** obtained from the US endpoint to authenticate towards the Conversation API in the EU. One should instead obtain a valid **Access Token** from the corresponding EU endpoint:
+> https://eu.auth.sinch.com/oauth2/token
 
 A call to the Conversation API, in the US, can then be done by including the obtained **Access Token**, valid for US, in the request header. See below for an example:
 
@@ -168,6 +177,7 @@ curl -H "Authorization: Bearer <access token>" https://us.conversation.api.sinch
 ```
 
 #### Support for Basic Authentication
+
 It is also possible to use Basic Authentication to authenticate towards the Conversation API. The recommendation is to use the OAuth2 flow, as described above, for increased security and throughput. The **username** and **password** correspond to the **client_id** and **client_secret** obtained when creating an **Access Key**. See below for an example of how to authenticate towards the Conversation API, in the US, using Basic Authentication. It is possible to authenticate towards the Conversation API, in the EU, in the same way since the created **Access Key** is valid for the EU region as well.
 
 ```console
@@ -176,17 +186,31 @@ curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --u
 
 ### Postman collection
 
-Sinch offers a Postman collection for easy setup and testing during development.
+Sinch offers a Postman collection for easy setup and testing during development:
+
 https://www.getpostman.com/collections/79a07a7d299afe46658b
-After importing the collection, fill in the following variables: PROJECT with your PROJECT ID, APP with app id, CLIENT_ID with your CLIENT_ID, and CLIENT_SECRET with your client secret.  
-To fill WEBHOOK_URL, simply visit  
-https://webhook.site/  
-and use the generated link - the one under the 'Your unique URL' label.
+
+After importing the collection, fill in the following variables:
+
+* `PROJECT` with your Project ID
+
+* `APP` with your App ID
+
+* `CLIENT_ID` with your client ID
+
+* `CLIENT_SECRET` with your client secret.  
+
+> For testing purposes fill WEBHOOK_URL by simply visiting
+> https://webhook.site/  
+> and use the generated link - the one under the 'Your unique URL' label.
+
 Values for other variables can be obtained by calling corresponding requests:
 
-- CONTACT - ID of contact created by calling 'Create contact' request
-- WEBHOOK_ID - ID of webhook created by calling 'Create webhook' request
-- CONVERSATION - a Conversation is created automatically when sending a new message (for example with 'Text Message' request). Send a message, then call 'List conversations of App/Contact' to get the ID of conversation for this variable
+* `CONTACT` - ID of contact created by calling 'Create contact' request
+
+* `WEBHOOK_ID` - ID of webhook created by calling 'Create webhook' request
+
+* `CONVERSATION` - a Conversation is created automatically when sending a new message (for example with 'Text Message' request). Send a message, then call 'List conversations of App/Contact' to get the ID of conversation for this variable.
 
 ### Errors
 

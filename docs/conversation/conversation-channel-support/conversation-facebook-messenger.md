@@ -41,6 +41,14 @@ Conversation API supports Facebook Messenger and allows sending messages from Fa
 }
 ```
 
+> 📘 Note
+>
+> For Facebook Messenger you can configure Callback Validation between Facebook Messenger and Conversation API so that we can make sure, that the callbacks are valid.
+>
+> This can be done via the portal when configuring your Facebook Messenger channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
+>
+> The secret for this validation in the case of Facebook Messenger is you App Secret from you Facebook Page.
+
 - Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**): 
   
   Callback URL: `https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
