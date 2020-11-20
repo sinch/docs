@@ -62,13 +62,13 @@ Go to your Conversation App dashboard and select
 
 Then select `Apps` from the drop-down menu and select the App you want to add a webhook too.
 
-![LeftMenu](images/dashboard/dashboard_leftMenu.jpg)
+![LeftMenu](../images/dashboard/dashboard_leftMenu.jpg)
 
 For this example, I will be using **Test** as my app.
 
 Once you have selected your App, scroll down to **Webhook** section and select the **Add Webhook** button. There will be a pop-up with empty required fields.
 
-![Webhook](images/dashboard/dashboard_configPage.jpg)
+![Webhook](../images/dashboard/dashboard_configPage.jpg)
 
 Fill in the following:
 
@@ -78,7 +78,7 @@ Select **Target URL** as your ngrok url
 
 Select `MESSAGE_INBOUND`, `MESSAGE_DELIVERY`, `EVENT_DELIVERY`, `MESSAGE_INBOUND`, `EVENT_INBOUND`, `CONVERSATION_START`, `CONVERSATION_STOP`, `UNSUPPORTED` as **Trigger**
 
-![WebhookPopup](images/dashboard/dashboard_webhookPopup.png)
+![WebhookPopup](../images/dashboard/dashboard_webhookPopup.png)
 
 Now your webhook is setup with the Conversation App.
 
@@ -89,11 +89,11 @@ Now your webhook is setup with the Conversation App.
 Now that your webhook is setup with the Conversation App and ngrok along with your node app are running and listening to port 3000- it's time to test the webhook.
 For this demo, we will be using Facebook Messenger channel as our example. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please look into [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger) before proceeding.
 
-![SendingMessage](conversation-channel-support/images/channel-support/messenger/fb_message_firstmsg.png)
+![SendingMessage](../conversation-channel-support/images/channel-support/messenger/fb_message_firstmsg.png)
 
 if you did everything correctly, you will receive a `status 200 OK` on ngrok and the text message on your console log.
 
-![Logged](conversation-channel-support/images/channel-support/messenger/fb_message_log.jpg)
+![Logged](../conversation-channel-support/images/channel-support/messenger/fb_message_log.jpg)
 
 ---
 
@@ -174,7 +174,7 @@ app.listen(port, () => console.log(`Listening to ${port}..`));
 
 if everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and `accepted time`
 
-![Received](conversation-channel-support/images/channel-support/messenger/fb_message_replied.png)
+![Received](../conversation-channel-support/images/channel-support/messenger/fb_message_replied.png)
 
 Now your webhook is ready to receive and send a message back!
 
