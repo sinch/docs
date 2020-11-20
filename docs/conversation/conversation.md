@@ -3,6 +3,13 @@ title: Introduction
 excerpt: >-
   High level presentation of Sinch Conversation API and overview of its key concepts.
 hidden: false
+next:
+  pages:
+    - conversation_quick_guide
+    - conversation-channel-support
+    - conversation-callbacks
+    - conversation-optin
+    - conversation-capability
 ---
 
 ## Introduction <span class="betabadge">Beta</span>
@@ -135,6 +142,8 @@ An individual message, part of a specific [**conversation**](doc:conversation#co
 
 There are currently three entities which can hold metadata: [**message**](doc:conversation#conversation-message), [**conversation**](doc:conversation#conversation) and [**contact**](doc:conversation#contact). The metadata is an opaque field for the Conversation API and can be used by the API clients to retrieve a context when receiving a callback from the API. The metadata fields are currently restricted to 1024 characters.
 
+---
+
 ### Supported channels
 
 - <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
@@ -148,6 +157,8 @@ Read more about them at [**Channel Support**](doc:conversation-channel-support).
 
 And more on the roadmap for 2021!
 
+---
+
 ### Regions
 
 Currently Sinch Conversation API is available in:
@@ -156,6 +167,8 @@ Currently Sinch Conversation API is available in:
 | ------ | ------------------------------------- |
 | US     | https://us.conversation.api.sinch.com |
 | EU     | https://eu.conversation.api.sinch.com |
+
+---
 
 ### Authentication
 
@@ -184,6 +197,8 @@ It is also possible to use Basic Authentication to authenticate towards the Conv
 curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --user <client_id>:<client_secret>
 ```
 
+---
+
 ### Postman collection
 
 Sinch offers a Postman collection for easy setup and testing during development:
@@ -211,6 +226,8 @@ Values for other variables can be obtained by calling corresponding requests:
 * `WEBHOOK_ID` - ID of webhook created by calling 'Create webhook' request
 
 * `CONVERSATION` - a Conversation is created automatically when sending a new message (for example with 'Text Message' request). Send a message, then call 'List conversations of App/Contact' to get the ID of conversation for this variable.
+
+---
 
 ### Errors
 
