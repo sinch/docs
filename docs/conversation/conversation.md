@@ -144,7 +144,7 @@ There are currently three entities which can hold metadata: [**message**](doc:co
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
 
-Read more about them at [**Channel Support**](doc:conversation#conversation-channel-support).
+Read more about them at [**Channel Support**](doc:conversation-channel-support).
 
 And more on the roadmap for 2021!
 
