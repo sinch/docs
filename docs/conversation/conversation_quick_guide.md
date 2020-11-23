@@ -89,3 +89,28 @@ curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --u
 
 The access token can be used in conjunction with your project ID to interact with the Conversation API. Read more about possible authentication methods at [**Authentication**](doc:conversation#authentication).
 
+## 6. Try our Postman collection
+
+We have a [**Postman collection**](doc:conversation#postman-collection) available to download. There you can find examples to access our API endpoints.
+
+In the collection there are variables that you need to fill with your own values and IDs to be able to send the requests.
+
+![Postman Variables](images/convapi-postman-vars.png)
+
+The collection includes requests to manage your resources - it is possible to create the same Conversation App via these requests that we created on the portal!
+
+| Service                   | Available Requests                                       | 
+| ------------------------- | -------------------------------------------------------- | 
+| `APP` Management          | ![Postman Variables](images/convapi-app-service.png)     | 
+| `CONTACT` Management      | ![Postman Variables](images/convapi-contact-service.png) | 
+| `CONVERSATION` Management | ![Postman Variables](images/convapi-conv-service.png)    | 
+| `WEBHOOK` Management      | ![Postman Variables](images/convapi-webhook-service.png) |
+
+You will also find requests to send **messages and events** to your contact:
+
+![Messages and Events](images/convapi-traffic-api.png)
+
+## 7. Send Messages!
+
+**Conversation API** integrates multiple channels that you can try. [**Channel Support**]() contains detailed examples and screenshots about message types that you can try on supported channels!
+
