@@ -99,16 +99,33 @@ In the collection there are variables that you need to fill with your own values
 
 The collection includes requests to manage your resources - it is possible to create the same Conversation App that we created on the portal via these requests!
 
-| Service                   | Available Requests                                       | 
-| ------------------------- | -------------------------------------------------------- | 
-| `APP` Management          | ![Postman Variables](images/convapi-app-service.png)     | 
-| `CONTACT` Management      | ![Postman Variables](images/convapi-contact-service.png) | 
-| `CONVERSATION` Management | ![Postman Variables](images/convapi-conv-service.png)    | 
-| `WEBHOOK` Management      | ![Postman Variables](images/convapi-webhook-service.png) |
+Available Services: 
+
+* `APP` Management
+
+* `CONTACT` Management 
+
+* `CONVERSATION` Management 
+
+* `WEBHOOK` Management
 
 You will also find requests to send **messages and events** to your contact:
 
-![Messages and Events](images/convapi-traffic-api.png)
+* Send a `MESSAGE`:
+    
+    * `TEXT`
+    
+    * `MEDIA`
+    
+    * `CHOICE`
+    
+    * `CARD`
+    
+    * `CAROUSEL`
+    
+    * `LOCATION`
+
+* Send an `EVENT`
 
 ## 7. Send Messages!
 
