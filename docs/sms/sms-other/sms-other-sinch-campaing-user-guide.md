@@ -31,7 +31,7 @@ excerpt: >-
 
 [Sinch US Short Code Carrier Reach List](downloads\Sinch_US_Short_Code_Carrier_Reach_List.xlsx) - Sinch US Short Code Carrier Reach List.
 
-[Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20201108.xlsx) - Sinch GCMR for U.S. and Canada November 8, 2020.
+[Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20201122.xlsx) - Sinch GCMR for U.S. and Canada November 22, 2020.
 
 [Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.pdf) - Clients that plan to run a high volume campaign we must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
 
