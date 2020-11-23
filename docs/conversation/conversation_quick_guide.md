@@ -93,11 +93,11 @@ The access token can be used in conjunction with your project ID to interact wit
 
 We have a [**Postman collection**](doc:conversation#postman-collection) available to download. There you can find examples to access our API endpoints.
 
-In the collection there are variables that you need to fill with your own values and IDs to be able to send the requests.
+In the collection there are variables that you need to fill with your own values and IDs to be able to send the requests:
 
 ![Postman Variables](images/convapi-postman-vars.png)
 
-The collection includes requests to manage your resources - it is possible to create the same Conversation App via these requests that we created on the portal!
+The collection includes requests to manage your resources - it is possible to create the same Conversation App that we created on the portal via these requests!
 
 | Service                   | Available Requests                                       | 
 | ------------------------- | -------------------------------------------------------- | 
@@ -112,5 +112,5 @@ You will also find requests to send **messages and events** to your contact:
 
 ## 7. Send Messages!
 
-**Conversation API** integrates multiple channels that you can try. [**Channel Support**]() contains detailed examples and screenshots about message types that you can try on supported channels!
+**Conversation API** integrates multiple channels that you can try. [**Channel Support**](doc:conversation-channel-support) contains detailed examples and screenshots about message types that you can try on supported channels!
 
