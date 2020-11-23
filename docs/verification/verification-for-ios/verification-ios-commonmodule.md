@@ -10,17 +10,17 @@ If your application allows the user to authenticate via various verification met
 
 ## VerificationInitData
 
-`VerificationInitData` is simply a structure that holds all the parameters that can be passed to a verification configuration object and additionally method used to verify the phone number.
+`VerificationInitData` is a structure that holds all the parameters that can be passed to a verification configuration object and additionally method used to verify the phone number.
 
 ```swift
 private var initData: VerificationInitData {
     return VerificationInitData(
-        usedMethod: buttonToMethodMap[selectedMethodButton] ?? .sms,
-        number: phoneNumberTextField.e164Number ?? "",
-        custom: customField.text?.nilIfEmpty(),
-        reference: referenceField.text?.nilIfEmpty(),
-        honoursEarlyReject: honoursEarlyRejectField.isOn,
-        acceptedLanguages: (try? acceptedLanguagesField.text?.nilIfEmpty()?.toLocaleList()) ?? [])
+        usedMethod: VerificationMethodType.sms,
+        number: "+123456789",
+        custom: "ExampleCustom",
+        reference: nil,
+        honoursEarlyReject: true,
+        acceptedLanguages: [])
 }
 ```
 
