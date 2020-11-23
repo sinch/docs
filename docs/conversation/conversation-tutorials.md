@@ -1,8 +1,7 @@
 ---
 title: Tutorials
 excerpt: >-
-  Here we collected a few tutorials to help you get started with Sinch Conversation API. New tutorials are coming, so stay tuned!
-hidden: false
+  Here we collected a few tutorials to help you get started with Sinch Conversation API.
 next:
   pages:
     - conversation-send-sms
