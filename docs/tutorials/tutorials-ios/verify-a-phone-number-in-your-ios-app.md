@@ -6,7 +6,7 @@ excerpt: >-
   Verification SDK, you won’t need any backend yourself, or you can implement a
   simple endpoint to receive that a number is verified.
 ---
-In this tutorial, we are going to explore our Verification SDK for iOS. As of this writing, the method we support for iOS is [SMS verification](doc:verification-ios-sms-verification), which we wrote about in [earlier tutorials](doc:building-an-ios-client-for-number-verification-part-2). With our Verification SDK, you won’t need any backend yourself, or you can implement a simple endpoint to receive that a number is verified. .. You can check out more [Verification Tutorials](https://www.sinch.com/tutorials/?tags%5B%5D=verification&utm_source=sinch&utm_medium=xlink&utm_campaign=verifyall)
+In this tutorial, we are going to explore our Verification SDK for iOS. As of this writing, the method we support for iOS is SMS, which we wrote about in [earlier tutorials](doc:building-an-ios-client-for-number-verification-part-2). With our Verification SDK, you won’t need any backend yourself, or you can implement a simple endpoint to receive that a number is verified. .. You can check out more [Verification Tutorials](https://www.sinch.com/tutorials/?tags%5B%5D=verification&utm_source=sinch&utm_medium=xlink&utm_campaign=verifyall)
 
 ## Setup
 
