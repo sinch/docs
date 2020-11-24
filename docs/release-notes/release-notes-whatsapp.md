@@ -5,6 +5,10 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2020-11-24
+
+ - WhatsApp API performance improvements.
+
 ## 2020-11-03
 
  - WhatsApp API performance improvements.
