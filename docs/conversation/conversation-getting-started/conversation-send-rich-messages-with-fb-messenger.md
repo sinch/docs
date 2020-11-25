@@ -7,7 +7,7 @@ hidden: false
 
 ## Sending Media Message <span class="betabadge">Beta</span>
 
-Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation_quick_guide#5-project-id-and-access-keys) to obtain your AccessToken
+Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation-getting-started#5-project-id-and-access-keys) to obtain your AccessToken
 
 ```shell Curl
 curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/projects/{project_id}/messages:send' \
