@@ -1,7 +1,7 @@
 ---
 title: Getting started
 excerpt: >-
-  Getting started with a quick guide for Conversation API.
+  Getting started with the Conversation API.
 hidden: false
 ---
 
