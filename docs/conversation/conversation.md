@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 next:
   pages:
-    - conversation-quick-guide
+    - conversation-getting-started
     - conversation-channel-support
     - conversation-callbacks
     - conversation-optin
