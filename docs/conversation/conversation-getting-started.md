@@ -1,5 +1,5 @@
 ---
-title: Quick Start Guide
+title: Getting started
 excerpt: >-
   Getting started with a quick guide for Conversation API.
 hidden: false
