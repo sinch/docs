@@ -26,6 +26,6 @@ Example 2: The chart explains the concept of messaging limit in a rolling 24-hou
 
 ![image](whatsapp-http-rest\images\tier-example-2.png)
 
-If you exceed your messaging limit any further messages you send to new recipients (that you have not messaged previously, within a 24-hour period) will fail with an error message like the following:
+If you exceed your messaging limit any further messages you send to new users (that you have not messaged previously, within a 24-hour period) will fail with an error message like the following:
 
 > Message failed to send because there are restrictions on how many messages can be sent from this phone number. This may be because too many previous messages were blocked or flagged as spam.
