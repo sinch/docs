@@ -1,5 +1,6 @@
 ---
 title: Messaging Limits
+excerpt: Limits to how many users your business can send to per day
 ---
 
 Messaging limits determine how many users your business can send messages to on a daily basis. This includes new conversations as well as existing conversations with users. The messaging limit does NOT limit the number of messages your business can send, just the number of users you are trying to message. It also does NOT apply to messages sent in response to a user-initiated message within a 24-hour period.
@@ -25,6 +26,6 @@ Example 2: The chart explains the concept of messaging limit in a rolling 24-hou
 
 ![image](whatsapp-http-rest\images\tier-example-2.png)
 
-If you exceed your messaging limit any further messages you send to new recipients (that you have not messaged previously, within a 24-hour period) will fail with an error message like the following:
+If you exceed your messaging limit any further messages you send to new users (that you have not messaged previously, within a 24-hour period) will fail with an error message like the following:
 
 > Message failed to send because there are restrictions on how many messages can be sent from this phone number. This may be because too many previous messages were blocked or flagged as spam.
