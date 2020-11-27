@@ -28,7 +28,7 @@ next:
     [POST]      /callouts
     [GET]       /calls/id/{callId}
     [PATCH]     /calls/id/{callId}
-	[PATCH]     /calls/id/{callId}/leg/{callLeg}
+    [PATCH]     /calls/id/{callId}/leg/{callLeg}
     [GET]       /recording?from=timestamp&to=timestamp&page=int&pageSize=int
     [GET]       /recording/{key}
     [DELETE]    /recording/{key}
@@ -546,6 +546,15 @@ Requests a call to be initiated from the server
 This is a protected resource and requires an [application signed request](doc:using-rest#application-signed-request) or [basic auth](doc:using-rest#basic-authorization).
 
 There are currently three types of callouts that are supported: conference callouts, text-to-speech callouts and custom callouts. The custom callout is the most flexible, but text-to-speech and conferece callouts whereas conference and text-to-speech callouts are more convinient.
+
+### HTTP headers in callout requests
+
+All types of callout requests support specifying custom HTTP headers that will be forwarded to the customer's backend. The HTTP header keys need to start with `X-CB-` (case-insensitive) and have the following limitations:
+- The header key must not contain a line-break character;
+- The header value must contain only ASCII characters within the range [0x20; 0x7e];
+- The header key length is limited to 32 characters, including the `X-CB-` prefix;
+- The header value length is limited to 128 characters;
+- The maximum allowed custom header count is 5. If more headers are specified in the request, the Sinch platform will take the first 5 and discard the rest. This will not cause a validation error.
 
 ### Conference Callout
 
