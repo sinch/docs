@@ -1050,6 +1050,7 @@ You can find more information on callback request signing [here](doc:using-rest#
         string - menuId
         string - type
         string - value
+		string - inputMethod
     }
 
 **event** has the value “pie”.
@@ -1076,6 +1077,8 @@ When the PIE event has been triggered from a “return” command, then the type
 When the PIE event has been triggered from collecting DTMF digits, then the type will be “Sequence”.
 
 **value** contains the value of the information.
+
+**inputMethod** indicates the type of input received. It can be either *dtmf* or *voice*.
 
 ### Response
 
