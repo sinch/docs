@@ -1,5 +1,6 @@
 ---
 title: Messaging Limits
+excerpt: Limits to how many users your business can send to per day
 ---
 
 Messaging limits determine how many users your business can send messages to on a daily basis. This includes new conversations as well as existing conversations with users. The messaging limit does NOT limit the number of messages your business can send, just the number of users you are trying to message. It also does NOT apply to messages sent in response to a user-initiated message within a 24-hour period.
