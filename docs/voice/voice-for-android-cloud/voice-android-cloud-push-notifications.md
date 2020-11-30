@@ -285,22 +285,99 @@ Sinch supports Huawei push messages via [Huawei Push Kit](https://developer.huaw
 
 Sinch will send push notification messages via the [Huawei Push Kit API](https://developer.huawei.com/consumer/en/doc/HMSCore-References-V5/https-send-api-0000001050986197-V5). Huawei Push Kit supports (and requires) an _OAuth 2.0_ _Client Credentials_ flow to authenticate against the _Huawei Push Kit_ server endpoint(s). Your Huawei app in Huawei _AppGallery Connect_ will have an _App ID_ and an _App secret_. These are to be used as OAuth client credentials, i.e. `client_id` and `client_secret` respectively.
 
-Sinch supports Huawei OAuth flow by delegation. You will keep your `client_secret` on your backend, and Sinch will request an OAuth `access_token` via an _Authorization Server_ endpoint that you implement. The overall flow is depicted below:
+Sinch supports Huawei OAuth flow by delegation. You will keep your `client_secret` on your backend, and Sinch will request an HMS OAuth `access_token` via an server-side HTTP API endpoint that you implement. Sinch supports two different alternatives for how to provide Sinch with an HMS access token:
 
-![Sinch - Huawei OAuth flow](images\20200922-sinch-huawei-hpk-oauth.png)
+* __A)__ A HMS token endpoint protected by a standard OAuth 2.0 _Client Credentials_ flow. This is a good fit if you have an existing OAuth 2.0 Authorization Server that is used to protect and grant access access to your server-side endpoints.
+* __B)__ A HMS token endpoint protected using your existing Sinch credentials (Sinch _Application Key_ and _Application Secret_). This is a good fit if you don't have an OAuth 2.0 Authorization Server to grant access to your server-side endpoints.
+
+### Alt A) Huawei OAuth Flow Using Your OAuth 2.0 Domain
+
+(This flow assumes you have an OAuth 2.0 conforming _Authorization Server_ that supports the _Client Credentials_ grant type.)
+
+The flow is implemented in terms of two key steps:
+
+1. You create a set of OAuth 2.0 _Client Credentials_ that are valid within __your__ OAuth domain, and configure those for your _Sinch Application_.
+2. You implement a HMS token endpoint that provides a HMS access token (labeled `$push_token_endpoint` in diagram below). 
+
+In the [Sinch Dashboard](https://dashboard.sinch.com/) you should configuring the following:
+
+  * _OAuth 2.0 access token endpoint_ (URL)
+  * _Client Credentials_ (`client_id` and `client_secret`)
+  * An OAuth _scope_ (optional)
+  * HMS token endpoint (URL)
+
+The overall flow is depicted below:
+
+![Sinch - Huawei OAuth Flow using your OAuth domain](images\20201130-sinch-huawei-hpk-oauth-a.png)
+
+Key takeaways:
+
+1. The component labled _Your Resource Server_ in the diagram is your _Resource Server_ in the terminology of OAuth and the _resource_ here being an _HMS access token_.
+2. When Sinch need a (new) HMS `access_token` required to send a push message to _Huawei Push Kit_ server, it will first make a request to your _Authorization Server_ to obtain an `access_token` valid for your security domain (labeled as `access_token_RO` in the diagram, _RO_ as in _Resource Owner_).
+3. Once having obtained `access_token_RO`, Sinch will make a subsequent request to your HMS access token endpoint (labeled `$push_token_endpoint` in the diagram), providing `access_token_RO` as a _Bearer_ token.
+4. Your _Resource Server_ should obtain a HMS `access_token` using the Huawei HMS OAuth Authorization Server endpoint and your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`.
+5. Your _Resource Server_ should pass the HMS `access_token` (as received from HMS) in the response back to Sinch.
+
+Sinch will only make requests to your Authorization Server access token endpoint and your HMS token endpoint as needed, i.e. not for every push message sent. Sinch will cache the HMS access token in accordance to the value of `expires_in`.
+
+
+> 📘
+> You can think of the step where you configure OAuth _Client Credentials_ for your Sinch _Application_ as way of enabling Sinch and your Sinch _Application_ in particular to make requests to your HMS token endpoint (_Resource Server_).
+
+#### Implementing the HMS Token Endpoint
+
+As described in the overview, Sinch will make a request to your _Resource Server_ HMS token endpoint, requesting a _HMS_ `access_token`. The request will be on the following form:
+
+```
+POST /<your HMS token endpoint>
+Authorization: Bearer <Access token obtained from your Authorization Server>
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+hms_application_id=<Your HMS App Id>
+```
+
+Your implementation of this resource endpoint should obtain a HMS `access_token` using the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001050123437-V5#EN-US_TOPIC_0000001050123437__section12493191334711) for how to implement requesting an OAuth _access token_ using Huawei HMS.
+
+Example response to Sinch:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+{
+  "access_token": "<access token acquired from Huawei>",
+  "expires_in": 3600,
+  "token_type": "Bearer"
+}
+```
+
+Sinch will then be able to use this `access_token` to send push messages to your end-user devices until the token expires, upon which Sinch will issue a new token request to your _Authorization Server_ and _Resource Server_.
+
+__NOTE__: You will receive your _HMS App ID_ as a request parameter (`hms_application_id`) and you can use that to for a given request map it to your corresponding _HMS App_.
+
+> ❗️
+> Your implementation must provide responses, successful or rejected, on a form that is conformant with the OAuth 2.0 specification, see [OAuth 2.0 access token response](https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/).
+
+### Alt B) Huawei OAuth Flow Using Sinch Application Credentials
+
+The overall flow is depicted below:
+
+![Sinch - Huawei OAuth Flow using Sinch credentials](images\20201130-sinch-huawei-hpk-oauth-b.png)
 
 Key takeaways:
 
 1. When Sinch need an `access_token` required to send a push message to _Huawei Push Kit_ server, it will make an OAuth request using a _Client Credentials_ grant type to your _Authorization Server_. This request will be specifying and `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer` will as value for `client_assertion` provide a JWT that is symmetrically signed with your _Sinch Application Secret_.
 2. Your _Authorization Server_ should validate the JWT provided as `client_assertion` by Sinch and that the signed JWT is signed with your _Sinch Application Secret_.
-3. Your _Authorization Server_ should request an `access_token` using the Huawei HMS OAuth Authoriation Server endpoint and your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`.
-4. Your _Authorization Server_ should pass the `access_token` (as received from HMS) in the response back to Sinch.
+3. Your _Authorization Server_ should obtain a HMS `access_token` using the Huawei HMS OAuth Authorization Server endpoint and your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`.
+4. Your _Authorization Server_ should pass the HMS `access_token` (as received from HMS) in the response back to Sinch.
+
+Sinch will only make requests to your Authorization Server access token endpoint and your HMS token endpoint as needed, i.e. not for every push message sent. Sinch will cache the HMS access token in accordance to the value of expires_in.
 
 Details on how to validate the JWT provided by Sinch as `client_assertion` are available in the following sections.
 
 (The use of `client_assertion` and `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer` is based on [RFC 7523](https://tools.ietf.org/html/rfc7523) and [RFC 7521](https://tools.ietf.org/html/rfc7521#section-4.2) and part of the [OpenID Connect Core 1.0 standard](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication).)
 
-### Validating the `client_assertion` JWT provided by Sinch
+#### Validating the `client_assertion` JWT provided by Sinch
 
 As described in the overview, Sinch will make a request to your OAuth _Authorization Server_ endpoint, requesting a _HMS_ `access_token`. The request will be on the following form:
 
@@ -352,7 +429,7 @@ The `JWT` will be making use of the standard JWT header parameters `alg` and `ki
 > 📘
 > __Note__: Your _Sinch Application Key_ is present both in the JWT header and the JWT payload (as header parameter and claim `sinch:rtc:application_key`). The reason is it allows you to implement validating the JWT signature without accessing the payload, and once you have validated the JWT signature, you can strip away the header and all the data you need for further processing is self contained in the payload.
 
-#### `kid` and Deriving a Signing Key from Sinch Application Secret
+##### `kid` and Deriving a Signing Key from Sinch Application Secret
 
 The `kid` parameter in the JWT header is on the form `hkdfv1-{DATE}` where `{DATE}` is date of signing in UTC on format `YYYYMMDD`.
 
@@ -371,7 +448,7 @@ signingKey = HMAC256(BASE64-DECODE(applicationSecret), UTF8-ENCODE(FormatDate(si
 
 (__NOTE__: This is the same key derivation scheme as used for [Token-based User registration](doc:voice-android-cloud-application-authentication))
 
-#### Validating the JWT
+##### Validating the JWT
 
 Your _Authorization Server_ should validate the JWT in accordance with section [RFC 7523 - Section 3. JWT Format and Processing Requirements](https://tools.ietf.org/html/rfc7523#section-3). Here is a rough outline of the steps necessary:
 
@@ -384,7 +461,7 @@ Your _Authorization Server_ should validate the JWT in accordance with section [
 > 👍
 > Example code is available at [https://github.com/sinch/sinch-rtc-api-auth-examples](https://github.com/sinch/sinch-rtc-api-auth-examples).
 
-### Acquiring an `access_token` from Huawei HMS
+#### Acquiring an `access_token` from Huawei HMS
 
 After validating the JWT client assertion, your _Authorization Server_ should in turn request an `access_token` from the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001050123437-V5#EN-US_TOPIC_0000001050123437__section12493191334711) for how to implement requesting an OAuth _access token_ using Huawei HMS.
 
@@ -404,7 +481,7 @@ Sinch will then be able to use this `access_token` to send push messages to your
 
 __NOTE__: You will receive your _HMS App ID_ in JWT claim `sub` and you can use that to for a given request map it to your corresponding _HMS App_. You will also be able to access your _Sinch Application Key_ as the JWT claim `sinch:rtc:application_key` if you need that as input at this stage.
 
-### Rejecting the `access_token` grant request
+#### Rejecting the `access_token` grant request
 
 If your _Authorization Server_ rejects the access token request from Sinch, it should respond with a HTTP response that is compliant with the [OAuth 2.0 standard](https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/). Example:
 
