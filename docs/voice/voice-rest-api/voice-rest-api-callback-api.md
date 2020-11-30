@@ -340,6 +340,9 @@ Starts recording the call.
 
 **options** is a RecordingOptions object that specifies details about the recording. See [RecordingOptions](doc:voice-rest-api-recording#recording-options) for more details.
 
+> ❗️ `StartRecording` with `ConnectMxp` is not supported
+> Recording calls when using the action `ConnectMxp` is not supported.
+
 ### StopRecording
 
 Stops an ogoing recording for the current call.
