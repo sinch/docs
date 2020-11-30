@@ -203,7 +203,7 @@ curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --u
 
 Sinch offers a Postman collection for easy setup and testing during development:
 
-https://www.getpostman.com/collections/79a07a7d299afe46658b
+https://www.getpostman.com/collections/e45df225fff72b386813
 
 After importing the collection, fill in the following variables:
 
@@ -215,8 +215,7 @@ After importing the collection, fill in the following variables:
 
 * `CLIENT_SECRET` with your client secret.  
 
-> For testing purposes fill WEBHOOK_URL by simply visiting
-> https://webhook.site/  
+> For testing purposes fill WEBHOOK_URL by simply visiting https://webhook.site/  
 > and use the generated link - the one under the 'Your unique URL' label.
 
 Values for other variables can be obtained by calling corresponding requests:
