@@ -68,6 +68,9 @@ Using instructions brings more flexibility in what parts of the call should be r
 
 In this example, the recording starts after the first Say instruction is finished executing, so the second part will be included in the recording file.
 
+> ❗️ `StartRecording` with `ConnectMxp` is not supported
+> Recording calls when using the action `ConnectMxp` is not supported.
+
 ## Recording options
 
 The recording options are sent as part of the callback response when you want to enable recording of a call or a conference.
