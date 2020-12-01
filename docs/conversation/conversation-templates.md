@@ -28,8 +28,7 @@ channel override feature of Conversation API. It is easy to see how an omni-chan
 will render on a specific channel by using the transcoding (`messages:transcode`) endpoint
 of Conversation API.
 
-The omni-channel templates are versioned and support storing message content for different languages
-to support internationalization of conversations.
+The omni-channel templates are versioned and support storing message content for different languages.
 
 #### Managing Omni-channel Templates
 
