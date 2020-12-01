@@ -93,3 +93,7 @@ Our API allows you to customize DDM by setting 3 parameters:
 
 **Postback Notifications For SendSavedMMS** When the MMS delivery is
 processed successfully the system will generate a Postback notification.
+
+## Special Considerations for sendSavedMMS
+
+ - MMS message-subject is required. The message-subject parameter should not contain emoji/Unicode characters as this will cause messages to get rejected by the carrier's MMSC.
