@@ -12,7 +12,7 @@ In this tutorial you’ll learn how to verify a user’s phone number using our 
 We also offer [Flash Call Verification](https://www.sinch.com/products/verification/flash-call/), but this is available for Android only.
 
 At the end of this tutorial we will have a basic app that looks like this:
-![screen1.png](images\1791cf5-screen1.png)
+
 
 
 ![screen2.png](images\3f17669-screen2.png)

@@ -23,8 +23,7 @@ We are using a Windows server virtual machine as a base for the Artifactory serv
 This script searches for the Java executable and runs Artifactory’s main class. After installing Artifactory, start the service either via Windows Services menu or using Command Prompt `(sc start|stop Artifactory)`.
 ![services.png](images\09117c0-services.png)
 
-After that, Artifactory should be available at `http://SERVER_DOMAIN:8081/artifactory`. The dashboard looks something like this:
-![dashboard.png](images\4d4915f-dashboard.png)
+After that, Artifactory should be available at `http://SERVER_DOMAIN:8081/artifactory`. 
 
 Next, we need to get it integrated into the CI server, which, in this case, is Jenkins. There is a pretty simple and user-friendly plugin for this called [Artifactory plugin](https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin). After installing it, you should find a new ‘Artifactory’ section in your Jenkins settings, where you need to specify a Artifactory URL and user credentials.
 ![developer-rights.png](images\2f71604-developer-rights.png)

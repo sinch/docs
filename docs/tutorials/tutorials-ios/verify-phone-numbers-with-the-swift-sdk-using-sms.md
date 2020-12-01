@@ -19,21 +19,19 @@ Why would you use our SDK instead of rolling it yourself as we have showed in pr
 ## We provide good value with our cloud SDK
 
  1. We take care of the logic of re-tries
- 1. We automatically block spam numbers
- 1. We make sure re-tries are handled in a correct way
- 1. We are easy to use from you mobile app and just two simple callbacks to your backend to notify you about statuses of a verification
- 1. We support multiple ways of authentication (just for Android at the moment, but shortly arriving for iOS)
- 1. We are low cost because you don’t need to rent any numbers on your own
+ 2. We automatically block spam numbers
+ 3. We make sure re-tries are handled in a correct way
+ 4. We are easy to use from you mobile app and just two simple callbacks to your backend to notify you about statuses of a verification
+ 5. We support multiple ways of authentication (just for Android at the moment, but shortly arriving for iOS)
+ 6. We are low cost because you don’t need to rent any numbers on your own
 
 Let’s stop talking and do some coding\!
 
 ## The code
 
  1. [Create an account](https://portal.sinch.com/#/signup)
- 1. Create an app and change enable verification (set it to public for now)
-    ![configureapp.png](images\700bb7b-configureapp.png)
-
- 1. Head over to <https://github.com/sinch/ios-swift-verification> to download the repo.
+ 2. Create an app and change enable verification (set it to public for now)
+ 3. Head over to <https://github.com/sinch/ios-swift-verification> to download the repo.
     ![screenshots2.jpg](images\4729ddb-screenshots2.jpg)
 
 There are some important bits to look at from a verification perspective in this app. One is the *EnterPhoneNumberViewController.swift* function:

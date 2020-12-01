@@ -22,7 +22,7 @@ You’ll now have the number attached to your Sinch account, and will also have 
 ![account.png](images\2d986e5-account.png)
 
 Create a new application from the “Apps” tab. Leave the environment to the default: clientapi.
-![app-list.png](images\1a848dc-app-list.png)
+
 
 Click on the key symbols and take note of your application’s key and secret, as they’ll be used in the Sinch Server SDK shortly.
 ![keys-and-secret.png](images\7ba3076-keys-and-secret.png)
