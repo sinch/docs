@@ -8,6 +8,7 @@ next:
     - conversation-getting-started
     - conversation-channel-support
     - conversation-callbacks
+    - conversation-templates
     - conversation-optin
     - conversation-capability
 ---
