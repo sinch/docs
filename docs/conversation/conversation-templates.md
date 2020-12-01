@@ -149,7 +149,7 @@ The snipped above sends a template message to recipient with `{{CONTACT_ID}}` an
 the `WHATSAPP` channel. The message to send is a template message referencing a
 WhatsApp channel-defined template with ID `{{WHATSAPP_TEMPLATE_ID}}` and language code `en`.
 It also specifies the parameters defined in the template as part of `parameters` field.
-You can read more about sending WhatsApp channel-specific templates in [WhatsApp Channel Support](doc:conversation-channel-support/conversation-whatsapp) page.
+You can read more about sending WhatsApp channel-specific templates in [WhatsApp Channel Support](doc:conversation-whatsapp) page.
 
 Omni- and channel-specific templates can both be used when sending a message.
 This is useful for example to enable channel fallback in case the recipient has no capability on WhatsApp channel
