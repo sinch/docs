@@ -303,7 +303,7 @@ In the [Sinch Dashboard](https://dashboard.sinch.com/) you should configuring th
 
   * _OAuth 2.0 access token endpoint_ (URL)
   * _Client Credentials_ (`client_id` and `client_secret`)
-  * An OAuth _scope_ (optional)
+  * An OAuth _scope_ (optional to specify, will default to `https://push-api.cloud.huawei.com`)
   * HMS token endpoint (URL)
 
 The overall flow is depicted below:
