@@ -353,7 +353,7 @@ Content-Type: application/json;charset=utf-8
 
 Sinch will then be able to use this `access_token` to send push messages to your end-user devices until the token expires, upon which Sinch will issue a new token request to your _Authorization Server_ and _Resource Server_.
 
-__NOTE__: You will receive your _HMS App ID_ as a request parameter (`hms_application_id`) and you can use that to for a given request map it to your corresponding _HMS App_.
+__NOTE__: You will receive your _HMS App ID_ as a request parameter (`hms_application_id`) and you can use that for a given request to map it to your corresponding _HMS App_.
 
 > ❗️
 > Your implementation must provide responses, successful or rejected, on a form that is conformant with the OAuth 2.0 specification, see [OAuth 2.0 access token response](https://www.oauth.com/oauth2-servers/access-tokens/access-token-response/).
