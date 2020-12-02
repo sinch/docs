@@ -1,92 +1,27 @@
 ---
-title: Using the Numbers API
-excerpt: >-
-  Numbers API
+title: Rent a number
+excerpt: ''
 hidden: false
 ---
 
-This section will show you how to get started to use the Numbers API to search, buy, list, update and release Numbers.Start using your Numbers APIIn this guide, we will show you how to:
+To buy a number you first need to find a number that suites your needs  
 
-1. Get project id, client id and key id
-2. Authentication
-3. Search for numbers
-4. Buy numbers
-5. List number(s)
-6. Update numbers
-7. Release numbers
+## Search for a number
 
-## Get project id, client id and client key
-
-To get the project id, client id and key id you will need to log into your self-serve account (dashboard.sinch.com) and visit https://dashboard.sinch.com/settings/project-management.
-
-![Project management](images/project_management.png)
-
-The project ID
-
-Then go Access Keys section https://dashboard.sinch.com/settings/access-keys. Here you need to click the “New Key” to generate an client id and key id.
-
-![Access Keys](images/access_keys.png)
-
-Make sure to write down the key since it will not be possible to retrieve after creation
-
-## Authentication
-
-#### Basic
-
-Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard.
-Learn more about Sinch authentication and authorization, Security Scheme Type HTTP, HTTP Authorization Scheme basic
-
-#### Oauth
-
-Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard This is the recomended way of to access our apis.
-
-Security Scheme Type OAuth2
-clientCredentials OAuth Flow Token URL: https://eu.auth.sinch.com/oauth2/token
-
-Revoke URL: https://eu.auth.sinch.com/oauth2/revoke
-
-## Search numbers
-
-Search for numbers that are available for you to buy. You can filter by any property on the available number resouce.
+Search for numbers that are available for you to rent. In this example you will search for any US number.
 
 ```shell
 curl --request GET \
- --url 'https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers?numberPattern.searchPattern=SEARCH_PATTERN_UNSPECIFIED&type=NUMBER_TYPE_UNSPECIFIED&capability=NUMBER_CAPABILITY_UNSPECIFIED' \
- --header 'Accept: application/json'
+ --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US' \
+ --header 'Accept: application/json' \
+ -u {clientId}:{clientSecret}
 ```
+Replace {projectId}, {clientId} and {clientSecret} with your values. 
 
-#### searchPattern
+You can filter by any property on the available number resource. learn more about it in the [API specification](https://developers.sinch.com/reference#numberservice_listavailablenumbers).  
 
-Search pattern to apply.
 
-- START: Numbers that start with the provided sequence of digits
-- CONTAINS: Numbers that contain the sequence of digits
-- END: Numbers that end with the sequence of digits
-
-#### type
-
-Only return numbers with the given type. MOBILE, LOCAL or TOLL_FREE.
-
-- MOBILE: Numbers that belong to a specific range
-- LOCAL: Numbers that are assigned to a specific geographic region
-- TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
-
-#### capability
-
-Number capability to filter by. SMS and/or VOICE.
-
-- SMS: The SMS product can use the number
-- VOICE: The Voice product can use the number
-
-#### regionCode
-
-Only return numbers for the given region code. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.
-
-#### Size
-
-Optional. The maximum number of items to return.
-
-#### Response
+### Response
 
 ```json
 {
@@ -109,16 +44,18 @@ Optional. The maximum number of items to return.
   ]
 }
 ```
-
+Take a note of the phoneNumber you will need it in the next step. 
 ## Rent a number
 
 Rent a number to use with SMS or Voice products
 
 ```shell
 curl --request POST \
- --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/phoneNumber:rent \
+ --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/{phoneNumber}:rent \
  --header 'Accept: application/json' \
+ -u {clientId}:{clientSecret}
 ```
+Replace {projectId}, {clientId} and {clientSecret} with your values. 
 
 #### phoneNumber
 
