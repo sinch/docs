@@ -251,3 +251,7 @@ Connection: keep-alive
    </soap-env:Body>
 </soap-env:Envelope>
 ```
+
+## Special Considerations for MM7_Submit.REQ
+
+ - The Subject parameter should not contain emoji/Unicode characters as this will cause messages to get rejected by the carrier's MMSC.
