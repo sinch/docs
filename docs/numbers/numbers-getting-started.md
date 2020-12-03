@@ -17,11 +17,11 @@ The numbers API are currently run as alpha testing only selected customers will 
 
 To get the project id, client id and key id you will need to log into your self-serve account (dashboard.sinch.com) and visit https://dashboard.sinch.com/settings/project-management.
 
-![Project management](images/project_management.png)
+![Project management](numbers-getting-started/images/project_management.png)
 
 Then go Access Keys section https://dashboard.sinch.com/settings/access-keys. Here you need to click the “New Key” to generate an client id and key id.
 
-![Access Keys](images/access_keys.png)
+![Access Keys](numbers-getting-started/images/access_keys.png)
 
 Make sure to write down the key since it will not be possible to retrieve after creation
 
