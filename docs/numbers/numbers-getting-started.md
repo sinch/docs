@@ -1,27 +1,42 @@
 ---
 title: Getting started
-excerpt: >-
-  This guide will show you how to search, buy, list and update numbers through the self-serve portal and in the same way also through the numbers API.
+excerpt: ''
 hidden: false
+next:
+  pages:
+    - numbers-getting-started-rent-a-number
 ---
 
-## Get your first Numbers
+## Numbers
+Numbers is the backbone of many of our services that enables you to both send and receive calls and messages. 
 
-In this guide, we will show you how to:
+The numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to Tobias.Sellberg@sinch.com.
+## Authentication
 
-1. Create an account and buy your first number in the portal
-2. Use the portal to create API credentials and how to use these to generate a token [go to Numbers API](doc:numbers-using-the-numbers-api)
-3. Use the numbers API to search, buy, list and update numbers [go to Numbers API](doc:numbers-using-the-numbers-api)
+### Finding your credentials
 
-#### Some prerequisites to use the numbers API
+To get the project id, client id and key id you will need to log into your self-serve account (dashboard.sinch.com) and visit https://dashboard.sinch.com/settings/project-management.
 
-Since the numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to your account manager.
+![Project management](images/project_management.png)
 
-- Prerequisite to use the numbers API is that we have migrated your account if you have been a customer since before
-- You will need an REST SMS account (this is default for all customers creating an self-serve account)
+Then go Access Keys section https://dashboard.sinch.com/settings/access-keys. Here you need to click the “New Key” to generate an client id and key id.
 
-#### Sign up for a Sinch account
+![Access Keys](images/access_keys.png)
 
-Before you can buy any numbers or use the numbers API you need a Sinch account. To be able to buy numbers that can be used for live SMS traffic you will need to update your account and buy a number. You can either become an pre-paid customer or you can reach out to your account manager to setup an invoicing account.
+Make sure to write down the key since it will not be possible to retrieve after creation
 
-When account has been created go to Numbers section in the self-serve portal
+### Basic
+
+Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard.
+Learn more about Sinch authentication and authorization, Security Scheme Type HTTP, HTTP Authorization Scheme basic
+
+#### Oauth
+
+Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard This is the recomended way of to access our apis.
+
+Security Scheme Type OAuth2
+clientCredentials OAuth Flow Token URL: https://eu.auth.sinch.com/oauth2/token
+
+Revoke URL: https://eu.auth.sinch.com/oauth2/revoke
+
+
