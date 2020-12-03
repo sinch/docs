@@ -1,7 +1,6 @@
 ---
-title: Using the self-serve portal
-excerpt: >-
-  Self-serve portal
+title: Working with numbers in dashboard
+excerpt: ''
 ---
 
 ## Your Numbers
