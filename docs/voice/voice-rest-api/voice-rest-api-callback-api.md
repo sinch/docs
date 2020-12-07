@@ -731,10 +731,15 @@ _Example of runmenu action with enableVoice_
           "mainPrompt":
             '#href[https://mydomain.com/file.mp3]',
           "maxDigits": 4,
-          "timeoutMills": 1000,
+          "timeoutMills": 2000,
+          "maxTimeoutMills": 10000,
         },
       ],
     }
+
+**timeoutMills** is used for silence detection, both DTMF and voice input. Default is 5000 milliseconds.
+
+**maxTimeoutMills** limits time for voice input. Default is 20000 milliseconds.
 
 ### Park
 
