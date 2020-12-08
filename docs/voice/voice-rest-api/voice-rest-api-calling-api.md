@@ -541,6 +541,13 @@ Requests a call to be initiated from the server
     CustomCalloutRequest - customCallout
 ```
 
+### Response
+
+    [ResponseBody]
+        CallId - string
+
+**Note:** If the HTTP request is canceled before you get the response, the Sinch platform will try to stop the call from initating. However, in some rare cases, it is still possible to receive a call. This depends on how far along the initialization phaze the request is canceled.
+
 ### Authorization
 
 This is a protected resource and requires an [application signed request](doc:using-rest#application-signed-request) or [basic auth](doc:using-rest#basic-authorization).
