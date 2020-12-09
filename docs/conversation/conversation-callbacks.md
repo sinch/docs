@@ -61,7 +61,7 @@ Conversation API callbacks triggered by a registered **webhook**, with a secret 
 
 The receiver of signed callbacks should perform the following steps:
 
-1. Compute the signature using `base64(HMAC(secret, signed_data))` where `signed_data` is UTF-8 encoded dot-separated concatenation of the raw HTTP body, the timestamp, and the nonce:
+1. Compute the signature using `base64(HMAC(secret, signed_data))` where `signed_data` is UTF-8 encoded dot-separated concatenation of the raw HTTP body, the nonce and the timestamp in that order:
 
   > raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp
 
