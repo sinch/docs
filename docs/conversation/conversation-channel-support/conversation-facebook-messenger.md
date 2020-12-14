@@ -145,6 +145,18 @@ Conversation API supports Facebook Messenger and allows sending messages from Fa
 
 - You should receive callbacks with information that message has been delivered and read. The channel is now configured.
 
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, delivered and read callbacks will not be shipped.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Restriction should be dismissing in the future, currently “Messenger” working on it.
+
+
 #### Rich Message Support
 
 This section provides detailed information about which rich messages are natively supported by Facebook Messenger channel and what transcoding is applied in other cases.
@@ -199,6 +211,17 @@ The rendered message:
 
 ![Media Message](images/channel-support/messenger/messenger_media.jpg)
 
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, “Media Message” will only be rendered if it contains image file, for any other type of file (audio, video) an error will be returned, and no message will be sent.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Until MessengerAPI restores this feature, you can send a message as a “Text Message” with plain text URL which points to audio/video file.
+
 ###### Choice Messages
 
 ---
@@ -249,6 +272,17 @@ Conversation API POST `messages:send`
 The rendered message:
 
 ![Choice Message](images/channel-support/messenger/messenger_choice.jpg)
+
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, `Choice Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Restriction should be dismissing in the future, currently “Messenger” working on it. 
 
 ###### Card Messages
 
@@ -302,6 +336,17 @@ Conversation API POST `messages:send`
 The rendered message:
 
 ![Card Message](images/channel-support/messenger/messenger_card.jpg)
+
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, `Card Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Restriction should be dismissing in the future, currently “Messenger” working on it.
 
 ###### Carousel Messages
 
@@ -397,6 +442,17 @@ The rendered message:
 
 ![Carousel Message](images/channel-support/messenger/messenger_carousel.jpg)
 
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, `Carousel Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Restriction should be dismissing in the future, currently “Messenger” working on it.
+
 ###### Location Messages
 
 ---
@@ -421,3 +477,14 @@ Conversation API POST `messages:send`
 The rendered message:
 
 ![Location Message](images/channel-support/messenger/messenger_location.jpg)
+
+> 🚧 Warning (until 16th December)
+>
+> Regarding the changes introduced by “Messenger” to comply with new privacy rules in Europe, `Location Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
+>
+> This condition impacts you if:
+> - Your app points to messenger bot which is created for Europe page.
+> - Your app points to messenger bot which is created for a page that has European admins. 
+> - You send a message to people in Europe. 
+> 
+> Restriction should be dismissing in the future, currently “Messenger” working on it.
