@@ -45,7 +45,6 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 ```
-
 ```java Java
 ApiConnection conn =
         ApiConnection.builder()
