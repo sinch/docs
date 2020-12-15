@@ -136,4 +136,4 @@ Head over and change the callback URL in the dashboard for your SMS service.
 
 ![requestbin request](images\noderesponse.png)
 
-You can read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/v1.0.1/reference)
+You can read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)
