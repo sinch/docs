@@ -129,8 +129,7 @@ If initiation fails, the `onInitializationFailed()` callback runs and the except
 
 ## Verification listener
 
-The `VerificationListener` provides callbacks for the second stage of the verification process - checking if passed code is correct. If it is the `onVerified` callback is called. If it is not or some other error occurs `onVerificationFailed` callback runs and the exception describing the error is passed.
-
+The `VerificationListener` provides callbacks for the second stage of the verification process - checking if passed code is correct. If it is the `onVerified` callback is called. If it is not or some other error occurs `onVerificationFailed` callback runs and the exception describing the error is passed. The third callback `onVerificationEvent` provides verification process events, that might be used for debug purposes or to inform the user about current verification phase.
 
 ## Phone numbers
 
