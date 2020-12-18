@@ -361,7 +361,7 @@ The rendered message:
 
 ##### Receiving Messages
 
-Viber channel supports various kinds of contact messages - text, media, location as well as quick replies.
+Viber channel supports various kinds of contact messages - text, media, media card, location as well as quick replies.
 All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
 
 ---
@@ -461,7 +461,37 @@ Example media message:
   }
 }
 ```
+---
 
+Example media card message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:55.073703Z",
+  "event_time": "2020-10-01T12:10:53.991Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ1534NWK5R02TGWEJN13HA",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_card_message": {
+        "url": "https://dl-media.viber.com/5/media/2/short/any/sig/image/0x0/e9f1/61be89dcb2a9bc54bf5a998000e33b67e78557a1dc267e9ea4625d344e2ee9f1.jpg?Expires=1601557854&Signature=eCGFLNPPvyoltyO5kp-yZRgGuvdtFfOtehapbiTf9KkUAZ7268GT0YnZ8Mj750IgZhRS7Z~6g6cOZ2wbHcZgPjxfzNWS8F4A8ejWPb1v8crGA1hzaHGmuSWoIxlJguqGOjHvTfUxLOvInkqdCIQ4S8IMq-B65lOV~~iw7HScAXTjarSiua4pGOgdbPvSqULyec6omwJH7IE~4xg0TfuNJSAH4JTRwU4ByGPtkbsJ800VpdK1GA~kHV0vRKRSy2wXPcy6j-i17SX3Le06LYZd1aJNpAxGhgcMgRMsY34SS60~dDtwmnr2QNcktPg61cpK1UVhVwiZ09MfO9~6kmTIZQ__&Key-Pair-Id=APKAJ62UNSBCMEIPV4HA",
+        "caption": "caption text"
+      }
+    },
+    "channel_identity": {
+      "channel": "VIBER",
+      "identity": "9KC0p+pi4zPGDO99ACDxoQ==",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:10:55.060170Z"
+  }
+}
+```
 ---
 
 Example quick reply message:
