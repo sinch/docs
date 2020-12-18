@@ -1,12 +1,12 @@
 ---
-title: Fetch your numbers
+title: Working with your numbers
 excerpt: ''
 hidden: false
 ---
 
 ## List Numbers
 
-Lists all numbers for a project.  
+Lists all your numbers.  
 
 ```shell
 curl --request GET \
