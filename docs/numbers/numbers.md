@@ -9,9 +9,9 @@ next:
 ---
 > The numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to Tobias.Sellberg@sinch.com.
 
-Numbers is the backbone of many of our services that enables you to both send and receive calls and messages. You can [search](reference#numberservice_listavailablenumbers) and [rent](/reference#numberservice_rentnumber) numbers in 15 countries to make and recieve calls and messages from your customers.
+Numbers is the backbone of many of our services that enables you to both send and receive calls and messages. You can [search](https://developers.sinch.com/reference#numberservice_listavailablenumbers) and [rent](https://developers.sinch.com/reference#numberservice_rentnumber) numbers in 15 countries to make and recieve calls and messages from your customers.
 
-[Rent your first number](/numbers-getting-started-rent-a-number)
+[Rent your first number](doc:numbers-getting-started-rent-a-number)
 
 ### Use cases
 
