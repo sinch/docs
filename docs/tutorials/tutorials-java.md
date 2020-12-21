@@ -11,42 +11,137 @@ next:
 
 In this section you'll find tutorials specific to using the Sinch REST API from the Java platform.
 
-## Getting Started
+## Installing the Java SDK
 
-Before you start the tutorials in this section, please make sure you review the following steps:
+### Installing with Maven/Gradle
 
-### Create Your Free Sinch Account
+Using Maven/Gradle is the recommended way to install the SDK. You can add this sdk to your existing project.
+In **Maven**, please put the lines below in your **pom.xml**
 
-Before starting, first make sure you have a Sinch account. You can create an account with free credits using the [Sinch Dashboard](https://dashboard.sinch.com/signup) to start sending messages in minutes.
-
-Once your account is created and you're logged into the dashboard, you can obtain your credentials to the REST API (Service Plan ID and API Token) in the [APIs](https://dashboard.sinch.com/sms/api/rest) section. You'll use these credentials in the next steps below.
-
-> **Information about trial mode limitations**
->
-> When your account is in trial mode (such as when you've just created it), sending messages has the following limitations:
->
->  - The body of each message will be replaced by a generic message to prevent malicious uses of our API.
->  - Your messages will also be sent from a random phone number and the `sender` value will be ignored (although the API still requires a value so you must provide some value for the sender).
-
-### Check Your Java JDK Version
-
-Although the Sinch Java SDK is compatible with Java 6 and above, our tutorials will assume you are running **Java 8 or later**.
-
-You will need to make sure the Java Development Kit (JDK) is installed on your computer. You can verify if you have the right version of the JDK installed by running this command in the terminal:
-
-```shell
-javac -version
+```javascript
+<dependency>
+  <dependency>
+      <groupId>com.sinch</groupId>
+      <artifactId>sdk-sms</artifactId>
+      <version>1.0.3</version>
+  </dependency>
 ```
 
-If the command fails or the displayed version is smaller than `1.8`, you should download and install a more recent version of the JDK, available on the [Java SE Downloads](https://www.oracle.com/technetwork/java/javase/downloads/index.html) page.
+In **Gradle**, please put the lines below in your **build.gradle**
 
-### Get the Sinch Java SDK Library
+```javascript
+implementation 'com.sinch:sdk-sms:1.0.3'
+```
 
-The Java SDK is published on the [Maven Central](https://repo1.maven.org/maven2/com/clxcommunications/sdk-xms) repository which means it can easily be added to your project if you're using Gradle, Maven or another dependency management tool for the Java language. Instructions for most of the tools are
-available on [mvnrepository](https://mvnrepository.com/artifact/com.clxcommunications/sdk-xms).
+Because Sinch SDK Library is hosted on Maven Central Repository, please make sure you have **mavenCentral()** in your **build.gradle**.
 
-You can also manually download the JAR file from [Maven Central](https://repo1.maven.org/maven2/com/clxcommunications/sdk-xms) but you'll also need to add all of the other dependencies listed on [mvnrepository](https://mvnrepository.com/artifact/com.clxcommunications/sdk-xms).
+```javascript
+repositories {
+    mavenCentral()
+}
+```
+
+### Using without a build automation tool
+
+While we recommend using a package manager to track the dependencies in your application, it is possible to download and use the Java SDK by [downloading a pre-built jar file](https://repo1.maven.org/maven2/com/sinch/sdk-sms/). Select the directory for the latest version and download one of these jar files:
+
+- sdk-sms-{version}-jar-with-dependencies.jar  
+- sdk-sms-{version}.jar
 
 
-The SDK is published on the [Maven Central](https://mvnrepository.com/artifact/com.clxcommunications/sdk-xms/1.0.2) repository.
+### Installing the SDK locally
+
+It is possible to download and use the Java SDK manually by [downloading a pre-built jar file](https://repo1.maven.org/maven2/com/sinch/sdk-sms/).
+
+Please have [Maven](http://maven.apache.org/download.html) install in your environment in advance.
+
+[Clone the source code](https://github.com/sinch/sinch-java-sms), and install the library. 
+
+```shell
+git clone https://github.com/sinch/sinch-java-sms.git
+cd sinch-java-sms    
+mvn clean install
+```
+
+If you encounter "Permission Denied", please run 
+
+```shell
+    $ sudo mvn clean install
+```
+
+If you need to skip local tests
+
+```shell
+    $ mvn package -Dmaven.test.skip=true
+```
+The jar file is under **target** folder 
+
+There are two available jar
+
+```javascript
+sdk-sms-1.0.3-SNAPSHOT-jar-with-dependencies.jar 
+sdk-sms-1.0.3-SNAPSHOT.jar -- Use this if you need to include version dependencies on your own.
+```
+
+## Importing jar with Intellij
+
+Follow this step
+
+```
+File -> Project Structure -> Modules -> Plus Sign -> Browse the SDK SMS Jar.
+```
+
+## Importing jar with Eclipse
+
+Follow this step
+
+```
+Project -> Build Path -> Configure Build Path -> Libraries -> Add Jar.
+```
+
+
+### Set up Api Client
+
+```javascript
+String SERVICE_PLAN_ID = "SERVICE_PLAN_ID";
+String TOKEN = "SERVICE_TOKEN";
+ApiConnection conn =
+        ApiConnection.builder()
+            .servicePlanId(SERVICE_PLAN_ID)
+            .token(TOKEN)
+            .start()
+```
+
+#### Sending Text Message
+
+```javascript
+String SENDER = "SENDER"; // Optional
+String [] RECIPIENTS = {"1232323131", "3213123"}  ;
+MtBatchTextSmsResult batch =
+          conn.createBatch(
+              SinchSMSApi.batchTextSms()
+                  .sender(SENDER)
+                  .addRecipient(RECIPIENTS)
+                  .body("Something good")
+                  .build()
+```
+#### Sending Group Message
+
+```javascript
+      // Creating simple Group
+      GroupResult group = conn.createGroup(SinchSMSApi.groupCreate().name("Subscriber").build());
+
+      // Adding members (numbers) into the group
+      conn.updateGroup(
+          group.id(), SinchSMSApi.groupUpdate().addMemberInsertion("15418888", "323232").build());
+
+      // Sending a message to the group
+      MtBatchTextSmsResult batch = conn.createBatch(
+          SinchSMSApi.batchTextSms()
+              .addRecipient(group.id().toString())
+              .body("Something good")
+              .build());
+
+      System.out.println("Successfully sent batch " + batch.id());
+```
 

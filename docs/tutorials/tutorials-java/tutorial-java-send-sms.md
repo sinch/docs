@@ -12,9 +12,9 @@ Before starting, please make sure that:
 
  - You have created your Sinch account
  - The right version of the JDK is installed on your computer
- - You have added the Sinch Java SDK JAR to your project
+ - You have added the Sinch Java SDK JAR to your project [Java Getting Started page](doc:sms-java-library).
 
-All details of those steps are available on the [Java Getting Started page](doc:sms-java-library).
+
 
 ## Send an SMS with Java
 
@@ -38,27 +38,24 @@ ApiConnection connection = ApiConnection.builder()
 Once an `ApiConnection` object is created and started, you can use it to interact with the API, such as sending an SMS message to one recipient:
 
 ```java
-import com.clxcommunications.xms.ClxApi;
-
-connection.createBatch(ClxApi.batchTextSms()
-        .sender("ignored")
-        .addRecipient("{RECIPIENT_PHONE_NUMBER}")
-        .body("Hello from Sinch!")
-        .build());
+import com.sinch.xms.api;
+String SERVICE_PLAN_ID = "{YOUR_SERVICE_PLAN_ID}";
+String TOKEN = "{YOUR_TOKEN}";
+String SENDER = "{yourSinchNumber}";
+String [] RECIPIENTS = {"{yourphonenumber}"}; //your number in international format example 15551231212
+ApiConnection conn =
+  ApiConnection.builder()
+    .servicePlanId(SERVICE_PLAN_ID)
+    .token(TOKEN)
+MtBatchTextSmsResult batch = 
+ conn.createBatch(
+    SinchSMSApi.batchTextSms()
+      .sender(SENDER)
+      .addRecipient(RECIPIENTS)
+      .body("This is a test message from your Sinch account")
+      .build());
 ```
-
-Or sending the same message to multiple recipients:
-
-```java
-import com.clxcommunications.xms.ClxApi;
-
-connection.createBatch(ClxApi.batchTextSms()
-        .sender("ignored")
-        .addRecipient("{RECIPIENT_1_PHONE_NUMBER}")
-        .addRecipient("{RECIPIENT_2_PHONE_NUMBER}")
-        .body("Hello from Sinch!")
-        .build());
-```
+> note you need to enter yoru phonenumber in international format.
 
 ### Close the connection to the REST API when your application shuts down
 
@@ -117,10 +114,10 @@ try (connection) {
 To wrap up, here's the complete sources of a minimal Java application that starts a connection to the Sinch REST API, sends a message then closes the connection.
 
 ```java
-import com.clxcommunications.xms.ApiConnection;
-import com.clxcommunications.xms.ApiException;
-import com.clxcommunications.xms.ClxApi;
-import com.clxcommunications.xms.api.MtBatchTextSmsResult;
+import com.sinch.sms.ApiConnection;
+import com.sinch.sms.ApiException;
+import com.sinch.sms.api;
+import com.sinch.sms.api.MtBatchTextSmsResult;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -142,7 +139,7 @@ public class SendMessage {
 
         try {
             MtBatchTextSmsResult result =
-                    conn.createBatch(ClxApi.batchTextSms()
+                    conn.createBatch(SinchSMSApi.batchTextSms()
                             .sender("ignored")
                             .addRecipient(RECIPIENT_PHONE_NUMBER)
                             .body("Hello from Sinch!")

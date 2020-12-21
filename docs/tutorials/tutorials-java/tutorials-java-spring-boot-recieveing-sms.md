@@ -1,5 +1,5 @@
 ---
-title: Receive SMS delivery reports in a Spring Boot application
+title: Receive SMS in a Spring Boot application
 excerpt: >-
   In this more advanced installment of our Java tutorial series, you'll learn
   how you can keep track of the delivery of SMS messages you send via the Sinch
@@ -7,10 +7,10 @@ excerpt: >-
 ---
 The Sinch REST API keeps track of the delivery status of each message you send and makes that status available to your application in 2 ways:
 
- 1) Via [polling / pull](doc:sms-guide#retrieve-a-delivery-report): your application can fetch the delivery notifications at regular intervals with GET HTTP requests.
- 2) Via [callbacks / push](doc:sms-guide#delivery-report-callback): the Sinch REST API will make an HTTP POST request to your application with details of the delivery report included in the request body.
+ 1) Via [polling / pull](doc:sms-guide##inbounds-endpoint): your application can get all the SMS messages sent to your Sinch number.
+ 2) Via [callbacks / push](doc:sms-guide#Inbound-message-callback): the Sinch REST API will make an HTTP POST request to your application with the message recieved.
  
-This tutorial will show you how to setup an endpoint in your Spring Boot application to respond to the delivery reports callbacks.
+This tutorial will show you how to setup an endpoint in your Spring Boot application to respond for the sms callbacks.
 
 ## Prerequisites
 
@@ -19,7 +19,6 @@ Before starting, please make sure that:
  - You have [created your Sinch account](doc:tutorials-java#create-your-free-sinch-account)
  - The right version of the JDK is installed on your computer
  - You have added the Sinch Java SDK JAR to your project [Java Getting Started page](doc:sms-java-library).
-
 
 
 ## Create a Spring Boot Project
@@ -45,28 +44,25 @@ In the `build.gradle` file, make sure your dependencies includes both `spring-bo
 ```java
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.sinch:sdk-sms:1.0.3'
 
-    compile 'com.sinch:xms:1.0.2'
 }
 ```
 
 ## Add a Delivery Report Callback Controller
 
-To notify our application of delivery events, the Sinch REST API will send us POST HTTP requests with the details of each delivery reports. 
-Thus, we need to add a new endpoint to our application that will parse the HTTP POST body and make it available to our application for processing. 
-
-Fortunately, the Sinch Java SDK already contains classes with Jackson annotations that support unmarshalling from JSON payloads out-of-the-box! Creating a Sinch callback endpoint in our Spring application is just a matter of declaring a new controller method with a `BatchDeliveryReport` parameter extracted from the body: 
+To notify our application of incoming SMS events, the Sinch REST API will send us POST HTTP to your server. Create a Sinch callback endpoint in our Spring application with a `MoSms` parameter extracted from the body: 
 
 ```java
 @RestController
-public class DeliveryReportController {
+public class IncomingController {
 
-    @PostMapping(path = "/sms/deliveryReport")
-    public ResponseEntity receiveReport(@RequestBody BatchDeliveryReport report) {
+    @PostMapping(path = "/sms/incoming")
+    public ResponseEntity receiveReport(@RequestBody MoSms incomingSMS) {
 
-        System.out.println("Received delivery report: " + report);
+        System.out.println("Received sms: " + incomingSMS);
 
-        // ... process the delivery report ...
+        // ... process the sms ...
 
         return ResponseEntity.ok().build();
     }
@@ -75,9 +71,7 @@ public class DeliveryReportController {
 
 ## Allow Sinch REST API to Reach Your Application
 
-Now that we have a POST endpoint to respond to Sinch callbacks, how can we test this works? We could deploy our application to a publicly-exposed Web server (i.e. on AWS, Google Cloud, Heroku, Digital Ocean, etc.), but that would be too much work and completely out of scope for this tutorial. 
-
-[Ngrok](https://ngrok.com/) to the rescue! Ngrok is a free lightweight application you install on your computer that automatically creates a tunnel to expose one of your local network ports to the Internet without the need to configure anything on your router. 
+To test it you need to make your server reachable from the outside, one way of doing that is to use [Ngrok](https://ngrok.com/). Ngrok is a free lightweight application you install on your computer that automatically creates a tunnel to expose one of your local network ports to the Internet without the need to configure anything on your router. 
 
 [Follow the instructions to install Ngrok](https://ngrok.com/download) on your computer, and once the `ngrok` binary is available in your path, fire up a tunnel to expose the default Spring Boot port on the Internet:
 
@@ -122,39 +116,17 @@ Your locally-running application is now exposed to the Internet!
 
 ## Send a Test SMS With Your Publicly-Exposed Callback
 
-To complete our experiment, we can now send a test SMS requesting a delivery report and specifying our publicly-exposed URL endpoint as the callback. 
+Go to your sinch dashboard and configure the sms callback on your service plan with the above id [serviceplan] 
+(https://developers.sinch.com/docs/sms#configure-callback-url-for-your-sms-service).  
 
-With both **Ngrok** and **your Spring Boot application** running, run the following cURL command.
 
-```shell
-curl -X POST \
-           -H "Authorization: Bearer {API_TOKEN}" \
-           -H "Content-Type: application/json"  -d '
-            {
-                    "from": "ignored",
-                    "to": [
-                            "{PHONE_NUMBER}"
-                    ],
-                    "delivery_report": "summary",
-                    "callback_url": "https://9d62bf5a.ngrok.io/sms/deliveryReport",
-                    "body": "Hello from Sinch!"
-            }' \
-    "https://api.clxcommunications.com/xms/v1/{SERVICE_PLAN_ID}/batches"
-```
-
-Don't forget to put the right values in place of the `{API_TOKEN}`, `{SERVICE_PLAN_ID}`, `{PHONE_NUMBER}` placeholders and the `callback_url` should match the URL that has been assigned to your tunnel by Ngrok earlier. 
+With both **Ngrok** and **your Spring Boot application** running, send a SMS to your Sinch number. 
 
 After a few seconds, if everything works, you should see a similar line output to the console of your Spring Boot application:
 
+```shell
+Received sms report:MOSMS{}]}
 ```
-Received delivery report: BatchDeliveryReport{batchId=lLyJpEI8W8hjFH9L, totalMessageCount=1, statuses=[Status{code=0, status=DeliveryStatus{status=Delivered}, count=1, recipients=[]}]}
-```
 
-This confirms that our application can successfully accept delivery reports sent by the Sinch REST API. 
-
-## Wrap Up
-
-This tutorial has shown you how to create a POST endpoint that can parse delivery reports callbacks sent by the Sinch REST API. In addition, you've learnt how to use Ngrok to expose a locally-running Web application and use that to your advantage to do a full round-trip test of delivery reports.
-
-A fully functional Ngrok + Spring Boot project has been [published to GitHub](https://github.com/sinch/tutorial-java-sms-delivery-reports) to quickly get up and running testing Sinch delivery reports with your REST API account. You're free to try it out!
+This confirms that our application can successfully accept incoming sms sent to you. 
 
