@@ -1,5 +1,5 @@
 ---
-title: Receive SMS in a Spring Boot application
+title: Recieve SMS in a Spring Boot application
 excerpt: >-
   In this more advanced installment of our Java tutorial series, you'll learn
   how you can keep track of the delivery of SMS messages you send via the Sinch
@@ -7,8 +7,8 @@ excerpt: >-
 ---
 The Sinch REST API keeps track of the delivery status of each message you send and makes that status available to your application in 2 ways:
 
- 1) Via [polling / pull](doc:sms-guide##inbounds-endpoint): your application can get all the SMS messages sent to your Sinch number.
- 2) Via [callbacks / push](doc:sms-guide#Inbound-message-callback): the Sinch REST API will make an HTTP POST request to your application with the message recieved.
+ 1) Via [polling / pull](doc:sms-guide#inbounds-endpoint): your application can get all the SMS messages sent to your Sinch number.
+ 2) Via [callbacks / push](doc:sms-guide#inbound-message-callback): the Sinch REST API will make an HTTP POST request to your application with the message recieved.
  
 This tutorial will show you how to setup an endpoint in your Spring Boot application to respond for the sms callbacks.
 
@@ -16,7 +16,7 @@ This tutorial will show you how to setup an endpoint in your Spring Boot applica
 
 Before starting, please make sure that:
 
- - You have [created your Sinch account](doc:tutorials-java#create-your-free-sinch-account)
+ - You have [created your Sinch account](https://www.sinch.com/sign-up/)
  - The right version of the JDK is installed on your computer
  - You have added the Sinch Java SDK JAR to your project [Java Getting Started page](doc:sms-java-library).
 

@@ -4,7 +4,6 @@ excerpt: Tutorials for our Java SDK
 next:
   pages:
     - tutorial-java-send-sms
-    - tutorial-java-send-sms-group
   description: Check out our Java tutorials here
 ---
 ## Sinch ❤ Java
