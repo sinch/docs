@@ -1,5 +1,5 @@
 ---
-title: Recieve SMS in a Spring Boot application
+title: Receive SMS in a Spring Boot application
 excerpt: >-
   In this more advanced installment of our Java tutorial series, you'll learn
   how you can keep track of the delivery of SMS messages you send via the Sinch
