@@ -86,24 +86,26 @@ To see the data we send on incoming SMS, refresh your request bin page.
 
 ![requestbin request](images\requestbin-request.png)
 
-### Handle incoming SMS with Node.js
+### Handle incoming SMS with Java pring boot
 
-Create a new node app and paste this into app.js
+Below is a spring controller. 
 
-```javascript
-const url = require("url");
-const http = require("http");
-const server = http.createServer((req, res) => {
-  let data = [];
-  req.on("data", (chunk) => {
-    data.push(chunk);
-  });
-  req.on("end", () => {
-    console.log(JSON.parse(data));
-  });
-  res.end();
-});
-server.listen(3000);
+```java
+
+@RestController
+public class IncomingController {
+
+    @PostMapping(path = "/sms/incoming")
+    public ResponseEntity receiveReport(@RequestBody MoSms incomingSMS) {
+
+        System.out.println("Received sms: " + incomingSMS);
+
+        // ... process the sms ...
+
+        return ResponseEntity.ok().build();
+    }
+}
+
 ```
 
 Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
