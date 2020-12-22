@@ -130,3 +130,8 @@ Received sms report:MOSMS{}]}
 
 This confirms that our application can successfully accept incoming SMS that are sent to you. 
 
+## Wrap Up
+This tutorial has shown you how to create a POST endpoint that can parse delivery reports callbacks sent by the Sinch REST API. In addition, you've learnt how to use Ngrok to expose a locally-running Web application and use that to your advantage to do a full round-trip test of delivery reports.
+
+A fully functional Ngrok + Spring Boot project has been [published to GitHub](https://github.com/sinch/tutorial-java-sms-delivery-reports) to quickly get up and running testing Sinch delivery reports with your REST API account. You're free to try it out!
+
