@@ -46,7 +46,7 @@ In the `build.gradle` file, make sure your dependencies include both `spring-boo
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    compile 'com.sinch:xms:1.0.2'
+    implementation 'com.sinch:sdk-sms:1.0.3'
 }
 ```
 

@@ -25,20 +25,22 @@ To use java, [install our Java library](doc:sms-java-library)
 ### Send SMS
 
 ```java Java
-ApiConnection conn =
-        ApiConnection.builder()
-            .servicePlanId({service_plan_id})
-            .token({your token})
-            .start()
-String [] RECIPIENTS = {"{To Number}"};
-MtBatchTextSmsResult batch =
+ private static final String[] RECIPIENTS = {"1232323131", "3213123"};
+ try (ApiConnection conn =
+        ApiConnection.builder().servicePlanId(SERVICE_PLAN_ID).token(TOKEN).start()) {
+      // Sending a simple Text Message
+      MtBatchTextSmsResult batch =
           conn.createBatch(
               SinchSMSApi.batchTextSms()
                   .sender("{your free test number}")
                   .addRecipient(RECIPIENTS)
                   .body("This is a test message!")
-                  .build()
+                  .build());
 
+      System.out.println("Successfully sent batch " + batch.id());
+    } catch (Exception e) {
+      System.out.println("Batch send failed: " + e.getMessage());
+    }
 ```
 
 Before you can execute the code that sends an SMS message, you need to modify it in a few places.
@@ -91,21 +93,14 @@ To see the data we send on incoming SMS, refresh your request bin page.
 Below is a spring controller. 
 
 ```java
-
 @RestController
-public class IncomingController {
-
-    @PostMapping(path = "/sms/incoming")
-    public ResponseEntity receiveReport(@RequestBody MoSms incomingSMS) {
-
-        System.out.println("Received sms: " + incomingSMS);
-
-        // ... process the sms ...
-
-        return ResponseEntity.ok().build();
+public class InboundController {
+    @PostMapping("/sms/incoming")
+    public ResponseEntity<Object> receiveInbound(@RequestBody Object body) {
+        System.out.println(body);
+        return new ResponseEntity<>("Accepted", HttpStatus.OK);
     }
 }
-
 ```
 
 Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
@@ -116,7 +111,7 @@ Copy the https address in your window, then run app.js in the command prompt 'no
 
 Go back to your dashboard and change the callback URL for your SMS service.
 
-1. In the terminal windows, start the app.js `node app.js`
+1. In the terminal windows, start running the SpringBoot Application with `./gradlew bootRun` if gradle or `./mvnw spring-boot:run` if Maven
 2. Send an SMS to your Sinch Number.
 3. You will now see the request come in.
 

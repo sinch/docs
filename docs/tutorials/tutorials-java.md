@@ -18,7 +18,6 @@ Using Maven/Gradle is the recommended way to install the SDK. You can add this s
 In **Maven**, please put the lines below in your **pom.xml**
 
 ```javascript
-<dependency>
   <dependency>
       <groupId>com.sinch</groupId>
       <artifactId>sdk-sms</artifactId>
@@ -122,7 +121,7 @@ MtBatchTextSmsResult batch =
                   .sender(SENDER)
                   .addRecipient(RECIPIENTS)
                   .body("Something good")
-                  .build()
+                  .build());
 ```
 #### Sending Group Message
 

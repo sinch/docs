@@ -23,7 +23,7 @@ The SDK requires you to first create an `ApiConnection` object that you will re-
 An instance of the `ApiConnection` object can only be created using the `ApiConnection.builder()` method and its associated builder:
 
 ```java
-import com.clxcommunications.xms.ApiConnection;
+import com.sinch.xms.ApiConnection;
 
 ApiConnection connection = ApiConnection.builder()
         .servicePlanId("{YOUR_SERVICE_PLAN_ID}")
@@ -37,6 +37,7 @@ Once an `ApiConnection` object is created and started, you can use it to interac
 
 ```java
 import com.sinch.xms.SinchSMSApi;
+
 String SERVICE_PLAN_ID = "{YOUR_SERVICE_PLAN_ID}";
 String TOKEN = "{YOUR_TOKEN}";
 String SENDER = "{yourSinchNumber}";

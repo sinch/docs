@@ -74,7 +74,7 @@ If no group was found with your name, you'll need to **create a group**:
 
 ```java
 if (group == null) {
-    group = connection.createGroup(ClxApi.groupCreate().name("subscribers").build());
+    group = connection.createGroup(SinchSMSApi.groupCreate().name("subscribers").build());
 }
 ```
 
@@ -83,7 +83,7 @@ if (group == null) {
 Now that you are certain your `subscribers` group exists, you can add your subscribers to it:
 
 ```java
-connection.updateGroup(group.id(), ClxApi.groupUpdate()
+connection.updateGroup(group.id(), SinchSMSApi.groupUpdate()
         .addMemberInsertion("{PHONE1}", "{PHONE2}", "{PHONE3}")
         .build());
 ```
@@ -93,7 +93,7 @@ connection.updateGroup(group.id(), ClxApi.groupUpdate()
 To send a message to one of your groups, simply use the group ID as one of the recipients:
 
 ```java
-connection.createBatch(ClxApi.batchTextSms()
+connection.createBatch(SinchSMSApi.batchTextSms()
         .sender("ignored")
         .addRecipient(group.id().toString())
         .body("Hello from Sinch!")
@@ -105,10 +105,9 @@ connection.createBatch(ClxApi.batchTextSms()
 The code sample below puts together all the pieces you've learned above to send a message to a group of subscribers. Before running the example, replace contents of the different String constants at the beginning of the class (ex: `{YOUR_SERVICE_PLAN_ID}`) with the correct values for your account and replace the phone numbers of each group member you want to test with (the `GROUP_MEMBERS` constant).
 
 ```java
-import com.clxcommunications.xms.*;
-import com.clxcommunications.xms.api.GroupResult;
-import com.clxcommunications.xms.api.MtBatchTextSmsResult;
-
+import com.sinch.xms.*;
+import com.sinch.xms.api.GroupResult;
+import com.sinch.xms.api.MtBatchTextSmsResult;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -160,13 +159,13 @@ public class SendMessageToGroup {
     }
 
     private void ensureGroupHasMembers(GroupResult group, String... phoneNumbers) throws ApiException, InterruptedException {
-        connection.updateGroup(group.id(), ClxApi.groupUpdate()
+        connection.updateGroup(group.id(), SinchSMSApi.groupUpdate()
                 .addMemberInsertion(phoneNumbers)
                 .build());
     }
 
     private MtBatchTextSmsResult sendToGroup(GroupResult group, String message) throws ApiException, InterruptedException {
-        return connection.createBatch(ClxApi.batchTextSms()
+        return connection.createBatch(SinchSMSApi.batchTextSms()
                 .sender("ignored")
                 .addRecipient(group.id().toString())
                 .body(message)
@@ -184,7 +183,7 @@ public class SendMessageToGroup {
 
     private GroupResult createGroup(String name) {
         try {
-            GroupResult createdGroup = connection.createGroup(ClxApi.groupCreate().name(name).build());
+            GroupResult createdGroup = connection.createGroup(SinchSMSApi.groupCreate().name(name).build());
             log.info("Created group with ID " + createdGroup.id());
             return createdGroup;
         } catch (InterruptedException | ApiException e) {
