@@ -316,7 +316,8 @@ describing the error:
     "contact_id": "01EXA07N79THJ20WSN6AS30TMW",
     "reason": {
       "code": "OUTSIDE_ALLOWED_SENDING_WINDOW",
-      "description": "The underlying channel reported: Message failed to send because more than 24 hours have passed since the customer last replied to this number"
+      "description": "The underlying channel reported: Message failed to send because more than 24 hours have passed since the customer last replied to this number",
+      "sub_code": "UNSPECIFIED_SUB_CODE"
     },
     "metadata": ""
   }
@@ -357,10 +358,11 @@ by the API clients when they receive successful response from the **/messages:se
 The `reason` field in `FAILED` or `SWITCHING_CHANNEL` delivery report callbacks provides information for the reason of the failure.
 The table below shows the properties of the `reason` field:
 
-| Field           | Type               | Description                                                                                                    |
-| --------------- | ------------------ | -------------------------------------------------------------------------------------------------------------- |
-| code            | string             | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details. |
-| description     | string             | A description of the reason.                                                                                   |
+| Field           | Type               | Description                                                                                                                                      |
+| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| code            | string             | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details.                                   |
+| description     | string             | A description of the reason.                                                                                                                     |
+| sub_code        | string             | The sub code is a more detailed classification of the main error. See [Error Sub-Codes](doc:conversation-callbacks#error-sub-codes) for details. |
 
 ##### Error Codes
 
@@ -391,6 +393,11 @@ The codes are as follow:
 - ***CHANNEL_REJECT*** - generic error for channel permanently rejecting a message.
 - ***UNKNOWN*** - returned if no other code can be used to describe the encountered error.
 - ***INTERNAL_ERROR*** - an internal error occurred. Please save the entire callback if you want to report an error.
+
+##### Error Sub-Codes
+
+- ***UNSPECIFIED_SUB_CODE*** - used if no other sub code can be used to describe the encountered error.
+- ***ATTACHMENT_REJECTED*** - occurs when the message attachment has been rejected by the channel due to a policy. Some channels have specific policies that must be met to receive an attachment.
 
 ### Event Delivery Receipt
 
