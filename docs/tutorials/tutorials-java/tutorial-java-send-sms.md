@@ -36,7 +36,7 @@ ApiConnection connection = ApiConnection.builder()
 Once an `ApiConnection` object is created and started, you can use it to interact with the API, such as sending an SMS message to one recipient:
 
 ```java
-import com.sinch.xms.api;
+import com.sinch.xms.SinchSMSApi;
 String SERVICE_PLAN_ID = "{YOUR_SERVICE_PLAN_ID}";
 String TOKEN = "{YOUR_TOKEN}";
 String SENDER = "{yourSinchNumber}";
@@ -112,10 +112,10 @@ Dependency Injection frameworks such as Spring, Guice or Picocontainer offer spe
 To wrap up, here's the complete sources of a minimal Java application that starts a connection to the Sinch REST API, sends a message, then closes the connection.
 
 ```java
-import com.sinch.sms.ApiConnection;
+import com.sinch.xms.ApiConnection;
 import com.sinch.sms.ApiException;
 import com.sinch.sms.api;
-import com.sinch.sms.api.MtBatchTextSmsResult;
+import com.sinch.xms.api.MtBatchTextSmsResult;
 
 import java.io.IOException;
 import java.util.logging.Level;
