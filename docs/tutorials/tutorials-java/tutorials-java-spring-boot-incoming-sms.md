@@ -2,7 +2,7 @@
 title: Receive SMS in a Spring Boot application
 excerpt: >-
   In this more advanced installment of our Java tutorial series, you'll learn
-  how you can keep track of the delivery of SMS messages you send via the Sinch
+  how to keep track of the delivery of SMS messages you send via the Sinch
   REST API.
 ---
 The Sinch REST API keeps track of the delivery status of each message you send and makes that status available to your application in two ways:
@@ -14,7 +14,7 @@ This tutorial will show you how to setup an endpoint in your Spring Boot applica
 
 ## Prerequisites
 
-Before starting, please make sure that:
+Before starting, make sure that:
 
  - You have [created your Sinch account].(https://www.sinch.com/sign-up/)
  - The right version of the JDK is installed on your computer.
@@ -29,7 +29,7 @@ Before starting, please make sure that:
 
 ### Bootstrap An Empty Application Using Spring Initializr
 
-The Spring project provides the [_Initializr_](https://start.spring.io/) tool to quickly get up and running with a Spring Boot application. [Fill the form](https://start.spring.io/) and download the resulting ZIP archive, extract it where you want to work and you're good to go!
+The Spring project provides the [_Initializr_](https://start.spring.io/) tool to quickly get up and running with a Spring Boot application. [Fill the form](https://start.spring.io/) and download the resulting ZIP archive, extract it where you want to work, and you're good to go!
 
 Once you've extracted the ZIP in a suitable location, open a terminal and run this command in the project directory:
 
@@ -39,7 +39,7 @@ This command should install Gradle and then compile, package and run your new Sp
 
 ### Add Dependencies to the Gradle Build File
 
-In the `build.gradle` file, make sure your dependencies includes both `spring-boot-starter-web` and the Sinch Java SDK:
+In the `build.gradle` file, make sure your dependencies include both `spring-boot-starter-web` and the Sinch Java SDK:
 
 ```java
 dependencies {
@@ -110,7 +110,7 @@ If everything is working, you should see a similar response from your applicatio
 {"timestamp":"2019-08-14T15:03:28.156+0000","status":405,"error":"Method Not Allowed","message":"Request method 'GET' not supported","path":"/sms/deliveryReport"}
 ```
 
-Receiving a `405 Method Not Allowed` response is normal, you've attempted to make a `GET` request with cURL, whereas our application expects a `POST`. The important part is that you've reached our application via the public URL (`https://`) via Ngrok. 
+Receiving a `405 Method Not Allowed` response is normal. You've attempted to make a `GET` request with cURL, whereas our application expects a `POST`. The important part is that you've reached our application via the public URL (`https://`) via Ngrok. 
 
 Your locally-running application is now exposed to the Internet! 
 
