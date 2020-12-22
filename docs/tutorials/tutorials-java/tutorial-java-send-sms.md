@@ -1,14 +1,12 @@
 ---
 title: Send an SMS to one or more ad-hoc recipients
-excerpt: >-
-  In this tutorial, you'll learn the basics of sending an SMS from a Java
-  application.
+excerpt: Learn the basics of sending an SMS from a Java application.
 ---
 This tutorial will walk you through the steps to send an SMS using Sinch's Java SDK from a server or command line application.
 
 ## Prerequisites
 
-Before starting, please make sure that:
+Before starting, make sure that:
 
  - You have created your Sinch account
  - The right version of the JDK is installed on your computer
@@ -55,7 +53,7 @@ MtBatchTextSmsResult batch =
       .body("This is a test message from your Sinch account")
       .build());
 ```
-> note you need to enter yoru phonenumber in international format.
+> **Note:** You need to enter {yourphonenumber} in international format.
 
 ### Close the connection to the REST API when your application shuts down
 
@@ -71,7 +69,7 @@ There are multiple ways you can ensure the `ApiConnection` is closed:
 
  - **_try/finally_ statement**
    
-   If you're building a simple command line application, wrapping the code that interacts with the API in a _try/finally_ block will ensure the connection is always closed:
+If you're building a simple command line application, wrapping the code that interacts with the API in a _try/finally_ block will ensure the connection is always closed:
    
 ``` java 
 ApiConnection connection = ApiConnection.builder()
@@ -88,7 +86,7 @@ try {
 
  - **_try-with-resources_ statement (Java 8+)**
   
-   Because the `ApiConnection` implements the `Closeable` interface, it can be used in a try-with-resources statement as a simpler alternative to try/finally:
+Because the `ApiConnection` implements the `Closeable` interface, it can be used in a try-with-resources statement as a simpler alternative to try/finally:
    
 ``` java 
 ApiConnection connection = ApiConnection.builder()
@@ -103,11 +101,11 @@ try (connection) {
  
  - **JVM Shutdown Hook**
  
-   Shutdown hooks allow you to execute code when the JVM is shutting down. [Learn more about shutdown hooks](https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#addShutdownHook-java.lang.Thread-))
+Shutdown hooks allow you to execute code when the JVM is shutting down. [Learn more about shutdown hooks](https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#addShutdownHook-java.lang.Thread-))
  
  - **JSR-250/330 `@PreDestroy` hooks**
  
-   Dependency Injection frameworks such as Spring, Guice or Picocontainer offer specific tools to execute code when the JVM is shutting down, such as the [`@PreDestroy` annotation](https://docs.oracle.com/javase/8/docs/api/javax/annotation/PreDestroy.html)
+Dependency Injection frameworks such as Spring, Guice or Picocontainer offer specific tools to execute code when the JVM is shutting down, such as the [`@PreDestroy` annotation](https://docs.oracle.com/javase/8/docs/api/javax/annotation/PreDestroy.html)
   
 ## Wrap up
 
