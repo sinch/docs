@@ -16,15 +16,15 @@ Before starting, please make sure that:
 
 Details of these steps are available on the [Java Getting Started page](doc:sms-java-library).
 
-## What Are Groups?
+## What are Groups?
 
-The Sinch REST API lets you manage groups of contacts that you can use as recipients for your outbound messages. This makes it easy to maintain distribution lists without the need to store them in your own system. It is faster to send to large groups since there is no need to transmit the entire list of recipients for each message you send; you only specify the group ID as the recipient.
+The Sinch REST API makes it easy to manage groups of contacts and maintain distribution lists without the need to store them in your own system. You can now quickly send to large groups by specifying the group ID as the recipient.
 
 > **Limitations**
 >
 > Groups may contain a maximum of 10,000 members.
 
-Groups also have some more advanced features:
+> **Advanced Features**
 
  - Groups can be nested. A group can contain members of up to 10 other groups.
  - Groups can be automatically updated upon certain user-initiated interactions (eg: sending JOIN or STOP to your dedicated phone number or short code).
