@@ -9,28 +9,16 @@ next:
 ---
 > The numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to Tobias.Sellberg@sinch.com.
 
-Numbers is the backbone of many of our services that enables you to both send and receive calls and messages. You can [search](https://developers.sinch.com/reference#numberservice_listavailablenumbers) and [rent](https://developers.sinch.com/reference#numberservice_rentnumber) numbers in 15 countries to make and recieve calls and messages from your customers.
+The Sinch Numbers API enables you to make and receive calls from your customers, as well as send and receive messages via [searched](https://developers.sinch.com/reference#numberservice_listavailablenumbers) and [rented](https://developers.sinch.com/reference#numberservice_rentnumber) numbers in 15 countries.
 
-[Rent your first number](doc:numbers-getting-started-rent-a-number)
+With the Sinch Numbers API, you will:
 
-### Use cases
+* Gain trust with your customers when you use unique, dedicated numbers to represent your business.
 
-#### Dedicated numbers
+* Become a familiar face in local markets around the world when you use a local number that is specific for every area code.
 
-Get unique numbers to represent your business. Returning customers will quickly drop the suspicions as they know you’re the sender.
+* Protect people’s sensitive information with an anonymous number and create a fraud proof service via number masking.
 
-#### Local number
+* Use MO numbers to receive messages, completely free of charge, from your customers.
 
-Use a number specific for every area code to become a familiar face in local markets all around the world.
-
-#### Number masking
-
-Protect people’s sensitive information with an anonymous number & create a fraud proof service.
-
-#### Cost-free messages
-
-Use MO numbers to receive messages from your customers without paying a single penny or dime - it's completely free of charge.
-
-#### International messaging
-
-Don’t worry about national borders. Stay available to anyone with reception, whatever country they’re in.
+* Stay available to everyone with reception, and never worry about which country they're in.
