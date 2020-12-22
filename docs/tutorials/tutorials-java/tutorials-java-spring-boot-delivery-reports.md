@@ -10,7 +10,7 @@ The Sinch REST API keeps track of the delivery status of each message you send a
  1) Via [polling / pull](doc:sms-guide#retrieve-a-delivery-report): Your application can fetch the delivery notifications at regular intervals with GET HTTP requests.
  2) Via [callbacks / push](doc:sms-guide#delivery-report-callback): The Sinch REST API will make an HTTP POST request to your application with details of the delivery report included in the request body.
  
-How to setup an endpoint in your Spring Boot application to respond to the delivery reports callbacks.
+# How to setup an endpoint in your Spring Boot application to respond to the delivery reports callbacks
 
 ## Prerequisites
 
@@ -99,7 +99,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```       
 
-Take note of the `https://...` public URL that Ngrok has assigned to your tunnel in the second line starting with `Forwarding`. In the above example, this URL is `https://9d62bf5a.ngrok.io`, but Ngrok assigns a different URL for each tunnel so you'll need to take note of the one specific for your tunnel. This is the URL you'll give to Sinch as the callback URL for your test message.
+Take note of the `https://...` public URL that Ngrok has assigned to your tunnel in the second line starting with `Forwarding`. In the above example, this URL is `https://9d62bf5a.ngrok.io`, but Ngrok assigns a different URL for **each tunnel** so you'll need to take note of the one specific for your tunnel. This is the URL you'll give to Sinch as the callback URL for your test message.
 
 To test that the tunnel works, start your Spring Boot application:
 
