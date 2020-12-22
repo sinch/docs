@@ -8,8 +8,8 @@ This tutorial will walk you through the steps to send an SMS using Sinch's Java 
 
 Before starting, make sure that:
 
- - You have created your Sinch account
- - The right version of the JDK is installed on your computer
+ - You have created your Sinch account.
+ - The right version of the JDK is installed on your computer.
  - You have added the Sinch Java SDK JAR to your project [Java Getting Started page](doc:sms-java-library).
 
 
@@ -63,7 +63,7 @@ When you're done using the `ApiConnection` or when your application is shutting 
 connection.stop();
 ```
 
-This is to ensure all resources created by the SDK such as the thread pool are stopped and freed. 
+This is to ensure all resources created by the SDK, such as the thread pool, are stopped and freed. 
 
 There are multiple ways you can ensure the `ApiConnection` is closed:
 
@@ -109,7 +109,7 @@ Dependency Injection frameworks such as Spring, Guice or Picocontainer offer spe
   
 ## Wrap up
 
-To wrap up, here's the complete sources of a minimal Java application that starts a connection to the Sinch REST API, sends a message then closes the connection.
+To wrap up, here's the complete sources of a minimal Java application that starts a connection to the Sinch REST API, sends a message, then closes the connection.
 
 ```java
 import com.sinch.sms.ApiConnection;
