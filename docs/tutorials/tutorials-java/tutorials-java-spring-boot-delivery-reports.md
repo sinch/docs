@@ -2,7 +2,7 @@
 title: Receive SMS delivery reports in a Spring Boot application
 excerpt: >-
   In this more advanced installment of our Java tutorial series, you'll learn
-  how you can keep track of the delivery of SMS messages you send via the Sinch
+  how to keep track of the delivery of SMS messages you send via the Sinch
   REST API.
 ---
 The Sinch REST API keeps track of the delivery status of each message you send and makes that status available to your application in two ways:
@@ -30,13 +30,13 @@ Before starting, please make sure that:
 
 ### Bootstrap An Empty Application Using Spring Initializr
 
-The Spring project provides the [_Initializr_](https://start.spring.io/) tool to quickly get up and running with a Spring Boot application. [Fill out the form](https://start.spring.io/) and download the resulting ZIP archive, extract it where you want to work and you're good to go!
+The Spring project provides the [_Initializr_](https://start.spring.io/) tool to quickly get up and running with a Spring Boot application. [Fill out the form](https://start.spring.io/) and download the resulting ZIP archive, extract it where you want to work, and you're good to go!
 
 Once you've extracted the ZIP in a suitable location, open a terminal and run this command in the project directory:
 
     $ ./gradlew bootRun
     
-This command should install Gradle and then compile, package run your new Spring Boot application.
+This command should install Gradle and then compile, package and run your new Spring Boot application.
 
 ### Add Dependencies to the Gradle Build File
 
@@ -72,7 +72,7 @@ public class DeliveryReportController {
 }
 ```
 
-## Allow Sinch REST API to Reach Your Application
+## Allow the Sinch REST API to Reach Your Application
 
 Now that you have a POST endpoint to respond to Sinch callbacks, how can you test that it works? You could deploy your application to a publicly-exposed Web server (i.e. on AWS, Google Cloud, Heroku, Digital Ocean, etc.), but that would be too much work and completely out of scope for this tutorial. 
 
@@ -121,7 +121,7 @@ Your locally-running application is now exposed to the Internet!
 
 ## Send a Test SMS With Your Publicly-Exposed Callback
 
-To complete your experiment, you can now send a test SMS requesting a delivery report and specifying your publicly-exposed URL endpoint as the callback. 
+To complete your experiment, you can now send a test SMS requesting a delivery report while specifying your publicly-exposed URL endpoint as the callback. 
 
 With both **Ngrok** and your **Spring Boot application** running, run the following cURL command.
 
