@@ -111,48 +111,54 @@ Dependency Injection frameworks such as Spring, Guice or Picocontainer offer spe
 
 To wrap up, here's the complete sources of a minimal Java application that starts a connection to the Sinch REST API, sends a message, then closes the connection.
 
-```java
+```package example;
+
 import com.sinch.xms.ApiConnection;
-import com.sinch.sms.ApiException;
-import com.sinch.sms.api;
+import com.sinch.xms.SinchSMSApi;
+import com.sinch.xms.api.GroupResult;
 import com.sinch.xms.api.MtBatchTextSmsResult;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+public class Example {
 
-public class SendMessage {
-    private static final Logger log = Logger.getLogger(SendMessage.class.getName());
+  private static final String SERVICE_PLAN_ID = "SERVICE_PLAN_ID";
+  private static final String TOKEN = "SERVICE_TOKEN";
+  private static final String[] RECIPIENTS = {"1232323131", "3213123"};
+  private static final String SENDER = "SENDER";
 
-    private static final String SERVICE_PLAN_ID = "{YOUR_SERVICE_PLAN_ID}";
-    private static final String API_TOKEN = "{YOUR_API_TOKEN}";
-    private static final String RECIPIENT_PHONE_NUMBER = "{YOUR_PHONE_NUMBER}";
+  public static void main(String[] args) {
+    try (ApiConnection conn =
+        ApiConnection.builder().servicePlanId(SERVICE_PLAN_ID).token(TOKEN).start()) {
 
-    public static void main(String[] args) throws IOException {
+      // Sending a simple Text Message
+      MtBatchTextSmsResult batch =
+          conn.createBatch(
+              SinchSMSApi.batchTextSms()
+                  .sender(SENDER)
+                  .addRecipient(RECIPIENTS)
+                  .body("Something good")
+                  .build());
 
-        ApiConnection conn = ApiConnection.builder()
-                .servicePlanId(SERVICE_PLAN_ID)
-                .token(API_TOKEN)
-                .start();
+      System.out.println("Successfully sent batch " + batch.id());
 
-        try {
-            MtBatchTextSmsResult result =
-                    conn.createBatch(SinchSMSApi.batchTextSms()
-                            .sender("ignored")
-                            .addRecipient(RECIPIENT_PHONE_NUMBER)
-                            .body("Hello from Sinch!")
-                            .build());
+      // Creating simple Group
+      GroupResult group = conn.createGroup(SinchSMSApi.groupCreate().name("Subscriber").build());
 
-            log.log(Level.INFO, "SMS sent with batch ID " + result.id());
+      // Adding members (numbers) into the group
+      conn.updateGroup(
+          group.id(), SinchSMSApi.groupUpdate().addMemberInsertion("15418888", "323232").build());
 
-        } catch (InterruptedException e) {
-            log.log(Level.SEVERE, "Send interrupted.", e);
-        } catch (ApiException e) {
-            log.log(Level.SEVERE, "SMS could not be sent.", e);
-        } finally {
-            conn.close();  
-        }
-    }                
+      // Sending a message to the group
+      batch = conn.createBatch(
+          SinchSMSApi.batchTextSms()
+              .addRecipient(group.id().toString())
+              .body("Something good")
+              .build());
+
+      System.out.println("Successfully sent batch " + batch.id());
+    } catch (Exception e) {
+      System.out.println("Batch send failed: " + e.getMessage());
+    }
+  }
 }
 ```
 
