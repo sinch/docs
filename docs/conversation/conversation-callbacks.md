@@ -138,7 +138,7 @@ The table below shows the properties of the `contact_message` field in inbound m
 | ------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | reply_to      | object             | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
 
-It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`.
+It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`, `fallback_message`.
 All of these properties are JSON objects described in the sections below.
 
 ##### Text Message
@@ -185,6 +185,15 @@ Contact Message containing media and caption.
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
 | url           | string             | The URL of the media.                                                                                    |
 | caption       | string             | Caption for the media, if supported by channel.                                                          |
+
+##### Fallback Message
+
+Fallback message, appears when original contact message cannot be handled.
+
+| Field         | Type               | Description                                                                                              |
+| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| reason        | object             | Fallback reason. See [Reason](doc:conversation-callbacks#reason) for details.                            |
+| raw_message   | string             | The raw fallback message if provided by the channel.                                                     |
 
 ##### ReplyTo
 
