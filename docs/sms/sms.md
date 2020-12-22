@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: Getting started - node
 excerpt: >-
   This guide will show you how to send and receive SMS with the Sinch API in
   minutes.
@@ -23,10 +23,6 @@ Click on activate
 ![Image of configure number](images\new-number\select-rest.png)
 To use the number with the rest API select REST and click **_Get Free number_**.
 
-### Installing Java helper library
-
-If you want to use java, [install our helper library](doc:sms-java-library)
-
 ### Send SMS
 
 ```nodejs NodeJS
@@ -44,22 +40,6 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
 });
-```
-```java Java
-ApiConnection conn =
-        ApiConnection.builder()
-            .servicePlanId({service_plan_id})
-            .token({your token})
-            .start()
-String [] RECIPIENTS = {"{To Number}"};
-MtBatchTextSmsResult batch =
-          conn.createBatch(
-              SinchSMSApi.batchTextSms()
-                  .sender("{your free test number}")
-                  .addRecipient(RECIPIENTS)
-                  .body("This is a test message!")
-                  .build()
-
 ```
 
 Before you can execute the code that sends an SMS message, you need to modify it in a few places.
