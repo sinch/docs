@@ -184,7 +184,7 @@ Contact Message containing media and caption.
 | Field         | Type               | Description                                                                                              |
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
 | url           | string             | The URL of the media.                                                                                    |
-| caption       | string             | Caption for the media on channels, where its supported.                                                  |
+| caption       | string             | Caption for the media, if supported by channel.                                                          |
 
 ##### ReplyTo
 
