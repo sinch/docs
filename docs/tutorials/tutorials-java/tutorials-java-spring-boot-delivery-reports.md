@@ -7,10 +7,15 @@ excerpt: >-
 ---
 The Sinch REST API keeps track of the delivery status of each message you send and makes that status available to your application in two ways:
 
+<<<<<<< HEAD
  1) Via [polling / pull](doc:sms-guide#retrieve-a-delivery-report): Your application can fetch the delivery notifications at regular intervals with GET HTTP requests.
  2) Via [callbacks / push](doc:sms-guide#delivery-report-callback): The Sinch REST API will make an HTTP POST request to your application with details of the delivery report included in the request body.
  
 ## How to setup an endpoint in your Spring Boot application to respond to the delivery reports callbacks
+=======
+ 1) Via [polling / pull](doc:sms-guide#retrieve-a-delivery-report): your application can fetch the delivery notifications at regular intervals with GET HTTP requests.
+ 2) Via [callbacks / push](doc:sms-guide#delivery-report-callback): the Sinch REST API will make an HTTP POST request to your application with details of the delivery report included in the request body.
+>>>>>>> master
 
 ## Prerequisites
 

@@ -138,7 +138,7 @@ The table below shows the properties of the `contact_message` field in inbound m
 | ------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | reply_to      | object             | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
 
-It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`.
+It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`.
 All of these properties are JSON objects described in the sections below.
 
 ##### Text Message
@@ -176,6 +176,15 @@ The choice response message represents a contact response to a choice message.
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
 | message_id    | string             | The message id containing the choice.                                                                    |
 | postback_data | string             | The postback data if defined in the selected choice. Otherwise the default is `message_id_{text, title}` |
+
+##### Media Card Message
+
+Contact Message containing media and caption.
+
+| Field         | Type               | Description                                                                                              |
+| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| url           | string             | The URL of the media.                                                                                    |
+| caption       | string             | Caption for the media, if supported by channel.                                                          |
 
 ##### ReplyTo
 

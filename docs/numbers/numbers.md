@@ -1,12 +1,13 @@
 ---
 title: Introduction
-excerpt: Alpha release
+excerpt: The Numbers API is currently run as beta testing and only selected customers will have access to this feature. If you want to participate in this testing, please reach out to [Tobias.Sellberg@sinch.com](mailto:Tobias.Sellberg@sinch.com)
 next:
   pages:
     - numbers-getting-started-rent-a-number
     - numbers-using-the-self-serve-portal
 
 ---
+<<<<<<< HEAD
 > The numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to Tobias.Sellberg@sinch.com.
 
 Numbers is the backbone of many of our services that enables you to both send and receive calls and messages. You can [search](https://developers.sinch.com/reference#numberservice_listavailablenumbers) and [rent](https://developers.sinch.com/reference#numberservice_rentnumber) numbers in 15 countries to make and recieve calls and messages from your customers.
@@ -34,3 +35,6 @@ Use MO numbers to receive messages from your customers without paying a single p
 #### International messaging
 
 Don’t worry about national borders. Stay available to anyone with reception, whatever country they’re in.
+=======
+Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
+>>>>>>> master
