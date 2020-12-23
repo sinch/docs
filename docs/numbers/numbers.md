@@ -7,4 +7,4 @@ next:
     - numbers-using-the-self-serve-portal
 
 ---
-Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
+Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
