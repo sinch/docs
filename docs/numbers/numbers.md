@@ -1,6 +1,6 @@
 ---
 title: Introduction
-excerpt: The Numbers API is currently run as beta testing and only selected customers will have access to this feature. If you want to participate in this testing, please reach out to [Tobias.Sellberg@sinch.com](mailto:tobias
+excerpt: The Numbers API is currently run as beta testing and only selected customers will have access to this feature. If you want to participate in this testing, please reach out to [Tobias.Sellberg@sinch.com](mailto:Tobias.Sellberg@sinch.com)
 next:
   pages:
     - numbers-getting-started-rent-a-number
