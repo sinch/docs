@@ -105,8 +105,6 @@ public class InboundController {
 
 Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
 
-Copy the https address in your window, then run app.js in the command prompt 'node app.js'
-
 ![requestbin request](images\ngrok.png)
 
 Go back to your dashboard and change the callback URL for your SMS service.
