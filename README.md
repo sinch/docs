@@ -1,6 +1,6 @@
 # Publication and deployment
 
-We have chosen to go with an solution provided by [ReadMe](https://www.readme.com) to host our documentation.
+We have chosen to go with a solution provided by [ReadMe](https://www.readme.com) to host our documentation.
 
 There's not many steps needed to get your content live on the [Sinch Developer Documentation](https://developers.sinch.com) site.
 
