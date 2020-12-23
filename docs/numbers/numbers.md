@@ -7,18 +7,6 @@ next:
     - numbers-using-the-self-serve-portal
 
 ---
-> The numbers API are currently run as alpha testing only selected customers will have access to this feature. If you like to participate in alpha testing please reach out to Tobias.Sellberg@sinch.com.
+> The Numbers API is currently run as beta testing and only selected customers will have access to this feature. If you want to participate in this testing, please reach out to [Tobias.Sellberg@sinch.com](tobias.sellberg@sinch.com).
 
-The Sinch Numbers API enables you to make and receive calls from your customers, as well as send and receive messages via [searched](https://developers.sinch.com/reference#numberservice_listavailablenumbers) and [rented](https://developers.sinch.com/reference#numberservice_rentnumber) numbers in 15 countries.
-
-With the Sinch Numbers API, you will:
-
-* Gain trust with your customers when you use unique, dedicated numbers to represent your business.
-
-* Become a familiar face in local markets around the world when you use a local number that is specific for every area code.
-
-* Protect people’s sensitive information with an anonymous number and create a fraud proof service via number masking.
-
-* Use MO numbers to receive messages, completely free of charge, from your customers.
-
-* Stay available to everyone with reception, and never worry about which country they're in.
+Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
