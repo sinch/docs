@@ -160,7 +160,6 @@ JSON body fields:
 |parameters.{parameter_key}.default |The fall back value for omitted recipient MSISDNs                                                                  |      String      |None                |                            Max 160 characters long                            |                      No                      |
 |client_reference                   |The client identifier of batch message. If set, it will be added in the delivery report/callback of this batch     |      String      |N/A                 |        Max 128 characters long. No personally identifiable information        |                      No                      |
 |max_number_of_message_parts        |Message will be dispatched only if it is not split to more parts than Max Number of Message Parts                  |      String      |N/A                 |                           Must be higher or equal 1                           |                      No                      |
-|feedback_enabled                   |If set to true then [feedback](#send-a-delivery-feedback) is expected after successful delivery.                   |      Boolean     |false               |                            true or false                                      |                      No                      |
 
 **Send message to one recipient**
 ```shell
@@ -723,54 +722,6 @@ The response is a JSON object with the following fields:
 `404 Not Found`
 
 The batch ID is not known to the system or the recipient is not a target of this batch.
-
-
-### Send a delivery feedback
-
-Send a feedback if your system can confirm successful message delivery. 
-Feedback can only be provided if `feedback_enabled` was set when batch was submitted. 
-It is possible to submit feedback multiple times for the same batch for different recipients.
-Feedback without specified recipients is treated as successful message delivery to all recipients referenced in the batch.
-
-#### Request
-
-`POST /xms/v1/{service_plan_id}/batches/{batch_id}/delivery_feedback`
-
-JSON body fields:
-
-|Name        |Description                                              |JSON Type         |Default                                  |Constraints                                     |Required   |
-|------------|---------------------------------------------------------|:----------------:|-----------------------------------------|:-------------------------------:|:---------:|
-|recipients  |List of MSISDNs that successfully received the message   |   String array   | All recipients referenced in the batch  |    Elements must be MSISDNs.    |    No    |
-
-**Notify about successful delivery to two recipients**
-```shell
-curl -X POST \
-     -H "Authorization: Bearer {token}" \
-     -H "Content-Type: application/json"  -d '
-      {
-          "recipients": [
-              "123456789",
-              "987654321"
-          ]
-}' \
-  "https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches/{batch_id}/delivery_feedback"
-```
-
-
-#### Response
-
-`202 Accepted`
-
-The feedback was successfully accepted.
-
-`400 Bad request`
-
-There was an error with your request. The body is a JSON object described in rest\_http\_errors. Possible error codes include **syntax\_invalid\_json**, **syntax\_invalid\_parameter\_format** and **syntax\_constraint\_violation**.
-
-`404 Not Found`
-
-The batch ID is not known to the system or batch was created without feedback enabled.
-
 
 ### Receiving delivery report callbacks
 
