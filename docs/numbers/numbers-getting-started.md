@@ -11,6 +11,7 @@ To get started with the Sinch Numbers API, you will need to go through the follo
  1. Authenticating the API
  2. Search, rent and configure numbers in the US
 
+
 ## Authenticating the API
 
 [Log in](https://dashboard.sinch.com/login) to your self-service account, go to **Settings** > **Projects** and click **ADD NEW PROJECT**. Name your project and click **CREATE**.
