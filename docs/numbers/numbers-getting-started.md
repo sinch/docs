@@ -7,30 +7,29 @@ next:
     - numbers-getting-started-rent-a-number
 ---
 
+To get started with the Sinch Numbers API, you will need to go through the following steps:
+ 1. Authenticating the API
+ 2. Search, rent and configure numbers in the US
+ 3. Fetch, update and release numbers
 
-## Authentication
+## Authenticating the API
 
-To authenticate with the numbers API You need get a project id, client id and key id you will need to log into your self-serve account (dashboard.sinch.com) and visit https://dashboard.sinch.com/settings/project-management.
+[Log in](https://dashboard.sinch.com/login) to your self-service account, go to **Settings** > **Projects** and click **ADD NEW PROJECT**. Name your project and click **CREATE**.
+![image](https://user-images.githubusercontent.com/76005934/103315442-9922b000-49f3-11eb-9e97-f9e903567821.png)
 
-![Project management](numbers-getting-started/images/project_management.png)
+Next, under **IDENTITY & ACCESS**, click **Access Keys** and click **NEW KEY**. Enter a required Display name and click **CONFIRM**. This will generate the Key ID & Key Secret.
+![image](https://user-images.githubusercontent.com/76005934/103316043-421dda80-49f5-11eb-9a0d-b3950e55dcad.png)
 
-Then go Access Keys section https://dashboard.sinch.com/settings/access-keys. Here you need to click the “New Key” to generate an client id and key id.
+Make sure you copy or remember your Secret Key as this information will not be retrievable once you click **CONFIRM**.
 
-![Access Keys](numbers-getting-started/images/access_keys.png)
+**Note**: client_id is the Key ID and client_secret is the Key Secret.
 
-Make sure to write down the key since it will not be possible to retrieve after creation
+Now that you have your client_id and client_secret, you can authenticate the Numbers API for any project using our Basic security or by using our OAuth security which is the recommended way to access our APIs.
 
-### Basic
-
-Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard.
-
-#### Oauth
-
-Our basic security works with any project, its the client_id and client_secret that you can find in the dasbhoard This is the recomended way of to access our apis.
+**OAuth security information**:
 
 Security Scheme Type OAuth2
+
 clientCredentials OAuth Flow Token URL: https://eu.auth.sinch.com/oauth2/token
 
 Revoke URL: https://eu.auth.sinch.com/oauth2/revoke
-
-
