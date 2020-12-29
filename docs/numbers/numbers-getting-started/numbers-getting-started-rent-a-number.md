@@ -93,6 +93,7 @@ curl --request GET \
 ```
 **Note**: You will need the “phoneNumber” in the response to rent your number.
 
+
 ## Rent a number to use with SMS or Voice products
 
 In this **POST** example, remember to replace {projectId}, {clientId} and {clientSecret} with your values.
