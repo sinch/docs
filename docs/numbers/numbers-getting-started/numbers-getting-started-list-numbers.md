@@ -1,12 +1,14 @@
 ---
-title: Working with your numbers
+title: Working with your numbers using the API
 excerpt: ''
 hidden: false
 ---
 
 ## List Numbers
 
-Lists all your numbers.  
+This GET request lists all numbers for your project.
+
+#### Request
 
 ```shell
 curl --request GET \
@@ -17,8 +19,9 @@ curl --request GET \
 
 ## List Numbers in US
 
-Lists all US numbers for a project.
+This GET request lists all US number for your project.
 
+#### Request
 
 ```shell
 curl --request GET \
@@ -27,7 +30,7 @@ curl --request GET \
  --u {clientId}:{clientSecret}
 ```
 
-#### Result
+#### Response
 
 ```json
 {
@@ -57,7 +60,9 @@ curl --request GET \
 
 ## Update Number
 
-With update number you can move a number between different SMS services and give it a new friendly name.
+This PATCH request allows you to move a number between different SMS services and give the number a new friendly name.
+
+#### Request
 
 ```shell
 curl --request PATCH \
@@ -65,20 +70,26 @@ curl --request PATCH \
  --header 'Accept: application/json'
 ```
 
-#### phoneNumber
+#### phoneNumber in E.164 format
 
-The phone number in e.164 format with leading +. Example +12025550134. This may need to be URL encoded to work. Example %2B12025550134
+E.164 is the international telephone numbering plan that guarantees that each device on the PSTN (public switched telephone network) has a globally unique number. This number allows calls and texts to be correctly routed in individual phones in different countries.
+
+The format of an E.164 number, which has a maximum of 15 digits, is [+][country code][subscriber number including area code]
+
+An example of this format is +12025550134. This number may need to be URL encoded to work. For example, %2B12025550134.
 
 #### Update Mask
 
-updateMask that determines which resource fields are modified in an update. Following fields can be updated:
+The updateMask parameter determines which resource fields are modified in an update. The following fields can be updated:
 
 - displayName
 - smsConfiguration.servicePlanId
 
 #### Body
 
-updateMask parameters can be attached in the request body like this:
+updateMask parameters can be attached in the request body as shown below in this example:
+
+#### Request
 
 ```json
 {
@@ -118,7 +129,7 @@ updateMask parameters can be attached in the request body like this:
 
 ## Release number from project
 
-Cancel your subscription for a specific phone number.
+This POST call allows you to cancel your subscription for a specific phone number. Remember, the phoneNumber element must follow the E.164 format and may need to be URL encoded as shown above.
 
 ```shell
 curl --request POST \
