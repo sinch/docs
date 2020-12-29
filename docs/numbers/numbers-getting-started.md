@@ -10,7 +10,6 @@ next:
 To get started with the Sinch Numbers API, you will need to go through the following steps:
  1. Authenticating the API
  2. Search, rent and configure numbers in the US
- 3. Fetch, update and release numbers
 
 ## Authenticating the API
 
