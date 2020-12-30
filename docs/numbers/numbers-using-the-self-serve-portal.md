@@ -1,50 +1,54 @@
 ---
-title: Working with numbers in dashboard
+title: Working with numbers in your dashboard
 excerpt: ''
 ---
+You can view, configure your SMS settings, buy, search for numbers and submit supporting documentation if needed, all inside your dashboard. 
 
-## Your Numbers
+## View numbers
 
-![Your Numbers](images/your_numbers.png)
+To see your list of numbers and configure your SMS settings, log in to your dashboard and take these steps:
+ 1. Go to **Your numbers** under the **Numbers** heading in **Communication APIs** on the left-hand side of the user interface.
+ 2. Click any number. 
+ 3. Scroll to **SMS configuration** and click **EDIT**.
+ 4. Make your changes and click **SAVE**.
 
-List of your numbers
 
-Click on a number will take you to the numbers details
 
-![Number Details](images/number_details.png)
 
-Here you can view details and configure your SMS settings
+## Search and buy numbers
 
-## Buy Numbers
+Use different criteria to search and buy numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as “**Direct Buy**”. All other countries will require you to submit a request to Sinch for manual handling. 
 
-![Buy Numbers](images/buy_numbers.png)
 
 Search numbers
 
-You can use different search criteria like country, type and feature (SMS, Voice or both). All countries where Sinch have numbers in inventory will be marked as “Direct Buy”, all other countries will require you to submit an request to us for manual handling.
+To search and buy numbers, log in to your dashboard and take these steps:
+  1. Go to **Buy Numbers** under the **Numbers** heading in **Communication APIs**.
+  2. Select your country, then under **Number**, filter your number search by “**Starts with**”, “**Contains**” or “**Ends with**”. If you want a specific number, just type the number into the  box.
+  3. Select the **Type** of number you want. **Local (Direct Buy)**, **Toll-free number** or **Short code**.
+  
+When you buy a number, some pre-requisites might be needed depending on the country specific requirements. In this example, no supporting documentation is needed and you can click **BUY NUMBER**.
 
-When you buy a number some pre-requisits may be needed depending on the country specific requirements
 
-![Buy Number Dialog With Sup Doc](images/buy_number_dialog_with_sup_doc.png)
+However, in this example, supporting documentation is needed.
 
-Pre-requisit needed. See supporting documentation
 
-If no prerequisite is needed, click the buy number button to acquire the number
 
-![Buy Number Dialog](images/buy_number_dialog.png)
+## Submit supporting documentation
 
-## Supporting Documentations
+You can manage and create regulatory bundles, which are required to buy certain types of numbers and numbers in other countries. To create this bundle, take these steps:
 
-In some countries you will need to submit additional documentation before you buy a number. This is done in the “Supporting Documentation” section.
+  1. Click **NEW BUNDLE**
 
-![Sup Docs](images/sup_docs.png)
 
-First, click the “New Bundle” button
+  2. Name your bundle. This will be the name of the supporting documentation that will be shown in the portal.
+  3. Select your **Number type** and the **Country** you want to buy your number in.
+  4. Click **CREATE**.
 
-![Sup Doc Dialog](images/sup_doc_dialog.png)
 
-Fill in a name (you may name the request anyway you like), type and select the country where you want to buy the number in.
 
-![Sup Doc](images/sup_doc_details.png)
+  5. Fill in the bundle details and click **SUBMIT TO REVIEW**.
 
-Fill in the bundle details and when done click the “Submit to review” button.In many cases the bundle will be approved instantly but in some cases a manual approval will be needed. If so, you will be notified when bundle is approved by E-mail
+
+
+Often the bundle is approved instantly, but in some cases, a manual approval is needed. If so, you will be notified via Email when the bundle is approved.
