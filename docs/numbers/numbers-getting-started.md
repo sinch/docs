@@ -24,12 +24,14 @@ Make sure you copy or remember your Secret Key as this information will not be r
 
 **Note**: client_id is the Key ID and client_secret is the Key Secret.
 
-Now that you have your client_id and client_secret, you can authenticate the Numbers API for any project using our Basic security or by using our OAuth security which is the recommended way to access our APIs.
+Now that you have your client_id and client_secret, you can authenticate the Numbers API for any project using our Basic security or OAuth security.
 
-**OAuth security information**:
+**Basic security**
+Our [basic security](https://developers.sinch.com/reference/#active-number) works with any project. Use the client_id and client_secret that were displayed when you created your access key through the dashboard.
 
-Security Scheme Type OAuth2
+![image](https://user-images.githubusercontent.com/76005934/103374744-5c63c100-4aa6-11eb-9e91-2565e63c4199.png)
 
-clientCredentials OAuth Flow Token URL: https://eu.auth.sinch.com/oauth2/token
+**OAuth security**
+[OAuth](https://developers.sinch.com/reference/#active-number) is the recommended way to access our APIs.
 
-Revoke URL: https://eu.auth.sinch.com/oauth2/revoke
+![image](https://user-images.githubusercontent.com/76005934/103374861-9d5bd580-4aa6-11eb-9d76-473034763e0c.png)
