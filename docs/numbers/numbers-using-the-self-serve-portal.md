@@ -38,11 +38,11 @@ To search and buy numbers, log in to your dashboard and take these steps:
   
 When you buy a number, some pre-requisites might be needed depending on the country specific requirements. In this example, no supporting documentation is needed and you can click **BUY NUMBER**.
 
-![image](https://user-images.githubusercontent.com/76005934/103358667-2ca3c180-4a84-11eb-8186-fe9ecf92277b.png)
+![non_supporting_doc](https://user-images.githubusercontent.com/76005934/103365813-ef90fc80-4a8e-11eb-8874-8907a52e002c.png)
 
 However, in this example, supporting documentation is needed.
 
-![image](https://user-images.githubusercontent.com/76005934/103358730-4cd38080-4a84-11eb-9c93-e637a15b0f35.png)
+![supporting_doc](https://user-images.githubusercontent.com/76005934/103366028-81990500-4a8f-11eb-984b-a526be0add90.png)
 
 ## Submit supporting documentation
 
