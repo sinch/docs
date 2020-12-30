@@ -22,7 +22,7 @@ To see your list of numbers and configure your SMS settings, log in to your dash
 Use different criteria to search and buy numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as “**Direct Buy**”. All other countries will require you to submit a request to Sinch for manual handling. 
 
 
-### Search numbers
+#### Search numbers
 
 To search and buy numbers, log in to your dashboard and take these steps:
   1. Go to **Buy Numbers** under the **Numbers** heading in **Communication APIs**.
