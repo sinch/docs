@@ -14,9 +14,9 @@ To get started with the Sinch Numbers API, you will need to go through the follo
 
 ## Authenticate the API
 
-[Log in](https://dashboard.sinch.com/login) to your self-service account, go to **Settings** > **Access Keys** and click **NEW KEY**. This will generate the Key ID (client_id) & Key Secret (client_secret).
+[Log in](https://dashboard.sinch.com/login) to your self-service account, go to **Settings** > **Access Keys** and click **NEW KEY**. This will generate the Key ID (client_id) & Key Secret (client_secret). Then give your key a Display Name.
 
-![image](https://user-images.githubusercontent.com/76005934/103316043-421dda80-49f5-11eb-9a0d-b3950e55dcad.png)
+![access_keys](https://user-images.githubusercontent.com/76005934/103384649-2a158c00-4ac5-11eb-8fd5-adda1a1ca50e.png)
 
 Make sure you copy or remember your Secret Key as this information will not be retrievable once you click **CONFIRM**.
 
