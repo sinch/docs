@@ -325,7 +325,6 @@ paths:
       summary: Search virtual numbers
       description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available number resource.
       operationId: NumberService_ListAvailableNumbers
-      
       responses:
         '200':
           description: A successful response.
