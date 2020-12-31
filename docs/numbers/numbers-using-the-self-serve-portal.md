@@ -6,58 +6,23 @@ You can view, configure your SMS settings, buy, search for numbers and submit su
 
 ## View numbers
 
-To see your list of numbers and configure your SMS settings, log in to your dashboard and take these steps:
- 1. Go to **Your numbers** under the **Numbers** heading in **Communication APIs** on the left-hand side of the user interface.
- 2. Click any number. 
- 3. Scroll to **SMS configuration** and click **EDIT**.
- 4. Make your changes and click **SAVE**.
-
-![image](https://user-images.githubusercontent.com/76005934/103363325-d38a5c80-4a88-11eb-9016-6ca52643bdab.png)
-
-![image](https://user-images.githubusercontent.com/76005934/103363352-e9981d00-4a88-11eb-9a2f-04dd0a14df4c.png)
-
+To see your list of numbers and configure your SMS settings, [log in](https://dashboard.sinch.com/numbers/your-numbers/numbers) to your dashboard. Click any number, scroll **SMS Configuration**, click **EDIT**, make your changes and click **SAVE**.
 
 ## Search and buy numbers
 
-Use different criteria to search and buy numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as “**Direct Buy**”. All other countries will require you to submit a request to Sinch for manual handling. 
+Use different criteria to search and buy numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as **Direct Buy**. All other countries will require you to submit a request to Sinch for manual handling. 
 
 
 #### Search numbers
 
-To search and buy numbers, log in to your dashboard and take these steps:
-  1. Go to **Buy Numbers** under the **Numbers** heading in **Communication APIs**.
-  2. Select your country, then under **Number**, filter your number search by “**Starts with**”, “**Contains**” or “**Ends with**”. If you want a specific number, just type the number into the  box.
-  3. Select the **Type** of number you want. **Local (Direct Buy)**, **Toll-free number** or **Short code**.
-  4. Click **Search**.
-  5. Click **Buy**.
+To search and buy numbers, [log in](https://dashboard.sinch.com/numbers/buy-numbers) to your dashboard. Then, fill in the required information and click **SEARCH**, click **BUY** for the number you want to purchase.
   
-  ![image](https://user-images.githubusercontent.com/76005934/103358618-0847e500-4a84-11eb-8154-3b2bf8472678.png)
- 
-  ![image](https://user-images.githubusercontent.com/76005934/103363185-7d1d1e00-4a88-11eb-8823-e5846cca007f.png)
-  
-  
-When you buy a number, some pre-requisites might be needed depending on the country specific requirements. In this example, no supporting documentation is needed and you can click **BUY NUMBER**.
-
-![non_supporting_doc](https://user-images.githubusercontent.com/76005934/103365813-ef90fc80-4a8e-11eb-8874-8907a52e002c.png)
-
-However, in this example, supporting documentation is needed.
-
-![supporting_doc](https://user-images.githubusercontent.com/76005934/103366028-81990500-4a8f-11eb-984b-a526be0add90.png)
+When you buy a number, if supporting documentation is needed, you will see a message in an orange box at the bottom of your form. You will not be able to buy a number until supporting documentation is submitted.
 
 ## Submit supporting documentation
 
-You can manage and create regulatory bundles, which are required to buy certain types of numbers and numbers in other countries. To create this bundle, take these steps:
+You can manage and create regulatory bundles, if needed, which are required to buy certain types of numbers and numbers in other countries. To create this bundle, go to Supporting documentation take these steps:
 
-  1. Go to Supporting Documentation under **Communication APIs** and click **NEW BUNDLE**
+Go to [Supporting Documentation](https://dashboard.sinch.com/numbers/supporting-documentation) and click **NEW BUNDLE**. Fill in the form with the required information and click **CREATE**. Then, fill in the bundle details and and click **SUBMIT TO REVIEW**
   
-![image](https://user-images.githubusercontent.com/76005934/103359588-26aee000-4a86-11eb-83e3-4964c935bec0.png)
-
-  2. Name your bundle. This will be the name of the supporting documentation that will be shown in the portal.
-  3. Select your **Number type** and the **Country** you want to buy your number in.
-  4. Click **CREATE**.
-
-![image](https://user-images.githubusercontent.com/76005934/103359648-40502780-4a86-11eb-9537-05300da8feef.png)
-
-  5. Fill in the bundle details and click **SUBMIT TO REVIEW**.
-
 Often the bundle is approved instantly, but in some cases, a manual approval is needed. If so, you will be notified via Email when the bundle is approved.
