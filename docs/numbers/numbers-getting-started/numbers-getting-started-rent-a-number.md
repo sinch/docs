@@ -44,7 +44,7 @@ curl --request GET \
 }
 ```
 
-##Search for a Toll-free number
+## Search for a Toll-free number
 
 Use the same GET request as above but add the number type you are interested in.
 
