@@ -44,46 +44,11 @@ curl --request GET \
 }
 ```
 
-
-### Search for a number
-
-Search for numbers that are available for you to rent. In this example you will search for any US number.
-
-
-Replace {projectId}, {clientId} and {clientSecret} with your values. 
-
-You can filter by any property on the available number resource. learn more about it in the [API specification](https://developers.sinch.com/reference#numberservice_listavailablenumbers).  
-
-
-#### Response
-
-```json
-{
-  "availableNumbers": [
-    {
-      "phoneNumber": "+12089087284",
-      "regionCode": "US",
-      "type": "LOCAL",
-      "capability": ["SMS"],
-      "setupPrice": {
-        "currencyCode": "USD",
-        "amount": "0.00"
-      },
-      "monthlyPrice": {
-        "currencyCode": "USD",
-        "amount": "2.00"
-      },
-      "paymentIntervalMonths": 1
-    }
-  ]
-}
-```
-
 ##Search for a Toll-free number
 
 Use the same GET request as above but add the number type you are interested in.
 
-####Request
+#### Request
 
 ```shell
 curl --request GET \
@@ -98,7 +63,7 @@ curl --request GET \
 
 In this **POST** example, remember to replace {projectId}, {clientId} and {clientSecret} with your values.
 
-####Request
+#### Request
 
 ```shell
 curl --request POST \
@@ -119,7 +84,7 @@ curl --request POST \
 
 In this **POST** example, replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://dashboard.sinch.com/sms/api) with your values. Your **servicePlanId** can be found in your dashboard under **SMS** > **APIs** > **REST configuration**
 
-####Request
+#### Request
 
 ```shell
 curl --request POST \
