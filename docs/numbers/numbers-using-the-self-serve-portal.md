@@ -2,7 +2,7 @@
 title: Working with numbers in your dashboard
 excerpt: ''
 ---
-You can view, configure your SMS settings, buy, search for numbers and submit supporting documentation all inside your dashboard. 
+You can view, search and buy numbers as well as configure your SMS settings and submit supporting documentation all inside your dashboard. 
 
 ## View numbers
 
@@ -11,7 +11,6 @@ To see your list of numbers and configure your SMS settings, [log in](https://da
 ## Search and buy numbers
 
 Use different criteria to search and buy numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as **Direct Buy**. All other countries will require you to submit a request to Sinch for manual handling. 
-
 
 #### Search numbers
 
