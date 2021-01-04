@@ -62,7 +62,7 @@ paths:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your project id can be found if you log into your account on dashboard.sinch.com.
+          description: Your project id is found in your Sinch account.
           in: path
           required: true
           schema:
