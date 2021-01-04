@@ -21,7 +21,6 @@ Next, we’ll create a new ASP.NET Web Application in Visual Studio.
 ![new-project2.png](images\fd8768e-new-project2.png)
 
 Select the Empty ASP.NET 4.5 Template, and select the checkbox for a core reference to Web API:
-![template.png](images\71e2699-template.png)
 
 Right click on References in Solution Explorer and select **“Manage NuGet Packages…”**.
 

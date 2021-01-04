@@ -46,6 +46,10 @@ _App-to-Phone_ calls can be tested by calling the following test number: _+46000
 >
 > Placing an _App-to-Phone_ call requires that your Sinch account has sufficient credits; Top up credits on your [Account](https://portal.sinch.com/#/account) page. Credits are used each time an _App-to-Phone_ call is placed and your account balance is updated after each call.
 
+> ⚠ Testing DTMF
+>
+> In _App-to-Phone_ scenario, it is possible to issue DTMF sequences using Sinch SDK. Please note that if the receiving end of the call is an iOS device, you might have to disable _VoLTE_ ("Voice over LTE") option in the settings of the phone at the receiving end of the call in order to be able to hear DTMF tones.
+
 ## Setting Up an _App-to-SIP_ Call
 
 An _App-to-SIP_ call is a call that is made to a [SIP](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) server. Use the method `-[SINCallClient callSIP:]` or `-[SINCallClient callSIP:headers:]` to initiate a _SIP_ call. The destination _SIP_ identity follows the form of email addresses (<user@domain>), for example <alice@sip.your-sip-provider.com>.

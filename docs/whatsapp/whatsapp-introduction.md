@@ -80,7 +80,7 @@ The following Swagger UI URLs can be used to test our API.
 > 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API will be processed before it's sent to the recipient.
-> While the maximum file size for every uploaded media is 100 mb, be aware that the file can be compressed to meet the post-processing limits listed below.
+> While the maximum file size for every uploaded media is 100 mb, be aware that the file also needs to meet the post-processing limits listed below. This means that a message with a file size that is larger than the post-processing limits is not guaranteed to be sent successfully. The result will depend on whether WhatsApp's post-processing of the media file can reduce the file size sufficiently or not.
 > 
 
 | Message type  |  Supported content types               |  Post-processing size limit       |

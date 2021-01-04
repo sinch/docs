@@ -101,5 +101,5 @@ You can improve the quality of your video by using the following techniques:
 - Use spoken audio instead of music.
 - Use slower movements in the video.
 - Use solid colors.
-- Video source files are best in .mp4 or .mov formats.
+- Video source files are best in .mp4 formats.
 - Different carriers have different requirements when it comes to the file size of a video. Carriers may decrease the size of the video if it is too large. This could affect the quality that is provided.

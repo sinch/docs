@@ -1,33 +1,33 @@
 ---
 title: Send an SMS to a pre-defined group of recipients
 excerpt: >-
-  This tutorial will show you how to use Groups, a more advanced feature of the
-  Sinch REST API, to send a single message to a pre-defined list of recipients.
+  Learn how to use Groups, a more advanced feature of the Sinch REST API, to
+  send a single message to a pre-defined list of recipients.
 ---
-Now that you've successfully [sent a message to ad-hoc recipients using the Sinch REST API](doc:tutorial-java-send-sms), you're ready to take on the next step: creating a group of recipients that will be stored on Sinch servers, and sending a message to this group.
+Now that you've successfully [sent a message to ad-hoc recipients using the Sinch REST API](doc:tutorial-java-send-sms), you're ready to take on the next step, creating a group of recipients that will be stored on Sinch servers, and sending a message to this group.
 
 ## Prerequisites
 
 Before starting, please make sure that:
 
- - You have created your Sinch account
- - The right version of the JDK is installed on your computer
- - You have added the Sinch Java SDK JAR to your project
+ - You have created your Sinch account.
+ - The right version of the JDK is installed on your computer.
+ - You have added the Sinch Java SDK JAR to your project.
 
-All details of those steps are available on the [Java Getting Started page](doc:sms-java-library).
+Details of these steps are available on the [Java Getting Started page](doc:sms-java-library).
 
-## What Are Groups?
+## What are Groups?
 
-The Sinch REST API lets you manage groups of contacts that you can use as recipients for your outbound messages. This makes it easy to maintain distribution lists without the need to store them in your own system. Sending to large groups is also faster since there is no need to transmit the entire list of recipients for each message you send, you only specify the group ID as the recipient.
+The Sinch REST API makes it easy to manage groups of contacts and maintain distribution lists without the need to store them in your own system. You can now quickly send to large groups by specifying the group ID as the recipient.
 
 > **Limitations**
 >
 > Groups may contain a maximum of 10,000 members.
 
-Although we won't be covering them, Groups also have some more advanced features:
+> **Advanced Features**
 
- - Groups can be nested; a group can contain members of up to 10 other groups.
- - Groups can be automatically updated upon certain user-initiated interactions (ex: sending JOIN or STOP to your dedicated phone number or short code).
+ - Groups can be nested. A group can contain members of up to 10 other groups.
+ - Groups can be automatically updated upon certain user-initiated interactions (eg: sending JOIN or STOP to your dedicated phone number or short code).
  
 Check out the [API reference documentation on Groups](doc:sms-guide#groups-endpoint) for more details.
 
@@ -35,19 +35,19 @@ Check out the [API reference documentation on Groups](doc:sms-guide#groups-endpo
 
 In this tutorial, we'll first make sure a group named `subscribers` exists on our account, then we'll add a pre-determined list of members to this group. Once our group contains our list of subscribers, we'll send them a message.
 
-Since we already covered how to start and close a connection to the REST API in the [first tutorial](doc:tutorial-java-send-sms), we won't be covering that part again here. 
+We already covered how to start and close a connection to the REST API in the [first tutorial](doc:tutorial-java-send-sms). 
 
 ### Ensure Your Group Exists
 
-To make sure our group exists, we'll need to check if a group with our name has previously been created. 
+To make sure your group exists, you'll need to check if a group with your name has previously been created. 
 
-To do this, we'll first need to **list all groups that exist** on our Sinch account:
+To do this, you'll first need to **list all groups that exist** on your Sinch account:
 
 ```java
 PagedFetcher<GroupResult> groups = connection.fetchGroups(GroupFilter.builder().build());
 ```
 
-The Groups endpoint being paginated, we must **iterate through groups page by page**:
+The Groups endpoint is paginated, you must **iterate through groups page by page**:
 
 ```java
 GroupResult group;
@@ -61,7 +61,7 @@ for (Page<GroupResult> page : groups.pages()) {
 }
 ```
 
-You can also accomplish the same things as the above in a single statement using the Streams API if you feel like it:
+You can also accomplish the same thing as the above in a single statement using the Streams API:
 
 ```java
 StreamSupport.stream(groups.pages().spliterator(), false)
@@ -70,20 +70,20 @@ StreamSupport.stream(groups.pages().spliterator(), false)
         .findFirst()
 ```
 
-If no group was found with our name, we'll need to **create a group**:
+If no group was found with your name, you'll need to **create a group**:
 
 ```java
 if (group == null) {
-    group = connection.createGroup(ClxApi.groupCreate().name("subscribers").build());
+    group = connection.createGroup(SinchSMSApi.groupCreate().name("subscribers").build());
 }
 ```
 
 ### Update the Group With Our List of Members
 
-Now that we are certain our `subscribers` group exists, we can add our subscribers to it:
+Now that you are certain your `subscribers` group exists, you can add your subscribers to it:
 
 ```java
-connection.updateGroup(group.id(), ClxApi.groupUpdate()
+connection.updateGroup(group.id(), SinchSMSApi.groupUpdate()
         .addMemberInsertion("{PHONE1}", "{PHONE2}", "{PHONE3}")
         .build());
 ```
@@ -93,7 +93,7 @@ connection.updateGroup(group.id(), ClxApi.groupUpdate()
 To send a message to one of your groups, simply use the group ID as one of the recipients:
 
 ```java
-connection.createBatch(ClxApi.batchTextSms()
+connection.createBatch(SinchSMSApi.batchTextSms()
         .sender("ignored")
         .addRecipient(group.id().toString())
         .body("Hello from Sinch!")
@@ -105,10 +105,9 @@ connection.createBatch(ClxApi.batchTextSms()
 The code sample below puts together all the pieces you've learned above to send a message to a group of subscribers. Before running the example, replace contents of the different String constants at the beginning of the class (ex: `{YOUR_SERVICE_PLAN_ID}`) with the correct values for your account and replace the phone numbers of each group member you want to test with (the `GROUP_MEMBERS` constant).
 
 ```java
-import com.clxcommunications.xms.*;
-import com.clxcommunications.xms.api.GroupResult;
-import com.clxcommunications.xms.api.MtBatchTextSmsResult;
-
+import com.sinch.xms.*;
+import com.sinch.xms.api.GroupResult;
+import com.sinch.xms.api.MtBatchTextSmsResult;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -160,13 +159,13 @@ public class SendMessageToGroup {
     }
 
     private void ensureGroupHasMembers(GroupResult group, String... phoneNumbers) throws ApiException, InterruptedException {
-        connection.updateGroup(group.id(), ClxApi.groupUpdate()
+        connection.updateGroup(group.id(), SinchSMSApi.groupUpdate()
                 .addMemberInsertion(phoneNumbers)
                 .build());
     }
 
     private MtBatchTextSmsResult sendToGroup(GroupResult group, String message) throws ApiException, InterruptedException {
-        return connection.createBatch(ClxApi.batchTextSms()
+        return connection.createBatch(SinchSMSApi.batchTextSms()
                 .sender("ignored")
                 .addRecipient(group.id().toString())
                 .body(message)
@@ -184,7 +183,7 @@ public class SendMessageToGroup {
 
     private GroupResult createGroup(String name) {
         try {
-            GroupResult createdGroup = connection.createGroup(ClxApi.groupCreate().name(name).build());
+            GroupResult createdGroup = connection.createGroup(SinchSMSApi.groupCreate().name(name).build());
             log.info("Created group with ID " + createdGroup.id());
             return createdGroup;
         } catch (InterruptedException | ApiException e) {

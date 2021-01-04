@@ -11,7 +11,7 @@ hidden: true
 >
 > To verify numbers even easier, check out our [Verification SDK](https://www.sinch.com/products/verification/sms/)
 
-More and more websites and apps ask for your phone number and, in many cases, are using it for two-factor authentication. ([Read more about 2FA here](https://www.sinch.com/opinion/what-is-two-factor-authentication/).) In this tutorial, you will learn how to build your own C# two factor authentication system in about 30 minutes, using a classic [SMS verification system](doc:verification-ios-sms-verification), using .NET for the backend. In [Part 2](doc:building-an-ios-client-for-number-verification-part-2), we will implement it in one of our clients.
+More and more websites and apps ask for your phone number and, in many cases, are using it for two-factor authentication. ([Read more about 2FA here](https://www.sinch.com/opinion/what-is-two-factor-authentication/).) In this tutorial, you will learn how to build your own C# two factor authentication system in about 30 minutes, using a classic SMS verification system and using .NET for the backend. In [Part 2](doc:building-an-ios-client-for-number-verification-part-2), we will implement it in one of our clients.
 
 The full sample code can be downloaded [here](https://github.com/sinch/net-two-factor-auth).
 

@@ -13,8 +13,7 @@ categories:
   - sinch-classic-sms
   - voice-cloud
   - conversation
-  - temp
-
+  - numbers
 
 filters:
   hostedFiles:

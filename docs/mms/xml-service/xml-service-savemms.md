@@ -96,6 +96,7 @@ When an MMS is saved, the system will generate a Postback notification and unloc
 
 ## Special Considerations for saveMMS
 
+  - MMS message-subject is required. The message-subject parameter should not contain emoji/Unicode characters as this will cause messages to get rejected by the carrier's MMSC.
   - The API SHALL reformat the content when necessary so that it can be delivered to the end users handset in the best possible way.
   - Delivery success takes precedence over audio and video content quality and occasionally the picture quality will be reduced to fit handset message size requirements.
   - Video SHALL be reduced in quality to fit delivery limitations and if it still does not fit it will be delivered as XHTML/SMS.
@@ -112,7 +113,6 @@ When an MMS is saved, the system will generate a Postback notification and unloc
   - Slide duration will be overwritten with the audio/video file duration after encoding is completed.
   - URLs provided MUST contain the full path to the mime files.
   - Slide Duration SHOULD NOT exceed 30 seconds.
-  - MMS subject is required.
   - MMS containing audio/video can be used only when audio/video encoding is completed.
   - After submission you will not be given a successful acknowledgement of audio/video encoding when a message is submitted
   - The HTTP status of audio/video encoding after it has been completed will be sent to your Postback URL.

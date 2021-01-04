@@ -16,7 +16,7 @@ To fully enable VoIP push notifications in your application, the following steps
 - Create and upload an _APNs VoIP Services Certificate_ for your _Sinch Application_ in the _Sinch Developer Portal_.
 - Configure `SINClient` to let Sinch manage push notifications (both client-side and server-side).
 - Integrate use of Sinch push APIs with _CallKit_.
-- Ensure [APNs environment](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment) is matching the app entitlements and codesigning.
+- Ensure [APNs environment](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment) is matching the app entitlements and code signing.
 
 
 > ❗️Important
@@ -97,6 +97,32 @@ Apple Push Certificates are generated from the [Apple Developer Member Center](h
 Your push notification certificates are now uploaded and ready for use.
 
 Certificates configured with Sinch can be replaced or renewed by uploading new ones. New certificates will automatically replace the previous ones for their respective type (_Development_, _Production_ and _VoIP Services_).
+
+### Possible Scenarios of Configuring Your Application
+
+Depending on your use case it is possible to configure calling functionality differently. Let's consider two possible scenarios:
+
+1. Single Sinch Application, multiple iOS apps (i.e. multiple different Bundle IDs)
+1. Multiple Sinch Applications, one iOS app (one Bundle ID)
+
+#### Single Sinch Application, multiple iOS apps (i.e. multiple different Bundle IDs)
+
+Suppose you have App-A and App-B with `A-BundleID` and `B-BundleID` iOS bundles respectively.
+You want App-B to be able to call App-A. You need to generate *VoIP certificate* for the app with `A-BundleID` and upload it to *Sinch Developer Portal* for the *Sinch Application* which application key you are going to use in both iOS apps.
+
+> ⚠ 
+> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificate must match ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created: if you sign using *Apple Development Certificate* please provide `SINAPSEnvironmentDevelopment`, if you sign using *iOS Distribution Certificate* please provide `SINAPSEnvironmentProduction`.
+
+Mismatch in APNs environment settings and signing identity in one or both iOS apps will result in inability to make a call from App-B to App-A.
+
+#### Multiple Sinch Applications, one iOS app (one Bundle ID)
+
+Suppose that we have two Sinch Apps (in Sinch Portal), App-A and App-B and only one iOS app.
+iOS app could be build with App-A application key or App-B application key.
+If you want to make a call from iOS app with App-A application key to iOS app with App-B application key you need to generate VoIP certificate for iOS app bundle ID and upload it to the caller app in *Sinch Developer Portal*. In our example you will upload VoIP certificate to App-A in the portal.
+
+> ⚠
+> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificate must match ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created: if you sign using *Apple Development Certificate* please provide `SINAPSEnvironmentDevelopment`, if you sign using *iOS Distribution Certificate* please provide `SINAPSEnvironmentProduction`.
 
 ## CallKit
 

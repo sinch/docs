@@ -142,8 +142,7 @@ To create a Conference ID, store it to defaults, etc., add the following in your
 
 ## Invite friends
 
-As you probably know, iOS has this wonderful share functionality for apps like the one we’re creating right now. Users can super easy be a part of the menu and share the app to any social network that’s available on their phone. Read more about the UIActivityViewController [here](http://www.codingexplorer.com/add-sharing-to-your-app-via-uiactivityviewcontroller/).
-
+As you probably know, iOS has this wonderful share functionality for apps like the one we’re creating right now. Users can super easy be a part of the menu and share the app to any social network that’s available on their phone. 
 ```objectivec
 -(void)inviteFriends{
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

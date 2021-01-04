@@ -3,9 +3,7 @@ title: Swift SDK
 excerpt: >-
   Verify users with Swift. The Sinch iOS Verification SDK is available for
   Swift.
-next:
-  pages:
-    - verification-ios-troubleshooting-and-faq
+
 ---
 
 The Sinch Verification iOS SDK is also available for [Swift](https://developer.apple.com/).
