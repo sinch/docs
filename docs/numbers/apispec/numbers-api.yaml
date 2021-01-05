@@ -10,16 +10,13 @@ info:
 
     Our basic security works with any project, use the client_id and client_secret that were displayed when you created your access key through the dashboard.
 
-    Learn more about Sinch authentication and authorization
-
      <table><thead><tr><th>Security Scheme Type</th><th>HTTP</th></tr></thead><tbody><tr><td><b>HTTP Authorization Scheme</b></td><td>basic</td></tr></tbody></table>
 
     <h3>OAuth</h3>
     This is the recommended way to access our apis.
 
-    Learn more about Sinch authentication and authorization
-
      <table><thead><tr><th>Security Scheme Type</th><th>OAuth2</th></tr></thead><tbody><tr><td><b>clientCredentials OAuth Flow</b></td><td><b>Token URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/token">https://eu.auth.sinch.com/oauth2/token</a><br><br><b>Revoke URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/revoke">https://eu.auth.sinch.com/oauth2/revoke</a></td></tr></tbody></table>
+  
   version: '1.0'
 tags:
   - name: Available Number
@@ -28,17 +25,17 @@ paths:
   '/v1beta1/projects/{projectId}/activeNumbers':
     get:
       summary: Lists virtual numbers for a project
-      description: Lists all virtual numbers for a project.
+      description: Use this GET API to list all virtual numbers for your project.
       operationId: NumberService_ListActiveNumbers
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/v1beta1ListActiveNumbersResponse'
         '400':
-          description: 'If the page_token, number_pattern or order_by is not valid'
+          description: 'Page_token, number_pattern or order_by is not valid'
           content:
             application/json:
               schema: {}
@@ -55,20 +52,20 @@ paths:
                             - field: order_by
                               description: Invalid order_by XXX
         default:
-          description: An unexpected error response
+          description: An unexpected error has occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your project id is found in your Sinch account.
+          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
             type: string
         - name: regionCode
-          description: 'Region code to filter by. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.'
+          description: '[country code](https://www.iso.org/obp/ui/#search) of the phone number.'
           in: query
           required: false
           schema:
@@ -81,29 +78,26 @@ paths:
             type: string
         - name: searchPattern
           description: |-
-            Search pattern to apply.
+            Search pattern to apply:
 
-             - SEARCH_PATTERN_UNSPECIFIED: Null value
-             - START: Numbers that start with the provided sequence of digits
-             - CONTAINS: Numbers that contain the sequence of digits
-             - END: Numbers that end with the sequence of digits
+             - START: Numbers that start with the provided sequence of digits.
+             - CONTAINS: Numbers that contain the sequence of digits.
+             - END: Numbers that end with the sequence of digits.
           in: query
           required: false
           schema:
             type: string
             enum:
-              - SEARCH_PATTERN_UNSPECIFIED
               - START
               - CONTAINS
               - END
             default: SEARCH_PATTERN_UNSPECIFIED
         - name: type
           description: |-
-            Number type to filter by. MOBILE, LOCAL or TOLL_FREE.
-
-             - MOBILE: Numbers that belong to a specific range
-             - LOCAL: Numbers that are assigned to a specific geographic region
-             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
+            Filter by MOBILE, LOCAL or TOLL_FREE.
+             - MOBILE: Numbers that belong to a specific range.
+             - LOCAL: Numbers that are assigned to a specific geographic region.
+             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls.
           in: query
           required: false
           schema:
@@ -115,10 +109,9 @@ paths:
             default: MOBILE
         - name: capability
           description: |-
-            Number capability to filter by. SMS and/or VOICE.
-
-             - SMS: The SMS product can use the number
-             - VOICE: The Voice product can use the number
+            Filter by SMS and/or VOICE.
+             - SMS: The SMS product can use the number.
+             - VOICE: The Voice product can use the number.
           in: query
           required: false
           schema:
@@ -142,7 +135,7 @@ paths:
             type: string
         - name: orderBy
           description: |-
-            Supported fields for ordering by: number or display_name.
+            Supported fields for ordering by number or display_name.
             https://cloud.google.com/apis/design/design_patterns#sorting_order.
           in: query
           required: false
@@ -153,11 +146,11 @@ paths:
   '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
       summary: Update virtual phone number.
-      description: With update virtual phone number you can move a number between different SMS services and give it a new friendly name.
+      description: With update virtual phone number, you can move a number between different SMS services and give it a new friendly name.
       operationId: NumberService_UpdateActiveNumber
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
@@ -181,27 +174,27 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project resource
+          description: The ID of the project.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: Output only. The phone number in e.164 format with leading +. Example +12025550134.
+          description: Output only. The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
             type: string
         - name: updateMask
           description: |-
-            FieldMask that determines which resource fields are modified in an update. Following fields can be updated:
+            FieldMask that determines which resource fields are modified in an update. The following fields can be updated:
             * displayName
             * smsConfiguration.servicePlanId.
           in: query
@@ -225,13 +218,13 @@ paths:
       operationId: NumberService_GetActiveNumber
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/v1beta1ActiveNumber'
         '404':
-          description: The active number could not be found
+          description: The active number could not be found.
           content:
             application/json:
               schema: {}
@@ -249,14 +242,14 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your project id can be found if you log into your account on dashboard.sinch.com.
+          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
@@ -276,7 +269,7 @@ paths:
       operationId: NumberService_ReleaseNumber
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
@@ -300,14 +293,14 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
+          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
@@ -327,7 +320,7 @@ paths:
       operationId: NumberService_ListAvailableNumbers
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
@@ -346,14 +339,14 @@ paths:
                       status: INVALID_ARGUMENT
                       details: []
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The resource name of the project id. Your project id can be found if you login to your account on dashboard.sinch.com.
+          description: The resource name of the project id. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
@@ -366,35 +359,32 @@ paths:
             type: string
         - name: searchPattern
           description: |-
-            Search pattern to apply.
+            Search pattern to apply:
 
-             - SEARCH_PATTERN_UNSPECIFIED: Null value
-             - START: Numbers that start with the provided sequence of digits
-             - CONTAINS: Numbers that contain the sequence of digits
-             - END: Numbers that end with the sequence of digits
+             - START: Numbers that start with the provided sequence of digits.
+             - CONTAINS: Numbers that contain the sequence of digits.
+             - END: Numbers that end with the sequence of digits.
           in: query
           required: false
           schema:
             type: string
             enum:
-              - SEARCH_PATTERN_UNSPECIFIED
               - START
               - CONTAINS
               - END
             default: SEARCH_PATTERN_UNSPECIFIED
         - name: regionCode
-          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.'
+          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the phone number.'
           in: query
           required: false
           schema:
             type: string
         - name: type
           description: |-
-            Only return numbers with the given v1beta1. MOBILE, LOCAL or TOLL_FREE.
-
-             - MOBILE: Numbers that belong to a specific range
-             - LOCAL: Numbers that are assigned to a specific geographic region
-             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
+            Only return MOBILE, LOCAL or TOLL_FREE numbers with the given v1beta1.
+             - MOBILE: Numbers that belong to a specific range.
+             - LOCAL: Numbers that are assigned to a specific geographic region.
+             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls.
           in: query
           required: false
           schema:
@@ -406,10 +396,9 @@ paths:
             default: MOBILE
         - name: capability
           description: |-
-            Number capability to filter by. SMS and/or VOICE.
-
-             - SMS: The SMS product can use the number
-             - VOICE: The Voice product can use the number
+            Filter by SMS and/or VOICE.
+             - SMS: The SMS product can use the number.
+             - VOICE: The Voice product can use the number.
           in: query
           required: false
           schema:
@@ -429,12 +418,12 @@ paths:
         - Available Number
   '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}':
     get:
-      summary: Fetch an available virtual number
+      summary: Fetch an available virtual number.
       description: Returns an available virtual number.
       operationId: NumberService_GetAvailableNumber
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
@@ -458,20 +447,20 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your project id can be found if you log into your account on dashboard.sinch.com.
+          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: The phone number in e.164 format with leading +. Example +12025550134.
+          description: The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
@@ -485,18 +474,18 @@ paths:
       operationId: NumberService_RentNumber
       responses:
         '200':
-          description: A successful response.
+          description: Success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/v1beta1ActiveNumber'
         '400':
-          description: If the project does not have enough credit to rent the number
+          description: The project does not have enough credit to rent the number.
           content:
             application/json:
               schema: {}
         '404':
-          description: The available number could not be found
+          description: The available number could not be found.
           content:
             application/json:
               schema: {}
@@ -514,20 +503,20 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error response
+          description: An unexpected error occurred
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
+          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: The available phone number to rent.
+          description: The available number to rent
           in: path
           required: true
           schema:
@@ -554,16 +543,14 @@ components:
     NumberPatternSearchPattern:
       type: string
       enum:
-        - SEARCH_PATTERN_UNSPECIFIED
         - START
         - CONTAINS
         - END
       default: SEARCH_PATTERN_UNSPECIFIED
       description: |-
-        - SEARCH_PATTERN_UNSPECIFIED: Null value
-         - START: Numbers that start with the provided sequence of digits
-         - CONTAINS: Numbers that contain the sequence of digits
-         - END: Numbers that end with the sequence of digits
+         - START: Numbers that start with the provided sequence of digits.
+         - CONTAINS: Numbers that contain the sequence of digits.
+         - END: Numbers that end with the sequence of digits.
       title: Search Pattern
     protobufAny:
       type: object
@@ -572,17 +559,15 @@ components:
           type: string
           description: |-
             A URL/resource name that uniquely identifies the type of the serialized
-            protocol buffer message. This string must contain at least
+            protocol buffer message. This string MUST contain at least
             one "/" character. The last segment of the URL's path must represent
             the fully qualified name of the type (as in
-            `path/google.protobuf.Duration`). The name should be in a canonical form
-            (e.g., leading "." is not accepted).
-
+            `path/google.protobuf.Duration`). The name should be in a canonical form. A
+            leading "." is not accepted.
             In practice, teams usually precompile into the binary all types that they
             expect it to use in the context of Any. However, for URLs which use the
             scheme `http`, `https`, or no scheme, one can optionally set up a type
             server that maps type URLs to message definitions as follows:
-
             * If no scheme is provided, `https` is assumed.
             * An HTTP GET on the URL must yield a [google.protobuf.Type][]
               value in binary format, or produce an error.
@@ -591,26 +576,21 @@ components:
               lookup. Therefore, binary compatibility needs to be preserved
               on changes to types. (Use versioned type names to manage
               breaking changes.)
-
-            Note: this functionality is not currently available in the official
+            Note: This functionality is not currently available in the official
             protobuf release, and it is not used for type URLs beginning with
             type.googleapis.com.
-
             Schemes other than `http`, `https` (or the empty scheme) might be
             used with implementation specific semantics.
         value:
           type: string
           format: byte
-          description: Must be a valid serialized protocol buffer of the above specified type.
+          description: Must be a valid serialized protocol buffer of the above specified type
       description: |-
         `Any` contains an arbitrary serialized protocol buffer message along with a
         URL that describes the type of the serialized message.
-
         Protobuf library provides support to pack/unpack Any values in the form
         of utility functions or additional generated methods of the Any type.
-
-        Example 1: Pack and unpack a message in C++.
-
+        Example 1: Pack and unpack a message in C++
             Foo foo = ...;
             Any any;
             any.PackFrom(foo);
@@ -618,18 +598,14 @@ components:
             if (any.UnpackTo(&foo)) {
               ...
             }
-
-        Example 2: Pack and unpack a message in Java.
-
+        Example 2: Pack and unpack a message in Java
             Foo foo = ...;
             Any any = Any.pack(foo);
             ...
             if (any.is(Foo.class)) {
               foo = any.unpack(Foo.class);
             }
-
-         Example 3: Pack and unpack a message in Python.
-
+         Example 3: Pack and unpack a message in Python
             foo = Foo(...)
             any = Any()
             any.Pack(foo)
@@ -637,9 +613,7 @@ components:
             if any.Is(Foo.DESCRIPTOR):
               any.Unpack(foo)
               ...
-
          Example 4: Pack and unpack a message in Go
-
              foo := &pb.Foo{...}
              any, err := ptypes.MarshalAny(foo)
              ...
@@ -647,37 +621,31 @@ components:
              if err := ptypes.UnmarshalAny(any, foo); err != nil {
                ...
              }
-
         The pack methods provided by protobuf library will by default use
         'type.googleapis.com/full.type.name' as the type URL and the unpack
         methods only use the fully qualified type name after the last '/'
         in the type URL, for example "foo.bar.com/x/y.z" will yield type
         name "y.z".
-
-
         JSON
         ====
         The JSON representation of an `Any` value uses the regular
         representation of the deserialized, embedded message, with an
-        additional field `@type` which contains the type URL. Example:
-
+        additional field `@type` which contains the type URL. 
+        Example:
             package google.profile;
             message Person {
               string first_name = 1;
               string last_name = 2;
             }
-
             {
               "@type": "type.googleapis.com/google.profile.Person",
               "firstName": <string>,
               "lastName": <string>
             }
-
         If the embedded message type is well-known and has a custom JSON
         representation, that representation will be embedded adding a field
         `value` which holds the custom JSON in addition to the `@type`
         field. Example (for message [google.protobuf.Duration][]):
-
             {
               "@type": "type.googleapis.com/google.protobuf.Duration",
               "value": "1.212s"
@@ -699,7 +667,7 @@ components:
       properties:
         currencyCode:
           type: string
-          description: The 3-letter currency code defined in ISO 4217.
+          description: The 3-letter [currency code](https://www.iban.com/currency-codes) defined in ISO 4217.
         amount:
           type: string
           description: |-
@@ -713,18 +681,18 @@ components:
       properties:
         phoneNumber:
           type: string
-          description: Output only. The phone number in e.164 format with leading +. Example +12025550134.
+          description: Output only. The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           readOnly: true
         projectId:
           type: string
-          description: Output only. Project id. Your project id can be found if you log into your account on dashboard.sinch.com.
+          description: Output only. Project id. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
           readOnly: true
         displayName:
           type: string
-          description: Optional. User supplied name for the phone number.
+          description: Optional. User supplied name for the number.
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 country code of the phone number. Example US, UK or SE.'
+          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
           readOnly: true
         type:
           $ref: '#/components/schemas/v1beta1NumberType'
@@ -732,7 +700,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1beta1NumberCapability'
-          description: Output only. Which capabilities an phone number supports. SMS and/or VOICE.
+          description: Output only. Which SMS and/or VOICE capabilities a number supports.
           readOnly: true
         money:
           $ref: '#/components/schemas/typeMoney'
@@ -753,17 +721,17 @@ components:
           readOnly: true
         smsConfiguration:
           $ref: '#/components/schemas/v1beta1SmsConfiguration'
-      description: The phone number that has been bought by a customer and assigned to a project.
+      description: The number that has been bought by a customer and assigned to a project.
       title: Active Number
     v1beta1AvailableNumber:
       type: object
       properties:
         phoneNumber:
           type: string
-          title: The phone number in E.164 format with leading +. Example +12025550134
+          title: The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 country code of the phone number. Example US, UK or SE.'
+          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the phone number.'
           readOnly: true
         type:
           $ref: '#/components/schemas/v1beta1NumberType'
@@ -771,7 +739,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1beta1NumberCapability'
-          description: Output only. Which capabilities the phone number supports. SMS and/or VOICE.
+          description: Output only. Which SMS and/or VOICE capabilities the number supports. 
           readOnly: true
         setupPrice:
           $ref: '#/components/schemas/typeMoney'
@@ -785,9 +753,9 @@ components:
         supportingDocumentationRequired:
           type: boolean
           format: boolean
-          title: Output only. Whether or not supplementary documentation will be required to complete purchase
+          title: Output only. Whether or not supplementary documentation is required to complete purchase.
           readOnly: true
-      description: The phone numbers that are available to be purchased in dashboard.sinch.com or via the public numbers API.
+      description: The phone numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
       title: Available Number
     v1beta1ListActiveNumbersResponse:
       type: object
@@ -804,7 +772,7 @@ components:
           type: integer
           format: int32
           title: 'https://cloud.google.com/apis/design/design_patterns#list_pagination'
-      description: Response message to list your active phone numbers
+      description: Response message to list your active phone numbers.
       title: Active Numbers Response
     v1beta1ListAvailableNumbersResponse:
       type: object
@@ -814,7 +782,7 @@ components:
           items:
             $ref: '#/components/schemas/v1beta1AvailableNumber'
           description: List of available phone numbers.
-      description: Response message to list available phone numbers
+      description: Response message to list available phone numbers.
       title: Available Numbers Response
     v1beta1NumberCapability:
       type: string
@@ -823,8 +791,8 @@ components:
         - VOICE
       default: SMS
       description: |2-
-         - SMS: The SMS product can use the number
-         - VOICE: The Voice product can use the number
+         - SMS: The SMS product can use the number.
+         - VOICE: The Voice product can use the number.
       title: Capability
     v1beta1NumberPattern:
       type: object
@@ -843,9 +811,9 @@ components:
         - TOLL_FREE
       default: MOBILE
       description: |2-
-         - MOBILE: Numbers that belong to a specific range
-         - LOCAL: Numbers that are assigned to a specific geographic region
-         - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
+         - MOBILE: Numbers that belong to a specific range.
+         - LOCAL: Numbers that are assigned to a specific geographic region.
+         - TOLL_FREE: Numbers that are free of charge for the calling party but billed for all arriving calls.
       title: Type
     v1beta1ProvisioningStatus:
       type: string
@@ -855,7 +823,7 @@ components:
         - FAILED
       default: WAITING
       description: |2-
-         - WAITING: The sms configuration has been scheduled
+         - WAITING: The sms configuration has been scheduled.
          - IN_PROGRESS: The sms configuration change is in progress.
          - FAILED: The sms configuration change has failed.
       title: Provisioning Status for the SMS service
@@ -864,7 +832,7 @@ components:
       properties:
         projectId:
           type: string
-          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
+          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
         phoneNumber:
           type: string
           description: The available phone number to rent.
@@ -897,8 +865,8 @@ components:
           type: string
           description: |-
             The current sms configuration for this number.
-            The service_plan_id can be found when logging into dashboard.sinch.com
-            in SMS>APIs section.
+            The service_plan_id can be found when logging into the [Sinch dashboard](dashboard.sinch.com)
+            in the SMS APIs section.
         scheduledProvisioning:
           $ref: '#/components/schemas/v1beta1ScheduledProvisioning'
       description: Sms configuration
