@@ -4,7 +4,7 @@ excerpt: ''
 ---
 You can view, search and buy numbers as well as configure your SMS settings and submit supporting documentation all inside your dashboard. 
 
-## View numbers
+## View numbers.
 
 To see your list of numbers and configure your SMS settings, [log in](https://dashboard.sinch.com/numbers/your-numbers/numbers) to your dashboard. Click any number, scroll **SMS Configuration**, click **EDIT**, make your changes and click **SAVE**.
 
