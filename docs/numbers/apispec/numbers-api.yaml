@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Numbers
   description: |-
-    Service for getting, listing and managing virtual numbers.
+    Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
 
     ## Authentication
 
@@ -24,9 +24,9 @@ tags:
 paths:
   '/v1beta1/projects/{projectId}/activeNumbers':
     get:
-      summary: Lists virtual numbers for a project
-      description: Use this GET API to list all virtual numbers for your project.
-      operationId: NumberService_ListActiveNumbers
+      summary: Lists virtual numbers
+      description: List all virtual your numbers.
+      operationId: Number_ListActiveNumbers
       responses:
         '200':
           description: Success
@@ -91,7 +91,6 @@ paths:
               - START
               - CONTAINS
               - END
-            default: SEARCH_PATTERN_UNSPECIFIED
         - name: type
           description: |-
             Filter by MOBILE, LOCAL or TOLL_FREE.
@@ -204,6 +203,9 @@ paths:
             type: array
             items:
               type: string
+            default: 
+              - displayName
+              - smsConfiguration.servicePlanId
       requestBody:
         content:
           application/json:
@@ -664,6 +666,7 @@ components:
             $ref: '#/components/schemas/protobufAny'
     typeMoney:
       type: object
+      readOnly: true
       properties:
         currencyCode:
           type: string
@@ -696,6 +699,7 @@ components:
           readOnly: true
         type:
           $ref: '#/components/schemas/v1beta1NumberType'
+          readOnly: true
         capability:
           type: array
           items:
@@ -805,6 +809,7 @@ components:
       title: Search Pattern
     v1beta1NumberType:
       type: string
+      readOnly: true
       enum:
         - MOBILE
         - LOCAL
@@ -816,6 +821,7 @@ components:
          - TOLL_FREE: Numbers that are free of charge for the calling party but billed for all arriving calls.
       title: Type
     v1beta1ProvisioningStatus:
+      readOnly: true
       type: string
       enum:
         - WAITING
@@ -849,9 +855,10 @@ components:
         servicePlanId:
           type: string
           description: Output only. Service plan of the scheduled provisioning task.
-          readOnly: true
+         
         status:
           $ref: '#/components/schemas/v1beta1ProvisioningStatus'
+          readOnly: true
         lastUpdatedTime:
           type: string
           format: date-time
@@ -869,6 +876,7 @@ components:
             in the SMS APIs section.
         scheduledProvisioning:
           $ref: '#/components/schemas/v1beta1ScheduledProvisioning'
+          readOnly: true
       description: Sms configuration
       title: Sms Configuration
 x-proxy-enabled: true
