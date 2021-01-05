@@ -1,11 +1,17 @@
 ---
-title: Search, rent and configure numbers
+title: Rent a number
 excerpt: ''
 hidden: false
 ---
+
+
+## Rent a number in the US
+
+To rent a number you first need to find a number that suites the needs for your application.
+
 ### Search for a number
 
-#### Request
+Search for numbers that are available for you to rent. In this example you will search for any US number.
 
 ```shell
 curl --request GET \
@@ -13,6 +19,10 @@ curl --request GET \
  --header 'Accept: application/json' \
  -u {clientId}:{clientSecret}
 ```
+Replace {projectId}, {clientId} and {clientSecret} with your values. 
+
+You can filter by any property on the available number resource. learn more about it in the [API specification](https://developers.sinch.com/reference#numberservice_listavailablenumbers).  
+
 
 #### Response
 
@@ -37,27 +47,11 @@ curl --request GET \
   ]
 }
 ```
+Take a note of the phoneNumber you will need it in the next step. 
 
-## Search for a Toll-free number
+### Rent the number
 
-Use the same GET request as above but add the number type you are interested in.
-
-#### Request
-
-```shell
-curl --request GET \
- --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
- --header 'Accept: application/json' \
- -u {clientId}:{clientSecret}
-```
-**Note**: You will need the “phoneNumber” in the response to rent your number.
-
-
-## Rent a number to use with SMS or Voice products
-
-In this **POST** example, remember to replace {projectId}, {clientId} and {clientSecret} with your values.
-
-#### Request
+Rent a number to use with SMS or Voice products
 
 ```shell
 curl --request POST \
@@ -65,6 +59,7 @@ curl --request POST \
  --header 'Accept: application/json' \
  --u {clientId}:{clientSecret} 
 ```
+Replace {projectId}, {clientId} and {clientSecret} with your values. 
 
 #### Response
 
@@ -74,11 +69,9 @@ curl --request POST \
 }
 ```
 
-## Rent a number and configure it for SMS
+### Rent the number and configure it for SMS
 
-In this **POST** example, replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://dashboard.sinch.com/sms/api) with your values. Your **servicePlanId** can be found in your dashboard under **SMS** > **APIs** > **REST configuration**
-
-#### Request
+Rent a number to use with SMS or Voice products
 
 ```shell
 curl --request POST \
@@ -89,53 +82,12 @@ curl --request POST \
 ```
 Replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://dashboard.sinch.com/sms/api) with your values.  
 
-## Search for a Toll free number
+## Search for a Toll free number.
 
-Use the same GET request as above but add the number type you are interested in.
-
+As above but add type you are interested in
 ```shell
 curl --request GET \
  --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
  --header 'Accept: application/json' \
  -u {clientId}:{clientSecret}
 ```
-
-**Note**: You will need the “phoneNumber” in the response to rent your number.
-
-
-## Rent a number to use with SMS or Voice products
-
-In this **POST** example, remember to replace {projectId}, {clientId} and {clientSecret} with your values.
-
-#### Request
-
-```shell
-curl --request POST \
- --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/+12089087284:rent \
- --header 'Accept: application/json' \
- --u {clientId}:{clientSecret} 
-```
-
-#### Response
-
-```json
-{
-  "phoneNumber": "+12092224786"
-}
-```
-
-## Rent a number and configure it for SMS
-
-In this **POST** example, replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://dashboard.sinch.com/sms/api) with your values. Your **servicePlanId** can be found in your dashboard under **SMS** > **APIs** > **REST configuration**
-
-#### Request
-
-```shell
-curl --request POST \
- --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/+12089087284:rent \
- --header 'Accept: application/json' \
- --u {clientId}:{clientSecret} 
- --d '{"smsConfiguration":{"servicePlanId":"sdfewe383408d"}}'
-```
-
-
