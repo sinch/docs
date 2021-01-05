@@ -1,7 +1,7 @@
 ---
 title: Introduction
 excerpt: >-
-  High level presentation of Sinch Conversation API and overview of its key concepts.
+  Sinch Conversation API
 hidden: false
 next:
   pages:
@@ -13,19 +13,13 @@ next:
     - conversation-capability
 ---
 
-## Introduction <span class="betabadge">Beta</span>
+The Sinch Conversation API offers one endpoint for sending and receiving messages across the most popular channels such as SMS, RCS, WhatsApp and Facebook Messenger. It can also switch between Bot/Human chats and much more.
 
-In its most basic use case, the Sinch Conversation API offers one single API endpoint for sending and receiving messages across the most popular channels using one unified format. For more advanced messaging use cases, it offers conversations, contacts, switching between Bot and Human chats and much more for the advanced chatbot and conversational messaging application developer.
+Different message channel (bearer) features and functions are supported through built-in transcoding.
 
-Different message channel (bearer) features and functions are supported through built-in transcoding. As a developer, you have the option to use either a global message template and for it to be automatically transcoded to each message channel format, or simply ignore transcoding and specify an exact layout for the channel you are interested in.
+The Sinch Conversation API gives you the power of conversation across all supported channels and full control over channel specific features if required. A single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
-The benefits of this approach are that a developer needs to only become familiar with one Messaging API and yet have the power of conversations across all supported channels, still offering full control over channel specific features if required.
-
-Further, it doesn't matter which conversation channel the customer engages over, or switch between: a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
-
-Put simply, with the Sinch Conversation API, you are always in control of your customer conversation whether it be over SMS, RCS, WhatsApp or Facebook Messenger. Of course, the API will support additional channels as they become popular.
-
-Currently, Sinch Conversation API is in closed beta. If you are interested in the early access program please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+Currently, the Sinch Conversation API is in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program please contact a [Sinch representative](https://www.sinch.com/contact-us/).
 
 ---
 
@@ -35,33 +29,33 @@ Currently, Sinch Conversation API is in closed beta. If you are interested in th
 
 #### Project
 
-The **project** entity, in the ER-diagram above, is the root entity from the Conversation API's point-of-view. All the Conversation API resources are grouped under a **project**, which acts as a container. Each **project**, under the hood, belongs to a Sinch **account** created when creating an account in the [Sinch Portal](https://dashboard.sinch.com).
+The **project** entity belongs to a Sinch account, acts as a container and is the root entity from the Conversation API's point-of-view. All Conversation API resources are grouped under a project.
 
 #### App
 
-The **app** entity corresponds to the API user, with a set of [**channel credentials**](doc:conversation#channel-credential) for each underlying connected channel. The app has a list of [**conversations**](doc:conversation#conversation) between itself and different [**contacts**](doc:conversation#contact) which share the same [**project**](doc:conversation#project).
-The app is tied to a set of webhooks which defines the destination for various events coming from the Conversation API.
-The easiest way to create and configure a Conversation API app is through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps)
+The **app** entity, which is created and configured through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps), is tied to the API user and comes with a set of [**channel credentials**](doc:conversation#channel-credential) for each underlying connected channel. The app has a list of [**conversations**](doc:conversation#conversation) between itself and different [**contacts**](doc:conversation#contact) which share the same [**project**](doc:conversation#project).
+
+Webhooks, which the app is attached to, defines the destination for various events coming from the Conversation API. 
+
 An **app** has the following configurable properties:
 
 | Field                             | Description                                                                                                                        |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Display name                      | The name visible in [Sinch Portal](https://dashboard.sinch.com/convapi/apps)                                                       |
-| Conversation metadata report view | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that will be returned as part of each callback. |
-| Retention Policy                  | The retention policy specifies for how long messages, sent to or from an **app**, should be stored by the Conversation API         |
+| Display name                      | The name visible in the [Sinch Portal](https://dashboard.sinch.com/convapi/apps).                                                       |
+| Conversation metadata report | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that is returned as part of each callback. |
+| Retention Policy                  | The retention policy specifies how long messages, sent to or from an **app**, are stored by the Conversation API.         |
 
 ##### Retention policy
 
-Each **App** has a retention policy that specifies for how long messages - sent to or from the **App** - should be stored.
-The **retention policy** can be changed, programmatically, via the API by updating the corresponding **app**, or via the
-[Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**.
+Each **App** has a retention policy that specifies how long messages, sent to or from the **App**, are stored.
+The **retention policy** can be changed via the API by updating the corresponding **app**, or via the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**.
 
 A **retention policy** is defined by the following properties:
 
 | Field                             | Description                                                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Retention Policy Type             | Type of the policy. See options below the table. The default is `MESSAGE_EXPIRE_POLICY`.                                              |
-| TTL days                          | The days before a message or conversation is eligible for deletion. The allowed values are [1,3650] and the default value is 180 days.|
+| Retention Policy Types             |  `MESSAGE_EXPIRE_POLICY` - This is the default policy. This option will remove all messages, sent or received by the app, that are older than the TTL days specified in the policy.                                              |
+| TTL days                          | The days before a message or conversation is eligible for deletion. The allowed values are 1,3650 and the default value is 180 days.|
 
 ###### Retention policy types
 

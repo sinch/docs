@@ -1,12 +1,12 @@
 ---
-title: Working with your numbers using the API
+title: Get your numbers
 excerpt: ''
 hidden: false
 ---
 
 ## List Numbers
 
-This GET request lists all numbers for your project.
+This GET request lists all numbers for your project. 
 
 #### Request
 
@@ -80,7 +80,9 @@ An example of this format is +12025550134. This number may need to be URL encode
 
 #### Update Mask
 
-The updateMask parameter determines which resource fields are modified in an update. The following fields can be updated:
+The updateMask parameter determines which resource fields are modified in an update.
+
+The following fields can be updated:
 
 - displayName
 - smsConfiguration.servicePlanId
@@ -127,16 +129,14 @@ updateMask parameters can be attached in the request body as shown below in this
 }
 ```
 
-## Release number from project
+## Release number from a project
 
 This POST call allows you to cancel your subscription for a specific phone number. Remember, the phoneNumber element must follow the E.164 format and may need to be URL encoded as shown above.
+
+#### Request
 
 ```shell
 curl --request POST \
  --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/activeNumbers/phoneNumber:release \
  --header 'Accept: application/json'
 ```
-
-#### phoneNumber
-
-The phone number in e.164 format with leading +. Example +12025550134. This may need to be URL encoded to work. Example %2B12025550134
