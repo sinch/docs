@@ -146,8 +146,8 @@ paths:
         - Active Number
   '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
-      summary: Update virtual phone number.
-      description: With update virtual phone number, you can move a number between different SMS services and give it a new friendly name.
+      summary: Update phone number.
+      description: With update phone number, you can move a number between different SMS services and give it a new friendly name.
       operationId: NumberService_UpdateActiveNumber
       responses:
         '200':
@@ -218,7 +218,7 @@ paths:
       tags:
         - Active Number
     get:
-      summary: Get a virtual number.
+      summary: Get a number.
       operationId: NumberService_GetActiveNumber
       responses:
         '200':
@@ -268,8 +268,8 @@ paths:
         - Active Number
   '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
     post:
-      summary: Release a virtual number from the project.
-      description: Cancel your subscription for a specific virtual phone number.
+      summary: Release a number from the project.
+      description: Cancel your subscription for a specific phone number.
       operationId: NumberService_ReleaseNumber
       responses:
         '200':
