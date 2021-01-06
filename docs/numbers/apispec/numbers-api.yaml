@@ -8,12 +8,12 @@ info:
 
     <h3>Basic Auth</h3>
 
-    Our basic security works with any project, use the client_id and client_secret that were displayed when you created your access key through the dashboard.
+    Our basic security works with any project. Use the client_id and client_secret that were displayed when you created your access key through the dashboard.
 
      <table><thead><tr><th>Security Scheme Type</th><th>HTTP</th></tr></thead><tbody><tr><td><b>HTTP Authorization Scheme</b></td><td>basic</td></tr></tbody></table>
 
     <h3>OAuth</h3>
-    This is the recommended way to access our apis.
+    This is the recommended way to access our APIs.
 
      <table><thead><tr><th>Security Scheme Type</th><th>OAuth2</th></tr></thead><tbody><tr><td><b>clientCredentials OAuth Flow</b></td><td><b>Token URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/token">https://eu.auth.sinch.com/oauth2/token</a><br><br><b>Revoke URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/revoke">https://eu.auth.sinch.com/oauth2/revoke</a></td></tr></tbody></table>
   
@@ -52,7 +52,7 @@ paths:
                             - field: order_by
                               description: Invalid order_by XXX
         default:
-          description: An unexpected error has occurred
+          description: An unexpected error has occurred.
           content:
             application/json:
               schema:
@@ -79,7 +79,6 @@ paths:
         - name: searchPattern
           description: |-
             Search pattern to apply:
-
              - START: Numbers that start with the provided sequence of digits.
              - CONTAINS: Numbers that contain the sequence of digits.
              - END: Numbers that end with the sequence of digits.
@@ -93,10 +92,10 @@ paths:
               - END
         - name: type
           description: |-
-            Filter by MOBILE, LOCAL or TOLL_FREE.
+            Filter by MOBILE, LOCAL or TOLL_FREE number.
              - MOBILE: Numbers that belong to a specific range.
              - LOCAL: Numbers that are assigned to a specific geographic region.
-             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls.
+             - TOLL_FREE: Number that is billed for all arriving calls.
           in: query
           required: false
           schema:
@@ -135,7 +134,6 @@ paths:
         - name: orderBy
           description: |-
             Supported fields for ordering by number or display_name.
-            https://cloud.google.com/apis/design/design_patterns#sorting_order.
           in: query
           required: false
           schema:
@@ -173,7 +171,7 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -244,7 +242,7 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -277,7 +275,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1beta1ActiveNumber'
         '404':
-          description: The active number could not be found
+          description: The active number could not be found.
           content:
             application/json:
               schema: {}
@@ -295,7 +293,7 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -317,8 +315,8 @@ paths:
         - Active Number
   '/v1beta1/projects/{projectId}/availableNumbers':
     get:
-      summary: Search virtual numbers
-      description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available number resource.
+      summary: Search numbers
+      description: Search for numbers that are available for you to activate. You can filter by any property on the available number resource.
       operationId: NumberService_ListAvailableNumbers
       responses:
         '200':
@@ -341,7 +339,7 @@ paths:
                       status: INVALID_ARGUMENT
                       details: []
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -362,7 +360,6 @@ paths:
         - name: searchPattern
           description: |-
             Search pattern to apply:
-
              - START: Numbers that start with the provided sequence of digits.
              - CONTAINS: Numbers that contain the sequence of digits.
              - END: Numbers that end with the sequence of digits.
@@ -386,7 +383,7 @@ paths:
             Only return MOBILE, LOCAL or TOLL_FREE numbers with the given v1beta1.
              - MOBILE: Numbers that belong to a specific range.
              - LOCAL: Numbers that are assigned to a specific geographic region.
-             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls.
+             - TOLL_FREE: Number that is billed for all arriving calls.
           in: query
           required: false
           schema:
@@ -420,8 +417,8 @@ paths:
         - Available Number
   '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}':
     get:
-      summary: Fetch an available virtual number.
-      description: Returns an available virtual number.
+      summary: Fetch an available number.
+      description: Returns an available number.
       operationId: NumberService_GetAvailableNumber
       responses:
         '200':
@@ -431,7 +428,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1beta1AvailableNumber'
         '404':
-          description: The available number could not be found
+          description: The available number could not be found.
           content:
             application/json:
               schema: {}
@@ -449,7 +446,7 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -471,8 +468,8 @@ paths:
         - Available Number
   '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
     post:
-      summary: Activate a new virtual number
-      description: Activate a virtual number to use with SMS or Voice products.
+      summary: Activate a new number
+      description: Activate a new number to use with SMS or Voice products.
       operationId: NumberService_RentNumber
       responses:
         '200':
@@ -505,7 +502,7 @@ paths:
                           owner: ''
                           description: ''
         default:
-          description: An unexpected error occurred
+          description: An unexpected error occurred.
           content:
             application/json:
               schema:
@@ -518,7 +515,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The available number to rent
+          description: The number available to rent.
           in: path
           required: true
           schema:
@@ -586,7 +583,7 @@ components:
         value:
           type: string
           format: byte
-          description: Must be a valid serialized protocol buffer of the above specified type
+          description: Must be a valid serialized protocol buffer of the above specified type.
       description: |-
         `Any` contains an arbitrary serialized protocol buffer message along with a
         URL that describes the type of the serialized message.
@@ -771,7 +768,7 @@ components:
           description: List of numbers associated to the client project specified in `ListActiveNumbers`.
         nextPageToken:
           type: string
-          title: The token to be used for listing the next page
+          title: The token to be used for listing the next page.
         totalSize:
           type: integer
           format: int32
@@ -818,7 +815,7 @@ components:
       description: |2-
          - MOBILE: Numbers that belong to a specific range.
          - LOCAL: Numbers that are assigned to a specific geographic region.
-         - TOLL_FREE: Numbers that are free of charge for the calling party but billed for all arriving calls.
+         - TOLL_FREE: Number that is billed for all arriving calls.
       title: Type
     v1beta1ProvisioningStatus:
       readOnly: true
@@ -872,8 +869,7 @@ components:
           type: string
           description: |-
             The current sms configuration for this number.
-            The service_plan_id can be found when logging into the [Sinch dashboard](dashboard.sinch.com)
-            in the SMS APIs section.
+            The service_plan_id can be found in the SMS APIs section of your [Sinch dashboard](dashboard.sinch.com).
         scheduledProvisioning:
           $ref: '#/components/schemas/v1beta1ScheduledProvisioning'
           readOnly: true
