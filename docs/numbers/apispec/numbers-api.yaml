@@ -2,11 +2,8 @@ openapi: 3.0.0
 info:
   title: Numbers
   description: |-
-<<<<<<< HEAD
     Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
-=======
-    APIs to get, list and manage virtual numbers.
->>>>>>> f6a2dd1 (updates)
+    API to get, list and manage virtual numbers.
 
     ## Authentication
 
@@ -28,9 +25,9 @@ tags:
 paths:
   '/v1beta1/projects/{projectId}/activeNumbers':
     get:
-      summary: Lists virtual numbers
-      description: List all virtual your numbers.
-      operationId: Number_ListActiveNumbers
+      summary: List all your virtual numbers.
+      description: Use this GET API to list all virtual numbers.
+      operationId: NumberService_ListActiveNumbers
       responses:
         '200':
           description: Success
@@ -69,7 +66,7 @@ paths:
           schema:
             type: string
         - name: regionCode
-          description: '[country code](https://www.iso.org/obp/ui/#search) of the phone number.'
+          description: '[country code](https://www.iso.org/obp/ui/#search) of the number.'
           in: query
           required: false
           schema:
@@ -94,6 +91,7 @@ paths:
               - START
               - CONTAINS
               - END
+            default: SEARCH_PATTERN_UNSPECIFIED
         - name: type
           description: |-
             Filter by MOBILE, LOCAL or TOLL_FREE number.
@@ -146,8 +144,8 @@ paths:
         - Active Number
   '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
-      summary: Update phone number.
-      description: With update phone number, you can move a number between different SMS services and give it a new friendly name.
+      summary: Update virtual number.
+      description: With update virtual number, you can move a number between different SMS services and give it a new friendly name.
       operationId: NumberService_UpdateActiveNumber
       responses:
         '200':
@@ -188,7 +186,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: Output only. The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: Output only. The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
@@ -218,7 +216,7 @@ paths:
       tags:
         - Active Number
     get:
-      summary: Get a number.
+      summary: Get a virtual number.
       operationId: NumberService_GetActiveNumber
       responses:
         '200':
@@ -268,8 +266,8 @@ paths:
         - Active Number
   '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
     post:
-      summary: Release a number from the project.
-      description: Cancel your subscription for a specific phone number.
+      summary: Release a virtual number from the project.
+      description: Cancel your subscription for a specific virtual number.
       operationId: NumberService_ReleaseNumber
       responses:
         '200':
@@ -310,7 +308,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The active phone number to release.
+          description: The active number to release.
           in: path
           required: true
           schema:
@@ -377,14 +375,14 @@ paths:
               - END
             default: SEARCH_PATTERN_UNSPECIFIED
         - name: regionCode
-          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the phone number.'
+          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
           in: query
           required: false
           schema:
             type: string
         - name: type
           description: |-
-            Only return MOBILE, LOCAL or TOLL_FREE numbers.
+            Only return MOBILE, LOCAL or TOLL_FREE numbers with the given v1beta1.
              - MOBILE: Numbers that belong to a specific range.
              - LOCAL: Numbers that are assigned to a specific geographic region.
              - TOLL_FREE: Number that is billed for all arriving calls.
@@ -463,7 +461,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
@@ -483,7 +481,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1beta1ActiveNumber'
         '400':
-          description: Your account does not have enough credit to rent the number.
+          description: The project does not have enough credit to rent the number.
           content:
             application/json:
               schema: {}
@@ -549,6 +547,7 @@ components:
         - START
         - CONTAINS
         - END
+      default: SEARCH_PATTERN_UNSPECIFIED
       description: |-
          - START: Numbers that start with the provided sequence of digits.
          - CONTAINS: Numbers that contain the sequence of digits.
@@ -563,6 +562,71 @@ components:
           type: string
           format: byte
           description: Must be a valid serialized protocol buffer of the above specified type.
+      description: |-
+        `Any` contains an arbitrary serialized protocol buffer message along with a
+        URL that describes the type of the serialized message.
+        Protobuf library provides support to pack/unpack Any values in the form
+        of utility functions or additional generated methods of the Any type.
+        Example 1: Pack and unpack a message in C++
+            Foo foo = ...;
+            Any any;
+            any.PackFrom(foo);
+            ...
+            if (any.UnpackTo(&foo)) {
+              ...
+            }
+        Example 2: Pack and unpack a message in Java
+            Foo foo = ...;
+            Any any = Any.pack(foo);
+            ...
+            if (any.is(Foo.class)) {
+              foo = any.unpack(Foo.class);
+            }
+         Example 3: Pack and unpack a message in Python
+            foo = Foo(...)
+            any = Any()
+            any.Pack(foo)
+            ...
+            if any.Is(Foo.DESCRIPTOR):
+              any.Unpack(foo)
+              ...
+         Example 4: Pack and unpack a message in Go
+             foo := &pb.Foo{...}
+             any, err := ptypes.MarshalAny(foo)
+             ...
+             foo := &pb.Foo{}
+             if err := ptypes.UnmarshalAny(any, foo); err != nil {
+               ...
+             }
+        The pack methods provided by protobuf library will by default use
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+        methods only use the fully qualified type name after the last '/'
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        name "y.z".
+        JSON
+        ====
+        The JSON representation of an `Any` value uses the regular
+        representation of the deserialized, embedded message, with an
+        additional field `@type` which contains the type URL. 
+        Example:
+            package google.profile;
+            message Person {
+              string first_name = 1;
+              string last_name = 2;
+            }
+            {
+              "@type": "type.googleapis.com/google.profile.Person",
+              "firstName": <string>,
+              "lastName": <string>
+            }
+        If the embedded message type is well-known and has a custom JSON
+        representation, that representation will be embedded adding a field
+        `value` which holds the custom JSON in addition to the `@type`
+        field. Example (for message [google.protobuf.Duration][]):
+            {
+              "@type": "type.googleapis.com/google.protobuf.Duration",
+              "value": "1.212s"
+            }
     rpcStatus:
       type: object
       properties:
@@ -643,10 +707,10 @@ components:
       properties:
         phoneNumber:
           type: string
-          title: The phone number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          title: The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the phone number.'
+          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
           readOnly: true
         type:
           $ref: '#/components/schemas/v1beta1NumberType'
@@ -670,7 +734,7 @@ components:
           format: boolean
           title: Output only. Whether or not supplementary documentation is required to complete purchase.
           readOnly: true
-      description: The phone numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
+      description: The numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
       title: Available Number
     v1beta1ListActiveNumbersResponse:
       type: object
@@ -679,14 +743,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1beta1ActiveNumber'
-          description: List of numbers associated to the project specified in `ListActiveNumbers`.
+          description: List of numbers associated to the client project specified in `ListActiveNumbers`.
         nextPageToken:
           type: string
           title: The token to be used for listing the next page.
         totalSize:
           type: integer
           format: int32
-      description: Response message to list your active phone numbers.
+          title: 'https://cloud.google.com/apis/design/design_patterns#list_pagination'
+      description: Response message to list your active numbers.
       title: Active Numbers Response
     v1beta1ListAvailableNumbersResponse:
       type: object
@@ -695,8 +760,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/v1beta1AvailableNumber'
-          description: List of available phone numbers.
-      description: Response message to list available phone numbers.
+          description: List of available numbers.
+      description: Response message to list available numbers.
       title: Available Numbers Response
     v1beta1NumberCapability:
       type: string
@@ -751,10 +816,10 @@ components:
           description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
         phoneNumber:
           type: string
-          description: The available phone number to rent.
+          description: The available number to rent.
         smsConfiguration:
           $ref: '#/components/schemas/v1beta1SmsConfiguration'
-      description: Request message for renting a phone number.
+      description: Request message for renting a number.
       title: Rent Number Request
       required:
         - projectId
