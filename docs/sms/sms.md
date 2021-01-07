@@ -2,7 +2,7 @@
 title: Getting started - node
 excerpt: Learn how to quickly send SMS messages with the Sinch API
 ---
-In this guide, we show you how to:
+In this guide, we show you how to: 
 
 1. Create an account and get your free test number (US only).
 2. Send your first SMS.
