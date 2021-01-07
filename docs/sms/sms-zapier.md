@@ -7,7 +7,6 @@ hidden: false
 ---
 
 > **Note**
-> 
 > This is a preivew of the Sinch Zap app.
 
 ### Before you can create your Zap, you need to have:
