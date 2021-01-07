@@ -7,7 +7,7 @@ In this guide, we show you how to:
 1. Create an account and get your free test number (US only).
 2. Send your first SMS.
 
-### Sign up for a Sinch account
+### Sign up for a Sinch account!
 
 Before you can send your first SMS, you need a [Sinch
 account](https://dashboard.sinch.com/signup). If you are in the United States, you also need a [free test phone number](https://dashboard.sinch.com/numbers/your-numbers/numbers).
