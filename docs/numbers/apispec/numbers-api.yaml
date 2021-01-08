@@ -6,7 +6,7 @@ tags:
   - name: Available Virtual Numbers
   - name: Active Virtual Numbers
 paths:
-  '/projects/{projectId}/activeNumbers':
+  '/v1beta1/projects/{projectId}/activeNumbers':
     get:
       summary: List all your virtual numbers.
       description: Use this GET API to list all virtual numbers.
@@ -124,7 +124,7 @@ paths:
             type: string
       tags:
         - Active Number
-  '/vprojects/{projectId}/activeNumbers/{phoneNumber}':
+  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
       summary: Update virtual number
       description: With update virtual number, you can move a number between different SMS services and give it a new friendly name.
@@ -246,7 +246,7 @@ paths:
             type: string
       tags:
         - Active Number
-  '/projects/{projectId}/activeNumbers/{phoneNumber}:release':
+  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
     post:
       summary: Release a virtual number from the project.
       description: Cancel your subscription for a specific virtual number.
@@ -297,7 +297,7 @@ paths:
             type: string
       tags:
         - Active Number
-  '/projects/{projectId}/availableNumbers':
+  '/v1beta1/projects/{projectId}/availableNumbers':
     get:
       summary: Search virtual numbers
       description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available virtual number resource.
@@ -398,7 +398,7 @@ paths:
             format: int32
       tags:
         - Available Number
-  '/projects/{projectId}/availableNumbers/{phoneNumber}':
+  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}':
     get:
       summary: Fetch an available virtual number.
       description: Returns an available virtual number.
@@ -449,7 +449,7 @@ paths:
             type: string
       tags:
         - Available Number
-  '/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
+  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
     post:
       summary: Activate a new virtual number
       description: Activate a new virtual number to use with SMS or Voice products.
@@ -538,25 +538,9 @@ components:
       properties:
         typeUrl:
           type: string
-          description: The url of the error
         value:
           type: string
           format: byte
-          description: A binary represnation of the error.
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The error code recived from the server.
-        message:
-          type: string
-          description: Error description
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'    
     typeMoney:
       type: object
       readOnly: true
