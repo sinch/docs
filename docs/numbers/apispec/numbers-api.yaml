@@ -19,7 +19,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListActiveNumbersResponse'
         '400':
-          description: 'Page_token, number_pattern or order_by is not valid'
+          description: 'pageToken, NumberPattern or orderBy is not valid'
           content:
             application/json:
               schema: {}
@@ -34,7 +34,7 @@ paths:
                         - type: BadRequest
                           fieldViolations:
                             - field: order_by
-                              description: Invalid order_by XXX
+                              description: Invalid orderBy XXX
         default:
           description: An unexpected error has occurred.
           content:
@@ -110,7 +110,7 @@ paths:
             type: integer
             format: int32
         - name: pageToken
-          description: 'The next_page_token value returned from a previous List request, if any.'
+          description: 'The next pageToken value returned from a previous List request, if any.'
           in: query
           required: false
           schema:
@@ -310,7 +310,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListAvailableNumbersResponse'
         '400':
-          description: 'If the number_pattern, type or capability is not valid'
+          description: 'If the NumberPattern, type or capability is not valid'
           content:
             application/json:
               schema: {}
