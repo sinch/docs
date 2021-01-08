@@ -1,6 +1,6 @@
 ---
 title: Rent a virtual number
-excerpt: ''
+excerpt: 'Learn how to rent, search and configure a virtual number using the Sinch Numbers API.'
 hidden: false
 ---
 
