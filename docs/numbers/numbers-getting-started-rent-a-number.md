@@ -1,17 +1,17 @@
 ---
-title: Rent a number
+title: Rent a virtual number
 excerpt: ''
 hidden: false
 ---
 
 
-## Rent a number in the US
+## Rent a virtual number in the US
 
-To rent a number you first need to find a number that suites the needs for your application.
+To rent a virtual number you first need to find a number that suites the needs for your application.
 
-### Search for a number
+### Search for a virtual number
 
-Search for numbers that are available for you to rent. In this example you will search for any US number.
+Search for virtual numbers that are available for you to rent. In this example you will search for any virtual US number.
 
 ```shell
 curl --request GET \
@@ -21,7 +21,7 @@ curl --request GET \
 ```
 Replace {projectId}, {clientId} and {clientSecret} with your values. 
 
-You can filter by any property on the available number resource. learn more about it in the [API specification](https://developers.sinch.com/reference#numberservice_listavailablenumbers).  
+You can filter by any property on the available virtual number resource. Learn more about it in the [API specification](https://developers.sinch.com/reference#numberservice_listavailablenumbers).  
 
 
 #### Response
@@ -49,9 +49,9 @@ You can filter by any property on the available number resource. learn more abou
 ```
 Take a note of the phoneNumber you will need it in the next step. 
 
-### Rent the number
+### Rent the virtual number
 
-Rent a number to use with SMS or Voice products
+Rent a virtual number to use with SMS or Voice products
 
 ```shell
 curl --request POST \
@@ -69,9 +69,9 @@ Replace {projectId}, {clientId} and {clientSecret} with your values.
 }
 ```
 
-### Rent the number and configure it for SMS
+### Rent the virtual number and configure it for SMS
 
-Rent a number to use with SMS or Voice products
+Rent a virtual number to use with SMS or Voice products
 
 ```shell
 curl --request POST \
@@ -82,9 +82,9 @@ curl --request POST \
 ```
 Replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://dashboard.sinch.com/sms/api) with your values.  
 
-## Search for a Toll free number.
+## Search for a virtual Toll free number.
 
-As above but add type you are interested in
+As above, but add the virtual number type you are interested in.
 ```shell
 curl --request GET \
  --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
