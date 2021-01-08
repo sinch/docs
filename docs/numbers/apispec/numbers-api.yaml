@@ -1,29 +1,12 @@
 openapi: 3.0.0
 info:
-  title: Numbers
-  description: |-
-    Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
-    API to get, list and manage virtual numbers.
-
-    ## Authentication
-
-    <h3>Basic Auth</h3>
-
-    Our basic security works with any project. Use the client_id and client_secret that were displayed when you created your access key through the dashboard.
-
-     <table><thead><tr><th>Security Scheme Type</th><th>HTTP</th></tr></thead><tbody><tr><td><b>HTTP Authorization Scheme</b></td><td>basic</td></tr></tbody></table>
-
-    <h3>OAuth</h3>
-    This is the recommended way to access our APIs.
-
-     <table><thead><tr><th>Security Scheme Type</th><th>OAuth2</th></tr></thead><tbody><tr><td><b>clientCredentials OAuth Flow</b></td><td><b>Token URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/token">https://eu.auth.sinch.com/oauth2/token</a><br><br><b>Revoke URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/revoke">https://eu.auth.sinch.com/oauth2/revoke</a></td></tr></tbody></table>
-  
+  title: Numbers 
   version: '1.0'
 tags:
-  - name: Available Number
-  - name: Active Numbers
+  - name: Available Virtual Numbers
+  - name: Active Virtual Numbers
 paths:
-  '/v1beta1/projects/{projectId}/activeNumbers':
+  '/projects/{projectId}/activeNumbers':
     get:
       summary: List all your virtual numbers.
       description: Use this GET API to list all virtual numbers.
@@ -34,7 +17,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ListActiveNumbersResponse'
+                $ref: '#/components/schemas/ListActiveNumbersResponse'
         '400':
           description: 'Page_token, number_pattern or order_by is not valid'
           content:
@@ -91,10 +74,9 @@ paths:
               - START
               - CONTAINS
               - END
-            default: SEARCH_PATTERN_UNSPECIFIED
         - name: type
           description: |-
-            Filter by MOBILE, LOCAL or TOLL_FREE number.
+            Filter by MOBILE, LOCAL or TOLL_FREE virtual number.
              - MOBILE: Numbers that belong to a specific range.
              - LOCAL: Numbers that are assigned to a specific geographic region.
              - TOLL_FREE: Number that is billed for all arriving calls.
@@ -110,8 +92,8 @@ paths:
         - name: capability
           description: |-
             Filter by SMS and/or VOICE.
-             - SMS: The SMS product can use the number.
-             - VOICE: The Voice product can use the number.
+             - SMS: The SMS product can use the virtual number.
+             - VOICE: The Voice product can use the virtual number.
           in: query
           required: false
           schema:
@@ -142,9 +124,9 @@ paths:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
+  '/vprojects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
-      summary: Update virtual number.
+      summary: Update virtual number
       description: With update virtual number, you can move a number between different SMS services and give it a new friendly name.
       operationId: NumberService_UpdateActiveNumber
       responses:
@@ -153,7 +135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ActiveNumber'
+                $ref: '#/components/schemas/ActiveNumber'
         '404':
           description: The active number could not be found
           content:
@@ -186,7 +168,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: Output only. The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: Output only. The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
@@ -210,13 +192,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/v1beta1ActiveNumber'
+              $ref: '#/components/schemas/ActiveNumber'
         description: The number body to be updated
         required: true
       tags:
         - Active Number
     get:
-      summary: Get a virtual number.
+      summary: Get a virtual number
       operationId: NumberService_GetActiveNumber
       responses:
         '200':
@@ -224,9 +206,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ActiveNumber'
+                $ref: '#/components/schemas/ActiveNumber'
         '404':
-          description: The active number could not be found.
+          description: The active virtual number could not be found.
           content:
             application/json:
               schema: {}
@@ -264,7 +246,7 @@ paths:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
+  '/projects/{projectId}/activeNumbers/{phoneNumber}:release':
     post:
       summary: Release a virtual number from the project.
       description: Cancel your subscription for a specific virtual number.
@@ -275,9 +257,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ActiveNumber'
+                $ref: '#/components/schemas/ActiveNumber'
         '404':
-          description: The active number could not be found.
+          description: The active virtual number could not be found.
           content:
             application/json:
               schema: {}
@@ -308,17 +290,17 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The active number to release.
+          description: The active virtual number to release.
           in: path
           required: true
           schema:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/availableNumbers':
+  '/projects/{projectId}/availableNumbers':
     get:
-      summary: Search numbers
-      description: Search for numbers that are available for you to activate. You can filter by any property on the available number resource.
+      summary: Search virtual numbers
+      description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available virtual number resource.
       operationId: NumberService_ListAvailableNumbers
       responses:
         '200':
@@ -326,7 +308,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ListAvailableNumbersResponse'
+                $ref: '#/components/schemas/ListAvailableNumbersResponse'
         '400':
           description: 'If the number_pattern, type or capability is not valid'
           content:
@@ -362,9 +344,9 @@ paths:
         - name: searchPattern
           description: |-
             Search pattern to apply:
-             - START: Numbers that start with the provided sequence of digits.
-             - CONTAINS: Numbers that contain the sequence of digits.
-             - END: Numbers that end with the sequence of digits.
+             - START: Virtual numbers that start with the provided sequence of digits.
+             - CONTAINS: Virtual numbers that contain the sequence of digits.
+             - END: Virtual numbers that end with the sequence of digits.
           in: query
           required: false
           schema:
@@ -373,19 +355,18 @@ paths:
               - START
               - CONTAINS
               - END
-            default: SEARCH_PATTERN_UNSPECIFIED
         - name: regionCode
-          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
+          description: 'Only return virtual numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
           in: query
           required: false
           schema:
             type: string
         - name: type
           description: |-
-            Only return MOBILE, LOCAL or TOLL_FREE numbers with the given v1beta1.
-             - MOBILE: Numbers that belong to a specific range.
-             - LOCAL: Numbers that are assigned to a specific geographic region.
-             - TOLL_FREE: Number that is billed for all arriving calls.
+            Only return MOBILE, LOCAL or TOLL_FREE numbers.
+             - MOBILE: Virtual numbers that belong to a specific range.
+             - LOCAL: Virtual numbers that are assigned to a specific geographic region.
+             - TOLL_FREE: Virtual number that is billed for all arriving calls.
           in: query
           required: false
           schema:
@@ -398,8 +379,8 @@ paths:
         - name: capability
           description: |-
             Filter by SMS and/or VOICE.
-             - SMS: The SMS product can use the number.
-             - VOICE: The Voice product can use the number.
+             - SMS: The SMS product can use the virtual number.
+             - VOICE: The Voice product can use the virtual number.
           in: query
           required: false
           schema:
@@ -417,10 +398,10 @@ paths:
             format: int32
       tags:
         - Available Number
-  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}':
+  '/projects/{projectId}/availableNumbers/{phoneNumber}':
     get:
-      summary: Fetch an available number.
-      description: Returns an available number.
+      summary: Fetch an available virtual number.
+      description: Returns an available virtual number.
       operationId: NumberService_GetAvailableNumber
       responses:
         '200':
@@ -428,9 +409,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1AvailableNumber'
+                $ref: '#/components/schemas/AvailableNumber'
         '404':
-          description: The available number could not be found.
+          description: The available virtual number could not be found.
           content:
             application/json:
               schema: {}
@@ -461,17 +442,17 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
             type: string
       tags:
         - Available Number
-  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
+  '/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
     post:
-      summary: Activate a new number
-      description: Activate a new number to use with SMS or Voice products.
+      summary: Activate a new virtual number
+      description: Activate a new virtual number to use with SMS or Voice products.
       operationId: NumberService_RentNumber
       responses:
         '200':
@@ -479,14 +460,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1beta1ActiveNumber'
+                $ref: '#/components/schemas/ActiveNumber'
         '400':
           description: The project does not have enough credit to rent the number.
           content:
             application/json:
               schema: {}
         '404':
-          description: The available number could not be found.
+          description: The available virtual number could not be found.
           content:
             application/json:
               schema: {}
@@ -517,7 +498,7 @@ paths:
           schema:
             type: string
         - name: phoneNumber
-          description: The number available to rent.
+          description: The virtual number available to rent.
           in: path
           required: true
           schema:
@@ -526,7 +507,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/v1beta1RentNumberRequest'
+              $ref: '#/components/schemas/RentNumberRequest'
         required: true
       tags:
         - Available Number
@@ -547,11 +528,10 @@ components:
         - START
         - CONTAINS
         - END
-      default: SEARCH_PATTERN_UNSPECIFIED
       description: |-
-         - START: Numbers that start with the provided sequence of digits.
-         - CONTAINS: Numbers that contain the sequence of digits.
-         - END: Numbers that end with the sequence of digits.
+         - START: Virtual numbers that start with the provided sequence of digits.
+         - CONTAINS: Virtual numbers that contain the sequence of digits.
+         - END: Virtual numbers that end with the sequence of digits.
       title: Search Pattern
     protobufAny:
       type: object
@@ -561,84 +541,6 @@ components:
         value:
           type: string
           format: byte
-          description: Must be a valid serialized protocol buffer of the above specified type.
-      description: |-
-        `Any` contains an arbitrary serialized protocol buffer message along with a
-        URL that describes the type of the serialized message.
-        Protobuf library provides support to pack/unpack Any values in the form
-        of utility functions or additional generated methods of the Any type.
-        Example 1: Pack and unpack a message in C++
-            Foo foo = ...;
-            Any any;
-            any.PackFrom(foo);
-            ...
-            if (any.UnpackTo(&foo)) {
-              ...
-            }
-        Example 2: Pack and unpack a message in Java
-            Foo foo = ...;
-            Any any = Any.pack(foo);
-            ...
-            if (any.is(Foo.class)) {
-              foo = any.unpack(Foo.class);
-            }
-         Example 3: Pack and unpack a message in Python
-            foo = Foo(...)
-            any = Any()
-            any.Pack(foo)
-            ...
-            if any.Is(Foo.DESCRIPTOR):
-              any.Unpack(foo)
-              ...
-         Example 4: Pack and unpack a message in Go
-             foo := &pb.Foo{...}
-             any, err := ptypes.MarshalAny(foo)
-             ...
-             foo := &pb.Foo{}
-             if err := ptypes.UnmarshalAny(any, foo); err != nil {
-               ...
-             }
-        The pack methods provided by protobuf library will by default use
-        'type.googleapis.com/full.type.name' as the type URL and the unpack
-        methods only use the fully qualified type name after the last '/'
-        in the type URL, for example "foo.bar.com/x/y.z" will yield type
-        name "y.z".
-        JSON
-        ====
-        The JSON representation of an `Any` value uses the regular
-        representation of the deserialized, embedded message, with an
-        additional field `@type` which contains the type URL. 
-        Example:
-            package google.profile;
-            message Person {
-              string first_name = 1;
-              string last_name = 2;
-            }
-            {
-              "@type": "type.googleapis.com/google.profile.Person",
-              "firstName": <string>,
-              "lastName": <string>
-            }
-        If the embedded message type is well-known and has a custom JSON
-        representation, that representation will be embedded adding a field
-        `value` which holds the custom JSON in addition to the `@type`
-        field. Example (for message [google.protobuf.Duration][]):
-            {
-              "@type": "type.googleapis.com/google.protobuf.Duration",
-              "value": "1.212s"
-            }
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
     typeMoney:
       type: object
       readOnly: true
@@ -654,12 +556,12 @@ components:
             There are no guarantees on the precision unless
             documented by the message origin.
       title: Money
-    v1beta1ActiveNumber:
+    ActiveNumber:
       type: object
       properties:
         phoneNumber:
           type: string
-          description: Output only. The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: Output only. The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
           readOnly: true
         projectId:
           type: string
@@ -667,19 +569,19 @@ components:
           readOnly: true
         displayName:
           type: string
-          description: Optional. User supplied name for the number.
+          description: Optional. User supplied name for the virtual number.
         regionCode:
           type: string
           description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
           readOnly: true
         type:
-          $ref: '#/components/schemas/v1beta1NumberType'
+          $ref: '#/components/schemas/NumberType'
           readOnly: true
         capability:
           type: array
           items:
-            $ref: '#/components/schemas/v1beta1NumberCapability'
-          description: Output only. Which SMS and/or VOICE capabilities a number supports.
+            $ref: '#/components/schemas/NumberCapability'
+          description: Output only. Which SMS and/or VOICE capabilities a virtual number supports.
           readOnly: true
         money:
           $ref: '#/components/schemas/typeMoney'
@@ -699,26 +601,26 @@ components:
           description: Output only. The timestamp when the subscription will expire if an expiration date has been set.
           readOnly: true
         smsConfiguration:
-          $ref: '#/components/schemas/v1beta1SmsConfiguration'
-      description: The number that has been bought by a customer and assigned to a project.
+          $ref: '#/components/schemas/SmsConfiguration'
+      description: The virtual number that has been bought by a customer and assigned to a project.
       title: Active Number
-    v1beta1AvailableNumber:
+    AvailableNumber:
       type: object
       properties:
         phoneNumber:
           type: string
-          title: The number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          title: The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
+          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the virtual number.'
           readOnly: true
         type:
-          $ref: '#/components/schemas/v1beta1NumberType'
+          $ref: '#/components/schemas/NumberType'
         capability:
           type: array
           items:
-            $ref: '#/components/schemas/v1beta1NumberCapability'
-          description: Output only. Which SMS and/or VOICE capabilities the number supports. 
+            $ref: '#/components/schemas/NumberCapability'
+          description: Output only. Which SMS and/or VOICE capabilities the virtual number supports. 
           readOnly: true
         setupPrice:
           $ref: '#/components/schemas/typeMoney'
@@ -734,46 +636,46 @@ components:
           format: boolean
           title: Output only. Whether or not supplementary documentation is required to complete purchase.
           readOnly: true
-      description: The numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
-      title: Available Number
-    v1beta1ListActiveNumbersResponse:
+      description: The virtual numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
+      title: Available Virtual Numbers
+    ListActiveNumbersResponse:
       type: object
       properties:
         activeNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/v1beta1ActiveNumber'
-          description: List of numbers associated to the client project specified in `ListActiveNumbers`.
+            $ref: '#/components/schemas/ActiveNumber'
+          description: List of virtual numbers associated to the client project specified in `ListActiveNumbers`.
         nextPageToken:
           type: string
           title: The token to be used for listing the next page.
         totalSize:
           type: integer
           format: int32
-          title: 'https://cloud.google.com/apis/design/design_patterns#list_pagination'
-      description: Response message to list your active numbers.
+          title: 'List pagination'
+      description: Response message to list your active virtual numbers.
       title: Active Numbers Response
-    v1beta1ListAvailableNumbersResponse:
+    ListAvailableNumbersResponse:
       type: object
       properties:
         availableNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/v1beta1AvailableNumber'
+            $ref: '#/components/schemas/AvailableNumber'
           description: List of available numbers.
-      description: Response message to list available numbers.
-      title: Available Numbers Response
-    v1beta1NumberCapability:
+      description: Response message to list available virtual numbers.
+      title: Available Virtual Numbers Response
+    NumberCapability:
       type: string
       enum:
         - SMS
         - VOICE
       default: SMS
       description: |2-
-         - SMS: The SMS product can use the number.
-         - VOICE: The Voice product can use the number.
+         - SMS: The SMS product can use the virtual number.
+         - VOICE: The Voice product can use the virtual number.
       title: Capability
-    v1beta1NumberPattern:
+    NumberPattern:
       type: object
       properties:
         pattern:
@@ -782,7 +684,7 @@ components:
         searchPattern:
           $ref: '#/components/schemas/NumberPatternSearchPattern'
       title: Search Pattern
-    v1beta1NumberType:
+    NumberType:
       type: string
       readOnly: true
       enum:
@@ -791,11 +693,11 @@ components:
         - TOLL_FREE
       default: MOBILE
       description: |2-
-         - MOBILE: Numbers that belong to a specific range.
-         - LOCAL: Numbers that are assigned to a specific geographic region.
-         - TOLL_FREE: Number that is billed for all arriving calls.
+         - MOBILE: Virtual numbers that belong to a specific range.
+         - LOCAL: Virtual numbers that are assigned to a specific geographic region.
+         - TOLL_FREE: Virtual number that is billed for all arriving calls.
       title: Type
-    v1beta1ProvisioningStatus:
+    ProvisioningStatus:
       readOnly: true
       type: string
       enum:
@@ -808,7 +710,7 @@ components:
          - IN_PROGRESS: The sms configuration change is in progress.
          - FAILED: The sms configuration change has failed.
       title: Provisioning Status for the SMS service
-    v1beta1RentNumberRequest:
+    RentNumberRequest:
       type: object
       properties:
         projectId:
@@ -816,15 +718,15 @@ components:
           description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
         phoneNumber:
           type: string
-          description: The available number to rent.
+          description: The available virtual number to rent.
         smsConfiguration:
-          $ref: '#/components/schemas/v1beta1SmsConfiguration'
-      description: Request message for renting a number.
-      title: Rent Number Request
+          $ref: '#/components/schemas/SmsConfiguration'
+      description: Request message for renting a virtual number.
+      title: Rent Virtual Number Request
       required:
         - projectId
         - phoneNumber
-    v1beta1ScheduledProvisioning:
+    ScheduledProvisioning:
       type: object
       properties:
         servicePlanId:
@@ -832,7 +734,7 @@ components:
           description: Output only. Service plan of the scheduled provisioning task.
          
         status:
-          $ref: '#/components/schemas/v1beta1ProvisioningStatus'
+          $ref: '#/components/schemas/ProvisioningStatus'
           readOnly: true
         lastUpdatedTime:
           type: string
@@ -840,16 +742,16 @@ components:
           description: Output only. Timestamp when the status was last updated.
           readOnly: true
       title: Scheduled Provisioning
-    v1beta1SmsConfiguration:
+    SmsConfiguration:
       type: object
       properties:
         servicePlanId:
           type: string
           description: |-
-            The current sms configuration for this number.
+            The current sms configuration for this virtual number.
             The service_plan_id can be found in the SMS APIs section of your [Sinch dashboard](dashboard.sinch.com).
         scheduledProvisioning:
-          $ref: '#/components/schemas/v1beta1ScheduledProvisioning'
+          $ref: '#/components/schemas/ScheduledProvisioning'
           readOnly: true
       description: Sms configuration
       title: Sms Configuration
