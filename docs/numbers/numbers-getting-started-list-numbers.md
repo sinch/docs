@@ -1,12 +1,12 @@
 ---
-title: Get your numbers
-excerpt: ''
+title: Get your virtual numbers
+excerpt: 'Get, move and update your virtual numbers using the API calls shown here. '
 hidden: false
 ---
 
 ## List Numbers
 
-This GET request lists all numbers for your project. 
+This GET request lists all virtual numbers for your project. 
 
 #### Request
 
@@ -19,7 +19,7 @@ curl --request GET \
 
 ## List Numbers in US
 
-This GET request lists all US number for your project.
+This GET request lists all US virtual numbers for your project.
 
 #### Request
 
@@ -60,7 +60,7 @@ curl --request GET \
 
 ## Update Number
 
-This PATCH request allows you to move a number between different SMS services and give the number a new friendly name.
+This PATCH request allows you to move a virtual number between different SMS services and give the number a new friendly name.
 
 #### Request
 
@@ -129,9 +129,9 @@ updateMask parameters can be attached in the request body as shown below in this
 }
 ```
 
-## Release number from a project
+## Release a virtual number from a project
 
-This POST call allows you to cancel your subscription for a specific phone number. Remember, the phoneNumber element must follow the E.164 format and may need to be URL encoded as shown above.
+This POST call allows you to cancel your subscription for a specific virtual number. Remember, the phoneNumber element must follow the E.164 format and may need to be URL encoded as shown above.
 
 #### Request
 
