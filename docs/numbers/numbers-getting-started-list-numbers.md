@@ -1,6 +1,6 @@
 ---
 title: Get your virtual numbers
-excerpt: 'Get, move and update your virtual numbers using the API calls shown here. '
+excerpt: 'Get, move and update your virtual numbers using the Sinch Numbers API calls shown here.'
 hidden: false
 ---
 
