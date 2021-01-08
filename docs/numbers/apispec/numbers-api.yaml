@@ -1,6 +1,7 @@
 openapi: 3.0.0
 info:
   title: Numbers
+  description: Use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
   version: '1.0'
 tags:
   - name: Available Virtual Numbers
