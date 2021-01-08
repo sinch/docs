@@ -538,9 +538,25 @@ components:
       properties:
         typeUrl:
           type: string
+          description: The url of the error
         value:
           type: string
           format: byte
+          description: A binary represnation of the error.
+    rpcStatus:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: The error code recived from the server.
+        message:
+          type: string
+          description: Error description
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'    
     typeMoney:
       type: object
       readOnly: true
