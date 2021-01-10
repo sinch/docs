@@ -13,7 +13,7 @@ next:
     - conversation-capability
 ---
 
-The Sinch Conversation API offers one endpoint for sending and receiving messages across the most popular channels such as SMS, RCS, WhatsApp and Facebook Messenger. It can also switch between Bot/Human chats and much more.
+The Sinch Conversation API offers one endpoint for sending and receiving messages across the most popular channels such as SMS, RCS, WhatsApp and Facebook Messenger. 
 
 Different message channel (bearer) features and functions are supported through built-in transcoding.
 
