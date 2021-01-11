@@ -459,13 +459,13 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |filename   | Optional filename, only valid for audio and document                   | String    |
 |metadata   | Optional sticker metadata, only used for stickers                      | Object    |
 
-The sticker metadata object has the following parameters:
-
 > 📘 Note
 >
 > Media URLs expire after seven days.
 > 
 > 
+
+The sticker metadata object has the following parameters:
 
 |Name                   | Description                                                                 | JSON Type     |
 |-----------------------|-----------------------------------------------------------------------------|---------------|
