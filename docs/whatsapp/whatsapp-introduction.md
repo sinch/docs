@@ -98,6 +98,12 @@ The following Swagger UI URLs can be used to test our API.
 > 
 > 
 
+> 📘 Note
+>
+> Media URLs in [callbacks](doc:whatsapp-callback) expire after seven days.
+> 
+> 
+
 ## Formatting Text Messages
 
 WhatsApp allows formatting your messages. Use these formatting symbols to format a message:
