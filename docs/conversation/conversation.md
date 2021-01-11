@@ -1,6 +1,6 @@
 ---
 title: Introduction
-excerpt: >-
+excerpt: The Sinch Conversation API is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
   Sinch Conversation API
 hidden: false
 next:
@@ -13,13 +13,9 @@ next:
     - conversation-capability
 ---
 
-The Sinch Conversation API offers one endpoint for sending and receiving messages across the most popular channels such as SMS, RCS, WhatsApp and Facebook Messenger. 
+Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
-Different message channel (bearer) features and functions are supported through built-in transcoding.
-
-The Sinch Conversation API gives you the power of conversation across all supported channels and full control over channel specific features if required. A single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
-
-Currently, the Sinch Conversation API is in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
 ---
 
