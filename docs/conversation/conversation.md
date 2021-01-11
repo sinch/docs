@@ -1,7 +1,7 @@
 ---
 title: Introduction
 excerpt: The Sinch Conversation API is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
-  Sinch Conversation API
+
 hidden: false
 next:
   pages:
