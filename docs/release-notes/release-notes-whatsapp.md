@@ -5,6 +5,12 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-01-12
+
+ - WhatsApp API performance and stability improvements.
+ - Integration with Conversation API improvements.
+ - Improvement for media files monitoring.
+
 ## 2020-11-24
 
  - WhatsApp API performance improvements.
