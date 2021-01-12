@@ -8,7 +8,7 @@ excerpt: >-
 ## 2021-01-12
 
  - WhatsApp API performance and stability improvements.
- - Integration with Conversation API improvements.
+ - Improvements to the integration with the Conversation API.
  - Improvement for media files monitoring.
 
 ## 2020-11-24
