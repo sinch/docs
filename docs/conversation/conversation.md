@@ -13,7 +13,7 @@ next:
     - conversation-capability
 ---
 
-Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
+Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API!
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
