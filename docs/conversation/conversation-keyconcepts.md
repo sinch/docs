@@ -10,7 +10,7 @@ The **project** entity belongs to a Sinch account, acts as a container and is th
 
 #### App
 
-The **app** entity, which is created and configured through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps), is tied to the API user and comes with a set of [**channel credentials**](doc:conversation#channel-credential) for each underlying connected channel. The app has a list of [**conversations**](doc:conversation#conversation) between itself and different [**contacts**](doc:conversation#contact) which share the same [**project**](doc:conversation#project).
+The **app** entity, which is created and configured through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps), is tied to the API user and comes with a set of [**channel credentials**](#channel-credential) for each underlying connected channel. The app has a list of [**conversations**](#conversation) between itself and different [**contacts**](#contact) which share the same [**project**](#project).
 
 Webhooks, which the app is attached to, defines the destination for various events coming from the Conversation API. 
 
@@ -19,7 +19,7 @@ An **app** has the following configurable properties:
 | Field                             | Description                                                                                                                        |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | Display name                      | The name visible in the [Sinch Portal](https://dashboard.sinch.com/convapi/apps).                                                       |
-| Conversation metadata report | Specifies the amount of [**conversation**](doc:conversation#conversation) metadata that is returned as part of each callback. |
+| Conversation metadata report | Specifies the amount of [**conversation**](#conversation) metadata that is returned as part of each callback. |
 | Retention Policy                  | The retention policy specifies how long messages, sent to or from an **app**, are stored by the Conversation API.         |
 
 ##### Retention policy
@@ -38,13 +38,13 @@ A **retention policy** is defined by the following properties:
 
 * `MESSAGE_EXPIRE_POLICY` - this option will remove all messages, sent or received by the **app**, older than the TTL days specified in the policy.
 
-* `CONVERSATION_EXPIRE_POLICY` - this option only takes the last message in a [**conversation**](doc:conversation#conversation) into consideration when deciding if a [**conversation**](doc:conversation#conversation) should be removed or not. The entire [**conversation**](doc:conversation#conversation) will be removed if the last message is older than the TTL days specified in the policy. The entire [**conversation**](doc:conversation#conversation) will be kept otherwise. 
+* `CONVERSATION_EXPIRE_POLICY` - this option only takes the last message in a [**conversation**](#conversation) into consideration when deciding if a [**conversation**](#conversation) should be removed or not. The entire [**conversation**](#conversation) will be removed if the last message is older than the TTL days specified in the policy. The entire [**conversation**](#conversation) will be kept otherwise. 
 
-* `PERSIST_RETENTION_POLICY` -  this option persists all messages, and [**conversations**](doc:conversation#conversation) until they are explicitly deleted. Note that this option will be subject to additional charges in the future.
+* `PERSIST_RETENTION_POLICY` -  this option persists all messages, and [**conversations**](#conversation) until they are explicitly deleted. Note that this option will be subject to additional charges in the future.
 
 #### Channel credential
 
-A **channel credential** is the authentication means used to authenticate against an underlying connected channel. A **channel credential** is tied to one [**app**](doc:conversation#app).
+A **channel credential** is the authentication means used to authenticate against an underlying connected channel. A **channel credential** is tied to one [**app**](#app).
 The order of the channel credentials registered for an app is significant. It defines the channel priority order on app level used when defining which channels to send first.
 The app channel priority is overridden by contact channel priority order and by message specific channel priority order.
 
@@ -67,14 +67,14 @@ A **webhook** has the following configurable properties:
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Target      | The target URL where events should be sent to                                                                                                                                                                                |
 | Target type | Type of the target URL. Currently only DISMISS and HTTP are supported values. DISMISS indicates the events will not be sent                                                                                                  |
-| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks. See [Validating Callbacks](doc:conversation-callbacks#validating-callbacks) for details. |
+| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks. See [Validating Callbacks](-callbacks#validating-callbacks) for details. |
 | Triggers    | A set of triggers that this webhook is listening to. Example triggers include MESSAGE_DELIVERY for message delivery receipts and MESSAGE_INBOUND for inbound contact messages                                                |
 
-[Conversation API Callbacks](doc:conversation-callbacks) provides more information about managing webhooks and the format of the callbacks.
+[Conversation API Callbacks](-callbacks) provides more information about managing webhooks and the format of the callbacks.
 
 #### Contact
 
-The **contact** entity is a collection entity that groups together underlying connected [**channel recipient identities**](doc:conversation#channel-recipient-identity). It is tied to a specific [**project**](doc:conversation#project) and is therefore considered public to all [**apps**](doc:conversation#app) sharing the same [**project**](doc:conversation#project).
+The **contact** entity is a collection entity that groups together underlying connected [**channel recipient identities**](#channel-recipient-identity). It is tied to a specific [**project**](#project) and is therefore considered public to all [**apps**](#app) sharing the same [**project**](#project).
 
 A **contact** has the following configurable properties:
 
@@ -89,10 +89,10 @@ A **contact** has the following configurable properties:
 
 #### Channel recipient identity
 
-A **channel recipient identity** is an identifier for the [**contact**](doc:conversation#contact) for a specific channel. E.g. an international phone number is used as identifier for _SMS_ and _RCS_ while a PSID (Page-Scoped ID) is used as the identifier for _Facebook Messenger_.
+A **channel recipient identity** is an identifier for the [**contact**](#contact) for a specific channel. E.g. an international phone number is used as identifier for _SMS_ and _RCS_ while a PSID (Page-Scoped ID) is used as the identifier for _Facebook Messenger_.
 
-Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber Bot are using app-scoped channel identities, which means contacts will have different channel identities for different [**apps**](doc:conversation#app).
-For Facebook Messenger this means that the contact channel identity is associated with the [**app**](doc:conversation#app) linked to the Facebook page for which this PSID is issued.
+Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber Bot are using app-scoped channel identities, which means contacts will have different channel identities for different [**apps**](#app).
+For Facebook Messenger this means that the contact channel identity is associated with the [**app**](#app) linked to the Facebook page for which this PSID is issued.
 
 A **channel recipient identity** has the following configurable properties:
 
@@ -104,12 +104,12 @@ A **channel recipient identity** has the following configurable properties:
 
 #### Conversation
 
-A collection entity that groups several **conversation messages**. It is tied to one specific [**app**](doc:conversation#app) and one specific [**contact**](doc:conversation#contact).
+A collection entity that groups several **conversation messages**. It is tied to one specific [**app**](#app) and one specific [**contact**](#contact).
 
 #### Conversation message
 
-An individual message, part of a specific [**conversation**](doc:conversation#conversation).
+An individual message, part of a specific [**conversation**](#conversation).
 
 #### Metadata
 
-There are currently three entities which can hold metadata: [**message**](doc:conversation#conversation-message), [**conversation**](doc:conversation#conversation) and [**contact**](doc:conversation#contact). The metadata is an opaque field for the Conversation API and can be used by the API clients to retrieve a context when receiving a callback from the API. The metadata fields are currently restricted to 1024 characters.
+There are currently three entities which can hold metadata: [**message**](#conversation-message), [**conversation**](#conversation) and [**contact**](#contact). The metadata is an opaque field for the Conversation API and can be used by the API clients to retrieve a context when receiving a callback from the API. The metadata fields are currently restricted to 1024 characters.

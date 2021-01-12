@@ -11,7 +11,7 @@ In this guide we’ll go through the necessary steps of creating your first App.
 
 Go to the [Apps page](https://dashboard.sinch.com/convapi/apps) to get started on creating your App.
  
-Once you’ve started to create a new App you are prompted to specify an internal display name as well as in which [**region**](doc:conversation#regions) the App should be stored. 
+Once you’ve started to create a new App you are prompted to specify an internal display name as well as in which [**region**](doc:conversation) the App should be stored. 
 
 > 📘 Note
 >
@@ -23,7 +23,7 @@ Once a display name is created, and a region is selected, a unique App ID will b
 
 ## 2. Selecting and adding channels
 
-Once step 1 is completed, start setting up the [**channels**](doc:conversation#supported-channels) you want to include in the conversation App.
+Once step 1 is completed, start setting up the [**channels**](doc:conversation-channel-support#supported-channels) you want to include in the conversation App.
 
 Select the channel you wish to set up. Keep in mind that you need to register each channel before you can include it in a conversation App.
 
@@ -53,7 +53,7 @@ You can define the App channel priority by reordering the channels that you have
 
 ## 4. Add and configure Webhooks
 
-[**Webhooks**](doc:conversation#webhook) are callbacks triggered by specific events. When adding a Webhook you are prompted to specify a Target URL and events that should trigger a call to the specified URL.
+[**Webhooks**](doc:conversation-keyconcepts#webhook) are callbacks triggered by specific events. When adding a Webhook you are prompted to specify a Target URL and events that should trigger a call to the specified URL.
 
 > 📘 Note
 >
