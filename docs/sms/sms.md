@@ -1,5 +1,5 @@
 ---
-title: Getting started - node
+title: Getting started - Node
 excerpt: Learn how to quickly send SMS messages with the Sinch API
 ---
 In this guide, we show you how to:
