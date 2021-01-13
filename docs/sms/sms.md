@@ -57,7 +57,7 @@ To find the From-number, click the service plan id link and scroll to the bottom
 
 Click [here](https://developers.sinch.com/reference/#sendsms) to read more about the batches endpoint.
 
-## Receive SMS via web-hook  
+## Receive SMS via web-hook
 
 The next step shows how to handle the sending of an SMS to your Sinch number.
 
