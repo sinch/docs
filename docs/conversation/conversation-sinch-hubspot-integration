@@ -1,7 +1,13 @@
 ## Introduction
 **Note:** The below information is only for demonstration purposes and is not intended to be used for production or operation.
 
-Quickly set up and manage your customer lists across multiple messaging channels for SMS, MMS, RCS and WhatsApp, the phone number; for Facebook Messenger and Facebook Contact ID from one endpoint using the HubSpot CRM and Sinch Conversation API integration for all your customer engagement needs. The following demo will show you how to set up the Sinch Conversation API and leverage it across multiple messaging channels, reduce your overall development efforts needed for set up and simplify your integration and netops requirements.
+### Overview
+
+Use the Sinch Conversation API/Hubspot integration to communicate with your customers and manage your contact lists over various messaging channels all through the convenience of one endpoint with your Hubspot hosted CRM.
+
+Quickly set up and manage your customer lists across multiple messaging channels for SMS, MMS, RCS and WhatsApp, the phone number; for Facebook Messenger and Facebook Contact ID from one endpoint using the HubSpot CRM and Sinch Conversation API integration for all your customer engagement needs. 
+
+The following demo will show you how to set up the Sinch Conversation API and leverage it across multiple messaging channels, reduce your overall development efforts needed for set up and simplify your integration and netops requirements.
 
 ### Sinch and Hubspot account set-up
 
