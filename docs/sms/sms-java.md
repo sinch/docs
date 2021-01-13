@@ -12,12 +12,6 @@ In this guide, we show you how to:
 Before you can send your first SMS, you need a [Sinch
 account](https://dashboard.sinch.com/signup). If you are in the United States, you also need a [free test phone number](https://dashboard.sinch.com/numbers/your-numbers/numbers).
 
-![Image of configure number](images\new-number\activateyournumber.png)
-Click activate.
-
-![Image of configure number](images\new-number\select-rest.png)
-To use the number with the rest API select REST and click **GET FREE TEST NUMBER**.
-
 ### Installing Java helper library
 
 To use java, [install our Java library](doc:sms-java-library)
