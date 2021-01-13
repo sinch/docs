@@ -21,9 +21,7 @@ In this tutorial we’re building a super simple API using C\# to redirect phone
 
 In this tutorial, we are going to implement the backend part.
 
-As usual, you can find the full source code on [GitHub](https://github.com/sinch/net-redirect-call) or deploy directly to your Azure account if you want to try it out.
-![deploybutton.png](images\0ccd0aa-deploybutton.png)
-
+As usual, you can find the full source code on [GitHub](https://github.com/sinch/net-redirect-call).
 ## Prerequisites
 
 > 1.  A [Sinch account](https://portal.sinch.com/#/signup) and an app with keys
