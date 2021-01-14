@@ -61,11 +61,11 @@ You need to authenticate your SIP infrastructure to make outbound calls via the 
 
 Example SIP INVITE sent to Sinch with SIP termination:
 
-> Request-Line: INVITE sip:+12345678900@sip-euc1.sinch.com SIP/2.0
+> Request-Line: INVITE sip:+12345678900@euc1.sip.sinch.com SIP/2.0
 >
-> From: <sip:+19876543210@sip-euc1.sinch.com>;tag=as09cb5a21
+> From: <sip:+19876543210@euc1.sip.sinch.com>;tag=as09cb5a21
 >
-> To: <sip:+12345678900@sip-euc1.sinch.com>
+> To: <sip:+12345678900@euc1.sip.sinch.com>
 >
 > Contact: <sip:+19876543210@52.214.25.57:5060>
 
