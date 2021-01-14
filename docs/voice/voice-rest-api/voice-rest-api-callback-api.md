@@ -617,7 +617,7 @@ Actions allow your Sinch application to control individual calls. The following 
 
 If no “music-on-hold” is specified, the user will only hear silence.
 
-#### ConnectSIP
+### ConnectSIP
 
     {
         "name": "connectSIP",
@@ -1058,7 +1058,7 @@ You can find more information on callback request signing [here](doc:using-rest#
         string - menuId
         string - type
         string - value
-		string - inputMethod
+    	string - inputMethod
     }
 
 **event** has the value “pie”.
@@ -1086,7 +1086,7 @@ When the PIE event has been triggered from collecting DTMF digits, then the type
 
 **value** contains the value of the information.
 
-**inputMethod** indicates the type of input received. It can be either *dtmf* or *voice*.
+**inputMethod** indicates the type of input received. It can be either _dtmf_ or _voice_.
 
 ### Response
 
