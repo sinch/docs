@@ -5,6 +5,7 @@ next:
   pages:
     - voice-rest-api-misc
 ---
+
 ## Overview
 
 When using Sinch for voice calling, the Sinch platform can be seen as a big telephony switch. It receives incoming phone calls (also known as _incoming call “legs”_), sets up outgoing phone calls (also known as _outgoing call “legs”_), and bridges the two. In Sinch SIP trunking service the _incoming call legs_ and _outgoing call legs_ is to your own SIP infrastructure such as a SIP IP-PBX, SBC or similar equipment. Using SIP trunking together with [Callback API](doc:voice-rest-api-callback-api) you can combine all different types of _incoming calls_ and _outgoing calls_ the Sinch platform supports, including for example Call recording and conference rooms.
@@ -62,7 +63,7 @@ Example SIP INVITE sent to Sinch with SIP termination:
 
 > Request-Line: INVITE sip:+12345678900@sip-euc1.sinch.com SIP/2.0
 >
-> From: <sip:+19876543210@sip.sinch.com>;tag=as09cb5a21
+> From: <sip:+19876543210@sip-euc1.sinch.com>;tag=as09cb5a21
 >
 > To: <sip:+12345678900@sip-euc1.sinch.com>
 >
