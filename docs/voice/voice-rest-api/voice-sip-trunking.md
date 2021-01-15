@@ -56,6 +56,8 @@ You need to authenticate your SIP infrastructure to make outbound calls via the 
 > Username/Authenticationname: Your Sinch Application Key
 >
 > Password: Your Sinch Application Secret
+>
+> Realm: Need to match host \{region\}.sip.sinch.com
 
 ### SIP termination example
 
