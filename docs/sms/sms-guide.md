@@ -350,7 +350,7 @@ Query parameters:
 |page                |The requested page                                                                                                          |                                Integer                                |
 |page_size           |The number of batches returned in this request                                                                              |                                Integer                                |
 |count               |The total number of batches matching the given filters                                                                      |                                Integer                                |
-|batches             |The page of batches matching the given filters                                                                              |Array of objects described in [Send a batch message](#send-a-batch-mess|
+|batches             |The page of batches matching the given filters                                                                              |Array of objects [Send a batch message](#send-a-batch-message)       |
 
 ### Dry run a batch
 
