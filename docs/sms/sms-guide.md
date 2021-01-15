@@ -360,7 +360,7 @@ This operation will perform a dry run of a batch which calculates the bodies and
 
 `POST /xms/v1/{service_plan_id}/batches/dry_run`
 
-The request body is a JSON object described in send\_batch\_msg request.
+The request body is a JSON object described in [Send a batch message](#send-a-batch-message).
 
 Query parameters:
 
