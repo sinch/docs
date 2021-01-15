@@ -88,7 +88,7 @@ To see the data we send on incoming SMS, refresh your request bin page.
 
 ![requestbin request](images\requestbin-request.png)
 
-### Handle incoming SMS with Java pring boot
+### Handle incoming SMS with Java Spring boot
 
 Below is a spring controller. 
 
