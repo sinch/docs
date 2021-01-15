@@ -24,7 +24,7 @@ Make sure you configure your application key in the sample apps by replacing the
 
 > **Note**    
 >
-> Currently, calling only works in the Chrome or Firefox browsers. Chrome additionally requires the web page to be loaded using http or https and is not compatible with local storage (i.e., file://).
+> Currently, calling only works in the Chrome or Firefox browsers. Chrome additionally requires the web page to be loaded using http or https and is not compatible with local storage (i.e., `file://`).
 
 ## Development
 
@@ -64,7 +64,7 @@ npm install sinch-rtc --save
 
 > **Note**    
 >
-> The --save flag is optional for saving the dependency in package.json
+> The `--save` flag is optional for saving the dependency in package.json
 
 Import Sinch SDK in your project using
 ```javascript
@@ -90,4 +90,4 @@ Import the Sinch SDK in your website using
 
 > **Note**    
 >
-> The --save flag is optional for saving the dependency in bower.json
+> The `--save` flag is optional for saving the dependency in bower.json
