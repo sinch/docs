@@ -385,16 +385,6 @@ Conversation API POST `messages:send`
                         "title": "Call Choice Message:Q",
                         "phone_number": "46732000000"
                     }
-                },
-                {
-                    "location_message": {
-                        "title": "Location Choice Message",
-                        "label": "Enriching Engagement",
-                        "coordinates": {
-                            "latitude": 55.610479,
-                            "longitude": 13.002873
-                        }
-                    }
                 }
             ]
         }
@@ -408,7 +398,7 @@ The rendered message:
 
 ###### Card Messages
 
-Card messages sent to WhatsApp are transcoded as media with text caption: 
+Card messages sent to WhatsApp are transcoded as media with text caption:
 
 ---
 
@@ -427,28 +417,6 @@ Conversation API POST `messages:send`
                 {
                     "text_message": {
                         "text": "Suggested Reply Text"
-                    }
-                },
-                {
-                    "url_message": {
-                        "title": "URL Choice Message:",
-                        "url": "https://www.sinch.com"
-                    }
-                },
-                {
-                    "call_message": {
-                        "title": "Call Choice Message:Q",
-                        "phone_number": "46732000000"
-                    }
-                },
-                {
-                    "location_message": {
-                        "title": "Location Choice Message",
-                        "label": "Enriching Engagement",
-                        "coordinates": {
-                            "latitude": 55.610479,
-                            "longitude": 13.002873
-                        }
                     }
                 }
             ]
