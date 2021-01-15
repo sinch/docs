@@ -2,7 +2,7 @@
 title: Glossary
 excerpt: Sinch ENUM Interface glossary. Read more.
 ---
-|           |                                                                          |
+| Term      | Description                                                              |
 | --------- | ------------------------------------------------------------------------ |
 | CC        | Country Code                                                             |
 | dig       | Domain Information Groper, command-line tool for querying DNS            |
