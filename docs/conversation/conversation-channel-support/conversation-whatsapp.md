@@ -60,7 +60,7 @@ You need to register the collected user opt-in by invoking the opt-in service pr
 
 Businesses must also provide a method by which customers may opt-out of receiving future messages from your organization. Registering the user opt-out is done through the Conversation API `/optouts:register` endpoint. The outcome of the opt-out registration is delivered by a callback to webhooks with trigger `OPT_OUT`.
 
-An example payload for opt-in/out registration (POST to `/optins:register` or `/optouts:register`) is the following snipped:
+An example payload for opt-in/out registration (POST to `/optins:register` or `/optouts:register`) is provided in the following snippet:
 
 ```json
 {
@@ -176,7 +176,7 @@ Conversation API POST `messages:send`
                     "template_id": "document_template",
                     "language_code": "en",
                     "parameters": {
-                        "header[1]document.link": "https://example.com",
+                        "header[1]document.link": "https://example.com/document.pdf",
                         "header[1]document.filename": "document.pdf",
                         "body[1]text": "Value of first parameter"
                     }
@@ -211,7 +211,7 @@ Conversation API POST `messages:send`
                     "template_id": "video_template",
                     "language_code": "en",
                     "parameters": {
-                        "header[1]video.link": "https://example.com",
+                        "header[1]video.link": "https://example.com/video.mp4",
                         "body[1]text": "Value of first parameter"
                     }
                 }
@@ -245,7 +245,7 @@ Conversation API POST `messages:send`
                     "template_id": "image_template",
                     "language_code": "en",
                     "parameters": {
-                        "header[1]image.link": "https://example.com",
+                        "header[1]image.link": "https://example.com/image.jpg",
                         "body[1]text": "Value of first parameter"
                     }
                 }
@@ -259,7 +259,13 @@ Conversation API POST `messages:send`
 
 **Interactive Template**
 
-WhatsApp allows sending interactive templates with up to three buttons.
+WhatsApp offers two types of predefined buttons
+* *Quick Reply* - Presents a button with a predefined text which then returns a callback with a defined payload when clicked
+* *Call-to-Action* - Presents a clickable action in WhatsApp to either call a phone number or to visit a website   
+
+These buttons can be attached to text or media templates. However you are only allowed to register templates that has at most of the types, i.e. you can not have a registered template that has both call-to-action and quick reply buttons.
+
+When using quick reply buttons in your templates you can have at most 3 buttons and while using call-to-action buttons you can have at most 2 buttons.
 
 The parameter fields used to configure the buttons in the template are:
 
@@ -276,10 +282,9 @@ The quick_reply payload field must be set even when empty. For example for quick
     "button[0]quick_reply[1]payload": ""
  ```
 
-Below is an example of sending a template with a quick reply button at index 0 and two URL buttons at index 1 and 2 respectively. The template have also one header and one body
-parameters.
+Below is an example of sending a template with three quick reply buttons The template also have one header and one body parameter.
 
-The template name is *interactive_template* available for *en* language code.
+The template name is *interactive_template_quick_reply* available for *en* language code.
 
 Conversation API POST `messages:send`
 
@@ -289,14 +294,41 @@ Conversation API POST `messages:send`
         "template_message": {
             "channel_template": {
                 "WHATSAPP": {
-                    "template_id": "interactive_template",
+                    "template_id": "interactive_template_quick_reply",
                     "language_code": "en",
                     "parameters": {
                         "header[1]text": "Value of header parameter",
                         "body[1]text": "Value of first parameter",
-                        "button[0]quick_reply[1]payload": "Value of quick reply postback button 0",
-                        "button[1]url[1]text": "Value for URL suffix button 1",
-                        "button[2]url[1]text": "Value for URL suffix button 2"
+                        "button[0]quick_reply[1]payload": "button0clicked",
+                        "button[1]quick_reply[1]payload": "button1clicked",
+                        "button[2]quick_reply[1]payload": "button2clicked"
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+Below is an example of sending a template with two visit URL buttons (call-to-action). The template also have one header and one body parameter.
+
+The template name is *interactive_template_call_to_action* available for *en* language code.
+
+Conversation API POST `messages:send`
+
+```json
+{
+    "message": {
+        "template_message": {
+            "channel_template": {
+                "WHATSAPP": {
+                    "template_id": "interactive_template_call_to_action",
+                    "language_code": "en",
+                    "parameters": {
+                        "header[1]text": "Value of header parameter",
+                        "body[1]text": "Value of first parameter",
+                        "button[0]url[1]text": "Value for URL suffix button 1",
+                        "button[1]url[1]text": "Value for URL suffix button 2"
                     }
                 }
             }
