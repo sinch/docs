@@ -263,9 +263,9 @@ WhatsApp offers two types of predefined buttons
 * *Quick Reply* - Presents a button with a predefined text which then returns a callback with a defined payload when clicked
 * *Call-to-Action* - Presents a clickable action in WhatsApp to either call a phone number or to visit a website   
 
-These buttons can be attached to text or media templates. However you are only allowed to register templates that has at most of the types, i.e. you can not have a registered template that has both call-to-action and quick reply buttons.
+These buttons can be attached to text or media templates. However you are only allowed to register templates that has at most one of the types, i.e. you can not have a registered template that has both call-to-action and quick reply buttons.
 
-When using quick reply buttons in your templates you can have at most 3 buttons and while using call-to-action buttons you can have at most 2 buttons.
+When using quick reply buttons in your templates you can have at most three buttons and while using call-to-action buttons you can have at most two buttons.
 
 The parameter fields used to configure the buttons in the template are:
 
@@ -282,7 +282,7 @@ The quick_reply payload field must be set even when empty. For example for quick
     "button[0]quick_reply[1]payload": ""
  ```
 
-Below is an example of sending a template with three quick reply buttons The template also have one header and one body parameter.
+Below is an example of sending a template with three quick reply buttons. The template also have one header and one body parameter.
 
 The template name is *interactive_template_quick_reply* available for *en* language code.
 
