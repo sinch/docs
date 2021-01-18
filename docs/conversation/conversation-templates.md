@@ -49,10 +49,10 @@ Conversation API apps created in the same region.
 Accessing the Template Management API requires a valid access token for your Sinch project ID.
 To get an access token you first need to create an Access Key in [Sinch Portal](https://dashboard.sinch.com/settings/access-keys)
 and store the Key Secret in a secure location.
-Once you have a Key ID and Key Secret obtaining a valid OAuth2 Access Token for the Template Management API in `us` region is done as follow:
+Once you have a Key ID and Key Secret obtaining a valid OAuth2 Access Token for the Template Management API is done as follow:
 
 ```curl
-curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
+curl https://auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
 ```
 
 With the obtained Access Token you can for example store a text message template with a single English translation

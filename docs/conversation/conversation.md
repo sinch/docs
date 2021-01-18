@@ -167,18 +167,13 @@ Currently Sinch Conversation API is available in:
 
 ### Authentication
 
-The Conversation API uses OAuth2 **Access Tokens** to authenticate API calls. The first step to obtaining an **Access Token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/settings/access-keys) under Settings -> Access Keys. A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The created **Access Key** can be used in the different authentication flows in both regions. The following snippet illustrates how to obtain an **Access Token** that can be used to authenticate towards the Conversation API in the US.
+The Conversation API uses OAuth2 **Access Tokens** to authenticate API calls. The first step to obtaining an **Access Token** is to create an **Access Key** in the [Sinch portal](https://dashboard.sinch.com/settings/access-keys) under Settings -> Access Keys. A **client_id** and **client_secret** will be provided when creating an **Access Key** in the portal. The **project** ID will also be visible on the **Access Key** page in the portal. The created **Access Key** can be used in the different authentication flows in both regions. The following snippet illustrates how to obtain an **Access Token** that can be used to authenticate towards the Conversation API.
 
 ```console
-curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
+curl https://auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
 ```
 
-> 📘 Note
->
-> It is not possible to use the **Access Token** obtained from the US endpoint to authenticate towards the Conversation API in the EU. One should instead obtain a valid **Access Token** from the corresponding EU endpoint:
-> https://eu.auth.sinch.com/oauth2/token
-
-A call to the Conversation API, in the US, can then be done by including the obtained **Access Token**, valid for US, in the request header. See below for an example:
+A call to the Conversation API, in the US, can then be done by including the obtained **Access Token** in the request header. See below for an example:
 
 ```console
 curl -H "Authorization: Bearer <access token>" https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps

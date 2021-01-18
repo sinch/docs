@@ -73,18 +73,10 @@ You can generate an access key under Settings -> Access Keys page by clicking on
 
 A **client_id** and **client_secret** will be provided when creating an Access Key in the portal. The secret is only shown after generation, copy and store it in a safe place. 
 
-You can obtain an Access Token to Conversation API by using your client_id and client_secret in the appropriate region:
-
-EU region:
+To obtain an Access Token to Conversation API, use your client_id and client_secret and call the OAuth 2.0 Token endpoint:
 
 ```
-curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
-```
-
-US region:
-
-```
-curl https://us.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
+curl https://auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <client_id>:<client_secret>
 ```
 
 The access token can be used in conjunction with your project ID to interact with the Conversation API. Read more about possible authentication methods at [**Authentication**](doc:conversation#authentication).
