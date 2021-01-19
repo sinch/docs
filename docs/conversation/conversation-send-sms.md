@@ -78,7 +78,7 @@ curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --u
 
 Now that you have all the necessary pieces of information, you can an SMS message to a Contact via the Sinch Conversations API app. To do so, send an HTTP POST with the following JSON. 
 
-**Note:** - You can send SMS messages using a channel specific property called SMS_FLASH_MESSAGE. For more information, check out our [Channel Specific Properties](https://developers.sinch.com/docs/conversation-channel-properties) page.
+**Note:** - You can send SMS messages using a channel specific property called `SMS_FLASH_MESSAGE`. For more information, check out our [Channel Specific Properties](https://developers.sinch.com/docs/conversation-channel-properties) page.
 
 ```shell Curl
 curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/projects/{project_id}/messages:send' \
