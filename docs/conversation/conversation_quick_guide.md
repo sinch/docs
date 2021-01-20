@@ -11,7 +11,7 @@ In this guide we’ll go through the necessary steps of creating your first App.
 
 Go to the [Apps page](https://dashboard.sinch.com/convapi/apps) to get started on creating your App.
  
-Once you’ve started to create a new App you are prompted to specify an internal display name as well as in which [**region**](doc:conversation#regions) the App should be stored. 
+Once you’ve started to create a new App you are prompted to specify an internal display name as well as in which [**region**](https://developers.sinch.com/docs/conversation#regions) the App should be stored. 
 
 > 📘 Note
 >
