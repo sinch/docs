@@ -10,7 +10,7 @@ next:
 ---
 ## Overview
 
-Sinch is now offering a limited beta trial of our new A2P RCS solution. RCS allows you to send interactive & personalized messages to consumers right within their native SMS inbox, in supported markets.
+Sinch is now letting customers try of our new A2P RCS solution. RCS allows you to send interactive & personalized messages to consumers right within their native SMS inbox, in supported markets.
 
 ## What are the supported APIs?
 
