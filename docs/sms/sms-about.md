@@ -8,6 +8,10 @@ excerpt: The easiest and most feature-rich API we offer. It allows for single me
 
 SMPP interfaces for full control and low latency.
 
+## REST
+
+The most feature rich API that Sinch offers is the SMS REST API. Single messages, scheduled batch send-outs, using message templates and more.
+
 > **Note**
 >
 > If you are a local customer of Sinch Germany GmbH, using our domestic German platform, please contact our [German support team](mailto:support-de@sinch.com) for further assistance.
