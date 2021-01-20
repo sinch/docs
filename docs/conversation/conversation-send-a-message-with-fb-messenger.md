@@ -13,8 +13,8 @@ To set up a Facebook Business page, take these steps.
 1.	Go to https://www.facebook.com/pages/create
 2.	Click **Get Started** on the **Business or Brand** image.
 3.	Name your page, select a Category and create a description.
-4.	Click Create Page.
-5.	Click Save.
+4.	Click **Create Page**.
+5.	Click **Save**.
 Remember the name of your business page or bookmark it, as you will need it later in this tutorial.
 ![Business Page](images/channel-support/messenger/fb_business_page.png)
 
