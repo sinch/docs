@@ -19,7 +19,7 @@ Different message channel (bearer) features and functions are supported through 
 
 The Sinch Conversation API gives you the power of conversation across all supported channels and full control over channel specific features if required. A single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
-Currently, the Sinch Conversation API is in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+Currently, the Sinch Conversation API is in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
 
 ---
 
