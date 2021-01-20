@@ -53,7 +53,7 @@ You can define the App channel priority by reordering the channels that you have
 
 ## 4. Add and configure Webhooks
 
-[**Webhooks**](doc:conversation#webhook) are callbacks triggered by specific events. When adding a Webhook you are prompted to specify a Target URL and events that should trigger a call to the specified URL.
+**Webhooks** are callbacks triggered by specific events. When adding a Webhook you are prompted to specify a Target URL and events that should trigger a call to the specified URL.
 
 > 📘 Note
 >
