@@ -1,7 +1,7 @@
 ---
 title: Send rich messages with Facebook Messenger
 excerpt: >-
-  Learn and see how different kind of messages render on Facebook Messenger.
+  See how different kinds of rich messages render on Facebook Messenger.
 hidden: false
 ---
 
