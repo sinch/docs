@@ -1,24 +1,25 @@
 ---
 title: Handle incoming messages
 excerpt: |
-  This guide you will learn how to handle incoming messages.
+  In this tutorial, you will learn how to handle incoming messages.
 next:
   pages:
     - conversation-send-rich-messages-with-fb-messenger
 hidden: false
 ---
 
-In this guide we use the [Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger), if you like you can use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
+In this tutorial, we use [Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger). You can also use the [SMS channel](doc:conversation-send-sms) or any [other channel](doc:conversation-channel-support)
 
 ## Create a simple webhook using Node.js
 
-First create a new node app and then run the following on the command line to create the needed dependency.
+To create a simple webhook using Node.js, take these steps.
 
-**Note**: You would need to use the right region api endpoint where your Conversation App resides. In this tutorial, we assume our app resides in EU region.
+  1. Create a new node app and then run the following on the command line to create the needed dependency.
 
-`npm install express body-parser --save` This will install the [Express](https://www.npmjs.com/package/express) http server framework module.
+**Note**: You need to use the right region api endpoint where your Conversation App resides. In this tutorial, we assume our app resides in the EU region.
 
-Now add the following code to your index.js
+  2. Install the [Express](https://www.npmjs.com/package/express) http server framework module.`npm install express body-parser --save`
+  3. Add the following code to your index.js
 
 ```javascript
 const express = require("express"),
@@ -42,10 +43,10 @@ app.post("/webhook", (req, res) => {
 app.listen(port, () => console.log(`Listening to ${port}..`));
 ```
 
-This code will allow you to listen for incoming messages and will parse out the text message content.
-If you want to see the payload not parsed, add `console.log(JSON.stringify(body, null, 2));`
+This code will allow you to listen for incoming messages and will parse out the text message content. If you want to see the payload not parsed, add `console.log(JSON.stringify(body, null, 2));`
 
-Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server, for that you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
+  4. Use [ngrok](https://ngrok.com/) to open up a tunnel to your local server to handle incoming traffic. 
+  5. Open a terminal/command prompt and type: `ngrok http 3000` 
 
 The Node app and Ngrok should be running at the same time at port 3000.
 
@@ -53,26 +54,22 @@ The Node app and Ngrok should be running at the same time at port 3000.
 
 ## Configure a webhook
 
-Go to your Conversation App dashboard and select
-`Conversations` on the left side menu.
+To configure a webhook, take these steps.
 
-Then select `Apps` from the drop-down menu and select the App you want to add a webhook too.
+  1. Go to your Conversation App dashboard and select **Conversations**.
+  2. Select **Apps** from the drop-down menu.
+  3. Select the app you want to add a webhook too. For this example, we will use **Test** as the app.
 
 ![LeftMenu](images/dashboard/dashboard_leftMenu.jpg)
 
-For this example, I will be using **Test** as my app.
-
-Once you have selected your App, scroll down to **Webhook** section and select the **Add Webhook** button. There will be a pop-up with empty required fields.
+  4. Select your App.
+  5. Scroll down to the **Webhook** section and select **Add Webhook**. There will be a pop-up with empty required fields.
 
 ![Webhook](images/dashboard/dashboard_configPage.jpg)
 
-Fill in the following:
-
-Select **Target Type** to HTTP
-
-Select **Target URL** as your ngrok url
-
-Select `MESSAGE_INBOUND`, `MESSAGE_DELIVERY`, `EVENT_DELIVERY`, `MESSAGE_INBOUND`, `EVENT_INBOUND`, `CONVERSATION_START`, `CONVERSATION_STOP`, `UNSUPPORTED` as **Trigger**
+  6. Select HTTP for **Target Type**.
+  7. Use your ngrok url as the **Target URL**.
+  8. Select `MESSAGE_INBOUND`, `MESSAGE_DELIVERY`, `EVENT_DELIVERY`, `MESSAGE_INBOUND`, `EVENT_INBOUND`, `CONVERSATION_START`, `CONVERSATION_STOP`, `UNSUPPORTED` as **Trigger**
 
 ![WebhookPopup](images/dashboard/dashboard_webhookPopup.png)
 
@@ -80,14 +77,17 @@ Now your webhook is setup with the Conversation App.
 
 ---
 
-## Start a Conversation
+## Start a Conversation and test the webhook
 
-Now that your webhook is setup with the Conversation App and ngrok along with your node app are running and listening to port 3000- it's time to test the webhook.
-For this demo, we will be using Facebook Messenger channel as our example. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please look into [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger) before proceeding.
+Now that your webhook is setup with the Conversation App, and ngrok along with your node app is running and listening to port 3000, it's time to test the webhook. For this tutorial, we will be using Facebook Messenger channel as our example.
+
+To start a conversation and test the webhook, take these steps.
+
+  1. Open up Facebook Messenger and send a message to your test account. If you do not have an account, please visit [Send a message with Facebook Messenger](doc:conversation-send-a-message-with-fb-messenger) before proceeding.
 
 ![SendingMessage](images/channel-support/messenger/fb_message_firstmsg.png)
 
-if you did everything correctly, you will receive a `status 200 OK` on ngrok and the text message on your console log.
+If you did everything correctly, you will receive a `status 200 OK` on ngrok and the text message on your console log.
 
 ![Logged](images/channel-support/messenger/fb_message_log.jpg)
 
@@ -95,7 +95,9 @@ if you did everything correctly, you will receive a `status 200 OK` on ngrok and
 
 ## Sending a reply via Webhook
 
-Copy the following code on top of your current webhook and then re-run your node application.
+To send a reply via webhook, take these steps.
+  1. Copy the following code on top of your current webhook.
+  2. Re-run your node application.
 
 ```javascript
 const express = require("express");
@@ -168,11 +170,11 @@ app.post("/webhook", (req, res) => {
 app.listen(port, () => console.log(`Listening to ${port}..`));
 ```
 
-if everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and `accepted time`
+If everything is done correctly, you will receive a message back from your webhook on Messenger. On your terminal, you will receive data regarding the `message id` and `accepted time`
 
 ![Received](images/channel-support/messenger/fb_message_replied.png)
 
-Now your webhook is ready to receive and send a message back!
+Now your webhook is ready to receive and send messages!
 
-If you want to send something other than a text message on Messenger, refer to
-[Sending a Rich message with Facebook Messenger](doc:conversation-send-rich-messages-with-fb-messenger)
+If you want to send something other than a text message on Messenger, visit our
+[Sending a Rich message with Facebook Messenger](doc:conversation-send-rich-messages-with-fb-messenger) page.
