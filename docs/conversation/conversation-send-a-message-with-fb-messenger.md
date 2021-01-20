@@ -166,5 +166,5 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
 
 ** CONGRATULATIONS**, you have just sent your first Sinch Conversations Messenger Message!
 
-To learn how to receive messages or send rich messages with Facebook messengers, visit our [Handle incoming messages]( https://developers.sinch.com/docs/conversation-receive-a-message) page and {Send rich messages with Facebook Messenger]( https://developers.sinch.com/docs/conversation-send-rich-messages-with-fb-messenger) page.
+To learn how to receive messages or see example of rich messages sent with Facebook messengers, visit our [Handle incoming messages]( https://developers.sinch.com/docs/conversation-receive-a-message) page and {Send rich messages with Facebook Messenger]( https://developers.sinch.com/docs/conversation-send-rich-messages-with-fb-messenger) page.
 
