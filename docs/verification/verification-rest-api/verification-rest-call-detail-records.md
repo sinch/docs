@@ -39,7 +39,7 @@ Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in 
                     <p>string</p>
                 </blockquote></td>
                 <td><blockquote>
-                    <p>Verification method. Can be flashCall, sms or callout</p>
+                    <p>Verification method. Can be flashCall, sms, callout or seamless</p>
                 </blockquote></td>
             </tr>
             <tr class="even">

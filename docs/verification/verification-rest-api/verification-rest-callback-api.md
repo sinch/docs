@@ -212,6 +212,7 @@ You can find more information on callback request signing `here
 >   - "flashcall"
 >   - "sms"
 >   - "callout"
+>   - "seamless"
 
 **identity** contains the endpoint information that is being verified. It contains a "type" object and an "endpoint" object
 
