@@ -949,6 +949,18 @@ Inbounds, or Mobile Originated messages, are incoming messages. Inbound messages
 
 NB: The operator is only available for MOs sent to short codes.
 
+### Mobile Originating Callback Report
+
+``` json
+{
+	"id":"{batch_id}",
+	"from":"123456789","to":"12345",
+	"body":"Help",
+	"type":"mo_text",
+	"received_at":"2016-07-19T13:09:02.972Z" 
+	}
+```
+
 ### List inbound messages
 
 **Retrieve the first 30 inbound messages from the last 24 hours.**
