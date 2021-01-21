@@ -7,7 +7,7 @@ next:
   pages:
     - video-ios-application-authentication
 ---
-If the application plays audio that does not originate from the Sinch SDK, certain guidelines should be followed. Additional information on audio session-related topics is available in the [Audio Session Programming Guide](http://developer.apple.com/library/ios/#documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction Introduction.html).
+If the application plays audio that does not originate from the Sinch SDK, certain guidelines should be followed. Additional information on audio session-related topics is available in the [Audio Session Programming Guide](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/Introduction/Introduction.html).
 
 ## Audio sessions
 When a call is established, the Sinch client activates the shared audio session. When the call is disconnected, the Sinch client deactivates the shared audio session. If the application wants to play audio in any other context, it needs to reactivate the shared audio session. This applies after each finished call.
@@ -20,7 +20,7 @@ When the Sinch client is started, it sets the audio session category to `PlayAnd
 
 If the application changes the audio session category, it is responsible for changing the category back to `PlayAndRecord` after the application has performed its audio task so that the category is correctly setup for calls.
 
-The Sinch SDK applies the audio session category mode `AVAudioSessionModeVoiceChat` for improved voice quality. Please see [Apple’s AVAudioSession documentation](https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference Reference.html) for further details.
+The Sinch SDK applies the audio session category mode `AVAudioSessionModeVoiceChat` for improved voice quality. Please see [Apple’s AVAudioSession documentation](https://developer.apple.com/documentation/avfoundation/avaudiosession) for further details.
 
 ## Audio session interruptions
 
