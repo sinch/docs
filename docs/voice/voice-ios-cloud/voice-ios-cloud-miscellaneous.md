@@ -8,9 +8,9 @@ hidden: false
 
 We officially support iOS _10.0_ as iOS _Deployment Target_. You can try older versions but there are no guarantees it will work as expected.
 
-## Note on Sinch.framework File Size vs. Linked Size
+## Note on Sinch.xcframework File Size vs. Linked Size
 
-The _Sinch.framework_ file includes a FAT-binary containing the architectures _armv7_, _arm64_, _x86_64_. When linking an application target against the _Sinch.framework_ targeting an iOS device, it will add a approximately 9.5MB for _arm64_ and approximately 8MB for _armv7_.
+The _Sinch.xcframework_ file includes a FAT-binary containing the architectures _armv7_, _arm64_, _x86_64_. When linking an application target against the _Sinch.xcframework_ targeting an iOS device, it will add a approximately 9.5MB for _arm64_ and approximately 8MB for _armv7_.
 
 **Example**: Assuming linking _armv7_ and _arm64_ into the final application, it would add approximately 17.5MB to the application.
 
