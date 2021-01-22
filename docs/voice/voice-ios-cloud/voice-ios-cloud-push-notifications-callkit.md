@@ -189,23 +189,6 @@ Also see reference documentation for [SINManagedPush](reference\html\Classes\SIN
 
 If the user of the application logs out or performs a similar action, the push notification device token can be unregistered using the method `-[SINClient unregisterPushNotificationDeviceToken]` to prevent further notifications to be sent to the particular device.
 
-## Push Notification _"Display Name"_
-
-To support showing a user display name in a non-VoIP push notification (i.e. in a regular _Remote Push Notification_), you can configure a display name using [`-[SINManagedPush setDisplayName:]`].
-
-Example of Sinch push notification payload when display name is __not__ specified:
-
-```
-{
-   "aps" : {
-      "alert" : {
-         "loc-key" : "SIN_INCOMING_CALL"
-      }
-   },
-   "sin": "<opaque push payload>"
-}
-```
-
 ## Apple Push Service Environments and Provisioning
 
 When an iOS application is code signed, the embedded _Provisioning Profile_ will have to match the _Apple Push Notification service Environment_ (also referred to as _APS Environment_) specified in the app [_Entitlements_](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment?language=objc).

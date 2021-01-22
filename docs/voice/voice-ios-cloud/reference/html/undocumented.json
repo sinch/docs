@@ -1,0 +1,117 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCall.h",
+      "line": 16,
+      "symbol": "SINCallState.SINCallStateInitiating",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCall.h",
+      "line": 26,
+      "symbol": "SINCallDirection.SINCallDirectionIncoming",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCall.h",
+      "line": 26,
+      "symbol": "SINCallDirection.SINCallDirectionOutgoing",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 14,
+      "symbol": "SINCallEndCause.SINCallEndCauseNone",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 15,
+      "symbol": "SINCallEndCause.SINCallEndCauseTimeout",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 16,
+      "symbol": "SINCallEndCause.SINCallEndCauseDenied",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 17,
+      "symbol": "SINCallEndCause.SINCallEndCauseNoAnswer",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 18,
+      "symbol": "SINCallEndCause.SINCallEndCauseError",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 19,
+      "symbol": "SINCallEndCause.SINCallEndCauseHungUp",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 20,
+      "symbol": "SINCallEndCause.SINCallEndCauseCanceled",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINCallDetails.h",
+      "line": 21,
+      "symbol": "SINCallEndCause.SINCallEndCauseOtherDeviceAnswered",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINLogSeverity.h",
+      "line": 14,
+      "symbol": "SINLogSeverity.SINLogSeverityTrace",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINLogSeverity.h",
+      "line": 15,
+      "symbol": "SINLogSeverity.SINLogSeverityInfo",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINLogSeverity.h",
+      "line": 16,
+      "symbol": "SINLogSeverity.SINLogSeverityWarn",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINLogSeverity.h",
+      "line": 17,
+      "symbol": "SINLogSeverity.SINLogSeverityCritical",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/dmipon/projects/ios-sdk/Source/Sinch/SINManagedPush.h",
+      "line": 52,
+      "symbol": "SINManagedPush.delegate",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/dmipon/projects/ios-sdk"
+}
