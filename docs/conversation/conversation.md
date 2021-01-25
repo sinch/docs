@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting started
 excerpt: >-
   The Sinch Conversation API is available in the [US] https://us.conversation.api.sinch.com  and [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
