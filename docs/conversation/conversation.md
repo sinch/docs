@@ -33,13 +33,13 @@ curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --u
 
 ### Supported Conversation API Channels and Message Types
 
-Our Conversation API supports multiple channels that can be used to send different message types. These supported channels and more information can be found by clicking [here](https://developers.sinch.com/v1.3/docs/conversation-channel-support).
+Our Conversation API supports multiple channels that can be used to send different message types. These supported channels and more information can be found by clicking [here](https://developers.sinch.com/docs/conversation-channel-support).
 
 #### Supported Message Types
 
 Our current message types are:
 
-- `Test message` - A message containing only tesxt.
+- `Text message` - A message containing only tesxt.
 - `Media message` - A message containing media such as images, GIFs, documentation and video.
 - `Choice message` - A message containing "choices"/"actions" and description.
 - `Card message` - A rich message which consists of text and description with image or video. It can also contain a set of "choices"/"actions".
