@@ -30,11 +30,11 @@ iOS apps must have the proper entitlements to use push notifications. To add the
 
 ## Acquiring a Push Device Token
 
-`SINManagedPush` is a component used to simplify acquiring a push device token and registering the token with a `SINClient`. `SINManagedPush` will make use of _PushKit_ to acquire a push device token, and will automatically register the token with the `SINClient` when a client is created (later in the application life-cycle). `SINManagedPush` should be created as early as possible in the application’s life-cycle.
+`SINManagedPush` is a component used to simplify acquiring a push device token and registering the token with a `SINClient`. `SINManagedPush` will make use of _PushKit_ to acquire a push device token, and will automatically register the token with the `SINClient` when a client is created (later in the application life cycle). `SINManagedPush` should be created as early as possible in the application’s life cycle.
 
 ```objectivec
 @interface AppDelegate () <SINManagedPushDelegate>
-@property (nonatomic, readwrite, strong) id<SINManagedPush> push;
+@property (nonatomic, readwrite, strong) SINManagedPush push;
 @end
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options {
@@ -52,12 +52,12 @@ iOS apps must have the proper entitlements to use push notifications. To add the
 
 > 👍
 >
-> `SINManagedPush` is a very lightweight component and its lifecycle can be independent of the life-cycle of a `SINClient`. It should be created once, and should not be disposed (that would prevent receiving push notifications via _PushKit_).
+> `SINManagedPush` is a very lightweight component and its life cycle can be independent of the life cycle of a `SINClient`. It should be created once, and should not be disposed (that would prevent receiving push notifications via _PushKit_).
 
 
 ## Enabling Push Notifications for `SINClient`
 
-To enable that Sinch manage push notifications for you end-to-end, i.e. both client-side and server-side in terms acting [APNs Provider](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns?language=objc), it is necessary to enable that when configuring a `SINClient`.
+To make Sinch manage push notifications for you end-to-end, i.e. both client-side and server-side in terms of acting [APNs Provider](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns?language=objc), it is necessary to enable managed push notifications when configuring a `SINClient`.
 
 ```objectivec
 id<SINClient> client = [Sinch clientWithApplicationKey:@"<application key>"
@@ -69,7 +69,7 @@ id<SINClient> client = [Sinch clientWithApplicationKey:@"<application key>"
 
 ## Configuring an APNs Authentication Signing Key
 
-To enable Sinch to act as _APNs Provider_ on your behalf, you must provide Sinch with an _APNs Authentication Token Signing Key_. You create this signing key in in your [_Apple Developer Account_](https://developer.apple.com/) and upload the key file to your [Sinch Developer Account](https://portal.sinch.com/#/apps).
+To enable Sinch to act as _APNs Provider_ on your behalf, you must provide Sinch with an _APNs Authentication Token Signing Key_. You create this signing key in  your [_Apple Developer Account_](https://developer.apple.com/) and upload the key file to your [Sinch Developer Account](https://portal.sinch.com/#/apps).
 
 1. Create an APNs Key in your [_Apple Developer Account_](https://developer.apple.com/). See the Apple developer documentation on creating the key [here](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_token-based_connection_to_apns).
 2. Take the key file (`.p8`) from _step 1)_ and upload it for your _Sinch Application_ in your [Sinch Developer Account](https://portal.sinch.com/#/apps).
@@ -82,6 +82,7 @@ To enable Sinch to act as _APNs Provider_ on your behalf, you must provide Sinch
 __NOTE__: We only support _APNs Token-based authentication_, i.e. we no longer support APNs certificate-based functionality.
 
 ## CallKit
+
 
 ### Apple Requirements on Use of VoIP Push Notifications and _CallKit_
 
@@ -119,10 +120,10 @@ When linking against the iOS 13 SDK or later, your implementation **must** repor
 ```
 
 
-When you relay the push notification to a `SINClient`. If you for some reason do not relay the push payload to a Sinch client instance using `-[SINClient relayRemotePushNotification:]`, you __must__ instead invoke `-[SINManagedPush didCompleteProcessingPushPayload:]` so that the Sinch SDK can invoke the _PKPushKit_ completion handler (which is managed by `SINManagedPush`).
+You need to relay the push notification to a `SINClient`. If you for some reason do not relay the push payload to a Sinch client instance using `-[SINClient relayPushNotification:]`, you __must__ instead invoke `-[SINManagedPush didCompleteProcessingPushPayload:]` so that the Sinch SDK can invoke the _PKPushKit_ completion handler (which is managed by `SINManagedPush`).
 
 > ❗️Report Push Notifications to CallKit
-> If a VoIP push notification is not reported to CallKit then iOS will __terminate__ the application. Repeatedly failing to report calls to CallKit may cause the system to stop delivering any more VoIP push notifications to your app. The exact limit before this behaviour kicks in is subject to Apple iOS implementation details and outside the control of the Sinch SDK.
+> If a VoIP push notification is not reported to CallKit then iOS will __terminate__ the application. Repeatedly failing to report calls to CallKit may cause the system to stop delivering any more VoIP push notifications to your app. The exact limit before this behavior kicks in is subject to Apple iOS implementation details and outside the control of the Sinch SDK.
 >
 > Please also see [Apples Developer documentation on this topic](https://developer.apple.com/documentation/pushkit/pkpushregistrydelegate/2875784-pushregistry).
 
@@ -188,40 +189,9 @@ Also see reference documentation for [SINManagedPush](reference\html\Classes\SIN
 
 If the user of the application logs out or performs a similar action, the push notification device token can be unregistered using the method `-[SINClient unregisterPushNotificationDeviceToken]` to prevent further notifications to be sent to the particular device.
 
-## Push Notification _"Display Name"_
-
-To support showing a user display name in a non-VoIP push notification (i.e. in a regular _Remote Push Notification_), you can configure a display name using [`-[SINManagedPush setDisplayName:]`]. The display name will be available to in the push notification in `aps.alert.loc-args` (when key `aps.alert.loc-key` is `SIN_INCOMING_CALL_DISPLAY_NAME`).
-
-Example of Sinch push notification payload when display name is specified:
-
-```
-{
-   "aps" : {
-      "alert" : {
-         "loc-key" : "SIN_INCOMING_CALL_DISPLAY_NAME",
-         "loc-args" : [ "John Doe"]
-      }
-   },
-   "sin": "<opaque push payload>"
-}
-```
-
-Example of Sinch push notification payload when display name is __not__ specified:
-
-```
-{
-   "aps" : {
-      "alert" : {
-         "loc-key" : "SIN_INCOMING_CALL"
-      }
-   },
-   "sin": "<opaque push payload>"
-}
-```
-
 ## Apple Push Service Environments and Provisioning
 
-When an iOS application is code signed, the embedded _Provisioning Profile_ will have to match the _Apple Push Notification service Environment_ (also refered to as _APS Environment_) specified in the app [_Entitlements_](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment?language=objc).
+When an iOS application is code signed, the embedded _Provisioning Profile_ will have to match the _Apple Push Notification service Environment_ (also referred to as _APS Environment_) specified in the app [_Entitlements_](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment?language=objc).
 
 This means how the the app is code signed and what _Provisioning Profile_ is used has an effect on what value should be passed to `+[Sinch managedPushWithAPSEnvironment:]`.
 
@@ -231,7 +201,7 @@ Typically a _Debug_ build will be code signed with a _Development_ provisioning 
 
 ## iOS not Delivering Notifications
 
-Under certain circumstances, iOS will not deliver a notification to your application even if it was received at device/OS level. Note that this also applies to VoIP push notifications. Exact behaviour and limits are subject to iOS internal details, but well known scenarios where notifications will not be delivered are:
+Under certain circumstances, iOS will not deliver a notification to your application even if it was received at device/OS level. Note that this also applies to VoIP push notifications. Exact behavior and limits are subject to iOS internal details, but well known scenarios where notifications will not be delivered are:
 
 * The end user has actively terminated the application. iOS will only start delivering notifications to the application again after the user has actively started the application again.
 * Your app has not been reporting VoIP push notifications to _CallKit_. Please see the separate sections above on how to report VoIP push notifications as _CallKit_ calls.
@@ -248,4 +218,4 @@ For more details on Apple _PushKit_ and _CallKit_, see following _Apple Develope
 
 This section covers details on how `SINManagedPush` and `SINClient` interacts together (automatically).
 
-`SINManagedPush` will make use of `PKPushRegistry` to acquire a push device token. If any `SINClient` instances exist, it will register the token via `-[SINClient registerPushNotificationDeviceToken:type:apsEnvironment:]`, which will in turn register the token with the Sinch backend platform. If no instance of `SINClient` exists when `SINManagedPush` initially acquire the token, it will hold on to the token (in-process memory only) and register it with any `SINClient` that is created later during the whole application life-cycle.
+`SINManagedPush` will make use of `PKPushRegistry` to acquire a push device token. If any `SINClient` instances exist, it will register the token via `-[SINClient registerPushNotificationDeviceToken:type:apsEnvironment:]`, which will in turn register the token with the Sinch backend platform. If no instance of `SINClient` exists when `SINManagedPush` initially acquire the token, it will hold on to the token (in-process memory only) and register it with any `SINClient` that is created later during the whole application life cycle.
