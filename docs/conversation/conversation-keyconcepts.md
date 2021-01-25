@@ -69,10 +69,10 @@ A **webhook** has the following configurable properties:
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Target      | The target URL where events should be sent to                                                                                                                                                                                |
 | Target type | Type of the target URL. Currently only DISMISS and HTTP are supported values. DISMISS indicates the events will not be sent                                                                                                  |
-| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks. See [Validating Callbacks](-callbacks#validating-callbacks) for details. |
+| Secret      | Optional secret to be used to sign the content of Conversation API callbacks. Can be used to verify the integrity of the callbacks. See [Validating Callbacks](https://developers.sinch.com/docs/conversation-callbacks#validating-callbacks) for details. |
 | Triggers    | A set of triggers that this webhook is listening to. Example triggers include MESSAGE_DELIVERY for message delivery receipts and MESSAGE_INBOUND for inbound contact messages                                                |
 
-[Conversation API Callbacks](-callbacks) provides more information about managing webhooks and the format of the callbacks.
+[Conversation API Callbacks](https://developers.sinch.com/docs/conversation-callbacks) provides more information about managing webhooks and the format of the callbacks.
 
 #### Contact
 
