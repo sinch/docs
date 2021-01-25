@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Getting Started
 excerpt: >-
   The Sinch Conversation API is available in the [US] https://us.conversation.api.sinch.com  and [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
@@ -10,15 +10,6 @@ hidden: false
 Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
-
-### Supported channels
-
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
-- <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> WhatsApp
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> RCS
-- <img src="https://files.readme.io/41a20d1-messenger.svg" width="20" height="20" /> Facebook messenger
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
 
 ### Authentication
 
@@ -44,21 +35,26 @@ curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --u
 
 ### Postman collection
 
-Sinch offers a Postman collection for easy setup and testing during development.
-https://www.getpostman.com/collections/79a07a7d299afe46658b
-After importing the collection, fill in the following variables: PROJECT with your PROJECT ID, APP with app id, CLIENT_ID with your CLIENT_ID, and CLIENT_SECRET with your client secret.  
-To fill WEBHOOK_URL, simply visit  
-https://webhook.site/  
-and use the generated link - the one under the 'Your unique URL' label.
+Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/collections/79a07a7d299afe46658b, into a Firefox browser or, use the Import option in Postman.
+
+After importing the collection, fill in the following variables: 
+
+- `PROJECT` with your PROJECT ID.
+- `APP` with app id. 
+- `CLIENT_ID` with your CLIENT_ID
+- `CLIENT_SECRET` with your client secret.
+
+For testing purposes, fill the WEBHOOK_URL by visiting https://webhook.site/ and use the generated link - the one under the **Your unique URL** label.
+
 Values for other variables can be obtained by calling corresponding requests:
 
-- CONTACT - ID of contact created by calling 'Create contact' request
-- WEBHOOK_ID - ID of webhook created by calling 'Create webhook' request
-- CONVERSATION - a Conversation is created automatically when sending a new message (for example with 'Text Message' request). Send a message, then call 'List conversations of App/Contact' to get the ID of conversation for this variable
+- `CONTACT` - ID of contact created by calling **Create contact** request.
+- `WEBHOOK_ID` - ID of webhook created by calling **Create webhook** request.
+- `CONVERSATION` - a Conversation is created automatically when sending a new message. For example, with a Text Message request, send a message, then call [List conversations](https://developers.sinch.com/reference#conversation_listconversations) to get the ID of the conversation for this variable.
 
 ### Errors
 
-When requests are erroneous, the Sinch Conversation API will respond with standard HTTP status codes, such as `4xx` for client errors and `5xx` for server errors. All responses include a JSON body of the form:
+When requests are erroneous, the Sinch Conversation API will respond with standard HTTP status codes, such as `4xx` for client errors. All responses include a JSON body of the form:
 
 ```json
 {
@@ -89,6 +85,4 @@ The table below describes the fields of the error object:
 | ------ | ---------------------------------------------------------------------- |
 | 400    | Malformed request                                                      |
 | 401    | Incorrect credentials                                                  |
-| 403    | Correct credentials but you dont have access to the requested resource |
-| 500    | Something went wrong on our end, try again with exponential back-off   |
-| 503    | Something went wrong on our end, try again with exponential back-off   |
+| 403    | Correct credentials but you dont have access to the requested resource |  |
