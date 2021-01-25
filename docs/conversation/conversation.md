@@ -31,6 +31,22 @@ To use Basic authentication, use your client_id as the basic auth username and y
 curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --user <client_id>:<client_secret>
 ```
 
+### Supported Conversation API Channels and Message Types
+
+Our Conversation API supports multiple channels that can be used to send different message types. These supported channels and more information can be found by clicking [here](https://developers.sinch.com/v1.3/docs/conversation-channel-support).
+
+#### Supported Message Types
+
+Our current message types are:
+
+- `Test message` - A message containing only tesxt.
+- `Media message` - A message containing media such as images, GIFs, documentation and video.
+- `Choice message` - A message containing "choices"/"actions" and description.
+- `Card message` - A rich message which consists of text and description with image or video. It can also contain a set of "choices"/"actions".
+- `Carousel message` - A list of cards rendered horizontally on our supported channels (Messenger, Viber Bot and RCS) and as a numbered list on SMS, Viber Business Messages and WhatsApp.
+- `Location message` - A message defining a physical location on a map.
+- `Template message` - A message with predefined template. Requires an existing template.
+
 ### Postman collection
 
 Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/collections/79a07a7d299afe46658b, into a Firefox browser or, use the Import option in Postman.
