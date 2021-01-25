@@ -1,5 +1,5 @@
 ---
-title: Channel Properties
+title: Channel properties
 excerpt: >-
   Sinch Conversation API channel specific properties.
 hidden: false
