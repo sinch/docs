@@ -1,5 +1,5 @@
 ---
-title: Key Concepts and Terms
+title: Key concepts and terms
 excerpt: Key concepts and terms for the Sinch Conversation API
 hidden: false
 ---
