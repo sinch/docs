@@ -11,15 +11,6 @@ Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Fac
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
-### Supported channels
-
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
-- <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> WhatsApp
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> RCS
-- <img src="https://files.readme.io/41a20d1-messenger.svg" width="20" height="20" /> Facebook messenger
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
-
 ### Authentication
 
 The Conversation API supports OAuth, which is recommended, and Basic authentication. Both methods use client_id and client_secret to authenticate requests. You can view and manage your API keys [here](https://dashboard.sinch.com/settings/access-keys).
@@ -41,6 +32,15 @@ To use Basic authentication, use your client_id as the basic auth username and y
 ```console
 curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --user <client_id>:<client_secret>
 ```
+
+### Supported channels
+
+- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
+- <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> WhatsApp
+- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> RCS
+- <img src="https://files.readme.io/41a20d1-messenger.svg" width="20" height="20" /> Facebook messenger
+- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
+- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
 
 ### Postman collection
 
