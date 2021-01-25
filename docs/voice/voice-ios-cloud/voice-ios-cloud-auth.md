@@ -15,7 +15,7 @@ To authorize the registration of a user, the application must provide a registra
 
 The recommended way to implement this authentication scheme is that the _Application Secret_ should be kept securely on your server-side backend, and the signed token should be created and signed on your server, then passed via a secure channel to the application instance and Sinch client running on a device.
 
-![Token-based User Registration](images\20200221-token_based_user_registration.png)
+![Token-based User Registration](images\20210125-token_based_user_registration.pu.png)
 
 The following sections describes in detail how to create and sign the _JWT_, and how to provide it to the `SINClient`.
 

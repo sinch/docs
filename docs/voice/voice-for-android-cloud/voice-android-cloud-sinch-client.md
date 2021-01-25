@@ -57,7 +57,7 @@ sinchClient.addSinchClientListener(new SinchClientListener() {
 
     public void onClientStarted(SinchClient client) { }
     public void onClientFailed(SinchClient client, SinchError error) { }
-    public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration registrationCallback) { 
+    public void onCredentialsRequired(ClientRegistration clientRegistration) {
       // You have to implement this method, it can't be no-op. 
     }
     public void onLogMessage(int level, String area, String message) { }
@@ -66,7 +66,7 @@ sinchClient.addSinchClientListener(new SinchClientListener() {
 sinchClient.start();
 ```
 
-When starting the client (`sinchClient.start()`) the client will ask for a token via [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html).
+When starting the client (`sinchClient.start()`) the client will ask for a token via [SinchClientListener.onCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html).
 See section [Authentication & Authorization](doc:voice-android-cloud-application-authentication) for the details.
 
 
@@ -76,7 +76,7 @@ See section [Authentication & Authorization](doc:voice-android-cloud-application
 
 ### Authorizing the Client / User
 
-When the _SinchClient_ is started with a given _User ID_ it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement [SinchClientListener.onRegistrationCredentialsRequired()](reference/com/sinch/android/rtc/SinchClientListener.html) that is cryptographically signed with the _Application Secret_. 
+When the _SinchClient_ is started with a given _User ID_ (__mUserId__ in the following example) it is required to provide an authorization token to register towards the _Sinch backend_. To authorize a client, implement [SinchClientListener.onCredentialsRequired()](reference/com/sinch/android/rtc/SinchClientListener.html) that is cryptographically signed with the _Application Secret_. 
 
 The sample applications included in the Sinch SDK includes a class `JWT` that describes how to create the _JWT_ and sign it with the _Application Secret_.
 
@@ -84,10 +84,8 @@ The sample applications included in the Sinch SDK includes a class `JWT` that de
 class MySinchClientListener implements SinchClientListener {
 
         @Override
-        public void onRegistrationCredentialsRequired(SinchClient client,
-                                                      ClientRegistration registrationCallback) {
-            String jwt = JWT.create("<application key>", "<application secret>", client.getLocalUserId());
-            
+        public void onCredentialsRequired(ClientRegistration registrationCallback) {
+            String jwt = JWT.create("<application key>", "<application secret>", mUserId);
             registrationCallback.register(jwt);
         }
 }
