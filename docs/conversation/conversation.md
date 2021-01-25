@@ -1,11 +1,9 @@
 ---
-title: Introduction
+title: Getting Started
 excerpt: >-
   The Sinch Conversation API is available in the [US] https://us.conversation.api.sinch.com  and [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
 ---
-
-## Introduction <span class="betabadge">Beta</span>
 
 Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
@@ -33,32 +31,44 @@ To use Basic authentication, use your client_id as the basic auth username and y
 curl https://us.conversation.api.sinch.com/v1beta/projects/<Project ID>/apps --user <client_id>:<client_secret>
 ```
 
-### Supported channels
+### Supported Conversation API Channels and Message Types
 
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> SMS
-- <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> WhatsApp
-- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> RCS
-- <img src="https://files.readme.io/41a20d1-messenger.svg" width="20" height="20" /> Facebook messenger
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Business Messages
-- <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> Viber Bot
+Our Conversation API supports multiple channels that can be used to send different message types. These supported channels and more information can be found by clicking [here](https://developers.sinch.com/v1.3/docs/conversation-channel-support).
+
+#### Supported Message Types
+
+Our current message types are:
+
+- `Test message` - A message containing only tesxt.
+- `Media message` - A message containing media such as images, GIFs, documentation and video.
+- `Choice message` - A message containing "choices"/"actions" and description.
+- `Card message` - A rich message which consists of text and description with image or video. It can also contain a set of "choices"/"actions".
+- `Carousel message` - A list of cards rendered horizontally on our supported channels (Messenger, Viber Bot and RCS) and as a numbered list on SMS, Viber Business Messages and WhatsApp.
+- `Location message` - A message defining a physical location on a map.
+- `Template message` - A message with predefined template. Requires an existing template.
 
 ### Postman collection
 
-Sinch offers a Postman collection for easy setup and testing during development.
-https://www.getpostman.com/collections/79a07a7d299afe46658b
-After importing the collection, fill in the following variables: PROJECT with your PROJECT ID, APP with app id, CLIENT_ID with your CLIENT_ID, and CLIENT_SECRET with your client secret.  
-To fill WEBHOOK_URL, simply visit  
-https://webhook.site/  
-and use the generated link - the one under the 'Your unique URL' label.
+Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/collections/79a07a7d299afe46658b, into a Firefox browser or, use the Import option in Postman.
+
+After importing the collection, fill in the following variables: 
+
+- `PROJECT` with your PROJECT ID.
+- `APP` with app id. 
+- `CLIENT_ID` with your CLIENT_ID
+- `CLIENT_SECRET` with your client secret.
+
+For testing purposes, fill the WEBHOOK_URL by visiting https://webhook.site/ and use the generated link - the one under the **Your unique URL** label.
+
 Values for other variables can be obtained by calling corresponding requests:
 
-- CONTACT - ID of contact created by calling 'Create contact' request
-- WEBHOOK_ID - ID of webhook created by calling 'Create webhook' request
-- CONVERSATION - a Conversation is created automatically when sending a new message (for example with 'Text Message' request). Send a message, then call 'List conversations of App/Contact' to get the ID of conversation for this variable
+- `CONTACT` - ID of contact created by calling **Create contact** request.
+- `WEBHOOK_ID` - ID of webhook created by calling **Create webhook** request.
+- `CONVERSATION` - a Conversation is created automatically when sending a new message. For example, with a Text Message request, send a message, then call [List conversations](https://developers.sinch.com/reference#conversation_listconversations) to get the ID of the conversation for this variable.
 
 ### Errors
 
-When requests are erroneous, the Sinch Conversation API will respond with standard HTTP status codes, such as `4xx` for client errors and `5xx` for server errors. All responses include a JSON body of the form:
+When requests are erroneous, the Sinch Conversation API will respond with standard HTTP status codes, such as `4xx` for client errors. All responses include a JSON body of the form:
 
 ```json
 {
@@ -89,6 +99,4 @@ The table below describes the fields of the error object:
 | ------ | ---------------------------------------------------------------------- |
 | 400    | Malformed request                                                      |
 | 401    | Incorrect credentials                                                  |
-| 403    | Correct credentials but you dont have access to the requested resource |
-| 500    | Something went wrong on our end, try again with exponential back-off   |
-| 503    | Something went wrong on our end, try again with exponential back-off   |
+| 403    | Correct credentials but you dont have access to the requested resource |  |
