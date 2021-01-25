@@ -1,7 +1,7 @@
 ---
-title: Getting started
+title: Creating your first app
 excerpt: >-
-  Getting started with the Conversation API.
+  Creating your first app with the Conversation API
 hidden: false
 ---
 
