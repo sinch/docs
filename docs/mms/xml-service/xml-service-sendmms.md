@@ -84,6 +84,3 @@ MMS "Link Expiration Date’ is used to expire the MMS Link (In the case when MM
 ```
 
 
-## Special Considerations for sendMMS
-
- - MMS message-subject is required. The message-subject parameter should not contain emoji/Unicode characters as this will cause messages to get rejected by the carrier's MMSC.
