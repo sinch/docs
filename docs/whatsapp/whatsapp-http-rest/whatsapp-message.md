@@ -251,7 +251,7 @@ JSON object parameters:
 
 > 📘 Note
 >
-> Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
+> Any media file sent through the Sinch WhatsApp API can be at most 100.0 MB
 
 Accepted content types can be found in the [introduction](doc:whatsapp-introduction#accepted-media-types).
 
@@ -281,7 +281,7 @@ JSON object parameters:
 
 > 📘 Note
 >
-> Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
+> Any media file sent through the Sinch WhatsApp API can be at most 100.0 MB
 
 Accepted content types can be found in the [introduction](doc:whatsapp-introduction#accepted-media-types).
 
@@ -312,7 +312,7 @@ JSON object parameters:
 
 > 📘 Note
 >
-> Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
+> Any media file sent through the Sinch WhatsApp API can be at most 100.0 MB
 
 Accepted content types can be found in the [introduction](doc:whatsapp-introduction#accepted-media-types).
 
@@ -344,7 +344,7 @@ JSON object parameters:
 
 > 📘 Note
 >
-> Any media file sent through the Sinch WhatsApp API can be at most 100.0 mb
+> Any media file sent through the Sinch WhatsApp API can be at most 100.0 MB
 
 Accepted content types can be found in the [introduction](doc:whatsapp-introduction#accepted-media-types).
 
