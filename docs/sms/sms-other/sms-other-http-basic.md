@@ -87,20 +87,20 @@ Test case with correct settings:
 
 **Correct Settings**
 ```shell
-$ curl -v “http://sms1.clxnetworks.net:3800/sendsms?username=user&password=pass&from=CLX&to=46700 123456&text=Test”
-* About to connect() to sms1.clxnetworks.net port 3800 (#0)
-*           Trying 93.158.78.4â€¦ connected
-* Connected to sms1.clxnetworks.net (93.158.78.4) port 3800 (#0)
+$ curl -v “http://http-eu3.clxcommunications.com:3800/sendsms?username=user&password=pass&from=CLX&to=46700 123456&text=Test”
+* About to connect() to http-eu3.clxcommunications.com port 3800 (#0)
+*           Trying 93.158.78.4 connected
+* Connected to http-eu3.clxcommunications.com (93.158.78.4) port 3800 (#0)
 > GET /sendsms?username=user&password=pass&from=CLX&to=46700123456&text=Test HTTP/1.1
 > User-Agent: curl/7.19.7 (universal-apple-darwin10.0) libcurl/7.19.7 OpenSSL/0.9.8l zlib/1.2.3
-> Host: sms1.clxnetworks.net:3800
+> Host: http-eu3.clxcommunications.com:3800
 > Accept: */*
 >
 < HTTP/1.1 202 Accepted
 < Date: Tue, 9 Nov 2010 12:38:58 +0100
 < Content-Length: 32
 < Content-Type: text/plain; charset=ISO-8859-1
-* Connection #0 to host sms1.clxnetworks.net left intact
+* Connection #0 to host http-eu3.clxcommunications.com left intact
 * Closing connection #0
 12c306e85bc5d9e4e52211c741e21277
 ```
@@ -114,13 +114,13 @@ Test case with wrong settings - “mclass=123”
 
 **Wrong Settings**
 ```shell
-$ curl -v “http://sms1.clxnetworks.net:3800/sendsms?username=user&password=pass&from=CLX&to=46700 123456&mclass=123&text=Test”
-* About to connect() to sms1.clxnetworks.net port 3800 (#0)
+$ curl -v “http://http-eu3.clxcommunications.com:3800/sendsms?username=user&password=pass&from=CLX&to=46700 123456&mclass=123&text=Test”
+* About to connect() to http-eu3.clxcommunications.com port 3800 (#0)
 *           Trying 93.158.78.4â€¦ connected
-* Connected to sms1.clxnetworks.net (93.158.78.4) port 3800 (#0)
+* Connected to http-eu3.clxcommunications.com (93.158.78.4) port 3800 (#0)
 > GET /sendsms?username=user&password=pass&from=CLX&to=46700123456&mclass=123&text=Test HTTP/1.1
 > User-Agent: curl/7.19.7 (universal-apple-darwin10.0) libcurl/7.19.7 OpenSSL/0.9.8l zlib/1.2.3
-> Host: sms1.clxnetworks.net:3800
+> Host: http-eu3.clxcommunications.com:3800
 > Accept: */*
 >
 < HTTP/1.1 400 Bad Request - server could not understand request
@@ -128,7 +128,7 @@ $ curl -v “http://sms1.clxnetworks.net:3800/sendsms?username=user&password=pas
 < Content-Length: 20
 < Content-Type: text/plain; charset=ISO-8859-1
 <
-* Connection #0 to host sms1.clxnetworks.net left intact
+* Connection #0 to host http-eu3.clxcommunications.com left intact
 * Closing connection #0
 Invalid mclass value
 ```
@@ -194,7 +194,7 @@ Basic Configuration
 
 | Variable     | Value                                            |
 | ------------ | ------------------------------------------------ |
-| http-API URL | <http://sms1.clxnetworks.net:3800/sendsms>?      |
+| http-API URL | <http://http-eu3.clxcommunications.com:3800/sendsms>?      |
 | username     | userX                                            |
 | password     | passX                                            |
 | from         | Test                                             |
@@ -208,7 +208,7 @@ Basic Configuration
 **Submit Text Message**
 
 ```shell
-http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world
+http://http-eu3.clxcommunications.com:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world
 ```
 
 
@@ -218,7 +218,7 @@ http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test
 |                                                                                  |                                                                                                                                        |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | **Variable / Values**                                                            | **Comment**                                                                                                                            |
-| <http://sms1.clxnetworks.net:3800/sendsms>                                       | http-API URL                                                                                                                           |
+| <http://http-eu3.clxcommunications.com:3800/sendsms>                                       | http-API URL                                                                                                                           |
 | username=userX                                                                   | Set username to userX                                                                                                                  |
 | password=passX                                                                   | Set password to passX                                                                                                                  |
 | from=test                                                                        | Set originator to test                                                                                                                 |
@@ -232,7 +232,7 @@ http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test
 **Submit text message with delivery report**
 
 ```shell
-http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world&dlr-mask=7&dlr-url=http%3a%2f%2fyour.host.com%2fdlr.php%3ftype%3d%25d%26dr-%c2%admsg%3d%25A
+http://http-eu3.clxcommunications.com:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world&dlr-mask=7&dlr-url=http%3a%2f%2fyour.host.com%2fdlr.php%3ftype%3d%25d%26dr-%c2%admsg%3d%25A
 
 ```
 
@@ -301,14 +301,14 @@ The delivery report decoded:
 
 **Example**
 ```shell
-http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world&alt-dcs=1&mclass=0
+http://http-eu3.clxcommunications.com:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=Hello+world&alt-dcs=1&mclass=0
 
 ```
 
 
 | Variable / Values                          | Comment                               |
 | ------------------------------------------ | ------------------------------------- |
-| <http://sms1.clxnetworks.net:3800/sendsms> | http-API URL                          |
+| <http://http-eu3.clxcommunications.com:3800/sendsms> | http-API URL                          |
 | username=userX                             | Set username to userX                 |
 | password=passX                             | Set password to passX                 |
 | from=test                                  | Set originator to test                |
@@ -339,7 +339,7 @@ Content not URL-Encoded:
 
 **Not URL-Encoded**
 ```shell
-http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=??????+???&coding=2
+http://http-eu3.clxcommunications.com:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=??????+???&coding=2
 
 ```
 
@@ -348,14 +348,14 @@ Content URL-Encoded:
 
 **URL-Encoded**
 ```shell
-http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%BC%D0%B8%D1%80&coding=2
+http://http-eu3.clxcommunications.com:3800/sendsms?username=userX&password=passX&from=test&to=123456&text=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%20%D0%BC%D0%B8%D1%80&coding=2
 
 ```
 
 
 |Variable / Values|Comment                                                             |
 |-----------------|--------------------------------------------------------------------|
-|http://sms1.clxnetworks.net:3800/sendsms|http-API URL                                                        |
+|http://http-eu3.clxcommunications.com:3800/sendsms|http-API URL                                                        |
 |username=userX   |Set username to userX                                               |
 |password=passX   |Set password to passX                                               |
 |from=test        |Set originator to test                                              |
@@ -378,7 +378,7 @@ If unset, defaults to 7-bit unless a UDH is defined, which sets coding to 8-bit.
 
 ### Destination URI
 
-To receive the MO message Sinch needs a URL that specify where the messages should be sent. The URL will be passed as HTTP1.1 GET request. Sinch need:
+To receive the MO message Sinch needs a URL that specifies where the messages should be sent (Deliver_SM URL updates can be requested via your Sinch account manager). The URL will be passed as HTTP1.1 GET request. Sinch need:
 
 >   - Hostname
 >   - Port
