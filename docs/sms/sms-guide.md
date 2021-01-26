@@ -32,7 +32,7 @@ curl -X POST \
 
 #### Base URL
 
-The following URLs can be used by the REST API. We have servers in the US and EU. By default your account will be created in the US environment. If you'd like access to the European environment, please contact our support team.  
+The following URLs can be used by the REST API. We have servers in the US and EU. By default your account will be created in the US environment. If you'd like access to the European environment, please contact your Sinch account manager.  
 
 
 | Server        |  URL                                   |
@@ -774,24 +774,28 @@ Individual characters used in the message determine the type of encoding that wi
 
 You can send up to 160 characters in a single SMS message if all characters in your message are part of the GSM 7-bit character set:
 
-|      |       |      |     |     |     |     |       |
-|-- -  | ---   | ---  | --- | --- | --- | --- | --- --|
-| @    | Δ     | `SP` | 0   | ¡   | P   | ¿   | p     |
-| £    | _     | !    | 1   | A   | Q   | a   | q     |
-| $    | Φ     | "    | 2   | B   | R   | b   | r     |
-| ¥    | Γ     | #    | 3   | C   | S   | c   | s     |
-| è    | Λ     | ¤    | 4   | D   | T   | d   | t     |
-| é    | Ω     | %    | 5   | E   | U   | e   | u     |
-| ù    | Π     | &    | 6   | F   | V   | f   | v     |
-| ì    | Ψ     | '    | 7   | G   | W   | g   | w     |
-| ò    | Σ     | (    | 8   | H   | X   | h   | x     |
-| Ç    | Θ     | )    | 9   | I   | Y   | i   | y     |
-| `LF` | Ξ     | *    | :   | J   | Z   | j   | z     |
-| Ø    | `ESC` | +    | ;   | K   | Ä   | k   | ä     |
-| ø    | Æ     | ,    | <   | L   | Ö   | l   | ö     |
-| `CR` | æ     | -    | =   | M   | Ñ   | m   | ñ     |
-| Å    | ß     | .    | >   | N   | Ü   | n   | ü     |
-| å    | É     | /    | ?   | O   | §   | o   | à     |
+### GSM 7 bit default alphabet and extension table
+**3GPP TS 23.038 / GSM 03.38**
+
+||||||||||||||||||
+|------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||x0 |x1 |x2 |x3 |x4 |x5 |x6 |x7 |x8 |x9 |xA |xB |xC |xD |xE |xF |
+|0x    |@  |£  |$  |¥  |è  |é  |ù  |ì  |ò  |Ç  |LF |Ø  |ø  |CR |Å  |å  |
+|1x    |Δ  |_  |Φ  |Γ  |Λ  |Ω  |Π  |Ψ  |Σ  |Θ  |Ξ  |ESC|Æ  |æ  |ß  |É  |
+|2x    |SP |!  |“  |#  |¤  |%  |&  |‘  |(  |)  |*  |+  |,  |   |.  |/  |
+|3x    |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |:  |;  |<  |=  |>  |?  |
+|4x    |¡  |A  |B  |C  |D  |E  |F  |G  |H  |I  |J  |K  |L  |M  |N  |O  |
+|5x    |P  |Q  |R  |S  |T  |U  |V  |W  |X  |Y  |Z  |Ä  |Ö  |Ñ  |Ü  |§  |
+|6x    |¿  |a  |b  |c  |d  |e  |f  |g  |h  |i  |j  |k  |l  |m  |n  |o  |
+|7x    |p  |q  |r  |s  |t  |u  |v  |w  |x  |y  |z  |ä  |ö  |ñ  |ü  |à  |
+|1B 0x |   |   |   |   |   |   |   |   |   |   |FF |   |   |   |   |   |
+|1B 1x |   |   |   |   |^  |   |   |   |   |   |   |   |   |   |   |   |
+|1B 2x |   |   |   |   |   |   |   |   |{  |}  |   |   |   |   |   |\  |
+|1B 3x |   |   |   |   |   |   |   |   |   |   |   |   |[  |~  |]  |   |
+|1B 4x |&#124; |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|1B 5x |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|1B 6x |   |   |   |   |   |€  |   |   |   |   |   |   |   |   |   |   |
+|1B 7x |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
 `LF` is the Line Feed character - for JSON format, provide it as `\n`
 `SP` is the Space character
