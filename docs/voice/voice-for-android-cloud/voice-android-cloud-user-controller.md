@@ -89,13 +89,13 @@ public class LoginActivity extends BaseActivity implements SinchService.StartFai
     }
 
     @Override
-    public void tokenRegistrationFailed(SinchError sinchError) {
+    public void onPushTokenRegistrationFailed(SinchError sinchError) {
         dismissSpinner();
         Toast.makeText(this, "Push token registration failed - incoming calls can't be received!", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void tokenRegistered() {
+    public void onPushTokenRegistered() {
         dismissSpinner();
         startClientAndOpenPlaceCallActivity();
     }
