@@ -47,13 +47,15 @@ The Callback URL for most channels will be updated automatically which will over
 
 The Conversation API will try to send messages on the channels based on the priority preference you set. If there is no preference set, the API will try the order priority based on the following criteria: 
 
-1. If a conversation with the contact exists: the active channel of the conversation is tried first.
+ 1. If a conversation with the contact exists: the active channel of the conversation is tried first.
+ 2. The existing channels for the contact, that are ordered by contact channel preferences (if given).
+ 3. Lastly the existing channels for the contact are ordered by the App priority.
 
-2. The existing channels for the contact, that are ordered by contact channel preferences (if given).
+You can define the App channel priority by reordering the channels that you have set up by taking these steps:
 
-3. Lastly the existing channels for the contact are ordered by the App priority.
-
-You can define the App channel priority by reordering the channels that you have set up.
+  1. Click **REORDER**.
+  2. Drag and drop your channels to the order you want them in.
+  3. Click **SAVE**.
 
 ![Channels](images/dashboard/dashboard_quick_guide_channel_prio.png)
 
@@ -61,7 +63,7 @@ You can define the App channel priority by reordering the channels that you have
 
 [**Webhooks**](https://developers.sinch.com/docs/conversation-keyconcepts#webhook) are callbacks triggered by specific events. When adding a Webhook you are prompted to specify a Target URL and events that should trigger a call to the specified URL. To configure webhooks:
 
-  1. Go to Webhook.site and copy a target URL.
+  1. Go to [Webhook.site](https://webhook.site/) and copy a target URL.
   2. Go to [Apps](https://dashboard.sinch.com/convapi/apps) and click your app name.
   3. Scroll down and click **ADD WEBHOOK**.
   4. Select your **Target type**, **Target URL**, **Secret token** and **Triggers**
