@@ -17,14 +17,14 @@ In **Maven**, please put the lines below in your **pom.xml**
   <dependency>
       <groupId>com.sinch</groupId>
       <artifactId>sdk-sms</artifactId>
-      <version>1.0.3</version>
+      <version>1.0.4</version>
   </dependency>
 ```
 
 In **Gradle**, please put the lines below in your **build.gradle**
 
 ```javascript
-implementation 'com.sinch:sdk-sms:1.0.3'
+implementation 'com.sinch:sdk-sms:1.0.4'
 ```
 
 Because Sinch SDK Library is hosted on Maven Central Repository, please make sure you have **mavenCentral()** in your **build.gradle**.
@@ -73,8 +73,8 @@ The jar file is under **target** folder
 There are two available jar
 
 ```javascript
-sdk-sms-1.0.3-SNAPSHOT-jar-with-dependencies.jar 
-sdk-sms-1.0.3-SNAPSHOT.jar -- Use this if you need to include version dependencies on your own.
+sdk-sms-1.0.4-jar-with-dependencies.jar 
+sdk-sms-1.0.4.jar -- Use this if you need to include version dependencies on your own.
 ```
 
 ## Importing jar with Intellij
