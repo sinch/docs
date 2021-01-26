@@ -36,5 +36,3 @@ excerpt: >-
 [Sinch Letter of Authorization for Text Enabling](downloads\Sinch_LOA_Text_Enabling.pdf) - This LOA template is for text enabling.
 
 [Sinch Letter of Authorization for Local Number Porting](downloads\Sinch_LOA_LocalNumberPorting.pdf) - This LOA template is for porting requests.
-
-[Client Notification](downloads\Sinch_Notice_2020_US_Carrier_Holiday_Provisioning_Freeze_Period.pdf) - Sinch Notice: 2020 US Carrier Holiday Provisioning Freeze Period.
