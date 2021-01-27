@@ -1,5 +1,5 @@
 ---
-title: Creating and configuring your first Conversation API app
+title: Getting started
 excerpt: >-
   Learn how to create and configure your first Conversation API app.
 hidden: false
