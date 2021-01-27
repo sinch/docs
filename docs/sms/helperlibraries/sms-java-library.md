@@ -103,7 +103,7 @@ ApiConnection conn =
         ApiConnection.builder()
             .servicePlanId(SERVICE_PLAN_ID)
             .token(TOKEN)
-            .start()
+            .start();
 ```
 
 #### Sending Text Message
@@ -117,7 +117,7 @@ MtBatchTextSmsResult batch =
                   .sender(SENDER)
                   .addRecipient(RECIPIENTS)
                   .body("Something good")
-                  .build()
+                  .build());
 ```
 #### Sending Group Message
 
