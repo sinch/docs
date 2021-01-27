@@ -20,149 +20,91 @@ Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in 
             <tr class="odd">
                 <td>VerificationId</td>
                 <td>int</td>
-                <td><blockquote>
-                    <p>A unique identifier for the verification request</p>
-                </blockquote></td>
+                <td><p>A unique identifier for the verification request</p></td>
             </tr>
             <tr class="even">
                 <td>UserSpaceId</td>
-                <td><blockquote>
-                    <p>int</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Internal identifier</p>
-                </blockquote></td>
+                <td>int</td>
+                <td><p>Internal identifier</p></td>
             </tr>
             <tr class="odd">
                 <td>Method</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Verification method. Can be flashCall, sms or callout</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>Verification method. Can be flashCall, sms or callout</p></td>
             </tr>
             <tr class="even">
                 <td>StartTimestamp</td>
-                <td><blockquote>
-                    <p>time</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Time when the request was placed</p>
-                </blockquote></td>
+                <td>time</td>
+                <td><p>Time when the request was placed</p></td>
             </tr>
             <tr class="odd">
                 <td>EndTimestamp</td>
-                <td><blockquote>
-                    <p>time</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Time when the request was placed</p>
-                </blockquote></td>
+                <td>time</td>
+                <td><p>Time when the request was placed</p></td>
             </tr>
             <tr class="even">
                 <td>Result</td>
                 <td>string</td>
-                <td><blockquote>
+                <td>
                     <p>Shows the result of the verification. It can be:</p>
-                    <blockquote>
-                        <ul>
-                            <li>"SUCCESSFUL": Number verified successfully</li>
-                            <li>"FAIL": Number was not verified</li>
-                            <li>"DENIED": Verification request was blocked (for reasons such as low credit,fraud etc)</li>
-                            <li>"ABORTED": Verification request was aborted, by initiating a new request</li>
-                            <li>"ERROR": There was an error processing the request, such as network congestions or number unreachable</li>
-                        </ul>
-                    </blockquote>
-                </blockquote></td>
+                    <ul>
+                        <li>"SUCCESSFUL": Number verified successfully</li>
+                        <li>"FAIL": Number was not verified</li>
+                        <li>"DENIED": Verification request was blocked (for reasons such as low credit,fraud etc)</li>
+                        <li>"ABORTED": Verification request was aborted, by initiating a new request</li>
+                        <li>"ERROR": There was an error processing the request, such as network congestions or number unreachable</li>
+                    </ul>
+                </td>
             </tr>
             <tr class="odd">
                 <td>Reason</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Reason for the result of a verification</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>Reason for the result of a verification</p></td>
             </tr>
             <tr class="even">
                 <td>CLI</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>The CLI that was used for a flashcall. Empty for SMS</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>The CLI that was used for a flashcall. Empty for SMS</p></td>
             </tr>
             <tr class="odd">
                 <td>IdentityType</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>The identity type of the endpoint verified</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>The identity type of the endpoint verified</p></td>
             </tr>
             <tr class="even">
                 <td>IdentityEndpoint</td>
-                <td><blockquote>
-                    <p>number</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>The number verified</p>
-                </blockquote></td>
+                <td>number</td>
+                <td><p>The number verified</p></td>
             </tr>
             <tr class="odd">
                 <td>Country</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>The country ID (ISO 3166-1 alpha-2) of the number verified</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>The country ID (ISO 3166-1 alpha-2) of the number verified</p></td>
             </tr>
             <tr class="even">
                 <td>Reference</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Partner reference id</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>Partner reference id</p></td>
             </tr>
             <tr class="odd">
                 <td>Custom</td>
-                <td><blockquote>
-                    <p>object</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Free field to be used as custom information</p>
-                </blockquote></td>
+                <td>object</td>
+                <td><p>Free field to be used as custom information</p></td>
             </tr>
             <tr class="even">
                 <td>ApplicationKey</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Application key</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>Application key</p></td>
             </tr>
             <tr class="odd">
                 <td>Amount</td>
                 <td>decimal</td>
-                <td><blockquote>
-                    <p>Debited amount for the verification</p>
-                </blockquote></td>
+                <td><p>Debited amount for the verification</p></td>
             </tr>
             <tr class="even">
                 <td>Currency</td>
-                <td><blockquote>
-                    <p>string</p>
-                </blockquote></td>
-                <td><blockquote>
-                    <p>Currency</p>
-                </blockquote></td>
+                <td>string</td>
+                <td><p>Currency</p></td>
             </tr>
             </tbody>
         </table>
