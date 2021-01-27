@@ -9,9 +9,11 @@ next:
 
 To send a multimedia message, you send an MT message as a submit request to Sinch and supply the multimedia message as the payload. When Sinch accepts your MT message, we respond to you with a success status using "SubmitRsp" response. This indicates that your message was accepted for delivery. It does not, however, indicate that your message was delivered to the device. If the MT message was received in error, we respond to you with a failure status using SOAP fault "RSErrorRsp" response.
 
-**Using the mobile operator ID in an MM7 request**
+**Using the mobile operator ID in an MM7 request - (Standard MMS Only)**
 
 You can supply the mobile operator details as an ID in the request header of an MM7 "SubmitReq" request. If you do not supply the mobile operator, Sinch would look it up (this may be a separately charged fee, depending on your contract). The same mobile operator ID is returned in the HTTP header of delivery reports and MO requests. For the best throughput performance, you should include the mobile operator ID in each request, otherwise an operator lookup is needed before we can forward the message to the mobile operator.
+
+
 
 **SMIL is Required**
 
