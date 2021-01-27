@@ -70,7 +70,7 @@ It is also possible to connect users to a conference call via the [Sinch REST AP
 
 To act on the incoming calls, implement the protocol *SINCallClientDelegate* and assign a delegate to the call client. The call client delegate is notified using the delegate method `didReceiveIncomingCall:` as calls come in to the device.
 
-When the delegate method is executed, the call can either be connected automatically without any user action, or it can wait for the user to press the answer or the hangup button. We recommend that ringtones are played from within the delegate callback method. See \[Playing Ringtones\]\[\] for details.
+When the delegate method is executed, the call can either be connected automatically without any user action, or it can wait for the user to press the answer or the hangup button. We recommend that ringtones are played from within the delegate callback method. See [Playing Ringtones](doc:video-ios-audio-handling#playing-ringtones) for details.
 ```objectivec
 - (void)client:(id<SINCallClient>)client didReceiveIncomingCall:(id<SINCall>)call {
     // Start playing ringing tone
@@ -98,11 +98,11 @@ If [VoIP push notifications](doc:video-ios-local-and-remote-push-notifications#e
 
 > **WARNING: Important**    
 >
-> See \[Local and Remote Push Notifications\]\[\] for further details on how to present and handle a user notification for an incoming call when the application is in the background.
+> See [Local and Remote Push Notifications](doc:video-ios-local-and-remote-push-notifications) for further details on how to present and handle a user notification for an incoming call when the application is in the background.
 
 ### Incoming video call
 
-When incoming call is a video call, the `didReceiveIncomingCall` delegate method will be executed, just like for the incoming audio call. The `SINCallDetails` object provides a `isVideoOffered` property to check whether the call offers a video track. See the \[Video calling\] section for details on how to add video views.
+When incoming call is a video call, the `didReceiveIncomingCall` delegate method will be executed, just like for the incoming audio call. The `SINCallDetails` object provides a `isVideoOffered` property to check whether the call offers a video track. See the [Video calling](doc:video-ios-video-calling) section for details on how to add video views.
 
 ### Answering an incoming call
 
