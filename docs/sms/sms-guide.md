@@ -808,7 +808,7 @@ The following characters are also available, but they are counted as two charact
 
 ##### Other Characters
 
-If other characters are required for different languages, 16-bit Unicode (UCS-2) encoding will be used. When using UCS-2 encoding, each character will take 2 bytes, which means up to 70 characters can be sent per UCS-2 encoded SMS message.
+If other characters are required for different languages, 16-bit Unicode (UCS-2) encoding will be used. When using UCS-2 encoding, each character will take 2 bytes, which means up to 70 characters can be sent per UCS-2 encoded SMS message. Here is more information on this topic, including billing implications.
 
 ### Long Messages
 
