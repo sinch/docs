@@ -912,7 +912,7 @@ The status field describes which state a particular message is in. Please note t
 
 The delivery report status code provides a more detailed view of what happened with a message. The REST API shares most of its error codes with other SMS services.
 
-These are defined [here](doc:sms-other-cloud-smpp#error-codes).
+These are defined [here](doc:sms-smpp-error-specification#status-reports-error-codes).
 
 In addition to these standard error codes, the REST API provides an additional set of error codes, all within the 4xx range (vendor specific errors in the range of 0x400 to 0x4FF as referenced in the SMPP specification). These are listed below:
 
