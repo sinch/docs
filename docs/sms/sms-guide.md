@@ -131,7 +131,7 @@ The following error codes can be returned as values for the `code` field:
 
 The following operation will send a batch message.
 
-Depending on the length of the *body* one message might be [split into multiple parts](#long-messages) and charged accordingly. The operation to [dry run a batch](#dry-run-a-batch) will return the number of parts for all messages in the batch without actually sending any messages.
+Depending on the length of the *body*, one message might be [split into multiple parts](#long-messages) and charged accordingly. The operation to [dry run a batch](#dry-run-a-batch) will return the number of parts for all messages in the batch without actually sending any messages.
 
 Any groups targeted in a scheduled batch will be evaluated at the time of sending. If a group is deleted between batch creation and scheduled date it will be considered empty.
 
