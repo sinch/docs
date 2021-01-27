@@ -337,7 +337,7 @@ grant_type=client_credentials&
 hms_application_id=<Your HMS App Id>
 ```
 
-Your implementation of this resource endpoint should obtain a HMS `access_token` using the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/open-platform-oauth-0000001050123437-V5#EN-US_TOPIC_0000001050123437__section12493191334711) for how to implement requesting an OAuth _access token_ using Huawei HMS.
+Your implementation of this resource endpoint should obtain a HMS `access_token` using the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/38054564) for how to implement requesting an OAuth _access token_ using Huawei HMS.
 
 Example response to Sinch:
 
