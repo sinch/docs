@@ -24,7 +24,7 @@ Make sure you configure your application key in the sample apps by replacing the
 
 > **Note**    
 >
-> Currently, calling only works in the Chrome or Firefox browsers. Chrome additionally requires the web page to be loaded using http or https and is not compatible with local storage (i.e., `file://`).
+> Currently, calling only works in the Chrome or Firefox browsers. Additionally, Chrome requires the web page to be loaded using http or https and is not compatible with local storage (i.e., `file://`).
 
 ## Development
 
