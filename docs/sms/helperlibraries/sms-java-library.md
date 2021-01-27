@@ -96,7 +96,7 @@ Project -> Build Path -> Configure Build Path -> Libraries -> Add Jar.
 
 ### Set up Api Client
 
-```javascript
+```java
 String SERVICE_PLAN_ID = "SERVICE_PLAN_ID";
 String TOKEN = "SERVICE_TOKEN";
 ApiConnection conn =
@@ -108,33 +108,40 @@ ApiConnection conn =
 
 #### Sending Text Message
 
-```javascript
+```java
 String SENDER = "SENDER"; // Optional
 String [] RECIPIENTS = {"1232323131", "3213123"}  ;
-MtBatchTextSmsResult batch =
-          conn.createBatch(
-              SinchSMSApi.batchTextSms()
-                  .sender(SENDER)
-                  .addRecipient(RECIPIENTS)
-                  .body("Something good")
-                  .build());
+try {
+  MtBatchTextSmsResult batch =
+            conn.createBatch(
+                SinchSMSApi.batchTextSms()
+                    .sender(SENDER)
+                    .addRecipient(RECIPIENTS)
+                    .body("Something good")
+                    .build());
+} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}                   
 ```
 #### Sending Group Message
 
-```javascript
-      // Creating simple Group
-      GroupResult group = conn.createGroup(SinchSMSApi.groupCreate().name("Subscriber").build());
+```java
+  try {
+        // Creating simple Group
+        GroupResult group = conn.createGroup(SinchSMSApi.groupCreate().name("Subscriber").build());
 
-      // Adding members (numbers) into the group
-      conn.updateGroup(
-          group.id(), SinchSMSApi.groupUpdate().addMemberInsertion("15418888", "323232").build());
+        // Adding members (numbers) into the group
+        conn.updateGroup(
+            group.id(), SinchSMSApi.groupUpdate().addMemberInsertion("15418888", "323232").build());
 
-      // Sending a message to the group
-      MtBatchTextSmsResult batch = conn.createBatch(
-          SinchSMSApi.batchTextSms()
-              .addRecipient(group.id().toString())
-              .body("Something good")
-              .build());
-
+        // Sending a message to the group
+        MtBatchTextSmsResult batch = conn.createBatch(
+            SinchSMSApi.batchTextSms()
+                .addRecipient(group.id().toString())
+                .body("Something good")
+                .build());
+      } catch (Exception e) {
+            System.out.println(e.getMessage());
+      }      
       System.out.println("Successfully sent batch " + batch.id());
 ```
