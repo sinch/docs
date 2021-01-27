@@ -5,22 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-
-
-## Installing with Maven/Gradle
-
-Using Maven/Gradle is the recommended way to install the SDK. You can add this sdk to your existing project.
-In **Maven**, please put the lines below in your **pom.xml**
-
-```javascript
-<dependency>
-  <dependency>
-      <groupId>com.sinch</groupId>
-      <artifactId>sdk-sms</artifactId>
-      <version>1.0.3</version>
-  </dependency>
-```
-
+## Installing with Gradle 
 In **Gradle**, please put the lines below in your **build.gradle**
 
 ```javascript
@@ -35,6 +20,20 @@ repositories {
 }
 ```
 
+## Installing with Maven
+
+Using Maven/Gradle is the recommended way to install the SDK. You can add this sdk to your existing project.
+In **Maven**, please put the lines below in your **pom.xml**
+
+```javascript
+<dependency>
+  <dependency>
+      <groupId>com.sinch</groupId>
+      <artifactId>sdk-sms</artifactId>
+      <version>1.0.3</version>
+  </dependency>
+```
+
 ## Using without a build automation tool
 
 While we recommend using a package manager to track the dependencies in your application, it is possible to download and use the Java SDK by [downloading a pre-built jar file](https://repo1.maven.org/maven2/com/sinch/sdk-sms/). Select the directory for the latest version and download one of these jar files:
@@ -42,40 +41,6 @@ While we recommend using a package manager to track the dependencies in your app
 - sdk-sms-{version}-jar-with-dependencies.jar  
 - sdk-sms-{version}.jar
 
-
-## Installing the SDK locally
-
-It is possible to download and use the Java SDK manually by [downloading a pre-built jar file](https://repo1.maven.org/maven2/com/sinch/sdk-sms/).
-
-Please have [Maven](http://maven.apache.org/download.html) install in your environment in advance.
-
-[Clone the source code](https://github.com/sinch/sinch-java-sms), and install the library. 
-
-```shell
-git clone https://github.com/sinch/sinch-java-sms.git
-cd sinch-java-sms    
-mvn clean install
-```
-
-If you encounter "Permission Denied", please run 
-
-```shell
-    $ sudo mvn clean install
-```
-
-If you need to skip local tests
-
-```shell
-    $ mvn package -Dmaven.test.skip=true
-```
-The jar file is under **target** folder 
-
-There are two available jar
-
-```javascript
-sdk-sms-1.0.3-SNAPSHOT-jar-with-dependencies.jar 
-sdk-sms-1.0.3-SNAPSHOT.jar -- Use this if you need to include version dependencies on your own.
-```
 
 ## Importing jar with Intellij
 
