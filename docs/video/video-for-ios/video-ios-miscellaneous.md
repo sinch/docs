@@ -66,7 +66,7 @@ By explicitly requesting permission using the methods available in the iOS SDK, 
 
 Starting with iOS 10.0, apps that access any of the device’s microphones must declare their intent to do so. This is done by including the NSMicrophoneUsageDescription key and a corresponding purpose string in your app’s Info.plist. When the system prompts the user to allow access, the purpose string is displayed as part of the alert. If an application attempts to access any of the device’s microphones without a corresponding purpose string, the app will exit.
 
-Please see the [Apple iOS SDK documentation on the class AVAudioSession](http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference Reference.html) for details on how to request permission to use the microphone.
+Please see the [Apple iOS SDK documentation on the class AVAudioSession](https://developer.apple.com/documentation/avfoundation/avaudiosession) for details on how to request permission to use the microphone.
 
 ## Request user permission for using the camera
 
