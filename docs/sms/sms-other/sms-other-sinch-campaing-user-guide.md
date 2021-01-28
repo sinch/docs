@@ -9,15 +9,13 @@ excerpt: >-
 
 [Sinch US Short Code Onboarding Overview](downloads\Sinch-US-Short-Codes-onboarding.pptx) - This document covers the US short code process.
 
-[CTIA Short Code Monitoring Handbook v1.7](https://www.sinch.com/wp-content/uploads/2019/10/CTIA-Short-Code-Monitoring-Handbook-v1.7.pdf) - This is the CTIA handbook which covers the guidelines/requirements for US Short Code campaigns.
-
-[CTIA Short Code Monitoring Handbook Addendum v1.7](https://www.sinch.com/wp-content/uploads/2019/10/CTIA-Short-Code-Monitoring-Handbook-v1.7-Addendum.pdf) - This is the CTIA handbook addendum which covers the guidelines/requirements for US Short Code campaigns.
-
 [CTIA Short Code Monitoring Handbook v1.8](downloads\CTIA_Short_Code_Monitoring_Handbook_v1_8.pdf) - This is the CTIA handbook version 1.8 which covers the guidelines/requirements for US Short Code campaigns effective January 1, 2021.
 
 [CTIA Messaging Principles and Best Practices](https://www.sinch.com/wp-content/uploads/2019/10/CTIA-Messaging-Principles-and-Best-Practices.pdf) - This is the CTIA handbook which covers best practices guidelines for US Short Code campaigns.
 
 [AT&T Code of Conduct](downloads\ATT_Code_of_Conduct_062020.pdf) - Code of Conduct for the AT&T Short Code and 10-Digit A2P SMS Messages 06/01/2020.
+
+[AT&T Code of Conduct 2018 FAQ](downloads\Code_Of_Conduct_FAQ_SBC.pdf) - FAQ for AT&T Short Code SMS and MMS Code of Conduct dated October 17, 2018.
 
 [T-Mobile Code of Conduct](downloads\T-Mobile_Code_of_Conduct_V2_2 _11_13_2020.pdf) - T-Mobile Code of Conduct Version 2.2 November 13, 2020
 
@@ -31,12 +29,10 @@ excerpt: >-
 
 [Sinch US Short Code Carrier Reach List](downloads\Sinch_US_Short_Code_Carrier_Reach_List.xlsx) - Sinch US Short Code Carrier Reach List.
 
-[Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20201213.xlsx) - Sinch GCMR for U.S. and Canada December 13, 2020.
+[Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20210124.xlsx) - Sinch GCMR for U.S. and Canada January 24, 2021.
 
 [Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.pdf) - Clients that plan to run a high volume campaign we must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
 
 [Sinch Letter of Authorization for Text Enabling](downloads\Sinch_LOA_Text_Enabling.pdf) - This LOA template is for text enabling.
 
 [Sinch Letter of Authorization for Local Number Porting](downloads\Sinch_LOA_LocalNumberPorting.pdf) - This LOA template is for porting requests.
-
-[Client Notification](downloads\Sinch_Notice_2020_US_Carrier_Holiday_Provisioning_Freeze_Period.pdf) - Sinch Notice: 2020 US Carrier Holiday Provisioning Freeze Period.

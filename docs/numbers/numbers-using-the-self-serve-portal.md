@@ -1,50 +1,25 @@
 ---
-title: Working with numbers in dashboard
-excerpt: ''
----
+title: Working with virtual numbers in your dashboard
+excerpt: 'View, search and buy numbers as well as configure your SMS settings and submit supporting documentation all inside your dashboard.'
+--- 
 
-## Your Numbers
+## View virtual numbers
 
-![Your Numbers](images/your_numbers.png)
+To see your list of virtual numbers and configure your SMS settings, [log in](https://dashboard.sinch.com/numbers/your-numbers/numbers) to your dashboard. Click any number, scroll to  **SMS Configuration**, click **EDIT**, make your changes and click **SAVE**.
 
-List of your numbers
+## Search and buy virtual numbers
 
-Click on a number will take you to the numbers details
+Use different criteria to search and buy virtual numbers for SMS, Voice or both. All countries where Sinch has numbers in inventory will be marked as **Direct Buy**. All other countries will require you to submit a request to Sinch for manual handling. 
 
-![Number Details](images/number_details.png)
 
-Here you can view details and configure your SMS settings
+#### Search virtual numbers
 
-## Buy Numbers
+To manually search and buy virtual numbers, [log in](https://dashboard.sinch.com/numbers/buy-numbers) to your dashboard. Then, fill in the required information and click **SEARCH**. Then, click **BUY** for the virtual number you want to purchase.
+  
+When you buy a virtual number, if supporting documentation is needed, you will see a message in an orange box at the bottom of your form. You will not be able to buy a virtual number until supporting documentation is submitted.
 
-![Buy Numbers](images/buy_numbers.png)
+## Submit supporting documentation for virtual numbers
 
-Search numbers
-
-You can use different search criteria like country, type and feature (SMS, Voice or both). All countries where Sinch have numbers in inventory will be marked as “Direct Buy”, all other countries will require you to submit an request to us for manual handling.
-
-When you buy a number some pre-requisits may be needed depending on the country specific requirements
-
-![Buy Number Dialog With Sup Doc](images/buy_number_dialog_with_sup_doc.png)
-
-Pre-requisit needed. See supporting documentation
-
-If no prerequisite is needed, click the buy number button to acquire the number
-
-![Buy Number Dialog](images/buy_number_dialog.png)
-
-## Supporting Documentations
-
-In some countries you will need to submit additional documentation before you buy a number. This is done in the “Supporting Documentation” section.
-
-![Sup Docs](images/sup_docs.png)
-
-First, click the “New Bundle” button
-
-![Sup Doc Dialog](images/sup_doc_dialog.png)
-
-Fill in a name (you may name the request anyway you like), type and select the country where you want to buy the number in.
-
-![Sup Doc](images/sup_doc_details.png)
-
-Fill in the bundle details and when done click the “Submit to review” button.In many cases the bundle will be approved instantly but in some cases a manual approval will be needed. If so, you will be notified when bundle is approved by E-mail
+You can manage and create regulatory bundles, if needed, which are required to buy certain types of virtual numbers in the US and virtual numbers in other countries. To create this bundle, go to **[Supporting Documentation](https://dashboard.sinch.com/numbers/supporting-documentation)**, click **NEW BUNDLE** and fill in the form with the required information. Click **CREATE**. Then, fill in the bundle details and and click **SUBMIT TO REVIEW**.
+  
+Often the bundle is approved instantly, but in some cases, a manual approval is needed. If so, you will be notified via Email when the bundle is approved.

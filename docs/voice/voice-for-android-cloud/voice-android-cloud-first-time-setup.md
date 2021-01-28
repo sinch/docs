@@ -57,6 +57,7 @@ A minimum set of permissions are needed for the app to use the Sinch SDK. These 
 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.CAMERA"/>
 ```
 
 > 📘

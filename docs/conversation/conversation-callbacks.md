@@ -1,11 +1,11 @@
 ---
-title: Conversation API Callbacks
+title: Conversation API callbacks
 excerpt: >-
   Registering webhooks and listening to callbacks from Sinch Conversation API.
 hidden: false
 ---
 
-## Webhook Management <span class="betabadge">Beta</span>
+## Webhook Management! <span class="betabadge">Beta</span>
 
 Conversation API delivers contact messages, delivery receipts for app messages and various notifications through callbacks.
 API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app
@@ -138,7 +138,7 @@ The table below shows the properties of the `contact_message` field in inbound m
 | ------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | reply_to      | object             | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
 
-It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`.
+It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`, `fallback_message`.
 All of these properties are JSON objects described in the sections below.
 
 ##### Text Message
@@ -176,6 +176,24 @@ The choice response message represents a contact response to a choice message.
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
 | message_id    | string             | The message id containing the choice.                                                                    |
 | postback_data | string             | The postback data if defined in the selected choice. Otherwise the default is `message_id_{text, title}` |
+
+##### Media Card Message
+
+Contact Message containing media and caption.
+
+| Field         | Type               | Description                                                                                              |
+| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| url           | string             | The URL of the media.                                                                                    |
+| caption       | string             | Caption for the media, if supported by channel.                                                          |
+
+##### Fallback Message
+
+Fallback message, appears when original contact message cannot be handled.
+
+| Field         | Type               | Description                                                                                              |
+| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| reason        | object             | Fallback reason. See [Reason](doc:conversation-callbacks#reason) for details.                            |
+| raw_message   | string             | The raw fallback message if provided by the channel.                                                     |
 
 ##### ReplyTo
 
@@ -307,7 +325,8 @@ describing the error:
     "contact_id": "01EXA07N79THJ20WSN6AS30TMW",
     "reason": {
       "code": "OUTSIDE_ALLOWED_SENDING_WINDOW",
-      "description": "The underlying channel reported: Message failed to send because more than 24 hours have passed since the customer last replied to this number"
+      "description": "The underlying channel reported: Message failed to send because more than 24 hours have passed since the customer last replied to this number",
+      "sub_code": "UNSPECIFIED_SUB_CODE"
     },
     "metadata": ""
   }
@@ -348,10 +367,11 @@ by the API clients when they receive successful response from the **/messages:se
 The `reason` field in `FAILED` or `SWITCHING_CHANNEL` delivery report callbacks provides information for the reason of the failure.
 The table below shows the properties of the `reason` field:
 
-| Field           | Type               | Description                                                                                                    |
-| --------------- | ------------------ | -------------------------------------------------------------------------------------------------------------- |
-| code            | string             | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details. |
-| description     | string             | A description of the reason.                                                                                   |
+| Field           | Type               | Description                                                                                                                                      |
+| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| code            | string             | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details.                                   |
+| description     | string             | A description of the reason.                                                                                                                     |
+| sub_code        | string             | The sub code is a more detailed classification of the main error. See [Error Sub-Codes](doc:conversation-callbacks#error-sub-codes) for details. |
 
 ##### Error Codes
 
@@ -382,6 +402,11 @@ The codes are as follow:
 - ***CHANNEL_REJECT*** - generic error for channel permanently rejecting a message.
 - ***UNKNOWN*** - returned if no other code can be used to describe the encountered error.
 - ***INTERNAL_ERROR*** - an internal error occurred. Please save the entire callback if you want to report an error.
+
+##### Error Sub-Codes
+
+- ***UNSPECIFIED_SUB_CODE*** - used if no other sub code can be used to describe the encountered error.
+- ***ATTACHMENT_REJECTED*** - occurs when the message attachment has been rejected by the channel due to a policy. Some channels have specific policies that must be met to receive an attachment.
 
 ### Event Delivery Receipt
 

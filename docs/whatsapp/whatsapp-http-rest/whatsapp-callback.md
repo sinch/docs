@@ -50,7 +50,7 @@ The format of a delivery report is as follows:
 |recipient  | The recipient of the message that this delivery report belong to      | String    |
 |timestamp  | ISO-8601 datetime of the status update                                | String    |
 
-Where the states means:
+Where the states mean:
 
 | State          | Description                                                                   |
 | -------------- | ----------------------------------------------------------------------------- |
@@ -458,6 +458,12 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |caption    | Caption of the media file                                              | String    |
 |filename   | Optional filename, only valid for audio and document                   | String    |
 |metadata   | Optional sticker metadata, only used for stickers                      | Object    |
+
+> 📘 Note
+>
+> Media URLs expire after seven days.
+> 
+> 
 
 The sticker metadata object has the following parameters:
 

@@ -7,10 +7,9 @@ hidden: false
 ---
 
 > **Note**
-> 
 > This is a preivew of the Sinch Zap app.
 
-### Before you can create your Zap, you need to have:
+### Before you can create your Zap, you need to have
 
 1. A [Sinch account](https://dashboard.sinch.com/signup). (If you are in the United States, you also need a [free test phone  number](https://dashboard.sinch.com/numbers/your-numbers/numbers).)
 2. A Zapier Acccount,  If you don’t have one, you can create a Zapier account https://zapier.com/sign-up/

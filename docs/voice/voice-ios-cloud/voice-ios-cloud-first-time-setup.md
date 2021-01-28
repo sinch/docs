@@ -29,9 +29,9 @@ Both SDK's comes with sample apps. Read more about them [here](doc:voice-ios-clo
 >
 > CocoaPods version will be available only for Production releases (i.e. not closed beta releases)
 
-## Add the _Sinch.framework_ (ObjC version)
+## Add the _Sinch.xcframework_ (ObjC version)
 
-Drag the _Sinch.framework_ bundle from the SDK distribution package folder into the Frameworks section in the Xcode Project Navigator.
+Drag the _Sinch.xcframework_ bundle from the SDK distribution package folder into the Frameworks section in the Xcode Project Navigator.
 
 ## Add the _SinchRTC.xcframework_ (Swift version)
 

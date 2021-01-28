@@ -11,7 +11,7 @@ next:
 ---
 The Sinch WhatsApp Business Messaging API provides a rich, enterprise grade messaging solution for clients who wish to communicate with their customers via WhatsApp.
 
-With over 1.5bn users globally using WhatsApp regularly to communicate with friends and family, it really does represent the digital extension of the users living room. It’s the inner circle of your customer’s communication so bringing your trusted brand communications to that inner circle has huge potential.
+With over 1.5 billion users globally using WhatsApp regularly to communicate with friends and family, it really does represent the digital extension of the users living room. It’s the inner circle of your customer’s communication so bringing your trusted brand communications to that inner circle has huge potential.
 
 Integrating the Sinch WhatsApp Business Messaging API with your own backend systems enables Rich, High fidelity, contextual conversations to be established via the WhatsApp channel.
 
@@ -80,7 +80,7 @@ The following Swagger UI URLs can be used to test our API.
 > 📘 Note
 >
 > Any media file sent through the Sinch WhatsApp API will be processed before it's sent to the recipient.
-> While the maximum file size for every uploaded media is 100 mb, be aware that the file also needs to meet the post-processing limits listed below. This means that a message with a file size that is larger than the post-processing limits is not guaranteed to be sent successfully. The result will depend on whether WhatsApp's post-processing of the media file can reduce the file size sufficiently or not.
+> While the maximum file size for every uploaded media is 100 MB, be aware that the file also needs to meet the post-processing limits listed below. This means that a message with a file size that is larger than the post-processing limits is not guaranteed to be sent successfully. The result will depend on whether WhatsApp's post-processing of the media file can reduce the file size sufficiently or not.
 > 
 
 | Message type  |  Supported content types               |  Post-processing size limit       |
@@ -95,6 +95,12 @@ The following Swagger UI URLs can be used to test our API.
 > 📘 Note
 >
 > Video files must have H.264 video codec and AAC audio codec.
+> 
+> 
+
+> 📘 Note
+>
+> Media URLs in [callbacks](doc:whatsapp-callback) expire after seven days.
 > 
 > 
 
