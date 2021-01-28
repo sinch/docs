@@ -251,10 +251,12 @@ JSON Representation
 |   7  | The operator reported a delivery failure asynchronously                                     |
 |   8  | The API request was not formatted correctly                                                 |
 |   9  | No provisioned supplier could be found to service request                                   |
-|  10  | The requested supplier has not been provisioned                                             |
+|  10  | The requested supplier has not been provisioned for the sender                              |
 |  11  | The supplier reported a systems error                                                       |
 |  12  | The throttle limit has been reached                                                         |
-
+|  13  | The attached content exceeded the size limit                                                |
+|  14  | SMS fallback was requested but SMS is not provisioned for the sender                        |
+|  17  | The request to revoke a message was unsuccessful                                            |
 
 
 

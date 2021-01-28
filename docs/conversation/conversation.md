@@ -1,11 +1,11 @@
 ---
-title: Getting started
+title: Introduction
 excerpt: >-
-  The Sinch Conversation API is available in the [US] https://us.conversation.api.sinch.com  and [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
+  The Sinch Conversation API is available globally with hosting locations in the [US] https://us.conversation.api.sinch.com and the [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
 ---
 
-Send and receive messages across the US and Europe using SMS, RCS, WhatsApp, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
+Send and receive messages globally using SMS, RCS, WhatsApp, Viber Business, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
@@ -39,7 +39,7 @@ Our Conversation API supports multiple channels that can be used to send differe
 
 Our current message types are:
 
-- `Text message` - A message containing only tesxt.
+- `Text message` - A message containing only text.
 - `Media message` - A message containing media such as images, GIFs, documentation and video.
 - `Choice message` - A message containing "choices"/"actions" and description.
 - `Card message` - A rich message which consists of text and description with image or video. It can also contain a set of "choices"/"actions".

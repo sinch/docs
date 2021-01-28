@@ -15,7 +15,7 @@ account](https://dashboard.sinch.com/signup). If you are in the United States, y
 ### Send SMS
 
 ```nodejs NodeJS
-//Create a new node app and copy this into app.js
+//Create a new node app and copy this into your node.js file (say, app.js)
 var request = require("request");
 var options = {
   method: 'POST',

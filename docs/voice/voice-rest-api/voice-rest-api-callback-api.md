@@ -998,6 +998,8 @@ You can find more information on callback request signing [here](doc:using-rest#
 > - “NOCREDITPARTNER”
 > - “GENERALERROR”
 > - “CANCEL”
+> - “USERNOTFOUND”
+> - "CALLBACKERROR"
 
 **result** may have one of the following values:
 
