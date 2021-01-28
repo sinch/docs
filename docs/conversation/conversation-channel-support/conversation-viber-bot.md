@@ -361,7 +361,7 @@ The rendered message:
 
 ##### Receiving Messages
 
-Viber channel supports various kinds of contact messages - text, media, media card, location as well as quick replies.
+Viber channel supports various kinds of contact messages - text, media, media card, location and quick replies.
 All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
 
 ---
