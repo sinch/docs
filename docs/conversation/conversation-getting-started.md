@@ -89,7 +89,7 @@ Your **Project ID** is used to group your Conversation API resources. You can fi
 
 A **client_id** and **client_secret** will be provided when creating an Access Key in the portal. The secret is only shown after generation, copy and store it in a safe place. 
 
-You can obtain an Access Token to Conversation API by using your client_id and client_secret in the appropriate region:
+You can obtain an Access Token to Conversation API by using your client_id and client_secret by calling the OAuth 2.0 Token endpoint:
 
 EU region:
 
