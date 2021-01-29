@@ -8,7 +8,6 @@ hidden: false
 Send and receive messages globally using SMS, RCS, WhatsApp, Viber Business, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
-
 ### Authentication
 
 The Conversation API supports OAuth, which is recommended, and Basic authentication. Both methods use client_id and client_secret to authenticate requests. You can view and manage your API keys [here](https://dashboard.sinch.com/settings/access-keys).
