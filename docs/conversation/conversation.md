@@ -1,7 +1,7 @@
 ---
 title: Introduction
 excerpt: >-
-  The Sinch Conversation API is available globally with hosting locations in the [US] https://us.conversation.api.sinch.com and the [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program, contact a [Sinch representative](https://www.sinch.com/contact-us/).
+  The Sinch Conversation API is available globally with hosting locations in the [US] https://us.conversation.api.sinch.com and the [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
 ---
 
