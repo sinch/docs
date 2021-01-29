@@ -576,7 +576,7 @@ Delivery reports can be retrieved even if no callback was requested. The differe
 Query parameters:
 
 | Name   | Description                                                        | Type   | Default | Constraints             | Required |
-|-- -    | ---                                                                | ---    | ---     | ---                     | ---    --|
+|---     | ---                                                                | ---    | ---     | ---                     | ---      |
 | type   | The type of delivery report                                        | String | summary | Must be summary or full | Yes      |
 | status | Comma separated list of delivery\_report\_statuses to include      | String | N/A     | N/A                     | No       |
 | code   | Comma separated list of delivery\_receipt\_error\_codes to include | String | N/A     | N/A                     | No       |
@@ -598,6 +598,9 @@ The response is a JSON object with the following fields:
 |statuses.count      |The number of messages that currently has this code. Will always be at least 1                                              |                                Integer                                |
 |statuses.recipients |Only for full report. A list of the MSISDN recipients which messages has this status code.                                  |                             String array                              |
 |client_reference    |The client identifier of the batch this delivery report belongs to, if set when submitting batch.                           |                                String                                 |
+|total_price         |The total price for all messages in this batch, if configured for the account.                           |                                Object                                 |
+|total_price.currency|Currency of the price.                           |                                String                                 |
+|total_price.amount  |The price amount.                           |                                Float                                 |
 
 `404 Not Found`
 
@@ -718,6 +721,10 @@ The response is a JSON object with the following fields:
 |client_reference    |The client identifier of the batch this delivery report belongs to, if set when submitting batch.                           |                                String                                 |
 |applied_originator  |The default originator used for the recipient this delivery report belongs to, if default originator pool configured and no originator set when submitting batch.|                                String                                 |
 |number_of_message_parts|The number of parts the message was split into. Present only if `max_number_of_message_parts` parameter was set.              |                                Integer                                |
+|price               |The price for the recipient this delivery report belongs to, if configured for the account.                           |                                Object                                 |
+|price.currency      |Currency of the price.                           |                                String                                 |
+|price.amount        |The price amount.                           |                                Float                        |
+|operator            |The operator that was used for delivering the message to this recipient, if configured for the account.                                                   |                            String                            |
 
 `404 Not Found`
 
