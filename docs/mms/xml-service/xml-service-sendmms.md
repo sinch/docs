@@ -19,7 +19,7 @@ MMS "Link Expiration Date’ is used to expire the MMS Link (In the case when MM
 **Request Parameters:**  
 > Mandatory: action, api\_key, to, from, name, slide, fallback-sms-text, service-id
 
->    Optional: operatorid, campaignRef, subject, image, audio, video, url, text, duration, vcard, ical, pdf, passbook, message-text
+>    Optional: operatorid, campaignRef, message-subject, image, audio, video, url, text, duration, vcard, ical, pdf, passbook, message-text
 
 **Response Parameters:**  
  >   status, to, mmsId, trackingId, errorCode, errorInfo
@@ -82,8 +82,3 @@ MMS "Link Expiration Date’ is used to expire the MMS Link (In the case when MM
     <error-info>Invalid shortcode</error-info>
 </response>
 ```
-
-
-## Special Considerations for sendMMS
-
- - MMS message-subject is required. The message-subject parameter should not contain emoji/Unicode characters as this will cause messages to get rejected by the carrier's MMSC.

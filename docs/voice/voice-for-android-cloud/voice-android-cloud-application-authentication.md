@@ -15,7 +15,7 @@ To authorize the registration of a user, the application must provide a registra
 
 The recommended way to implement this authentication scheme is that the _Application Secret_ should be kept securely on your server-side backend, and the signed token should be created and signed on your server, then passed via a secure channel to the application instance and Sinch client running on a device.
 
-![Token-based User Registration](images\20200221-token_based_user_registration.png)
+![Token-based User Registration](images\20210125-token_based_user_registration.pu.png)
 
 The following sections describes in detail how to create and sign the _JWT_, and how to provide it to the `SinchClient` or `UserController`.
 
@@ -122,7 +122,7 @@ For additional information about _JWT_, along with a list of available libraries
 
 ## Providing a Registration Token to `SinchClient`
 
-When starting the client (`SinchClient.start()`) the client will ask for a token via [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
+When starting the client (`SinchClient.start()`) the client will ask for a token via [SinchClientListener.onCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
 
 ```java
     // Instantiate a SinchClient using the SinchClientBuilder.
@@ -141,7 +141,7 @@ In your `SinchClientListener` class:
 
 ```java
     @Override
-    public void onRegistrationCredentialsRequired(SinchClient client, ClientRegistration clientRegistration) {
+    public void onCredentialsRequired(ClientRegistration clientRegistration) {
         yourAuthServer.getRegistrationToken(userId, new YourAuthCallback() {
             void onSuccess(String token) {
                 clientRegistration.register(token);
@@ -232,7 +232,7 @@ __Example JWT Payload__:
 
 ### Automatic Extension of Client Registration Time-to-Live (TTL)
 
-The Sinch client will automatically request to extend the TTL of its registration by invoking [SinchClientListener.onRegistrationCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
+The Sinch client will automatically request to extend the TTL of its registration by invoking [SinchClientListener.onCredentialsRequired()](reference\com\sinch\android\rtc\SinchClientListener.html)
 
 
 

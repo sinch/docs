@@ -14,18 +14,37 @@ account](https://dashboard.sinch.com/signup). If you are in the United States, y
 
 ### Send SMS
 
+If you havent already, create a new node app with npm and accept the defaults, and add the request package.
+
+```shell
+npm init 
+npm install request
+```
+
+Create index.js and paste below:
+
 ```nodejs NodeJS
-//Create a new node app and copy this into app.js
+
 var request = require("request");
+var messageData = {
+  from: "{your free test number}",
+  to: ["{To number}"],
+  body: "This is a test message from your Sinch account",
+};
 var options = {
-  method: 'POST',
-  url: 'https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches',
-  headers: {accept: 'application/json', 'content-type': 'application/json',
-      "Authorization": "Bearer {your token}"},
-  body: '{"to":"[{To Number}]","from":"{your free test number}","body":"This is a test message"}'
+  method: "POST",
+  url:
+    "https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches",
+  headers: {
+    accept: "application/json",
+    "content-type": "application/json",
+    Authorization: "Bearer {your token}",
+  },
+  body: JSON.stringify(messageData),
 };
 
 request(options, function (error, response, body) {
+  console.log(response.body);
   if (error) throw new Error(error);
   console.log(body);
 });
@@ -44,45 +63,22 @@ Before you can execute the code that sends an SMS message, you need to replace t
 
 To find the service plan and token, go to https://dashboard.sinch.com/sms/api/rest, log in and click “Show” to reveal your API token.
 
-
-![Screen shot of dashboard](images\sms-callback-url.png)
-
 To find the From-number, click the service plan id link and scroll to the bottom of the page and then change the `{To number}` to your phone number.
 
 Click [here](https://developers.sinch.com/reference/#sendsms) to read more about the batches endpoint.
 
-## Receive SMS via web-hook  
+## Receive SMS
 
-The next step shows how to handle the sending of an SMS to your Sinch number.
+We use webhooks to notify your application when someone sends a text to your sinch number.
+To handle these you will learn how create a webserver and make it reachable on the Internet below.
 
-### Configure the Callback URL for your SMS service
 
-Before you implement the server to handle incoming SMS, you need to configure your SMS service to handle callbacks. Head over to https://dashboard.sinch.com/sms/api/rest, click your service and you will see a section like the below.
+### Create a HTTP server SMS with Node.js
 
-![Screen shot of dashboard](images\sms-callback-url.png)
-
-If you just want to look at what we post you can use http://requestbin.net/
-
-Click create and you will see:
-
-![Screen shot of request bin](images\requestbin.png)
-
-Copy the bin URL to the callback URL info and click Save.
-
-![Screen shot of callback configured](images\callbackurlconfigured.png)
-
-That's it! You're now ready to send an SMS to your Sinch [number](https://dashboard.sinch.com/numbers/your-numbers/numbers)
-
-To see the data we send on incoming SMS, refresh your request bin page.
-
-![requestbin request](images\requestbin-request.png)
-
-### How to handle incoming SMS with Node.js
-
-Create a new node app and paste this into app.js
+Paste below into at bottom of your index.js:
 
 ```javascript
-const url = require("url");
+
 const http = require("http");
 const server = http.createServer((req, res) => {
   let data = [];
@@ -96,19 +92,19 @@ const server = http.createServer((req, res) => {
 });
 server.listen(3000);
 ```
+Start the server
 
-Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
+'''
+node index.js
+'''
 
-Copy the https address in your window, then run app.js in the command prompt 'node app.js'
+### Oopen up a tunnel to your server
 
-![requestbin request](images\ngrok.png)
+- Configure your callbacks on  https://dashboard.sinch.com/sms/api/rest, click your service and you fill in the Callback URL field with teh ngrok.io domain from above.
 
-Go back to your dashboard and change the callback URL for your SMS service.
+Use  to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
 
-1. In the terminal windows, start the app.js `node app.js`
-2. Send an SMS to your Sinch Number.
-3. You will now see the request come in.
-
-![requestbin request](images\noderesponse.png)
+- Copy the https address that ends with .ngrok.io, t
+- Send a reply to sms.
 
 You can read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)

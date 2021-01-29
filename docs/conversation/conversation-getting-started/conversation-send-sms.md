@@ -75,10 +75,10 @@ curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/pro
     "app_id": "{{YOUR_APP_ID}}",
     "recipient": {
         "identified_by": {
-            channel_identities: [
+            "channel_identities": [
                 {
-                    channel:"SMS",
-                    identity:"+15551231212"
+                    "channel": "SMS",
+                    "identity": "+15551231212"
                 }
             ]
         }

@@ -1,5 +1,5 @@
 ---
-title: Working with Templates
+title: Working with templates
 excerpt: >-
   Managing templates and Sending Template Messages with Sinch Conversation API.
 hidden: false

@@ -11,7 +11,7 @@ next:
 
 |           |                                     |
 | --------- | ----------------------------------- |
-| Host      | smpp-\<host\>.clxcommunications.com |
+| Host      | \<host\>.smpp.api.sinch.com |
 | Port      | 3600 (use 3601 for SSL)             |
 | System-ID | \<system-id\>                       |
 | Password  | \<password\>                        |

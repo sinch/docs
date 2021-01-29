@@ -22,7 +22,7 @@ id<SINClient> sinchClient = [Sinch clientWithApplicationKey:@"<application key>"
                                                      userId:@"<user id>"];
 ```
 
-* The _Application Key_ is obtained from the [Sinch Developer Dashboard - Apps](https://portal.sinch.com/#/apps). 
+* The _Application Key_ is obtained from the [Sinch Developer Dashboard - Apps](https://portal.sinch.com/#/apps).
 * The _User ID_ should uniquely identify the user on the particular device.
 * (The term _Ocra_ in the hostname `ocra.api.sinch.com` is just the name for the Sinch API that the SDK clients target)
 
@@ -78,7 +78,7 @@ The sample applications included in the Sinch SDK includes a class `SINJWT` that
 >
 > When deploying your application to production, do __not__ embed the _Application Secret_ in the application. The example above is only meant to show how to provide a signed JWT to the `SINClient`.
 
-### Lifecycle Management of a _SINClient_-instance
+### Life cycle Management of a _SINClient_-instance
 
 We recommend that you initiate the `SINClient`, start it, but not terminate it, during the lifetime of the running application. That also implies that the _SINClient_-instance should be _retained_ by the application code.
 

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Section/Protocols" class="dashAnchor"></a>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Sinch 5.0.4 Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Sinch Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Categories/UIView%28SINUIViewFullscreenAdditions%29.html">UIView(SINUIViewFullscreenAdditions)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SINManagedPush.html">SINManagedPush</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Sinch.html">Sinch</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SINCallIdKey">SINCallIdKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SINErrorDomain">SINErrorDomain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SINErrorDomainNetwork">SINErrorDomainNetwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SINPushTypeKey">SINPushTypeKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SINPushTypeVoIP">SINPushTypeVoIP</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/SINAPSEnvironment.html">SINAPSEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SINCallDirection.html">SINCallDirection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SINCallEndCause.html">SINCallEndCause</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SINCallState.html">SINCallState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SINLogSeverity.html">SINLogSeverity</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/SINAudioController.html">SINAudioController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINAudioControllerDelegate.html">SINAudioControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCall.html">SINCall</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCallClient.html">SINCallClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCallClientDelegate.html">SINCallClientDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCallDelegate.html">SINCallDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCallDetails.html">SINCallDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINCallNotificationResult.html">SINCallNotificationResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINClient.html">SINClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINClientDelegate.html">SINClientDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINClientRegistration.html">SINClientRegistration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINManagedPushDelegate.html">SINManagedPushDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINNotificationResult.html">SINNotificationResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINVideoController.html">SINVideoController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SINVideoFrameCallback.html">SINVideoFrameCallback</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Type%20Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Type%20Definitions.html#/c:SINLogCallback.h@T@SINLogCallback">SINLogCallback</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@SINToggleCaptureDevicePosition">SINToggleCaptureDevicePosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@SINUIImageFromPixelBuffer">SINUIImageFromPixelBuffer</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SINAudioController"></a>
+                <a name="//apple_ref/objc/Section/SINAudioController" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/SINAudioController"></a>
+                  <h3 class="section-name"><p>SINAudioController</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINAudioController"></a>
+                    <a name="//apple_ref/objc/Protocol/SINAudioController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINAudioController">SINAudioController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SINAudioController provides methods for controlling audio related
+ functionality, e.g. enabling the speaker, muting the microphone, and
+ playing sound files.</p>
+<h3 id='playing-sound-files' class='heading'>Playing Sound Files</h3>
+
+<p>The audio controller provides a convenience method
+ (startPlayingSoundFile:loop:) for playing sounds
+ that are related to a call, such as ringtones and busy tones.</p>
+
+<ul>
+<li>Example:</li>
+</ul>
+<pre class="highlight plaintext"><code>    id&lt;SINAudioController&gt; audio = [client audioController];
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"ringtone" ofType:@"wav"];
+
+    [audio startPlayingSoundFile:soundPath loop:YES];
+</code></pre>
+
+<p>Applications that prefer to use their own code for playing sounds are free
+ to do so, but they should follow a few guidelines related to audio
+ session categories and audio session activation/deactivation (see
+ Sinch SDK User Guide for details).</p>
+<h4 id='sound-file-format' class='heading'>Sound File Format</h4>
+
+<p>The sound file must be a mono (1 channel), 16-bit, uncompressed (PCM)
+ .wav file with a sample rate of 8kHz, 16kHz, or 32kHz.</p>
+
+                        <a href="Protocols/SINAudioController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINAudioController</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINAudioController</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINAudioControllerDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SINAudioControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINAudioControllerDelegate">SINAudioControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate of a SINAudioController object must adopt the
+SINAudioControllerDelegate protocol. The methods handle audio
+related state changes.</p>
+
+                        <a href="Protocols/SINAudioControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINAudioControllerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINAudioControllerDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SINCall"></a>
+                <a name="//apple_ref/objc/Section/SINCall" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/SINCall"></a>
+                  <h3 class="section-name"><p>SINCall</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCall"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCall" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCall">SINCall</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SINCall represents a call.</p>
+
+                        <a href="Protocols/SINCall.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCall</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCall</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SINCallDelegate"></a>
+                <a name="//apple_ref/objc/Section/SINCallDelegate" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/SINCallDelegate"></a>
+                  <h3 class="section-name"><p>SINCallDelegate</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCallDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCallDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCallDelegate">SINCallDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate of a SINCall object must adopt the SINCallDelegate
+ protocol. The required methods handle call state changes.</p>
+<h3 id='call-state-progression' class='heading'>Call State Progression</h3>
+
+<p>For a complete outgoing call, the delegate methods will be called
+ in the following order:</p>
+
+<ul>
+<li><code>callDidProgress:</code></li>
+<li><code>callDidEstablish:</code></li>
+<li><code>callDidEnd:</code></li>
+</ul>
+
+<p>For a complete incoming call, the delegate methods will be called
+ in the following order, after the client delegate method
+ <code>[SINClientDelegate client:didReceiveIncomingCall:]</code> has been called:</p>
+
+<ul>
+<li><code>callDidEstablish:</code></li>
+<li><code>callDidEnd:</code></li>
+</ul>
+
+                        <a href="Protocols/SINCallDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCallDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCallDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCallClient"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCallClient" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCallClient">SINCallClient</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>SINCallClient provides the entry point to the calling functionality of the Sinch SDK.
+ A SINCallClient can be acquired via SINClient.</p>
+
+<ul>
+<li><p>Exmaple:</p>
+<pre class="highlight plaintext"><code>
+id&lt;SINClient&gt; sinchClient;
+[sinchClient start];
+...
+
+// Place outgoing call.
+id&lt;SINCallClient&gt; callClient = [sinchClient callClient];
+id&lt;SINCall&gt; call = [callClient callUserWithId:@"&lt;REMOTE USERID&gt;"];
+
+// Set the call delegate that handles all the call state changes
+call.delegate= ... ;
+
+// ...
+
+// Hang up the call
+[call hangup];
+</code></pre></li>
+</ul>
+
+                        <a href="Protocols/SINCallClient.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCallClient</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCallClient</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCallClientDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCallClientDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCallClientDelegate">SINCallClientDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate of a SINCallClient object must adopt the SINCallClientDelegate protocol.</p>
+
+                        <a href="Protocols/SINCallClientDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCallClientDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCallClientDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SINCallDetails"></a>
+                <a name="//apple_ref/objc/Section/SINCallDetails" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/SINCallDetails"></a>
+                  <h3 class="section-name"><p>SINCallDetails</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCallDetails"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCallDetails" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCallDetails">SINCallDetails</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SINCallDetails holds metadata about a call (SINCall).</p>
+
+                        <a href="Protocols/SINCallDetails.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCallDetails</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCallDetails</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINCallNotificationResult"></a>
+                    <a name="//apple_ref/objc/Protocol/SINCallNotificationResult" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINCallNotificationResult">SINCallNotificationResult</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>SINCallNotificationResult is used to indicate the result of <code>-[SINClient relayRemotePushNotificationPayload:]</code>
+ when the Sinch-specific payload in the notification represents an incoming
+ call.</p>
+
+<p>One example of a scenario where SINCallNotificationResult is when a user
+ have been attempted to be reached, but not acted on the notification directly.
+ In that case, the notification result object can indicate that the
+ notification is too old (<code>isTimedOut</code>), and also contains the <code>remoteUserId</code>
+ which can be used for display purposes.</p>
+
+                        <a href="Protocols/SINCallNotificationResult.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINCallNotificationResult</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINCallNotificationResult</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/SINClient"></a>
+                <a name="//apple_ref/objc/Section/SINClient" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/SINClient"></a>
+                  <h3 class="section-name"><p>SINClient</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINClient"></a>
+                    <a name="//apple_ref/objc/Protocol/SINClient" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINClient">SINClient</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SINClient is the Sinch SDK entry point.</p>
+
+<p>It provides access to the feature classes in the Sinch SDK:
+ SINCallClient and SINAudioController. It is also used to configure
+ the user&rsquo;s and device&rsquo;s capabilities.</p>
+<h3 id='user-identification' class='heading'>User Identification</h3>
+
+<p>The user IDs that are used to identify users application specific.</p>
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>user IDs are restricted to the character set &ldquo;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjiklmnopqrstuvwxyz0123456789-_=&rdquo;,
+and must be no longer than 255 bytes.</p>
+
+</div><ul>
+<li><p>Example:</p>
+<pre class="highlight plaintext"><code>// Instantiate a client object using the client factory.
+id&lt;SINClient&gt; client = [Sinch clientWithApplicationKey:@"&lt;APPLICATION KEY&gt;"
+                                       environmentHost:@"ocra.api.sinch.com"
+                                                userId:@"&lt;USERID&gt;"];
+
+// Enable push notifications
+[client enableManagedPushNotifications];
+
+// Assign delegate. It is required to implement
+// -[SINClientDelegate client:requiresRegistrationCredentials:]
+// and provide a authorization token (JWT) to allow the User to register
+// and the client to successfully start.
+client.delegate = ... ;
+
+// Start the client
+[client start];
+
+// Use SINCallClient to place and receive calls
+[client.callClient callUserWithId:...]
+</code></pre></li>
+</ul>
+
+                        <a href="Protocols/SINClient.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINClient</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINClient</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINClientDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SINClientDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINClientDelegate">SINClientDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate of a SINClient object must adopt the SINClientDelegate
+protocol. The required methods allows responding to client state
+changes (start and stop), and providing user registration
+credentials (JWT).</p>
+
+                        <a href="Protocols/SINClientDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINClientDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINClientDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINClientRegistration"></a>
+                    <a name="//apple_ref/objc/Protocol/SINClientRegistration" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINClientRegistration">SINClientRegistration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback object to be used to proceed in user registration process when
+registration credentials for the user in question have been obtained.</p>
+
+                        <a href="Protocols/SINClientRegistration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINClientRegistration</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINClientRegistration</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINManagedPushDelegate"></a>
+                    <a name="//apple_ref/objc/Protocol/SINManagedPushDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINManagedPushDelegate">SINManagedPushDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>SINManagedPushDelegate</p>
+
+                        <a href="Protocols/SINManagedPushDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINManagedPushDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINManagedPushDelegate</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINNotificationResult"></a>
+                    <a name="//apple_ref/objc/Protocol/SINNotificationResult" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINNotificationResult">SINNotificationResult</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>SINNotificationResult is used to indicate the result of <code><a href="Protocols/SINClient.html#/c:objc(pl)SINClient(im)relayPushNotification:">-[SINClient relayPushNotification:]</a></code> and
+ <code><a href="Classes/SINManagedPush.html#/c:objc(cs)SINManagedPush(cm)queryPushNotificationPayload:">+[SINManagedPush queryPushNotificationPayload:]</a></code>.</p>
+
+<ul>
+<li>Example:</li>
+</ul>
+<pre class="highlight plaintext"><code> id&lt;SINNotificationResult&gt; result = [self.client relayPushNotification:payload];
+
+ if ([result isCall] &amp;&amp; [result callResult].isTimedOut) {
+     NSString* remoteUserId = [result callResult].remoteUserId;
+     // Present UI indicating user missed the call.
+ }
+</code></pre>
+
+<p>It can be especially useful for scenarios which will not result in
+ the SINClientDelegate receiving any callback for an incoming call as a result
+ of calling the methods mentioned above. One such scenario is when a user
+ have been attempted to be reached, but not acted on the notification directly.
+ In that case, the notification result object can indicate that the
+ notification is too old (<code>isTimedOut</code>), and also contains the <code>remoteUserId</code> which can be
+ used for display purposes.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <code><a href="Protocols/SINCallNotificationResult.html">SINCallNotificationResult</a></code>
+
+</div>
+
+                        <a href="Protocols/SINNotificationResult.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINNotificationResult</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINNotificationResult</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINVideoController"></a>
+                    <a name="//apple_ref/objc/Protocol/SINVideoController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINVideoController">SINVideoController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SINVideoController provides methods for controlling video related functionality.</p>
+
+                        <a href="Protocols/SINVideoController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINVideoController</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINVideoController</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)SINVideoFrameCallback"></a>
+                    <a name="//apple_ref/objc/Protocol/SINVideoFrameCallback" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)SINVideoFrameCallback">SINVideoFrameCallback</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Video frame handler must adopt SINVideoFrameCallback protocol</p>
+
+                        <a href="Protocols/SINVideoFrameCallback.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">SINVideoFrameCallback</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">SINVideoFrameCallback</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright © 2021 Sinch</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
