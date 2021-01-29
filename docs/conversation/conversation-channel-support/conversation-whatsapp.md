@@ -587,7 +587,7 @@ The rendered message:
 
 ##### Receiving Messages
 
-WhatsApp channel supports various kinds of contact messages - text, media, location as well as quick replies.
+WhatsApp channel supports various kinds of contact messages - text, media, media card, location and quick replies.
 All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
 
 ---
@@ -618,7 +618,67 @@ Example text reply:
   }
 }
 ```
+---
 
+Example media message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:55.073703Z",
+  "event_time": "2020-10-01T12:10:53.991Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ1534NWK5R02TGWEJN13HA",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_message": {
+        "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
+      }
+    },
+    "channel_identity": {
+      "channel": "WHATSAPP",
+      "identity": "46712312312",
+      "app_id": ""
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:10:55.060170Z"
+  }
+}
+```
+---
+
+Example media card message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:55.073703Z",
+  "event_time": "2020-10-01T12:10:53.991Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ1534NWK5R02TGWEJN13HA",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_card_message": {
+        "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png",
+        "caption": "caption text"
+      }
+    },
+    "channel_identity": {
+      "channel": "WHATSAPP",
+      "identity": "46712312312",
+      "app_id": ""
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:10:55.060170Z"
+  }
+}
+```
 ---
 
 Example location contact message:

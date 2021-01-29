@@ -4,7 +4,7 @@ excerpt: >-
   The most feature rich API that Sinch offers is the SMS REST API. Single
   messages, scheduled batch send-outs, using message templates and more.
 ---
-### Using the Rest api
+### Using the Rest API
 
 To get started in minutes to [send your first SMS](doc:sms)
 
@@ -32,7 +32,7 @@ curl -X POST \
 
 #### Base URL
 
-The following URLs can be used by the REST API. We have servers in the US and EU. By default your account will be created in the US environment. If you'd like access to the European environment, please contact our support team.  
+The following URLs can be used by the REST API. We have servers in the US and EU. By default your account will be created in the US environment. If you'd like access to the European environment, please contact your Sinch account manager.  
 
 
 | Server        |  URL                                   |
@@ -131,7 +131,7 @@ The following error codes can be returned as values for the `code` field:
 
 The following operation will send a batch message.
 
-Depending on the length of the *body* one message might be [split into multiple parts](#long-messages) and charged accordingly.
+Depending on the length of the *body*, one message might be [split into multiple parts](#long-messages) and charged accordingly. The operation to [dry run a batch](#dry-run-a-batch) will return the number of parts for all messages in the batch without actually sending any messages.
 
 Any groups targeted in a scheduled batch will be evaluated at the time of sending. If a group is deleted between batch creation and scheduled date it will be considered empty.
 
@@ -153,7 +153,7 @@ JSON body fields:
 |send_at                            |If set in the future the message will be delayed until send_at occurs                                              | ISO-8601 string  |Now                 |Must be before expire_at. If set in the past messages will be sent immediately.|                      No                      |
 |expire_at                          |If set the system will stop trying to deliver the message at this point                                            | ISO-8601 string  |3 days after send_at|                             Must be after send_at                             |                      No                      |
 |callback_url                       |Override the default callback URL for this batch                                                                   |    URL string    |N/A                 |                  Must be valid URL. Max 2048 characters long                  |                      No                      |
-|flash_message                      |Shows message on screen without user interaction while not saving the message to the inbox                         |     Boolean      |false               |                                 true or false                                 |                                              |
+|flash_message                      |Shows message on screen without user interaction while not saving the message to the inbox                         |     Boolean      |false               |                                 true or false                                 |                      No                      |
 |parameters                         |Contains the parameters that will be used for customizing the message for each recipient                           |      Object      |N/A                 |                    Not applicable to if type is mt_binary                     |                      No                      |
 |parameters.{parameter_key}         |The name of the parameter that will be replaced in the message body                                                |      String      |N/A                 |    Letters A-Z and a-z, digits 0-9 and .-_ allowed. Max 16 characters long    |                      No                      |
 |parameters.{parameter_key}.{msisdn}|The recipient that should get this value                                                                           |      String      |N/A                 |                            Max 160 characters long                            |                      No                      |
@@ -350,7 +350,7 @@ Query parameters:
 |page                |The requested page                                                                                                          |                                Integer                                |
 |page_size           |The number of batches returned in this request                                                                              |                                Integer                                |
 |count               |The total number of batches matching the given filters                                                                      |                                Integer                                |
-|batches             |The page of batches matching the given filters                                                                              |Array of objects described in [Send a batch message](#send-a-batch-mess|
+|batches             |The page of batches matching the given filters                                                                              |Array of objects [Send a batch message](#send-a-batch-message)       |
 
 ### Dry run a batch
 
@@ -774,24 +774,28 @@ Individual characters used in the message determine the type of encoding that wi
 
 You can send up to 160 characters in a single SMS message if all characters in your message are part of the GSM 7-bit character set:
 
-|      |       |      |     |     |     |     |       |
-|-- -  | ---   | ---  | --- | --- | --- | --- | --- --|
-| @    | Δ     | `SP` | 0   | ¡   | P   | ¿   | p     |
-| £    | _     | !    | 1   | A   | Q   | a   | q     |
-| $    | Φ     | "    | 2   | B   | R   | b   | r     |
-| ¥    | Γ     | #    | 3   | C   | S   | c   | s     |
-| è    | Λ     | ¤    | 4   | D   | T   | d   | t     |
-| é    | Ω     | %    | 5   | E   | U   | e   | u     |
-| ù    | Π     | &    | 6   | F   | V   | f   | v     |
-| ì    | Ψ     | '    | 7   | G   | W   | g   | w     |
-| ò    | Σ     | (    | 8   | H   | X   | h   | x     |
-| Ç    | Θ     | )    | 9   | I   | Y   | i   | y     |
-| `LF` | Ξ     | *    | :   | J   | Z   | j   | z     |
-| Ø    | `ESC` | +    | ;   | K   | Ä   | k   | ä     |
-| ø    | Æ     | ,    | <   | L   | Ö   | l   | ö     |
-| `CR` | æ     | -    | =   | M   | Ñ   | m   | ñ     |
-| Å    | ß     | .    | >   | N   | Ü   | n   | ü     |
-| å    | É     | /    | ?   | O   | §   | o   | à     |
+### GSM 7 bit default alphabet and extension table
+**3GPP TS 23.038 / GSM 03.38**
+
+||||||||||||||||||
+|------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||x0 |x1 |x2 |x3 |x4 |x5 |x6 |x7 |x8 |x9 |xA |xB |xC |xD |xE |xF |
+|0x    |@  |£  |$  |¥  |è  |é  |ù  |ì  |ò  |Ç  |LF |Ø  |ø  |CR |Å  |å  |
+|1x    |Δ  |_  |Φ  |Γ  |Λ  |Ω  |Π  |Ψ  |Σ  |Θ  |Ξ  |ESC|Æ  |æ  |ß  |É  |
+|2x    |SP |!  |“  |#  |¤  |%  |&  |‘  |(  |)  |*  |+  |,  |   |.  |/  |
+|3x    |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |:  |;  |<  |=  |>  |?  |
+|4x    |¡  |A  |B  |C  |D  |E  |F  |G  |H  |I  |J  |K  |L  |M  |N  |O  |
+|5x    |P  |Q  |R  |S  |T  |U  |V  |W  |X  |Y  |Z  |Ä  |Ö  |Ñ  |Ü  |§  |
+|6x    |¿  |a  |b  |c  |d  |e  |f  |g  |h  |i  |j  |k  |l  |m  |n  |o  |
+|7x    |p  |q  |r  |s  |t  |u  |v  |w  |x  |y  |z  |ä  |ö  |ñ  |ü  |à  |
+|1B 0x |   |   |   |   |   |   |   |   |   |   |FF |   |   |   |   |   |
+|1B 1x |   |   |   |   |^  |   |   |   |   |   |   |   |   |   |   |   |
+|1B 2x |   |   |   |   |   |   |   |   |{  |}  |   |   |   |   |   |\  |
+|1B 3x |   |   |   |   |   |   |   |   |   |   |   |   |[  |~  |]  |   |
+|1B 4x |&#124; |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|1B 5x |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+|1B 6x |   |   |   |   |   |€  |   |   |   |   |   |   |   |   |   |   |
+|1B 7x |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 
 `LF` is the Line Feed character - for JSON format, provide it as `\n`
 `SP` is the Space character
@@ -804,7 +808,7 @@ The following characters are also available, but they are counted as two charact
 
 ##### Other Characters
 
-If other characters are required for different languages, 16-bit Unicode (UCS-2) encoding will be used. When using UCS-2 encoding, each character will take 2 bytes, which means up to 70 characters can be sent per UCS-2 encoded SMS message.
+If other characters are required for different languages, 16-bit Unicode (UCS-2) encoding will be used. When using UCS-2 encoding, each character will take 2 bytes, which means up to 70 characters can be sent per UCS-2 encoded SMS message. Here is more information on this topic, including billing implications.
 
 ### Long Messages
 
@@ -908,7 +912,7 @@ The status field describes which state a particular message is in. Please note t
 
 The delivery report status code provides a more detailed view of what happened with a message. The REST API shares most of its error codes with other SMS services.
 
-These are defined [here](doc:sms-other-cloud-smpp#error-codes).
+These are defined [here](doc:sms-smpp-error-specification#status-reports-error-codes).
 
 In addition to these standard error codes, the REST API provides an additional set of error codes, all within the 4xx range (vendor specific errors in the range of 0x400 to 0x4FF as referenced in the SMPP specification). These are listed below:
 
@@ -948,6 +952,18 @@ Inbounds, or Mobile Originated messages, are incoming messages. Inbound messages
 | received\_at | When the system received the message.                                                 | ISO-8601 String |
 
 NB: The operator is only available for MOs sent to short codes.
+
+### Mobile Originating Callback Report
+
+``` json
+{
+	"id":"{batch_id}",
+	"from":"123456789","to":"12345",
+	"body":"Help",
+	"type":"mo_text",
+	"received_at":"2016-07-19T13:09:02.972Z" 
+	}
+```
 
 ### List inbound messages
 

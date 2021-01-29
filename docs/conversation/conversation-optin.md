@@ -1,5 +1,5 @@
 ---
-title: Opt-In & Opt-Out
+title: Opt-in & Opt-out
 excerpt: >-
   Registering Opt-In & Opt-Out requests
 hidden: false

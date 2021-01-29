@@ -2,10 +2,13 @@
 title: Getting started - Java
 excerpt: Learn how to quickly send SMS messages with the Sinch API
 ---
-In this guide, we show you how to:
+In this guide, you will learn how to:
 
 1. Create an account and get your free test number (US only).
 2. Send your first SMS.
+3. Recieve SMS
+
+A complete sample can be found on GitHub [Send and Recieve SMS with Java and Spring Boot](https://github.com/sinch/sms-java-sample)
 
 ### Sign up for a Sinch account
 

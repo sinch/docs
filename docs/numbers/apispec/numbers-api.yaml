@@ -1,26 +1,41 @@
 openapi: 3.0.0
 info:
   title: Numbers
-  description: Use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.
+  description: |-
+    Service for getting, listing and managing virtual numbers.
+
+    ## Authentication
+
+    <h3>Basic</h3>
+
+    Our basic security works with any project, use the client_id and client_secret that were displayed when you created your access key through the dashboard.
+
+    Learn more about Sinch authentication and authorization
+
+     <table><thead><tr><th>Security Scheme Type</th><th>HTTP</th></tr></thead><tbody><tr><td><b>HTTP Authorization Scheme</b></td><td>basic</td></tr></tbody></table>
+
+    <h3>OAuth</h3>
+    This is the recommended way to access our apis.
+
+    Learn more about Sinch authentication and authorization
+
+     <table><thead><tr><th>Security Scheme Type</th><th>OAuth2</th></tr></thead><tbody><tr><td><b>clientCredentials OAuth Flow</b></td><td><b>Token URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/token">https://eu.auth.sinch.com/oauth2/token</a><br><br><b>Revoke URL:</b><br><a href="https://eu.auth.sinch.com/oauth2/revoke">https://eu.auth.sinch.com/oauth2/revoke</a></td></tr></tbody></table>
   version: '1.0'
-tags:
-  - name: Available Virtual Numbers
-  - name: Active Virtual Numbers
 paths:
-  '/v1beta1/projects/{projectId}/activeNumbers':
+  '/v1/projects/{projectId}/activeNumbers':
     get:
-      summary: List all your virtual numbers.
-      description: Use this GET API to list all virtual numbers.
+      summary: Lists virtual numbers for a project
+      description: Lists all virtual numbers for a project. Learn about [authentication](#active-number). 
       operationId: NumberService_ListActiveNumbers
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListActiveNumbersResponse'
+                $ref: '#/components/schemas/v1ListActiveNumbersResponse'
         '400':
-          description: 'pageToken, NumberPattern or orderBy is not valid'
+          description: 'If the page_token, number_pattern or order_by is not valid'
           content:
             application/json:
               schema: {}
@@ -35,22 +50,16 @@ paths:
                         - type: BadRequest
                           fieldViolations:
                             - field: order_by
-                              description: Invalid orderBy XXX
-        default:
-          description: An unexpected error has occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
+                              description: Invalid order_by XXX
       parameters:
         - name: projectId
-          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: Your project id can be found if you log into your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
             type: string
         - name: regionCode
-          description: '[country code](https://www.iso.org/obp/ui/#search) of the number.'
+          description: 'Region code to filter by. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.'
           in: query
           required: false
           schema:
@@ -63,24 +72,29 @@ paths:
             type: string
         - name: searchPattern
           description: |-
-            Search pattern to apply:
-             - START: Numbers that start with the provided sequence of digits.
-             - CONTAINS: Numbers that contain the sequence of digits.
-             - END: Numbers that end with the sequence of digits.
+            Search pattern to apply.
+
+             - SEARCH_PATTERN_UNSPECIFIED: Null value
+             - START: Numbers that start with the provided sequence of digits
+             - CONTAINS: Numbers that contain the sequence of digits
+             - END: Numbers that end with the sequence of digits
           in: query
           required: false
           schema:
             type: string
             enum:
+              - SEARCH_PATTERN_UNSPECIFIED
               - START
               - CONTAINS
               - END
+            default: SEARCH_PATTERN_UNSPECIFIED
         - name: type
           description: |-
-            Filter by MOBILE, LOCAL or TOLL_FREE virtual number.
-             - MOBILE: Numbers that belong to a specific range.
-             - LOCAL: Numbers that are assigned to a specific geographic region.
-             - TOLL_FREE: Number that is billed for all arriving calls.
+            Number type to filter by. MOBILE, LOCAL or TOLL_FREE.
+
+             - MOBILE: Numbers that belong to a specific range
+             - LOCAL: Numbers that are assigned to a specific geographic region
+             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
           in: query
           required: false
           schema:
@@ -92,9 +106,10 @@ paths:
             default: MOBILE
         - name: capability
           description: |-
-            Filter by SMS and/or VOICE.
-             - SMS: The SMS product can use the virtual number.
-             - VOICE: The Voice product can use the virtual number.
+            Number capability to filter by. SMS and/or VOICE.
+
+             - SMS: The SMS product can use the number
+             - VOICE: The Voice product can use the number
           in: query
           required: false
           schema:
@@ -111,32 +126,35 @@ paths:
             type: integer
             format: int32
         - name: pageToken
-          description: 'The next pageToken value returned from a previous List request, if any.'
+          description: 'The next_page_token value returned from a previous List request, if any.'
           in: query
           required: false
           schema:
             type: string
         - name: orderBy
           description: |-
-            Supported fields for ordering by number or display_name.
+            Supported fields for ordering by: number or display_name.
+            https://cloud.google.com/apis/design/design_patterns#sorting_order.
           in: query
           required: false
           schema:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}':
+  '/v1/projects/{projectId}/activeNumbers/{phoneNumber}':
     patch:
-      summary: Update virtual number
-      description: With update virtual number, you can move a number between different SMS services and give it a new friendly name.
+      summary: Update virtual phone number.
+      description: |-
+        With update virtual phone number you can move a number between different SMS services and give it a new friendly name.
+        The following fields can be updated: displayName, smsConfiguration.servicePlanId.
       operationId: NumberService_UpdateActiveNumber
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActiveNumber'
+                $ref: '#/components/schemas/v1ActiveNumber'
         '404':
           description: The active number could not be found
           content:
@@ -155,61 +173,40 @@ paths:
                           resourceName: '+12025550134'
                           owner: ''
                           description: ''
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project.
+          description: The ID of the project resource
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: Output only. The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: Output only. The phone number in e.164 format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
             type: string
-        - name: updateMask
-          description: |-
-            FieldMask that determines which resource fields are modified in an update. The following fields can be updated:
-            * displayName
-            * smsConfiguration.servicePlanId.
-          in: query
-          required: false
-          explode: true
-          schema:
-            type: array
-            items:
-              type: string
-            default: 
-              - displayName
-              - smsConfiguration.servicePlanId
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ActiveNumber'
+              $ref: '#/components/schemas/v1ActiveNumber'
         description: The number body to be updated
         required: true
       tags:
         - Active Number
     get:
-      summary: Get a virtual number
+      summary: Get a virtual number.
       operationId: NumberService_GetActiveNumber
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActiveNumber'
+                $ref: '#/components/schemas/v1ActiveNumber'
         '404':
-          description: The active virtual number could not be found.
+          description: The active number could not be found
           content:
             application/json:
               schema: {}
@@ -226,15 +223,9 @@ paths:
                           resourceName: '+12025550134'
                           owner: ''
                           description: ''
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: Your project id can be found if you log into your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
@@ -247,20 +238,20 @@ paths:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
+  '/v1/projects/{projectId}/activeNumbers/{phoneNumber}:release':
     post:
       summary: Release a virtual number from the project.
-      description: Cancel your subscription for a specific virtual number.
+      description: Cancel your subscription for a specific virtual phone number.
       operationId: NumberService_ReleaseNumber
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActiveNumber'
+                $ref: '#/components/schemas/v1ActiveNumber'
         '404':
-          description: The active virtual number could not be found.
+          description: The active number could not be found
           content:
             application/json:
               schema: {}
@@ -277,41 +268,35 @@ paths:
                           resourceName: '+12025550134'
                           owner: ''
                           description: ''
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: The active virtual number to release.
+          description: The active phone number to release.
           in: path
           required: true
           schema:
             type: string
       tags:
         - Active Number
-  '/v1beta1/projects/{projectId}/availableNumbers':
+  '/v1/projects/{projectId}/availableNumbers':
     get:
       summary: Search virtual numbers
-      description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available virtual number resource.
+      description: Search for virtual numbers that are available for you to activate. You can filter by any property on the available number resource. Learn about [authentication](#active-number).
       operationId: NumberService_ListAvailableNumbers
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAvailableNumbersResponse'
+                $ref: '#/components/schemas/v1ListAvailableNumbersResponse'
         '400':
-          description: 'If the NumberPattern, type or capability is not valid'
+          description: 'If the number_pattern, type or capability is not valid'
           content:
             application/json:
               schema: {}
@@ -323,15 +308,9 @@ paths:
                       message: 'parsing field "type": "XXX" is not a valid value'
                       status: INVALID_ARGUMENT
                       details: []
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The resource name of the project id. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: The resource name of the project id. Your project id can be found if you login to your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
@@ -344,30 +323,35 @@ paths:
             type: string
         - name: searchPattern
           description: |-
-            Search pattern to apply:
-             - START: Virtual numbers that start with the provided sequence of digits.
-             - CONTAINS: Virtual numbers that contain the sequence of digits.
-             - END: Virtual numbers that end with the sequence of digits.
+            Search pattern to apply.
+
+             - SEARCH_PATTERN_UNSPECIFIED: Null value
+             - START: Numbers that start with the provided sequence of digits
+             - CONTAINS: Numbers that contain the sequence of digits
+             - END: Numbers that end with the sequence of digits
           in: query
           required: false
           schema:
             type: string
             enum:
+              - SEARCH_PATTERN_UNSPECIFIED
               - START
               - CONTAINS
               - END
+            default: SEARCH_PATTERN_UNSPECIFIED
         - name: regionCode
-          description: 'Only return virtual numbers for the given region code. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
+          description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.'
           in: query
           required: false
           schema:
             type: string
         - name: type
           description: |-
-            Only return MOBILE, LOCAL or TOLL_FREE numbers.
-             - MOBILE: Virtual numbers that belong to a specific range.
-             - LOCAL: Virtual numbers that are assigned to a specific geographic region.
-             - TOLL_FREE: Virtual number that is billed for all arriving calls.
+            Only return numbers with the given v1. MOBILE, LOCAL or TOLL_FREE.
+
+             - MOBILE: Numbers that belong to a specific range
+             - LOCAL: Numbers that are assigned to a specific geographic region
+             - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
           in: query
           required: false
           schema:
@@ -379,9 +363,10 @@ paths:
             default: MOBILE
         - name: capability
           description: |-
-            Filter by SMS and/or VOICE.
-             - SMS: The SMS product can use the virtual number.
-             - VOICE: The Voice product can use the virtual number.
+            Number capability to filter by. SMS and/or VOICE.
+
+             - SMS: The SMS product can use the number
+             - VOICE: The Voice product can use the number
           in: query
           required: false
           schema:
@@ -399,20 +384,20 @@ paths:
             format: int32
       tags:
         - Available Number
-  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}':
+  '/v1/projects/{projectId}/availableNumbers/{phoneNumber}':
     get:
-      summary: Fetch an available virtual number.
+      summary: Fetch an available virtual number
       description: Returns an available virtual number.
       operationId: NumberService_GetAvailableNumber
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AvailableNumber'
+                $ref: '#/components/schemas/v1AvailableNumber'
         '404':
-          description: The available virtual number could not be found.
+          description: The available number could not be found
           content:
             application/json:
               schema: {}
@@ -429,46 +414,40 @@ paths:
                           resourceName: '+12025550134'
                           owner: ''
                           description: ''
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: Your project id can be found if you log into your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: The phone number in e.164 format with leading +. Example +12025550134.
           in: path
           required: true
           schema:
             type: string
       tags:
         - Available Number
-  '/v1beta1/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
+  '/v1/projects/{projectId}/availableNumbers/{phoneNumber}:rent':
     post:
       summary: Activate a new virtual number
-      description: Activate a new virtual number to use with SMS or Voice products.
+      description: Activate a virtual number to use with SMS or Voice products.
       operationId: NumberService_RentNumber
       responses:
         '200':
-          description: Success
+          description: A successful response.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActiveNumber'
+                $ref: '#/components/schemas/v1ActiveNumber'
         '400':
-          description: The project does not have enough credit to rent the number.
+          description: If the project does not have enough credit to rent the number
           content:
             application/json:
               schema: {}
         '404':
-          description: The available virtual number could not be found.
+          description: The available number could not be found
           content:
             application/json:
               schema: {}
@@ -485,21 +464,15 @@ paths:
                           resourceName: '+12025550134'
                           owner: ''
                           description: ''
-        default:
-          description: An unexpected error occurred.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
       parameters:
         - name: projectId
-          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
           in: path
           required: true
           schema:
             type: string
         - name: phoneNumber
-          description: The virtual number available to rent.
+          description: The available phone number to rent.
           in: path
           required: true
           schema:
@@ -508,10 +481,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RentNumberRequest'
+              $ref: '#/components/schemas/v1RentNumberRequest'
         required: true
       tags:
         - Available Number
+
+security:
+  - Basic: []
+  - oauth2: []
 x-explorer-enabled: false
 x-samples-languages:
   - curl
@@ -526,45 +503,23 @@ components:
     NumberPatternSearchPattern:
       type: string
       enum:
+        - SEARCH_PATTERN_UNSPECIFIED
         - START
         - CONTAINS
         - END
+      default: SEARCH_PATTERN_UNSPECIFIED
       description: |-
-         - START: Virtual numbers that start with the provided sequence of digits.
-         - CONTAINS: Virtual numbers that contain the sequence of digits.
-         - END: Virtual numbers that end with the sequence of digits.
+        - SEARCH_PATTERN_UNSPECIFIED: Null value
+         - START: Numbers that start with the provided sequence of digits
+         - CONTAINS: Numbers that contain the sequence of digits
+         - END: Numbers that end with the sequence of digits
       title: Search Pattern
-    protobufAny:
-      type: object
-      properties:
-        typeUrl:
-          type: string
-          description: The url of the error
-        value:
-          type: string
-          format: byte
-          description: A binary representation of the error.
-    rpcStatus:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-          description: The error code received from the server.
-        message:
-          type: string
-          description: Error description
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
     typeMoney:
       type: object
-      readOnly: true
       properties:
         currencyCode:
           type: string
-          description: The 3-letter [currency code](https://www.iban.com/currency-codes) defined in ISO 4217.
+          description: The 3-letter currency code defined in ISO 4217.
         amount:
           type: string
           description: |-
@@ -573,32 +528,31 @@ components:
             There are no guarantees on the precision unless
             documented by the message origin.
       title: Money
-    ActiveNumber:
+    v1ActiveNumber:
       type: object
       properties:
         phoneNumber:
           type: string
-          description: Output only. The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          description: Output only. The phone number in e.164 format with leading +. Example +12025550134.
           readOnly: true
         projectId:
           type: string
-          description: Output only. Project id. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: Output only. Project id. Your project id can be found if you log into your account on dashboard.sinch.com.
           readOnly: true
         displayName:
           type: string
-          description: Optional. User supplied name for the virtual number.
+          description: Optional. User supplied name for the phone number.
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the number.'
+          description: 'Output only. ISO 3166-1 alpha-2 country code of the phone number. Example US, UK or SE.'
           readOnly: true
         type:
-          $ref: '#/components/schemas/NumberType'
-          readOnly: true
+          $ref: '#/components/schemas/v1NumberType'
         capability:
           type: array
           items:
-            $ref: '#/components/schemas/NumberCapability'
-          description: Output only. Which SMS and/or VOICE capabilities a virtual number supports.
+            $ref: '#/components/schemas/v1NumberCapability'
+          description: Output only. Which capabilities an phone number supports. SMS and/or VOICE.
           readOnly: true
         money:
           $ref: '#/components/schemas/typeMoney'
@@ -618,26 +572,26 @@ components:
           description: Output only. The timestamp when the subscription will expire if an expiration date has been set.
           readOnly: true
         smsConfiguration:
-          $ref: '#/components/schemas/SmsConfiguration'
-      description: The virtual number that has been bought by a customer and assigned to a project.
+          $ref: '#/components/schemas/v1SmsConfiguration'
+      description: The phone number that has been bought by a customer and assigned to a project.
       title: Active Number
-    AvailableNumber:
+    v1AvailableNumber:
       type: object
       properties:
         phoneNumber:
           type: string
-          title: The virtual number in [e.164](https://en.wikipedia.org/wiki/E.164) format with leading +. Example +12025550134.
+          title: The phone number in E.164 format with leading +. Example +12025550134
         regionCode:
           type: string
-          description: 'Output only. ISO 3166-1 alpha-2 [country code](https://www.iso.org/obp/ui/#search) of the virtual number.'
+          description: 'Output only. ISO 3166-1 alpha-2 country code of the phone number. Example US, UK or SE.'
           readOnly: true
         type:
-          $ref: '#/components/schemas/NumberType'
+          $ref: '#/components/schemas/v1NumberType'
         capability:
           type: array
           items:
-            $ref: '#/components/schemas/NumberCapability'
-          description: Output only. Which SMS and/or VOICE capabilities the virtual number supports. 
+            $ref: '#/components/schemas/v1NumberCapability'
+          description: Output only. Which capabilities the phone number supports. SMS and/or VOICE.
           readOnly: true
         setupPrice:
           $ref: '#/components/schemas/typeMoney'
@@ -651,48 +605,48 @@ components:
         supportingDocumentationRequired:
           type: boolean
           format: boolean
-          title: Output only. Whether or not supplementary documentation is required to complete purchase.
+          title: Output only. Whether or not supplementary documentation will be required to complete purchase
           readOnly: true
-      description: The virtual numbers that are available to be purchased in the [Sinch dashboard](https://dashboard.sinch.com/) or via the public numbers API.
-      title: Available Virtual Numbers
-    ListActiveNumbersResponse:
+      description: The phone numbers that are available to be purchased in dashboard.sinch.com or via the public numbers API.
+      title: Available Number
+    v1ListActiveNumbersResponse:
       type: object
       properties:
         activeNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/ActiveNumber'
-          description: List of virtual numbers associated to the client project specified in `ListActiveNumbers`.
+            $ref: '#/components/schemas/v1ActiveNumber'
+          description: List of numbers associated to the client project specified in `ListActiveNumbers`.
         nextPageToken:
           type: string
-          title: The token to be used for listing the next page.
+          title: The token to be used for listing the next page
         totalSize:
           type: integer
           format: int32
-          title: 'List pagination'
-      description: Response message to list your active virtual numbers.
+          title: 'https://cloud.google.com/apis/design/design_patterns#list_pagination'
+      description: Response message to list your active phone numbers
       title: Active Numbers Response
-    ListAvailableNumbersResponse:
+    v1ListAvailableNumbersResponse:
       type: object
       properties:
         availableNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/AvailableNumber'
-          description: List of available numbers.
-      description: Response message to list available virtual numbers.
-      title: Available Virtual Numbers Response
-    NumberCapability:
+            $ref: '#/components/schemas/v1AvailableNumber'
+          description: List of available phone numbers.
+      description: Response message to list available phone numbers
+      title: Available Numbers Response
+    v1NumberCapability:
       type: string
       enum:
         - SMS
         - VOICE
       default: SMS
       description: |2-
-         - SMS: The SMS product can use the virtual number.
-         - VOICE: The Voice product can use the virtual number.
+         - SMS: The SMS product can use the number
+         - VOICE: The Voice product can use the number
       title: Capability
-    NumberPattern:
+    v1NumberPattern:
       type: object
       properties:
         pattern:
@@ -701,21 +655,19 @@ components:
         searchPattern:
           $ref: '#/components/schemas/NumberPatternSearchPattern'
       title: Search Pattern
-    NumberType:
+    v1NumberType:
       type: string
-      readOnly: true
       enum:
         - MOBILE
         - LOCAL
         - TOLL_FREE
       default: MOBILE
       description: |2-
-         - MOBILE: Virtual numbers that belong to a specific range.
-         - LOCAL: Virtual numbers that are assigned to a specific geographic region.
-         - TOLL_FREE: Virtual number that is billed for all arriving calls.
+         - MOBILE: Numbers that belong to a specific range
+         - LOCAL: Numbers that are assigned to a specific geographic region
+         - TOLL_FREE: Number that are free of charge for the calling party but billed for all arriving calls
       title: Type
-    ProvisioningStatus:
-      readOnly: true
+    v1ProvisioningStatus:
       type: string
       enum:
         - WAITING
@@ -723,54 +675,71 @@ components:
         - FAILED
       default: WAITING
       description: |2-
-         - WAITING: The sms configuration has been scheduled.
+         - WAITING: The sms configuration has been scheduled
          - IN_PROGRESS: The sms configuration change is in progress.
          - FAILED: The sms configuration change has failed.
       title: Provisioning Status for the SMS service
-    RentNumberRequest:
+    v1RentNumberRequest:
       type: object
       properties:
         projectId:
           type: string
-          description: The ID of the project. Your [project id](https://dashboard.sinch.com/settings/project-management) is found in your Sinch account.
+          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
         phoneNumber:
           type: string
-          description: The available virtual number to rent.
+          description: The available phone number to rent.
         smsConfiguration:
-          $ref: '#/components/schemas/SmsConfiguration'
-      description: Request message for renting a virtual number.
-      title: Rent Virtual Number Request
+          $ref: '#/components/schemas/v1SmsConfiguration'
+      description: Request message for renting a phone number.
+      title: Rent Number Request
       required:
         - projectId
         - phoneNumber
-    ScheduledProvisioning:
+    v1ScheduledProvisioning:
       type: object
       properties:
         servicePlanId:
           type: string
           description: Output only. Service plan of the scheduled provisioning task.
-         
-        status:
-          $ref: '#/components/schemas/ProvisioningStatus'
           readOnly: true
+        status:
+          $ref: '#/components/schemas/v1ProvisioningStatus'
         lastUpdatedTime:
           type: string
           format: date-time
           description: Output only. Timestamp when the status was last updated.
           readOnly: true
       title: Scheduled Provisioning
-    SmsConfiguration:
+    v1SmsConfiguration:
       type: object
       properties:
         servicePlanId:
           type: string
           description: |-
-            The current sms configuration for this virtual number.
-            The service_plan_id can be found in the SMS APIs section of your [Sinch dashboard](dashboard.sinch.com).
+            The current sms configuration for this number.
+            The service_plan_id can be found when logging into dashboard.sinch.com
+            in SMS>APIs section.
         scheduledProvisioning:
-          $ref: '#/components/schemas/ScheduledProvisioning'
-          readOnly: true
+          $ref: '#/components/schemas/v1ScheduledProvisioning'
       description: Sms configuration
       title: Sms Configuration
+
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
+      description: https://dashboard.sinch.com/settings/access-keys
+      x-default: "{client_id and client_secret}"
+    oauth2:
+      type: oauth2
+      x-default: "{your token}"
+      description: https://dashboard.sinch.com/settings/access-keys
+      flows:
+        password:
+          tokenUrl: 'https://eu.auth.sinch.com/oauth2/token'
+          scopes: {}
+
+
+
 x-proxy-enabled: true
 x-samples-enabled: true

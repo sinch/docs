@@ -11,10 +11,12 @@ next:
 
 Please find the host and port number used to connect to our inbound service via SMPP in the table below. Username and Password will be found in the CAD (Client Account Details) document provided to you by your account manager.
 
-| Server              | Host:Port                           | Location      |
-| ------------------- | ----------------------------------- | ------------- |
-| Primary SMPP Server | sms1.clxnetworks.net:3600           | Stockholm, SE |
-| Backup SMPP Server  | inbound01-ash1.clxnetworks.com:3600 | Virginia, US  |
+|           |                                     |
+| --------- | ----------------------------------- |
+| Host      | \<host\>.smpp.api.sinch.com         |
+| Port      | 3600 (use 3601 for SSL)             |
+| System-ID | \<system-id\>                       |
+| Password  | \<password\>                        |
 
 ### How To Receive Messages
 
