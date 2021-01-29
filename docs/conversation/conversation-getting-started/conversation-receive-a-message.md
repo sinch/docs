@@ -117,7 +117,7 @@ const APP_ID = "APP_ID_HERE",
 
 const getAuthToken = () => {
   return request({
-    url: "https://eu.auth.sinch.com/oauth2/token",
+    url: "https://auth.sinch.com/oauth2/token",
     method: "POST",
     auth: { user: client_id, pass: client_secret },
     form: { grant_type: "client_credentials" },

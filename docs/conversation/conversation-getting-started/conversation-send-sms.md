@@ -58,7 +58,7 @@ Be sure to copy and store in a safe place the Key Secret you will get. You will 
 Then use the key id and key secret to obtain an access token:
 
 ```shell Curl
-curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
+curl https://auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
 ```
 
 Copy the token and use it in the Authorization header of your calls to Sinch Conversations API.
