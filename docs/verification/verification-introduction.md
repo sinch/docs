@@ -52,11 +52,7 @@ In most cases, Sinch can be used without needing a back-end or any configuration
           <span class="title">Android</span>
         </div>
       </a>
-      <a href="./verification-for-javascript" class="col-md-3 ug-link">
-        <div class="ug-title">
-          <span class="title">JavaScript</span>
-        </div>
-      </a>
+
       <a href="./verification-rest-api" class="col-md-3 ug-link">
         <div class="ug-title">
           <span class="title">REST</span>
