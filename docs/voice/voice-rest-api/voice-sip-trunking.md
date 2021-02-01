@@ -20,7 +20,7 @@ SIP-terminated calls are calls that are being routed from your SIP infrastructur
      alt="SIP Calls"
      style="margin-left: 20%; width:500px;height:306;"/>
 
-Sinch has multiple geographical regions. You can configure your SIP infrastructure to use any of Sinch geographical locations.
+Sinch operates voice services in multiple geographical regions. You can configure your SIP infrastructure to use any of the following Sinch geographical locations:
 
 > Europe:
 > euc1.sip.sinch.com
@@ -37,13 +37,14 @@ Sinch has multiple geographical regions. You can configure your SIP infrastructu
 > Australia:
 > apse2.sip.sinch.com
 
-For redundancy, Sinch uses the above FQDNs. This will return to you at least one active and working SIP endpoint to send your traffic to. When using these FQDNs as a Termination URI that is used by your communications infrastructure to direct SIP traffic towards Sinch. For each region we have 2 IP addresses that are used for reliability purposes (see IP address in whitelists section). Each of these IP addresses represents a unique public edge for our SIP Trunking services, distributed across multiple Availability Zones for reliability purposes. Sinch strongly recommends to use this FQDN names for sending traffic towards Sinch. If using an FQDN is not possible, make sure you are not restricted to use only one single IP address. Make sure to utilize all IP addresses and failover in case one IP is not responding.
+For redundancy, Sinch uses the above FQDNs. Each of these domains will return to you at least one active and working SIP endpoint to which you can send your traffic. Use these FQDNs as a Termination URI in your communications infrastructure to direct SIP traffic towards Sinch. For each region we have 2 IP addresses that are used for reliability purposes (see IP address in whitelists section). Each of these IP addresses represents a unique public edge for our SIP Trunking services, distributed across multiple Availability Zones for reliability. Sinch strongly recommends to use FQDN for addressing traffic towards Sinch. If using an FQDN is not possible, make sure you are not restricted to use only one single IP address. Make sure to utilize all IP addresses and failover in case one IP is not responding.
 
-Once the call arrives in the Sinch platform, your backend will get an Incoming Call Event callback, notifying of the incoming call. You can control how you would like the call to be connected by responding to this event, for details in how and what you can respond check out [Callback API](doc:voice-rest-api-callback-api). If no callback is specified in Sinch dashboard, Sinch will try to terminate your call to PSTN using _To address_ in your incoming SIP message as destination phone number.
+Once the call arrives in the Sinch platform, your backend will get an Incoming Call Event callback, notifying of the incoming call. You can control how you would like the call to be connected by responding to this event.  For details on how and what you can respond, check out [Callback API](doc:voice-rest-api-callback-api). If no callback is specified in Sinch dashboard, Sinch will try to terminate your call to PSTN using _To address_ in your incoming SIP message as destination phone number.
 
 Both UDP or TCP are supported for calls terminating to Sinch.
 
-Allowed caller ID number (CLI) for terminating calls. You must specify a caller ID number that corresponds to a Sinch DID on your account or a phone number verified in your Sinch dashboard. If this isn't set, Sinch will set _private_ as your caller ID number going out to PSTN network.
+### Allowed caller ID number (CLI) for terminating calls
+You must specify a caller ID number that corresponds to a Sinch DID on your account or a phone number verified in your Sinch dashboard. If this isn't set, Sinch will set _private_ as your caller ID number going out to PSTN network.
 
 In order to use a trunk for termination it must have a Termination SIP URI and at least one authentication scheme, see below.
 
@@ -71,7 +72,7 @@ Example SIP INVITE sent to Sinch with SIP termination:
 >
 > Contact: <sip:+19876543210@52.214.25.57:5060>
 
-Make sure that any phone number sent via SIP to Sinch are always E.164-formatted (e.g _+12345678900_).
+Make sure that any phone number sent via SIP to Sinch is always E.164-formatted (e.g _+12345678900_).
 
 ## Receiving calls from Sinch platform to your SIP infrastructure
 
