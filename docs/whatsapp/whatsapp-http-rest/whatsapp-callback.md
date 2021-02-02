@@ -191,8 +191,8 @@ This object (namely ```replying_to```) is included in the MO notification if it 
       "message_id":"01DPNXZ0WCF9XD19MH84XD0P62",
       "message":{
         "type":"location",
-        "lat":55.7047,
-        "lng":13.191,
+        "latitude":55.7047,
+        "longitude":13.191,
         "name":"Sinch Ideon Lund",
         "address":"Scheelevägen 17"
       },
