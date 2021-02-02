@@ -98,7 +98,7 @@ Start the server
 node index.js
 '''
 
-### Oopen up a tunnel to your server
+### Open up a tunnel to your server
 
 - Configure your callbacks on  https://dashboard.sinch.com/sms/api/rest, click your service and you fill in the Callback URL field with teh ngrok.io domain from above.
 
