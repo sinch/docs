@@ -16,6 +16,8 @@ account](https://dashboard.sinch.com/signup). If you are in the United States, y
 
 If you havent already, create a new node app with npm and accept the defaults, and add the request package.
 
+```javascript
+
 ```shell
 npm init 
 npm install request
@@ -23,7 +25,7 @@ npm install request
 
 Create index.js and paste below:
 
-```nodejs NodeJS
+```Javascript
 
 var request = require("request");
 var messageData = {
