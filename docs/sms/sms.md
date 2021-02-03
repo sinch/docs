@@ -44,7 +44,6 @@ var options = {
   },
   body: JSON.stringify(messageData),
 };
-
 request(options, function (error, response, body) {
   console.log(response.body);
   if (error) throw new Error(error);
