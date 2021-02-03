@@ -51,7 +51,6 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 ```
-
 Before you can execute the code that sends an SMS message, you need to modify it in a few places.
 
 #### Replace the token values
