@@ -90,9 +90,9 @@ server.listen(3000);
 ```
 Start the server
 
-'''
+```
 node index.js
-'''
+```
 
 ### Open up a tunnel to your server
 
