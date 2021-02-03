@@ -75,7 +75,6 @@ We use webhooks to notify your application when someone sends a text to your Sin
 Paste the below at the bottom of your index.js:
 
 ```javascript
-
 const http = require("http");
 const server = http.createServer((req, res) => {
   let data = [];
