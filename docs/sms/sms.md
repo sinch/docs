@@ -89,11 +89,7 @@ server.listen(3000);
 
 Start the server
 
-<<<<<<< HEAD
-```shell
-=======
 ```
->>>>>>> master
 node index.js
 ```
 
