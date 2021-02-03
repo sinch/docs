@@ -2,6 +2,7 @@
 title: Getting started - node
 excerpt: Learn how to quickly send SMS messages with the Sinch API
 ---
+
 In this guide, we show you how to:
 
 1. Create an account and get your free test number (US only).
@@ -16,10 +17,8 @@ account](https://dashboard.sinch.com/signup). If you are in the United States, y
 
 If you haven't already, create a new node app with npm, accept the defaults, and add the request package.
 
-```javascript
-
 ```shell
-npm init 
+npm init
 npm install request
 ```
 
@@ -34,8 +33,7 @@ var messageData = {
 };
 var options = {
   method: "POST",
-  url:
-    "https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches",
+  url: "https://us.sms.api.sinch.com/xms/v1/{service_plan_id}/batches",
   headers: {
     accept: "application/json",
     "content-type": "application/json",
@@ -60,7 +58,7 @@ Before you can execute the code that sends an SMS message, you need to replace t
 `{your free test number}`
 `{To number}`
 
-To find the service plan and token, go to https://dashboard.sinch.com/sms/api/rest, log in and click “Show” to reveal your API token.
+To find the service plan and token, go to <https://dashboard.sinch.com/sms/api/rest>, log in and click “Show” to reveal your API token.
 
 To find the From-number, click the service plan id link and scroll to the bottom of the page and then change the `{To number}` to your phone number.
 
@@ -88,15 +86,20 @@ const server = http.createServer((req, res) => {
 });
 server.listen(3000);
 ```
+
 Start the server
 
+<<<<<<< HEAD
+```shell
+=======
 ```
+>>>>>>> master
 node index.js
 ```
 
 ### Open up a tunnel to your server
 
-1. Configure your callbacks at  https://dashboard.sinch.com/sms/api/rest. Click your service and fill in the Callback URL field with the ngrok.io domain from above.
+1. Configure your callbacks at https://dashboard.sinch.com/sms/api/rest. Click your service and fill in the Callback URL field with the ngrok.io domain from above.
 2. Open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
 3. Copy the https address that ends with .ngrok.io.
 4. Send a reply to sms.
