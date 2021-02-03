@@ -124,6 +124,7 @@ The following error codes can be returned as values for the `code` field:
 | 403         | `unknown_campaign`                  | The campaign ID does not match the specified originator.                                                            |
 | 403         | `missing_callback_url`              | Callback has been requested but no URL is provided.                                                                 |
 | 403         | `llegal_number_type`                | Illegal phone number type of MSISDN for a chosen region was used.                                                   |
+| 403         | `blocked_account`                   | Your account is blocked due to insufficient credit balance                                                          |
 
 ## Send SMS Messages
 
