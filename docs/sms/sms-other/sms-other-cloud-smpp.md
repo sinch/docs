@@ -2,7 +2,7 @@
 title: Cloud SMPP
 excerpt: >-
   Our Cloud SMPP service is available to you immediately after creating an
-  account on our [web site](https://dashboard.sinch.com/#/signup). It uses the
+  account on our [site](https://dashboard.sinch.com/#/signup). It uses the
   same core platform and backend connections as our Enterprise SMPP service.
 ---
 ## Connection Configuration
@@ -36,7 +36,7 @@ Please ensure that you choose the correct port for the message encoding you are 
 | GSM, Unicode & Binary | 8000 |
 | Latin 1 (ISO-8859-1)  | 9000 |
 
-Optionally, we support the SSL/TLS connection
+Optionally, we support the SSL/TLS connection.
 
 | Encoding              | Port |
 | --------------------- | ---- |
@@ -167,7 +167,7 @@ The SMS Gateway supports the following SMPP commands:
 | enquire\_link           | Check link status                  | 0x00000015  |
 | enquire\_link\_resp     | Response to enquire\_link          | 0x80000015  |
 
-Please note any command in the SMPP specification which is not listed above is not currently supported.
+Note that any command in the SMPP specification which is not listed above is not currently supported.
 
 ## Command States
 
@@ -216,11 +216,11 @@ Where:
 >   - **err** - where appropriate this may hold a network specific error code or an SMSC error code
 >   - **text** - the first 20 characters of the short message
 
-Please note SMPP v3.3 and v3.4 differ, such that message IDs returned from an SMPP 3.3 connection are encoded as hex whereas 3.4 SMPP connections return message IDs as ASCII encoded integers.
+Note that SMPP v3.3 and v3.4 differ, such that message IDs returned from an SMPP 3.3 connection are encoded as hex whereas 3.4 SMPP connections return message IDs as ASCII encoded integers.
 
 ## Message Status
 
-The delivery report status indicates whether the SMS message was delivered successfully by the SMSC. If the SMS was not successfully delivered then the delivery report will give a reason in the form of an \[error code\].
+The delivery report status indicates whether the SMS message was delivered successfully by the SMSC. If the SMS was not successfully delivered, the delivery report will give a reason in the form of an \[error code\].
 
 SMPP message states and their meanings are listed here for your convenience:
 
@@ -235,7 +235,7 @@ SMPP message states and their meanings are listed here for your convenience:
 | REJECTD | Message is in rejected state        |
 | ENROUTE  | Message is in ENROUTE state        |
 
-Please note some SMSCs will still return a delivery receipt when a message has been accepted or if the message is buffered in the SMSC, for example if the handset is switched off. This will use the UNKNOWN state and sets the buffered special parameter in the deliver\_sm under SMPP 3.4
+Note that some SMSCs will still return a delivery receipt when a message has been accepted or if the message is buffered in the SMSC. For example, if the handset is switched off. This will use the UNKNOWN state and sets the buffered special parameter in the deliver\_sm under SMPP 3.4
 
 ## Error Codes
 

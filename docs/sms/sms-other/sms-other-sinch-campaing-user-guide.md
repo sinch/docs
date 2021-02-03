@@ -1,11 +1,10 @@
 ---
 title: US Campaign Compliance
 excerpt: >-
-  The Sinch Manager User Guides can be found here. Get to know the Campaign
-  Manager Portal. Read more.
+  Get to know the Campaign Manager portal by reading our Sinch Manager User Guides.
 ---
 
-[Sinch Campaign Manager User Guide V4](downloads\Sinch Campaign Manager User Guide V4.pdf) - The purpose of this Guide is to briefly describe usage of the Campaign Manager Portal.
+[Sinch Campaign Manager User Guide V4](downloads\Sinch Campaign Manager User Guide V4.pdf) - The purpose of this guide is to briefly describe usage of the Campaign Manager Portal.
 
 [Sinch US Short Code Onboarding Overview](downloads\Sinch-US-Short-Codes-onboarding.pptx) - This document covers the US short code process.
 
@@ -31,7 +30,7 @@ excerpt: >-
 
 [Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20210124.xlsx) - Sinch GCMR for U.S. and Canada January 24, 2021.
 
-[Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.pdf) - Clients that plan to run a high volume campaign we must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
+[Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.pdf) - Clients that plan to run a high volume campaign must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
 
 [Sinch Letter of Authorization for Text Enabling](downloads\Sinch_LOA_Text_Enabling.pdf) - This LOA template is for text enabling.
 

@@ -1,6 +1,7 @@
 ---
 title: Error Specification
-excerpt: 'This information covers error codes related to the SMPP communication.'
+excerpt: >-
+  This information covers error codes related to the SMPP communication
 next:
   pages:
     - sms-smpp-encoding
