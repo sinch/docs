@@ -1,12 +1,12 @@
 ---
 title: SMS Rest Guide
 excerpt: >-
-  The most feature rich API that Sinch offers is the SMS REST API. Single
-  messages, scheduled batch send-outs, using message templates and more.
+  The most feature rich API that Sinch offers is the SMS REST API. Send single
+  messages, schedule batch send-outs, use message templates and more.
 ---
-### Using the Rest API
+### Using the REST API
 
-To get started in minutes to [send your first SMS](doc:sms)
+To get started in minutes using our REST API, go to [send your first SMS](doc:sms).
 
 #### Authentication
 
@@ -32,7 +32,7 @@ curl -X POST \
 
 #### Base URL
 
-The following URLs can be used by the REST API. We have servers in the US and EU. By default your account will be created in the US environment. If you'd like access to the European environment, please contact your Sinch account manager.  
+The following URLs can be used by the REST API. We have servers in the US and EU. By default, your account will be created in the US environment. If you want access to the European environment, contact your Sinch account manager.  
 
 
 | Server        |  URL                                   |
@@ -44,13 +44,13 @@ The following URLs can be used by the REST API. We have servers in the US and EU
 
 #### Rate Limits
 
-Each service plan comes with a rate limit which sets the maximum number of messages that can be sent per second. The rate limit is calculated from all messages sent via the API, so a batch with 10 recipients will count as 10 messages for rate limiting purposes.
+Each service plan comes with a rate limit which sets the maximum number of messages that can be sent per second. The rate limit is calculated from all messages sent via the API. A batch with 10 recipients will count as 10 messages for rate limiting purposes.
 
-Each service plan gets it's own message queue served in First-In-First-Out order. This means that new batches will be accepted immediately but might be delayed if earlier batches are still on queue.
+Each service plan gets its own message queue served in First-In-First-Out order. This means that new batches will be accepted immediately but might be delayed if earlier batches are still in the queue.
 
 ### SMS REST formats and conventions
 
-This section will take a brief look at some of the formats used in the REST API.
+Let's take a brief look at some of the formats used in the REST API.
 
 #### JSON
 
@@ -58,10 +58,9 @@ JSON (`application/json`) is the content type of both requests and responses if 
 
 Requests with invalid JSON will be rejected.
 
-Null values can be omitted in requests and will be omitted in responses. In some cases explicitly setting `null` will overwrite a previously set value with `null`. See [Update a group](#update-a-group) for an example.
-New features might result in additional request and response
-parameters. New request parameters will either have a default value or
-considered optional to retain backwards compatibility. It is highly recommended to ignore any unexpected parameters when reading JSON in API responses and in callback handlers.
+Null values can be omitted in requests and will be omitted in responses. In some cases, explicitly setting `null` will overwrite a previously set value with `null`. See [Update a group](#update-a-group) for an example.
+
+New features might result in additional request and response parameters. New request parameters will either have a default value or be considered optional to retain backwards compatibility. It is highly recommended to ignore any unexpected parameters when reading JSON in API responses and in callback handlers.
 
 #### Phone numbers (MSISDN)
 
@@ -299,9 +298,9 @@ curl -X POST \
 
 ### Cancel batch message
 
-A batch can be canceled at any point. If a batch is canceled while it's currently being delivered some messages currently being processed might still be delivered. The delivery report will indicate which messages were canceled and which weren't.
+A batch can be canceled at any point. If a batch is canceled while it's being delivered, some messages currently being processed might still be delivered. The delivery report will indicate which messages were canceled and which weren't.
 
-Canceling a batch scheduled in the future will result in an empty delivery report while canceling an already sent batch would result in no change to the completed delivery report.
+Canceling a batch scheduled in the future will result in an empty delivery report. Canceling an already sent batch would result in no change to the completed delivery report.
 
 #### Request
 
@@ -323,7 +322,7 @@ curl-X DELETE \
 
 ### List batch messages
 
-With the list operation you can list batch messages created in the last 14 days that you have created. This operation supports pagination.
+With the list operation you can list batch messages that you have created in the last 14 days. This operation supports pagination.
 
 Batches are returned in reverse chronological order.
 
@@ -498,7 +497,7 @@ There was an error with your request. The body is a JSON object described in res
 
 `403 Forbidden`
 
-+The system was not able to fulfill your request. The body is a JSON object described in rest\_http\_errors. +Possible error codes include **batch\_already\_dispatched**.
+The system was not able to fulfill your request. The body is a JSON object described in rest\_http\_errors. Possible error codes include **batch\_already\_dispatched**.
 
 **Update batch**
 ```shell
@@ -524,7 +523,7 @@ curl -X POST \
 
 ### Replace a batch
 
-This operation will replace all the parameters of a batch with the provided values. Effectively the same as cancelling then batch and sending a new one instead.
+This operation will replace all the parameters of a batch with the provided values. Effectively, this is the same as cancelling then batch and sending a new one instead.
 
 #### Request
 
@@ -731,7 +730,7 @@ If no *callback\_url* was specified for the batch then the default callback URL 
 
 #### Summary and full
 
-If a batch was created with a request for *full* or *summary* *delivery report* then one callback will be made to the specified callback URL when all messages in the batch (which may be one message) are either delivered, failed or expired. If you want to know the delivery status for a message before all messages are completed then you can always use retrieve\_delivery\_report at any time.
+If a batch was created with a request for *full* or *summary* *delivery report* then one callback will be made to the specified callback URL when all messages in the batch, which may be one message, are either delivered, failed or expired. If you want to know the delivery status for a message before all messages are completed then you can always use retrieve\_delivery\_report at any time.
 
 The format for summary and full reports is the same as the retrieve\_delivery\_report response. The difference being that when *full* is requested a list of phone numbers / recipients per delivery status is provided.
 
@@ -741,7 +740,7 @@ If a batch was created with a request for *per\_recipient* *delivery\_report* th
 
 ### Callbacks
 
-A callback is a HTTP POST request with a notification made by the Sinch SMS REST API to a URI of your choosing. The REST API expects the receiving server to respond with a response code within the `2xx` Success range. If no successful response is received then the REST API will either schedule a retry if the error is expected to be temporary or discard the callback if the error seems permanent. The first initial retry will happen 5 seconds after the first try. The next attempt is after 10 seconds, then after 20 seconds, after 40 seconds, after 80 seconds and so on, doubling on every attempt. The last retry will be at 81920 seconds (or 22 hours 45 minutes) after the initial failed attempt.
+A callback is a HTTP POST request with a notification made by the Sinch SMS REST API to an URI of your choosing. The REST API expects the receiving server to respond with a response code within the `2xx` Success range. If no successful response is received, the REST API will either schedule a retry if the error is expected to be temporary or discard the callback if the error seems permanent. The first initial retry will happen 5 seconds after the first try. The next attempt is after 10 seconds, then after 20 seconds, after 40 seconds, after 80 seconds and so on, doubling on every attempt. The last retry will be at 81920 seconds (or 22 hours 45 minutes) after the initial failed attempt.
 
 The REST API offers the following callback options which can be configured for your account upon request to your account manager.
 
@@ -760,7 +759,7 @@ The callback URL can either be provided for each batch in the [Send a batch mess
 
 An inbound message or MO (*Mobile Originated*) is a message sent to one of your shortcodes or long numbers from a mobile phone. The format of an inbound callback is described in [Inbounds Endpoint](#inbounds-endpoint).
 
-To receive inbound message callbacks, a URL needs to be provisioned for your account. This URL can be specified in the Sinch Dashboard.
+To receive inbound message callbacks, a URL needs to be provisioned for your account. This URL can be specified in the Sinch dashboard.
 
 ### Message Body
 
@@ -870,8 +869,7 @@ Each SMS in a multi-part 7-bit encoded message, has a maximum length of 153 char
 | 1916 - 1982    | 29                  |
 | 1983 - 2000    | 30                  |
 
-Each SMS in a multi-part Unicode encoded message, has a maximum length of 67
-characters.
+Each SMS in a multi-part Unicode encoded message, has a maximum length of 67 characters.
 
 ## Parameterization
 
@@ -879,11 +877,11 @@ Parameterization enables you to customize parts of a message for each recipient.
 
 This is done by defining a *parameter key* and placing it in the message body. For each *parameter key*, a recipient and parameter value must be provided. The position of a parameter in a message is defined by specifying placeholders in the format `${parameter_key}` in the message body, where `parameter_key` is the name of the parameter to replace with its corresponding value.
 
-For example the message body `Hi ${name}! How are you?` contains the parameter `name` and will be replaced according to the rules specified in the `parameters` field in the [Send a batch message](#send-sms-messages) operation.
+For example, the message body `Hi ${name}! How are you?` contains the parameter `name` and will be replaced according to the rules specified in the `parameters` field in the [Send a batch message](#send-sms-messages) operation.
 
 A default parameter value can be specified that will be used when an MSISDN is not listed for a particular parameter. To set this, identify a recipient as default for each *parameter key*.
 
-If a target MSISDN is missing in the parameters object and no default value has been defined for that parameter the message will fail for that MSISDN but not for other recipients.
+If a target MSISDN is missing in the parameters object and no default value has been defined for that parameter, the message will fail for that MSISDN but not for other recipients.
 
 Parameter keys are case sensitive.
 
@@ -895,7 +893,9 @@ This section describes the statuses and codes returned in those delivery reports
 
 ### Delivery Report Statuses
 
-The status field describes which state a particular message is in. Please note that statuses of type Intermediate will only be reported if you request a status per recipient ([Retrieve a recipient delivery report](#retrieve-a-recipient-delivery-report)), no callback will be made to report them. The following statuses are available when using the REST API:
+The status field describes which state a particular message is in. Note that statuses of type Intermediate will only be reported if you request a status per recipient ([Retrieve a recipient delivery report](#retrieve-a-recipient-delivery-report)), no callback will be made to report them. 
+
+The following statuses are available when using the REST API:
 
 | Status     | Type         | Description                                                                                                                                   |
 |-- -        | ---          | ---                                                                                                                                         --|
@@ -1001,7 +1001,7 @@ curl -H "Authorization: Bearer {token}" \
 ```
 
 
-With the list operation you can list all inbound messages that you have received. This operation supports pagination.
+With the list operation, you can list all inbound messages that you have received. This operation supports pagination.
 
 Inbounds are returned in reverse chronological order.
 
@@ -1031,8 +1031,6 @@ Query parameters:
 | inbounds   | The page of inbounds matching the given filters         | Array of objects described in [Inbounds endpoint](#inbounds-endpoint) |
 
 ### Retrieve inbound message
-
-Retrieve an inbound message
 
 This operation retrieves a specific inbound message with the provided inbound ID.
 
@@ -1139,7 +1137,7 @@ curl -X POST \
 ```
 
 
-Create auto update group for shared short code *54321* with keyword `SINCH`: if followed by *JOIN* will add them to the group, if followed by *LEAVE* will remove them from the group. Please note that keywords are not case sensitive so *Sinch* , *SInCh* , *SINCH* and other permutations will all be treated the same.
+Create an auto update group for shared short code *54321* with keyword `SINCH`: if followed by *JOIN* will add them to the group, if followed by *LEAVE* will remove them from the group. Note that keywords are not case sensitive so *Sinch* , *SInCh* , *SINCH* and other permutations will all be treated the same.
 
 **Create Auto Update Group For Shared Short Code**
 ```shell
@@ -1278,13 +1276,13 @@ curl -H "Authorization: Bearer {token}" \
 
 ### Update a group
 
-With the update group operation you can add and remove members to an existing group as well as rename the group.
+With the update group operation, you can add and remove members to an existing group as well as rename the group.
 
 The request will **not** be rejected for duplicate adds or unknown removes.
 
-The adds will be done before the deletes so if an MSISDN is in both lists then it will not be part of the resulting group.
+The adds will be done before the deletes so if an MSISDN is in both lists, then it will not be part of the resulting group.
 
-To remove an existing name set name explicitly to the JSON value **null**. Omitting **name** from the JSON body will leave the name unchanged.
+To remove an existing name, set name explicitly to the JSON value **null**. Omitting **name** from the JSON body will leave the name unchanged.
 
 Updating a group targeted by a batch message scheduled in the future is allowed and changes will be reflected until the batch is sent.
 
@@ -1420,7 +1418,7 @@ curl -X PUT \
 
 ### Delete a group
 
-Deletes a group from the system. Any message created for a deleted group will be rejected. If a group is deleted that's part of the to-array of a message scheduled for the future then the group will be considered empty at the time of sending.
+Deletes a group from the system. Any message created for a deleted group will be rejected. If a group is deleted that's part of the to-array of a message scheduled for the future, then the group will be considered empty at the time of sending.
 
 #### Request
 
@@ -1445,15 +1443,15 @@ curl -X DELETE \
 
 ## Automatic Default Originator
 
-Default originator pool of an account is the set of originators for different countries configured by the account manager, if requested it will be used when batch message has no originator specified (missing "from" parameter).
+Default originator pool of an account is the set of originators for different countries configured by the account manager. If requested, it will be used when a batch message has no originator specified (missing "from" parameter).
 
-For each MSISDN the originator will be auto selected from its default originator pool based on the country/region of the MSISDN when submitting a batch with missing originator as in `send_batch_msg` operation, if a default originator pool configured for your account. A batch with multiple recipients of different countries can get different originators based on the configured originator pool of that account.
+For each MSISDN, the originator will be auto selected from its default originator pool based on the country/region of the MSISDN when submitting a batch with missing originator as in `send_batch_msg` operation, if a default originator pool configured for your account. A batch with multiple recipients of different countries can get different originators based on the configured originator pool of that account.
 
 If no default originator exists for the target MSISDN, then the message will be failed only for that MSISDN and not for the rest of the batch.
 
 ## Limiting Message Parts
 
-With max number of message parts you can specify whether the message should be dispatched. If a message is split into more parts than `max_number_of_message_parts` then it will not be delivered and status code will be `411`.
+With max number of message parts you can specify whether the message should be dispatched. If a message is split into more parts than `max_number_of_message_parts` then it will not be delivered and the status code will be `411`.
 
 A default `max_number_of_message_parts` can be configured at the account level by your account manager. If the `max_number_of_message_parts` parameter is specified when creating a batch, it will override the default value configured by your account manager.
 
@@ -1461,11 +1459,11 @@ When `max_number_of_message_parts` parameter is set or the default value is conf
 
 ## URL Link Previews
 
-Some mobile devices are capable of displaying previews for links contained in SMS or MMS messages. When messages that contain a URL are received on these devices, they may be rendered in the messaging application with a preview of the linked page. This behaviour is controlled from the phone or its software, and can not be affected by Sinch or the carrier.
+Some mobile devices are capable of displaying previews for links contained in SMS or MMS messages. When messages that contain a URL are received on these devices, they may be rendered in the messaging application with a preview of the linked page. This behavior is controlled from the phone or its software, and can not be affected by Sinch or the carrier.
 
 ### Behaviour on iOS
 
-There are multiple factors that affect whether an iPhone shows a preview for a link received in a message, and what the preview looks like:
+There are multiple factors that affect whether an iPhone shows a preview for a link received in a message, and what the preview looks like.
 
 #### Is the sender saved in the recipient's contacts list?
 
@@ -1475,6 +1473,6 @@ According to our testing, iOS will only render a preview for links sent in SMS o
 
 iPhones will only display a link preview if the URL is at the beginning or the end of the message. iOS will not render a preview for a URL in the middle of a message, or even just surrounded by periods or quotation marks.
 
-### Behaviour on Android
+### Behavior on Android
 
-Depending on the device but if the recipient has googles Messages app or Samsung you should be able to see previews if the phone has been updated after June 2018
+Depending on the device but, if the recipient has Google's Messages app or Samsung you should be able to see previews if the phone has been updated after June 2018.
