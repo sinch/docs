@@ -25,8 +25,7 @@ npm install request
 
 Create index.js and paste the below into the file:
 
-```Javascript
-
+```javascript
 var request = require("request");
 var messageData = {
   from: "{your free test number}",
@@ -44,6 +43,7 @@ var options = {
   },
   body: JSON.stringify(messageData),
 };
+
 request(options, function (error, response, body) {
   console.log(response.body);
   if (error) throw new Error(error);
