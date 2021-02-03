@@ -14,7 +14,7 @@ account](https://dashboard.sinch.com/signup). If you are in the United States, y
 
 ### Send SMS
 
-If you havent already, create a new node app with npm and accept the defaults, and add the request package.
+If you haven't already, create a new node app with npm, accept the defaults, and add the request package.
 
 ```javascript
 
@@ -23,7 +23,7 @@ npm init
 npm install request
 ```
 
-Create index.js and paste below:
+Create index.js and paste the below into the file:
 
 ```Javascript
 
@@ -50,7 +50,6 @@ request(options, function (error, response, body) {
   console.log(body);
 });
 ```
-Before you can execute the code that sends an SMS message, you need to modify it in a few places.
 
 #### Replace the token values
 
@@ -69,13 +68,11 @@ Click [here](https://developers.sinch.com/reference/#sendsms) to read more about
 
 ## Receive SMS
 
-We use webhooks to notify your application when someone sends a text to your sinch number.
-To handle these you will learn how create a webserver and make it reachable on the Internet below.
-
+We use webhooks to notify your application when someone sends a text to your Sinch number. To handle these, you will learn how to create a webserver and make it reachable on the Internet.
 
 ### Create a HTTP server SMS with Node.js
 
-Paste below into at bottom of your index.js:
+Paste the below at the bottom of your index.js:
 
 ```javascript
 
@@ -100,11 +97,9 @@ node index.js
 
 ### Open up a tunnel to your server
 
-- Configure your callbacks on  https://dashboard.sinch.com/sms/api/rest, click your service and you fill in the Callback URL field with teh ngrok.io domain from above.
+1. Configure your callbacks at  https://dashboard.sinch.com/sms/api/rest. Click your service and fill in the Callback URL field with the ngrok.io domain from above.
+2. Open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
+3. Copy the https address that ends with .ngrok.io.
+4. Send a reply to sms.
 
-Use  to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
-
-- Copy the https address that ends with .ngrok.io, t
-- Send a reply to sms.
-
-You can read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)
+Read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)
