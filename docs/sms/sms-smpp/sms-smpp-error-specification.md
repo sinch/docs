@@ -1,13 +1,10 @@
 ---
 title: Error Specification
-excerpt: ''
+excerpt: 'This information covers error codes related to the SMPP communication.'
 next:
   pages:
     - sms-smpp-encoding
 ---
-### Overview
-
-This specification covers error codes related to the SMPP communication.
 
 ### SMPP connection error codes
 
@@ -30,7 +27,7 @@ The states are described in the SMPP Protocol Specification v3.4 Issue 1.2 chapt
 
 ### Status reports error codes
 
-The error codes are provided in status reports according to the SMPP Protocol Specification v3.4 Issue 1.2 Appendix B. The following are the error codes Sinch Networks will be sending:
+The error codes are provided in status reports according to the SMPP Protocol Specification v3.4 Issue 1.2 Appendix B. The following are the error codes Sinch networks will be sending:
 
 | Error | Error Class         | Description                                     | Comment                                                                            | Treated as |
 | ----- | ------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------- | ---------- |

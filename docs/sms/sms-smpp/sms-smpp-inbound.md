@@ -9,7 +9,7 @@ next:
 ---
 ### How To Connect
 
-Please find the host and port number used to connect to our inbound service via SMPP in the table below. Username and Password will be found in the CAD (Client Account Details) document provided to you by your account manager.
+Find the host and port number used to connect to our inbound service via SMPP in the table below. Username and password will be found in the CAD (Client Account Details) document provided to you by your account manager.
 
 |           |                                     |
 | --------- | ----------------------------------- |
