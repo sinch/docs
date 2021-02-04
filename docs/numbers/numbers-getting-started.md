@@ -7,7 +7,7 @@ hidden: false
 
 ## Introduction
 
-Gain trust with your customers and become a familiar face in the local markets of 15 countries, when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.  
+Gain trust with your customers and become a familiar face in the local markets of Australia, Estonia, the Netherlands, Norway, Sweden, the United Kingdom, the United States, Canada, Jersey - British Isles, Thailand, the Philippines, Chile and Hong Kong when you use the Sinch Numbers API to enable your customers to call and text using unique, dedicated, free and anonymous mobile originated (MO) virtual numbers to protect people’s sensitive information and create a fraud proof service via number masking.  
 
 The Numbers API uses [client_id and secret](https://dashboard.sinch.com/settings/access-keys) to authenticate requests. You can view and manage your API keys [here](https://dashboard.sinch.com/settings/access-keys).
 
