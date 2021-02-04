@@ -1,13 +1,13 @@
 ---
 title: Send rich messages with Facebook Messenger
 excerpt: >-
-  Learn and see how different kind of messages render on Facebook Messenger.
+  Learn and see how different kinds of messages render on Facebook Messenger
 hidden: false
 ---
 
 ## Sending Media Message <span class="betabadge">Beta</span>
 
-Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation-getting-started#5-project-id-and-access-keys) to obtain your AccessToken
+Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation-getting-started#5-project-id-and-access-keys) to obtain your AccessToken.
 
 ```shell Curl
 curl --location --request POST 'https://eu.conversation.api.sinch.com/v1beta/projects/{project_id}/messages:send' \

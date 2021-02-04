@@ -12,9 +12,7 @@ The **project** entity belongs to a Sinch account, acts as a container and is th
 
 The **app** entity, which is created and configured through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps), is tied to the API user and comes with a set of **channel credentials** for each underlying connected channel. The app has a list of **conversations** between itself and different **contacts** which share the same **project**.
 
-Webhooks, which the app is attached to, defines the destination for various events coming from the Conversation API. 
-
-An **app** has the following configurable properties:
+Webhooks, which the app is attached to, defines the destination for various events coming from the Conversation API. An **app** has the following configurable properties:
 
 | Field                             | Description                                                                                                                        |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -24,10 +22,7 @@ An **app** has the following configurable properties:
 
 ##### Retention policy
 
-Each **App** has a retention policy that specifies how long messages, sent to or from the **App**, are stored.
-The **retention policy** can be changed via the API by updating the corresponding **app**, or via the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**.
-
-A **retention policy** is defined by the following properties:
+Each **App** has a retention policy that specifies how long messages, sent to or from the **App**, are stored. The **retention policy** can be changed via the API by updating the corresponding **app**, or via the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) by editing the corresponding **app**. A **retention policy** is defined by the following properties:
 
 | Field                             | Description                                                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,9 +43,7 @@ A **channel credential** is the authentication means used to authenticate agains
 
 The order of the channel credentials registered for an app is significant. It defines the channel priority order on app level when defining which channels to send first.
 
-The app channel priority is overridden by contact channel priority order and by message specific channel priority order.
-
-A **channel credential** has the following configurable properties:
+The app channel priority is overridden by contact channel priority order and by message specific channel priority order. A **channel credential** has the following configurable properties:
 
 | Field           | Description                                                                                                           |
 | --------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -61,9 +54,7 @@ A **channel credential** has the following configurable properties:
 #### Webhook
 
 A **webhook** is a POST capable URL destination for receiving callbacks from the Conversation API.
-Beside URL, each **webhook** includes a set of triggers which dictates which events are to be sent to the **webhook**.
-
-A **webhook** has the following configurable properties:
+Beside URL, each **webhook** includes a set of triggers which dictates which events are to be sent to the **webhook**. A **webhook** has the following configurable properties:
 
 | Field       | Description                                                                                                                                                                                                                  |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,9 +67,7 @@ A **webhook** has the following configurable properties:
 
 #### Contact
 
-The **contact** entity is a collection entity that groups together underlying connected **channel recipient identities**. It is tied to a specific **project** and is therefore considered public to all **apps** sharing the same **project**.
-
-A **contact** has the following configurable properties:
+The **contact** entity is a collection entity that groups together underlying connected **channel recipient identities**. It is tied to a specific **project** and is therefore considered public to all **apps** sharing the same **project**. A **contact** has the following configurable properties:
 
 | Field              | Description                                                                                                                                         |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -95,9 +84,7 @@ A **channel recipient identity** is an identifier for the **contact** for a spec
 
 Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber Bot are using app-scoped channel identities, which means contacts will have different channel identities for different **apps**.
 
-For Facebook Messenger this means that the contact channel identity is associated with the **app** linked to the Facebook page for which this PSID is issued.
-
-A **channel recipient identity** has the following configurable properties:
+For Facebook Messenger this means that the contact channel identity is associated with the **app** linked to the Facebook page for which this PSID is issued. A **channel recipient identity** has the following configurable properties:
 
 | Field                      | Description                                                               |
 | -------------------------- | ------------------------------------------------------------------------- |
