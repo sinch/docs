@@ -1,17 +1,17 @@
 ---
-title: Rent a virtual number
-excerpt: 'Learn how to rent, search and configure a virtual number using the Sinch Numbers API.'
+title: Get a virtual number
+excerpt: 'Learn how to get, search and configure a virtual number using the Sinch Numbers API.'
 hidden: false
 ---
 
 
-## Rent a virtual number in the US
+## Get a virtual number in the US
 
-To rent a virtual number you first need to find a number that suites the needs for your application.
+To get a virtual number, you first need to find a number that suits the needs for your application.
 
 ### Search for a virtual number
 
-Search for virtual numbers that are available for you to rent. In this example you will search for any virtual US number.
+Search for virtual numbers that are available for you to get. In this example, you will search for any virtual US number.
 
 ```shell
 curl --request GET \
@@ -47,11 +47,11 @@ You can filter by any property on the available virtual number resource. Learn m
   ]
 }
 ```
-Take a note of the phoneNumber you will need it in the next step. 
+Take a note of the phoneNumber, you will need it in the next step. 
 
-### Rent the virtual number
+### Get the virtual number
 
-Rent a virtual number to use with SMS or Voice products
+Get a virtual number to use with SMS or Voice products.
 
 ```shell
 curl --request POST \
@@ -69,9 +69,9 @@ Replace {projectId}, {clientId} and {clientSecret} with your values.
 }
 ```
 
-### Rent the virtual number and configure it for SMS
+### Get the virtual number and configure it for SMS
 
-Rent a virtual number to use with SMS or Voice products
+Get a virtual number to use with SMS or Voice products.
 
 ```shell
 curl --request POST \
@@ -84,7 +84,7 @@ Replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://
 
 ## Search for a virtual Toll free number.
 
-As above, but add the virtual number type you are interested in.
+Take the same steps as above, but add the virtual number type you are interested in.
 ```shell
 curl --request GET \
  --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
