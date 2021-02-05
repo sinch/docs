@@ -1,5 +1,5 @@
 ---
-title: Using verification-all module for configuring multiple methods at once.
+title: Use verification-all module to configure multiple methods at once
 excerpt: Using common verification configuration parameters for different verification methods.
 next:
   pages:

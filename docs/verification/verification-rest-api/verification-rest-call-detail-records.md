@@ -1,8 +1,7 @@
 ---
 title: Call Detail Records
 excerpt: >-
-  Call Detail Records (CDRs) can be downloaded from the Sinch portal. A CDR is a
-  semicolon-delimited file that contains... Read more.
+  Call Detail Records (CDRs) can be downloaded from the Sinch portal.
 ---
 Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in a semicolon-delimited file that contains the following fields
 
@@ -30,7 +29,7 @@ Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in 
             <tr class="odd">
                 <td>Method</td>
                 <td>string</td>
-                <td><p>Verification method. Can be flashCall, sms or callout</p></td>
+                <td><p>Verification method. Can be flashCall, SMS or callout</p></td>
             </tr>
             <tr class="even">
                 <td>StartTimestamp</td>
@@ -113,4 +112,4 @@ Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in 
 
 The files are generated once daily and contain the previous days' CDRs. A day spans from 00:00:00 UTC to 23:59:59 UTC. CDRs are written when the call is ended, though there are some edge cases where an app-app call CDR may be delayed in being written, for example, if there is a network failure before the call is ended.
 
-CDR files can be downloaded from the developer portal. Upon request, the CDR files can also be uploaded to a S3 bucket that your company provides and to which Sinch has write access.
+CDR files can be downloaded from the developer portal. Upon request, the CDR files can also be uploaded to an S3 bucket that your company provides and to which Sinch has write access.
