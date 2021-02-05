@@ -1,23 +1,23 @@
 ---
-title: First time setup
+title: Android phone number verification set up
 excerpt: >-
-  Setup phone number verification in Android for the first time with the Sinch
+  Set up phone number verification in Android for the first time with the Sinch
   Verification SDK.
 next:
   pages:
     - verification-android-the-verification-process
 ---
-This is a step-by-step guide about setting up the Sinch Verification SDK for the first time.
+This guide will show you how to set up the Sinch Verification SDK for the first time.
 
 ## Register an Application
 
 1.  Register a [Sinch Developer account](https://portal.sinch.com/#/signup)
-2.  Set up a new Application using the Dashboard, where you can then obtain an *Application Key*.
-3.  Enable Verification for the application by selecting: *Authentication* \> *Public* under *App* \> *Settings* \> *Verification*
+2.  Set up a new Application using the Dashboard, where you can then obtain an **Application Key**.
+3.  Enable Verification for the application by selecting: **Authentication** \> **Public** under **App** \> **Settings** \> **Verification**
 
 ## Add the Sinch library
 
-The Sinch Verification SDK is available publicly on jCenter. To include it in your Android application make sure your **project** level build.gradle file contains:
+The Sinch Verification SDK is available publicly on jCenter. To include it in your Android application, make sure your **project** level build.gradle file contains:
 
 ```text
 buildscript {
@@ -35,7 +35,7 @@ allprojects {
 }
 ```
 
-Now in your **module** level build.gradle file you can add Sinch SDK as a dependency:
+Now, in your **module** level build.gradle file, you can add Sinch SDK as a dependency:
 
 ```text
 dependencies {
@@ -43,7 +43,7 @@ dependencies {
   }
 ```
 
-If your application uses all the verification methods it's easiest to add _verification-all_ package. If you intend to use only specific verification types, you may include only their dependencies.
+If your application uses all the verification methods it's easiest to add the  _verification-all_ package. If you intend to use only specific verification types, you may include only their dependencies.
 - verification-sms
 - verification-flashcall
 - verification-callout
@@ -51,7 +51,7 @@ If your application uses all the verification methods it's easiest to add _verif
 
 ##### Example:
 
-Your application relies only on sms verification and doesn't use any other verificaiton methods. Then you should simply add:
+If your application relies only on SMS verification and doesn't use any other verificaiton methods you should simply add:
 
 ```text
 dependencies {

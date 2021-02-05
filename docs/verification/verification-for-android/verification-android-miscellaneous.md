@@ -1,8 +1,7 @@
 ---
-title: Miscellaneous
+title: Android Miscellaneous Verification SDK
 excerpt: >-
-  Android Miscellaneous Verification SDK. Find minimum requirements, information
-  about ProGuard and encryption export regulations
+  Find minimum requirements and information about ProGuard and encryption export regulations.
 next:
     pages:
       - verification-android-migration
