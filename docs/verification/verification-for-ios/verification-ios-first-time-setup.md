@@ -1,6 +1,6 @@
 ---
-title: First time setup
-excerpt: Set up the Sinch iOS Verification SDK for the first time.
+title: Sinch iOS Verification SDK first time set up
+excerpt: 
 next:
   pages:
     - verification-ios-process
