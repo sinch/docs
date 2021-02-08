@@ -1,7 +1,7 @@
 ---
 title: iOS Audio Session
 excerpt: >-
-  Details on how the Sinch SDK make use of iOS _Audio Session_.
+  Details on how the Sinch SDK makes use of iOS _Audio Session_.
 hidden: false
 next:
   pages:
@@ -22,7 +22,7 @@ The Sinch SDK applies the audio session category mode [`AVAudioSessionModeVoiceC
 
 ## Audio Session Interruptions
 
-When a user is a  Sinch SDK call, someone might call users using the PSTN network, thus interrupting the application and make iOS play the regular native ringtone. If the native phone call ends within 30 seconds, the application will start running again. If not, the Sinch SDK call will be terminated.
+When a user is a Sinch SDK call, someone might call users using the PSTN network, thus interrupting the application and make iOS play the regular native ringtone. If the native phone call ends within 30 seconds, the application will start running again. If not, the Sinch SDK call will be terminated.
 
 ## SINAudioController
 

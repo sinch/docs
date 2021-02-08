@@ -43,7 +43,7 @@ The locally captured stream is rendered into the view provided by [`-[SINVideoCo
 
 ### Showing Remote Video Streams
 
-Once the remote video stream is available, the delegate method `-[SINCall callDidAddVideoTrack:]` will be called and you can use that to attach the Sinch video controller view ([`-[SINVideoController remoteView]`](reference\html\Protocols\SINVideoController.html)) to your application view hierarchy so that the stream is rendered.
+Once the remote video stream is available, the delegate method `-[SINCall callDidAddVideoTrack:]` will be called and you can use it to attach the Sinch video controller view ([`-[SINVideoController remoteView]`](reference\html\Protocols\SINVideoController.html)) to your application view hierarchy so that the stream is rendered.
 
 
 ```objectivec
@@ -69,11 +69,11 @@ To pause the local video stream, use the method `-[SINCall pauseVideo]`. To resu
 [call resumeVideo];
 ```
 
-The call delegate will be notified of pause- and resume events via the delegate callback methods `-[SINCallDelegate callDidPauseVideoTrack:]` and `-[SINCallDelegate callDidResumeVideoTrack:]`. It is for example appropriate to based on these events update the UI with a pause indicator, and subsequently remove such pause indicator.
+The call delegate will be notified of pause- and resume events via the delegate callback methods `-[SINCallDelegate callDidPauseVideoTrack:]` and `-[SINCallDelegate callDidResumeVideoTrack:]`. For example, it is appropriate based on these events to update the UI with a pause indicator, and subsequently remove such pause indicator.
 
 ### Video Content Fitting and Aspect Ratio
 
-How the rendered video stream is fitted into a view can be controlled by the regular property `UIView.contentMode`. I.e. assigning `contentMode` on a view returned by `-[SINVideoController remoteView]` or `-[SINVideoController localView]` will affect how the video content is laid out. Note though that only `UIViewContentModeScaleAspectFit` and `UIViewContentModeScaleAspectFill` will be respected.
+How the rendered video stream is fitted into a view can be controlled by the regular property `UIView.contentMode`. Assigning `contentMode` on a view returned by `-[SINVideoController remoteView]` or `-[SINVideoController localView]` will affect how the video content is laid out. Note that only `UIViewContentModeScaleAspectFit` and `UIViewContentModeScaleAspectFill` will be respected.
 
 **Example**
 

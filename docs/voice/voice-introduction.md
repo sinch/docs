@@ -8,7 +8,7 @@ excerpt: >-
 
 Sinch offers a platform for real time communication over the Internet. It consists of different software development kits – the Sinch SDKs – that you integrate with your smartphone or web application and cloud based back-end services. Together, they enable Voice based communication in your application.
 
-Apart from real time communication between smartphone or web applications, the Sinch back-end services also integrate with the public switched telephone network(PSTN) in form of high quality voice termination at low rates, making it possible to connect calls to any phone number in more than 150 countries.
+Apart from real time communication between smartphone or web applications, the Sinch back-end services also integrate with the public switched telephone network(PSTN) in the form of high quality voice termination at low rates, making it possible to connect calls to any phone number in more than 150 countries.
 
 ## What are the different voice services?
 
@@ -28,7 +28,8 @@ Getting started with the Sinch Voice API and SDK is simple thanks to the extensi
 
 1.  [Create an account](https://portal.sinch.com/#/signup),
 2.  [Download the Sinch Voice SDK](https://sinch.readme.io/page/downloads)
-3.  And get started in minutes following one of the user guides below.
+
+And get started in minutes following one of the user guides below.
 
 <div class="magic-block-html">
   <div class="ug-links">
