@@ -33,9 +33,9 @@ When the other party answers, the [CallListener.onCallEstablished()](reference/c
 
 ## Set Up an _App-to-Phone_ Call
 
-An _app-to-phone_ call is a call that is made to a phone on the regular telephone network. Setting up an _app-to-phone_ call is not much different than setting up an _app-to-app_ call. Instead of invoking the `callUser` method, invoke the [CallClient.callPhoneNumber()](reference/com/sinch/android/rtc/calling/CallClient.html) recommendation and should be prefixed with a ‘+’. E.g. to call the US phone number 415 555 0101, the phone number should be specified as “+14155550101”. The ‘+’ is the required prefix and the US country code ‘1’ prepended to the local subscriber number.
+An _app-to-phone_ call is a call that is made to a phone on the regular telephone network. Setting up an _app-to-phone_ call is not much different than setting up an _app-to-app_ call. Instead of invoking the `callUser` method, invoke the [CallClient.callPhoneNumber()](reference/com/sinch/android/rtc/calling/CallClient.html) recommendation and it should be prefixed with a ‘+’. For example, to call the US phone number 415 555 0101, the phone number should be specified as “+14155550101”. The ‘+’ is the required prefix and the US country code ‘1’ prepended to the local subscriber number.
 
-Placing an _app-to-phone_ call requires a developer account with credits. Topping up credits can be done on the Account page. Credits are used each time an _app-to-phone_ call is placed and the balance history is updated after each call.
+Placing an _app-to-phone_ call requires a developer account with credits. Topping up credits can be done on your Sinch account page. Credits are used each time an _app-to-phone_ call is placed and the balance history is updated after each call.
 
 _App-to-phone_ calls can be tested by calling the following test number: _+46000000000_. When placing a call to this number, you will hear a voice prompt stating that the call has been connected, and shortly after that the call will automatically be ended.
 
@@ -45,7 +45,7 @@ _App-to-phone_ calls can be tested by calling the following test number: _+46000
 
 > ⚠ Testing DTMF
 >
-> In _App-to-Phone_ scenario, it is possible to issue DTMF sequences using Sinch SDK. Please note that if the receiving end of the call is an iOS device, you might have to disable _VoLTE_ ("Voice over LTE") option in the settings of the phone at the receiving end of the call in order to be able to hear DTMF tones.
+> In _App-to-Phone_ scenario, it is possible to issue DTMF sequences using Sinch SDK. Note that if the receiving end of the call is an iOS device, you might have to disable _VoLTE_ ("Voice over LTE") option in the settings of the phone at the receiving end of the call in order to be able to hear DTMF tones.
 
 
 ## Set Up an _App-to-sip_ Call

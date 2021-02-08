@@ -9,15 +9,15 @@ next:
 
 ## Receiving Incoming Calls via Push Notifications
 
-To receive incoming calls via Push Notifications the _application instance_ has to be registered on Sinch Backend using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html). Push Notifications allow to receive an incoming call even if the phone is locked, or the application is in the background or closed.
+To receive incoming calls via Push Notifications the _application instance_ has to be registered on the Sinch backend using [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html). Push Notifications allow reception of an incoming call even if the phone is locked, or the application is in the background or closed.
 
 Sinch SDK supports both currently available major Push Notification platforms on Android - [Google's Firebase Cloud Messages](doc:voice-android-cloud-push-notifications#google-fcm-push-notifications) (later FCM) and [Huawei Mobile Services Push Notifications](doc:voice-android-cloud-push-notifications#huawei-hms-notifications)  (Huawei Push or HMS Push). 
 
 > 📘
-> Your application can be built to support both Push Notification platforms, but each _application instance_ should 
-> register itself towards Sinch backend to receive Push Notification using either one way or another.
+> Your application can be built to support both Push Notification platforms, but each _application instance_ should register itself towards the Sinch backend to receive Push Notifications using either one way or another.
 
-Registering towards Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
+Registering towards the Sinch backend to receive incoming call push notifications via FCM or HMS Push is quite [similar](doc:voice-android-cloud-push-notifications#fcm-vs-hms-push-registration-steps-comparison) and consists of several topics, which are covered below. 
+
 The sections below will describe how to:
 - Enable support for _Sinch Managed Push_
 - Provision the Application with the Support Code
@@ -53,7 +53,7 @@ sinchClient.start();
 
 Provisioning your application with the support code to receive the FCM Push Notifications is easy. You'll need to acquire a configuration file __google-services.json__ from the FCM console, and add it to your project.
 
-You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup you first need to register your application in [firebase console](https://console.firebase.google.com/). If your project already uses FCM, the console will prompt you to import it as a new Firebase Cloud Messaging project. Register your application using the console, and download relevant _google-services.json_ into your project’s main folder.
+You can add Firebase to your app either semi-automatically using Android Studio, or manually [following this step-by-step official guide](https://firebase.google.com/docs/android/setup). In brief, to perform manual setup, you first need to register your application in the [firebase console](https://console.firebase.google.com/). If your project already uses FCM, the console will prompt you to import it as a new Firebase Cloud Messaging project. Register your application using the console, and download relevant _google-services.json_ into your project’s main folder.
 
 Sample SDK projects _sinch-rtc-sample-push_ and _sinch-rtc-sample-video-push_ will require you to supply your own _google-services.json_ in order to be built. In the absence of this file, gradle will show a relevant error with explanation and relevant links and stop the build. That _google-services.json_ file is the main mean of automatization of support of Firebase services to your app. Android Studio’s plugin `com.google.gms.google-services` parses and adds relevant resources and permissions to your applications manifest automatically.
 
@@ -63,7 +63,7 @@ This step is performed automatically when you call [UserController.registerUser(
 
 ### 4. Register FCM Device Token on Sinch Backend
 
-Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
+Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register the FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
 
 ```java
 UserController userController = Sinch.getUserControllerBuilder()
@@ -116,17 +116,17 @@ sinchClient.start();
 
 > 📘
 >
-> Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HMS_ will appear automatically the very first time  a unique _HMS device token_ is being acquired. 
+> Using the HMS Push platform requires that the _Huawei Mobile Services_ is installed on the device. The UI prompt to install the _HMS_ will appear automatically the very first time a unique _HMS device token_ is being acquired. 
 
 ### 2. Provision the Application with the Support Code
 
-Please follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-dev-process-0000001050263396-V5) to acquire __agconnect-services.json__. Please refer to [How to Integrate HMS Core SDK](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-integrating-sdk-0000001050040084-V5) for the necessary changes in the __gradle__ build files.
+Follow the [Huawei Push Kit Devlopment Process](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-dev-process-0000001050263396-V5) to acquire __agconnect-services.json__. Refer to [How to Integrate HMS Core SDK](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides-V5/android-integrating-sdk-0000001050040084-V5) for the necessary changes in the __gradle__ build files.
 
 ### 3. Acquire HMS Device Token
 
-Unlike FCM, Sinch SDK expects the application to acquire the _HMS device token_ __before__ creating _UserController_. A good example how to acquire an _HMS device token_ asynchronously is provided in the `RegisterToHmsTask` class of the `sinch-rtc-sample-hms-push` sample application.
+Unlike FCM, Sinch SDK expects the application to acquire the _HMS device token_ __before__ creating _UserController_. A good example of how to acquire an _HMS device token_ asynchronously is provided in the `RegisterToHmsTask` class of the `sinch-rtc-sample-hms-push` sample application.
 
-The task extends `AsyncTask` and returns both known beforehand `mHmsApplicationId` and unique `mHmsDeviceToken`, which Huawei recommends to re-acquire on each application start. To read the  HMS Application ID and acquire HMS Device token use following methods: 
+The task extends `AsyncTask` and returns both known beforehand `mHmsApplicationId` and unique `mHmsDeviceToken`, which Huawei recommends to re-acquire on each application start. To read the HMS Application ID and acquire the HMS Device token, use following methods: 
 
 ```java
 String hmsApplicationId = AGConnectServicesConfig.fromContext(context).getString("client/app_id");
@@ -140,16 +140,16 @@ String hmsDeviceToken = HmsInstanceId.getInstance(context).getToken(appId, "HCM"
 > 📘
 >
 > Checklist for Obtaining the HMS Device Token
-> - Application is registered on Huawei AGConnect Console (IMPORTANT: package name should match)
-> - The AGConnect Console's application _project_ has PushKit enabled
-> - The application is __signed__
-> - Fingerprint of the signature is registered in the AGConnect Console 
-> - HMS is installed on the device (User will get UI Prompt automatically)
-> - Device is connected to the Internet
+> - Application is registered on Huawei AGConnect Console (IMPORTANT: package name should match).
+> - The AGConnect Console's application _project_ has PushKit enabled.
+> - The application is __signed__.
+> - Fingerprint of the signature is registered in the AGConnect Console .
+> - HMS is installed on the device (User will get UI Prompt automatically).
+> - Device is connected to the internet.
 
 ### 4. Register HMS Device Token on Sinch Backend
 
-Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and sub-builder [HmsPushBuilder](reference/com/sinch/android/rtc/HmsPushBuilder.html), accessible via `UserControllerBuilder.hms()` method. Then call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register FCM token on the Sinch Backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
+Create an instance of the _UserController_ using the [UserControllerBuilder](reference/com/sinch/android/rtc/UserControllerBuilder.html) and sub-builder [HmsPushBuilder](reference/com/sinch/android/rtc/HmsPushBuilder.html), accessible via `UserControllerBuilder.hms()` method. Then call [UserController.registerUser()](reference/com/sinch/android/rtc/UserController.html) to acquire and register the FCM token on the Sinch backend, and wait for the callbacks that reports whether registration succeeded. Please see dedicated `UserContoller` documentation [here](doc:voice-android-cloud-user-controller).
 
 ```java
 UserController userController = Sinch.getUserControllerBuilder()
@@ -254,7 +254,7 @@ If the user of the application logs out or performs a similar action, which impl
 
 > ❗️
 >
-> If your application assumes frequent change of users (logging in and out), it's imperative to unregister device via using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one.
+> If your application assumes frequent change of users (logging in and out), it's imperative to unregister the device by using `UserController.unregisterPushToken()` on each log out to guarantee that a new user won't receive incoming calls intended to the previous one.
 
 ## GCM to FCM Migration
 
@@ -292,7 +292,7 @@ Sinch supports Huawei OAuth flow by delegation. You will keep your `client_secre
 
 ### Alt A) Huawei OAuth Flow Using Your OAuth 2.0 Domain
 
-(This flow assumes you have an OAuth 2.0 conforming _Authorization Server_ that supports the _Client Credentials_ grant type.)
+This flow assumes you have an OAuth 2.0 conforming _Authorization Server_ that supports the _Client Credentials_ grant type.
 
 The flow is implemented in terms of two key steps:
 
@@ -313,12 +313,12 @@ The overall flow is depicted below:
 Key takeaways:
 
 1. The component labled _Your Resource Server_ in the diagram is your _Resource Server_ in the terminology of OAuth and the _resource_ here being an _HMS access token_.
-2. When Sinch need a (new) HMS `access_token` required to send a push message to _Huawei Push Kit_ server, it will first make a request to your _Authorization Server_ to obtain an `access_token` valid for your security domain (labeled as `access_token_RO` in the diagram, _RO_ as in _Resource Owner_).
-3. Once having obtained `access_token_RO`, Sinch will make a subsequent request to your HMS access token endpoint (labeled `$push_token_endpoint` in the diagram), providing `access_token_RO` as a _Bearer_ token.
+2. When Sinch needs a (new) HMS `access_token` required to send a push message to _Huawei Push Kit_ server, it will first make a request to your _Authorization Server_ to obtain an `access_token` valid for your security domain (labeled as `access_token_RO` in the diagram, _RO_ as in _Resource Owner_).
+3. Having obtained `access_token_RO`, Sinch will make a subsequent request to your HMS access token endpoint (labeled `$push_token_endpoint` in the diagram), providing `access_token_RO` as a _Bearer_ token.
 4. Your _Resource Server_ should obtain a HMS `access_token` using the Huawei HMS OAuth Authorization Server endpoint and your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`.
 5. Your _Resource Server_ should pass the HMS `access_token` (as received from HMS) in the response back to Sinch.
 
-Sinch will only make requests to your Authorization Server access token endpoint and your HMS token endpoint as needed, i.e. not for every push message sent. Sinch will cache the HMS access token in accordance to the value of `expires_in`.
+Sinch will only make requests to your Authorization Server access token endpoint and your HMS token endpoint as needed, not for every push message sent. Sinch will cache the HMS access token in accordance to the value of `expires_in`.
 
 
 > 📘
@@ -337,7 +337,7 @@ grant_type=client_credentials&
 hms_application_id=<Your HMS App Id>
 ```
 
-Your implementation of this resource endpoint should obtain a HMS `access_token` using the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/38054564) for how to implement requesting an OAuth _access token_ using Huawei HMS.
+Your implementation of this resource endpoint should obtain an HMS `access_token` using the Huawei HMS OAuth endpoint, using your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`. The access token received from Huawei should then be included in the response back to Sinch. See [Huawei documentation](https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/38054564) for how to implement requesting an OAuth _access token_ using Huawei HMS.
 
 Example response to Sinch:
 
@@ -366,7 +366,7 @@ The overall flow is depicted below:
 
 Key takeaways:
 
-1. When Sinch need an `access_token` required to send a push message to _Huawei Push Kit_ server, it will make an OAuth request using a _Client Credentials_ grant type to your _Authorization Server_. This request will be specifying and `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer` will as value for `client_assertion` provide a JWT that is symmetrically signed with your _Sinch Application Secret_.
+1. When Sinch needs an `access_token` required to send a push message to _Huawei Push Kit_ server, it will make an OAuth request using a _Client Credentials_ grant type to your _Authorization Server_. This request will be specifying an `client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer` as the value for `client_assertion` provides a JWT that is symmetrically signed with your _Sinch Application Secret_.
 2. Your _Authorization Server_ should validate the JWT provided as `client_assertion` by Sinch and that the signed JWT is signed with your _Sinch Application Secret_.
 3. Your _Authorization Server_ should obtain a HMS `access_token` using the Huawei HMS OAuth Authorization Server endpoint and your Huawei _App ID_ and _App secret_ as `client_id` and `client_secret`.
 4. Your _Authorization Server_ should pass the HMS `access_token` (as received from HMS) in the response back to Sinch.
@@ -427,7 +427,7 @@ The `JWT` will be making use of the standard JWT header parameters `alg` and `ki
 
 
 > 📘
-> __Note__: Your _Sinch Application Key_ is present both in the JWT header and the JWT payload (as header parameter and claim `sinch:rtc:application_key`). The reason is it allows you to implement validating the JWT signature without accessing the payload, and once you have validated the JWT signature, you can strip away the header and all the data you need for further processing is self contained in the payload.
+> __Note__: Your _Sinch Application Key_ is present both in the JWT header and the JWT payload (as header parameter and claim `sinch:rtc:application_key`). The reason, is that it allows you to implement validating the JWT signature without accessing the payload, and once you have validated the JWT signature, you can strip away the header and all the data you need for further processing is self contained in the payload.
 
 ##### `kid` and Deriving a Signing Key from Sinch Application Secret
 
