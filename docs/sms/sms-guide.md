@@ -672,6 +672,37 @@ curl -H "Authorization: Bearer {token}" \
 }
 ```
 
+**Full report response including price information**
+```json
+{
+    "type": "delivery_report_sms",
+    "batch_id": "{batch_id}",
+    "total_message_count": 3,
+    "statuses": [
+        {
+            "code": 400,
+            "status": "Queued",
+            "count": 1,
+            "recipients": [
+                "123456789"
+            ]
+        },
+        {
+            "code": 0,
+            "status": "Delivered",
+            "count": 2,
+            "recipients": [
+                "987654321",
+                "123459876"
+            ]
+        }
+    ],
+    "total_price": {
+        "currency":"EUR",
+        "amount":0.01300
+    }
+}
+```
 
 ### Retrieve a recipient delivery report
 
@@ -700,6 +731,24 @@ curl -H "Authorization: Bearer {token}" \
     "status": "Delivered",
     "at": "2016-10-02T09:34:18.542Z",
     "operator_status_at": "2016-10-02T09:34:18.101Z"
+}
+```
+
+**Recipient delivery report including price and operator for 123456789**
+```json
+{
+    "type": "recipient_delivery_report_sms",
+    "batch_id": "{batch_id}",
+    "recipient": "123456789",
+    "code": "0",
+    "status": "Delivered",
+    "at": "2016-10-02T09:34:18.542Z",
+    "operator_status_at": "2016-10-02T09:34:18.101Z",
+    "operator": "35000",
+    "price": {
+        "currency":"EUR",
+        "amount":0.01300
+    }
 }
 ```
 
