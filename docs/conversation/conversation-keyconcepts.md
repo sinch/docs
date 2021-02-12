@@ -39,7 +39,7 @@ Each **App** has a retention policy that specifies how long messages, sent to or
 
 **Note:** This retention policy **does not** apply to [Contacts](https://developers.sinch.com/docs/conversation-keyconcepts#contact). Data management of contacts is provided through the CRUD function described here: https://developers.sinch.com/reference#contact_getcontact
 
-Changes from the default retention policy require legal justification.  If the change is made via the dashboard, Sinch will collect the justification.  If the change is made programmatically, then the obligation is upon the client to notify Sinch of the legal justification via email to DPO@Sinch.com.
+Changes from the default retention policy require legal justification.  If the change is made via the dashboard, Sinch will collect the justification.  If the change is made programmatically, then the obligation is upon the client to notify Sinch of the legal justification and provide it to your account manager.
 
 This is for your own administration, and it’s your responsibility to set legally compliant retention times. Sinch does not perform a legal review of your internal processes and personal data processing.
 
