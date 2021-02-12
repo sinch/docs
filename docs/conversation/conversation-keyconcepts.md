@@ -37,6 +37,12 @@ Each **App** has a retention policy that specifies how long messages, sent to or
 
 * `PERSIST_RETENTION_POLICY` -  this option persists all messages, and **conversations** until they are explicitly deleted. Note that this option will be subject to additional charges in the future.
 
+**Note:** This retention policy **does not** apply to [Contacts](https://developers.sinch.com/docs/conversation-keyconcepts#contact). Data management of contacts is provided through the CRUD function described here: https://developers.sinch.com/reference#contact_getcontact
+
+Changes from the default retention policy require legal justification.  If the change is made via the dashboard, Sinch will collect the justification.  If the change is made programmatically, then the obligation is upon the client to notify Sinch of the legal justification via email to DPO@Sinch.com.
+
+This is for your own administration, and it’s your responsibility to set legally compliant retention times. Sinch does not perform a legal review of your internal processes and personal data processing.
+
 #### Channel credential
 
 A **channel credential** is the authentication means used to authenticate against an underlying connected channel. A **channel credential** is tied to one **app**.
