@@ -11,7 +11,7 @@ For better verification performance, it should be straightforward and easy for u
 
 ## PhoneNumberUITextField
 
-Sinch SDK provides special class `PhoneNumberUITextField` that can replace default UITextField for phone number input. It automatically formats partially entered phone number based on `countryIso` property. It also allows you to get phone number user has typed in E164 representation that can be directly passed to `Verification` object.
+Sinch SDK provides special class `PhoneNumberUITextField` that can replace default UITextField for phone number input. It automatically formats partially entered phone numbers based on the `countryIso` property. It also allows you to get the phone number the user has typed in E164 representation that can be directly passed to `Verification` object.
 Example usage:
 
 ```swift
@@ -23,4 +23,4 @@ Example usage:
 
 ## SinchPhoneNumberUtils
 
-If you prefer to use built in UITextField or your custom text field implementation `SinchPhoneNumberUtils` class might be useful for phone number checking and validation purposes. Methods defined there allow you to convert local phone numbers to E164 format (`formatNumberToE164`) or check if phone number is valid for given country code (`isPossiblePhoneNumber`).
+If you prefer to use the built in UITextField or your custom text field implementation, the `SinchPhoneNumberUtils` class might be useful for phone number checking and validation purposes. Methods defined there allow you to convert local phone numbers to E164 format (`formatNumberToE164`) or check if the phone number is valid for given country code (`isPossiblePhoneNumber`).

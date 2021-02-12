@@ -391,8 +391,8 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
 
 ##### Receiving Delivery Receipts
 
-Messages sent on SMS channel have three statuses: DELIVERED, READ and FAILED.
-Below is an example for DELIVERED receipt - READ and FAILED differ by the
+Messages sent on SMS channel have two statuses: DELIVERED and FAILED.
+Below is an example for DELIVERED receipt - FAILED differ by the
 `status` and `reason` only.
 Conversation API POST to `MESSAGE_DELIVERY` webhook:
 

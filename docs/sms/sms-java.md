@@ -2,13 +2,13 @@
 title: Getting started - Java
 excerpt: Learn how to quickly send SMS messages with the Sinch API
 ---
-In this guide, you will learn how to:
+In this guide, we show you how to:
 
 1. Create an account and get your free test number (US only).
 2. Send your first SMS.
-3. Recieve SMS
+3. Receive SMS.
 
-A complete sample can be found on GitHub [Send and Recieve SMS with Java and Spring Boot](https://github.com/sinch/sms-java-sample)
+A complete sample can be found on GitHub at [Send and Recieve SMS with Java and Spring Boot](https://github.com/sinch/sms-java-sample)
 
 ### Sign up for a Sinch account
 
@@ -46,8 +46,6 @@ To use java, [install our Java library](doc:sms-java-library)
     }
 ```
 
-Before you can execute the code that sends an SMS message, you need to modify it in a few places.
-
 #### Replace the token values
 
 Before you can execute the code that sends an SMS message, you need to replace the following values with your values:
@@ -61,7 +59,7 @@ To find the service plan and token, go to https://dashboard.sinch.com/sms/api/re
 
 ![Screen shot of dashboard](images\sms-callback-url.png)
 
-To find the From-number, click the service plan id link and scroll to the bottom of the page and then change the `{To number}` to your phone number.
+To find the From-number, click the service plan id link and scroll to the bottom of the page. Then, change the `{To number}` to your phone number.
 
 Click [here](https://developers.sinch.com/reference/#sendsms) to read more about the batches endpoint.
 
@@ -106,7 +104,7 @@ public class InboundController {
 }
 ```
 
-Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`
+Before you can handle incoming traffic to your local server, you need to open up a tunnel to your local server. For that, you can use an [ngrok](https://ngrok.com/) tunnel. Open a terminal/command prompt and type: `ngrok http 3000`.
 
 ![requestbin request](images\ngrok.png)
 
@@ -114,8 +112,9 @@ Go back to your dashboard and change the callback URL for your SMS service.
 
 1. In the terminal windows, start running the SpringBoot Application with `./gradlew bootRun` if gradle or `./mvnw spring-boot:run` if Maven
 2. Send an SMS to your Sinch Number.
-3. You will now see the request come in.
+
+You will now see the request come in
 
 ![requestbin request](images\noderesponse.png)
 
-You can read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)
+Read more about all the different endpoints in the [API reference guide](https://developers.sinch.com/reference)

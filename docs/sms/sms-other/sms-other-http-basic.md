@@ -14,7 +14,7 @@ excerpt: >-
 
 ### Account details
 
-Your account details are found in the Customer Account Details document received by your account manager and are used according to below table.
+Your account details are found in the Customer Account Details document and are used according to the below table.
 
 Your available host options will be visible in the Customer Account Details document.
 
@@ -225,7 +225,7 @@ http://sms1.clxnetworks.net:3800/sendsms?username=userX&password=passX&from=test
 | to=123456                                                                        | Set MSISDN to 123456                                                                                                                   |
 | text=Hello+world                                                                 | Set message content to “Hello world”                                                                                                   |
 | dlr-mask=7                                                                       | Set dlr-mask to 7 (see How dlr-mask works for further explanations)                                                                    |
-| dlr-url=http%3a%2f%2fyour.host.com%2fdlr.php%3ftype%3d%25d%26dr-%c2%admsg%3d%25A | Set the url where delivery reports will be sent and which values, must be URL encoded (see How dlr-url works for further explanations) |
+| dlr-url=http%3a%2f%2fyour.host.com%2fdlr.php%3ftype%3d%25d%26dr-%c2%admsg%3d%25A | Set the url where delivery reports will be sent and which values. Must be URL encoded (see How dlr-url works for further explanations) |
 
 #### Example 2 - Submit text message with delivery report
 
@@ -378,7 +378,7 @@ If unset, defaults to 7-bit unless a UDH is defined, which sets coding to 8-bit.
 
 ### Destination URI
 
-To receive the MO message Sinch needs a URL that specify where the messages should be sent. The URL will be passed as HTTP1.1 GET request. Sinch need:
+To receive the MO message, Sinch needs a URL that specifies where the messages should be sent. The URL will be passed as HTTP1.1 GET request. Sinch needs:
 
 >   - Hostname
 >   - Port
@@ -400,7 +400,7 @@ To receive the MO message Sinch needs a URL that specify where the messages shou
 
 ### Example
 
-This URL will pass the MO message to http server "mo.yourdomain.net" on tcp port 5000. The example script to receive and pars the request is "yourGetMo.php". Sinch will escape the destination MSISDN to variable "msisdn", originator address to variable "originator" and the message to variable "msg".
+This URL will pass the MO message to http server "mo.yourdomain.net" on tcp port 5000. The example script to receive and parse the request is "yourGetMo.php". Sinch will escape the destination MSISDN to variable "msisdn", originator address to variable "originator" and the message to variable "msg".
 
 The URL to use:
 

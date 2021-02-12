@@ -1,8 +1,7 @@
 ---
-title: Miscellaneous
+title: iOS Miscellaneous Verfication SDK
 excerpt: >-
-  iOS Miscellaneous Verification SDK. Find minimum requirements, information
-  about Grand Central Dispatch (GCD) Queues. Read more.
+  Find minimum requirements and information about Grand Central Dispatch (GCD) Queues.
 ---
 ## Minimum requirements
 

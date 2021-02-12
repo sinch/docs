@@ -10,7 +10,7 @@ next:
 
 Use the Sinch SDK together with Apple _VoIP_ push notifications and [CallKit](https://developer.apple.com/documentation/callkit) to provide the best possible end user experience. _VoIP_ push notifications are a special type of push notifications that Apple support as part of _Apple Push Notification service_ (_APNs_) which enables fast and high-priority notifications. [CallKit](https://developer.apple.com/documentation/callkit) is an iOS framework that lets you integrate the Sinch VoIP calling functionality with a iOS native system look and feel.
 
-To fully enable VoIP push notifications in your application, the following steps are required, and this document will guide you through these in more detail:
+To fully enable VoIP push notifications in your application, the following steps are required:
 
 - Configure your iOS app to use VoIP push notifications and _CallKit_.
 - Create and upload an _APNs VoIP Services Certificate_ for your _Sinch Application_ in the _Sinch Developer Portal_.
@@ -30,7 +30,7 @@ iOS apps must have the proper entitlements to use push notifications. To add the
 
 ## Acquiring a Push Device Token
 
-`SINManagedPush` is a component used to simplify acquiring a push device token and registering the token with a `SINClient`. `SINManagedPush` will make use of _PushKit_ to acquire a push device token, and will automatically register the token with the `SINClient` when a client is created (later in the application life-cycle). `SINManagedPush` should be created as early as possible in the application’s life-cycle.
+`SINManagedPush` is a component used to simplify acquiring a push device token and registering the token with a `SINClient`. `SINManagedPush` will make use of _PushKit_ to acquire a push device token, and will automatically register the token with the `SINClient` when a client is created, later in the application life-cycle. `SINManagedPush` should be created as early as possible in the application’s life-cycle.
 
 ```objectivec
 @interface AppDelegate () <SINManagedPushDelegate>
@@ -52,7 +52,7 @@ iOS apps must have the proper entitlements to use push notifications. To add the
 
 > 👍
 >
-> `SINManagedPush` is a very lightweight component and its lifecycle can be independent of the life-cycle of a `SINClient`. It should be created once, and should not be disposed (that would prevent receiving push notifications via _PushKit_).
+> `SINManagedPush` is a very lightweight component and its lifecycle can be independent of the life-cycle of a `SINClient`. It should be created once, and should not be disposed as that would prevent receiving push notifications via _PushKit_.
 
 
 ## Enabling Push Notifications for `SINClient`
@@ -89,10 +89,10 @@ Apple Push Certificates are generated from the [Apple Developer Member Center](h
 
 ### Setting up your Apple Push Certificates with Sinch
 
-> - Login to the [Dashboard](https://portal.sinch.com/#/dashboard)
-> - Open the _Apps_ tab, click on the name of _Application_ you want to configure, then select _Push Configuration_ (top-left in the tabs menu)
-> - Drag and drop the certificates associated to your application
-> - If your certificate has a password, enter it and hit Enter
+> - Login to the [Dashboard](https://portal.sinch.com/#/dashboard).
+> - Open the _Apps_ tab, click on the name of _Application_ you want to configure, then select _Push Configuration_ (top-left in the tabs menu).
+> - Drag and drop the certificates associated to your application.
+> - If your certificate has a password, enter it and hit Enter.
 
 Your push notification certificates are now uploaded and ready for use.
 
@@ -100,7 +100,7 @@ Certificates configured with Sinch can be replaced or renewed by uploading new o
 
 ### Possible Scenarios of Configuring Your Application
 
-Depending on your use case it is possible to configure calling functionality differently. Let's consider two possible scenarios:
+Depending on your use case, it is possible to configure calling functionality differently. Let's consider two possible scenarios:
 
 1. Single Sinch Application, multiple iOS apps (i.e. multiple different Bundle IDs)
 1. Multiple Sinch Applications, one iOS app (one Bundle ID)
@@ -111,24 +111,26 @@ Suppose you have App-A and App-B with `A-BundleID` and `B-BundleID` iOS bundles 
 You want App-B to be able to call App-A. You need to generate *VoIP certificate* for the app with `A-BundleID` and upload it to *Sinch Developer Portal* for the *Sinch Application* which application key you are going to use in both iOS apps.
 
 > ⚠ 
-> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificate must match ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created: if you sign using *Apple Development Certificate* please provide `SINAPSEnvironmentDevelopment`, if you sign using *iOS Distribution Certificate* please provide `SINAPSEnvironmentProduction`.
+> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificate **must match** ANPS environment settings provided to Sinch SDK when `SINManagedPush` is created. If you sign using *Apple Development Certificate*, please provide `SINAPSEnvironmentDevelopment`. If you sign using *iOS Distribution Certificate*, please provide `SINAPSEnvironmentProduction`.
 
-Mismatch in APNs environment settings and signing identity in one or both iOS apps will result in inability to make a call from App-B to App-A.
+Mismatch in APNs environment settings and signing identity in one or both iOS apps will result in the inability to make a call from App-B to App-A.
 
 #### Multiple Sinch Applications, one iOS app (one Bundle ID)
 
-Suppose that we have two Sinch Apps (in Sinch Portal), App-A and App-B and only one iOS app.
-iOS app could be build with App-A application key or App-B application key.
-If you want to make a call from iOS app with App-A application key to iOS app with App-B application key you need to generate VoIP certificate for iOS app bundle ID and upload it to the caller app in *Sinch Developer Portal*. In our example you will upload VoIP certificate to App-A in the portal.
+Suppose that we have two Sinch Apps (in Sinch Portal), App-A and App-B and only one iOS app. The iOS app could be built with the App-A application key or App-B application key.
+
+If you want to make a call from the iOS app with the App-A application key to iOS app with the App-B application key, you need to generate a VoIP certificate for the iOS app bundle ID and upload it to the caller app in *Sinch Developer Portal*. 
+
+In our example you will upload VoIP certificate to App-A in the portal.
 
 > ⚠
-> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificate must match ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created: if you sign using *Apple Development Certificate* please provide `SINAPSEnvironmentDevelopment`, if you sign using *iOS Distribution Certificate* please provide `SINAPSEnvironmentProduction`.
+> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificates must match the ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created. If you sign using *Apple Development Certificate*, please provide `SINAPSEnvironmentDevelopment`. If you sign using *iOS Distribution Certificate*, please provide `SINAPSEnvironmentProduction`.
 
 ## CallKit
 
 ### Apple Requirements on Use of VoIP Push Notifications and _CallKit_
 
-Apple introduced stricter requirements for using VoIP push notifications since iOS 13. iOS apps built using the iOS 13 SDK and make use of VoIP push notifications must report each received push notification as an incoming call to CallKit.
+Apple introduced stricter requirements for using VoIP push notifications since iOS 13. iOS apps built using the iOS 13 SDK and making use of VoIP push notifications must report each received push notification as an incoming call to CallKit.
 
 When linking against the iOS 13 SDK or later, your implementation **must** report notifications to the CallKit framework by calling the method [`-[CXProvider reportNewIncomingCallWithUUID:update:completion:]`](https://developer.apple.com/documentation/callkit/cxprovider/1930694-reportnewincomingcallwithuuid). Further, it must report this __within the same run-loop__, i.e. before the delegate method invocation scope `-[PKPushRegistryDelegate pushRegistry:didReceiveIncomingPushWithPayload:forType:withCompletionHandler:]` ends. In terms of the Sinch SDK, this means your implementation must report to CallKit in your implementation of  `-[SINManagedPushDelegate managedPush:didReceiveIncomingPushWithPayload:forType:]`.
 
@@ -162,7 +164,7 @@ When linking against the iOS 13 SDK or later, your implementation **must** repor
 ```
 
 
-When you relay the push notification to a `SINClient`. If you for some reason do not relay the push payload to a Sinch client instance using `-[SINClient relayRemotePushNotification:]`, you __must__ instead invoke `-[SINManagedPush didCompleteProcessingPushPayload:]` so that the Sinch SDK can invoke the _PKPushKit_ completion handler (which is managed by `SINManagedPush`).
+When you relay the push notification to a `SINClient` and if you some reason you do not relay the push payload to a Sinch client instance using `-[SINClient relayRemotePushNotification:]`, you __must__ instead invoke `-[SINManagedPush didCompleteProcessingPushPayload:]` so that the Sinch SDK can invoke the _PKPushKit_ completion handler (which is managed by `SINManagedPush`).
 
 > ❗️Report Push Notifications to CallKit
 > If a VoIP push notification is not reported to CallKit then iOS will __terminate__ the application. Repeatedly failing to report calls to CallKit may cause the system to stop delivering any more VoIP push notifications to your app. The exact limit before this behavior kicks in is subject to Apple iOS implementation details and outside the control of the Sinch SDK.
@@ -171,7 +173,7 @@ When you relay the push notification to a `SINClient`. If you for some reason do
 
 ### Extracting Call Information From a Push Payload
 
-At the time when your application receives a push notification you will need to extract some key information about the call based on only the push notification payload. You will need to do this to conform with with Apple requirements on reporting a VoIP push notification as an incoming call to _CallKit_, but you may also want to extract application-specific headers for the call. Use the method `+[SINPushHelper queryPushNotificationPayload:]` to extract call details from the raw push payload. Note that you can do this immediately and before you have created and started a `SINClient` instance.
+At the time when your application receives a push notification you will need to extract some key information about the call based on only the push notification payload. You will need to do this to conform with with Apple requirements on reporting a VoIP push notification as an incoming call to _CallKit_, but you may also want to extract application-specific headers for the call. Use the method `+[SINPushHelper queryPushNotificationPayload:]` to extract call details from the raw push payload. You can do this immediately and before you have created and started a `SINClient` instance.
 
 __Example__
 
@@ -232,7 +234,7 @@ Example of Sinch push notification payload when display name is __not__ specifie
 
 When an iOS application is code signed, the embedded _Provisioning Profile_ will have to match the _Apple Push Notification service Environment_ (also referred to as _APS Environment_) specified in the app [_Entitlements_](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment?language=objc).
 
-This means how the the app is code signed and what _Provisioning Profile_ is used has an effect on what value should be passed to `+[Sinch managedPushWithAPSEnvironment:]`.
+This means that how the the app is code signed and what _Provisioning Profile_ is used has an effect on what value should be passed to `+[Sinch managedPushWithAPSEnvironment:]`.
 
 For example, if your application is signed with a _Development_ provisioning profile it will be bound to the APS _Development_ environment. If it’s code signed with a _Distribution_ provisioning profile it will be bound to the APS _Production_ environment.
 
@@ -257,4 +259,4 @@ For more details on Apple _PushKit_ and _CallKit_, see following _Apple Develope
 
 This section covers details on how `SINManagedPush` and `SINClient` interacts together (automatically).
 
-`SINManagedPush` will make use of `PKPushRegistry` to acquire a push device token. If any `SINClient` instances exist, it will register the token via `-[SINClient registerPushNotificationDeviceToken:type:apsEnvironment:]`, which will in turn register the token with the Sinch backend platform. If no instance of `SINClient` exists when `SINManagedPush` initially acquire the token, it will hold on to the token (in-process memory only) and register it with any `SINClient` that is created later during the whole application life-cycle.
+`SINManagedPush` will make use of `PKPushRegistry` to acquire a push device token. If any `SINClient` instances exist, it will register the token via `-[SINClient registerPushNotificationDeviceToken:type:apsEnvironment:]`, which will in turn register the token with the Sinch backend platform. If no instance of `SINClient` exists when `SINManagedPush` initially acquires the token, it will hold on to the token (in-process memory only) and register it with any `SINClient` that is created later during the whole application life-cycle.

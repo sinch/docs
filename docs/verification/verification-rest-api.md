@@ -1,8 +1,7 @@
 ---
-title: REST API
+title: Verification REST API for verifying phone numbers and users
 excerpt: >-
-  Verification REST API for verifying phone numbers and users. Support of
-  FlashCall verification, PIN SMS verification and Callout verification.
+  Learn about the support of FlashCall verification, PIN SMS verification and Callout verification.
 next:
   pages:
     - verification-rest-verification-api
@@ -41,7 +40,7 @@ curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1
 
 ## Overview
 
-For general information on how to use the Sinch APIs including methods, types, errors and authorization, please check the [Using REST](doc:using-rest) page.
+For general information on how to use the Sinch APIs including methods, types, errors and authorization, please visit the [Using REST](doc:using-rest) page.
 
 Use the Sinch Verification Service to verify end-user's mobile phone numbers. The Sinch Verification APIs should be used in combination with the Verification SDKs for a complete end-to-end solution, though it is possible to only use the APIs. Currently, there are three verification methods supported:
 
@@ -53,13 +52,17 @@ Use the Sinch Verification Service to verify end-user's mobile phone numbers. Th
 
 With the flashCall verification method, a user's phone number is verified by triggering a "missed call" towards this number. The call is intercepted by the Android SDK in the mobile app and blocked automatically.
 
-To initiate a flashCall verification, check the [Android SDK documentation](doc:verification-android-the-verification-process). For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
+To initiate a flashCall verification, visit [Android SDK documentation](doc:verification-android-the-verification-process). For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
 
 ## PIN SMS verification
 
 With the PIN SMS verification method, a user's phone number is verified by sending an SMS containing a PIN code to this number. In the case of iOS or Javascript, the user needs to enter the PIN manually in the app, while for Android there is an option of intercepting the SMS message delivery and capturing the PIN code automatically.
 
+<<<<<<< HEAD
 To initiate a PIN SMS verification, check the [iOS](doc:verification-for-ios.md) or [Android](doc:verification-for-android) documentation. For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
+=======
+To initiate a PIN SMS verification, visit the [iOS](doc:verification-for-ios.md), [Android](doc:verification-for-android) and [Javascript](doc:verification-for-javascript) documentation. For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
+>>>>>>> origin/master
 
 ## Callout verification
 

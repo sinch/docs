@@ -1,13 +1,11 @@
 ---
 title: Error Specification
-excerpt: ''
+excerpt: >-
+  This information covers error codes related to the SMPP communication
 next:
   pages:
     - sms-smpp-encoding
 ---
-### Overview
-
-This specification covers error codes related to the SMPP communication.
 
 ### SMPP connection error codes
 
@@ -30,7 +28,7 @@ The states are described in the SMPP Protocol Specification v3.4 Issue 1.2 chapt
 
 ### Status reports error codes
 
-The error codes are provided in status reports according to the SMPP Protocol Specification v3.4 Issue 1.2 Appendix B. The following are the error codes Sinch Networks will be sending:
+The error codes are provided in status reports according to the SMPP Protocol Specification v3.4 Issue 1.2 Appendix B. The following are the error codes Sinch networks will be sending:
 
 | Error | Error Class         | Description                                     | Comment                                                                            | Treated as |
 | ----- | ------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------- | ---------- |
@@ -45,8 +43,8 @@ The error codes are provided in status reports according to the SMPP Protocol Sp
 | 8     | ROUTING ERROR       | Internal routing error                          | Report to Sinch                                                                    | Permanent  |
 | 9     | ROUTING ERROR       | Unsupported number plan                         |                                                                                    | Permanent  |
 | 10    | ROUTING ERROR       | Unsupported type of number                      |                                                                                    | Permanent  |
-| 11    | ROUTING ERROR       | Message not deliver                             |                                                                                    | Permanent  |
-| 12    | ROUTING ERROR       | Dialling zone not found                         |                                                                                    | Permanent  |
+| 11    | ROUTING ERROR       | Message not delivered                           |                                                                                    | Permanent  |
+| 12    | ROUTING ERROR       | Dialing zone not found                          |                                                                                    | Permanent  |
 | 13    | ROUTING ERROR       | Not home zone and IMSI not allowed              |                                                                                    | Permanent  |
 | 14    | ROUTING ERROR       | Not home zone and IMSI fetch failed             |                                                                                    | Temporary  |
 | 15    | SCREENING ERROR     | Screening block                                 |                                                                                    | Permanent  |
@@ -94,14 +92,14 @@ The error codes are provided in status reports according to the SMPP Protocol Sp
 | 113   | SMSC ERROR          | Exception (internal)                            | Report to Sinch                                                                    | Permanent  |
 | 114   | SMSC ERROR          | Unknown error                                   |                                                                                    | Temporary  |
 | 150   | HLR ERROR           | Unknown subscriber                              | Message is rejected because there is no directory number for the mobile subscriber | Permanent  |
-| 151   | HLR ERROR           | Call barred                                     | Message is rejected due to barring of the MS                                       | Permanent  |
-| 152   | HLR ERROR           | Teleservice not provisioned                     | Message is rejected because the recipient MS has no SMS subscription               | Permanent  |
+| 151   | HLR ERROR           | Call barred                                     | Message is rejected due to barring of the mobile subscriber                        | Permanent  |
+| 152   | HLR ERROR           | Teleservice not provisioned                     | Message is rejected because the recipient mobile subscriber has no SMS subscription | Permanent  |
 | 153   | HLR ERROR           | Absent subscriber                               |                                                                                    | Temporary  |
 | 154   | HLR ERROR           | Facility not supported                          | The message is rejected due to no provision of the SMS in the VPLMN                | Permanent  |
 | 155   | HLR ERROR           | System failure                                  | Message rejected due to network or protocol failure                                | Temporary  |
 | 156   | HLR ERROR           | Unexpected data value                           |                                                                                    | Permanent  |
 | 157   | HLR ERROR           | Data missing                                    |                                                                                    | Permanent  |
-| 158   | HLR ERROR           | Memory capacity exceeded                        | Message rejected because the MS doesn’t have enough memory                         | Temporary  |
+| 158   | HLR ERROR           | Memory capacity exceeded                        | Message rejected because the mobile subscriber doesn’t have enough memory          | Temporary  |
 | 159   | HLR ERROR           | Mobile subscriber not reachable                 |                                                                                    | Temporary  |
 | 160   | HLR ERROR           | Reject                                          | Indicates temporary problem or lost reach                                          | Permanent  |
 | 161   | HLR ERROR           | Local Cancel                                    | Indicates temporary problem or lost reach                                          | Temporary  |
@@ -109,16 +107,16 @@ The error codes are provided in status reports according to the SMPP Protocol Sp
 | 163   | HLR ERROR           | Exception (internal)                            | Report to Sinch (Local error)                                                      | Permanent  |
 | 164   | HLR ERROR           | Unknown error                                   |                                                                                    | Temporary  |
 | 200   | MSC ERROR           | Unidentified subscriber                         |                                                                                    | Temporary  |
-| 201   | MSC ERROR           | Absent subscriber, IMSI detached                | Subscriber is absent and have been for a period of time                            | Temporary  |
-| 202   | MSC ERROR           | Absent subscriber, no page response             | The message is rejected because there was no paging response                       | Temporary  |
-| 203   | MSC ERROR           | Subscriber busy for MT SMS                      | The message is rejected because of congestion encountered at the visited MSC       | Temporary  |
+| 201   | MSC ERROR           | Absent subscriber, IMSI detached                | Subscriber is absent and has been for a period of time                            | Temporary  |
+| 202   | MSC ERROR           | Absent subscriber, no page response             | The message is rejected because there was no paging response                      | Temporary  |
+| 203   | MSC ERROR           | Subscriber busy for MT SMS                      | The message is rejected because of congestion encountered at the visited MSC      | Temporary  |
 | 204   | MSC ERROR           | Facility not supported                          | The message is rejected due to no provision of the SMS in the destination SIM      | Permanent  |
 | 205   | MSC ERROR           | Illegal subscriber                              | Message rejected because of failed authentication                                  | Permanent  |
-| 206   | MSC ERROR           | Illegal equipment                               | Message rejected because the MS was black-listed                                   | Permanent  |
+| 206   | MSC ERROR           | Illegal equipment                               | Message rejected because the mobile subscriber was blocklisted                    | Permanent  |
 | 207   | MSC ERROR           | System failure                                  | Message rejected due to network or protocol failure                                | Temporary  |
 | 208   | MSC ERROR           | Unexpected data value                           |                                                                                    | Permanent  |
 | 209   | MSC ERROR           | Data missing                                    |                                                                                    | Permanent  |
-| 210   | MSC ERROR           | Memory capacity exceeded                        | Message rejected because the MS doesn’t have enough memory                         | Temporary  |
+| 210   | MSC ERROR           | Memory capacity exceeded                        | Message rejected because the mobile subscriber doesn’t have enough memory          | Temporary  |
 | 211   | MSC ERROR           | Equipment protocol error                        |                                                                                    | Temporary  |
 | 212   | MSC ERROR           | Equipment not short message equipped            |                                                                                    | Temporary  |
 | 213   | MSC ERROR           | Reject                                          | Indicates temporary problem or lost reach                                          | Permanent  |

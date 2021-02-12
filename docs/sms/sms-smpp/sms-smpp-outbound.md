@@ -16,11 +16,11 @@ next:
 | System-ID | \<system-id\>                       |
 | Password  | \<password\>                        |
 
-Maximum instances (binds): Default 2 per SMPP account. For more connections, please contact your account manager.
+Maximum instances (binds): Default 2 per SMPP account. For more connections, contact your account manager.
 
 ### IP Access
 
-To access Sinch SMPP server the client IP range must be announced and added to the client account.
+To access the Sinch SMPP server, the client IP range must be announced and added to the client account.
 
 ### Supported SMPP PDUs
 
@@ -102,11 +102,11 @@ To access Sinch SMPP server the client IP range must be announced and added to t
     </div>
 </div>
 
-Type of source address is defined by the source address TON and NPI parameters.
+The type of source address is defined by the source address TON and NPI parameters.
 
-> - Alphanumeric sender is limited to a maximum length of 11 characters
-> - MSISDN sender maximum length is 18
-> - To enable a handset to respond to a short code we recommend to use TON=0x00 and NPI=0x01
+> - Alphanumeric sender is limited to a maximum length of 11 characters.
+> - MSISDN sender maximum length is 18.
+> - To enable a handset to respond to a short code, we recommend to use TON=0x00 and NPI=0x01.
 
 ### Destination address
 
@@ -149,7 +149,9 @@ For further information on the MSISDN format, see the ITU-T specification E.164.
 
 ### Throughput and throttling
 
-Throughput is the maximum number of MT messages per second that can be sent from the SMPP account to Sinch. Default value is 10 per bind. To increase the value, contact your account manager. Recommended default window size (maximum open requests) is 10. The throughput can be restricted by the capacity of the operator receiving the MT messages.
+Throughput is the maximum number of MT messages per second that can be sent from the SMPP account to Sinch. The default value is 10 per bind. To increase the value, contact your account manager. 
+
+The recommended default window size (maximum open requests) is 10. The throughput can be restricted by the capacity of the operator receiving the MT messages.
 
 ### Enquire link
 
@@ -157,11 +159,13 @@ It is recommended to set your enquire\_link requests to 60 seconds.
 
 ### Schedule delivery time
 
-In order to schedule a message to be sent in the future the optional parameter schedule\_delivery\_time may be added. Messages may be scheduled maximum 168 hours, one week, ahead of time. It can be specified in either absolute time format or relative time format. If this parameter is omitted messages are sent immediately. For example, the following time formats:
+In order to schedule a message to be sent in the future, the optional parameter schedule\_delivery\_time may be added. Messages can be scheduled a maximum of 168 hours, one week, ahead of time. It can be specified in either absolute time format or relative time format. If this parameter is omitted, messages are sent immediately. 
+
+For example, the following time formats:
 
 | schedule\_delivery\_time | Would be interpreted as:                                                                     |
 | ------------------------ | -------------------------------------------------------------------------------------------- |
-| 100312163200004+         | An absolute time March 12 2010 16:32:00 GMT+1h.                                              |
+| 100312163200004+         | An absolute time - March 12 2010 16:32:00 GMT+1h.                                              |
 | 000006233429000R         | A relative period of 6 days, 23 hours, 34 minutes and 29 seconds from the current SMSC time. |
 
 ### Time Zone
@@ -172,7 +176,7 @@ Sinch SMSC uses UTC (Coordinated Universal Time)
 
 MCC + MNC information in SMPP delivery receipts can be included as an optional parameter. This information is passed (configurable per SMPP account whether to enable this) in a vendor-specific TLV (0x1403).
 
-In value field you will receive the MCC MNC of the destination operator.
+In the value field, you will receive the MCC MNC of the destination operator.
 
 Example:
 

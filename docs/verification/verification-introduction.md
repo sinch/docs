@@ -11,21 +11,22 @@ Sinch offers a platform for phone number verification. It consists of different 
 
 ## What are the supported platforms?
 
-When using Sinch for Verification, the Sinch dashboard provides 4 possible ways of verifying a phone number available both on iOS and Android devices. In some cases the SDK can automatically intercept the verification code and pass it back to Sinch backend, however your application should always be prepared to present a text input field in case of automatic extraction failure.
-The verification methods that are currently supported are
+When using Sinch for Verification, the Sinch dashboard provides four possible ways of verifying a phone number available both on iOS and Android devices. In some cases, the SDK can automatically intercept the verification code and pass it back to the Sinch backend. However, your application should always be prepared to present a text input field in case of automatic extraction failure.
 
-1. SMS - Number is verified using a 4 digit code that is sent in a SMS message. On Android, automatic code extraction is available, however on iOS an input field must be always presented and the number has to be typed manually by the user.
-2. Flashcall - Sinch initializes a phone call to the number that is being verified. After that, a verification request containing the full number of the incoming call has to passed to Sinch backend to authenticate the user. Again, in case of Android it may happen automatically (SDK intercepts and passes the number without any user engagement) or manually by typing the number in a text field.
-3. Callout - User obtains the verification code by answering an incoming Sinch phone call, during which text-to-speech software will speak it out loud. The code has to be typed manually.
+The verification methods that are currently supported are:
+
+1. SMS - Number is verified using a four digit code that is sent in a SMS message. On Android, automatic code extraction is available. However, on iOS, an input field must be always presented and the number has to be typed manually by the user.
+2. Flashcall - Sinch initializes a phone call to the number that is being verified. After that, a verification request containing the full number of the incoming call has to be passed to the Sinch backend to authenticate the user. Again, in case of Android it may happen automatically (SDK intercepts and passes the number without any user engagement) or manually by typing the number in a text field.
+3. Callout - User obtains the verification code by answering an incoming Sinch phone call during which text-to-speech software will speak it out loud. The code has to be typed manually.
 4. Seamless - Sinch uses telephony provider infrastructure to verify the phone number without any user interaction. Because of that, for this method to work, the mobile data should be enabled.
 
-The Sinch Verification service takes care of all the different steps in a verification process and let developers focus on building great application while easily reinforcing their sign up and login processes.
+The Sinch Verification service takes care of all the different steps in a verification process and lets developers focus on building great applications while easily reinforcing their sign up and login processes.
 
 ## What are the different verification services?
 
 The Sinch SDK is currently available for [iOS](doc:verification-for-ios) and [Android](doc:verification-for-android).
 
-**Note:** If you use SDK it is mandatory to use callbacks to secure all transactions, i.e. when application is configured as "public" security the callback is used to allow/deny each transaction.
+**Note:** If you use SDK it is **mandatory** to use callbacks to secure all transactions, i.e. when the  application is configured as "public" security, the callback is used to allow/deny each transaction.
 
 Back-end services such as authorization or data consolidation are also exposed over REST APIs, primarily for back-end to back-end integration.
 
@@ -37,7 +38,7 @@ In most cases, Sinch can be used without needing a back-end or any configuration
 
 1.  [create an account](https://portal.sinch.com/#/signup),
 2.  [download the SDK](https://sinch.readme.io/page/downloads)
-3.  get started in minutes following one of the user guide below.
+3.  Get started in minutes by following one of the user guides below.
 
 <div class="magic-block-html">
   <div class="ug-links">
@@ -66,21 +67,21 @@ In most cases, Sinch can be used without needing a back-end or any configuration
 
 The SDK and REST API work together to ensure you the highest possible security and a full control over the verification solution. We recommend the following approach to integrate any of the Verification SDK in your apps:
 
- 1.  Use the SDK to initiate verification requests
+ 1.  Use the SDK to initiate verification requests.
  2.  Use the Verification Request Event callback to:
-  *   authorize a given verification request to be started
-  *   control the amount of retries a single user can attempt
-  *   control if a given phone number can be associated to multiple accounts
- 3.  Let the SDK automatically intercept (Android only) and report flash calls/SMS to the Sinch backend
- 4.  Consolidate the final verification status in your backend using the Verification Result Event callback
+  *   Authorize a given verification request to be started.
+  *   Control the amount of retries a single user can attempt.
+  *   Control if a given phone number can be associated to multiple accounts.
+ 3.  Let the SDK automatically intercept (Android only) and report flash calls/SMS to the Sinch backend.
+ 4.  Consolidate the final verification status in your backend using the Verification Result Event callback.
 ![verification_flow.png](images\eb29e43-verification_flow.png)
 
 ## Verification results and success rates
 
 Keep track of verification success rates and results in real time through the Sinch Dashboard. For each verification method, get accurate metrics on how your app is performing:
 
-  - Delivery rate: percentage of numbers who could successfully be reached (phone ringing or SMS delivered)
-  - Conversion rate: percentage of unique numbers who could successfully be verified
+  - Delivery rate: percentage of numbers who could successfully be reached, phone ringing or SMS delivered.
+  - Conversion rate: percentage of unique numbers who could successfully be verified.
 
 ## How does pricing work?
 

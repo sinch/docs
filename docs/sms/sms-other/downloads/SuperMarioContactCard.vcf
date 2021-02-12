@@ -1,0 +1,11 @@
+BEGIN:VCARD
+ORG:Mushroom Kingdom Plumbing
+TITLE:Master Plumber
+NOTE:For plumbing services hours are 7am to 11pm
+TEL;HOME;:15558923456
+TEL;WORK;:15552478765
+EMAIL;WORK;:Super.Mario@mushroomkingdom.net
+EMAIL;HOME;:Mario.Bros@mushroomkingdom.com
+ADR;HOME;:1985 Star Road, Mushroom Kingdom, NES. 90999
+N:Mario;Super;;;Bros.
+END:VCARD

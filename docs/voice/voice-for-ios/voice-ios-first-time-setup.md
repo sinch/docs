@@ -1,5 +1,5 @@
 ---
-title: First Time Setup
+title: Sinch Voice and Video SDK first time setup
 excerpt: >-
   Follow this step-by-step guide to set up the Sinch Voice and Video SDK for the
   first time.

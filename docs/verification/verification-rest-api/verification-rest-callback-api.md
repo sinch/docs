@@ -1,6 +1,6 @@
 ---
 title: Callback API
-excerpt: How to use the callbacks in the Sinch Verification REST SDK. Read more.
+excerpt: How to use the callbacks in the Sinch Verification REST SDK.
 next:
   pages:
     - verification-rest-verification-api
@@ -101,11 +101,11 @@ You can find more information on callback request signing [here](doc:using-rest#
 }
 ```
 
-**acceptLanguage** allows to set (or override if provided in the API request) the SMS verification content language.
+**acceptLanguage** allows you to set or override if provided in the API request, the SMS verification content language.
 
-Please note that the content language specified in the API request or in the callback can be overridden by carrier provider specific templates, due to compliance and legal requirements, such as [US shortcode requirements (pdf)](https://www.wmcglobal.com/storage/us_resources/ctia-short-code-monitoring-handbook-current-Short-Code-Monitoring-Handbook-v1.7.pdf).
+**NOTE:** The content language specified in the API request or in the callback can be overridden by carrier provider specific templates, due to compliance and legal requirements, such as [US shortcode requirements (pdf)](https://www.wmcglobal.com/storage/us_resources/ctia-short-code-monitoring-handbook-current-Short-Code-Monitoring-Handbook-v1.7.pdf).
 
-*Example - Set the SMS language to Spanish (Spain)*
+*Example* - Set the SMS language to Spanish (Spain)
 
 ```json
 {
@@ -131,9 +131,9 @@ Please note that the content language specified in the API request or in the cal
 }
 ```
 
-Please note that in order to set your own CLI, you need to **own** the number that you will set.
+**NOTE:** In order to set your own CLI, you need to **own** the number that you will set.
 
-**dialTimeout** shows the maximum time that a flashcall verification will be active and can be completed. If the phone number has not been verified successfully during this time, then the verification request will fail. By default, the Sinch dashboard will automatically optimize dial timeout during a flashcall. If you want to set your own dial time out for the flashcall, you can specify it in the response to the Verification Request Event:
+**dialTimeout** shows the maximum time that a flashcall verification will be active and can be completed. If the phone number has not been verified successfully during this time, then the verification request will fail. By default, the Sinch dashboard will automatically optimize dial time out during a flashcall. If you want to set your own dial time out for the flashcall, you can specify it in the response to the Verification Request Event:
 
 *Example* - Flashcall with pre-defined dial timeout
 
@@ -146,17 +146,17 @@ Please note that in order to set your own CLI, you need to **own** the number th
 
 ### Callout
 
-**locale** it is used to indicate the language that should be used for the text-to-speech message. Only "en-US" is supported currently.
+**locale** it is used to indicate the language that should be used for the text-to-speech message. Currently, only "en-US" is supported.
 
-**ttsMenu** is the message that can be played to the user when the phone call is picked up. Default value is: "To verify your phone number, please press {pin}. If you didn’t request this call, please hangup."
+**ttsMenu** is the message that can be played to the user when the phone call is picked up. The default value is: "To verify your phone number, please press {pin}. If you didn’t request this call, please hang up."
 
-**wavFile** is the wav file that can be played to the user when the phone call is picked up.
+**wavFile** is the .wav file that can be played to the user when the phone call is picked up.
 
-**pin** is the digit that the user should press to verify the phone number. Default value is "1".
+**pin** is the digit that the user should press to verify the phone number. The default value is "1".
 
-**Important:** For the callout verification, if no ttsMenu nor wavFile is specified, then the user hears a text-to-speech message saying: "To verify your phone number, please press {pin}. If you didn’t request this call, please hangup."
+**Important:** For the callout verification, if no ttsMenu nor wavFile is specified, then the user hears a text-to-speech message saying: "To verify your phone number, please press {pin}. If you didn’t request this call, please hang up."
 
-Please note that for the callout method you can either select to play a text-to-speech message, or a pre-recorded wav file. If you want to use the wav file, please contact Sinch support for instructions on how to supply the file to Sinch.
+**NOTE:** For the callout method, you can either select to play a text-to-speech message, or a pre-recorded .wav file. If you want to use the .wav file, please contact Sinch support for instructions on how to supply the file to Sinch.
 
 *Example* - callout
 
@@ -174,15 +174,11 @@ Please note that for the callout method you can either select to play a text-to-
 
 ## Verification Result Event
 
-This callback event is is a POST request to the specified verification
-callback URL and triggered when a verification has been completed and
-the result is known. It is used to report the verification result to the
-developer's backend application. This callback event is only triggered
-when the verification callback URL is specified.
+This callback event is a POST request to the specified verification callback URL and triggered when a verification has been completed and the result is known. It is used to report the verification result to the developer's backend application. This callback event is only triggered when the verification callback URL is specified.
 
 ### Authorization
 
-You can find more information on callback request signing `here
+You can find more information on callback request signing here
 <callbackrequestsigning>`.
 
 ### Request
@@ -221,11 +217,11 @@ You can find more information on callback request signing `here
 
 **status** shows the current status of the verification request. It can take the values:
 
->   - "PENDING": the verification is ongoing
->   - "SUCCESSFUL": the verification was successful
->   - "FAIL": the verification attempt was made, but the number was not verified
->   - "DENIED": the verification attempt was denied by Sinch or your backend
->   - "ABORTED": the verification attempt was aborted by requesting a new verification
+>   - "PENDING": the verification is ongoing.
+>   - "SUCCESSFUL": the verification was successful.
+>   - "FAIL": the verification attempt was made, but the number was not verified.
+>   - "DENIED": the verification attempt was denied by Sinch or your backend.
+>   - "ABORTED": the verification attempt was aborted by requesting a new verification.
 >   - "ERROR": the verification could not be completed due to a network error or the number being unreachable.
 
 **reason** shows the reason why a verification has FAILED, was DENIED or was ABORTED. It can take the values:
@@ -247,7 +243,7 @@ You can find more information on callback request signing `here
 
 **reference** shows the reference Id that was passed (optionally) together with the verification request.
 
-**source** This is free text that the client is sending, but it is used to show if the call/SMS was intercepted or not. Typical values can be:
+**source** free text that the client is sending, but it is used to show if the call/SMS was intercepted or not. Typical values can be:
 
 >   - “intercepted”
 >   - "manual"

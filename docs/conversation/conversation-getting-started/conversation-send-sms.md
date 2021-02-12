@@ -11,45 +11,45 @@ next:
 
 ## Add an SMS Channel to your Conversations API App <span class="betabadge">Beta</span>
 
-In this section, you will learn how to add an SMS channel to your Sinch Conversations API Application.  You can add your SMS channel one of two ways: either programmatically via Sinch Conversation API or through the [Sinch online portal](https://dashboard.sinch.com).  Before we begin here are a few items you should already have:
+In this guide, you will learn how to add an SMS channel to your Sinch Conversations API Application.  You can add your SMS channel one of two ways: either programmatically via the Sinch Conversation API or through the [Sinch online portal](https://dashboard.sinch.com).  Before we begin, here are a few items you should already have:
 
 1. A text enabled *long code* or a *short code* registered with Sinch.
-2. Access to the Sinch dashboard where you manage your long code or short code.
-3. An SMS *Service Plan ID* and *Secret* to authorize SMS text message requests.
-4. A Conversations *App ID*.
-5. A Sinch *Project ID* and associated Key ID and Key Secret.
+2. Access to the Sinch dashboard where you can manage your long code or short code.
+3. An SMS **Service Plan ID** and **Secret** to authorize SMS text message requests.
+4. A Conversations **App ID**.
+5. A Sinch **Project ID** and associated Key ID and Key Secret.
 
-If you are missing any of items 1-3 above you should begin by registering online at [*Sinch.com*](https://sinch.com).  We'll show you how to create a *New Conversations App*  and get authentication credentials for items 4 and 5.
+If you are missing any of items 1-3 above, you should begin by registering online at [*Sinch.com*](https://sinch.com).  We'll show you how to create a *New Conversation App*  and get authentication credentials for items 4 and 5.
 
 ### Create a New Conversations App
 
 To create a new Conversations App, simply sign in to your [*Sinch Dashboard account*](https://dashboard.sinch.com) and use the menu on the left to access Conversations > Apps.
 
-Click on the *New App* button on the right, "Name" your App, choose an appropriate region for it, and click *Create*.
+Click the **New App** button on the right, "Name" your App, choose an appropriate region for it, and click *Create*.
 
 ![dashboard image](../images/dashboard/dashboard_new_app.png)
 
 ### Add an SMS Channel to your Conversations App
 
-In your Sinch Dashboard, navigate to Conversations > Apps.  Click on the *"App Name"* you wish to add the SMS Channel to.
+In your Sinch Dashboard, navigate to Conversations > Apps.  Click the name of the app that you want to add the SMS Channel to.
 
 ![app added](../conversation-channel-support/images/channel-support/sms/sinch_conversations_apps_added.png)
 
-Under *Set up channels* find SMS channel and click on *"Set Up Channel"*. 
+Under **Set up channels** find SMS channel and click on **Set Up Channel**. 
 
 ![new sms channel](../images/dashboard/dashboard_add_channels.png)
 
-For setting up the SMS channel you need to choose your SMS *Service Plan ID* from the drop-down and click *"Save"*.
+For setting up the SMS channel, you need to choose your SMS **Service Plan ID** from the drop-down and click **Save**.
 
 ![new sms channel](../conversation-channel-support/images/channel-support/sms/sinch_conversations_new_app_add_sms_channel_form.png)
 
-You have added an SMS Channel to your App.  Just a few more steps to go.
+You have now added an SMS Channel to your App.  Just a few more steps to go.
 
 ![new sms channel](../conversation-channel-support/images/channel-support/sms/sinch_conversations_sms_channel_done.png)
 
 ### Fetch Oauth2 Token needed for authentication
 
-Go to the Access Keys page under Settings and create new key by pressing the "New Key" button:
+Go to the Access Keys page under Settings and create a new key by clicking the **New Key** button:
 
 ![access keys](../images/dashboard/dashboard_access_keys.png)
 
@@ -58,7 +58,7 @@ Be sure to copy and store in a safe place the Key Secret you will get. You will 
 Then use the key id and key secret to obtain an access token:
 
 ```shell Curl
-curl https://eu.auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
+curl https://auth.sinch.com/oauth2/token -d grant_type=client_credentials --user <key_id>:<key_secret>
 ```
 
 Copy the token and use it in the Authorization header of your calls to Sinch Conversations API.
