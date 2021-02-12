@@ -49,7 +49,7 @@ Our current message types are:
 
 ### Postman collection
 
-Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/collections/79a07a7d299afe46658b, into a Firefox browser or, use the Import option in Postman.
+Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/, into a Firefox browser or, use the Import option in Postman.
 
 After importing the collection, fill in the following variables: 
 
