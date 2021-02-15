@@ -9,7 +9,7 @@ hidden: false
 In **Gradle**, please put the lines below in your **build.gradle**
 
 ```javascript
-implementation 'com.sinch:sdk-sms:1.0.4'
+implementation 'com.sinch:sdk-sms:1.*'
 ```
 
 Because Sinch SDK Library is hosted on Maven Central Repository, please make sure you have **mavenCentral()** in your **build.gradle**.

@@ -1,15 +1,15 @@
 ---
-title: Capability
+title: Capability Query
 excerpt: >-
   Requesting a Capability Query for a contact
 hidden: false
 ---
 
-## Introduction to Capability <span class="betabadge">Beta</span>
+## Introduction to Capability Query <span class="betabadge">Beta</span>
 
-A Capability Query means checking available options to reach the [**contact**](doc:conversation-keyconcepts#contact) on the channels where it has a channel identity. 
+A Capability Query means checking the available options to reach the [**contact**](doc:conversation-keyconcepts#contact) on the channels where it has a channel identity. 
 
-Capability Queries can only be executed for contacts that already exist in a project/app. For executing the request it is required to provide either the contactId or the channel recipient identities of the contact.
+Capability Queries can only be executed for contacts that already exist in a project/app. For executing the request, it is required to provide either the contactId or the channel recipient identities of the contact.
 
 The request is executed asynchronously, therefore the service responds immediately. The result of the Capability Query is sent to the registered webhook for the CAPABILITY trigger. To set up webhooks with the proper trigger read about [**webhooks**](doc:conversation-keyconcepts#webhook).
 
@@ -80,7 +80,7 @@ The Capability Notification can have the following fields:
 
 Possible values for `capability_status` are:
 
-* `CAPABILITY_UNKNOWN` : the channel capability for the contact is unknown, due to the underlying channel not making this information available.
+* `CAPABILITY_UNKNOWN` : the channel capability for the contact is unknown due to the underlying channel not making this information available.
 * `CAPABILITY_FULL` : the specified contact supports all the features of the channel.
 * `CAPABILITY_PARTIAL` : the specified contact supports a subset of the channel features.
 * `NO_CAPABILITY` : the specified contact has no capability on the channel.

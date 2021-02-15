@@ -1,8 +1,7 @@
 ---
-title: Verification
+title: Verify phone numbers and users with JavaScript
 excerpt: >-
-  Verify phone numbers and users with JavaScript. How to request SMS
-  Verification and how to verify a user phone number. Read more.
+  Learn how to request SMS verification and how to verify a user phone number.
 next:
   pages:
     - verification-js-miscellaneous
@@ -15,11 +14,11 @@ Verification of a phone number is performed in two steps, a verification SMS is 
 
 When the verification code is known, the `verify(code, success, fail)` method is used to verify the number.
 
-When the supplied code is correct, the phone number is considered verified and you will receive this information in the response. If you have configured a callback URL for verification you will also receive confirmation through a callback to your backend.
+When the supplied code is correct, the phone number is considered verified and you will receive this information in the response. If you have configured a callback URL for verification, you will also receive confirmation through a callback to your backend.
 
 ### Request SMS verification
 
-To initiate a SMS verification, start by creating a SMS verification session. This is done by calling the `createSmsVerification(phoneNumber)` method on your `sinchClient`. This method returns a verification object which can be used to send the verification SMS, and re-send the SMS, per the example below.
+To initiate an SMS verification, start by creating an SMS verification session. This is done by calling the `createSmsVerification(phoneNumber)` method on your `sinchClient`. This method returns a verification object which can be used to send the verification SMS, and re-send the SMS, per the example below.
 
 ```javascript
 var sinchClient = new SinchClient({applicationKey: YOUR_APPLICATION_KEY})
@@ -29,7 +28,7 @@ var verification = sinchClient.createSmsVerification(PHONE_NUMBER)
 verification.initiate(success, fail);
 ```
 
-The call to `initiate(success, fail)` triggers sending a verification SMS. This method can be called multiple times, in the case another SMS should be sent. Callbacks for success and failure should be supplied to inform the user whether the action succeeded. However, delivery is not guaranteed even if success is called, which is why it is recommended to provide the end-user a user interface to re-send the verification SMS.
+The call to `initiate(success, fail)` triggers sending a verification SMS. This method can be called multiple times, in case another SMS should be sent. Callbacks for success and failure should be supplied to inform the user whether the action succeeded. However, delivery is not guaranteed even if success is called, which is why it is recommended to provide the end-user a user interface to re-send the verification SMS.
 
 ### Verify SMS code
 
@@ -48,16 +47,16 @@ The verify method takes two callbacks (beyond the pin-code), which can be used t
 As shown earlier, both `initiate` and `verify` take two callbacks as arguments for successful result or failure. These callbacks should be used to progress correctly through the flow:
 
   - UI to enter phone number
-      - Success: Progress to enter verification code
+      - Success: Progress to enter verification code.
       - Fail: UI to inform user of a problem and/or ask the user to try
-        again
+        again.
   - UI to enter verification code (or re-send SMS)
-      - Success: Confirmation of successful verification
-      - Fail: UI to inform user of verification problem
+      - Success: Confirmation of successful verification.
+      - Fail: UI to inform user of verification problem.
 
 ### SMS Template
 
-By default, the SMS template used for Sinch verification SMS has a fixed format. Contact us at <dev@sinch.com> to update its content when your app is ready for Production.
+By default, the SMS template used for the Sinch verification SMS has a fixed format. Contact us at <dev@sinch.com> to update its content when your app is ready for production.
 
 ## Callout Verification
 

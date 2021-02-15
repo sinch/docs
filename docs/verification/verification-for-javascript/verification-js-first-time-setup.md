@@ -1,30 +1,28 @@
 ---
-title: First time setup
+title: First time set up of the JavaScript Verification SDK
 excerpt: >-
-  Setting up the JavaScript Verificaiton SDK for the first time. Add phone
-  verification to web apps easy. Read more.
+  Setting up the JavaScript Verificaiton SDK for the first time and adding phone
+  verification to web apps.
 next:
   pages:
     - verification-js-sinch-client
 ---
-This is a step-by-step guide about setting up the Sinch SDK for the first time.
+This guide will show you how to sete up the Sinch SDK for the first time.
 
 ## Register an Application
 
 > 1.  Register a Sinch Developer account [here](https://portal.sinch.com/#/signup)
-> 2.  Setup a new Application using the Dashboard where you can then obtain an *Application Key* and *Application Secret*.
+> 2.  Setup a new Application using the Dashboard where you can then obtain an **Application Key** and **Application Secret**.
 
 ## Download
 
-The Sinch SDK can be downloaded [here](https://sinch.readme.io/page/downloads) . It contains: the Sinch JS SDK, this user guide, reference documentation, and sample apps.
+The Sinch SDK can be downloaded [here](https://sinch.readme.io/page/downloads). It contains the Sinch JS SDK, this user guide, reference documentation, and sample apps.
 
 ## Running sample apps
 
 Make sure you configure your application key in the sample apps by replacing the placeholder text "MY\_APPLICATION\_KEY" with your key. Samples can be run in the browser as files by double-clicking the index.html file. Make sure you open the developer console in your browser to catch possible error messages.
 
-> **Note**    
->
-> Currently, calling only works in the Chrome or Firefox browsers. Chrome additionally requires the web page to be loaded using http or https and is not compatible with local storage (i.e., file://).
+> **Note:** Currently, calling only works in the Chrome or Firefox browsers. Chrome additionally requires the web page to be loaded using http or https and is not compatible with local storage (i.e., file://).
 
 ## Development
 
@@ -62,9 +60,7 @@ npm install sinch-rtc --save
 
 
 
-> **Note**    
->
-> The --save flag is optional for saving the dependency in package.json
+> **Note:** The --save flag is optional for saving the dependency in package.json
 
 Import Sinch SDK in your project using
 ```javascript
@@ -88,6 +84,4 @@ Import the Sinch SDK in your website using
 
 
 
-> **Note**    
->
-> The --save flag is optional for saving the dependency in bower.json
+> **Note:** The --save flag is optional for saving the dependency in bower.json

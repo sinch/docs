@@ -1,18 +1,17 @@
 ---
 title: Conversation API callbacks
 excerpt: >-
-  Registering webhooks and listening to callbacks from Sinch Conversation API.
+  Registering webhooks and listening to callbacks from the Sinch Conversation API.
 hidden: false
 ---
 
-## Webhook Management! <span class="betabadge">Beta</span>
+## Webhook Management <span class="betabadge">Beta</span>
 
-Conversation API delivers contact messages, delivery receipts for app messages and various notifications through callbacks.
-API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app
-through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) or using **/webhooks** management endpoint.
-Each webhook represents a subscription for events defined by a list of triggers. The events are delivered by Conversation API
-to the webhook target URL. The callbacks are signed with the webhook secret if such is provided. The signature can be
-used to verify the authenticity and integrity of the callbacks.
+The Conversation API delivers contact messages, delivery receipts for app messages and various notifications through callbacks.
+
+API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) or by using the  **/webhooks** management endpoint.
+
+Each webhook represents a subscription for events defined by a list of triggers. The events are delivered by the Conversation API to the webhook target URL. The callbacks are signed with the webhook secret if such is provided. The signature can be used to verify the authenticity and integrity of the callbacks.
 
 ### Webhook Triggers
 
@@ -32,9 +31,7 @@ Each webhook can subscribe to one or more of the following triggers:
 - `OPT_OUT` - subscribe to opt-out events.
 - `UNSUPPORTED` - subscribe to receive channel callbacks which are not natively supported by the Conversation API.
 
-The snipped below demonstrates how to create a webhook using the management API.
-The webhook registers a POST capable endpoint with URL `{{WEBHOOK_URL}}` to receive
-inbound messages and delivery receipts for app with ID `{{APP_ID}}` and project with ID `{{PROJECT_ID}}`.
+The snippet below demonstrates how to create a webhook using the management API. The webhook registers a POST capable endpoint with URL `{{WEBHOOK_URL}}` to receive inbound messages and delivery receipts for app with ID `{{APP_ID}}` and project with ID `{{PROJECT_ID}}`.
 
 ```curl
 curl -X POST \
@@ -65,7 +62,7 @@ The receiver of signed callbacks should perform the following steps:
 
   > raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp
 
-  ***Please note:*** do not disable padding when creating the `base64` encoding of the signature.
+  **Note:** Do not disable padding when creating the `base64` encoding of the signature.
 
 2. Compare the computed signature with the one included in the `x-sinch-webhook-signature` header. The callback should be discarded in case of mismatching signatures.
 3. Make sure that the timestamp is within an acceptable time window. I.e., the difference between the current time, in UTC, and the timestamp in the headers is sufficiently small.
@@ -82,8 +79,7 @@ Each callback dispatched by Conversation API has a JSON payload with the followi
 | accepted_time | ISO 8601 timestamp | Timestamp marking when the channel callback was accepted/received by the Conversation API. |
 | event_time    | ISO 8601 timestamp | Timestamp of the event as provided by the underlying channels.                             |
 
-Each specific callback type adds additional properties to the payload which are described in detail in the
-section below.
+Each specific callback type adds additional properties to the payload which are described in detail in the section below.
 
 ### Inbound Message
 
@@ -139,6 +135,7 @@ The table below shows the properties of the `contact_message` field in inbound m
 | reply_to      | object             | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
 
 It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`, `fallback_message`.
+
 All of these properties are JSON objects described in the sections below.
 
 ##### Text Message
@@ -214,14 +211,11 @@ The table below shows the properties of the `channel_identity` field in Conversa
 ##### App-scoped Channel Identities
 
 Currently, Facebook Messenger and Viber Bot channels are using app-scoped channel identities
-which means contacts will have different channel identities for different apps.
-For example, Facebook Messenger uses PSIDs (Page-Scoped IDs) as channel identities.
-The app_id is pointing to the app linked to the Facebook page for which this PSID is issued.
+which means contacts will have different channel identities for different apps. For example, Facebook Messenger uses PSIDs (Page-Scoped IDs) as channel identities. The app_id is pointing to the app linked to the Facebook page for which this PSID is issued.
 
 ### Inbound Event
 
-This callback delivers channel events such as *composing* to the API clients. The message details are given
-in a top level `event` field. It is a JSON object with the following properties:
+This callback delivers channel events such as *composing* to the API clients. The message details are given in a top level `event` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                                                                                                             |
 | ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -265,8 +259,7 @@ The table below shows the properties of the `contact_event` field in inbound eve
 
 ### Message Delivery Receipt
 
-This callback notifies the API clients about status changes of already sent app message. The delivery receipt details are given
-in a top level `message_delivery_report` field. It is a JSON object with the following properties:
+This callback notifies the API clients about status changes of already sent app message. The delivery receipt details are given in a top level `message_delivery_report` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                                                                                                             |
 | ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -280,8 +273,7 @@ in a top level `message_delivery_report` field. It is a JSON object with the fol
 
 #### Example of Message Delivery Callback
 
-The example below shows a receipt for successfully enqueued message with
-ID `01EQBC1A3BEK731GY4YXEN0C2R` on `MESSENGER` channel:
+The example below shows a receipt for successfully enqueued message with ID `01EQBC1A3BEK731GY4YXEN0C2R` on `MESSENGER` channel:
 
 ```json
 {
@@ -304,8 +296,7 @@ ID `01EQBC1A3BEK731GY4YXEN0C2R` on `MESSENGER` channel:
 }
 ```
 
-When the sending of the message failed the receipt includes a reason object
-describing the error:
+When the sending of the message failed the receipt includes a reason object describing the error:
 
 ```json
 {
@@ -335,8 +326,7 @@ describing the error:
 
 #### Delivery Status
 
-The field `status` is included in delivery report callbacks and shows the status of
-the message or event delivery. The `status` field can have the following values:
+The field `status` is included in delivery report callbacks and shows the status of the message or event delivery. The `status` field can have the following values:
 
 - `QUEUED`
 - `QUEUED_ON_CHANNEL`
@@ -359,12 +349,13 @@ Each message and event sent by the API clients to contacts go through the follow
 
     3.4 `SWITCHING_CHANNEL` - the channel delivery report indicated the message delivery failed. However, there are more channels which Conversation API can try to send the message according to the channel priority defined in the send request.
 
-***Please note:*** There are no callbacks sent for status `QUEUED` since this state is already known
+**Note:** There are no callbacks sent for status `QUEUED` since this state is already known
 by the API clients when they receive successful response from the **/messages:send** endpoint.
 
 #### Reason
 
 The `reason` field in `FAILED` or `SWITCHING_CHANNEL` delivery report callbacks provides information for the reason of the failure.
+
 The table below shows the properties of the `reason` field:
 
 | Field           | Type               | Description                                                                                                                                      |
@@ -410,8 +401,7 @@ The codes are as follow:
 
 ### Event Delivery Receipt
 
-This callback notifies the API clients about status changes of already sent app events. The delivery receipt details are given
-in a top level `event_delivery_report` field. It is a JSON object with the following properties:
+This callback notifies the API clients about status changes of already sent app events. The delivery receipt details are given in a top level `event_delivery_report` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                                                                                                             |
 | ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -446,8 +436,7 @@ in a top level `event_delivery_report` field. It is a JSON object with the follo
 
 ### Conversation Start
 
-This callback is sent when a new conversation between the subscribed app and a contact is started. The conversation details are given
-in a top level `conversation_start_notification` field. It is a JSON object with the following properties:
+This callback is sent when a new conversation between the subscribed app and a contact is started. The conversation details are given in a top level `conversation_start_notification` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                |
 | ---------------- | ------------------ | ------------------------------------------ |
@@ -474,8 +463,7 @@ in a top level `conversation_start_notification` field. It is a JSON object with
 
 ### Conversation Stop
 
-This callback is sent when a conversation between the subscribed app and a contact is stopped. The conversation details are given
-in a top level `conversation_stop_notification` field. It is a JSON object with the following properties:
+This callback is sent when a conversation between the subscribed app and a contact is stopped. The conversation details are given in a top level `conversation_stop_notification` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                 |
 | ---------------- | ------------------ | ------------------------------------------- |
@@ -503,8 +491,7 @@ in a top level `conversation_stop_notification` field. It is a JSON object with 
 
 ### Contact Create
 
-This callback is sent when a new contact is created. The contact details are given
-in a top level `contact_create_notification` field. It is a JSON object with the following properties:
+This callback is sent when a new contact is created. The contact details are given in a top level `contact_create_notification` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                            |
 | ---------------- | ------------------ | -------------------------------------- |
@@ -542,8 +529,7 @@ in a top level `contact_create_notification` field. It is a JSON object with the
 
 ### Contact Delete
 
-This callback is sent when a contact is deleted. The contact details are given
-in a top level `contact_delete_notification` field. It is a JSON object with the following properties:
+This callback is sent when a contact is deleted. The contact details are given in a top level `contact_delete_notification` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                            |
 | ---------------- | ------------------ | -------------------------------------- |
@@ -583,6 +569,7 @@ in a top level `contact_delete_notification` field. It is a JSON object with the
 
 This callback is sent when two contacts are merged. The details of the resulting merged and
 deleted contacts are given in a top level `contact_merge_notification` field.
+
 It is a JSON object with the following properties:
 
 | Field             | Type               | Description                                     |
@@ -640,8 +627,8 @@ It is a JSON object with the following properties:
 
 ### Capability Check
 
-This callback is used to deliver the results of the asynchronous capability checks.
-The outcome of the capability check is given in a top level `capability_notification` field.
+This callback is used to deliver the results of the asynchronous capability checks. The outcome of the capability check is given in a top level `capability_notification` field.
+
 It is a JSON object with the following properties:
 
 | Field                | Type               | Description                                                                                                                             |
@@ -676,8 +663,7 @@ You can get more information about the capability check endpoint provided by Con
 ### Opt In
 
 This callback is used to deliver opt-in notifications from the channels or the results of
-the asynchronous opt-in registrations done through the */optins:register* endpoint.
-The opt-in details are given in a top level `opt_in_notification` field with the following properties:
+the asynchronous opt-in registrations done through the */optins:register* endpoint. The opt-in details are given in a top level `opt_in_notification` field with the following properties:
 
 | Field             | Type               | Description                                                                                                                             |
 | ----------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -746,8 +732,8 @@ You can get more information about the opt-out endpoint provided by Conversation
 Some of the callbacks received from the underlying channels might be specific to a single channel or
 may not have a proper mapping in Conversation API yet. In such cases the callbacks are forwarded as is
 all the way to the API clients subscribed to the `UNSUPPORTED` webhook trigger.
-The source of the unsupported callback is given
-in a top level `unsupported_callback` field. It is a JSON object with the following properties:
+
+The source of the unsupported callback is given in a top level `unsupported_callback` field. It is a JSON object with the following properties:
 
 | Field             | Type               | Description                                       |
 | ----------------- | ------------------ | ------------------------------------------------- |

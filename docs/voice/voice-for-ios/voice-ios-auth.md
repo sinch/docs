@@ -16,7 +16,7 @@ Two different authentication schemes are available: authentication by client acc
 
 This application authentication scheme is based on giving the application direct access to the _Application Secret_, which enables the Sinch Client SDK in the application to self-sign an authorized request to perform user registration. Choosing this authentication scheme corresponds to initiating the Sinch client by using the factory method that takes both an _Application Key_ and an _Application Secret_.
 
-Using this authentication scheme is the quickest way to get started as the client application instances can directly perform authorized requests against the Sinch service, but it should not be used in production deployments.
+Using this authentication scheme is the quickest way to get started as the client application instances can directly perform authorized requests against the Sinch service, but it **should not** be used in production deployments.
 
 > ❗️
 > It is strongly discouraged to have the application secret in plain text in the source code in the production version of the application.

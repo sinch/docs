@@ -1,5 +1,5 @@
 ---
-title: Using verification-all module for configuring multiple methods at once.
+title: Use verification-all module to configure multiple methods at once
 excerpt: Using common verification configuration parameters for different verification methods.
 next:
   pages:
@@ -10,7 +10,7 @@ If your application allows the user to authenticate via various verification met
 
 ## VerificationInitData
 
-`VerificationInitData` is simply a structure that holds all common parameters that can be passed to a verification configuration object and additionally method used to verify the phone number.
+`VerificationInitData` is simply a structure that holds all common parameters that can be passed to a verification configuration object and additionally, it is a method used to verify the phone number.
 
 ```kotlin
 private val initData: VerificationInitData
@@ -25,13 +25,11 @@ private val initData: VerificationInitData
         )
 ```
 
-> **NOTE**
->
-> In case of Android the only method specific parameter for now is the application hash needed by the sms method. Methods specific builders have been implemented mostly for future development purposes and for usage with single verification methods.
+> **NOTE:** In case of Android, the only method specific parameter for now is the application hash needed by the SMS method. Method specific builders have been implemented mostly for future development purposes and for usage with single verification methods.
 
 ## CommonVerificationInitializationParameters
 
-Contrary to `VerificationInitData` that holds parameters of configuration objects `CommonVerificationInitializationParameters` collects `Verification` instance properties and is designed to work together with `VerificationInitData`:
+Contrary to `VerificationInitData` that holds parameters of configuration objects, `CommonVerificationInitializationParameters` collects `Verification` instance properties and is designed to work together with `VerificationInitData`:
 
 ```kotlin
 val verification = BasicVerificationMethodBuilder.createVerification(
@@ -46,4 +44,4 @@ val verification = BasicVerificationMethodBuilder.createVerification(
 
 ## Sample
 
-Download the [sample application](https://github.com/sinch/verification-samples/tree/master/Android-Verification-SDK) and decide which `Verification` object creation suits your needs best. The _Verification Sample_ project uses the verification-all module and _VerificationSmsSample_ uses method specific builder to create sms verification instances when no other methods are needed.
+Download the [sample application](https://github.com/sinch/verification-samples/tree/master/Android-Verification-SDK) and decide which `Verification` object creation suits your needs best. The _Verification Sample_ project uses the verification-all module and _VerificationSmsSample_ uses a method specific builder to create SMS verification instances when no other methods are needed.

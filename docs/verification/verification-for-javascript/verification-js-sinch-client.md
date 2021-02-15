@@ -1,8 +1,7 @@
 ---
 title: Sinch Client
 excerpt: >-
-  Example on how to set up the Sinch Client for verification of a user. Read
-  more.
+  Learn how to set up the Sinch Client for verification of a user.
 next:
   pages:
     - verification-js-verification
@@ -19,7 +18,7 @@ var sinchClient = new SinchClient({
 ```
 
 
-The *<application_key>* is obtained from the Sinch Developer Dashboard. In this example, the SinchClient is set up for Verification.
+The *<application_key>* is obtained from the Sinch Developer Dashboard. In this example, the Sinch Client is set up for verification.
 
 ## Asynchronous Sinch Calls
 
@@ -27,7 +26,7 @@ The Sinch SDK contains many asynchronous methods. Several network requests are m
 
 When using asynchronous methods in Sinch, there are two ways of acting on the result. All asynchronous methods accept two callbacks as additional parameters, first the success callback, then the fail callback.
 
-Additionally, all asynchronous methods in Sinch also return a promise, which will either be resolved or rejected. If it's resolved the next method in the chain, which is specified using `.then()`, is called. If there is a failure, the method specified in `.fail()` is called.
+Additionally, all asynchronous methods in Sinch also return a promise, which will either be resolved or rejected. If it's resolved, the next method in the chain, which is specified using `.then()`, is called. If there is a failure, the method specified in `.fail()` is called.
 
 ### Sinch with callbacks
 ```javascript
@@ -51,6 +50,4 @@ SinchClient.start(loginObj)
 
 The benefit of using promises is that it's easy to make a *chain of method calls* and the code is clearer, but either method works.
 
-> **Note**    
->
-> If both callbacks and promises are used, the execution order is for callbacks to be executed first followed by the methods in the promise-chain, specified using `.then()`
+> **Note:** If both callbacks and promises are used, the execution order is for callbacks to be executed first followed by the methods in the promise-chain, specified using `.then()`

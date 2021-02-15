@@ -1,12 +1,11 @@
 ---
-title: Miscellaneous
+title: JavaScript Miscellaneous Verification SDK
 excerpt: >-
-  JavaScript Miscellaneous Verification SDK. Find minimum requirements,
-  information about encryption export regulations. Read more.
+  Find minimum requirements and information about encryption export regulations.
 ---
 ## Phone numbers
 
-The phone number should be specified according to the E.164 number formatting (<http://en.wikipedia.org/wiki/E.164>) recommendation and should be prefixed with a ‘+’. E.g. to call the US phone number 415 555 0101, the phone number should be specified as “+14155550101”. The ‘+’ is the required prefix and the US country code ‘1’ prepended to the local subscriber number.
+The phone number should be specified according to the E.164 number formatting (<http://en.wikipedia.org/wiki/E.164>) recommendation and should be prefixed with a ‘+’. E.g. to call the US phone number 415 555 0101, the phone number should be specified as “+14155550101”. The ‘+’ is the required prefix and the US country code ‘1’ is prepended to the local subscriber number.
 
 ## Encryption export regulations
 

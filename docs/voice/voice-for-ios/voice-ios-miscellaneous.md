@@ -26,29 +26,29 @@ The environment hostname is passed as the parameter _environmentHost_ when insta
 
 ## Restrictions on User IDs
 
-User IDs **must not** be longer than **255** bytes, **must** only contain URL-safe characters, and restricted to the following character set:
+User IDs **must not** be longer than **255** bytes, **must** only contain URL-safe characters, and are restricted to the following character set:
 
 ```text
 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghjiklmnopqrstuvwxyz0123456789-_=
 ```
 
-If you need to use _User IDs_ containing characters outside the allowed set above, you could consider _base64_-encoding the raw _User IDs_ using a URL-safe base64 alphabet as described in https://tools.ietf.org/html/rfc4648#section-5). Please note how the allowed character set overlaps with the URL-safe base64 alphabet, but does __NOT__ allow characters in the __non__-URL-safe alphabet, e.g. `/` (forward slash) and `+` (plus sign).
+If you need to use _User IDs_ containing characters outside the allowed set above, you could consider _base64_-encoding the raw _User IDs_ using a URL-safe base64 alphabet as described in https://tools.ietf.org/html/rfc4648#section-5). Note how the allowed character set overlaps with the URL-safe base64 alphabet, but does __NOT__ allow characters in the __non__-URL-safe alphabet, e.g. `/` (forward slash) and `+` (plus sign).
 
 ## Encryption export regulations
 
-Please check the Summary of U.S. Export Controls Applicable to Commercial Encryption Products and ensure that the application is registered for the Encryption Regulations, if applicable. It can be found under this [link](http://www.sinch.com/).
+Check the Summary of U.S. Export Controls Applicable to Commercial Encryption Products and ensure that the application is registered for the Encryption Regulations, if applicable. It can be found under this [link](http://www.sinch.com/).
 
 ## Statistics
 
 The Sinch SDK client uploads statistics to the Sinch servers at the end of a call, a call failure, or similar event. The statistics are used for monitoring of network status, call quality, and other aspects regarding the general quality of the service.
 
-Some of the information is not anonymous and may be associated with the User ID call participants.
+Some of the information **is not anonymous** and may be associated with the User ID call participants.
 
 The statistics upload is done by the client in the background.
 
 ## Linking against the C++ standard library
 
-Since Sinch SDK version 3.4.0, it is required to link against _libc++_. Though if your application is also dependent on _libstdc++_ (which is now considered deprecated by Apple for use on iOS), you can actually link against both _libc++_ and _libstdc++_ by passing the following linker flags:
+Since Sinch SDK version 3.4.0, it is required to link against _libc++_. If your application is also dependent on _libstdc++_ (which is now considered deprecated by Apple for use on iOS), you can actually link against both _libc++_ and _libstdc++_ by passing the following linker flags:
 
 - Other Linker Flags -\> `-ObjC -Xlinker -lc++ -Xlinker -lstdc++`
 
@@ -62,13 +62,13 @@ By explicitly requesting permission using the methods available in the iOS SDK, 
 
 Starting with iOS 10.0, apps that access any of the device’s microphones must declare their intent to do so. This is done by including the NSMicrophoneUsageDescription key and a corresponding purpose string in your app’s Info.plist. When the system prompts the user to allow access, the purpose string is displayed as part of the alert. If an application attempts to access any of the device’s microphones without a corresponding purpose string, the app will exit.
 
-Please see the [Apple iOS SDK documentation on the class AVAudioSession](http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference Reference.html) for details on how to request permission to use the microphone.
+See the [Apple iOS SDK documentation on the class AVAudioSession](http://developer.apple.com/library/ios/#documentation/AVFoundation/Reference/AVAudioSession_ClassReference/Reference Reference.html) for details on how to request permission to use the microphone.
 
 ## Request user permission for using the camera
 
 The same rule applies to request user permission for using the camera. In iOS, the user must explicitly grant your app permission to access device cameras or microphones for photo, video, or audio capture. Your app must provide an explanation for its use of capture devices using the NSCameraUsageDescription and NSMicrophoneUsageDescription Info.plist keys; iOS displays this explanation when initially asking the user for permission, and thereafter in the Settings app.
 
-Please see the [Apple iOS SDK documentation on the class AVCaptureDevice](https://developer.apple.com/documentation/avfoundation/avcapturedevice?language=objc) for details on how to request permission to use the camera.
+See the [Apple iOS SDK documentation on the class AVCaptureDevice](https://developer.apple.com/documentation/avfoundation/avcapturedevice?language=objc) for details on how to request permission to use the camera.
 
 ## App Extensions
 
@@ -94,13 +94,12 @@ Please also see [Apple Developer documentation on this topic](https://developer.
 
 ## Push Notifications sent via your application server
 
-In general we strongly recommend using _“managed push notifications”_, i.e. when push notifications are sent directly from the Sinch cloud, which is described in the section \[Local and Remote Push Notifications\]\[\]. The following section on the contrary describes integrating support for push notifications but given that your application server maintain the connection with Apple Push Notification Service.
+In general we strongly recommend using _“managed push notifications”_, i.e. when push notifications are sent directly from the Sinch cloud, which is described in the section \[Local and Remote Push Notifications\]\[\]. The following section on the contrary, describes integrating support for push notifications but given that your application server maintain the connection with Apple Push Notification Service.
 
 An application is considered offline in the following scenarios:
 
-> - When the application is not running
-> - When background mode has been disabled for the Sinch client, and
->   the application is not in the foreground
+> - When the application is not running.
+> - When background mode has been disabled for the Sinch client, and the application is not in the foreground.
 
 For these scenarios, push notifications can be used to be able to receive incoming calls. The following sections cover how to support receiving calls and messages using push notifications.
 

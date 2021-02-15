@@ -1,7 +1,7 @@
 ---
 title: Introduction
 excerpt: >-
-  The Sinch Conversation API is available globally with hosting locations in the [US] https://us.conversation.api.sinch.com and the [EU] https://eu.conversation.api.sinch.com, but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+  The Sinch Conversation API is available globally with hosting locations in the [US - East](https://us.conversation.api.sinch.com) and the [EU - Ireland](https://eu.conversation.api.sinch.com), but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
 hidden: false
 ---
 
@@ -49,7 +49,7 @@ Our current message types are:
 
 ### Postman collection
 
-Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this link https://www.getpostman.com/collections/79a07a7d299afe46658b, into a Firefox browser or, use the Import option in Postman.
+Sinch offers a Postman collection for easy setup and testing during development. For ease of use, copy and paste this [Postman](https://www.postman.com/collections/79a07a7d299afe46658b) link into a Firefox browser or use the Import option in Postman.
 
 After importing the collection, fill in the following variables: 
 

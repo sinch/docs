@@ -1,12 +1,11 @@
 ---
 title: Swift SDK
 excerpt: >-
-  Verify users with Swift. The Sinch iOS Verification SDK is available for
-  Swift.
+  Verify users with Swift.
 
 ---
 
-The Sinch Verification iOS SDK is also available for [Swift](https://developer.apple.com/).
+The Sinch Verification iOS SDK is available for [Swift](https://developer.apple.com/).
 
 ## Example usage
 
@@ -55,13 +54,11 @@ target '<your target>' do
 end
 ```
 
-> **Note**
->
-> The directive \`\`use*frameworks\!\`\` is necessary to make cocoapods add the framework to '\_Embedded Binaries*'
+> **Note:** The directive \`\`useframeworks\!\`\` is necessary to make cocoapods add the framework to '\_Embedded Binaries'
 
-#### Note on uploading to App Store / iTunes Connect
+#### Uploading to App Store / iTunes Connect
 
-If you integrate the Sinch SDK via _CocoaPods_, you must not check the option "Include bitcode" when uploading the application binary. The reason is a [bug in CocoaPods](https://github.com/CocoaPods/CocoaPods/issues/4624). In the upload dialog in Xcode Organizer it should look something like this:
+If you integrate the Sinch SDK via _CocoaPods_, you **must not** check the option "Include bitcode" when uploading the application binary. The reason is because of a [bug in CocoaPods](https://github.com/CocoaPods/CocoaPods/issues/4624). In the upload dialog in Xcode Organizer it should look something like this:
 ![swift-dont-include-bitcode-upload.png](images\ebf587e-swift-dont-include-bitcode-upload.png)
 
 ### Import SinchVerification.framework as _Embedded Binaries_
@@ -95,9 +92,7 @@ bash ${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/SinchVerification.framework
 
 ![link-binary-with-libraries-xcode.png](images\9b2867b-link-binary-with-libraries-xcode.png)
 
-**That's it\!**
-
-Now the SDK can be imported as follows (from any of your .swift files)
+**That's it\!** Now the SDK can be imported as follows (from any of your .swift files)
 
 ```swift
 import SinchVerification
@@ -105,7 +100,7 @@ import SinchVerification
 
 > **Note**
 >
-> This import method requires iOS Deployment Target iOS 8.0 or above
+> This import method requires iOS Deployment Target iOS 8.0 or above.
 
        "https://files.readme.io/0f8e419-swift-run-script-contents.png",
         "swift-run-script-contents.png",
@@ -126,12 +121,10 @@ import SinchVerification
 
 **That's it\!**
 
-Now the SDK can be imported as follows (from any of your .swift files)
+Now the SDK can be imported as follows (from any of your .swift files).
 
 ```swift
 import SinchVerification
 ```
 
-> **Note**
->
-> This import method requires iOS Deployment Target iOS 8.0 or above
+> **Note:** This import method requires iOS Deployment Target iOS 8.0 or above.
