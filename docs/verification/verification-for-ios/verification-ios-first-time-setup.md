@@ -18,5 +18,5 @@ This guide will show you how to set up the Sinch Verification SDK for the first 
 The Sinch Verification SDK can be downloaded via CocoaPods. To integrate it, simply include in your Podfile:
 
 ```
-  pod 'SinchVerificationSDK ', '~> 3.1.0'
+  pod 'SinchVerificationSDK', '~> 3.1.0'
 ```
