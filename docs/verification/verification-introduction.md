@@ -5,11 +5,12 @@ excerpt: >-
   iOS, Android and JavaScript. We also offer a Verification REST API that can be
   combined with the SDKs for full control of the verification process.
 ---
+
 ## Overview
 
 Sinch offers a platform for phone number verification. It consists of different software development kits – the Sinch SDKs – that you integrate with your smartphone or web application and cloud based back-end services. Together, they enable SMS, Flashcall, Callout and Seamless verification in your application.
 
-## What are the supported platforms?
+## Supported platforms
 
 When using Sinch for Verification, the Sinch dashboard provides four possible ways of verifying a phone number available both on iOS and Android devices. In some cases, the SDK can automatically intercept the verification code and pass it back to the Sinch backend. However, your application should always be prepared to present a text input field in case of automatic extraction failure.
 
@@ -26,7 +27,7 @@ The Sinch Verification service takes care of all the different steps in a verifi
 
 The Sinch SDK is currently available for [iOS](doc:verification-for-ios) and [Android](doc:verification-for-android).
 
-**Note:** If you use SDK it is **mandatory** to use callbacks to secure all transactions, i.e. when the  application is configured as "public" security, the callback is used to allow/deny each transaction.
+**Note:** If you use SDK it is **mandatory** to use callbacks to secure all transactions, i.e. when the application is configured as "public" security, the callback is used to allow/deny each transaction.
 
 Back-end services such as authorization or data consolidation are also exposed over REST APIs, primarily for back-end to back-end integration.
 
@@ -60,6 +61,7 @@ In most cases, Sinch can be used without needing a back-end or any configuration
         </div>
       </a>
     </div>
+
   </div>
 </div>
 
@@ -67,21 +69,23 @@ In most cases, Sinch can be used without needing a back-end or any configuration
 
 The SDK and REST API work together to ensure you the highest possible security and a full control over the verification solution. We recommend the following approach to integrate any of the Verification SDK in your apps:
 
- 1.  Use the SDK to initiate verification requests.
- 2.  Use the Verification Request Event callback to:
-  *   Authorize a given verification request to be started.
-  *   Control the amount of retries a single user can attempt.
-  *   Control if a given phone number can be associated to multiple accounts.
- 3.  Let the SDK automatically intercept (Android only) and report flash calls/SMS to the Sinch backend.
- 4.  Consolidate the final verification status in your backend using the Verification Result Event callback.
-![verification_flow.png](images\eb29e43-verification_flow.png)
+1.  Use the SDK to initiate verification requests.
+2.  Use the Verification Request Event callback to:
+
+- Authorize a given verification request to be started.
+- Control the amount of retries a single user can attempt.
+- Control if a given phone number can be associated to multiple accounts.
+
+3.  Let the SDK automatically intercept (Android only) and report flash calls/SMS to the Sinch backend.
+4.  Consolidate the final verification status in your backend using the Verification Result Event callback.
+    ![verification_flow.png](images\eb29e43-verification_flow.png)
 
 ## Verification results and success rates
 
 Keep track of verification success rates and results in real time through the Sinch Dashboard. For each verification method, get accurate metrics on how your app is performing:
 
-  - Delivery rate: percentage of numbers who could successfully be reached, phone ringing or SMS delivered.
-  - Conversion rate: percentage of unique numbers who could successfully be verified.
+- Delivery rate: percentage of numbers who could successfully be reached, phone ringing or SMS delivered.
+- Conversion rate: percentage of unique numbers who could successfully be verified.
 
 ## How does pricing work?
 
