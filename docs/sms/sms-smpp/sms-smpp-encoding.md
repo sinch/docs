@@ -1,5 +1,5 @@
 ---
-title: Encoding
+title: SMPP Encoding
 excerpt: ''
 ---
 ### Default SMSC encoding
