@@ -1,5 +1,5 @@
 ---
-title: Error Specification
+title: SMPP Error Codes
 excerpt: >-
   This information covers error codes related to the SMPP communication
 next:
