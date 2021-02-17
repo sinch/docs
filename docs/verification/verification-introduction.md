@@ -23,7 +23,7 @@ The Sinch Verification service takes care of all the different steps in a verifi
 
 ## What are the different verification services?
 
-The Sinch SDK is currently available for [iOS](doc:verification-for-ios), [Android](doc:verification-for-android), [JavaScript](doc:verification-for-javascript) and [JVM](doc:verification-for-jvm).
+The Sinch SDK is currently available for [iOS](doc:verification-for-ios), [Android](doc:verification-for-android), and [JVM](doc:verification-for-jvm).
 
 **Note:** If you use SDK it is **mandatory** to use callbacks to secure all transactions, i.e. when the  application is configured as "public" security, the callback is used to allow/deny each transaction.
 
