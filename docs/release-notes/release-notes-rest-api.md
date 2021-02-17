@@ -82,7 +82,7 @@ And the REST APIs in particular:
 
 The standalone Flashcall verification API will continue to be supported normally. This API is not part of the new Verification service and will not work with the new SDKs. The documentation can be found here:
 
-[/flash-verification-version-1/](https://www.sinch.com/flash-verification-version-1/)
+/flash-verification-version-1/
 
 <h3>Sinch REST API documentation update 20150520</h3>
 The SMS Messaging API is now restricted to only send to your verified phone number, for Sandbox apps. To send SMS to all phone numbers, you will need a Production app.
