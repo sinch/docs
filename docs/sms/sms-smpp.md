@@ -17,8 +17,8 @@ You will be able to find all guidance on how to send messages via the SMPP proto
 ### SMPP Inbound
 Questions about your incoming SMPP events? Visit [this page](https://developers.sinch.com/docs/sms-smpp-inbound) to see the expected values and their meaning.
 
-### SMPP Errorcodes
+### SMPP Error Codes
 [This page](https://developers.sinch.com/docs/sms-smpp-error-specification) describes all potential reject and failed status codes that are used by our system.
 
 ### SMPP Encoding 
-SMPP has the ability to support various encoding schemes. For a description of the encoding schemes supported by Sinch, please look [here](https://developers.sinch.com/docs/sms-smpp-encoding).
+SMPP can support various encoding schemes. For a description of the encoding schemes supported by Sinch, please look [here](https://developers.sinch.com/docs/sms-smpp-encoding).
