@@ -337,7 +337,7 @@ Query parameters:
 |page                |The page number starting from 0                                                                                             |                                Integer                                |   0   |0 or larger                  |   No   |
 |page_size           |Determines the size of a page                                                                                               |                                Integer                                |  30   |Max 100                      |   No   |
 |to                  |Only list messages set to this destination. Multiple destinations can be comma separated.                                   |                         MSISDN or short code                          |  No   |No                           |   No   |
-|start_date          |Only list messages received at or after this date time.                                                                     |                               ISO-8601                                |Now-24 |Must be valid ISO-8601 string|   No   |
+|start_date          |Only list messages received at or after this date time.                                                                     |                               ISO-8601                                |24h ago|Must be valid ISO-8601 string|   No   |
 |end_date            |Only list messages received before this date time.                                                                          |                               ISO-8601                                |  No   |Must be valid ISO-8601 string|   No   |
 
 #### Response
@@ -1016,7 +1016,7 @@ Query parameters:
 | page        | The page number starting from 0                                                           | Integer              | 0       | 0 or larger                   | No       |
 | page\_size  | Determines the size of a page                                                             | Integer              | 30      | Max 100                       | No       |
 | to          | Only list messages set to this destination. Multiple destinations can be comma separated. | MSISDN or short code | No      | No                            | No       |
-| start\_date | Only list messages received at or after this date time.                                   | ISO-8601             | Now-24  | Must be valid ISO-8601 string | No       |
+| start\_date | Only list messages received at or after this date time.                                   | ISO-8601             | 24h ago | Must be valid ISO-8601 string | No       |
 | end\_date   | Only list messages received before this date time.                                        | ISO-8601             | No      | Must be valid ISO-8601 string | No       |
 
 #### Response
