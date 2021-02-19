@@ -11,5 +11,6 @@ We give you a small credit so that you can test drive Sinch’s functionality. N
 You’ll need a Sinch virtual phone number to makes calls or send messages. You can choose a number yourself, or you can let Sinch choose one for you. Now, let’s go get a number. 
 Go to the Numbers area in the dashboard of your account and click **Activate Your Free Test Number**. At this point, you can select a country and type in a number you want to use or simply select a county, click **Search** and Sinch will find one for you.
 
+![getvirtualnumber](https://user-images.githubusercontent.com/76005934/108533240-c169b500-72a6-11eb-81c0-657770464efa.png)
 
 Once you have your number, click **Activate**. You are now on your way to sending SMS messages!
