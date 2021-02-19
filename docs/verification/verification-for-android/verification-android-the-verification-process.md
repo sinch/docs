@@ -82,15 +82,11 @@ Due to newly introduced [restrictions for accessing SMS logs](https://support.go
 1.  Calculate application hash from your release key: ``keytool -exportcert -alias KEY_ALIAS -keystore MY_KEY.jks | xxd -p | tr -d "[:space:]" | echo -n MY.APPLICATION.PACKAGE `cat` | sha256sum | tr -d "[:space:]-" | xxd -r -p | base64 | cut -c1-11``
 Example result: `XtNB5qNssI/`
 
-2.  Include generated application hash in SmsVerificationConfig:
-```java
-val smsMethodConfiguration = SmsVerificationConfig.Builder()
-  .globalConfig(/* Global config instance */)
-  .number(/* Number to be verified */)
-  .appHash(/* generated hash */)
-  // Other optional arguments
-  .build()
-```
+2.  Copy generated application hash to your application settings inside Sinch web portal.
+
+> **WARNING: Important**    
+>
+> Prior to version 2.1.3 of the SDK, for automatic code extraction to work, it was required to pass the application hash in the configuration object however due to potential security issues it is strongly recommended to remove these calls from your source code and save the hash in the verification settings of your application in the Sinch web portal.
 
 That’s it\! When this configuration is applied, SDK will be able to automatically parse incoming verification messages across all Android versions without the need of declaring SMS permissions in app’s manifest.
 
