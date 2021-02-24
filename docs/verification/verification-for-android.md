@@ -28,10 +28,14 @@ This document provides an overview for developers integrating with Sinch Verific
 > ```
 
 
-
 > **WARNING: Important notice #3 - using flash calls on Android 9 and newer versions**    
 >
 > Removing `<uses-permission android:name="android.permission.READ_CALL_LOG" />` will effectively break the flash call feature on Android 9 and newer. If you plan to use the flash call feature, you’ll need to keep this permission in your manifest. Since this is one of the permissions restricted in normal use, you’ll have to declare how this permission will be used in your app. Below you’ll find a screenshot that shows a properly selected use case for flash calls.
 
 
 ![permission-requests.png](images\9b057ba-permission-requests.png)
+
+
+> **WARNING: Important notice #4 - Setting Callback URL **    
+>
+> In order to securely authorize verification requests your application has to have correctly assigned Callback URL inside Sinch Web Portal. More information how callback url works can be found [here](https://developers.sinch.com/docs/verification-rest-callback-api).
