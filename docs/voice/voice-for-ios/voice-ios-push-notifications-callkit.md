@@ -104,6 +104,7 @@ Depending on your use case, it is possible to configure calling functionality di
 
 1. Single Sinch Application, multiple iOS apps (i.e. multiple different Bundle IDs)
 1. Multiple Sinch Applications, one iOS app (one Bundle ID)
+1. Multiple Sinch Applications, multiple iOS app (different Bundle ID)
 
 #### Single Sinch Application, multiple iOS apps (i.e. multiple different Bundle IDs)
 
@@ -122,6 +123,15 @@ Suppose that we have two Sinch Apps (in Sinch Portal), App-A and App-B and only 
 If you want to make a call from the iOS app with the App-A application key to iOS app with the App-B application key, you need to generate a VoIP certificate for the iOS app bundle ID and upload it to the caller app in *Sinch Developer Portal*. 
 
 In our example you will upload VoIP certificate to App-A in the portal.
+
+> ⚠
+> Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificates must match the ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created. If you sign using *Apple Development Certificate*, please provide `SINAPSEnvironmentDevelopment`. If you sign using *iOS Distribution Certificate*, please provide `SINAPSEnvironmentProduction`.
+
+#### Multiple Sinch Applications, multiple iOS app (different Bundle ID)
+
+Suppose that we have two Sinch Apps (in Sinch Portal), App-A and App-B and two iOS apps with BindleID1 and BindleID2. Each iOS app uses its own Sinch App. Suppose iOS app with BindleID1 is built with the App-A application key and iOS app with BindleID2 is built with App-B application key.
+
+If you want to make a call (and receive VoIP background pushes) from the iOS app with BindleID1 to iOS app with BindleID2 you need to need to generate VoIP certificate for the BindleID2 and upload it to Sinch Portal for the caller APP, which is App-A in our example. And wise versa, if you want iOS app with BindleID2 to call to iOS app with BindleID1 you need to generate VoIP certificate for BindleID1 and upload to Sinch Portal for the caller App, which is App-B.
 
 > ⚠
 > Note that both iOS apps should be signed using either *Apple Development Certificate* or *iOS Distribution Certificate*. Chosen certificates must match the ANPS environment setting provided to Sinch SDK when `SINManagedPush` is created. If you sign using *Apple Development Certificate*, please provide `SINAPSEnvironmentDevelopment`. If you sign using *iOS Distribution Certificate*, please provide `SINAPSEnvironmentProduction`.
