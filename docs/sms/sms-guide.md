@@ -336,7 +336,7 @@ Query parameters:
 |--------------------|----------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------:|:-----:|-----------------------------|:------:|
 |page                |The page number starting from 0                                                                                             |                                Integer                                |   0   |0 or larger                  |   No   |
 |page_size           |Determines the size of a page                                                                                               |                                Integer                                |  30   |Max 100                      |   No   |
-|from                |Only list messages set from this sender number. Multiple sender numbers can be comma separated.                             |                         MSISDN or short code                          |  No   |No                           |   No   |
+|from                |Only list messages sent from this sender number. Multiple sender numbers can be comma separated.                             |                         MSISDN or short code                          |  No   |No                           |   No   |
 |start_date          |Only list messages received at or after this date time.                                                                     |                               ISO-8601                                |24h ago|Must be valid ISO-8601 string|   No   |
 |end_date            |Only list messages received before this date time.                                                                          |                               ISO-8601                                |  No   |Must be valid ISO-8601 string|   No   |
 
@@ -1015,7 +1015,7 @@ Query parameters:
 | ----------- | ----------------------------------------------------------------------------------------- | -------------------- | ------- | ----------------------------- | -------- |
 | page        | The page number starting from 0                                                           | Integer              | 0       | 0 or larger                   | No       |
 | page\_size  | Determines the size of a page                                                             | Integer              | 30      | Max 100                       | No       |
-| to          | Only list messages set to this destination. Multiple destinations can be comma separated. | MSISDN or short code | No      | No                            | No       |
+| to          | Only list messages sent to this destination. Multiple destinations can be comma separated. | MSISDN or short code | No      | No                            | No       |
 | start\_date | Only list messages received at or after this date time.                                   | ISO-8601             | 24h ago | Must be valid ISO-8601 string | No       |
 | end\_date   | Only list messages received before this date time.                                        | ISO-8601             | No      | Must be valid ISO-8601 string | No       |
 
