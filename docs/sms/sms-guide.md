@@ -160,6 +160,8 @@ JSON body fields:
 |parameters.{parameter_key}.default |The fall back value for omitted recipient MSISDNs                                                                  |      String      |None                |                            Max 160 characters long                            |                      No                      |
 |client_reference                   |The client identifier of batch message. If set, it will be added in the delivery report/callback of this batch     |      String      |N/A                 |        Max 128 characters long. No personally identifiable information        |                      No                      |
 |max_number_of_message_parts        |Message will be dispatched only if it is not split to more parts than Max Number of Message Parts                  |      String      |N/A                 |                           Must be higher or equal 1                           |                      No                      |
+|dlt_principal_entity_id        |The DLT principal entity identifier to attach to this message when sending to India                  |      String      |N/A                 |                           None                           |                      No                      |
+|dlt_template_id        |The DLT template identifier to attach to this message when sending to India.                  |      String      |N/A                 |                           None                           |                      No                      |
 
 **Send message to one recipient**
 ```shell
