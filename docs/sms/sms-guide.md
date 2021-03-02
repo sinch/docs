@@ -159,6 +159,8 @@ JSON body fields:
 |parameters.{parameter_key}.default |The fall back value for omitted recipient MSISDNs                                                                  |      String      |None                |                            Max 160 characters long                            |                      No                      |
 |client_reference                   |The client identifier of batch message. If set, it will be added in the delivery report/callback of this batch     |      String      |N/A                 |        Max 128 characters long. No personally identifiable information        |                      No                      |
 |max_number_of_message_parts        |Message will be dispatched only if it is not split to more parts than Max Number of Message Parts                  |      String      |N/A                 |                           Must be higher or equal 1                           |                      No                      |
+|dlt_principal_entity_id        |The DLT principal entity identifier to attach to this message when sending to India                  |      String      |N/A                 |                           None                           |                      No                      |
+|dlt_template_id        |The DLT template identifier to attach to this message when sending to India.                  |      String      |N/A                 |                           None                           |                      No                      |
 
 **Send message to one recipient**
 ```shell
@@ -575,7 +577,7 @@ Delivery reports can be retrieved even if no callback was requested. The differe
 Query parameters:
 
 | Name   | Description                                                        | Type   | Default | Constraints             | Required |
-|-- -    | ---                                                                | ---    | ---     | ---                     | ---    --|
+|---     | ---                                                                | ---    | ---     | ---                     | ---      |
 | type   | The type of delivery report                                        | String | summary | Must be summary or full | Yes      |
 | status | Comma separated list of delivery\_report\_statuses to include      | String | N/A     | N/A                     | No       |
 | code   | Comma separated list of delivery\_receipt\_error\_codes to include | String | N/A     | N/A                     | No       |
@@ -597,6 +599,9 @@ The response is a JSON object with the following fields:
 |statuses.count      |The number of messages that currently has this code. Will always be at least 1                                              |                                Integer                                |
 |statuses.recipients |Only for full report. A list of the MSISDN recipients which messages has this status code.                                  |                             String array                              |
 |client_reference    |The client identifier of the batch this delivery report belongs to, if set when submitting batch.                           |                                String                                 |
+|total_price         |The total price for all messages in this batch, if configured for the account.                           |                                Object                                 |
+|total_price.currency|Currency of the price.                           |                                String                                 |
+|total_price.amount  |The price amount.                           |                                Float                                 |
 
 `404 Not Found`
 
@@ -668,6 +673,37 @@ curl -H "Authorization: Bearer {token}" \
 }
 ```
 
+**Full report response including price information**
+```json
+{
+    "type": "delivery_report_sms",
+    "batch_id": "{batch_id}",
+    "total_message_count": 3,
+    "statuses": [
+        {
+            "code": 400,
+            "status": "Queued",
+            "count": 1,
+            "recipients": [
+                "123456789"
+            ]
+        },
+        {
+            "code": 0,
+            "status": "Delivered",
+            "count": 2,
+            "recipients": [
+                "987654321",
+                "123459876"
+            ]
+        }
+    ],
+    "total_price": {
+        "currency":"EUR",
+        "amount":0.01300
+    }
+}
+```
 
 ### Retrieve a recipient delivery report
 
@@ -699,6 +735,24 @@ curl -H "Authorization: Bearer {token}" \
 }
 ```
 
+**Recipient delivery report including price and operator for 123456789**
+```json
+{
+    "type": "recipient_delivery_report_sms",
+    "batch_id": "{batch_id}",
+    "recipient": "123456789",
+    "code": "0",
+    "status": "Delivered",
+    "at": "2016-10-02T09:34:18.542Z",
+    "operator_status_at": "2016-10-02T09:34:18.101Z",
+    "operator": "35000",
+    "price": {
+        "currency":"EUR",
+        "amount":0.01300
+    }
+}
+```
+
 
 `200 OK`
 
@@ -717,6 +771,10 @@ The response is a JSON object with the following fields:
 |client_reference    |The client identifier of the batch this delivery report belongs to, if set when submitting batch.                           |                                String                                 |
 |applied_originator  |The default originator used for the recipient this delivery report belongs to, if default originator pool configured and no originator set when submitting batch.|                                String                                 |
 |number_of_message_parts|The number of parts the message was split into. Present only if `max_number_of_message_parts` parameter was set.              |                                Integer                                |
+|price               |The price for the recipient this delivery report belongs to, if configured for the account.                           |                                Object                                 |
+|price.currency      |Currency of the price.                           |                                String                                 |
+|price.amount        |The price amount.                           |                                Float                        |
+|operator            |The operator that was used for delivering the message to this recipient, if configured for the account.                                                   |                            String                            |
 
 `404 Not Found`
 
