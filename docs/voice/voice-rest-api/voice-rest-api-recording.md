@@ -109,6 +109,7 @@ _example ACE response_
 This property is a URI and specifies where the recording file should be stored. Sinch supports multiple platforms for storage and will continue to enable new in the future:
 
 - Amazon S3
+- Microsoft Azure Blob Storage
 - Sinch Drive (Coming Soon)
 
 **Note** use can, but you don’t have to specify the filename in the destination. If there is no filename specified in the URI, Sinch will generate a unique name with the following format: (UTCDate_yyyyMMddHHmmss)\_(applicationKey)\_(callId).(format)
@@ -134,8 +135,88 @@ _Example_
             "notificationEvents": true
         }
     }
+	
+_Svaml action example_
+
+	{
+		"action": {
+			"name": "ConnectPstn",
+			...
+			"recordingOptions": {
+				"destinationUrl": "s3://sinch-storage/voice-recordings/my-recording.mp3",
+				"credentials": "AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY:eu-central-1",
+				"notificationEvents": true
+			}
+		}
+	}
+
+_Svaml instruction example_
+
+	{
+		"instructions": [{
+			"name": "StartRecording",
+			"options": {
+				"destinationUrl": "s3://sinch-storage/voice-recordings/my-recording.mp3",
+				"credentials": "AKIAIOSFODNN7EXAMPLE:wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY:eu-central-1",
+				"notificationEvents": true
+			}
+		}],
+		"action": {
+			"name": "ConnectPstn"
+			...
+		}
+	}
 
 **Note** it is recommended that the credentials you specify authorize the Sinch platform to only write to the destination bucket. Sinch will never request read permissions.
+
+## DestinationURL: Microsoft Azure Blob Storage
+
+To store your recordings to a Microsoft Azure Blob Storage container, use the “azure” schema identifier in the “destinationUri”:
+
+azure://account_name/container_name[/file]
+
+You must also provide the access key as part of the “credentials”.
+
+_Example_
+
+    {
+        "recordingOptions": {
+            "destinationUrl": "azure://my-account/test-container/my-recording.mp3",
+            "credentials": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+Pw==",
+            "notificationEvents": true
+        }
+    }
+
+_Svaml action example_
+
+	{
+		"action": {
+			"name": "ConnectPstn",
+			...
+			"recordingOptions": {
+				"destinationUrl": "azure://my-account/test-container/my-recording.mp3",
+				"credentials": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+Pw==",
+				"notificationEvents": true
+			}
+		}
+	}
+
+_Svaml instruction example_
+
+	{
+		"instructions": [{
+			"name": "StartRecording",
+			"options": {
+				"destinationUrl": "azure://my-account/test-container/my-recording.mp3",
+				"credentials": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+Pw==",
+				"notificationEvents": true
+			}
+		}],
+		"action": {
+			"name": "ConnectPstn"
+			...
+		}
+	}
 
 ## DestinationURL: Sinch Drive - Coming soon
 
@@ -153,6 +234,35 @@ _Example_
             "notificationEvents": true
         }
     }
+	
+_Svaml action example_
+
+	{
+		"action": {
+			"name": "ConnectPstn",
+			...
+			"recordingOptions": {
+				"destinationUrl": "sdrive://my-recording.mp3",
+				"notificationEvents": true
+			}
+		}
+	}
+
+_Svaml instruction example_
+
+	{
+		"instructions": [{
+			"name": "StartRecording",
+			"options": {
+				"destinationUrl": "sdrive://my-recording.mp3",
+				"notificationEvents": true
+			}
+		}],
+		"action": {
+			"name": "ConnectPstn"
+			...
+		}
+	}
 
 ## Notification events
 
