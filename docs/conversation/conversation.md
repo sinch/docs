@@ -1,13 +1,15 @@
 ---
 title: Introduction
-excerpt: >-
-  The Sinch Conversation API is available globally with hosting locations in the [US - East](https://us.conversation.api.sinch.com) and the [EU - Ireland](https://eu.conversation.api.sinch.com), but is currently in closed beta and additional channels will be supported as they become popular. If you are interested in the early access program and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+excerpt: >- 
+ Send and receive messages globally using SMS, RCS, WhatsApp, Viber Business, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 hidden: false
 ---
 
-Send and receive messages globally using SMS, RCS, WhatsApp, Viber Business, Facebook messenger and other popular channels with ease and confidence when you use the Sinch Conversation API.
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
+
+> The Sinch Conversation API is available globally with hosting locations in the [US - East](https://us.conversation.api.sinch.com) and the [EU - Ireland]>?(https://eu.conversation.api.sinch.com), and additional channels will be supported as they become popular. If you are interested and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+  
 ### Authentication
 
 
