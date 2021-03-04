@@ -57,4 +57,4 @@ Follow this step
 ```
 Project -> Build Path -> Configure Build Path -> Libraries -> Add Jar.
 ```
-[Send and recieve SMS with Java](https://developers.sinch.com/docs/sms-java-library)
+[Send and recieve SMS with Java](/docs/sms-java)
