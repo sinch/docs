@@ -5,6 +5,10 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-03-09
+
+ - GDPR Sensitive data privacy improvements.
+
 ## 2021-01-26
 
  - WhatsApp API performance and stability improvements.
