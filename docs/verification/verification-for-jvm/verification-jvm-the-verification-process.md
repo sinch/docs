@@ -58,10 +58,6 @@ val verificationConfig = VerificationMethodConfig.Builder.instance
             .build()
 ```
 
-> **Note**    
->
-> The content language specified can be overridden by carrier provider specific templates, due to compliance and legal requirements, such as [US shortcode requirements (pdf)](https://www.wmcglobal.com/storage/us_resources/ctia-short-code-monitoring-handbook-current-Short-Code-Monitoring-Handbook-v1.7.pdf).
-
 
 See [IETF](https://tools.ietf.org/html/rfc3282) language tags to find all possible values that can be passed as region and language parameters of `VerificationLanguage` constructor. The weight argument should be within range 0 - 1 (lowest to highest priority). To find out what language was actually selected check `contentLanguage` property of `SmsInitiationResponseData` passed to `onInitiated` callback of the initiation listener.
 
