@@ -1,11 +1,12 @@
 ---
-title: Install Sinch SMS Java Library 
+title: Install Sinch SMS Java Library
 excerpt: >-
   The Sinch SMS Java SDK help you interact with the SMS API from your Java Application. This guide helps you set up SMS SDK in your application.
 hidden: false
 ---
 
-## Installing with Gradle 
+## Installing with Gradle
+
 In **Gradle**, please put the lines below in your **build.gradle**
 
 ```javascript
@@ -38,9 +39,8 @@ In **Maven**, please put the lines below in your **pom.xml**
 
 While we recommend using a package manager to track the dependencies in your application, it is possible to download and use the Java SDK by [downloading a pre-built jar file](https://repo1.maven.org/maven2/com/sinch/sdk-sms/). Select the directory for the latest version and download one of these jar files:
 
-- sdk-sms-{version}-jar-with-dependencies.jar  
+- sdk-sms-{version}-jar-with-dependencies.jar
 - sdk-sms-{version}.jar
-
 
 ## Importing jar with Intellij
 
@@ -57,4 +57,5 @@ Follow this step
 ```
 Project -> Build Path -> Configure Build Path -> Libraries -> Add Jar.
 ```
-[Send and recieve SMS with Java](/docs/sms-java)
+
+[Send and recieve SMS with Java](doc:sms-java.md)
