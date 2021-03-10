@@ -550,6 +550,7 @@ There are currently three types of callouts that are supported: conference callo
 ### HTTP headers in callout requests
 
 All types of callout requests support specifying custom HTTP headers that will be forwarded to the customer's backend. The HTTP header keys need to start with `X-CB-` (case-insensitive) and have the following limitations:
+
 - The header key must not contain a line-break character;
 - The header value must contain only ASCII characters within the range [0x20; 0x7e];
 - The header key length is limited to 32 characters, including the `X-CB-` prefix;
@@ -946,6 +947,15 @@ Here, you have a few alternatives
 
 For each of these parameters, if you populate them with a URL. The server will generate the corresponding event and send it to that URL. If you leave them blank, the service will instead use the callback URL configured for your application.
 Again, the final option is to specify your SVML inline as a (JSON escaped) string.
+
+### Callouts Errors
+
+    [Error Codes]
+        400 - BadRequest            - 40002 Bad request
+        400 - BadRequest            - 40001 Invalid parameters
+        402 - PaymentRequired       - 40200 Not enough credit
+        403 - Forbidden             - 40300 Destination is forbidden
+        500 - InternalServerError   - 50000 Application error
 
 ## Manage Call
 
