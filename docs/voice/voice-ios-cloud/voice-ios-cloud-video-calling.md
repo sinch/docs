@@ -176,6 +176,8 @@ Perform custom video frame processing by implementing `SINVideoFrameCallback` an
 
 __NOTE__: It is recommended to perform frame processing asynchronously using [GCD](https://developer.apple.com/documentation/dispatch?language=objc), using a dedicated queue and tune the queue priority to your use case. If you are processing each and every frame (e.g. applying a filter), it is recommended to use a high priority queue. If you are only processing some frames, e.g. saving snapshot frames based on user action, then it may be more appropriate to use a low priority background queue.
 
+__NOTE__: the approach showed in the example above migth provoke a crash on older iOS versions (e.g. iOS11.x, iOS12.x) due to a bug in `CoreImage` (see StackOverflow threads [1](https://stackoverflow.com/questions/60646774/why-is-coreimage-cicontext-render-executing-this-exc-bad-access-error-during) and [2](https://stackoverflow.com/questions/57295035/app-crash-when-blurring-an-image-with-cifilter)). If your deployment target is lower than iOS13.0, consider using an image processing library other than `CoreImage`.
+
 ### Converting a Video Frame to `UIImage`
 
 The Sinch SDK provides the helper function `SINUIImageFromPixelBuffer(CVPixelBufferRef)` to convert `CVPixelBufferRef` to `UIImage*`.
