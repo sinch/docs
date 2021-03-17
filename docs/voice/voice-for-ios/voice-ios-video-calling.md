@@ -135,21 +135,48 @@ Perform custom video frame processing by implementing `SINRemoteVideoFrameCallba
 
 ```objectivec
 // Implementation of -[SINVideoFrameCallback onFrame:completionHandler:]
-- (void)onFrame:(CVPixelBufferRef)inputPixelBuffer
-    completionHandler:(void (^)(CVPixelBufferRef))completionHandler {
-  CVPixelBufferRetain(inputPixelBuffer);
-  
-  // Use GCD dispatch to process frame async.
+- (void)onFrame:(CVPixelBufferRef)pixelBuffer completionHandler:(void (^)(CVPixelBufferRef))completionHandler {
+  if (!pixelBuffer)
+    return;
+
+  CVPixelBufferRetain(pixelBuffer);
+
+  // It is important to dispatch the filter operations in a different thread,
+  // so the SDK will not be blocked while the filter is being applied.
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-    CVPixelBufferRef outputPixelBuffer = ... // Perform actual processing.
-    completionHandler(outputPixelBuffer);
-    CVPixelBufferRelease(outputPixelBuffer); // Release your intermediate processing output buffer.
-    CVPixelBufferRelease(inputPixelBuffer); // Release the original input frame buffer.
+    CIImage *sourceImage = [CIImage imageWithCVPixelBuffer:(CVPixelBufferRef)pixelBuffer options:nil];
+    CGRect sourceExtent = sourceImage.extent;
+
+    CIFilter *vignetteFilter = [CIFilter filterWithName:@"CIVignetteEffect"];
+
+    [vignetteFilter setValue:sourceImage forKey:kCIInputImageKey];
+    [vignetteFilter setValue:[CIVector vectorWithX:sourceExtent.size.width / 2 Y:sourceExtent.size.height / 2]
+                      forKey:kCIInputCenterKey];
+    [vignetteFilter setValue:@(sourceExtent.size.width / 2) forKey:kCIInputRadiusKey];
+    CIImage *filteredImage = [vignetteFilter outputImage];
+
+    CIFilter *effectFilter = [CIFilter filterWithName:@"CIPhotoEffectInstant"];
+    [effectFilter setValue:filteredImage forKey:kCIInputImageKey];
+    filteredImage = [effectFilter outputImage];
+
+    CIContext *ciContext = [CIContext contextWithOptions:nil];
+    [ciContext render:filteredImage toCVPixelBuffer:pixelBuffer];
+
+    // Send processed CVPixelBufferRef back
+    if (completionHandler) {
+      completionHandler(pixelBuffer);
+    } else {
+      NSLog(@"completionHandler is nil!");
+    }
+    CVPixelBufferRelease(pixelBuffer);
   });
 }
+
 ```
 
 __NOTE__: It is recommended to perform frame processing asynchronously using [GCD](https://developer.apple.com/documentation/dispatch?language=objc), using a dedicated queue and tune the queue priority to your use case. If you are processing each and every frame (e.g. applying a filter), it is recommended to use a high priority queue. If you are only processing some frames, e.g. saving snapshot frames based on user action, then it may be more appropriate to use a low priority background queue.
+
+__NOTE__: the approach shown in the example above might provoke a crash on older iOS versions (e.g. iOS11.x, iOS12.x) due to a bug in `CoreImage` (see StackOverflow threads [1](https://stackoverflow.com/questions/60646774/why-is-coreimage-cicontext-render-executing-this-exc-bad-access-error-during) and [2](https://stackoverflow.com/questions/57295035/app-crash-when-blurring-an-image-with-cifilter)). If your deployment target is lower than iOS13.0, consider using an image processing library other than `CoreImage`.
 
 ### Converting a Video Frame to `UIImage`
 
