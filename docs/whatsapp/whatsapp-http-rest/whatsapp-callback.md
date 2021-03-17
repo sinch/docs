@@ -86,20 +86,20 @@ Where the states mean:
 An inbound message or MO (Mobile Originated) is a message sent to one of your bots from a WhatsApp user.
 The format is as follows:
 
-**Contacts**
+#### Contacts
 
 |Name      | Description                                                             | JSON Type |
 |----------|------------------------------------------------------------------------ |-----------|
 |profile   | Profile details of message sender                                       | Object    |
 |wa_id     | WhatsApp account id (phone number)                                      | String    |
 
-**Profile**
+#### Profile
 
 |Name      | Description                                                | JSON Type |
 |----------|----------------------------------------------------------- |-----------|
 |name      | Sender name of message                                     | String    |
 
-**Notifications**
+#### Notifications
 
 |Name                   | Description                                                                 | JSON Type |
 |---------------------- |---------------------------------------------------------------------------- |-----------|
@@ -111,8 +111,9 @@ The format is as follows:
 |timestamp              | ISO-8601 datetime of the status update                                      | String    |
 |forwarded              | Boolean object stating if message was forwarded                             | Boolean   |
 |frequently_forwarded   | Boolean object stating if message was frequently forwarded                  | Boolean   |
+|referral               | A referral object, if the message is sent in reponse to an ad or a post     | Object    |
 
-**Context**
+##### Context
 
 This object (namely ```replying_to```) is included in the MO notification if it is in reply to a message. It contains information about the original message.
 
@@ -121,14 +122,48 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |message_id  | Message Id of the message which is being replied directly to                | String    |
 |from        | MSISDN of the user which sent the message with the above message id         | String    |
 
-**Text message**
+##### Referral
+
+This object (namely ```referral```) may be included in the MO notification if it is in response to an ad or a post. It contains information about the ad or post.
+
+|Name           | Description                                                                     | JSON Type | Required |
+|---------------|---------------------------------------------------------------------------------|-----------| -------- |
+|headline       | The headline of the ad or post that generated the message                       | String    | Yes      |
+|body           | The body of the ad or post that generated the message                           | String    | Yes      |
+|source_type    | The type of ad that generated the message: either `ad` or `post`                | String    | Yes      |
+|source_id      | The Facebook ID of the ad or post that generated the message                    | String    | Yes      |
+|source_url     | The URL that leads to of the ad or post that generated the message              | String    | Yes      |
+|referral_media | An object that describes the media in the ad or post that generated the message | Object    | No       |
+
+The following MO notification types can include a referral object:
+
+* `text`
+* `location`
+* `contacts`
+* `image`
+* `video`
+* `document`
+* `voice`
+* `sticker`
+
+###### Referral media
+
+This object (namely ```referral_media```) may be included in the referral object.
+
+|Name   | Description                                                                                    | JSON Type | Required |
+|-------|------------------------------------------------------------------------------------------------|-----------| -------- |
+|type   | The type of media in the ad or post that generated the MO message                              | String    | Yes      |
+|url    | The public url of a copy of the the media file in the ad or post that generated the MO message | String    | Yes      |
+
+
+#### Text message
 
 |Name       | Description                                                           | JSON Type |
 |-----------|---------------------------------------------------------------------- |-----------|
 |type       | Fixed value `text`                                                    | String    |
 |body       | The text of the text message                                          | String    |
 
-#### Sample inbound text message
+##### Sample inbound text message
 
 ```json
 {
@@ -160,7 +195,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 }
 ```
 
-**Location message**
+#### Location message
 
 |Name       | Description                                                            | JSON Type |
 |-----------|----------------------------------------------------------------------- |-----------|
@@ -171,7 +206,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |name       | Name of the location                                                   | String    |
 |url        | URL for the website where the user downloaded the location information | String    |
 
-#### Sample inbound location message
+##### Sample inbound location message
 
 ```json
 {
@@ -202,7 +237,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 }
 ```
 
-**Quick reply button reply message**
+#### Quick reply button reply message
 
 |Name       | Description                                                            | JSON Type |
 |-----------|----------------------------------------------------------------------- |-----------|
@@ -211,7 +246,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |text       | The button text.                                                       | String    |
 |payload    | The payload that was sent with the button.                             | String    |
 
-#### Sample inbound quick reply button reply message
+##### Sample inbound quick reply button reply message
 
 ```json
 {
@@ -237,7 +272,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 }
 ```
 
-#### Sample inbound forwarded message
+##### Sample inbound forwarded message
 
 ```json
 {
@@ -266,7 +301,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 }
 ```
 
-#### Sample inbound frequently forwarded message
+##### Sample inbound frequently forwarded message
 
 ```json
 {
@@ -295,14 +330,14 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 }
 ```
 
-**Contacts**
+#### Contacts
 
 |Name       | Description                                                        | JSON Type     |
 |-----------|------------------------------------------------------------------- |---------------|
 |type       | Fixed value `contacts`                                             | String        |
 |contacts   | Array of contact objects                                           | Array[Object] |
 
-**Contact object**
+##### Contact object
 
 |Name              | Description                                                 | JSON Type     |
 |----------------- |------------------------------------------------------------ |---------------|
@@ -316,7 +351,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |urls              | Array of contact URL(s)                                     | Array[Object] |
 |contact_image_url | The public URL of the contact image. Doesn't contain WhatsApp profile picture, but the image in the phone itself  | String |
 
-**Contact address**
+##### Contact address
 
 |Name         | Description                                                        | JSON Type     |
 |-------------|--------------------------------------------------------------------|---------------|
@@ -328,21 +363,21 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |country      | Full country name                                                  | String        |
 |country_code | Two-letter country abbreviation                                    | String        |
 
-**Contact email**
+##### Contact email
 
 |Name         | Description                                                        | JSON Type     |
 |-------------|--------------------------------------------------------------------|---------------|
 |type         | Type of email address, `HOME`, `WORK`                              | String        |
 |email        | Email address                                                      | String        |
 
-**Contact IM**
+###### Contact IM
 
 |Name         | Description                                                        | JSON Type     |
 |-------------|--------------------------------------------------------------------|---------------|
 |service      | Type of service                                                    | String        |
 |user_id      | User identifier on service                                         | String        |
 
-**Contact name**
+##### Contact name
 
 |Name           | Description                                                        | JSON Type     |
 |---------------|--------------------------------------------------------------------|---------------|
@@ -353,7 +388,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |suffix         | Name suffix                                                        | String        |
 |prefix         | Name prefix                                                        | String        |
 
-**Contact organization**
+##### Contact organization
 
 |Name           | Description                                                        | JSON Type     |
 |---------------|--------------------------------------------------------------------|---------------|
@@ -361,21 +396,21 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 |department     | Name of the contact's department                                   | String        |
 |title          | Contact's business title                                           | String        |
 
-**Contact phone number**
+##### Contact phone number
 
 |Name         | Description                                                           | JSON Type     |
 |-------------|-----------------------------------------------------------------------|---------------|
 |type         | Type of phone number, `CELL`, `MAIN`, `HOME`, `WORK`, `IPHONE`        | String        |
 |phone        | Automatically populated with the WhatsApp phone number of the contact | String        |
 
-**Contact URL**
+##### Contact URL
 
 |Name         | Description                                                           | JSON Type     |
 |-------------|-----------------------------------------------------------------------|---------------|
 |type         | Type of URL `HOME`,  `WORK`                                           | String        |
 |url          | URL                                                                   | String        |
 
-#### Sample inbound contact message
+##### Sample inbound contact message
 
 ```json
 {
@@ -448,7 +483,7 @@ This object (namely ```replying_to```) is included in the MO notification if it 
 
 ```
 
-**Media**
+#### Media
 
 |Name       | Description                                                            | JSON Type |
 |-----------|------------------------------------------------------------------------|-----------|
@@ -477,7 +512,7 @@ The sticker metadata object has the following parameters:
 |android-app-store-link | A link to the stickerpack the sticker belongs to in the Google Play store   | String        |
 |is-first-party-sticker | 1 if the sticker is part of a first-party stickerpack, 0 otherwise          | Integer       |
 
-#### Sample inbound image message
+##### Sample inbound image message
 
 ```json
 {
@@ -499,7 +534,7 @@ The sticker metadata object has the following parameters:
 }
 ```
 
-**Error notification**
+#### Error notification
 
 In case an error happens, an error notification can be sent.
 
@@ -508,7 +543,7 @@ In case an error happens, an error notification can be sent.
 |type       | Fixed value `error`.                                                   | String    |
 |details    | A description of the error.                                            | String    |
 
-#### Error notification
+##### Sample error notification
 
 ```json
 {
