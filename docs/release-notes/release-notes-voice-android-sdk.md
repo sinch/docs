@@ -5,6 +5,12 @@ excerpt: >-
   bug fixes.
 ---
 
+<h3>2021-03-18 | SINCH SDK ANDROID 3.17.6</h3>
+  - Fix crash: catch unexpected android.os.TransactionTooLargeException from getPackageInfo().
+  - Failure of internal database initialization at SinchClient/UserController creation time will now cause IOException,
+    instead of failing silently.
+  - Add comment to the sample apps' SinchService explaining recommended lifecycle management.
+
 <h3>2020-09-30 | SINCH SDK ANDROID 3.17.5</h3>
   - Add VideoController.setLocalVideoResizeBehaviour() to control local video scaling.
   - Fix potential crash in logging when receiving weird-looking media streams.
