@@ -11,10 +11,10 @@ This guide will walk you through the process of setting up a Java application to
 
 - You must have JDK 11 or later installed.
 - You must have [Gradle](https://gradle.org/install/) installed.
-- Before you can send or receive SMS messages using the Sinch API, you first must [create a Sinch account](#CreateSinchAccount) to get a free test number. If you already have a Sinch account and free test number, skip to the section about [implementing SMS messaging](#ImplementingSMSMessaging).
+- Before you can send or receive SMS messages using the Sinch API, you first must [create a Sinch account](#sign-up-for-a-Sinch account) to get a free test number. If you already have a Sinch account and free test number, skip to the section about [implementing SMS messaging](#implementing-sms-messaging).
 - You must [install the Java SMS helper library](doc:sms-java-library).
 
-### <a id="CreateSinchAccount"></a> Sign up for a Sinch account
+### Sign up for a Sinch account
 
 Before you can send your first SMS, you need a [Sinch
 account](https://dashboard.sinch.com/signup). If you are in the United States, you also need a [free test phone number](https://dashboard.sinch.com/numbers/your-numbers/numbers).
@@ -25,7 +25,7 @@ Click activate.
 ![Image of configure number](images\new-number\select-rest.png)
 To use the number with the rest API select REST and click **GET FREE TEST NUMBER**.
 
-## <a id="ImplementingSMSMessaging"></a> Implementing SMS Messaging
+## Implementing SMS Messaging
 
 A complete sample Java application can be found on GitHub at [Send and Recieve SMS with Java and Spring Boot](https://github.com/sinch/sms-java-sample).
 
