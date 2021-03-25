@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-### Conversation API Viber Business Messages Support <span class="betabadge">Beta</span>
+### Conversation API Viber Business Messages Support
 
 Viber Business Messages (VIBERBM) supports 3 types of business account: 1way, 2way
 and session:
@@ -450,7 +450,7 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
       "choice_response_message": {
         "message_id": "01EKJ2SWHGDMYA0F0F1PQJ09WQ",
         "postback_data": "postback"
-       }
+      }
     },
     "channel": "VIBERBM",
     "conversation_id": "01E6K4A8PGZ6MV0GD3C7M901MZ",

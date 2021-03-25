@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-### Conversation API RCS Support <span class="betabadge">Beta</span>
+### Conversation API RCS Support
 
 Conversation API provides support for RCS channel through Sinch RCS API.
 To start using RCS through Conversation API you need to first have a Sinch RCS bot -
@@ -16,24 +16,24 @@ To start using RCS through Conversation API you need to first have a Sinch RCS b
 ##### Sending Config
 
 Sending a RCS message requires a Conversation API **app** with
-`channel_credentials` for RCS channel (You can create an **app** either in the 
+`channel_credentials` for RCS channel (You can create an **app** either in the
 portal or through API call - [read more](https://developers.sinch.com/reference/#app_createapp)). Example, **app** is given in the following snippet:
 
 ```json
 {
-    "channel_credentials": [
-        {
-            "channel": "RCS",
-            "static_bearer": {
-                "claimed_identity": "{{RCS_BOT_ID}}",
-                "token": "{{RCS_BEARER_TOKEN}}"
-            }
-        }
-    ]
+  "channel_credentials": [
+    {
+      "channel": "RCS",
+      "static_bearer": {
+        "claimed_identity": "{{RCS_BOT_ID}}",
+        "token": "{{RCS_BEARER_TOKEN}}"
+      }
+    }
+  ]
 }
 ```
 
-You need to replace: 
+You need to replace:
 
 - `{{RCS_BOT_ID}}` with your Sinch RCS bot ID
 - `{{RCS_BEARER_TOKEN}}` with the bot's access token.
@@ -54,7 +54,7 @@ Where:
 - `{{CONV_API_APP_ID}}` is your **app** id.
 
 You also need to configure at least one Conversation API webhook which
-will trigger POST callbacks to the given URL (You can create a **webhook** 
+will trigger POST callbacks to the given URL (You can create a **webhook**
 either in the portal or through API call - [read more](https://developers.sinch.com/reference/#webhooks_createwebhook)).
 
 #### Rich Message Support
@@ -94,8 +94,8 @@ The rendered message:
 
 ###### Media Messages
 
-RCS channel natively supports Media Messages. Sending media messages is easy - simply 
-specify the URL to the media and Conversation API will automatically detect what type of RCS 
+RCS channel natively supports Media Messages. Sending media messages is easy - simply
+specify the URL to the media and Conversation API will automatically detect what type of RCS
 message to use - image or video.
 
 ---
@@ -137,10 +137,11 @@ The rendered message:
 ###### Choice Messages
 
 RCS channel provides native support for Choice Messages. As a user you can select from four choice types:
+
 - Text Choice
 - URL Choice
 - Call Choice
-- Location Choice  
+- Location Choice
 
 Below snippets presents all representations of above choice types. You can send maximum 3 choices in one message.
 
@@ -229,7 +230,7 @@ Conversation API POST `messages:send`
   "message": {
     "card_message": {
       "title": "This is the card title",
-      "description": "This is the card description",  
+      "description": "This is the card description",
       "media_message": {
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/18.png"
       },
@@ -269,9 +270,10 @@ The rendered message:
 ###### Carousel Messages
 
 RCS supports natively Carousel Messages. You can put from 1 to 10 cards in one message.
-Each card can consist of the elements described in "Card Messages" section. If you send only one card, 
-the message will be render as a normal Card Message. Additionally, RCS channel supports maximum 3 outer choices. You can put outer choices into 
+Each card can consist of the elements described in "Card Messages" section. If you send only one card,
+the message will be render as a normal Card Message. Additionally, RCS channel supports maximum 3 outer choices. You can put outer choices into
 the `carousel_message.choices` array field, and these choices will be rendered right after the displayed cards.
+
 ---
 
 Conversation API POST `messages:send`
@@ -337,8 +339,8 @@ The rendered message:
 
 ###### Location Messages
 
-RCS channel does not provide natively support for Location Messages. You can simply put your coordinates in a message body 
-and Conversation API transform it into Text Message with one Location Choice.  
+RCS channel does not provide natively support for Location Messages. You can simply put your coordinates in a message body
+and Conversation API transform it into Text Message with one Location Choice.
 
 ---
 

@@ -1,41 +1,40 @@
 ---
-title: Send SMS  
+title: Send SMS
 excerpt: Learn how to set up and send a message with SMS and Conversation API.
 hidden: false
 next:
- pages:
-  - conversation-receive-a-message
-  - conversation-send-a-message-with-fb-messenger
+  pages:
+    - conversation-receive-a-message
+    - conversation-send-a-message-with-fb-messenger
 ---
 
+## Add an SMS Channel to your Conversations API App
 
-## Add an SMS Channel to your Conversations API App <span class="betabadge">Beta</span>
+In this guide, you will learn how to add an SMS channel to your Sinch Conversations API Application. You can add your SMS channel one of two ways: either programmatically via the Sinch Conversation API or through the [Sinch online portal](https://dashboard.sinch.com). Before we begin, here are a few items you should already have:
 
-In this guide, you will learn how to add an SMS channel to your Sinch Conversations API Application.  You can add your SMS channel one of two ways: either programmatically via the Sinch Conversation API or through the [Sinch online portal](https://dashboard.sinch.com).  Before we begin, here are a few items you should already have:
-
-1. A text enabled *long code* or a *short code* registered with Sinch.
+1. A text enabled _long code_ or a _short code_ registered with Sinch.
 2. Access to the Sinch dashboard where you can manage your long code or short code.
 3. An SMS **Service Plan ID** and **Secret** to authorize SMS text message requests.
 4. A Conversations **App ID**.
 5. A Sinch **Project ID** and associated Key ID and Key Secret.
 
-If you are missing any of items 1-3 above, you should begin by registering online at [*Sinch.com*](https://sinch.com).  We'll show you how to create a *New Conversation App*  and get authentication credentials for items 4 and 5.
+If you are missing any of items 1-3 above, you should begin by registering online at [_Sinch.com_](https://sinch.com). We'll show you how to create a _New Conversation App_ and get authentication credentials for items 4 and 5.
 
 ### Create a New Conversations App
 
-To create a new Conversations App, simply sign in to your [*Sinch Dashboard account*](https://dashboard.sinch.com) and use the menu on the left to access Conversations > Apps.
+To create a new Conversations App, simply sign in to your [_Sinch Dashboard account_](https://dashboard.sinch.com) and use the menu on the left to access Conversations > Apps.
 
-Click the **New App** button on the right, "Name" your App, choose an appropriate region for it, and click *Create*.
+Click the **New App** button on the right, "Name" your App, choose an appropriate region for it, and click _Create_.
 
 ![dashboard image](../images/dashboard/dashboard_new_app.png)
 
 ### Add an SMS Channel to your Conversations App
 
-In your Sinch Dashboard, navigate to Conversations > Apps.  Click the name of the app that you want to add the SMS Channel to.
+In your Sinch Dashboard, navigate to Conversations > Apps. Click the name of the app that you want to add the SMS Channel to.
 
 ![app added](../conversation-channel-support/images/channel-support/sms/sinch_conversations_apps_added.png)
 
-Under **Set up channels** find SMS channel and click on **Set Up Channel**. 
+Under **Set up channels** find SMS channel and click on **Set Up Channel**.
 
 ![new sms channel](../images/dashboard/dashboard_add_channels.png)
 
@@ -43,7 +42,7 @@ For setting up the SMS channel, you need to choose your SMS **Service Plan ID** 
 
 ![new sms channel](../conversation-channel-support/images/channel-support/sms/sinch_conversations_new_app_add_sms_channel_form.png)
 
-You have now added an SMS Channel to your App.  Just a few more steps to go.
+You have now added an SMS Channel to your App. Just a few more steps to go.
 
 ![new sms channel](../conversation-channel-support/images/channel-support/sms/sinch_conversations_sms_channel_done.png)
 

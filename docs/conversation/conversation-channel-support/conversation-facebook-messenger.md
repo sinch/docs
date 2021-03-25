@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-### Conversation API Facebook Messenger Support <span class="betabadge">Beta</span>
+### Conversation API Facebook Messenger Support
 
 Conversation API supports Facebook Messenger and allows sending messages from Facebook Pages. The page cannot initiate the conversation; it must be started by a contact. To create and configure a Facebook Page and connect it to Conversation API **app**, follow the instructions below:
 
@@ -49,12 +49,12 @@ Conversation API supports Facebook Messenger and allows sending messages from Fa
 >
 > The secret for this validation in the case of Facebook Messenger is you App Secret from you Facebook Page.
 
-- Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**): 
-  
+- Once you have created Conversation API App, go back to Facebook **Messenger Setup** page, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**):
+
   Callback URL: `https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
-  
+
   Verify Token: `5651d9fd-5c33-4d7a-aa37-5e3e151c2a92`
-  
+
 - After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
 - Now you need to enable **pages_messaging** for your App. Scroll down to the **App review for Messenger** section and click **Add to submission** on the **pages_messaging** row.
 - Scroll down further and you should see a **Current Submissions** section. You will most likely see a little **Additional Information Required** alert notifying you that you need to complete some details before submitting
@@ -150,12 +150,12 @@ Conversation API supports Facebook Messenger and allows sending messages from Fa
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, delivered and read callbacks will not be shipped.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
 > Restrictions will be revised by Facebook Messenger in the future.
-
 
 #### Rich Message Support
 
@@ -216,10 +216,11 @@ The rendered message:
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, “Media Message” will only be rendered if it contains image file, for any other type of file (audio, video) an error will be returned, and no message will be sent.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
 > Until Facebook Messenger restores this feature, you can send a message as a “Text Message” with plain text URL which points to audio/video file.
 
 ###### Choice Messages
@@ -278,11 +279,12 @@ The rendered message:
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Choice Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
-> Restrictions will be revised by Facebook Messenger in the future. 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
+> Restrictions will be revised by Facebook Messenger in the future.
 
 ###### Card Messages
 
@@ -342,10 +344,11 @@ The rendered message:
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Card Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
 > Restrictions will be revised by Facebook Messenger in the future.
 
 ###### Carousel Messages
@@ -447,10 +450,11 @@ The rendered message:
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Carousel Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
 > Restrictions will be revised by Facebook Messenger in the future.
 
 ###### Location Messages
@@ -483,8 +487,9 @@ The rendered message:
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Location Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
 > This condition impacts you if:
+>
 > - Your app points to messenger bot which is created for a European page.
-> - Your app points to messenger bot which is created for a page that has European admins. 
-> - You send a message to customers in Europe. 
-> 
+> - Your app points to messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
 > Restrictions will be revised by Facebook Messenger in the future.

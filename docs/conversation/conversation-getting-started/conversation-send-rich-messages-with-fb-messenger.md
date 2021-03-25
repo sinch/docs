@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-## Sending Media Message <span class="betabadge">Beta</span>
+## Sending Media Message
 
 Go to [Project ID and AccessKeys](https://developers.sinch.com/docs/conversation-getting-started#5-project-id-and-access-keys) to obtain your AccessToken.
 

@@ -5,20 +5,20 @@ excerpt: >-
 hidden: false
 ---
 
-### Conversation API Viber Bot Support <span class="betabadge">Beta</span>
+### Conversation API Viber Bot Support
 
 Viber Bot channel enables communication with users of Viber ecosystem through Conversation API.
 You need a Viber bot for integrating your Conversation API with Viber. If you do not already
 have one follow the steps below to create a new Viber bot:
 
 1. You must have an active Viber account which will be used to administer your new bot.
-You already have an account if you have Viber app installed and can sign in. Otherwise, go to
-[Viber download page](https://www.viber.com/en/download/) and select to download the Viber app
-from the app store of your mobile device.
+   You already have an account if you have Viber app installed and can sign in. Otherwise, go to
+   [Viber download page](https://www.viber.com/en/download/) and select to download the Viber app
+   from the app store of your mobile device.
 
 2. Follow the steps in [Create Viber Bot Page](https://partners.viber.com/account/create-bot-account)
-to create your new bot. Once your bot is created its authentication token will appear in
-the account’s “edit info” [screen](https://partners.viber.com/).
+   to create your new bot. Once your bot is created its authentication token will appear in
+   the account’s “edit info” [screen](https://partners.viber.com/).
 
 #### Channel Configuration
 
@@ -32,7 +32,7 @@ the access token for your Viber bot.
 If you decide to configure your **app** through API calls follow these 2 steps:
 
 1. Update your Conversation API **app** with Viber Bot channel credentials as
-given in the example snippet below:
+   given in the example snippet below:
 
 ```json
 {
@@ -58,11 +58,11 @@ You need to replace {{VIBER_BOT_TOKEN}} with your Viber bot's access token.
 > The secret for this validation in the case of Viber Bot is the same as your VIBER_BOT_TOKEN.
 
 2. Set the webhook for your Viber bot to the URL of the Conversation API adapter
-using the instructions in the [Viber Bot documentation](https://developers.viber.com/docs/api/rest-bot-api/#setting-a-webhook).
-This step is done automatically when configuring the Viber integration through
-the [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
-The format of the adapter callback URL is:
-`https://viber-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
+   using the instructions in the [Viber Bot documentation](https://developers.viber.com/docs/api/rest-bot-api/#setting-a-webhook).
+   This step is done automatically when configuring the Viber integration through
+   the [Sinch Portal](https://dashboard.sinch.com/convapi/overview).
+   The format of the adapter callback URL is:
+   `https://viber-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
 
 Where {{REGION}} is one of `eu1` or `us1` and must match the region of your **app** while
 {{CONVERSATION_APP_ID}} is the id of your Conversation API **app**.
@@ -358,7 +358,6 @@ The rendered message:
 
 ![Location Message](images/channel-support/viber/viber_location.jpg)
 
-
 ##### Receiving Messages
 
 Viber channel supports various kinds of contact messages - text, media, media card, location and quick replies.
@@ -461,6 +460,7 @@ Example media message:
   }
 }
 ```
+
 ---
 
 Example media card message:
@@ -492,6 +492,7 @@ Example media card message:
   }
 }
 ```
+
 ---
 
 Example quick reply message:

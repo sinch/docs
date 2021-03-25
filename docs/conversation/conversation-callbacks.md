@@ -5,11 +5,11 @@ excerpt: >-
 hidden: false
 ---
 
-## Webhook Management <span class="betabadge">Beta</span>
+## Webhook Management
 
 The Conversation API delivers contact messages, delivery receipts for app messages and various notifications through callbacks.
 
-API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) or by using the  **/webhooks** management endpoint.
+API clients can create fine-grained subscriptions for up-to 5 endpoints (webhooks) per Conversation API app through the [Sinch Portal](https://dashboard.sinch.com/convapi/apps) or by using the **/webhooks** management endpoint.
 
 Each webhook represents a subscription for events defined by a list of triggers. The events are delivered by the Conversation API to the webhook target URL. The callbacks are signed with the webhook secret if such is provided. The signature can be used to verify the authenticity and integrity of the callbacks.
 
@@ -19,7 +19,7 @@ Each webhook can subscribe to one or more of the following triggers:
 
 - `MESSAGE_INBOUND` - subscribe to inbound messages from end users on the underlying channels.
 - `EVENT_INBOUND` - subscribe to inbound events for e.g., composing events, from end users on the underlying channels.
-- `MESSAGE_DELIVERY` - subscribe to delivery receipts for app message sent to channels.  
+- `MESSAGE_DELIVERY` - subscribe to delivery receipts for app message sent to channels.
 - `EVENT_DELIVERY` - subscribe to delivery receipts for an event sent to channels.
 - `CONVERSATION_START` - subscribe to conversation started events.
 - `CONVERSATION_STOP` - subscribe to conversation stopped events.
@@ -49,20 +49,20 @@ curl -X POST \
 
 Conversation API callbacks triggered by a registered **webhook**, with a secret set, will contain the following headers:
 
-| Field                               | Description                                                                                            |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| x-sinch-webhook-signature-timestamp | Timestamp, in UTC, of when the signature was computed                                                  |
-| x-sinch-webhook-signature-nonce     | A unique nonce that can be used to protect against reply attacks                                       |
-| x-sinch-webhook-signature-algorithm | The HMAC signature algorithm that was used to compute the signature. For now it is set to HmacSHA256.  |
-| x-sinch-webhook-signature           | The signature of the raw HTTP body, the timestamp, and the nonce as computed by the Conversation API.  |
+| Field                               | Description                                                                                           |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| x-sinch-webhook-signature-timestamp | Timestamp, in UTC, of when the signature was computed                                                 |
+| x-sinch-webhook-signature-nonce     | A unique nonce that can be used to protect against reply attacks                                      |
+| x-sinch-webhook-signature-algorithm | The HMAC signature algorithm that was used to compute the signature. For now it is set to HmacSHA256. |
+| x-sinch-webhook-signature           | The signature of the raw HTTP body, the timestamp, and the nonce as computed by the Conversation API. |
 
 The receiver of signed callbacks should perform the following steps:
 
 1. Compute the signature using `base64(HMAC(secret, signed_data))` where `signed_data` is UTF-8 encoded dot-separated concatenation of the raw HTTP body, the nonce and the timestamp in that order:
 
-  > raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp
+> raw callback body \|\| . \|\| x-sinch-webhook-signature-nonce \|\| . \|\| x-sinch-webhook-signature-timestamp
 
-  **Note:** Do not disable padding when creating the `base64` encoding of the signature.
+**Note:** Do not disable padding when creating the `base64` encoding of the signature.
 
 2. Compare the computed signature with the one included in the `x-sinch-webhook-signature` header. The callback should be discarded in case of mismatching signatures.
 3. Make sure that the timestamp is within an acceptable time window. I.e., the difference between the current time, in UTC, and the timestamp in the headers is sufficiently small.
@@ -130,9 +130,9 @@ in a top level `message` field. It is a JSON object with the following propertie
 
 The table below shows the properties of the `contact_message` field in inbound message callbacks:
 
-| Field         | Type               | Description                                                                                                                                       |
-| ------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| reply_to      | object             | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
+| Field    | Type   | Description                                                                                                                                       |
+| -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| reply_to | object | Optional. Included if the contact message is a response to a previous app message. See [ReplyTo](doc:conversation-callbacks#replyto) for details. |
 
 It also contains one of the following properties depending on the type of message: `text_message`, `media_message`, `location_message`, `choice_response_message`, `media_card_message`, `fallback_message`.
 
@@ -140,73 +140,73 @@ All of these properties are JSON objects described in the sections below.
 
 ##### Text Message
 
-| Field         | Type               | Description                               |
-| ------------- | ------------------ | ----------------------------------------- |
-| text          | string             | The text included in the contact message. |
+| Field | Type   | Description                               |
+| ----- | ------ | ----------------------------------------- |
+| text  | string | The text included in the contact message. |
 
 ##### Media Message
 
-| Field         | Type               | Description           |
-| ------------- | ------------------ | --------------------- |
-| url           | string             | The URL of the media. |
+| Field | Type   | Description           |
+| ----- | ------ | --------------------- |
+| url   | string | The URL of the media. |
 
 ##### Location Message
 
-| Field         | Type               | Description                                                                                                                      |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| title         | string             | The title shown above the the location. The title is clickable in some cases.                                                    |
-| coordinates   | object             | Geo coordinates of the location specified in the message. See [Coordinates](doc:conversation-callbacks#coordinates) for details. |
-| label         | string             | Label or name for the position.                                                                                                  |
+| Field       | Type   | Description                                                                                                                      |
+| ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| title       | string | The title shown above the the location. The title is clickable in some cases.                                                    |
+| coordinates | object | Geo coordinates of the location specified in the message. See [Coordinates](doc:conversation-callbacks#coordinates) for details. |
+| label       | string | Label or name for the position.                                                                                                  |
 
 ###### Coordinates
 
-| Field         | Type               | Description                             |
-| ------------- | ------------------ | --------------------------------------- |
-| latitude      | float              | Latitude of the geographic coordinate.  |
-| longitude     | float              | Longitude of the geographic coordinate. |
+| Field     | Type  | Description                             |
+| --------- | ----- | --------------------------------------- |
+| latitude  | float | Latitude of the geographic coordinate.  |
+| longitude | float | Longitude of the geographic coordinate. |
 
 ##### Choice Response Message
 
 The choice response message represents a contact response to a choice message.
 
-| Field         | Type               | Description                                                                                              |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
-| message_id    | string             | The message id containing the choice.                                                                    |
-| postback_data | string             | The postback data if defined in the selected choice. Otherwise the default is `message_id_{text, title}` |
+| Field         | Type   | Description                                                                                              |
+| ------------- | ------ | -------------------------------------------------------------------------------------------------------- |
+| message_id    | string | The message id containing the choice.                                                                    |
+| postback_data | string | The postback data if defined in the selected choice. Otherwise the default is `message_id_{text, title}` |
 
 ##### Media Card Message
 
 Contact Message containing media and caption.
 
-| Field         | Type               | Description                                                                                              |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
-| url           | string             | The URL of the media.                                                                                    |
-| caption       | string             | Caption for the media, if supported by channel.                                                          |
+| Field   | Type   | Description                                     |
+| ------- | ------ | ----------------------------------------------- |
+| url     | string | The URL of the media.                           |
+| caption | string | Caption for the media, if supported by channel. |
 
 ##### Fallback Message
 
 Fallback message, appears when original contact message cannot be handled.
 
-| Field         | Type               | Description                                                                                              |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------- |
-| reason        | object             | Fallback reason. See [Reason](doc:conversation-callbacks#reason) for details.                            |
-| raw_message   | string             | The raw fallback message if provided by the channel.                                                     |
+| Field       | Type   | Description                                                                   |
+| ----------- | ------ | ----------------------------------------------------------------------------- |
+| reason      | object | Fallback reason. See [Reason](doc:conversation-callbacks#reason) for details. |
+| raw_message | string | The raw fallback message if provided by the channel.                          |
 
 ##### ReplyTo
 
-| Field         | Type               | Description                                                       |
-| ------------- | ------------------ | ----------------------------------------------------------------- |
-| message_id    | object             | The id of the message that this contact message is a response to. |
+| Field      | Type   | Description                                                       |
+| ---------- | ------ | ----------------------------------------------------------------- |
+| message_id | object | The id of the message that this contact message is a response to. |
 
 #### Channel Identity
 
 The table below shows the properties of the `channel_identity` field in Conversation API callbacks:
 
-| Field         | Type               | Description                                                                                                                                                                              |
-| ------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| channel       | string             | Conversation API identifier of the underlying channel e.g., `SMS`, `RCS`, `MESSENGER`.                                                                                                   |
-| identity      | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                                                                          |
-| app_id        | string             | The app ID if this is an app-scoped channel identity. Empty string otherwise. See [App-scoped Channel Identities](doc:conversation-callbacks#app-scoped-channel-identities) for details. |
+| Field    | Type   | Description                                                                                                                                                                              |
+| -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| channel  | string | Conversation API identifier of the underlying channel e.g., `SMS`, `RCS`, `MESSENGER`.                                                                                                   |
+| identity | string | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                                                                          |
+| app_id   | string | The app ID if this is an app-scoped channel identity. Empty string otherwise. See [App-scoped Channel Identities](doc:conversation-callbacks#app-scoped-channel-identities) for details. |
 
 ##### App-scoped Channel Identities
 
@@ -215,7 +215,7 @@ which means contacts will have different channel identities for different apps. 
 
 ### Inbound Event
 
-This callback delivers channel events such as *composing* to the API clients. The message details are given in a top level `event` field. It is a JSON object with the following properties:
+This callback delivers channel events such as _composing_ to the API clients. The message details are given in a top level `event` field. It is a JSON object with the following properties:
 
 | Field            | Type               | Description                                                                                                                             |
 | ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -253,23 +253,23 @@ This callback delivers channel events such as *composing* to the API clients. Th
 
 The table below shows the properties of the `contact_event` field in inbound event callbacks:
 
-| Field           | Type               | Description                                                                                                                                       |
-| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| composing_event | object             | Empty object denoting the contact is composing a message.                                                                                         |
+| Field           | Type   | Description                                               |
+| --------------- | ------ | --------------------------------------------------------- |
+| composing_event | object | Empty object denoting the contact is composing a message. |
 
 ### Message Delivery Receipt
 
 This callback notifies the API clients about status changes of already sent app message. The delivery receipt details are given in a top level `message_delivery_report` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                                                                                                                             |
-| ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| message_id       | string             | The ID of the app message.                                                                                                              |
-| conversation_id  | string             | The ID of the conversation the app message is part of.                                                                                  |
-| status           | string             | The delivery status. See [Delivery Status](doc:conversation-callbacks#delivery-status) for details.                                     |
-| channel_identity | object             | The identity of the contact in the underlying channel. See [Channel Identity](doc:conversation-callbacks#channel-identity) for details. |
-| contact_id       | string             | The ID of the contact.                                                                                                                  |
-| reason           | object             | Error reason if status is `FAILED` or `SWITCHING_CHANNEL`. See [Reason](doc:conversation-callbacks#reason) for details.                 |
-| metadata         | string             | Metadata specified when sending the message if any.                                                                                     |
+| Field            | Type   | Description                                                                                                                             |
+| ---------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| message_id       | string | The ID of the app message.                                                                                                              |
+| conversation_id  | string | The ID of the conversation the app message is part of.                                                                                  |
+| status           | string | The delivery status. See [Delivery Status](doc:conversation-callbacks#delivery-status) for details.                                     |
+| channel_identity | object | The identity of the contact in the underlying channel. See [Channel Identity](doc:conversation-callbacks#channel-identity) for details. |
+| contact_id       | string | The ID of the contact.                                                                                                                  |
+| reason           | object | Error reason if status is `FAILED` or `SWITCHING_CHANNEL`. See [Reason](doc:conversation-callbacks#reason) for details.                 |
+| metadata         | string | Metadata specified when sending the message if any.                                                                                     |
 
 #### Example of Message Delivery Callback
 
@@ -341,13 +341,13 @@ Each message and event sent by the API clients to contacts go through the follow
 2. The message is successfully dispatched to an underlying channel. It has status `QUEUED_ON_CHANNEL`.
 3. A delivery report is sent from the underlying channel detailing the delivery status on the channel. Depending on the channel response and the processing state of the message the message is transitioned to one of following states:
 
-    3.1 `DELIVERED` - the channel delivery report indicated the message has reached the end user. Some channels can later send new delivery report with status `READ`.
+   3.1 `DELIVERED` - the channel delivery report indicated the message has reached the end user. Some channels can later send new delivery report with status `READ`.
 
-    3.2 `READ` - the channel delivery report indicated the message was seen or read by the end user. This is a terminal state. There cannot be more state changes after the message is in `READ` state. Some channel will omit sending `DELIVERED` when the message is seen immediately by the user. In such cases the `DELIVERED` status is implicit.
+   3.2 `READ` - the channel delivery report indicated the message was seen or read by the end user. This is a terminal state. There cannot be more state changes after the message is in `READ` state. Some channel will omit sending `DELIVERED` when the message is seen immediately by the user. In such cases the `DELIVERED` status is implicit.
 
-    3.3 `FAILED` - the channel delivery report indicated the message delivery failed and there are no more channels to try according to the channel priority defined in the send request. This is a terminal state. There cannot be more state changes after the message is `FAILED` state.
+   3.3 `FAILED` - the channel delivery report indicated the message delivery failed and there are no more channels to try according to the channel priority defined in the send request. This is a terminal state. There cannot be more state changes after the message is `FAILED` state.
 
-    3.4 `SWITCHING_CHANNEL` - the channel delivery report indicated the message delivery failed. However, there are more channels which Conversation API can try to send the message according to the channel priority defined in the send request.
+   3.4 `SWITCHING_CHANNEL` - the channel delivery report indicated the message delivery failed. However, there are more channels which Conversation API can try to send the message according to the channel priority defined in the send request.
 
 **Note:** There are no callbacks sent for status `QUEUED` since this state is already known
 by the API clients when they receive successful response from the **/messages:send** endpoint.
@@ -358,59 +358,59 @@ The `reason` field in `FAILED` or `SWITCHING_CHANNEL` delivery report callbacks 
 
 The table below shows the properties of the `reason` field:
 
-| Field           | Type               | Description                                                                                                                                      |
-| --------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| code            | string             | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details.                                   |
-| description     | string             | A description of the reason.                                                                                                                     |
-| sub_code        | string             | The sub code is a more detailed classification of the main error. See [Error Sub-Codes](doc:conversation-callbacks#error-sub-codes) for details. |
+| Field       | Type   | Description                                                                                                                                      |
+| ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| code        | string | High-level classification of the error. See [Error Codes](doc:conversation-callbacks#error-codes) for details.                                   |
+| description | string | A description of the reason.                                                                                                                     |
+| sub_code    | string | The sub code is a more detailed classification of the main error. See [Error Sub-Codes](doc:conversation-callbacks#error-sub-codes) for details. |
 
 ##### Error Codes
 
 Conversation API provides a set of common reason codes which can be used to automate the error handling by the API clients.
 The codes are as follow:
 
-- ***RATE_LIMITED*** - the message or event was not sent due to rate limiting.
-- ***RECIPIENT_INVALID_CHANNEL_IDENTITY*** - the channel recipient identity was malformed.
-- ***RECIPIENT_NOT_REACHABLE*** - it was not possible to reach the contact, or channel recipient identity, on the channel.
-- ***RECIPIENT_NOT_OPTED_IN*** - the contact, or channel recipient identity, has not opt-ed in on the channel.
-- ***OUTSIDE_ALLOWED_SENDING_WINDOW*** - the allowed sending window has expired. See the [channel support documentation](doc:conversation-channel-support) for more information about how the sending window works for the different channels.
-- ***CHANNEL_FAILURE*** - the channel failed to accept the message. The Conversation API performs multiple retries in case of transient errors.
-- ***CHANNEL_BAD_CONFIGURATION*** - the channel configuration of the app is wrong. The bad configuration caused the channel to reject the message.
-- ***CHANNEL_CONFIGURATION_MISSING*** - the referenced app has no configuration for the channel.
-- ***MEDIA_TYPE_UNSUPPORTED*** - indicates that the sent message had unsupported media type.
-- ***MEDIA_TOO_LARGE*** - some of the referenced media files are too large. Please read the See the [channel support documentation](doc:conversation-channel-support) to find out the limitations on file size that the different channels impose.
-- ***MEDIA_NOT_REACHABLE*** - the provided media link was not accessible from the Conversation API or from the underlying channels. Please make sure that the media file is accessible.
-- ***NO_CHANNELS_LEFT*** - no channels to try to send the message to. This error will occur if all applicable channels have been attempted.
-- ***TEMPLATE_NOT_FOUND*** - the referenced template was not found.
-- ***TEMPLATE_INSUFFICIENT_PARAMETERS*** - not all parameters defined in the template were provided when sending a template message.
-- ***TEMPLATE_NON_EXISTING_LANGUAGE_OR_VERSION*** - the selected language, or version, of the referenced template did not exist. Please check the available versions and languages of the template.
-- ***DELIVERY_TIMED_OUT*** - the message or event delivery failed due to a channel-imposed timeout.
-- ***DELIVERY_REJECTED_DUE_TO_POLICY*** - the message or event was rejected by the channel due to a policy. Some channels have specific policies that must be met to send a message. See the [channel support documentation](doc:conversation-channel-support) for more information about when this error will be triggered.
-- ***CONTACT_NOT_FOUND*** - the provided Contact ID did not exist.
-- ***BAD_REQUEST*** - Conversation API validates send requests in two different stages. The first stage is right before the message is enqueued. If this first validation fails the API responds with 400 Bad Request and the request is discarded immediately. The second validation kicks in during message processing and it normally contains channel specific validation rules. Failures during second request validation are delivered as callbacks to MESSAGE_DELIVERY (EVENT_DELIVERY) webhooks with ReasonCode BAD_REQUEST.
-- ***UNKNOWN_APP*** - missing app. This error may occur when the app is removed during message processing.
-- ***NO_CHANNEL_IDENTITY_FOR_CONTACT*** - the contact has no channel identities for the resolved channel priorities.
-- ***CHANNEL_REJECT*** - generic error for channel permanently rejecting a message.
-- ***UNKNOWN*** - returned if no other code can be used to describe the encountered error.
-- ***INTERNAL_ERROR*** - an internal error occurred. Please save the entire callback if you want to report an error.
+- **_RATE_LIMITED_** - the message or event was not sent due to rate limiting.
+- **_RECIPIENT_INVALID_CHANNEL_IDENTITY_** - the channel recipient identity was malformed.
+- **_RECIPIENT_NOT_REACHABLE_** - it was not possible to reach the contact, or channel recipient identity, on the channel.
+- **_RECIPIENT_NOT_OPTED_IN_** - the contact, or channel recipient identity, has not opt-ed in on the channel.
+- **_OUTSIDE_ALLOWED_SENDING_WINDOW_** - the allowed sending window has expired. See the [channel support documentation](doc:conversation-channel-support) for more information about how the sending window works for the different channels.
+- **_CHANNEL_FAILURE_** - the channel failed to accept the message. The Conversation API performs multiple retries in case of transient errors.
+- **_CHANNEL_BAD_CONFIGURATION_** - the channel configuration of the app is wrong. The bad configuration caused the channel to reject the message.
+- **_CHANNEL_CONFIGURATION_MISSING_** - the referenced app has no configuration for the channel.
+- **_MEDIA_TYPE_UNSUPPORTED_** - indicates that the sent message had unsupported media type.
+- **_MEDIA_TOO_LARGE_** - some of the referenced media files are too large. Please read the See the [channel support documentation](doc:conversation-channel-support) to find out the limitations on file size that the different channels impose.
+- **_MEDIA_NOT_REACHABLE_** - the provided media link was not accessible from the Conversation API or from the underlying channels. Please make sure that the media file is accessible.
+- **_NO_CHANNELS_LEFT_** - no channels to try to send the message to. This error will occur if all applicable channels have been attempted.
+- **_TEMPLATE_NOT_FOUND_** - the referenced template was not found.
+- **_TEMPLATE_INSUFFICIENT_PARAMETERS_** - not all parameters defined in the template were provided when sending a template message.
+- **_TEMPLATE_NON_EXISTING_LANGUAGE_OR_VERSION_** - the selected language, or version, of the referenced template did not exist. Please check the available versions and languages of the template.
+- **_DELIVERY_TIMED_OUT_** - the message or event delivery failed due to a channel-imposed timeout.
+- **_DELIVERY_REJECTED_DUE_TO_POLICY_** - the message or event was rejected by the channel due to a policy. Some channels have specific policies that must be met to send a message. See the [channel support documentation](doc:conversation-channel-support) for more information about when this error will be triggered.
+- **_CONTACT_NOT_FOUND_** - the provided Contact ID did not exist.
+- **_BAD_REQUEST_** - Conversation API validates send requests in two different stages. The first stage is right before the message is enqueued. If this first validation fails the API responds with 400 Bad Request and the request is discarded immediately. The second validation kicks in during message processing and it normally contains channel specific validation rules. Failures during second request validation are delivered as callbacks to MESSAGE_DELIVERY (EVENT_DELIVERY) webhooks with ReasonCode BAD_REQUEST.
+- **_UNKNOWN_APP_** - missing app. This error may occur when the app is removed during message processing.
+- **_NO_CHANNEL_IDENTITY_FOR_CONTACT_** - the contact has no channel identities for the resolved channel priorities.
+- **_CHANNEL_REJECT_** - generic error for channel permanently rejecting a message.
+- **_UNKNOWN_** - returned if no other code can be used to describe the encountered error.
+- **_INTERNAL_ERROR_** - an internal error occurred. Please save the entire callback if you want to report an error.
 
 ##### Error Sub-Codes
 
-- ***UNSPECIFIED_SUB_CODE*** - used if no other sub code can be used to describe the encountered error.
-- ***ATTACHMENT_REJECTED*** - occurs when the message attachment has been rejected by the channel due to a policy. Some channels have specific policies that must be met to receive an attachment.
+- **_UNSPECIFIED_SUB_CODE_** - used if no other sub code can be used to describe the encountered error.
+- **_ATTACHMENT_REJECTED_** - occurs when the message attachment has been rejected by the channel due to a policy. Some channels have specific policies that must be met to receive an attachment.
 
 ### Event Delivery Receipt
 
 This callback notifies the API clients about status changes of already sent app events. The delivery receipt details are given in a top level `event_delivery_report` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                                                                                                                             |
-| ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| event_id         | string             | The ID of the app event.                                                                                                                |
-| status           | string             | The delivery status. See [Delivery Status](doc:conversation-callbacks#delivery-status) for details.                                     |
-| channel_identity | object             | The identity of the contact in the underlying channel. See [Channel Identity](doc:conversation-callbacks#channel-identity) for details. |
-| contact_id       | string             | The ID of the contact.                                                                                                                  |
-| reason           | object             | Error reason if status is `FAILED` or `SWITCHING_CHANNEL`. See [Reason](doc:conversation-callbacks#reason) for details.                 |
-| metadata         | string             | Metadata specified when sending the event if any.                                                                                       |
+| Field            | Type   | Description                                                                                                                             |
+| ---------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| event_id         | string | The ID of the app event.                                                                                                                |
+| status           | string | The delivery status. See [Delivery Status](doc:conversation-callbacks#delivery-status) for details.                                     |
+| channel_identity | object | The identity of the contact in the underlying channel. See [Channel Identity](doc:conversation-callbacks#channel-identity) for details. |
+| contact_id       | string | The ID of the contact.                                                                                                                  |
+| reason           | object | Error reason if status is `FAILED` or `SWITCHING_CHANNEL`. See [Reason](doc:conversation-callbacks#reason) for details.                 |
+| metadata         | string | Metadata specified when sending the event if any.                                                                                       |
 
 #### Example of Event Delivery Callback
 
@@ -438,9 +438,9 @@ This callback notifies the API clients about status changes of already sent app 
 
 This callback is sent when a new conversation between the subscribed app and a contact is started. The conversation details are given in a top level `conversation_start_notification` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                                |
-| ---------------- | ------------------ | ------------------------------------------ |
-| conversation     | object             | The properties of the started conversation |
+| Field        | Type   | Description                                |
+| ------------ | ------ | ------------------------------------------ |
+| conversation | object | The properties of the started conversation |
 
 #### Example of Conversation Start Callback
 
@@ -465,9 +465,9 @@ This callback is sent when a new conversation between the subscribed app and a c
 
 This callback is sent when a conversation between the subscribed app and a contact is stopped. The conversation details are given in a top level `conversation_stop_notification` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                                 |
-| ---------------- | ------------------ | ------------------------------------------- |
-| conversation     | object             | The properties of the stopped conversation. |
+| Field        | Type   | Description                                 |
+| ------------ | ------ | ------------------------------------------- |
+| conversation | object | The properties of the stopped conversation. |
 
 #### Example of Conversation Stop Callback
 
@@ -493,9 +493,9 @@ This callback is sent when a conversation between the subscribed app and a conta
 
 This callback is sent when a new contact is created. The contact details are given in a top level `contact_create_notification` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                            |
-| ---------------- | ------------------ | -------------------------------------- |
-| contact          | object             | The properties of the created contact. |
+| Field   | Type   | Description                            |
+| ------- | ------ | -------------------------------------- |
+| contact | object | The properties of the created contact. |
 
 #### Example of Contact Create Callback
 
@@ -514,9 +514,7 @@ This callback is sent when a new contact is created. The contact details are giv
           "app_id": "01EB37KMH1M6SV18ASNS3G135H"
         }
       ],
-      "channel_priority": [
-        "VIBER"
-      ],
+      "channel_priority": ["VIBER"],
       "display_name": "Unknown",
       "email": "",
       "external_id": "",
@@ -531,9 +529,9 @@ This callback is sent when a new contact is created. The contact details are giv
 
 This callback is sent when a contact is deleted. The contact details are given in a top level `contact_delete_notification` field. It is a JSON object with the following properties:
 
-| Field            | Type               | Description                            |
-| ---------------- | ------------------ | -------------------------------------- |
-| contact          | object             | The properties of the deleted contact. |
+| Field   | Type   | Description                            |
+| ------- | ------ | -------------------------------------- |
+| contact | object | The properties of the deleted contact. |
 
 #### Example of Contact Delete Callback
 
@@ -552,9 +550,7 @@ This callback is sent when a contact is deleted. The contact details are given i
           "app_id": "01EB37HMH1M6SV13ASNS3G135H"
         }
       ],
-      "channel_priority": [
-        "VIBER"
-      ],
+      "channel_priority": ["VIBER"],
       "display_name": "Unknown",
       "email": "",
       "external_id": "",
@@ -572,10 +568,10 @@ deleted contacts are given in a top level `contact_merge_notification` field.
 
 It is a JSON object with the following properties:
 
-| Field             | Type               | Description                                     |
-| ----------------- | ------------------ | ----------------------------------------------- |
-| preserved_contact | object             | The properties of the resulting merged contact. |
-| deleted_contact   | object             | The properties of the deleted contact.          |
+| Field             | Type   | Description                                     |
+| ----------------- | ------ | ----------------------------------------------- |
+| preserved_contact | object | The properties of the resulting merged contact. |
+| deleted_contact   | object | The properties of the deleted contact.          |
 
 #### Example of Contact Merge Callback
 
@@ -594,9 +590,7 @@ It is a JSON object with the following properties:
           "app_id": "01EB37KMH1M6SV18ASNS3G135H"
         }
       ],
-      "channel_priority": [
-        "VIBER"
-      ],
+      "channel_priority": ["VIBER"],
       "display_name": "Unknown",
       "email": "",
       "external_id": "",
@@ -612,9 +606,7 @@ It is a JSON object with the following properties:
           "app_id": "01EB37KMH1M6SV18ASNS3G135H"
         }
       ],
-      "channel_priority": [
-        "VIBER"
-      ],
+      "channel_priority": ["VIBER"],
       "display_name": "Unknown",
       "email": "",
       "external_id": "",
@@ -631,15 +623,15 @@ This callback is used to deliver the results of the asynchronous capability chec
 
 It is a JSON object with the following properties:
 
-| Field                | Type               | Description                                                                                                                             |
-| -------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| request_id           | string             | ID generated when submitting the capability request. Can be used to detect duplicates.                                                  |
-| contact_id           | string             | The ID of the contact.                                                                                                                  |
-| channel              | string             | The channel for which the capability lookup was performed.                                                                              |
-| identity             | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                         |
-| capability_status    | string             | Status indicating the recipient's capability on the channel. One of `CAPABILITY_FULL`, `CAPABILITY_PARTIAL` or `NO_CAPABILITY`.         |
-| channel_capabilities | string array       | Optional. When status `CAPABILITY_PARTIAL`, a list of channel-specific capabilities reported by the channel if supported.               |
-| reason               | object             | Error reason if the capability check failed. See [Reason](doc:conversation-callbacks#reason) for details.                               |
+| Field                | Type         | Description                                                                                                                     |
+| -------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| request_id           | string       | ID generated when submitting the capability request. Can be used to detect duplicates.                                          |
+| contact_id           | string       | The ID of the contact.                                                                                                          |
+| channel              | string       | The channel for which the capability lookup was performed.                                                                      |
+| identity             | string       | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                 |
+| capability_status    | string       | Status indicating the recipient's capability on the channel. One of `CAPABILITY_FULL`, `CAPABILITY_PARTIAL` or `NO_CAPABILITY`. |
+| channel_capabilities | string array | Optional. When status `CAPABILITY_PARTIAL`, a list of channel-specific capabilities reported by the channel if supported.       |
+| reason               | object       | Error reason if the capability check failed. See [Reason](doc:conversation-callbacks#reason) for details.                       |
 
 You can get more information about the capability check endpoint provided by Conversation API at [Introduction to Capability](doc:conversation-capability).
 
@@ -663,16 +655,16 @@ You can get more information about the capability check endpoint provided by Con
 ### Opt In
 
 This callback is used to deliver opt-in notifications from the channels or the results of
-the asynchronous opt-in registrations done through the */optins:register* endpoint. The opt-in details are given in a top level `opt_in_notification` field with the following properties:
+the asynchronous opt-in registrations done through the _/optins:register_ endpoint. The opt-in details are given in a top level `opt_in_notification` field with the following properties:
 
-| Field             | Type               | Description                                                                                                                             |
-| ----------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| request_id        | string             | ID generated when making an opt-in registration request. Can be used to detect duplicates.                                              |
-| contact_id        | string             | The ID of the contact which is the subject of the opt-in.                                                                               |
-| channel           | string             | The channel of the opt-in.                                                                                                              |
-| identity          | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                         |
-| status            | string             | Status of the opt-in registration. One of `OPT_IN_SUCCEEDED` or `OPT_IN_FAILED`.                                                        |
-| error_details     | object             | It is set in case of errors. It contains a single string property `description` containing a human-readable error description.          |
+| Field         | Type   | Description                                                                                                                    |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| request_id    | string | ID generated when making an opt-in registration request. Can be used to detect duplicates.                                     |
+| contact_id    | string | The ID of the contact which is the subject of the opt-in.                                                                      |
+| channel       | string | The channel of the opt-in.                                                                                                     |
+| identity      | string | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                |
+| status        | string | Status of the opt-in registration. One of `OPT_IN_SUCCEEDED` or `OPT_IN_FAILED`.                                               |
+| error_details | object | It is set in case of errors. It contains a single string property `description` containing a human-readable error description. |
 
 You can get more information about the opt-in endpoint provided by Conversation API at [Opt-In & Opt-Out](doc:conversation-optin).
 
@@ -696,17 +688,17 @@ You can get more information about the opt-in endpoint provided by Conversation 
 ### Opt Out
 
 This callback is used to deliver opt-out notifications from the channels or the results of
-the asynchronous opt-out registrations done through the */optouts:register* endpoint.
+the asynchronous opt-out registrations done through the _/optouts:register_ endpoint.
 The opt-out details are given in a top level `opt_out_notification` field with the following properties:
 
-| Field             | Type               | Description                                                                                                                             |
-| ----------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| request_id        | string             | ID generated when making an opt-out registration request. Can be used to detect duplicates.                                             |
-| contact_id        | string             | The ID of the contact which is the subject of the opt-out.                                                                              |
-| channel           | string             | The channel of the opt-out.                                                                                                             |
-| identity          | string             | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                         |
-| status            | string             | Status of the opt-out registration. One of `OPT_OUT_SUCCEEDED` or `OPT_OUT_FAILED`.                                                     |
-| error_details     | object             | It is set in case of errors. It contains a single string property `description` containing a human-readable error description.          |
+| Field         | Type   | Description                                                                                                                    |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| request_id    | string | ID generated when making an opt-out registration request. Can be used to detect duplicates.                                    |
+| contact_id    | string | The ID of the contact which is the subject of the opt-out.                                                                     |
+| channel       | string | The channel of the opt-out.                                                                                                    |
+| identity      | string | The channel identity e.g., a phone number for SMS, WhatsApp and Viber Business.                                                |
+| status        | string | Status of the opt-out registration. One of `OPT_OUT_SUCCEEDED` or `OPT_OUT_FAILED`.                                            |
+| error_details | object | It is set in case of errors. It contains a single string property `description` containing a human-readable error description. |
 
 You can get more information about the opt-out endpoint provided by Conversation API at [Opt-In & Opt-Out](doc:conversation-optin).
 
@@ -735,10 +727,10 @@ all the way to the API clients subscribed to the `UNSUPPORTED` webhook trigger.
 
 The source of the unsupported callback is given in a top level `unsupported_callback` field. It is a JSON object with the following properties:
 
-| Field             | Type               | Description                                       |
-| ----------------- | ------------------ | ------------------------------------------------- |
-| channel           | string             | The channel which is the source of this callback. |
-| payload           | string             | Normally a JSON payload as sent by the channel.   |
+| Field   | Type   | Description                                       |
+| ------- | ------ | ------------------------------------------------- |
+| channel | string | The channel which is the source of this callback. |
+| payload | string | Normally a JSON payload as sent by the channel.   |
 
 #### Example of Unsupported Callback
 

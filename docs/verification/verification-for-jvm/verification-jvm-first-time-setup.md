@@ -1,5 +1,5 @@
 ---
-title: First time setup
+title: install
 excerpt: >-
   Setup phone number verification on any device supporting JVM for the first time with the Sinch
   Verification SDK.
@@ -7,19 +7,21 @@ next:
   pages:
     - verification-jvm-the-verification-process
 ---
+
 This is a step-by-step guide about setting up the Sinch Verification SDK for the first time.
 
 ## Register an Application
 
 1.  Register a [Sinch Developer account](https://portal.sinch.com/#/signup)
-2.  Set up a new Application using the Dashboard, where you can then obtain an *Application Key*.
-3.  Enable Verification for the application by selecting: *Authentication* \> *Public* under *App* \> *Settings* \> *Verification*
+2.  Set up a new Application using the Dashboard, where you can then obtain an _Application Key_.
+3.  Enable Verification for the application by selecting: _Authentication_ \> _Public_ under _App_ \> _Settings_ \> _Verification_
 
 ## Add the Sinch library
 
 The Sinch Verification SDK is available publicly on jCenter. Depending on the build system you use include it in your build.gradle or pom file. You can also download the jar directly from [here](https://bintray.com/sinch/com.sinch.jvm.sdk.verification/verification).
 
 build.gradle:
+
 ```text
 repositories {
     //...
@@ -31,6 +33,7 @@ dependencies {
 ```
 
 pom.xml:
+
 ```xml
 <dependency>
   <groupId>com.sinch.jvm.sdk.verification</groupId>

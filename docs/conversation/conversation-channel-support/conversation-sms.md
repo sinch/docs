@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-### Conversation API Sinch SMS Support <span class="betabadge">Beta</span>
+### Conversation API Sinch SMS Support
 
 With Sinch SMS channel you get the largest possible coverage in expense of
 limited rich content features.
@@ -202,34 +202,34 @@ Conversation API POST `messages:send`
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
       },
       "choices": [
-          {
-            "text_message": {
-              "text": "Suggested Reply Text"
-            }
-          },
-          {
-            "url_message": {
-              "title": "More info",
-              "url": "https://www.sinch.com"
-            }
-          },
-          {
-            "call_message": {
-              "title": "Call Choice Message",
-              "phone_number": "+46732000000"
-            }
-          },
-          {
-            "location_message": {
-              "title": "Location Choice Message",
-              "label": "Enriching Engagement",
-              "coordinates": {
-                "latitude": 55.610479,
-                "longitude": 13.002873
-              }
+        {
+          "text_message": {
+            "text": "Suggested Reply Text"
+          }
+        },
+        {
+          "url_message": {
+            "title": "More info",
+            "url": "https://www.sinch.com"
+          }
+        },
+        {
+          "call_message": {
+            "title": "Call Choice Message",
+            "phone_number": "+46732000000"
+          }
+        },
+        {
+          "location_message": {
+            "title": "Location Choice Message",
+            "label": "Enriching Engagement",
+            "coordinates": {
+              "latitude": 55.610479,
+              "longitude": 13.002873
             }
           }
-        ]
+        }
+      ]
     }
   }
 }
@@ -378,7 +378,7 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
       "choice_response_message": {
         "message_id": "01EKJ2SWHGDMYA0F0F1PQJ09WQ",
         "postback_data": "postback"
-       }
+      }
     },
     "channel": "SMS",
     "conversation_id": "01E6K4A8PGZ6MV0GD3C7M901MZ",

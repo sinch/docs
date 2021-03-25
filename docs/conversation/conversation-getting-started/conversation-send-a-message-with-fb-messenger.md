@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-### Set up a Facebook Page <span class="betabadge">Beta</span>
+### Set up a Facebook Page
 
 A Facebook page is required to use the Facebook Messenger API. It is used as the identity of your Messenger experience. When people chat with your app, they will see the page name and the page profile picture. To create a new page, visit https://www.facebook.com/pages/create. If you already have one, you can skip to [**Creating your Facebook App**](doc:conversation-send-a-message-with-fb-messenger#create-your-facebook-app).
 
@@ -15,7 +15,7 @@ Next, choose to create a **Business or Brand** and fill out the ensuing page nam
 
 ![Create Business Page](../conversation-channel-support/images/channel-support/messenger/fb_create_business_page.png)
 
-You can choose to **Skip** adding a profile and background pictures as well as, **Not Now** for the option to **Add online booking**. You have now completed creating your Facebook Business page. 
+You can choose to **Skip** adding a profile and background pictures as well as, **Not Now** for the option to **Add online booking**. You have now completed creating your Facebook Business page.
 
 Remember, while your Facebook App is **In development**, the Facebook Business page is not visible to anyone except you and other developers you invite to your Facebook developer account.
 
@@ -106,7 +106,7 @@ The Messenger Webhook Settings configuration forwards message events posted on y
 
 Then, add the following **Callback URL** and **Verify Token**:
 
-```Curl  Callback URL:
+```Curl Callback URL:
 https://messenger-adapter.conversation-api.prod.sinch.com/adapter/v1/{{YOUR_SINCH_CONVERSATION_APP_ID}}/callback
 
 Verify Token: 5651d9fd-5c33-4d7a-aa37-5e3e151c2a92
@@ -130,7 +130,7 @@ Enter a message into the **Messenger** chat window and **Send**.
 
 > 🚧 Warning
 >
-> Note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-properties) for more info. 
+> Note that there's a standard messaging window of 24h on Messenger. To be able to send messages outside this response window check out [**Channel Specific Properties**](doc:conversation-channel-properties) for more info.
 
 ![Facebook Messenger Pop up](../conversation-channel-support/images/channel-support/messenger/fb_page_messenger_pop_up.png)
 
