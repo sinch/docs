@@ -5,6 +5,11 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-03-30
+
+ - Add support for referral in Inbound message callbacks.
+ - Support redirect and forwards from media url
+
 ## 2021-03-09
 
  - GDPR Sensitive data privacy improvements.
