@@ -17,20 +17,20 @@ This guide will show you how to set up the Sinch Verification SDK for the first 
 
 ## Add the Sinch library
 
-The Sinch Verification SDK is available publicly on jCenter. To include it in your Android application, make sure your **project** level build.gradle file contains:
+The Sinch Verification SDK is available publicly on mavenCentral. To include it in your Android application, make sure your **project** level build.gradle file contains:
 
 ```text
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 ```
@@ -51,7 +51,7 @@ If your application uses all the verification methods it's easiest to add the  _
 
 ##### Example:
 
-If your application relies only on SMS verification and doesn't use any other verificaiton methods you should simply add:
+If your application relies only on SMS verification and doesn't use any other verification methods you should simply add:
 
 ```text
 dependencies {
@@ -59,7 +59,7 @@ dependencies {
   }
 ```
 
-The latest version of the SDK can be checked on [Bintray](https://bintray.com/sinch/com.sinch.android.sdk.verification).
+The latest version of the SDK can be checked on [here](https://search.maven.org/search?q=com.sinch.android.sdk.verification).
 
 ## Samples
 
