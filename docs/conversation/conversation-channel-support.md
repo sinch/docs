@@ -17,5 +17,6 @@ Follow the links below to learn more.
 - <img src="https://files.readme.io/7474132-whatsapp.svg" width="20" height="20" /> [WhatsApp](https://developers.sinch.com/docs/conversation-whatsapp)
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> [Viber Bot](https://developers.sinch.com/docs/conversation-viber-bot)
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> [Viber Business Messages](https://developers.sinch.com/docs/conversation-viber-business)
+- <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> [MMS](https://developers.sinch.com/docs/conversation-mms)
 
 To learn more about the channel specific features that are offered by the Conversation API, visit [Channel Specific Properties](https://developers.sinch.com/docs/conversation-channel-properties).
