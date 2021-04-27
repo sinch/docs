@@ -7,9 +7,9 @@ excerpt: >-
 
 ## 2021-04-27
 
- - Error handling improvements
- - PII protection improvements
- - Internal monitoring improvements
+ - Error handling improvements.
+ - PII protection improvements.
+ - Internal monitoring improvements.
 
 ## 2021-03-30
 
