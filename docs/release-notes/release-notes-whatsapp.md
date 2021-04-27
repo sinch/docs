@@ -5,6 +5,12 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-04-27
+
+ - Error handling improvements
+ - PII protection improvements
+ - Internal monitoring improvements
+
 ## 2021-03-30
 
  - Add support for referral in Inbound message callbacks.
