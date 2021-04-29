@@ -211,7 +211,7 @@ The rendered message:
 
 ![Media Message](images/channel-support/messenger/messenger_media.jpg)
 
-> 🚧 Warning (from 16th December)
+> 🚧 Warning (from 16th December 2020)
 >
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, “Media Message” will only be rendered if it contains image file, for any other type of file (audio, video) an error will be returned, and no message will be sent.
 >
@@ -274,7 +274,7 @@ The rendered message:
 
 ![Choice Message](images/channel-support/messenger/messenger_choice.jpg)
 
-> 🚧 Warning (from 16th December)
+> 🚧 Warning (from 16th December 2020)
 >
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Choice Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
@@ -339,7 +339,7 @@ The rendered message:
 
 ![Card Message](images/channel-support/messenger/messenger_card.jpg)
 
-> 🚧 Warning (from 16th December)
+> 🚧 Warning (from 16th December 2020)
 >
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Card Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
@@ -445,7 +445,7 @@ The rendered message:
 
 ![Carousel Message](images/channel-support/messenger/messenger_carousel.jpg)
 
-> 🚧 Warning (from 16th December)
+> 🚧 Warning (from 16th December 2020)
 >
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Carousel Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
@@ -482,7 +482,7 @@ The rendered message:
 
 ![Location Message](images/channel-support/messenger/messenger_location.jpg)
 
-> 🚧 Warning (from 16th December)
+> 🚧 Warning (from 16th December 2020)
 >
 > Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, `Location Message` will only be supported on Android and iOS messenger’s apps. Message will not be rendered on web client and chat plugin, instead of that Users will see an Attachment unavailable error message.
 >
@@ -493,3 +493,211 @@ The rendered message:
 > - You send a message to customers in Europe.
 >
 > Restrictions will be revised by Facebook Messenger in the future.
+
+##### Receiving Messages
+
+Facebook Messenger channel supports various kinds of contact messages - text, media, media card, location and quick replies.
+All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
+
+---
+
+Example text reply:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:06:13.806686Z",
+  "event_time": "2020-10-01T12:06:13.254Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ0WGFM7TR314K4D9Y31J5S",
+    "direction": "TO_APP",
+    "contact_message": {
+      "text_message": {
+        "text": "This is text message from a Messenger user."
+      }
+    },
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:06:13.794339Z"
+  }
+}
+```
+
+---
+
+Example location contact message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:07:35.513615Z",
+  "event_time": "2020-10-01T12:07:34.935Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ0Z07XKM6H04VB5Q941QBP",
+    "direction": "TO_APP",
+    "contact_message": {
+      "location_message": {
+        "title": "",
+        "coordinates": {
+          "latitude": 55.73064,
+          "longitude": 13.160131
+        },
+        "label": ""
+      }
+    },
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:07:35.496355Z"
+  }
+}
+```
+
+---
+
+Example media message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:55.073703Z",
+  "event_time": "2020-10-01T12:10:53.991Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ1534NWK5R02TGWEJN13HA",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_message": {
+        "url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174244980_1170704636714502_2133968827805507208_n.jpg"
+      }
+    },
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:10:55.060170Z"
+  }
+}
+```
+
+---
+
+Example media card message:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:55.073703Z",
+  "event_time": "2020-10-01T12:10:53.991Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message": {
+    "id": "01EKJ1534NWK5R02TGWEJN13HA",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_card_message": {
+        "url": "https://scontent.xx.fbcdn.net/v/t1.15752-9/174244980_1170704636714502_2133968827805507208_n.jpg",
+        "caption": "caption text"
+      }
+    },
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:10:55.060170Z"
+  }
+}
+```
+
+---
+
+Example quick reply message:
+
+```json
+{
+  "app_id": "01EGQYR8N9S5VF096DQKYF08JD",
+  "accepted_time": "2020-10-01T12:39:48.469849Z",
+  "event_time": "2020-10-01T12:39:48.296Z",
+  "project_id": "ab5536b1-31b0-45e8-aec6-b35f13c41d0b",
+  "message": {
+    "id": "01EKJ2SZX9N6F11SJ11G511H6J",
+    "direction": "TO_APP",
+    "contact_message": {
+      "choice_response_message": {
+        "message_id": "01EKJ2SWHGDMYA0F0F1PQJ09WQ",
+        "postback_data": "suggested reply postback"
+      }
+    },
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EGQYR8N9S5VF096DQKYF08JD"
+    },
+    "conversation_id": "01EHY7KA6ZC03C1Q5QTRZ60GDA",
+    "contact_id": "01EHY7KA2BYT8A11E6Y2271NHA",
+    "metadata": "",
+    "accept_time": "2020-10-01T12:39:48.457764Z"
+  }
+}
+```
+
+##### Receiving Delivery Receipts
+
+Messages sent on Messenger channel can have three statuses: DELIVERED, READ and FAILED.
+If the status is FAILED the reason will include more information about the failure.
+Below is an example for DELIVERED receipt - READ and FAILED differ by the
+`status` and `reason` only.
+Conversation API POST to `MESSAGE_DELIVERY` webhook:
+
+```json
+{
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2020-10-01T12:10:00.530Z",
+  "event_time": "2020-10-01T12:10:03.624Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "message_delivery_report": {
+    "message_id": "01EKJ13DYJX54C0N062N0Q1J9F",
+    "conversation_id": "01EKJ0KSWXMVDF05MG9TQ20S06",
+    "status": "READ",
+    "channel_identity": {
+      "channel": "MESSENGER",
+      "identity": "534183549153491",
+      "app_id": "01EB37HMH1M6SV18ASNS3G135H"
+    },
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "metadata": ""
+  }
+}
+```
+
+> 🚧 Warning (from 16th December 2020)
+>
+> Regarding the changes introduced by Facebook Messenger to comply with new privacy rules in Europe, Messenger does NOT send Delivery Reports - i.e. you will not get READ or DELIVERED statuses from Conversation API on this channel.
+>
+> This condition impacts you if:
+>
+> - Your app points to a Messenger bot which is created for a European page.
+> - Your app points to a Messenger bot which is created for a page that has European admins.
+> - You send a message to customers in Europe.
+>
+> Restrictions will be revised by Facebook Messenger in the future and this feature will be restored.
