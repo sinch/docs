@@ -157,29 +157,19 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Suggested Reply"
           }
         },
         {
           "url_message": {
-            "title": "URL Choice Message:",
+            "title": "Sinch",
             "url": "https://www.sinch.com"
           }
         },
         {
           "call_message": {
-            "title": "Call Choice Message:Q",
+            "title": "Someone",
             "phone_number": "46732000000"
-          }
-        },
-        {
-          "location_message": {
-            "title": "Location Choice Message",
-            "label": "Enriching Engagement",
-            "coordinates": {
-              "latitude": 55.610479,
-              "longitude": 13.002873
-            }
           }
         }
       ]
@@ -210,23 +200,19 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Suggested Reply"
           }
         },
         {
           "url_message": {
-            "title": "Visit Sinch at",
+            "title": "Sinch website",
             "url": "https://www.sinch.com"
           }
         },
         {
-          "location_message": {
-            "title": "Location Choice Message",
-            "label": "Enriching Engagement",
-            "coordinates": {
-              "latitude": 55.610479,
-              "longitude": 13.002873
-            }
+          "call_message": {
+            "title": "John Doe",
+            "phone_number": "46732000000"
           }
         }
       ]
@@ -282,8 +268,13 @@ Conversation API POST `messages:send`
           },
           "choices": [
             {
+              "text_message": {
+                "text": "Suggested Reply Text"
+              }
+            },
+            {
               "url_message": {
-                "title": "URL Choice Message:",
+                "title": "Sinch",
                 "url": "https://www.sinch.com"
               }
             }
@@ -298,7 +289,7 @@ Conversation API POST `messages:send`
           "choices": [
             {
               "call_message": {
-                "title": "Call Choice Message:Q",
+                "title": "Someone",
                 "phone_number": "46732000000"
               }
             }

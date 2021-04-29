@@ -404,18 +404,18 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Text"
           }
         },
         {
           "url_message": {
-            "title": "URL Choice Message:",
+            "title": "Sinch",
             "url": "https://www.sinch.com"
           }
         },
         {
           "call_message": {
-            "title": "Call Choice Message:Q",
+            "title": "Someone",
             "phone_number": "46732000000"
           }
         }
@@ -449,7 +449,19 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Text"
+          }
+        },
+        {
+          "call_message": {
+            "title": "Someone",
+            "phone_number": "46732000000"
+          }
+        },
+        {
+          "url_message": {
+            "title": "Sinch",
+            "url": "https://www.sinch.com"
           }
         }
       ]
@@ -485,17 +497,12 @@ Conversation API POST `messages:send`
           "choices": [
             {
               "text_message": {
-                "text": "Suggested Reply 1 Text"
+                "text": "Response 1"
               }
             },
             {
               "text_message": {
-                "text": "Suggested Reply 2 Text"
-              }
-            },
-            {
-              "text_message": {
-                "text": "Suggested Reply 3 Text"
+                "text": "Response 2"
               }
             }
           ]
@@ -508,8 +515,13 @@ Conversation API POST `messages:send`
           },
           "choices": [
             {
+              "text_message": {
+                "text": "Response 3"
+              }
+            },
+            {
               "url_message": {
-                "title": "URL Choice Message:",
+                "title": "Sinch",
                 "url": "https://www.sinch.com"
               }
             }
@@ -524,7 +536,7 @@ Conversation API POST `messages:send`
           "choices": [
             {
               "call_message": {
-                "title": "Call Choice Message:Q",
+                "title": "Someone",
                 "phone_number": "46732000000"
               }
             }
