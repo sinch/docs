@@ -189,7 +189,7 @@ Conversation API POST `messages:send`
       "title": "This is the card title",
       "description": "This is the card description",
       "media_message": {
-        "url": "https://iconsplace.com/wp-content/uploads/_icons/ffa500/256/png/mms-icon-11-256.png"
+        "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
       },
       "choices": [
         {
