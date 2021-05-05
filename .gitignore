@@ -5,6 +5,7 @@ node_modules
 *.ipr
 *.iml
 *.iws
+*.swp
 .idea
 /.vs
 
