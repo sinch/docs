@@ -6,7 +6,7 @@ excerpt: >-
 hidden: false
 next:
   pages:
-    - voice-android-js-application-authentication
+    - voice-for-js-sinch-client
 ---
 
 The _SinchClient_ is the Sinch SDK entry point. It is used to configure the user’s and device’s capabilities, as well as to provide access to feature functions such as the _callClient_, and _audioElement_.
@@ -28,7 +28,7 @@ class SinchPhone {
 
 ## Start the Sinch Client
 
-Before starting the client, add a [SinchClientListener](reference\com\sinch\android\rtc\SinchClientListener.html):
+Before starting the client, add a [SinchClientListener](reference\index.html):
 
 ```javascript
  start = () => {
