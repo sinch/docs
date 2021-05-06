@@ -119,7 +119,6 @@ The following error codes can be returned as values for the `code` field:
 | 400         | `syntax_invalid_parameter_format`   | The format of a field value is invalid. For example if a MSISDN is not correctly formatted.                         |
 | 400         | `syntax_constraint_violation`       | The request body doesn't fulfill all of the constraints set by the API. For example if a required field is missing. |
 | 403         | `unknown_group`                     | A referenced group ID is unknown. This could happen if the ID is invalid or if the group has been deleted.          |
-| 403         | `unknown_campaign`                  | The campaign ID does not match the specified originator.                                                            |
 | 403         | `missing_callback_url`              | Callback has been requested but no URL is provided.                                                                 |
 | 403         | `llegal_number_type`                | Illegal phone number type of MSISDN for a chosen region was used.                                                   |
 | 403         | `blocked_account`                   | Your account has been blocked                                                                                        |
@@ -147,7 +146,6 @@ JSON body fields:
 |type                               |Identifies the type of batch message                                                                               |      String      |mt_text             |                     Valid types are mt_text and mt_binary                     |                     Yes                      |
 |body                               |The message content. Normal text string for mt_text and Base64 encoded for mt_binary                               |      String      |N/A                 | Max 2000 chars for mt_text and max 140 bytes together with udh for mt_binary  |                     Yes                      |
 |udh                                |The UDH header of a binary message                                                                                 |HEX encoded string|N/A                 |                       Max 140 bytes together with body                        |             If type is mt_binary             |
-|campaign_id                        |The campaign/service ID this message belongs to. US only.                                                          |      String      |N/A                 |                                     None                                      |                      No                      |
 |delivery_report                    |Request delivery report callback. Note that delivery reports can be fetched from the API regardless of this setting|      String      |none                |             Valid types are none, summary, full and per_recipient             |                     Yes                      |
 |send_at                            |If set in the future the message will be delayed until send_at occurs                                              | ISO-8601 string  |Now                 |Must be before expire_at. If set in the past messages will be sent immediately.|                      No                      |
 |expire_at                          |If set the system will stop trying to deliver the message at this point                                            | ISO-8601 string  |3 days after send_at|                             Must be after send_at                             |                      No                      |
@@ -212,7 +210,7 @@ There was an error with your request. The body is a JSON object described in res
 
 `403 Forbidden`
 
-The system was not able to fulfill your request. The body is a JSON object described in rest\_http\_errors. Possible error codes include `unknown_group`, `unknown_campaign` and `missing_callback_url`.
+The system was not able to fulfill your request. The body is a JSON object described in rest\_http\_errors. Possible error codes include `unknown_group` and `missing_callback_url`.
 
 Response for a successfully created batch message.
 
@@ -479,7 +477,6 @@ JSON body fields:
 |toRemove            |List of MSISDNs and group IDs to remove from the batch.                                                                     |                             String array                              |                    |1 to 100 elements.                                                             |   No   |
 |from                |Sender number                                                                                                               |                                String                                 |                    |Must be valid MSISDN, short code or alphanumeric.                              |   No   |
 |body                |The message content. Normal text string for mt_text and Base64 encoded for mt_binary.                                       |                                String                                 |                    |Max 2000 chars for mt_text and max 140 bytes together with udh for mt_binary   |   No   |
-|campaign_id         |The campaign/service ID this message belongs to. US only.                                                                   |                                String                                 |                    |                                                                               |   No   |
 |delivery_report     |Request delivery report callback. Note that delivery reports can be fetched from the API regardless of this setting.        |                                String                                 |        none        |Valid types are none, summary, full and per_recipient                          |   No   |
 |send_at             |If set in the future the message will be delayed until send_at occurs.                                                      |                            ISO-8601 string                            |        Now         |Must be before expire_at. If set in the past messages will be sent immediately.|   No   |
 |expire_at           |If set the system will stop trying to deliver the message at this point                                                     |                            ISO-8601 string                            |3 days after send_at|Must be after send_at                                                          |   No   |
