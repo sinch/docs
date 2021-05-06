@@ -181,7 +181,7 @@ Conversation API POST `messages:send`
 {
   "message": {
     "text_message": {
-      "text": "Text message from Sinch Conversation API."
+      "text": "Greetings from Sinch Conversation API!"
     }
   }
 }
@@ -239,7 +239,7 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Suggested Reply"
           }
         },
         {
@@ -247,13 +247,7 @@ Conversation API POST `messages:send`
             "title": "URL Choice Message:",
             "url": "https://www.sinch.com"
           }
-        },
-        {
-          "call_message": {
-            "title": "Call Choice Message:Q",
-            "phone_number": "46732000000"
-          }
-        },
+        }
         {
           "location_message": {
             "title": "Location Choice Message",
@@ -308,25 +302,15 @@ Conversation API POST `messages:send`
           }
         },
         {
-          "url_message": {
-            "title": "URL Choice Message:",
-            "url": "https://www.sinch.com"
-          }
-        },
-        {
           "call_message": {
-            "title": "Call Choice Message:Q",
+            "title": "Someone",
             "phone_number": "46732000000"
           }
         },
         {
-          "location_message": {
-            "title": "Location Choice Message",
-            "label": "Enriching Engagement",
-            "coordinates": {
-              "latitude": 55.610479,
-              "longitude": 13.002873
-            }
+          "url_message": {
+            "title": "Sinch",
+            "url": "https://www.sinch.com"
           }
         }
       ]
