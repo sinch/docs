@@ -13,7 +13,7 @@ excerpt: >-
 
 **IMPORTANT NOTE:**
 
-Additionally in the next release on 25th May 2021 we are going to remove support for old “params” property when sending template messages that was deprecated for over half of year. Please use: header_params and body_params instead. 
+Additionally in the next release on **25th May 2021** we are going to remove support for old “params” property when sending template messages that was deprecated for over half of year. Please use: header_params and body_params instead. 
 For more details please check our documentation [here](https://developers.sinch.com/docs/whatsapp-message#template-message) 
 
 ## 2021-04-27
