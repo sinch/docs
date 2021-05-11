@@ -5,6 +5,14 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-05-11
+- Old media files cleanup improvements.
+- Sending media messages improvements.
+- Swagger documentation improvements.
+- Template parameters bugfix.
+
+Additionally in the next release on 25th May 2021 we are going to remove support for old “param” property when sending template messages that was deprecated for over half of year.
+
 ## 2021-04-27
 
  - Error handling improvements.
@@ -14,7 +22,7 @@ excerpt: >-
 ## 2021-03-30
 
  - Add support for referral in Inbound message callbacks.
- - Support redirect and forwards from media url
+ - Support redirect and forwards from media url.
 
 ## 2021-03-09
 
