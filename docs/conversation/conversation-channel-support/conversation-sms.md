@@ -25,6 +25,8 @@ same Conversation API **app** will need to be sent over the US long number regis
 and not through the Swedish long number. To request domestic long numbers in all relevant countries, please visit Numbers section in [Sinch Portal](https://dashboard.sinch.com/numbers).
 Once numbers have been requested, please open a support ticket to request these numbers to be assigned as default originators in their respective countries.
 
+If you want to use a sender that is different from your default originator please refer to [**Channel Specific Properties**](doc:conversation-channel-properties) where you can read about using `SMS_SENDER` property.
+
 ##### Conversation API SMS Integration
 
 Once you have your SMS service plan configured according to the above recommendations
