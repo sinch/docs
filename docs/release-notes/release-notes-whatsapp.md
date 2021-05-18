@@ -19,17 +19,12 @@ For more details please check our documentation [here](https://developers.sinch.
 ## 2021-04-27
 
  - Error handling improvements.
- - PII protection improvements.
  - Internal monitoring improvements.
 
 ## 2021-03-30
 
  - Add support for referral in Inbound message callbacks.
  - Support redirect and forwards from media url.
-
-## 2021-03-09
-
- - GDPR Sensitive data privacy improvements.
 
 ## 2021-01-26
 
