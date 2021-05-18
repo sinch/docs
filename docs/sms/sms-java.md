@@ -103,6 +103,7 @@ Before you implement the server to handle incoming SMS, you need to configure yo
 2. Under **Callback URL**, click Edit and configure a callback URL.
 
 3. In the terminal windows, start running the SpringBoot Application with `./gradlew bootRun` if you are using Gradle or `./mvnw spring-boot:run` if you are using Maven.
+
 4. Send an SMS to your Sinch number.
 
 5. You will now see the request come in.
