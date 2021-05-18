@@ -50,6 +50,26 @@ Example for adding "VIBER_SENDER_NAME" and "VIBER_SENDER_AVATAR" on Viber Bot:
 }
 ```
 
+Example for adding the channel specific property "SMS_SENDER" on SMS channel:
+
+```json
+{
+  "app_id": "{{APP_ID}}",
+  "recipient": {
+    "contact_id": "{{CONTACT_ID}}"
+  },
+  "message": {
+    "text_message": {
+      "text": "Text message from Sinch Conversation API."
+    }
+  },
+  "channel_priority_order": ["SMS"],
+  "channel_properties": {
+    "SMS_SENDER": "mysender"
+  }
+}
+```
+
 The names of available channel specific properties indicate which channel they can be used for.
 
 Possible values for property names and values:
@@ -63,4 +83,4 @@ Possible values for property names and values:
 | `VIBER_SENDER_AVATAR`         | Viber Bot sender’s avatar URL. Avatar size should be no more than 100 kb. Recommended 720x720.                                                                                                                                                                                                                                                                                                                                                |
 | `SMS_FLASH_MESSAGE`           | Whether this is flash SMS message. Flash SMS messages are shown on screen without user interaction while not saving the message to the inbox. Possible values are true and false. The default is false.                                                                                                                                                                                                                                       |
 | `MMS_SENDER`                  | Required on MMS channel, specifies the shortcode or longnumber to use as the sender.                                                                                                                                                                                                                                                                                                                                                          |
-
+| `SMS_SENDER`                  | Optional, the sender to use when sending a message on SMS channel. Can be a valid MSISDN, short code or alphanumeric sender. If the sender is rejected by the underlying SMS channel you get the error information in the delivery report                                                                                                                                                                                                     |

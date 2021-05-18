@@ -8,7 +8,7 @@ hidden: false
 
 With built-in transcoding, the Sinch Conversation API endpoint gives you the power of conversation across all supported channels and, if required, full control over channel specific features. Additionally, a single callback contains all aspects of the conversation for easy integration into the Sinch portfolio of services, or any third-party platform.
 
-> The Sinch Conversation API is available globally with hosting locations in the [US - East](https://us.conversation.api.sinch.com) and the [EU - Ireland]>?(https://eu.conversation.api.sinch.com), and additional channels will be supported as they become popular. If you are interested and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
+> The Sinch Conversation API is available globally with hosting locations in the [US - East](https://us.conversation.api.sinch.com) and the [EU - Ireland](https://eu.conversation.api.sinch.com), and additional channels will be supported as they become popular. If you are interested and are an existing customer, please contact your account manager.  If you are a new customer, please contact a [Sinch representative](https://www.sinch.com/contact-us/).
   
 ### Authentication
 

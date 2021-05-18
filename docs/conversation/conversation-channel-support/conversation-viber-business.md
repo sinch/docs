@@ -236,19 +236,13 @@ There is no native support for suggested replies or multiple choices in VIBERBM.
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Suggested"
           }
         },
         {
           "url_message": {
-            "title": "More info",
+            "title": "URL Choice Message:",
             "url": "https://www.sinch.com"
-          }
-        },
-        {
-          "call_message": {
-            "title": "Call Choice Message",
-            "phone_number": "+46732000000"
           }
         },
         {
@@ -332,12 +326,22 @@ Conversation API POST `messages:send`
           "title": "This is the card 1 title",
           "description": "This is the card 1 description",
           "media_message": {
-            "url": "https://techcrunch.com/wp-content/uploads/2017/08/butterfly-bubble.jpg?w=1390&crop=1"
+            "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
           },
           "choices": [
             {
               "text_message": {
-                "text": "Suggested Reply Text"
+                "text": "Suggested Reply 1 Text"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 2 Text"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 3 Text"
               }
             }
           ]
@@ -346,28 +350,18 @@ Conversation API POST `messages:send`
           "title": "This is the card 2 title",
           "description": "This is the card 2 description",
           "media_message": {
-            "url": "https://www.idus.se/en/wp-content/uploads/files/sites/2/2015/04/Message-150x150.png"
-          },
-          "choices": [
-            {
-              "url_message": {
-                "title": "URL Choice Message:",
-                "url": "https://www.sinch.com"
-              }
-            }
-          ]
-        },
-        {
-          "title": "This is the card 3 title",
-          "description": "This is the card 3 description",
-          "media_message": {
             "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
           },
           "choices": [
             {
-              "call_message": {
-                "title": "Call Choice Message:",
-                "phone_number": "46732000000"
+              "text_message": {
+                "text": "Suggested"
+              }
+            },
+            {
+              "url_message": {
+                "title": "Sinch",
+                "url": "https://www.sinch.com"
               }
             }
           ]
@@ -380,7 +374,7 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![Carousel Message](images/channel-support/viberbm/Viber_carousel_message.jpg)
+![Carousel Message](images/channel-support/viberbm/Viber_Carousel_Message.jpg)
 
 ###### Location Messages
 
