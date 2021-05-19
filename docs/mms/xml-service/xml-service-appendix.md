@@ -81,21 +81,3 @@ excerpt: >-
 | N102 | Notification that MMS status was updated.                               |
 | N202 | Notification that MMS was delivered as SMS.                             |
 | N401 | MMS MO received successfully.                                           |
-| N501 | Notification that Device Discovery Message is sending.                  |
-| N502 | Notification that Device Discovery Message delivery status has changed. |
-| E002 | Encoding of MMS audio failed. (saveMMS function)                        |
-| E003 | Encoding of MMS video failed. (saveMMS function)                        |
-| E012 | Encoding of MMS audio failed. (sendMMS function)                        |
-| E013 | Encoding of MMS video failed. (sendMMS function)                        |
-| E101 | Error occurred. Impossible to send MMS.                                 |
-| E102 | Error occurred. MMS Delivery was not successful.                        |
-| E202 | Error occurred. MMS as SMS Delivery was not successful.                 |
-| E501 | Error occurred. Impossible to send DDM Message.                         |
-| E502 | Error occurred. DDM Delivery was not successful.                        |
-| E999 | Post Message Sending Queue Processing Errors.                           |
-| N101 | Notification that MMS was sent.                                         |
-| N102 | Notification that MMS status was updated.                               |
-| N202 | Notification that MMS was delivered as SMS.                             |
-| N401 | MMS MO received successfully.                                           |
-| N501 | Notification that Device Discovery Message is sending.                  |
-| N502 | Notification that Device Discovery Message delivery status has changed. |
