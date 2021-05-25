@@ -5,6 +5,9 @@ excerpt: >-
   bug fixes.
 ---
 
+## 2021-05-25
+- Remove support for old, deprecated “params” parameter when sending template messages more informations [here](https://developers.sinch.com/docs/whatsapp-message#message-object-types)
+
 ## 2021-05-11
 - Old media files cleanup improvements.
 - Sending media messages improvements.
