@@ -6,7 +6,7 @@ excerpt: >-
 ---
 
 ## 2021-05-25
-- Remove support for old, deprecated “params” parameter when sending template messages more informations [here](https://developers.sinch.com/docs/whatsapp-message#message-object-types).
+- Remove support for old, deprecated “params” parameter when sending template messages. For more details please check our documentation [here](https://developers.sinch.com/docs/whatsapp-message#message-object-types).
 
 ## 2021-05-11
 - Old media files cleanup improvements.
