@@ -78,6 +78,10 @@ SVAML is a call control markup language developed by Sinch. When your backend re
           <td align="left">StopRecording</td>
           <td align="left">Stops call recording</td>
         </tr>
+		<tr class="odd">
+          <td align="left">ReportCallStatus</td>
+          <td align="left">Allows the customer to report the call status as observed on their end</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -350,6 +354,32 @@ Stops an ogoing recording for the current call.
     {
         "name": "StopRecording"
     }
+	
+### ReportCallStatus
+
+Allows the customer to report the status of the call, as observed from their end. The information provided in this instruction will be available to the customer in the CDRs.
+
+	{
+        "name": "ReportCallStatus",
+		"value": "Success",
+		"details": "CallSuccessfullyReceived"
+    }
+	
+**value** can be either `success` or `failure`. The value is case-insensitive. If an invalid value is provided, the instruction will be ignored.
+**details** is a free-form text value that can be used to further explain the call result. The maximum length of this value is 64 characters. Values longer than 64 characters will be trimmed to the maximum length.
+
+_Note_: this instruction is only valid as a response to the DiCE event. An example response to the DiCE event:
+
+	{
+		"instructions": [{
+			"name": "ReportCallStatus",
+			"value": "Success",
+			"details": "CallSuccessfullyReceived"
+		}],
+		"action": {
+			"name": "Hangup"
+		}
+	}
 
 ## Actions
 
