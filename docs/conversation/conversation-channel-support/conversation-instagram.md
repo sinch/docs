@@ -341,7 +341,7 @@ The rendered message:
 
 Instagram channel supports various kinds of contact messages - text, media, quick replies, icebreakers, story replies,
 story mention and media share. All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook.
-Some specific types of media can also be delivered with POST to `UNSUPPORTED` webhook due to Instagram lack of support:
+Some specific types of media can also be delivered with POST to `UNSUPPORTED` webhook due to Instagram lack of support
 in Business Accounts, are them: IGTV/Reels share, media share from private accounts, voice messages and GIPHYs.
 
 ---
