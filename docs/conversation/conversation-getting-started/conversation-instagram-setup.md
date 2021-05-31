@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-Before you start sending messages using hte Instagram Messaging API, you will need access to the following:
+Before you start sending messages using the Instagram Messaging API, you will need access to the following:
 
 * An Instagram business account, that will receive and send messages
 * A Facebook page connected with that account
@@ -24,7 +24,7 @@ Only business accounts can send and receive messages using the Conversation API 
 
 ### Creating a Facebook Page
 
-In order to send and receive message using the Instagram Message API, you need a Facebook Page that should be connected
+In order to send and receive message using the Instagram Message API, you need a Facebook Page connected
 to your Instagram business account. You can learn how to create a Facebook
 page [here](https://www.facebook.com/business/help/104002523024878).
 
@@ -81,7 +81,7 @@ just follow these steps:
 
 ![Facebook App - Pages](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_pages.png)
 
-* Click "Generate Token" to generate an Instagram Access Token to the Facebook Page connected to a Instagram Business
+* Click "Generate Token" to generate an Instagram Access Token to the Facebook Page connected to an Instagram Business
   Account that you want to send and receive messages using an API.
 
 ![Facebook App - Token Popup](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_popup.png)
