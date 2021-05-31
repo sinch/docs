@@ -37,7 +37,7 @@ for Instagram when creating or updating your app. Example channel configuration 
   "channel_credentials": [
     {
       "channel": "INSTAGRAM",
-      "static_token": {
+      "instagram_credentials": {
         "token": "{{INSTAGRAM_ACCESS_TOKEN}}"
       }
     }
@@ -340,7 +340,9 @@ The rendered message:
 ##### Receiving Messages
 
 Instagram channel supports various kinds of contact messages - text, media, quick replies, icebreakers, story replies,
-story mention and media share. All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
+story mention and media share. All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook.
+Some specific types of media can also be delivered with POST to `UNSUPPORTED` webhook due to Instagram lack of support:
+in Business Accounts, are them: IGTV/Reels share, media share from private accounts, voice messages and GIPHYs.
 
 ---
 
@@ -522,10 +524,19 @@ FIXME
 }
 ```
 
+Example unsupported medias:
+
+FIXME
+
+```json
+{
+}
+``` 
+
 ##### Receiving Delivery Receipts
 
 Messages sent on Instagram channel can have three statuses: DELIVERED (Instagram Echo), READ (Instagram Seen) and
-FAILED. If the status is FAILED the reason will include more information about the failure.
+FAILED. If the status is FAILED, the reason will include more information about the failure.
 
 Below is an example for DELIVERED receipt - READ and FAILED differ by the `status` and `reason` only. Conversation API
 POST to `MESSAGE_DELIVERY` webhook:
