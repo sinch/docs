@@ -50,7 +50,7 @@ this [guide](https://developers.facebook.com/docs/development/create-an-app/).
 
 ![Facebook Page Settings](../conversation-channel-support/images/channel-support/instagram/fb_page_settings.jpg)
 
-* Click on the Connect button and login to you Instagram business Account
+* Click "Connect button" and login to you Instagram business Account
 
 ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.jpg)
 

@@ -1,8 +1,6 @@
 ---
-title: Instagram 
-excerpt: >- 
-    Sinch Conversation API Instagram specific configurations and message transcoding. 
-hidden: false
+title: Instagram excerpt: >- Sinch Conversation API Instagram specific configurations and message transcoding. hidden:
+false
 ---
 
 ### Conversation API Instagram Support
@@ -37,7 +35,7 @@ for Instagram when creating or updating your app. Example channel configuration 
   "channel_credentials": [
     {
       "channel": "INSTAGRAM",
-      "static_token": {
+      "instagram_credentials": {
         "token": "{{INSTAGRAM_ACCESS_TOKEN}}"
       }
     }
@@ -48,11 +46,11 @@ for Instagram when creating or updating your app. Example channel configuration 
 
 > 📘 Note
 >
-> For Instagram, you can configure Callback Validation between Instagram  and Conversation API so that we can make sure, that the callbacks are valid.
+> For Instagram, you can configure Callback Validation between Instagram and Conversation API so that we can make sure, that the callbacks are valid.
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
-> The secret for this validation in the case of Instagram is you App Secret from your Facebook App.
+> The secret for this validation in the case of Instagram is your App Secret from your Facebook App.
 
 #### Setting up Instagram to forward callbacks to Conversation API
 
@@ -508,6 +506,29 @@ FIXME
 
 ```json
 {
+  "app_id": "01F6SM2J5JG7NP10HSZFH80DDK",
+  "accepted_time": "2021-05-28T14:17:19.865915Z",
+  "event_time": "2021-05-28T14:17:15.822Z",
+  "project_id": "id-of-created-project",
+  "message": {
+    "id": "01F6SNC9KVC4QA0B5CJA3F01C5",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_message": {
+        "url": "https://lookaside.fbsbx.com/ig_messaging_cdn/?asset_id=17988851035358143&signature=AbwpO8_zezVsF3xAmVMQoWiUQsrN9rASmbo_v3pbAQOIdPnpL6LfgJ_4zNfk6_Kb-jEuTMc9erD0oEeVFC95fId77zWaAn1nU9C82zXXWDf029uCJKw9NO0b3cq7PRBQIqXmRj6K8IzAlbIJ5LTsqyS2vlBsOf4DjLsjPiG93brgWNMM1A",
+        "thumbnail_url": ""
+      }
+    },
+    "channel_identity": {
+      "channel": "INSTAGRAM",
+      "identity": "4165102890214238",
+      "app_id": "01F6SM2J5JG7NP10HSZFH80DDK"
+    },
+    "conversation_id": "01F6SNC9R047F30W3B4NHK1RC2",
+    "contact_id": "01F6SNC9NVV4D31P87FZP51AT7",
+    "metadata": "",
+    "accept_time": "2021-05-28T14:17:19.805777Z"
+  }
 }
 ```
 
@@ -515,10 +536,30 @@ FIXME
 
 Example media share:
 
-FIXME
-
 ```json
 {
+  "app_id": "01F6SM2J5JG7NP10HSZFH80DDK",
+  "accepted_time": "2021-05-28T14:17:19.865915Z",
+  "event_time": "2021-05-28T14:17:15.822Z",
+  "project_id": "id-of-created-project",
+  "message": {
+    "id": "01F6SNC9KVC4QA0B5CJA3F01C5",
+    "direction": "TO_APP",
+    "contact_message": {
+      "media_message": {
+        "url": "https://lookaside.fbsbx.com/ig_messaging_cdn/?asset_id=17988851035358143&signature=AbwpO8_zezVsF3xAmVMQoWiUQsrN9rASmbo_v3pbAQOIdPnpL6LfgJ_4zNfk6_Kb-jEuTMc9erD0oEeVFC95fId77zWaAn1nU9C82zXXWDf029uCJKw9NO0b3cq7PRBQIqXmRj6K8IzAlbIJ5LTsqyS2vlBsOf4DjLsjPiG93brgWNMM1A"
+      }
+    },
+    "channel_identity": {
+      "channel": "INSTAGRAM",
+      "identity": "4165102890214238",
+      "app_id": "01F6SM2J5JG7NP10HSZFH80DDK"
+    },
+    "conversation_id": "01F6SNC9R047F30W3B4NHK1RC2",
+    "contact_id": "01F6SNC9NVV4D31P87FZP51AT7",
+    "metadata": "",
+    "accept_time": "2021-05-28T14:17:19.805777Z"
+  }
 }
 ```
 
