@@ -70,6 +70,26 @@ Example for adding the channel specific property "SMS_SENDER" on SMS channel:
 }
 ```
 
+Example for adding the channel specific property "INSTAGRAM_MESSAGE_TAG" on Instagram channel:
+
+```json
+{
+  "app_id": "{{APP_ID}}",
+  "recipient": {
+    "contact_id": "{{CONTACT_ID}}"
+  },
+  "message": {
+    "text_message": {
+      "text": "Text message from Sinch Conversation API."
+    }
+  },
+  "channel_priority_order": ["INSTAGRAM"],
+  "channel_properties": {
+    "INSTAGRAM_MESSAGE_TAG": "HUMAN_AGENT"
+  }
+}
+```
+
 The names of available channel specific properties indicate which channel they can be used for.
 
 Possible values for property names and values:
@@ -84,3 +104,4 @@ Possible values for property names and values:
 | `SMS_FLASH_MESSAGE`           | Whether this is flash SMS message. Flash SMS messages are shown on screen without user interaction while not saving the message to the inbox. Possible values are true and false. The default is false.                                                                                                                                                                                                                                       |
 | `MMS_SENDER`                  | Required on MMS channel, specifies the shortcode or longnumber to use as the sender.                                                                                                                                                                                                                                                                                                                                                          |
 | `SMS_SENDER`                  | Optional, the sender to use when sending a message on SMS channel. Can be a valid MSISDN, short code or alphanumeric sender. If the sender is rejected by the underlying SMS channel you get the error information in the delivery report                                                                                                                                                                                                     |
+| `INSTAGRAM_MESSAGE_TAG`       | Required on Instagram when having human agent support. All messages sent by a human agent outside of the 24hr must leverage the HUMAN_AGENT tag. HUMAN_AGENT tag allows messages to be sent within 7 days after the last user’s message.                                                                                                                                                                                                      |
