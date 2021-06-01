@@ -504,8 +504,6 @@ Example story reply:
 
 Example story mention:
 
-FIXME
-
 ```json
 {
   "app_id": "01F6SM2J5JG7NP10HSZFH80DDK",
@@ -565,12 +563,18 @@ Example media share:
 }
 ```
 
-Example unsupported medias:
-
-FIXME
+Example unsupported media:
 
 ```json
 {
+  "app_id": "01F6SM2J5JG7NP10HSZFH80DDK",
+  "accepted_time": "2021-05-28T14:13:06.271849Z",
+  "event_time": "2021-05-28T14:13:06.223973Z",
+  "project_id": "id-of-created-project",
+  "unsupported_callback": {
+    "channel": "INSTAGRAM",
+    "payload": "{\"object\":\"instagram\",\"entry\":[{\"time\":1622211185048,\"id\":\"id\",\"messaging\":[{\"sender\":{\"id\":\"sender-id\"},\"recipient\":{\"id\":\"recipient-id\"},\"timestamp\":1622211184495,\"message\":{\"mid\":\"message-mid\",\"is_unsupported\":true}}]}]}"
+  }
 }
 ``` 
 
