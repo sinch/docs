@@ -334,11 +334,9 @@ paths:
           schema:
             type: string
             enum:
-              - SEARCH_PATTERN_UNSPECIFIED
               - START
               - CONTAINS
               - END
-            default: SEARCH_PATTERN_UNSPECIFIED
         - name: regionCode
           description: 'Only return numbers for the given region code. ISO 3166-1 alpha-2 country code of the phone number. Example US, GB or SE.'
           in: query
@@ -503,11 +501,9 @@ components:
     NumberPatternSearchPattern:
       type: string
       enum:
-        - SEARCH_PATTERN_UNSPECIFIED
         - START
         - CONTAINS
         - END
-      default: SEARCH_PATTERN_UNSPECIFIED
       description: |-
         - SEARCH_PATTERN_UNSPECIFIED: Null value
          - START: Numbers that start with the provided sequence of digits
@@ -548,6 +544,8 @@ components:
           readOnly: true
         type:
           $ref: '#/components/schemas/v1NumberType'
+          description: 'Output only. The number type. MOBILE, LOCAL or TOLL_FREE.'
+          readOnly: true
         capability:
           type: array
           items:
@@ -556,6 +554,8 @@ components:
           readOnly: true
         money:
           $ref: '#/components/schemas/typeMoney'
+          description: Output only. Monetary amount to be charged.
+          readOnly: true
         paymentIntervalMonths:
           type: integer
           format: int32
@@ -573,6 +573,10 @@ components:
           readOnly: true
         smsConfiguration:
           $ref: '#/components/schemas/v1SmsConfiguration'
+          description: Optional. Sms configuration. The service_plan_id can be found when logging into dashboard.sinch.com in SMS>APIs section.
+        voiceConfiguration:
+          $ref: '#/components/schemas/v1VoiceConfiguration'
+          description: Optional. Voice configuration. The app_id can be found when logging into dashboard.sinch.com in Voice>APIs section.
       description: The phone number that has been bought by a customer and assigned to a project.
       title: Active Number
     v1AvailableNumber:
@@ -587,6 +591,8 @@ components:
           readOnly: true
         type:
           $ref: '#/components/schemas/v1NumberType'
+          description: 'Output only. The phone number v1. MOBILE, LOCAL or TOLL_FREE.'
+          readOnly: true
         capability:
           type: array
           items:
@@ -595,8 +601,12 @@ components:
           readOnly: true
         setupPrice:
           $ref: '#/components/schemas/typeMoney'
+          description: Output only. One time fee for setting up the phone number.
+          readOnly: true
         monthlyPrice:
           $ref: '#/components/schemas/typeMoney'
+          description: Output only. The recurring price that applies to this phone number.
+          readOnly: true
         paymentIntervalMonths:
           type: integer
           format: int32
@@ -654,6 +664,7 @@ components:
           description: Sequence of digits to search for.
         searchPattern:
           $ref: '#/components/schemas/NumberPatternSearchPattern'
+          description: Search pattern to apply.
       title: Search Pattern
     v1NumberType:
       type: string
@@ -682,14 +693,12 @@ components:
     v1RentNumberRequest:
       type: object
       properties:
-        projectId:
-          type: string
-          description: The ID of the project resource. Your project id can be found if you login to your account on dashboard.sinch.com.
-        phoneNumber:
-          type: string
-          description: The available phone number to rent.
         smsConfiguration:
           $ref: '#/components/schemas/v1SmsConfiguration'
+          description: Optional. Sms configuration. The service_plan_id can be found when logging into dashboard.sinch.com in SMS>APIs section.
+        voiceConfiguration:
+          $ref: '#/components/schemas/v1VoiceConfiguration'
+          description: Optional. Voice configuration. The app_id can be found when logging into dashboard.sinch.com in Voice>APIs section.
       description: Request message for renting a phone number.
       title: Rent Number Request
       required:
@@ -704,6 +713,30 @@ components:
           readOnly: true
         status:
           $ref: '#/components/schemas/v1ProvisioningStatus'
+          description: Output only. Status of the pending change.
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          format: date-time
+          description: Output only. Timestamp when the status was last updated.
+          readOnly: true
+        campaignId:
+          type: string
+        errorCodes:
+          type: array
+          items:
+            $ref: '#/components/schemas/v1SmsErrorCode'
+    v1ScheduledVoiceProvisioning:
+      type: object
+      properties:
+        appId:
+          type: string
+          description: Output only. Rtc application id of the scheduled provisioning task.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/v1ProvisioningStatus'
+          description: Output only. Status of the pending change.
+          readOnly: true
         lastUpdatedTime:
           type: string
           format: date-time
@@ -721,8 +754,47 @@ components:
             in SMS>APIs section.
         scheduledProvisioning:
           $ref: '#/components/schemas/v1ScheduledProvisioning'
+          description: Output only. Status of any pending changes to the sms routing.
+          readOnly: true
+        campaignId:
+          type: string
       description: Sms configuration
       title: Sms Configuration
+    v1SmsErrorCode:
+      type: string
+      enum:
+        - INTERNAL_ERROR
+        - SMS_PROVISIONING_FAILED
+        - CAMPAIGN_PROVISIONING_FAILED
+        - CAMPAIGN_NOT_AVAILABLE
+        - EXCEEDED_10DLC_LIMIT
+        - NUMBER_PROVISIONING_FAILED
+        - PARTNER_SERVICE_UNAVAILABLE
+        - CAMPAIGN_PENDING_ACCEPTANCE
+        - MNO_SHARING_ERROR
+      default: INTERNAL_ERROR
+      description: ''
+      title: Type
+    v1VoiceConfiguration:
+      type: object
+      properties:
+        appId:
+          type: string
+          description: |-
+            The current voice configuration for this number.
+            The app_id can be found when logging into dashboard.sinch.com
+            in voice>APIs section.
+        scheduledVoiceProvisioning:
+          $ref: '#/components/schemas/v1ScheduledVoiceProvisioning'
+          description: Output only. Status of the pending change.
+          readOnly: true
+        lastUpdatedTime:
+          type: string
+          format: date-time
+          description: Output only. Timestamp when the status was last updated.
+          readOnly: true
+      description: Voice configuration
+      title: Voice Configuration
 
   securitySchemes:
     Basic:

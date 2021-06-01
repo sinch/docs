@@ -320,7 +320,7 @@ curl-X DELETE \
 
 ### List batch messages
 
-With the list operation you can list batch messages that you have created in the last 14 days. This operation supports pagination.
+With the list operation you can list batch messages that you have created in the last 35 days. This operation supports pagination.
 
 Batches are returned in reverse chronological order.
 
