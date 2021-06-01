@@ -5,7 +5,7 @@ excerpt: >-
 hidden: false
 ---
 
-# How to retrieve number provisioning status
+## How to retrieve number provisioning status
 Customers can view the provisioning request status for a number using the GET /v1beta1/projects/{projectId}/activeNumbers or GET /v1beta1/projects/{projectId}/activeNumbers/{phoneNumber} endpoint (see API reference for additional detail).
 
 ## Parameters
