@@ -5,11 +5,11 @@ excerpt: >-
 hidden: false
 ---
 
-## How to retrieve number provisioning status
+# How to retrieve number provisioning status
 Customers can view the provisioning request status for a number using the GET /v1beta1/projects/{projectId}/activeNumbers or GET /v1beta1/projects/{projectId}/activeNumbers/{phoneNumber} endpoint (see API reference for additional detail).
 
 ## Parameters
-While SMS configuration provisioning is being worked on, the numbers API will return a "scheduledProvisioning" object containing information about the provisioning request.
+While SMS configuration provisioning is processing, the numbers API will return a "scheduledProvisioning" object containing information about the provisioning request.
 - smsConfiguration.scheduledProvisioning.servicePlanId - the requested servicePlanId that is currently being provisioned
 - smsConfiguration.scheduledProvisioning.campaignId - the requested campaignId that is currently being provisioned
 - smsConfiguration.scheduledProvisioning.status - The overall status for the request smsConfiguration.scheduledProvisioning.errorCodes - Any error messages encountered during provisioning
