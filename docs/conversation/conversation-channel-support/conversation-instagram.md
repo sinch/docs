@@ -6,8 +6,8 @@ false
 ### Conversation API Instagram Support
 
 Conversation API supports Instagram and allows sending messages from Instagram Accounts. The page cannot initiate the
-conversation; it must be started by a contact. To configure an Instagram Account and connect it to Conversation API **
-app**, follow the instructions below:
+conversation; it must be started by a contact. To configure an Instagram Account and connect it to Conversation API 
+**app**, follow the instructions below:
 
 Before you start, you will need access to the following:
 
