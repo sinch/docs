@@ -1,6 +1,8 @@
 ---
-title: Instagram excerpt: >- Sinch Conversation API Instagram specific configurations and message transcoding. hidden:
-false
+title: Instagram 
+excerpt: >-
+    Sinch Conversation API Instagram specific configurations and message transcoding. 
+hidden: false
 ---
 
 ### Conversation API Instagram Support
@@ -59,9 +61,9 @@ below **Access Tokens**), click **Add Callback URL**
 button and fill in with the following data (**remember to put region (eu1 or us1)
 and your Conversation App ID in the callback url**):
 
-| Callback URL |  `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback` |
-|:--------------:|:---:|
-| **Verify Token** |  `c5a8751a-e52b-4d39-a1f3-456d4a03b762` |
+**Callback URL:** `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
+
+**Verify Token:** `c5a8751a-e52b-4d39-a1f3-456d4a03b762`
 
 After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks**
 section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions**
