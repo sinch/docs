@@ -1,6 +1,8 @@
 ---
-title: Instagram excerpt: >- Sinch Conversation API Instagram specific configurations and message transcoding. hidden:
-false
+title: Instagram 
+excerpt: >-
+    Sinch Conversation API Instagram specific configurations and message transcoding. 
+hidden: false
 ---
 
 ### Conversation API Instagram Support
