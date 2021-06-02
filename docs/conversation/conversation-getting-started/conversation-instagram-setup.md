@@ -15,8 +15,7 @@ Before you start sending messages using the Instagram Messaging API, you will ne
 
 ### Creating an Instagram Business Account
 
-On Instagram, you can convert your personal profile to a business account or create a new one following
-this [guide](https://www.facebook.com/business/help/502981923235522).
+On Instagram, you can convert your personal profile to a business account or create a new one following this [guide](https://www.facebook.com/business/help/502981923235522).
 
 Only business accounts can send and receive messages using the Conversation API Instagram integration.
 
@@ -24,21 +23,17 @@ Only business accounts can send and receive messages using the Conversation API 
 
 ### Creating a Facebook Page
 
-In order to send and receive message using the Instagram Message API, you need a Facebook Page connected
-to your Instagram business account. You can learn how to create a Facebook
-page [here](https://www.facebook.com/business/help/104002523024878).
+In order to send and receive message using the Instagram Message API, you need a Facebook Page connected to your Instagram business account. You can learn how to create a Facebook page [here](https://www.facebook.com/business/help/104002523024878).
 
 > 📘 If you already have a Facebook Page your can skip this step.
 
 ### Creating a Facebook App
 
-In order to set up the Instagram Messaging API, you should create a Facebook App, following
-this [guide](https://developers.facebook.com/docs/development/create-an-app/).
+In order to set up the Instagram Messaging API, you should create a Facebook App, following this [guide](https://developers.facebook.com/docs/development/create-an-app/).
 
 > 📘 If you already have a Facebook App your can skip this step.
 
-> 🚧 By now, Instagram Messaging Product is allowed as a Closed Beta integration, so, in order to add
-> the Instagram Messaging product to your Facebook App, you should contact us.
+> 🚧 By now, Instagram Messaging Product is allowed as a Closed Beta integration, so, in order to add the Instagram Messaging product to your Facebook App, you should contact us.
 
 ### Connecting the Facebook Page to the Instagram Business Account
 
@@ -60,8 +55,7 @@ this [guide](https://developers.facebook.com/docs/development/create-an-app/).
 
 ### Enabling Connected Tools in Instagram Business Account
 
-In order to send messages using the Instagram API you should enable connected tools in the Instagram business account,
-just follow these steps:
+In order to send messages using the Instagram API you should enable connected tools in the Instagram business account, just follow these steps:
 
 ![Instagram Connected Tools](../conversation-channel-support/images/channel-support/instagram/ig_connected_tools.png)
 
@@ -81,10 +75,8 @@ just follow these steps:
 
 ![Facebook App - Pages](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_pages.png)
 
-* Click "Generate Token" to generate an Instagram Access Token to the Facebook Page connected to an Instagram Business
-  Account that you want to send and receive messages using an API.
+* Click "Generate Token" to generate an Instagram Access Token to the Facebook Page connected to an Instagram Business Account that you want to send and receive messages using an API.
 
 ![Facebook App - Token Popup](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_popup.png)
 
-Now you can use the generated Instagram Access Token
-to [set up your Conversation API Instagram integration](doc:conversation-instagram).
+Now you can use the generated Instagram Access Token to [set up your Conversation API Instagram integration](doc:conversation-instagram).
