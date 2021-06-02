@@ -297,7 +297,9 @@ The rendered message:
 
 ![Carousel Message](images/channel-support/instagram/instagram_carousel.jpg)
 
-> 📘 Carousel messages are not supported natively by Instagram, so, we will transcode the "Carousel Message" as a "Text Message".
+> 📘 Note
+> 
+> Carousel messages are not supported natively by Instagram, so, we will transcode the "Carousel Message" as a "Text Message".
 
 #### Location Messages
 
@@ -323,7 +325,9 @@ The rendered message:
 
 ![Location Message](images/channel-support/instagram/instagram_location.jpg)
 
-> 📘 Location messages are not supported natively by Instagram, so, we will transcode the "Location Message" as a "Text Message" that contains a URL that points to the Google Maps app.
+> 📘 Note
+> 
+> Location messages are not supported natively by Instagram, so, we will transcode the "Location Message" as a "Text Message" that contains a URL that points to the Google Maps app.
 
 ### Receiving Messages
 
