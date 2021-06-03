@@ -7,7 +7,7 @@ hidden: false
 
 Before you start sending messages using the Instagram Messaging API, you will need access to the following:
 
-* [An Instagram business account that will receive and send messages](#create-an-instagram-business-acount)
+* [An Instagram business account that will receive and send messages](#create-an-instagram-business-account)
 * [A Facebook page connected with that account](#create-a-facebook-page)
 * A Facebook developer account that can perform tasks on that page
 * A registered Facebook App with basic settings configured
