@@ -10,7 +10,7 @@ Before you start sending messages using the Instagram Messaging API, you will ne
 * [An Instagram business account that will receive and send messages](#create-an-instagram-business-account)
 * [A Facebook page connected with that account](#create-a-facebook-page)
 * A Facebook developer account that can perform tasks on that page
-* A registered Facebook App with basic settings configured
+* [A registered Facebook App with basic settings configured](#create-a-facebook-app)
 * [An Instagram authentication token](#generate-the-instagram-access-token)
 
 > 🚧 Warning
@@ -33,7 +33,7 @@ Only business accounts can send and receive messages using the Conversation API 
 >
 > If you already have a Facebook Page you can skip this step.
 
-In order to send and receive message using the Instagram Message API, you need a Facebook Page connected to your Instagram business account. You can learn how to create a Facebook page [here](https://www.facebook.com/business/help/104002523024878).
+To send and receive message using the Instagram Message API, you need a Facebook Page connected to your Instagram business account. You can learn how to create a Facebook page [here](https://www.facebook.com/business/help/104002523024878).
 
 ### Create a Facebook App
 
@@ -41,7 +41,7 @@ In order to send and receive message using the Instagram Message API, you need a
 >
 > If you already have a Facebook App you can skip this step.
 
-In order to set up the Instagram Messaging API, you should create a Facebook App, following this [guide](https://developers.facebook.com/docs/development/create-an-app/).
+To set up the Instagram Messaging API, you need a Facebook App. If you need to create one, follow this [guide](https://developers.facebook.com/docs/development/create-an-app/).
 
 ### Connect the Facebook Page to the Instagram Business Account
 
@@ -67,13 +67,13 @@ In order to send messages using the Instagram API you must enable **Connected To
 
 1. In the Instagram app Settings menu, navigate to the **Privacy** section.
 2. In the **Privacy** menu, navigate to the **Messages** section.
-3. In the **Message Controls** menu, enable **Allow Access to Messages** under the **Conntected Tools** section.
+3. In the **Message Controls** menu, enable **Allow Access to Messages** under the **Connected Tools** section.
 
 ![Instagram Connected Tools](../conversation-channel-support/images/channel-support/instagram/ig_connected_tools.png)
 
 ### Generate the Instagram Access Token
 
-1. Log in to <developers.facebook.com> and select your App.
+1. Log in to developers.facebook.com and select your App.
 
    ![Facebook App - Instagram Settings](../conversation-channel-support/images/channel-support/instagram/fb_gen_token.png)
 
@@ -89,9 +89,9 @@ In order to send messages using the Instagram API you must enable **Connected To
 
 4. Click the **Generate Token** button to generate an Instagram Access Token.
 
-  > 📘 Note
-  >
-  > In order to generate a token, the Facebook Page must be connected to an Instagram Business Account.
+> 📘 Note
+>
+> In order to generate a token, the Facebook Page must be connected to an Instagram Business Account.
 
    ![Facebook App - Token Popup](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_popup.png)
 
