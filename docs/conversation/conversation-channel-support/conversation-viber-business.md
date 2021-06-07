@@ -93,7 +93,9 @@ The rendered message:
 
 ###### Media Messages
 
-VIBERBM supports Image messages natively. Supported image types are JPG, JPEG and PNG.
+VIBERBM supports media messages natively.
+Supported image types are JPG, JPEG and PNG.
+Supported document types are: doc, docx, rtf, dot, dotx, odt, odf, fodt, txt, info, pdf, xps, pdax, eps, xls, xlsx, ods, fods, csv, xlsm, xltx. 
 
 ---
 
@@ -109,9 +111,13 @@ Conversation API POST `messages:send`
 }
 ```
 
-The rendered message:
+The rendered message for images:
 
 ![Media Message](images/channel-support/viberbm/Viber_Media_Message_Image.jpg)
+
+The rendered message for documents:
+TODO
+![Media Message](images/channel-support/viberbm/Viber_Media_Message_Document.jpg)
 
 ---
 

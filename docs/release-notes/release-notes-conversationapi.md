@@ -6,7 +6,7 @@ excerpt: >-
 
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
-- WhatsApp channel error response mapping and forwarding improvements
+- Improvements for WhatsApp channel error response mapping and forwarding
 - Support for vCard .vcf files on MMS channel in MediaMessage and CardMessage
 
 ## 2021-06-02
