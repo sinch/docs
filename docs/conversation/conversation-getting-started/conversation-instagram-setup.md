@@ -60,7 +60,7 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
    ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.png)
 
-4. Your Instagram account is now connected to your Facebook Page.
+3. Your Instagram account is now connected to your Facebook Page.
 
    ![Facebook Page Settings Instagram Connected](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram_connected.png)
 
