@@ -56,7 +56,7 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
    ![Facebook Page](../conversation-channel-support/images/channel-support/instagram/fb_page.png)
 
-2. Navigate to the the Instagram section and Click the **Connect Account** button and login to your Instagram business account. 
+2. Navigate to the Instagram section and Click the **Connect Account** button and login to your Instagram business account. 
 
    ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.png)
 
