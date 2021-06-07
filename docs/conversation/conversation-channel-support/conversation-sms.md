@@ -27,6 +27,13 @@ Once numbers have been requested, please open a support ticket to request these 
 
 If you want to use a sender that is different from your default originator please refer to [**Channel Specific Properties**](doc:conversation-channel-properties) where you can read about using `SMS_SENDER` property.
 
+> 🚧 Warning
+>
+> Both Conversation API and SMS API are regional.
+> If your service plan is provisioned for US then your Conversation API App should be created in US region too.   
+> If your service plan is provisioned for EU then your Conversation API App should be created in EU region too.
+> Otherwise with cross region setups SMS channel will report errors.
+
 ##### Conversation API SMS Integration
 
 Once you have your SMS service plan configured according to the above recommendations
