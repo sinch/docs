@@ -16,6 +16,13 @@ Before you start sending messages using the Instagram Messaging API, you will ne
 > 🚧 Warning
 >
 > Instagram Messaging Product is only available as a Closed Beta integration. To add the Instagram Messaging product to your Facebook App, you should contact us.
+> 
+> For testing purposes, you can enable Instagram without asking permission by just creating or renaming an account with "test_" as a prefix to your username.
+> 
+> ex: @test_Sinch
+> 
+> Test accounts will only receive Instagram webhooks from users that are added as a tester, developer or admin of the Facebook App linked with the Instagram Account.
+> 
 
 ### Create an Instagram Business Account
 
@@ -47,19 +54,15 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
 1. Access the settings sections of your Facebook Page.
 
-   ![Facebook Page](../conversation-channel-support/images/channel-support/instagram/fb_page.jpg)
+   ![Facebook Page](../conversation-channel-support/images/channel-support/instagram/fb_page.png)
 
-2. Navigate to the the Instagram section.
+2. Navigate to the the Instagram section and Click the **Connect Account** button and login to your Instagram business account. 
 
-   ![Facebook Page Settings](../conversation-channel-support/images/channel-support/instagram/fb_page_settings.jpg)
-
-3. Click the **Connect Account** button and login to your Instagram business account.
-
-   ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.jpg)
+   ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.png)
 
 4. Your Instagram account is now connected to your Facebook Page.
 
-   ![Facebook Page Settings Instagram Connected](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram_connected.jpg)
+   ![Facebook Page Settings Instagram Connected](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram_connected.png)
 
 ### Enable Connected Tools in Instagram Business Account
 
@@ -80,8 +83,6 @@ In order to send messages using the Instagram API you must enable **Connected To
 2. Click **Add or Remove Pages** and select your Instagram Business Account and your Facebook Page.
 
    ![Facebook App - Select IG](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_add_ig.png)
-
-   ![Facebook App - Select Page](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_add_page.png)
 
 3. On this page, you can see all the Facebook Pages that are connected to your Facebook App.
 
