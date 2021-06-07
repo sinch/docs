@@ -110,7 +110,7 @@ The rendered message:
 
 ###### Media Messages
 
-MMS supports media messages natively. The content of the media message will be validated when sending messages, and checked against the recommendations for MMS messages listed in the [MMS documentation](https://developers.sinch.com/docs/mms-bestpractices)
+MMS supports media messages natively. The content of the media message will be validated when sending messages, and checked against the recommendations for MMS messages listed in the [MMS documentation](https://developers.sinch.com/docs/mms-bestpractices) if you use the [MMS_STRICT_VALIDATION](doc:conversation-channel-properties) flag.
 
 ---
 
@@ -129,6 +129,21 @@ Conversation API POST `messages:send`
 The rendered message:
 
 ![Media Message](images/channel-support/mms/MMS_media_message.png)
+
+On MMS channel you have the possibility to send vCards (Virtual Contact Files) with a URL that points to your .vcf file.
+
+```json
+{
+  "message": {
+    "media_message": {
+      "url": "https://mycontact.com/vcard.vcf"
+    }
+  }
+}
+```
+
+TODO
+![Media Message with vCard](images/channel-support/mms/MMS_media_message_vcf.png)
 
 ###### Choice Messages
 
