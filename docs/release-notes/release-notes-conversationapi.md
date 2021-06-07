@@ -8,6 +8,7 @@ excerpt: >-
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
 - Support for vCard .vcf files on MMS channel in MediaMessage and CardMessage
+- Support for MM_STRICT_VALIDATION channel property to validate MMS media message contents against best practices
 
 ## 2021-06-02
 - Release of Instagram channel support Beta
