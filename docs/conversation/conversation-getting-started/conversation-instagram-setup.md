@@ -52,7 +52,7 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
 ### Connect the Facebook Page to the Instagram Business Account
 
-1. Access the settings sections of your Facebook Page.
+1. Access the settings section of your Facebook Page.
 
    ![Facebook Page](../conversation-channel-support/images/channel-support/instagram/fb_page.png)
 
