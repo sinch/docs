@@ -74,8 +74,10 @@ using the management API.
 ##### Testing the integration
 
 Viber Bot API does not allow sending bot messages to Viber users which have not
-subscribed to the bot. For establishing subscription to a bot the Viber users must send a message to the bot.
-So to test your integration open the Viber app and search for the name of your Viber bot.
+subscribed to the bot. To send a message on Viber Bot channel you need to get hold of the recipients
+Viber user id. This can happen when the user subscribes to your bot (you will get an
+[OPT_IN Notification](#receiving-user-opt-inout)), or [receiving a contact message](#receiving-messages)
+from the user. So to test your integration open the Viber app and search for the name of your Viber bot.
 Then send a message to it. You should receive two callbacks on the registered Conversation API webhooks -  
 one is `conversation_start_notification` and the other is the actual message send from the handset.
 Both callbacks contain a field `contact_id` which is the identifier of the
