@@ -30,9 +30,7 @@ If you want to use a sender that is different from your default originator pleas
 > 🚧 Warning
 >
 > Both Conversation API and SMS API are regional.
-> If your service plan is provisioned for US then your Conversation API App should be created in US region too.   
-> If your service plan is provisioned for EU then your Conversation API App should be created in EU region too.
-> Otherwise with cross region setups SMS channel will report errors.
+> Your Conversation API App must be created in the same region that your service plan is provisioned. If your Conversation API App is created in a different region than the service plan is provisioned, the SMS channel will report errors.
 
 ##### Conversation API SMS Integration
 
