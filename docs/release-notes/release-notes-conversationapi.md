@@ -5,17 +5,19 @@ excerpt: >-
 ---
 
 ## 2021-06-09
+- Release of Telegram channel support
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
 - Support for vCard .vcf files on MMS channel in MediaMessage and CardMessage
 - Support for MM_STRICT_VALIDATION channel property to validate MMS media message contents against best practices
+- Support for contact based retention policy
+- New feature in Contact Management: enables fetching user profile from channels (this first release only supports Facebook Messenger)
 
 ## 2021-06-02
 - Release of Instagram channel support Beta
 
 ## 2021-05-26
 - Bugfix for supporting RCS CardMessage without media
-- New feature in Contact Management: enables fetching user profile from channels (this first release only supports Facebook Messenger)
 - Improvements in retention policy execution
 
 ## 2021-05-12
