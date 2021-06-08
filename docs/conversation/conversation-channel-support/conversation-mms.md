@@ -142,8 +142,9 @@ On MMS channel you have the possibility to send vCards (Virtual Contact Files) w
 }
 ```
 
-TODO
-![Media Message with vCard](images/channel-support/mms/MMS_media_message_vcf.png)
+The rendered message:
+
+![Media Message with vCard](images/channel-support/mms/MMS_media_message_vcard.png)
 
 ###### Choice Messages
 
