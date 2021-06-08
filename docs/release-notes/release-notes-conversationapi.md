@@ -5,7 +5,6 @@ excerpt: >-
 ---
 
 ## 2021-06-09
-- Release of Telegram channel support
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
 - Support for vCard .vcf files on MMS channel in MediaMessage and CardMessage
