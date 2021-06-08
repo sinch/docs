@@ -239,6 +239,8 @@ This object (namely ```referral_media```) may be included in the referral object
 
 #### Quick reply button reply message
 
+This is the reply from a template quick reply button message. Do not confuse with the reply from an interactive button message below.
+
 |Name       | Description                                                            | JSON Type |
 |-----------|----------------------------------------------------------------------- |-----------|
 |type       | Fixed value `button`.                                                  | String    |
@@ -296,6 +298,50 @@ This object (namely ```referral_media```) may be included in the referral object
       },
       "timestamp": "2020-05-02T17:43:32Z",
       "forwarded": true
+    }
+  ]
+}
+
+#### Interactive button reply message
+
+This is the reply from an interactive button message. Do not confuse with the reply from a template quick reply button message above.
+
+| Name      | Description                                                            | JSON Type |
+|-----------|----------------------------------------------------------------------- |-----------|
+| type      | Fixed value `interactive`.                                             | String    |
+| message   | An object containg the button reply                                    | String    |
+
+The button reply has the following fields:
+
+| Name      | Description                                                            | JSON Type |
+|-----------|----------------------------------------------------------------------- |-----------|
+| type      | Fixed value `button`.                                                  | String    |
+| id        | The ID of the button.                                                  | String    |
+| title     | The title of the button.                                               | String    |
+
+##### Sample inbound quick reply button reply message
+
+```json
+{
+  "type" : "whatsapp",
+  "notifications" : [
+    {
+      "from" : "0732001122",
+      "message_id" : "01DPNXZ0WCF9XD19MH84XD0P62",
+      "message" : {
+        "type" : "interactive",
+        "message" : {
+          "type" : "button",
+          "id" : "Reply button id 1",
+          "title" : "Reply button title 1"
+        }
+      },
+      "timestamp" : "2021-06-07T13:38:36Z",
+      "to" : "sinchbot",
+      "replying_to": {
+        "from": "447537817391",
+        "message_id": "01E7Q9AVTRB5A30JD7D9ZN0HTE"
+      }
     }
   ]
 }
