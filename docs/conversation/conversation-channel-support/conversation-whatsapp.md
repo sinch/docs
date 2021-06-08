@@ -16,9 +16,7 @@ The easiest way to configure your Conversation API **app** with WhatsApp support
 > 🚧 Warning
 >
 > Both Conversation API and Sinch WhatsApp API are regional.
-> If your WhatsApp bot is provisioned for US then your Conversation API App should be created in US region too.   
-> If your WhatsApp bot is provisioned for EU then your Conversation API App should be created in EU region too.
-> Otherwise with cross region setups WhatsApp channel will report errors.
+> Your Conversation API App must be created in the same region that your WhatsApp bot is provisioned. If your Conversation API App is created in a different region than the WhatsApp bot is provisioned, the WhatsApp channel will report errors.
 
 ##### Setup WhatsApp integration using the API
 
