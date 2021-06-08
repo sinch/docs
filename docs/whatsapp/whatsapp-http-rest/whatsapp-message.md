@@ -70,7 +70,7 @@ The types of messages that can be sent are one of the following:
 
 Accepted language codes can be found in the [introduction](doc:whatsapp-introduction#supported-language-codes). You can use [media provider](doc:whatsapp-media-provider) feature in template messages.
 
-> _ Note
+> 📘 Note
 > 
 > In the release on **22th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore.
 
