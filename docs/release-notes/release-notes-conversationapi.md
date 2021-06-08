@@ -36,3 +36,4 @@ excerpt: >-
  - Add validation against duplicated callback triggers
  - Handle ChoiceResponseMessages on Viber Bot that have no match in the choice tracking data
  - Fix prematurely closed HTTP connection exceptions for WhatsApp
+ 
