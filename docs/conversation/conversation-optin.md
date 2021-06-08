@@ -62,10 +62,17 @@ Below you can find an example for Opt-in Notification.
 
 ```json
 {
-  "contact_id": "{{CONTACT_ID}}",
-  "channel": "WHATSAPP",
-  "identity": "46712312312",
-  "status": "OPT_IN_SUCCEEDED"
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2021-06-08T07:54:03.165316Z",
+  "event_time": "2021-06-08T07:54:02.112Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "opt_out_notification": {
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "channel": "WHATSAPP",
+    "identity": "46712312312",
+    "status": "OPT_IN_SUCCEEDED",
+    "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+  }
 }
 ```
 
@@ -134,10 +141,17 @@ Below you can find an example for Opt-out Notification.
 
 ```json
 {
-  "contact_id": "{{CONTACT_ID}}",
-  "channel": "WHATSAPP",
-  "identity": "46712312312",
-  "status": "OPT_OUT_SUCCEEDED"
+  "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+  "accepted_time": "2021-06-08T07:54:03.165316Z",
+  "event_time": "2021-06-08T07:54:02.112Z",
+  "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+  "opt_out_notification": {
+    "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+    "channel": "WHATSAPP",
+    "identity": "46712312312",
+    "status": "OPT_OUT_SUCCEEDED",
+    "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+  }
 }
 ```
 
