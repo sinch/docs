@@ -116,7 +116,7 @@ The rendered message for images:
 ![Media Message](images/channel-support/viberbm/Viber_Media_Message_Image.jpg)
 
 The rendered message for documents:
-TODO
+
 ![Media Message](images/channel-support/viberbm/Viber_Media_Message_Document.jpg)
 
 ---
