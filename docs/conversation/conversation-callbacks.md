@@ -210,7 +210,7 @@ The table below shows the properties of the `channel_identity` field in Conversa
 
 ##### App-scoped Channel Identities
 
-Currently, Facebook Messenger and Viber Bot channels are using app-scoped channel identities
+Currently, Facebook Messenger, Viber Bot and Telegram Bot channels are using app-scoped channel identities
 which means contacts will have different channel identities for different apps. For example, Facebook Messenger uses PSIDs (Page-Scoped IDs) as channel identities. The app_id is pointing to the app linked to the Facebook page for which this PSID is issued.
 
 ### Inbound Event
