@@ -70,6 +70,10 @@ The types of messages that can be sent are one of the following:
 
 Accepted language codes can be found in the [introduction](doc:whatsapp-introduction#supported-language-codes). You can use [media provider](doc:whatsapp-media-provider) feature in template messages.
 
+> _ Note
+> 
+> In the release on **22th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore.
+
 JSON object parameters:
 
 | Name          | Description                                                           | JSON Type    | Default    | Constraints           | Required |
@@ -77,7 +81,6 @@ JSON object parameters:
 | type          | Constant value `template`.                                            | String       | N/A        | N/A                   | Yes      |
 | template_name | Name of the template.                                                 | String       | N/A        | N/A                   | Yes      |
 | language      | Language to send the template in.                                     | String       | `en`       | Language codes and locales (e.g `en`, `en_us`) | No       |
-| params        | Parameters to inject into the template. DEPRECATED, please use `body_params` and `header_params` instead. | String array | N/A        | This parameter can only be used for template messages with only a body of text. | No      |
 | header_params | Parameter to inject into the header of the template.                  | String array | N/A        | Can only used when there is a header of type text in the template. Up to 60 characters for all parameters and predefined template header text. | No      |
 | body_params   | Parameters to inject into the body of the template.                   | String array | N/A        | Up to 1024 characters for all parameters and predefined template text.        | No      |
 | media         | An object describing the document, image or video to include in the header of the template. The objects are the same as described under Document message, Image message and Video message below, except that the `caption` parameter is not allowed. Also see the note below. For a message without media, set the media type to `text`.       | String array | N/A        | N/A                   | Yes     |
