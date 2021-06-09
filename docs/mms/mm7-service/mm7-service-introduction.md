@@ -17,7 +17,7 @@ Your account manager will provide you with a VASID for each shortcode. If you us
 
 **Receiving Delivery Reports and MO's**
 
-Your Delivery Report URL and MO URL is configured by tour account manager. You can update it at any time. SOAP requests will be forwarded to your server every second and require an HTTP STATUS 200 and a proper MM7 SOAP Response or else we will retry.
+Your Delivery Report URL and MO URL is configured by your account manager. You can update it at any time. SOAP requests will be forwarded to your server every second and require an HTTP STATUS 200 and a proper MM7 SOAP Response or else we will retry.
 
 *We expect your server to accept our postback within 10 seconds by responding with a standard HTTP STATUS 200 header (success) and proper SOAP Response with matching MM7 TransactionID and Status 1000. If establishing a connection to your Postback URL takes longer than 10 seconds, the connection will time out and be dropped. If the connection times out or the HTTP code is not 200 we will retry the notification again five minutes later for a maximum of 5 retries per notification.*
 
