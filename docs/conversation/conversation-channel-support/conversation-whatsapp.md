@@ -13,6 +13,11 @@ Conversation API provides support for WhatsApp channel through Sinch WhatsApp Bu
 
 The easiest way to configure your Conversation API **app** with WhatsApp support is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview). Just select your **app** and click on "SET UP CHANNEL" beside the WhatsApp channel.
 
+> 🚧 Warning
+>
+> Both Conversation API and Sinch WhatsApp API are regional.
+> Your Conversation API App must be created in the same region that your WhatsApp bot is provisioned. If your Conversation API App is created in a different region than the WhatsApp bot is provisioned, the WhatsApp channel will report errors.
+
 ##### Setup WhatsApp integration using the API
 
 Sending a WhatsApp message requires a Conversation API **app** with `channel_credentials` for WHATSAPP channel. Example **app** is given in the following snippet:

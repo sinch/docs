@@ -74,12 +74,13 @@ using the management API.
 ##### Testing the integration
 
 Viber Bot API does not allow sending bot messages to Viber users which have not
-subscribed to the bot. For establishing subscription to a bot the Viber users must send a message to the bot.
-So to test your integration open the Viber app and search for the name of your Viber bot.
-Then send a message to it. You should receive two callbacks on the registered Conversation API webhooks -  
-one is `conversation_start_notification` and the other is the actual message send from the handset.
+subscribed to the bot. To send a message on Viber Bot channel you need the recipient's
+Viber user ID. You can get the ID when the user subscribes to your bot (you will get an
+[OPT_IN Notification](#opt-in)), or if you [receive a message](#receiving-messages)
+from the user. To test your integration open the Viber app and search for the name of your Viber bot and send a message to it. You should receive two callbacks on the registered Conversation API webhooks -  
+one is `conversation_start_notification` and the other is the actual message sent from the handset.
 Both callbacks contain a field `contact_id` which is the identifier of the
-contact which was automatically created when processing the inbound Viber message.
+contact that was automatically created when processing the inbound Viber message.
 This contact contains the channel identity for the Viber user and you can use this `contact_id` to reply to the Viber user.
 The Viber Bot channel identities are opaque identifiers which are scoped to an app.
 This means that the same Viber user will have two different channel identities for
@@ -544,3 +545,48 @@ Conversation API POST to `MESSAGE_DELIVERY` webhook:
   }
 }
 ```
+
+##### Receiving User Opt-In/Out
+
+Viber users can at any time opt-in or opt-out of receiving messages by given Viber Bot.
+
+###### Opt-In
+
+Conversation API POST to `OPT_IN` webhook:
+
+```json
+{
+   "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+   "accepted_time": "2021-06-08T07:54:03.165316Z",
+   "event_time": "2021-06-08T07:54:02.112Z",
+   "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+   "opt_out_notification": {
+      "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+      "channel": "VIBER",
+      "identity": "9KC0p+pi4zPGDO99ACDxoQ==",
+      "status": "OPT_IN_SUCCEEDED",
+      "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+   }
+}
+```
+
+###### Opt-Out
+
+Conversation API POST to `OPT_OUT` webhook:
+
+```json
+{
+   "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+   "accepted_time": "2021-06-08T07:54:03.165316Z",
+   "event_time": "2021-06-08T07:54:02.112Z",
+   "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+   "opt_out_notification": {
+      "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+      "channel": "VIBER",
+      "identity": "9KC0p+pi4zPGDO99ACDxoQ==",
+      "status": "OPT_OUT_SUCCEEDED",
+      "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+   }
+}
+```
+
