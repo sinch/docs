@@ -15,7 +15,7 @@ Before you start, you will need access to the following:
 * A registered Facebook App with basic settings configured
 * An Instagram Authentication Token
 
-To understand how to have all the above points, you can follow the [**Instagram Getting Startedguide**](doc:conversation-instagram-setup).
+To understand how to have all the above points, you can follow the [**Instagram Getting Started guide**](doc:conversation-instagram-setup).
 
 ### Setting up Instagram as a Conversation API Channel
 

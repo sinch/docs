@@ -1,11 +1,11 @@
 ---
-title: Setting up Instagram and Facebook to allow sending messages 
+title: Setting up Instagram and Facebook Platforms to allow sending messages 
 excerpt: >- 
-  In this guide, you will learn how to set up everything on Facebook and Instagram before sending messages 
+  In this guide, you will learn how to set up everything on Facebook and Instagram Platforms before sending/receiving messages using Sinch Conversation API. 
 hidden: false
 ---
 
-Before you start sending messages using the Instagram Messaging API, you will need access to the following:
+Before you start sending test messages to your Instagram business account, you will need access to the following:
 
 * [An Instagram business account that will receive and send messages](#create-an-instagram-business-account)
 * [A Facebook page connected with that account](#create-a-facebook-page)
@@ -15,22 +15,22 @@ Before you start sending messages using the Instagram Messaging API, you will ne
 
 > 🚧 Warning
 >
-> Instagram Messaging Product is only available as a Closed Beta integration. To add the Instagram Messaging product to your Facebook App, you should contact us.
+> Sinch Conversation API for Instagram messaging service is only available as a Closed Beta integration. To add the Instagram messaging service to your App, you should contact Sinch Account Manager.
 > 
-> For testing purposes, you can enable Instagram without asking permission by just creating or renaming an account with "test_" as a prefix to your username.
+> For testing purposes, you will need one test Instagram business account. You can create a new Instagram business account by creating a new or renaming an account with "test_" as a prefix to your username. For example:
 > 
-> ex: @test_Sinch
+> @test_Sinch
 > 
-> Test accounts will only receive Instagram webhooks from users that are added as a tester, developer or admin of the Facebook App linked with the Instagram Account.
+> Test Instagram business accounts will only receive Instagram messages from users that are added as a tester, developer or admin of the Facebook App linked with the Instagram Account.
 > 
 
 ### Create an Instagram Business Account
 
 > 📘 Note
 >
-> If you already have an Instagram business Account you can skip this step.
+> If you already have an Instagram business account you can skip this step.
 
-On Instagram, you can convert your personal profile to a business account or create a new one following this [guide](https://www.facebook.com/business/help/502981923235522).
+On Instagram platform, you can convert your personal profile to a business account or create a new one using this [guide](https://www.facebook.com/business/help/502981923235522).
 
 Only business accounts can send and receive messages using the Conversation API Instagram integration.
 
@@ -40,7 +40,7 @@ Only business accounts can send and receive messages using the Conversation API 
 >
 > If you already have a Facebook Page you can skip this step.
 
-To send and receive message using the Instagram Message API, you need a Facebook Page connected to your Instagram business account. You can learn how to create a Facebook page [here](https://www.facebook.com/business/help/104002523024878).
+To send and receive message using the Instagram messaging service, you need a Facebook Page connected to your Instagram business account. You can learn how to create a Facebook Page [here](https://www.facebook.com/business/help/104002523024878).
 
 ### Create a Facebook App
 
@@ -48,7 +48,7 @@ To send and receive message using the Instagram Message API, you need a Facebook
 >
 > If you already have a Facebook App you can skip this step.
 
-To set up the Instagram Messaging API, you need a Facebook App. If you need to create one, follow this [guide](https://developers.facebook.com/docs/development/create-an-app/).
+To set up the Instagram messaging service, you need a Facebook App. If you need to create one, follow this [guide](https://developers.facebook.com/docs/development/create-an-app/).
 
 ### Connect the Facebook Page to the Instagram Business Account
 
@@ -56,7 +56,7 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
    ![Facebook Page](../conversation-channel-support/images/channel-support/instagram/fb_page.png)
 
-2. Navigate to the Instagram section and Click the **Connect Account** button and login to your Instagram business account. 
+2. Navigate to the Instagram section and click the **Connect Account** button and login to your Instagram business account. 
 
    ![Facebook Page Settings Instagram](../conversation-channel-support/images/channel-support/instagram/fb_page_instagram.png)
 
@@ -66,7 +66,7 @@ To set up the Instagram Messaging API, you need a Facebook App. If you need to c
 
 ### Enable Connected Tools in Instagram Business Account
 
-In order to send messages using the Instagram API you must enable **Connected Tools** in the Instagram business account.
+In order to send messages using the Instagram messaging service you must enable **Connected Tools** in the Instagram business account.
 
 1. In the Instagram app Settings menu, navigate to the **Privacy** section.
 2. In the **Privacy** menu, navigate to the **Messages** section.
@@ -76,15 +76,15 @@ In order to send messages using the Instagram API you must enable **Connected To
 
 ### Generate the Instagram Access Token
 
-1. Log in to developers.facebook.com and select your App.
+1. Log in to the developers.facebook.com and select your App.
 
    ![Facebook App - Instagram Settings](../conversation-channel-support/images/channel-support/instagram/fb_gen_token.png)
 
-2. Click **Add or Remove Pages** and select your Instagram Business Account and your Facebook Page.
+2. Click **Add or Remove Pages** and select your Instagram business account and your Facebook Page.
 
    ![Facebook App - Select IG](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_add_ig.png)
 
-3. On this page, you can see all the Facebook Pages that are connected to your Facebook App.
+3. On this page, you can see all Facebook Pages that are connected to your Facebook App.
 
    ![Facebook App - Pages](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_pages.png)
 
