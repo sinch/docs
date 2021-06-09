@@ -72,7 +72,7 @@ Accepted language codes can be found in the [introduction](doc:whatsapp-introduc
 
 > 📘 Note
 > 
-> In the release on **22th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore.
+> In the release on **29th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore.
 
 JSON object parameters:
 

@@ -11,7 +11,7 @@ excerpt: >-
 
 **IMPORTANT NOTE:**
 
-Additionally in the next release on **22th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore. For more details please check our documentation [here](https://developers.sinch.com/docs/whatsapp-message#template-message)
+Additionally in the next release on **29th June 2021** we are going to deprecate use of the `ttl` parameter when sending template messages. Facebook is not going to support this feature anymore. For more details please check our documentation [here](https://developers.sinch.com/docs/whatsapp-message#template-message)
 
 ## 2021-05-25
 - Remove support for old, deprecated “params” parameter when sending template messages more informations [here](https://developers.sinch.com/docs/whatsapp-message#message-object-types).
