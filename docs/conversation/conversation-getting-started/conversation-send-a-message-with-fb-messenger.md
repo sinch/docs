@@ -107,7 +107,7 @@ The Messenger Webhook Settings configuration forwards message events posted on y
 Then, add the following **Callback URL** and **Verify Token**:
 
 ```Curl Callback URL:
-https://messenger-adapter.conversation-api.prod.sinch.com/adapter/v1/{{YOUR_SINCH_CONVERSATION_APP_ID}}/callback
+https://messenger-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{YOUR_SINCH_CONVERSATION_APP_ID}}/callback
 
 Verify Token: 5651d9fd-5c33-4d7a-aa37-5e3e151c2a92
 ```
