@@ -7,9 +7,6 @@ next:
   pages:
     - xml-service-appendix
 ---
-> **Note**    
->
-> MO MMS functionality is limited to Verizon, Sprint and T-Mobile initially. MO MMS for AT\&T will be supported shortly after commercial launch.
 
 The MMS MO postback API notifies you that a customer has replied to your message, or interacted to one of your keywords.
 
