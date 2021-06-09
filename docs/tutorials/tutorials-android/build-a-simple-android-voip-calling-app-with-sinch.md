@@ -28,15 +28,15 @@ Next, download the Sinch Android SDK from [here](https://sinch.readme.io/page/do
 
 1.  Copy the entire libs folder to your project’s app folder
 
-2.  Open build.gradle (Module) in allprojects \> repositories , add these lines
+2.  Open build.gradle (Project) in allprojects \> repositories , add these lines
 
     ```text
     flatDir {
-    dirs '/libs'
+    dirs 'libs'
     }
     ```
 
-3.  Finally, open build.gradle (Project) in dependencies and add this line: 
+3.  Finally, open build.gradle (Module) in dependencies and add this line: 
 
     ```
     compile(name:'sinch-android-rtc', version:'+', ext:'aar')
