@@ -17,7 +17,7 @@ Before you start sending test messages to your Instagram business account, you w
 >
 > Sinch Conversation API for Instagram messaging service is only available as a Closed Beta integration. To add the Instagram messaging service to your App, you should contact Sinch Account Manager.
 > 
-> For testing purposes, you will need one test Instagram business account. You can create a new Instagram business account by creating a new or renaming an account with "test_" as a prefix to your username. For example:
+> For testing purposes, you will need one test Instagram business account. You can create a new Instagram business account by creating a new or renaming an existing account with "test_" as a prefix to your username. For example:
 > 
 > @test_Sinch
 > 
