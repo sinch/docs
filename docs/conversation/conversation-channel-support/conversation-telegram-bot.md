@@ -12,11 +12,11 @@ You need a Telegram bot for integrating your Conversation API with Telegram. If 
 have one follow the steps below to create a new Telegram bot:
 
 1. You must have an active Telegram account which will be used to administer your new bot.
-   You already have an account if you have Telegram app installed and can sign in. Otherwise download the Telegram app
+   You already have an account if you have Telegram app installed and can sign in. Otherwise, download the Telegram app
    from the app store of your mobile device.
 
-2. Find BotFather in Teegram app, type `/start` to get the list of all commands. type `/newbot` to start creating your 
-   bot by following the instructions. Once your bot is created its token will appear. Please keep this token.
+2. Find BotFather in Telegram app, type `/start` to get the list of all commands. type `/newbot` to start creating your 
+   bot by following the instructions. Once your bot is created, its token will appear. Please keep this token.
 
 ![BotFather](images/channel-support/telegram/setup1.jpg)    ![BotFather](images/channel-support/telegram/setup2.jpg)
 
@@ -115,11 +115,11 @@ or `Restart Bot` to subscribe to bot. You will get 2 callbacks on your Conversat
 One is `optin_in_notification` and the other is the actual message sent from the handset.
 
 Both callbacks contain a field `contact_id` which is the identifier of the contact which was automatically created when 
-processing the inbound Telegram message. This contact contains the channel identity for the Telegram user and you can 
+processing the inbound Telegram message. This contact contains the channel identity for the Telegram user, and you can 
 use this `contact_id` to reach the Telegram user.
 
 The Telegram Bot channel identities are opaque identifiers which are scoped to an app. This means that the same Telegram
-user will have two different channel identities for two different Conversation API **apps**. Therefore a Conversation 
+user will have two different channel identities for two different Conversation API **apps**. Therefore, a Conversation 
 API contact can have multiple Telegram Bot identities - the `/messages:send` endpoint automatically picks the correct
 identity which corresponds to the requesting app.
 
@@ -178,7 +178,7 @@ The rendered message:
 
 ![Text Message](images/channel-support/telegram/multilingual.jpg)
 
-###### Media Messages
+###### Picture Messages
 
 ---
 
@@ -197,6 +197,26 @@ Conversation API POST `messages:send`
 The rendered message:
 
 ![Media Message](images/channel-support/telegram/picture.jpg)
+
+###### Video Messages
+
+---
+
+Conversation API POST `messages:send`
+
+```json
+{
+  "message": {
+    "media_message": {
+      "url": "https://url.to/your/video.mp4"
+    }
+  }
+}
+```
+
+The rendered message:
+
+![Media Message](images/channel-support/telegram/video.jpg)
 
 ###### Choice Messages
 
@@ -371,7 +391,7 @@ Example media message:
 
 ##### Receiving Status
 
-Telegram Bot does not provide delivery status, the positive status of a messages delivery to Telegran channel will be 
+Telegram Bot does not provide delivery status, the positive status of a message delivery to Telegram channel will be 
 `QUEUED_ON_CHANNEL`. 
 
 ```json
@@ -430,7 +450,7 @@ If the status is `FAILED` the reason will include more information about the fai
 ##### Unsubscribe Bot
 
 It is possible for users to block a Telegram Bot by using "Stop Bot" (or "Delete Chat" depending on iOS or Android) from
-their Telegeam App. When this happens, an opt-out notification will be sent to App webhook calback so customers can take 
+their Telegram App. When this happens, an opt-out notification will be sent to App webhook callback so customers can take 
 action such as removing contact_id from their user list.
 
 ```json
