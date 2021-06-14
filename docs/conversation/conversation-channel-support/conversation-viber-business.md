@@ -93,7 +93,9 @@ The rendered message:
 
 ###### Media Messages
 
-VIBERBM supports Image messages natively. Supported image types are JPG, JPEG and PNG.
+VIBERBM supports media messages natively.
+Supported image types are JPG, JPEG and PNG.
+Supported document types are: doc, docx, rtf, dot, dotx, odt, odf, fodt, txt, info, pdf, xps, pdax, eps, xls, xlsx, ods, fods, csv, xlsm, xltx. 
 
 ---
 
@@ -109,9 +111,13 @@ Conversation API POST `messages:send`
 }
 ```
 
-The rendered message:
+The rendered message for images:
 
 ![Media Message](images/channel-support/viberbm/Viber_Media_Message_Image.jpg)
+
+The rendered message for documents:
+
+![Media Message](images/channel-support/viberbm/Viber_Media_Message_Document.jpg)
 
 ---
 
@@ -483,30 +489,41 @@ Viber users can at any time opt-in or opt-out of receiving messages by given VIB
 
 ###### Opt-In
 
-Conversation API POST to `UNSUPPORTED` webhook:
+Conversation API POST to `OPT_IN` webhook:
 
 ```json
 {
-  "app_id": "01E3S8B6YCMRNR0GGM94H80ACX",
-  "accepted_time": "2020-04-24T08:06:04.078344Z",
-  "unsupported_callback": {
-    "channel": "VIBERBM",
-    "payload": "{\"message_token\":\"5434382642129923939\",\"message_status\":4,\"message_time\":1587715563958,\"phone_number\":\"46702470247\",\"service_id\":111}"
-  }
+   "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+   "accepted_time": "2021-06-08T07:54:03.165316Z",
+   "event_time": "2021-06-08T07:54:02.112Z",
+   "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+   "opt_out_notification": {
+      "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+      "channel": "VIBERBM",
+      "identity": "123456789",
+      "status": "OPT_IN_SUCCEEDED",
+      "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+   }
 }
 ```
 
 ###### Opt-Out
 
-Conversation API POST to `UNSUPPORTED` webhook:
+Conversation API POST to `OPT_OUT` webhook:
 
 ```json
 {
-  "app_id": "01E3S8B6YCMRNR0GGM94H80ACX",
-  "accepted_time": "2020-04-24T08:06:57.176156Z",
-  "unsupported_callback": {
-    "channel": "VIBERBM",
-    "payload": "{\"message_token\":\"5434382864469978544\",\"message_status\":5,\"message_time\":1587715616968,\"phone_number\":\"46702470247\",\"service_id\":111}"
-  }
+   "app_id": "01EB37HMH1M6SV18ASNS3G135H",
+   "accepted_time": "2021-06-08T07:54:03.165316Z",
+   "event_time": "2021-06-08T07:54:02.112Z",
+   "project_id": "c36f3d3d-1513-4edd-ae42-11995557ff61",
+   "opt_out_notification": {
+      "contact_id": "01EKA07N79THJ20WSN6AS30TMW",
+      "channel": "VIBERBM",
+      "identity": "123456789",
+      "status": "OPT_OUT_SUCCEEDED",
+      "request_id": "01F7N9TEH11X7B15XQ6VBR04G7"
+   }
 }
 ```
+

@@ -11,6 +11,11 @@ Conversation API provides support for RCS channel through Sinch RCS API.
 To start using RCS through Conversation API you need to first have a Sinch RCS bot -
 [read more](https://developers.sinch.com/docs/rcs-introduction).
 
+> 🚧 Warning
+>
+> Both Conversation API and Sinch RCS API are regional.
+> Your Conversation API App must be created in the same region that your RCS bot is provisioned. If your Conversation API App is created in a different region than the RCS bot is provisioned, the RCS channel will report errors and you will not receive your delivery reports.
+
 #### Channel Configuration
 
 ##### Sending Config

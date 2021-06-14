@@ -30,7 +30,7 @@ excerpt: >-
 
 [Sinch Global Carrier Mapping Registry](downloads\Sinch_GCMR_20210221.xlsx) - Sinch GCMR for U.S. and Canada February 21, 2021.
 
-[Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.pdf) - Clients that plan to run a high volume campaign must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
+[Sinch Long Number and Toll-Free Verified Sender Request Form](downloads\Sinch_LN_TFN_Verified_Sender_Request_Form_V2_5.docx) - Clients that plan to run a high volume campaign must seek pre-approval in advance to prevent traffic blocking and to ensure the max TPS is made available to their number(s).
 
 [Sinch Letter of Authorization for Text Enabling](downloads\Sinch_LOA_Text_Enabling.pdf) - This LOA template is for text enabling.
 
