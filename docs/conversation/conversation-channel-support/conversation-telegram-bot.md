@@ -7,6 +7,12 @@ hidden: false
 
 ### Conversation API Telegram Bot Support
 
+> **_Note_**
+>
+> Telegram Bot channel is currently open to selected customers on [Sinch Portal](https://dashboard.sinch.com/convapi/overview),
+>  - to request access, send email to [telegram@sinch.com](mailto:telegram@sinch.com)
+>  - for beta support, send to [ConvAPI_Telegram_beta@sinch.com](mailto:ConvAPI_Telegram_beta@sinch.com)
+
 Telegram Bot channel enables communication with users of Telegram ecosystem through Conversation API.
 You need a Telegram bot for integrating your Conversation API with Telegram. If you do not already
 have one follow the steps below to create a new Telegram bot:
