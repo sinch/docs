@@ -43,7 +43,7 @@ Alternatively you can use the management API to configure your **app** with `cha
 ```
 
 You need to replace:
-* `{{MMS_ACCOUNT_ID}}` with your MMS Account ID
+* `{{MMS_ACCOUNT_ID}}` with your MMS Account ID, or if you're using a shared shortcode your account manager will provide you a Service ID (also called VASID) to fill this field
 * `{{MMS_API_KEY}}` with your MMS API Key
 * `{{BASIC_AUTH_USERNAME}}` with your Basic Authentication username for the MMS API
 * `{{BASIC_AUTH_PASSWORD}}` with your Basic Authentication password for the MMS API
@@ -356,6 +356,8 @@ MMS supports contact initiated messages like Text, Media, MediaCard, and Choice 
 
 If the contact message had media attachments the media content is hosted by Sinch and you get a publicly accessible URL pointing to it.
 
+---
+
 Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
 
 ```json
@@ -378,6 +380,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
   }
 }
 ```
+
+---
+
+On MMS it is possible that your contact sends you multiple media attachments. In this case Conversation API will forward these one by one to your webhook, for example if the contact sent you 3 images you will get 3 separate media messages on your webhook.
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 
@@ -402,6 +408,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 }
 ```
 
+---
+
+On MMS it is possible that your contact sends you multiple media attachments with text included. In this case Conversation API will forward these one by one to your webhook, for example if the contact sent you 3 images with a text you will get 3 separate media card messages, with 3 different media urls and the came caption on your webhook.
+
 Conversation API POST to `MESSAGE_INBOUND` webhook for media card message:
 
 ```json
@@ -425,6 +435,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for media card message:
  }
 }
 ```
+
+---
+
+A choice response message means that your contact responded with a suggested text reply from your previous message. Since a plaintext response won't always be routed as MMS, you might get this choice response on SMS channel (see description of this scenario at: [Receiving Messages](#receiving-messages)).
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
 
