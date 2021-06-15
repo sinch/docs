@@ -4,6 +4,11 @@ excerpt: >-
   See how the Sinch Conversation API is evolving and find out about new features and bug fixes.
 ---
 
+## 2021-06-23
+- Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
+- New rich message transcoding on WhatsApp channel for Card and Choice Messages
+- Handling of Suspended state WhatsApp for bots
+
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
