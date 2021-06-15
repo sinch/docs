@@ -383,7 +383,7 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
 
 ---
 
-On MMS it is possible that your contact sends you multiple media attachments. In this case Conversation API will forward these one by one to your webhook, for example if the contact sent you 3 images you will get 3 separate media messages on your webhook.
+On MMS it is possible that your contact sends you multiple media attachments. In this case Conversation API will forward these one by one to your webhook. For example, if the contact sends you 3 images you will get 3 separate media messages on your webhook.
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 
@@ -410,7 +410,7 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 
 ---
 
-On MMS it is possible that your contact sends you multiple media attachments with text included. In this case Conversation API will forward these one by one to your webhook, for example if the contact sent you 3 images with a text you will get 3 separate media card messages, with 3 different media urls and the came caption on your webhook.
+On MMS it is possible that your contact sends you multiple media attachments with text included. In this case Conversation API will forward these one by one to your webhook. For example, if the contact sends you 3 images with a text you will get 3 separate media card messages on your webhook, with 3 different media urls and the same caption for each.
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for media card message:
 

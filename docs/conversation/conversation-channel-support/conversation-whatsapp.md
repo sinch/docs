@@ -392,7 +392,7 @@ The rendered message:
 
 ###### Choice Messages
 
-WhatsApp channel provides a limited native support for **Choice Messages**. If you only include text choices in your Choice Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as plaintext:
+WhatsApp channel provides a limited native support for **Choice Messages**. If you only include text choices in your Choice Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as plaintext.
 
 ---
 
@@ -433,6 +433,8 @@ The rendered message:
 
 ![Choice Message](images/channel-support/whatsapp/WhatsApp_Choice_Message.jpg)
 
+---
+
 Conversation API POST `messages:send` for Choice Message that only has text choices:
 
 ```json
@@ -470,7 +472,7 @@ The rendered message:
 
 ###### Card Messages
 
-WhatsApp channel provides a limited native support for **Card Messages**. If you only include text choices in your Card Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as media message with plaintext caption:
+WhatsApp channel provides a limited native support for **Card Messages**. If you only include text choices in your Card Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as media message, with plaintext caption.
 
 ---
 
@@ -678,7 +680,7 @@ The rendered message:
 
 ###### Explicit Channel Messages
 
-Conversation API provides a way to use channel specific message formats. This means that if you know the underlying channel's API (in this case thw WhatsApp Business API), and you want to use a feature that is not supported by Conversation API message types, you can pass the JSON format of the WhatsApp Business API to Conversation API too.
+Conversation API provides a way to use channel specific message formats. This means that if you know the underlying channel's API (in this case the WhatsApp Business API), and you want to use a feature that is not supported by Conversation API message types, you can pass the JSON format of the WhatsApp Business API to Conversation API too.
 
 As an example, you can try the so-called [Interactive List](https://developers.facebook.com/docs/whatsapp/guides/interactive-messages) message from the WhatsApp Business API.
 
