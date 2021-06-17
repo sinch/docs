@@ -47,7 +47,7 @@ Example of the channel configuration is given in the snippet below:
 
 > 📘 Note
 >
-> For the use of Instagram messaging service, you can configure Callback Validation between Instagram and Conversation API so that we can make sure, that the callbacks are valid.
+> For the use of Instagram messaging service, you can configure Callback Validation between Instagram Platform and Conversation API so that we can make sure, that the callbacks are valid.
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
@@ -56,7 +56,7 @@ Example of the channel configuration is given in the snippet below:
 
 ### Setting up Instagram to forward callbacks to Conversation API
 
-Once you have created a Conversation API app, go back to **Instagram setup page**, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
+Once you have created a Conversation API app, go back to **Instagram setup page** on the [Facebook Developer Page][http://developers.facebook.com/] , find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
 
 **Callback URL:** `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
 
@@ -64,7 +64,7 @@ Once you have created a Conversation API app, go back to **Instagram setup page*
 
 After clicking **Verify and Save**, if no errors occurred, a table in the **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
 
-This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you can send messages anyone that has been granted either the Administrator, Developer or Tester role for your app.
+This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you as end user can send messages to anyone that has been granted either the Administrator, Developer or Tester role for your app.
 
 ### Setting up Conversation API to forward callbacks to your service
 
@@ -89,7 +89,7 @@ Example snippet for creating webhook programmatically:
 }
 ```
 
-Finally, visit your Instagram Profile as a user with proper role granted (preferably the one who created the page) and try sending a message to it - remember that a user has to start the conversation. If everything works fine, you should receive the message you've just sent:
+Finally, visit your Instagram Profile with an account with proper role granted (preferably the one who created the page or with Admin, Tester or Developer role) and try sending a message to it - remember that a user has to start the conversation. If everything works fine, you should receive the message you've just sent:
 
 ```json
 {
@@ -337,7 +337,7 @@ The rendered message:
 
 ### Receiving Messages
 
-Instagram channel supports various kinds of contact messages - text, media, quick replies, icebreakers, story replies, story mention and media share. All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook. Some specific types of media can also be delivered with POST to `UNSUPPORTED` webhook due to Instagram lack of support in Business Accounts, are them: IGTV/Reels share, media share from private accounts, voice messages and GIPHYs.
+Instagram channel supports various kinds of contact messages - text, media, quick replies, icebreakers, story replies, story mention and media share. All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook. Some specific types of media can also be delivered with POST to `UNSUPPORTED` webhook due to Instagram's lack of support in Business Accounts, are them: Instagram TV/Reels share, media share from private accounts, voice messages and GIPHYs.
 
 ---
 
