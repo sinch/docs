@@ -1,29 +1,35 @@
 ---
 title: Instagram 
 excerpt: >-
-    Sinch Conversation API Instagram specific configurations and message transcoding. 
+    Sinch Conversation API Instagram specific configurations and message transcoding are described below. 
 hidden: false
 ---
 
-Conversation API supports Instagram and allows sending messages from Instagram Accounts. The page cannot initiate the conversation; it must be started by a contact. To configure an Instagram Account and connect it to Conversation API  **app**, follow the instructions below:
+Using Conversation API, clients are able to integrate with Instagram platform and able to support customer care
+functionality. Instagram requires that the end-user (aka recipient, a contact) must initiate the request first and then
+the client can send a reply to the contact. To configure an Instagram Account and connect it to Conversation API  **app**, 
+follow the instructions below:
 
 Before you start, you will need access to the following:
 
 * An Instagram business account, that will receive and send messages
 * A Facebook page connected with that account
 * A Facebook developer account that can perform tasks on that page
-* A registered Facebook App with basic settings configured
+* A registered Facebook app with basic settings configured
 * An Instagram Authentication Token
 
 To understand how to have all the above points, you can follow the [**Instagram Getting Started guide**](doc:conversation-instagram-setup).
 
 ### Setting up Instagram as a Conversation API Channel
 
-After you followed the above guide, you should have the Instagram Access Token in hand, then you need to configure the Instagram integration for your Conversation API **app**. The easiest way to do that is to use [Sinch Portal](https://dashboard.sinch.com/convapi/overview). Just select your **app** and click on "SET UP CHANNEL" beside the Instagram channel.
+After you have followed the above mentioned guide, you should have the Instagram Access Token in hand, and then you need
+to configure the Instagram integration for your Conversation API **app**. The easiest way to do that is to use
+[Sinch Portal](https://dashboard.sinch.com/convapi/overview). Login to the portal and then try to create a new **app** or
+update an existing **app** and click on "SET UP CHANNEL" beside the Instagram channel.
 
 Alternatively you can use the management API and specify the `channel_credentials` for Instagram when creating or updating your app. 
 
-Example channel configuration is given in the snippet below:
+Example of the channel configuration is given in the snippet below:
 
 ```json
 {
@@ -41,7 +47,7 @@ Example channel configuration is given in the snippet below:
 
 > 📘 Note
 >
-> For Instagram, you can configure Callback Validation between Instagram and Conversation API so that we can make sure, that the callbacks are valid.
+> For the use of Instagram messaging service, you can configure Callback Validation between Instagram and Conversation API so that we can make sure, that the callbacks are valid.
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
@@ -50,13 +56,13 @@ Example channel configuration is given in the snippet below:
 
 ### Setting up Instagram to forward callbacks to Conversation API
 
-Once you have created a Conversation API App, go back to **Instagram setup page**, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback url**):
+Once you have created a Conversation API app, go back to **Instagram setup page**, find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
 
 **Callback URL:** `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
 
 **Verify Token:** `c5a8751a-e52b-4d39-a1f3-456d4a03b762`
 
-After clicking **Verify and Save**, if no errors occurred, a table in **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
+After clicking **Verify and Save**, if no errors occurred, a table in the **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
 
 This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you can send messages anyone that has been granted either the Administrator, Developer or Tester role for your app.
 
@@ -140,7 +146,7 @@ The channel is now configured.
 
 ### Rich Message Support
 
-This section provides detailed information about which rich messages are natively supported by Instagram channel and
+This section provides detailed information about what type of rich messages are natively supported by Instagram channel and
 what transcoding is applied in other cases.
 
 #### Sending Messages
@@ -149,7 +155,7 @@ Here we give a mapping between Conversation API generic message format and the I
 
 Please note that for the sake of brevity the JSON snippets do not include the **recipient** and **app_id** which are both required when sending a message.
 
-If you want to send messages outside the standard 24h response window you can do that by adding Instagram channel specific properties in your message request.
+If you want to send messages outside the standard 24 hours response window you can do that by adding Instagram channel specific properties in your message request.
 
 For more info check out [**Channel Specific Properties**](doc:conversation-channel-properties).
 
@@ -195,7 +201,7 @@ The rendered message:
 
 > 📘 Note
 >
-> Until Instagram enables sending others types of media than Images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
+> Until Instagram enables sending other types of media other than images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
 
 ##### Choice Messages
 
@@ -239,7 +245,7 @@ The web client rendered message:
 
 > 📘 Note
 >
-> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on web client, instead of that Users will see just the text message, without the choice buttons.
+> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on a web client. Instead, Users will see just the text message without the choice buttons.
 
 ##### Card Messages
 
@@ -327,7 +333,7 @@ The rendered message:
 
 > 📘 Note
 > 
-> Location messages are not supported natively by Instagram, so, we will transcode the "Location Message" as a "Text Message" that contains a URL that points to the Google Maps app.
+> Location messages are not supported natively by Instagram, so, we will transcode the "Location Message" as a "Text Message" which contains a URL that points to the Google Maps app.
 
 ### Receiving Messages
 
@@ -366,7 +372,7 @@ Example text:
 
 ---
 
-Example media:
+Example Media:
 
 ```json
 {
@@ -398,7 +404,7 @@ Example media:
 
 ---
 
-Example quick reply:
+Example Quick Reply:
 
 ```json
 {
