@@ -90,6 +90,26 @@ Example for adding the channel specific property "INSTAGRAM_MESSAGE_TAG" on Inst
 }
 ```
 
+Example for adding the channel specific property "TELEGRAM_DISABLE_LINK_PREVIEW" on Telegram channel:
+
+```json
+{
+  "app_id": "{{APP_ID}}",
+  "recipient": {
+    "contact_id": "{{CONTACT_ID}}"
+  },
+  "message": {
+    "text_message": {
+      "text": "Text message from Sinch Conversation API."
+    }
+  },
+  "channel_priority_order": ["TELEGRAM"],
+  "channel_properties": {
+    "TELEGRAM_DISABLE_LINK_PREVIEW": "TRUE"
+  }
+}
+```
+
 The names of available channel specific properties indicate which channel they can be used for.
 
 Possible values for property names and values:
@@ -106,3 +126,4 @@ Possible values for property names and values:
 | `SMS_SENDER`                  | Optional, the sender to use when sending a message on SMS channel. Can be a valid MSISDN, short code or alphanumeric sender. If the sender is rejected by the underlying SMS channel you get the error information in the delivery report                                                                                                                                                                                                     |
 | `INSTAGRAM_MESSAGE_TAG`       | Required on Instagram when having human agent support. All messages sent by a human agent outside of the 24hr must leverage the HUMAN_AGENT tag. HUMAN_AGENT tag allows messages to be sent within 7 days after the last user’s message.                                                                                                                                                                                                      |
 | `MMS_STRICT_VALIDATION`       | Whether or not you want the media included in your message to be checked against [Sinch MMS channel best practices](https://developers.sinch.com/docs/mms-bestpractices). If set to true, your message will be rejected if it doesn't conform to the listed recommendations, otherwise no validation will be performed. The default is false.                                                                                                    |
+| `TELEGRAM_DISABLE_LINK_PREVIEW`| When message content contains a URL, by default Telegram will analyze the URL and get a preview for it. Use this parameter to disable link preview.                                                                                                                                                                                                                                                                                          |
