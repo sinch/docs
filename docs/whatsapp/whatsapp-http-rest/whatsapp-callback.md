@@ -302,6 +302,35 @@ This is the reply from a template quick reply button message. Do not confuse wit
   ]
 }
 
+##### Sample inbound frequently forwarded message
+
+```json
+{
+  "type":"whatsapp",
+  "contacts":[
+    {
+      "profile":{
+        "name":"John Smith"
+      },
+      "wa_id":"0732001122"
+    }
+  ],
+  "notifications":[
+    {
+      "from":"0732001122",
+      "to":"sinchbot",
+      "message_id":"01DPNXZ0WCF9XD19MH84XD0P62",
+      "message":{
+        "type":"text",
+        "body":"Hello bot I want to know something!"
+      },
+      "timestamp": "2020-05-03T07:28:54Z",
+      "frequently_forwarded": true
+    }
+  ]
+}
+```
+
 #### Interactive button reply message
 
 This is the reply from an interactive button message. Do not confuse with the reply from a template quick reply button message above.
@@ -319,7 +348,7 @@ The button reply has the following fields:
 | id        | The ID of the button.                                                  | String    |
 | title     | The title of the button.                                               | String    |
 
-##### Sample inbound quick reply button reply message
+##### Sample inbound button reply message
 
 ```json
 {
@@ -347,30 +376,48 @@ The button reply has the following fields:
 }
 ```
 
-##### Sample inbound frequently forwarded message
+#### Interactive list reply message
+
+This is the reply from an interactive list message.
+
+| Name      | Description                                                            | JSON Type |
+|-----------|----------------------------------------------------------------------- |-----------|
+| type      | Fixed value `interactive`.                                             | String    |
+| message   | An object containg the list reply                                      | String    |
+
+The button reply has the following fields:
+
+| Name        | Description                                                              | JSON Type |
+|-------------|------------------------------------------------------------------------- |-----------|
+| type        | Fixed value `list`.                                                      | String    |
+| id          | The ID of the button.                                                    | String    |
+| title       | The title of the button.                                                 | String    |
+| description | The description of the button, if included when sending the list message | String    |
+
+##### Sample inbound list reply message
 
 ```json
 {
-  "type":"whatsapp",
-  "contacts":[
+  "type" : "whatsapp",
+  "notifications" : [
     {
-      "profile":{
-        "name":"John Smith"
+      "from" : "0732001122",
+      "message_id" : "01DPNXZ0WCF9XD19MH84XD0P62",
+      "message" : {
+        "type" : "interactive",
+        "message" : {
+          "type" : "list",
+          "id" : "ID 1",
+          "title" : "Title",
+          "description" : "Description",
+        }
       },
-      "wa_id":"0732001122"
-    }
-  ],
-  "notifications":[
-    {
-      "from":"0732001122",
-      "to":"sinchbot",
-      "message_id":"01DPNXZ0WCF9XD19MH84XD0P62",
-      "message":{
-        "type":"text",
-        "body":"Hello bot I want to know something!"
-      },
-      "timestamp": "2020-05-03T07:28:54Z",
-      "frequently_forwarded": true
+      "timestamp" : "2021-06-07T13:38:36Z",
+      "to" : "sinchbot",
+      "replying_to": {
+        "from": "447537817391",
+        "message_id": "01E7Q9AVTRB5A30JD7D9ZN0HTE"
+      }
     }
   ]
 }
