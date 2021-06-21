@@ -16,7 +16,7 @@ Before you start, you will need access to the following:
 * A Facebook page connected with that account
 * A Facebook developer account that can perform tasks on that page
 * A registered Facebook app with basic settings configured
-* An Instagram Authentication Token
+* An Instagram Authentication Token and App Secret
 
 To understand how to have all the above points, you can follow the [**Instagram Getting Started guide**](doc:conversation-instagram-setup).
 
@@ -51,7 +51,7 @@ Example of the channel configuration is given in the snippet below:
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
-> The secret for this validation in the case of Instagram is your App Secret from your Facebook App.
+> The secret for this validation in the case of Instagram is your App Secret from your Facebook App Page (see [Instagram Getting Started](doc:conversation-instagram-setup)).
 
 
 ### Setting up Instagram to forward callbacks to Conversation API
