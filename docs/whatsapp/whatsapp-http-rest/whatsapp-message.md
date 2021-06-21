@@ -690,45 +690,6 @@ Each row object has the following field:
 
 ```json
 {
-  "to" : [
-    "46732001122"
-  ],
-  "message" : {
-    "type" : "interactive",
-    "message" : {
-      "type" : "button",
-      "header" : {
-        "type" : "video",
-        "url" : "https://example.com/video.mp4"
-      },
-      "body" : {
-        "text" : "Body text"
-      },
-      "footer" : {
-        "text" : "Footer text"
-      },
-      "action" : {
-        "buttons" : [ {
-          "type" : "reply",
-          "title" : "Title 1",
-          "id" : "Id 1"
-        }, {
-          "type" : "reply",
-          "title" : "Title 2",
-          "id" : "Id 2"
-        }, {
-          "type" : "reply",
-          "title" : "Title 3",
-          "id" : "Id 3"
-        } ]
-      }
-    }
-  }
-}
-```
-
-```json
-{
   "to": [
     "46732001122"
   ],
