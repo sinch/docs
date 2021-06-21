@@ -51,7 +51,7 @@ Example of the channel configuration is given in the snippet below:
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
-> The secret for this validation in the case of Instagram is your App Secret from your Facebook App Page (see [Instagram Getting Started](doc:conversation-instagram-setup)).
+> The secret for this validation in the case of Instagram is your App Secret from your Facebook App Page (see [**Instagram Getting Started guide**](doc:conversation-instagram-setup)).
 
 
 ### Setting up Instagram to forward callbacks to Conversation API
