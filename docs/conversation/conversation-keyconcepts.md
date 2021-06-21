@@ -88,7 +88,7 @@ The **contact** entity is a collection entity that groups together underlying co
 
 A **channel recipient identity** is an identifier for the **contact** for a specific channel. E.g. an international phone number is used as identifier for _SMS_ and _RCS_ while a PSID (Page-Scoped ID) is used as the identifier for _Facebook Messenger_.
 
-Some channels use app-scoped channel identity. Currently, Facebook Messenger, Viber Bot and Telegram Bot are using app-scoped channel identities, which means contacts will have different channel identities for different **apps**.
+Some channels use app-scoped channel identity. Currently, Facebook Messenger and Viber Bot are using app-scoped channel identities, which means contacts will have different channel identities for different **apps**.
 
 For Facebook Messenger this means that the contact channel identity is associated with the **app** linked to the Facebook page for which this PSID is issued. A **channel recipient identity** has the following configurable properties:
 
