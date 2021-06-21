@@ -81,14 +81,7 @@ To initiate a callout verification, check the [iOS documentation](doc:verificati
 
 ## Data verification
 
-With the data verification method, a user's phone number is verified by mobile carrier's infrastructure itself. This method requires cellular data usage on end-user's device and is currently limited in its coverage. Currently following destinations are supported:
-
-| Country | Networks |
-| ------- | -------- |
-| Malesia | TBA      |
-| TBA     | TBA      |
-| ...     | ...      |
-| TBA     | TBA      |
+With the data verification method, a user's phone number is verified by mobile carrier's infrastructure itself. This method requires cellular data usage on end-user's device and is currently limited in its coverage. 
 
 ## API Quick Reference
 
