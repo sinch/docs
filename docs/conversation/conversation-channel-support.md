@@ -19,6 +19,6 @@ Follow the links below to learn more.
 - <img src="https://files.readme.io/8d98aa3-Viber-02.svg" width="20" height="20" /> [Viber Business Messages](https://developers.sinch.com/docs/conversation-viber-business)
 - <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> [MMS](https://developers.sinch.com/docs/conversation-mms)
 - <img src="https://cdn.worldvectorlogo.com/logos/instagram-2-1.svg" width="20" height="20" /> [Instagram (Closed Beta)](https://developers.sinch.com/docs/conversation-instagram)
-- <img src="https://cdn.worldvectorlogo.com/logos/telegram-1.svg" width="20" height="20" /> [Telegram (Closed Beta)](https://developers.sinch.com/docs/conversation-telegram)
+- <img src="https://cdn.worldvectorlogo.com/logos/telegram-1.svg" width="20" height="20" /> [Telegram (Preparing for Closed Beta)](https://developers.sinch.com/docs/conversation-telegram)
 
 To learn more about the channel specific features that are offered by the Conversation API, visit [Channel Specific Properties](https://developers.sinch.com/docs/conversation-channel-properties).
