@@ -7,7 +7,7 @@ hidden: false
 
 ### Conversation API Telegram Bot Support
 
-> **_Note_**
+> 📘 Note
 >
 > Telegram Bot channel is currently open to selected customers on [Sinch Portal](https://dashboard.sinch.com/convapi/overview),
 >  - to request access, send email to [telegram@sinch.com](mailto:telegram@sinch.com)
@@ -24,7 +24,7 @@ have one follow the steps below to create a new Telegram bot:
 2. Find BotFather in Telegram app, type `/start` to get the list of all commands. type `/newbot` to start creating your 
    bot by following the instructions. Once your bot is created, its token will appear. Please keep this token.
 
-![BotFather](images/channel-support/telegram/setup1.jpg)    ![BotFather](images/channel-support/telegram/setup2.jpg)
+![BotFather](images/channel-support/telegram/setup.jpg)
 
 #### Channel Configuration
 
@@ -124,10 +124,8 @@ Both callbacks contain a field `contact_id` which is the identifier of the conta
 processing the inbound Telegram message. This contact contains the channel identity for the Telegram user, and you can 
 use this `contact_id` to reach the Telegram user.
 
-The Telegram Bot channel identities are opaque identifiers which are scoped to an app. This means that the same Telegram
-user will have two different channel identities for two different Conversation API **apps**. Therefore, a Conversation 
-API contact can have multiple Telegram Bot identities - the `/messages:send` endpoint automatically picks the correct
-identity which corresponds to the requesting app.
+The Telegram Bot channel identities are identifiers which are scoped to all apps. This means that the same Telegram
+user will have the same channel identities for two different Conversation API **apps**.
 
 #### Rich Message Support
 
