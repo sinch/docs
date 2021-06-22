@@ -28,8 +28,12 @@ Call Detail Records (CDRs) can be downloaded from the Sinch portal. CDRs are in 
             </tr>
             <tr class="odd">
                 <td>Method</td>
-                <td>string</td>
-                <td><p>Verification method. Can be flashCall, SMS or callout</p></td>
+                <td><blockquote>
+                    <p>string</p>
+                </blockquote></td>
+                <td><blockquote>
+                    <p>Verification method. Can be flashCall, sms, callout or seamless</p>
+                </blockquote></td>
             </tr>
             <tr class="even">
                 <td>StartTimestamp</td>

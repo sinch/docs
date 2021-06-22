@@ -14,27 +14,37 @@ Curl examples for verification API:
 
 ### SMS Request
 
-```
+```bash
 curl --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications -H "Content-Type: application/json" --data '{"identity":{"type":"number","endpoint":"+1555123123"},"method":"sms"}'
 ```
 
 ### SMS Report
 
-```
+```bash
 curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications/number/+1555123123 -H "Content-Type: application/json" --data '{"method": "sms", "sms": {"code": "OTPCODE"}}'
 ```
 
 ### Flashcall Request
 
-```
+```bash
 curl --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications -H "Content-Type: application/json" --data '{"identity":{"type":"number","endpoint":"+1555123123"},"method":"flashcall"}'
 ```
 
 ### Flashcall Report
 
-```
+```bash
 curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications/number/+1555123123 -H "Content-Type: application/json" --data '{"method": "flashcall", "flashcall": {"cli": "OTPCODE"}}'
 ```
+
+### Data Request
+
+```bash
+curl --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1.sinch.com/verification/v1/verifications -H "Content-Type: application/json" --data '{"identity":{"type":"number","endpoint":"+1555123123"},"method":"seamless"}'
+```
+
+### Data Report
+
+Follow `target_uri` property of data request response with HTTP GET request.
 
 **Note:** OTPCODE must be the full valid E.164 number that we called from.
 
@@ -42,29 +52,34 @@ curl -X PUT --user APPLICATION_KEY:APPLICATION_SECRET https://verificationapi-v1
 
 For general information on how to use the Sinch APIs including methods, types, errors and authorization, please visit the [Using REST](doc:using-rest) page.
 
-Use the Sinch Verification Service to verify end-user's mobile phone numbers. The Sinch Verification APIs should be used in combination with the Verification SDKs for a complete end-to-end solution, though it is possible to only use the APIs. Currently, there are three verification methods supported:
+Use the Sinch Verification Service to verify end-user's mobile phone numbers. The Sinch Verification APIs should be used in combination with the Verification SDKs for a complete end-to-end solution, though it is possible to only use the APIs. Currently, there are four verification methods supported:
 
-- FlashCall verification - Android only
-- PIN SMS verification - iOS, Android, Javascript
-- Callout verification (voice call) - iOS only
+- FlashCall verification
+- PIN SMS verification
+- Callout verification (voice call)
+- Data verification
 
 ## FlashCall verification
 
-With the flashCall verification method, a user's phone number is verified by triggering a "missed call" towards this number. The call is intercepted by the Android SDK in the mobile app and blocked automatically.
+With the flashCall verification method, a user's phone number is verified by triggering a "missed call" towards this number. The call is automatically intercepted by the Android SDK in the mobile app and blocked automatically. iOS and JavaScript use cases require manual interaction where user has to enter incoming phone call number in the application.
 
 To initiate a flashCall verification, visit [Android SDK documentation](doc:verification-android-the-verification-process). For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
 
 ## PIN SMS verification
 
-With the PIN SMS verification method, a user's phone number is verified by sending an SMS containing a PIN code to this number. In the case of iOS or Javascript, the user needs to enter the PIN manually in the app, while for Android there is an option of intercepting the SMS message delivery and capturing the PIN code automatically.
+With the PIN SMS verification method, a user's phone number is verified by sending an SMS containing a PIN code to this number. In the case of iOS or Javascript, the user needs to enter the PIN manually or semi-manually in the application., while for Android there is an option of intercepting the SMS message delivery and capturing the PIN code automatically.
 
 To initiate a PIN SMS verification, check the [iOS](doc:verification-for-ios.md) or [Android](doc:verification-for-android) documentation. For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
 
 ## Callout verification
 
-With the callout verification method, a user's phone number is verified by receiving a phone call and hearing a pre-recorded or text-to-speech message, advising the user to press a digit code. When the user presses the digit code in the dialpad, the verification is successful.
+With the callout verification method, a user's phone number is verified by receiving a phone call and hearing a pre-recorded or text-to-speech message containg OTP code. User is then expected to enter this code in the application.
 
 To initiate a callout verification, check the [iOS documentation](doc:verification-for-ios.md). For additional security, it is recommended that you control which verification requests should proceed and which ones not, by listening in your backend for the [Verification Request Event](doc:verification-rest-verification-api#verification-request) and respond accordingly. Your backend will be notified on the result of the verification with the [Verification Result Event](doc:verification-rest-callback-api#verification-result-event).
+
+## Data verification
+
+With the data verification method, a user's phone number is verified by mobile carrier's infrastructure itself. This method requires cellular data usage on end-user's device and is currently limited in its coverage. 
 
 ## API Quick Reference
 

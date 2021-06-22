@@ -22,11 +22,12 @@ The Sinch Verification API is used for verify mobile phone numbers. It is consum
     [PUT] /verifications/{type}/{endpoint}
 ```
 
-The Sinch service uses three different verification methods:
+The Sinch service uses four different verification methods:
 
 1.  By sending an SMS message with a PIN code
 2.  By placing a flashcall (missed call) and detecting the incoming calling number (CLI)
 3.  By placing a PSTN call to the user's phone and playing an announcement, asking the user to press a particular digit to verify the phone number (only iOS)
+4.  By accessing internal infrastrcuture of mobile carriers to verify if given verification attempt was originated from device with matching phone number
 
 ## Verification Request
 
@@ -64,6 +65,7 @@ Authorization level can be specified in the Sinch dashboard, under your app sett
   - flashCall
   - sms
   - callout
+  - seamless (data verification)
 
 **reference** can be used to pass your own reference in the request for tracking purposes.
 
@@ -127,6 +129,19 @@ Request
 }
 ```
 
+*Example* - Data (seamless)
+
+```text
+[POST] https://verificationapi-v1.sinch.com/verification/v1/verifications
+```
+
+```json
+{
+    "identity": { "type":"number", "endpoint":"+46700000000" },
+    "method": "seamless"
+}
+```
+
 ### Response
 
     [RequestBody]
@@ -137,6 +152,7 @@ Request
         SmsVerificationData? - sms
         FlashCallVerificationData? - flashCall
         CalloutVerificationData? - callout
+        SeamlessVerificationData? - seamless
 
     [SmsVerificationData]
         string - template
@@ -149,6 +165,9 @@ Request
         int - startPollingAfter
         int - stopPollingAfter
         int - pollingInterval
+
+    [SeamlessVerificationData]
+        string - targetUri
 
 The response from the Sinch Verification service differs, depending on the verification method.
 
@@ -189,7 +208,18 @@ In case of a callout verification (voice call), the response contains informatio
         "startPollingAfter":3,
         "stopPollingAfter":30,
         "pollingInterval":3
-        }
+    }
+}
+```
+
+*Example* - Data (seamless)
+
+```json
+{
+    "id": "1234567890",
+    "seamless": {
+        "targetUri": "https://sinch.com/data-verification"
+    }
 }
 ```
 
@@ -277,6 +307,7 @@ The Sinch Verification backend will then validate the reported PIN or CLI and re
   - "flashcall"
   - "sms"
   - "callout"
+  - "seamless"
 
 **status** shows the current status of the verification request. It can take the values:
 
@@ -356,6 +387,7 @@ This is a protected resource and requires an [Application signed request](doc:us
 >   - "flashcall"
 >   - "sms"
 >   - "callout"
+>   - "seamless"
 
 **status** shows the current status of the verification request. It can take the values:
 
@@ -441,6 +473,7 @@ This is a protected resource and requires an [application signed request](doc:us
 >   - "flashcall"
 >   - "sms"
 >   - "callout"
+>  - "seamless"
 
 **status** shows the current status of the verification request. It can take the values:
 
@@ -523,6 +556,7 @@ The following endpoint is [public authorized](doc:using-rest#public-resources), 
 >   - "flashcall"
 >   - "sms"
 >   - "callout"
+>  - "seamless"
 
 **status** shows the current status of the verification request. It can take the values:
 
