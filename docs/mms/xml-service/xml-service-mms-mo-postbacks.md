@@ -11,7 +11,7 @@ next:
 The MMS MO postback API notifies you that a customer has replied to your message, or interacted to one of your keywords.
 
 ## MMS MO Information
-To receive MMS MO postback you need to work with your Sinch Account Manager to provision with your account. Once the MMS MO postback is enabled you will start receiving postbacks for each MMS MO received on the MMS MO Keyword or Short Code.
+To receive MMS MO postback, you need to work with your Sinch Account Manager to configure it within your account. When MMS MO postback is enabled you will start receiving postbacks for each MMS MO received on your dedicated code. A keyword is not required to route MO messages for your dedicated code, however, for use of a test code provided by Sinch, a keyword setup is required. Please inquire with your account manager to set up an account with a test code and MMS MO keyword.
 
 ## The MMS MO
 This postback notifies you when an MMS MO is received.
