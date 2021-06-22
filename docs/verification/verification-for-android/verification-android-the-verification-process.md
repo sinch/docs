@@ -139,6 +139,7 @@ To complete the verification of the phone number manually, the verification code
 1. For SMS verification - number received in the sms message.
 2. For Flashcall - full phone number of the caller.
 3. For Callout - digits spoken by text-to-speech software after answering the call.
+4. For Seamless - for seamless no manual verification code input is supported, as user's phone number is validated automatically using mobile data connection provider infrastructure (`onVerified` or `onVerificationFailed` callbacks will always be called after initiation of the verification process).
 
 Example:
 ```java

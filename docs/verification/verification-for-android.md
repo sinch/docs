@@ -1,14 +1,13 @@
 ---
 title: Verification for Android
 excerpt: >-
-  Verify phone numbers and users in Android. The Verification SDK supports the
-  verification of phone numbers via SMS or flash calls. The SDK is also
+  Verify phone numbers and users in Android. The Verification SDK supports the verification of phone numbers via SMS, flashcalls, callouts and seamlessly (by using your mobile data connection). The SDK is also
   available for iOS.
 next:
   pages:
     - verification-android-first-time-setup
 ---
-The Sinch Verification SDK makes verifying phone numbers easy. This SDK supports the verification of phone numbers via SMS, flashcalls, callouts and by using mobile data connection.
+The Sinch Verification SDK makes verifying phone numbers easy. The Verification SDK supports the verification of phone numbers via SMS, flashcalls, callouts and seamlessly (by using your mobile data connection).
 
 This document provides an overview for developers integrating with Sinch Verification SDK for the first time. See the [Reference Documentation](http://www.sinch.com/docs/verification/android/reference/) for a comprehensive description of all the classes.
 
