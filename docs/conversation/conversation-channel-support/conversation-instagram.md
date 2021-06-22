@@ -144,12 +144,6 @@ You should receive callbacks with information that the message has been delivere
 
 The channel is now configured.
 
-### Getting the App Secret from the Facebook App
-
-You can find the App Secret for you app in the **Settings** > **Basic** > **App Secret (click in show)**
-
-![Facebook App Secret](images/channel-support/instagram/fb_page_app_secret.png)
-
 ### Rich Message Support
 
 This section provides detailed information about what type of rich messages are natively supported by Instagram channel and
