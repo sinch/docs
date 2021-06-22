@@ -43,7 +43,7 @@ Alternatively you can use the management API to configure your **app** with `cha
 ```
 
 You need to replace:
-* `{{MMS_ACCOUNT_ID}}` with your MMS Account ID, or if you're using a shared shortcode your account manager will provide you a Service ID (also called VASID) to fill this field
+* `{{MMS_ACCOUNT_ID}}` with your MMS Account ID
 * `{{MMS_API_KEY}}` with your MMS API Key
 * `{{BASIC_AUTH_USERNAME}}` with your Basic Authentication username for the MMS API
 * `{{BASIC_AUTH_PASSWORD}}` with your Basic Authentication password for the MMS API
