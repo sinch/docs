@@ -6,7 +6,6 @@ excerpt: >-
 
 ## 2021-06-23
 - Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
-- New rich message transcoding on WhatsApp channel for Card and Choice Messages
 - Improvements in message request validation
 - Enable setting contact metadata in message request for newly created contacts
 
