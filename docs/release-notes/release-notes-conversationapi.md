@@ -8,7 +8,7 @@ excerpt: >-
 - Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
 - Improvements in message request validation
 - Enable setting contact metadata in message request for newly created contacts
-- Handling of Suspended state WhatsApp for bots
+- Handling of Suspended state for WhatsApp bots
 
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
