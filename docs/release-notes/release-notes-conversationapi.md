@@ -6,8 +6,8 @@ excerpt: >-
 
 ## 2021-06-23
 - Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
-- New rich message transcoding on WhatsApp channel for Card and Choice Messages
-- Handling of Suspended state WhatsApp for bots
+- Improvements in message request validation
+- Enable setting contact metadata in message request for newly created contacts
 
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
