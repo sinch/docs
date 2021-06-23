@@ -4,6 +4,9 @@ excerpt: >-
   See how the Sinch Conversation API is evolving and find out about new features and bug fixes.
 ---
 
+## 2021-06-24
+- Improvements in transcoding of CardMessage and CarouselMessage for Instagram channel
+
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
