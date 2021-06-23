@@ -261,7 +261,26 @@ Conversation API POST `messages:send`
       "description": "This is the card description",
       "media_message": {
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-      }
+      },
+      "choices": [
+        {
+          "text_message": {
+            "text": "Suggested Reply"
+          }
+        },
+        {
+          "call_message": {
+            "title": "Call Someone",
+            "phone_number": "+46732000000"
+          }
+        },
+        {
+          "url_message": {
+            "title": "Sinch",
+            "url": "https://www.sinch.com"
+          }
+        }
+      ]
     }
   }
 }
@@ -272,8 +291,9 @@ The rendered message:
 ![Card Message](images/channel-support/instagram/instagram_card.jpg)
 
 > 📘 Note
-> 
-> Card messages are not supported natively by Instagram, so, we will transcode the "Card Message" as a "Text Message".
+>
+> Only image medias are supported for Instagram cards.
+
 
 #### Carousel Messages
 
@@ -291,7 +311,55 @@ Conversation API POST `messages:send`
           "description": "This is the card 1 description",
           "media_message": {
             "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          }
+          },
+          "choices": [
+            {
+              "text_message": {
+                "text": "Suggested Reply 1"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 2"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 3"
+              }
+            }
+          ]
+        },
+        {
+          "title": "This is the card 2 title",
+          "description": "This is the card 2 description",
+          "media_message": {
+            "url": "https://latam.sinch.com/wp-content/uploads/2021/03/Sinch-Anthem-v2.png"
+          },
+          "choices": [
+            {
+              "url_message": {
+                "title": "URL Choice",
+                "url": "https://www.sinch.com"
+              }
+            },
+            {
+              "call_message": {
+                "title": "Call Choice",
+                "phone_number": "46732000000"
+              }
+            },
+            {
+              "location_message": {
+                "title": "Location Choice",
+                "label": "Enriching Engagement",
+                "coordinates": {
+                  "latitude": 55.610479,
+                  "longitude": 13.002873
+                }
+              }
+            }
+          ]
         }
       ]
     }
@@ -301,11 +369,16 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![Carousel Message](images/channel-support/instagram/instagram_carousel.jpg)
+![Carousel Message 1](images/channel-support/instagram/instagram_carousel_1.jpg)
+
+The second card on the rendered message:
+
+![Carousel Message 2](images/channel-support/instagram/instagram_carousel_2.jpg)
+
 
 > 📘 Note
-> 
-> Carousel messages are not supported natively by Instagram, so, we will transcode the "Carousel Message" as a "Text Message".
+>
+> Carousel outer choices are not supported natively by Instagram.
 
 #### Location Messages
 
@@ -404,7 +477,7 @@ Example Media:
 
 ---
 
-Example Quick Reply:
+Example Quick Reply or card choice:
 
 ```json
 {
