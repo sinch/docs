@@ -4,6 +4,9 @@ excerpt: >-
   See how the Sinch Conversation API is evolving and find out about new features and bug fixes.
 ---
 
+## 2021-06-24
+- Improvements in transcoding of CardMessage and CarouselMessage for Instagram channel
+
 ## 2021-06-23
 - Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
 - Improvements in message request validation
