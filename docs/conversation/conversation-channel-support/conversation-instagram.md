@@ -56,7 +56,7 @@ Example of the channel configuration is given in the snippet below:
 
 ### Setting up Instagram to forward callbacks to Conversation API
 
-Once you have created a Conversation API app, go back to **Instagram setup page** on the [Facebook Developer Page][http://developers.facebook.com/] , find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
+Once you have created a Conversation API app, go back to **Instagram setup page** on the [Facebook Developer Page](http://developers.facebook.com/), find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
 
 **Callback URL:** `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
 
@@ -64,7 +64,7 @@ Once you have created a Conversation API app, go back to **Instagram setup page*
 
 After clicking **Verify and Save**, if no errors occurred, a table in the **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
 
-This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you as end user can send messages to anyone that has been granted either the Administrator, Developer or Tester role for your app.
+This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you can send messages to anyone that has been granted either the Administrator, Developer or Tester role for your app.
 
 ### Setting up Conversation API to forward callbacks to your service
 
@@ -201,7 +201,7 @@ The rendered message:
 
 > 📘 Note
 >
-> Until Instagram enables sending other types of media other than images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
+> Until Instagram enables sending other types of media beyond images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
 
 ##### Choice Messages
 
@@ -245,7 +245,7 @@ The web client rendered message:
 
 > 📘 Note
 >
-> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on a web client. Instead, Users will see just the text message without the choice buttons.
+> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on a web client. Instead, users will see just the text message without the choice buttons.
 
 ##### Card Messages
 
@@ -414,7 +414,7 @@ Instagram channel supports various kinds of contact messages - text, media, quic
 
 ---
 
-Example text:
+Example Text:
 
 ```json
 {
@@ -509,7 +509,7 @@ Example Quick Reply or card choice:
 
 ---
 
-Example icebreaker:
+Example Icebreaker:
 
 ```json
 {
@@ -540,7 +540,7 @@ Example icebreaker:
 
 ---
 
-Example story reply:
+Example Story Reply:
 
 ```json
 {
@@ -572,7 +572,7 @@ Example story reply:
 
 ---
 
-Example story mention:
+Example Story Mention:
 
 ```json
 {
@@ -604,7 +604,7 @@ Example story mention:
 
 ---
 
-Example media share:
+Example Media Share:
 
 ```json
 {
@@ -633,7 +633,7 @@ Example media share:
 }
 ```
 
-Example unsupported media:
+Example Unsupported Media:
 
 ```json
 {
