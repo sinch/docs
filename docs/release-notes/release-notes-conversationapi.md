@@ -7,6 +7,12 @@ excerpt: >-
 ## 2021-06-24
 - Improvements in transcoding of CardMessage and CarouselMessage for Instagram channel
 
+## 2021-06-23
+- Improvements on MMS channel for handling choice responses and contact messages that contain media attachments
+- Improvements in message request validation
+- Enable setting contact metadata in message request for newly created contacts
+- Handling of Suspended state for WhatsApp bots
+
 ## 2021-06-09
 - Bugfixes in the CardMessage text formatting on WhatsApp and Viber Business channels
 - Improvements for WhatsApp channel error response mapping and forwarding
