@@ -605,7 +605,7 @@ The rendered message:
 
 ##### Receiving Messages
 
-WhatsApp channel supports various kinds of contact messages - text, media, media card, location and quick replies.
+WhatsApp channel supports various kinds of contact messages - text, media, media card, location and choice response.
 All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
 
 ---
@@ -736,7 +736,7 @@ Example location contact message:
 
 ---
 
-Example quick reply message:
+Example choice response message:
 
 ```json
 {

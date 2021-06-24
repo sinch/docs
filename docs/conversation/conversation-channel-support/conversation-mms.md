@@ -164,7 +164,7 @@ Conversation API POST `messages:send`
       "choices": [
         {
           "text_message": {
-            "text": "Suggested Reply Text"
+            "text": "Suggested Reply"
           }
         },
         {
@@ -203,6 +203,7 @@ Conversation API POST `messages:send`
   "message": {
     "card_message": {
       "title": "This is the best MMS card title",
+      "description": "This is the card description"
       "media_message": {
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
       },
@@ -232,7 +233,7 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![Card Message With URL Choice](images/channel-support/mms/MMS_card_message.png)
+![Card Message](images/channel-support/mms/MMS_card_message.png)
 
 ###### Carousel Messages
 
@@ -256,7 +257,7 @@ Conversation API POST `messages:send`
           "choices": [
             {
               "text_message": {
-                "text": "Suggested Reply Text"
+                "text": "Suggested Reply"
               }
             },
             {
@@ -282,7 +283,7 @@ Conversation API POST `messages:send`
           "choices": [
             {
               "text_message": {
-                "text": "Another Suggested Reply Text"
+                "text": "Suggested Reply"
               }
             },
             {
@@ -356,6 +357,8 @@ MMS supports contact initiated messages like Text, Media, MediaCard, and Choice 
 
 If the contact message had media attachments the media content is hosted by Sinch and you get a publicly accessible URL pointing to it.
 
+---
+
 Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
 
 ```json
@@ -378,6 +381,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for text message:
   }
 }
 ```
+
+---
+
+On MMS it is possible that your contact sends you multiple media attachments. In this case Conversation API will forward these one by one to your webhook. For example, if the contact sends you 3 images you will get 3 separate media messages on your webhook.
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 
@@ -402,6 +409,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for media message:
 }
 ```
 
+---
+
+On MMS it is possible that your contact sends you multiple media attachments with text included. In this case Conversation API will forward these one by one to your webhook. For example, if the contact sends you 3 images with a text you will get 3 separate media card messages on your webhook, with 3 different media urls and the same caption for each.
+
 Conversation API POST to `MESSAGE_INBOUND` webhook for media card message:
 
 ```json
@@ -425,6 +436,10 @@ Conversation API POST to `MESSAGE_INBOUND` webhook for media card message:
  }
 }
 ```
+
+---
+
+A choice response message means that your contact responded with a suggested text reply from your previous message. Since a plaintext response won't always be routed as MMS, you might get this choice response on SMS channel (see description of this scenario at: [Receiving Messages](#receiving-messages)).
 
 Conversation API POST to `MESSAGE_INBOUND` webhook for choice response message:
 
