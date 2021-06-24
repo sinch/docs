@@ -292,7 +292,7 @@ The rendered message:
 
 > 📘 Note
 >
-> Only image medias are supported for Instagram cards.
+> Only image media are supported for Instagram cards.
 
 
 #### Carousel Messages
