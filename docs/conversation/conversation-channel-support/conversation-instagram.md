@@ -341,7 +341,7 @@ Instagram channel supports various kinds of contact messages - text, media, quic
 
 ---
 
-Example "Text":
+Example Text:
 
 ```json
 {
