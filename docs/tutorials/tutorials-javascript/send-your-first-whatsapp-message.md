@@ -56,7 +56,7 @@ var data = {
   message: {
     type: 'template',
     template_name: 'sinch_tutorial',
-    params: ['<recipient_name>']
+    body_params: ['<recipient_name>']
   }
 };
 
