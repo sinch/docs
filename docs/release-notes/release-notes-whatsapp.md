@@ -4,6 +4,10 @@ excerpt: >-
   See how the Sinch WhatsApp API is evolving and find out about new features and
   bug fixes.
 ---
+## 2021-06-29
+- Deprecating TTL parameter for Template Messages - as of now this parameter will be ignored if sent.
+- New type of Customer Care Session messages: list, and buttons (more details [here](https://developers.sinch.com/docs/whatsapp-message#interactive-message)).
+- Improvements in media file validation.
 
 ## 2021-06-08
 - Remove deprecated support for groups
