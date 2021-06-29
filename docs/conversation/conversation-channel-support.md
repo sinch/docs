@@ -20,5 +20,6 @@ Follow the links below to learn more.
 - <img src="https://files.readme.io/d0223ff-messages-chat-keynote-icon.svg" width="20" height="20" /> [MMS](https://developers.sinch.com/docs/conversation-mms)
 - <img src="https://cdn.worldvectorlogo.com/logos/instagram-2-1.svg" width="20" height="20" /> [Instagram (Closed Beta)](https://developers.sinch.com/docs/conversation-instagram)
 - <img src="https://cdn.worldvectorlogo.com/logos/telegram-1.svg" width="20" height="20" /> [Telegram (Closed Beta)](https://developers.sinch.com/docs/conversation-telegram)
+- <img src="https://cdn.worldvectorlogo.com/logos/kakaotalk-logo.svg" width="20" height="20" /> [KakaoTalk (Closed Beta)](https://developers.sinch.com/docs/conversation-kakaotalk)
 
 To learn more about the channel specific features that are offered by the Conversation API, visit [Channel Specific Properties](https://developers.sinch.com/docs/conversation-channel-properties).
