@@ -203,7 +203,7 @@ Conversation API POST `messages:send`
   "message": {
     "card_message": {
       "title": "This is the best MMS card title",
-      "description": "This is the card description"
+      "description": "This is the card description",
       "media_message": {
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
       },
