@@ -392,12 +392,11 @@ The rendered message:
 
 ###### Choice Messages
 
-WhatsApp channel does not provide native support for **Choice Messages** so they are
-transcoded to text:
+WhatsApp channel provides a limited native support for **Choice Messages**. If you only include text choices in your Choice Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as plaintext.
 
 ---
 
-Conversation API POST `messages:send`
+Conversation API POST `messages:send` for Choice Message with different choices:
 
 ```json
 {
@@ -432,15 +431,52 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![URL Choice Message](images/channel-support/whatsapp/WhatsApp_Choice_Message.jpg)
-
-###### Card Messages
-
-Card messages sent to WhatsApp are transcoded as media with text caption:
+![Choice Message](images/channel-support/whatsapp/WhatsApp_Choice_Message.jpg)
 
 ---
 
-Conversation API POST `messages:send`
+Conversation API POST `messages:send` for Choice Message that only has text choices:
+
+```json
+{
+  "message": {
+    "choice_message": {
+      "text_message": {
+        "text": "What do you want to do?"
+      },
+      "choices": [
+        {
+          "text_message": {
+            "text": "First Reply"
+          }
+        },
+        {
+          "text_message": {
+            "text": "Second Reply"
+          }
+        },
+        {
+          "text_message": {
+            "text": "Third Reply"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+The rendered message:
+
+![Choice Message](images/channel-support/whatsapp/WhatsApp_Choice_Message_Only_Text_Choice.jpg)
+
+###### Card Messages
+
+WhatsApp channel provides a limited native support for **Card Messages**. If you only include text choices in your Card Message then Conversation API is able to use a rich message format on WhatsApp, otherwise your message will be transcoded as media message, with plaintext caption.
+
+---
+
+Conversation API POST `messages:send` for Card Message with different choices:
 
 ```json
 {
@@ -477,7 +513,46 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![Card Message With URL Choice](images/channel-support/whatsapp/WhatsApp_Card_Message.jpg)
+![Card Message With Different Choices](images/channel-support/whatsapp/WhatsApp_Card_Message.jpg)
+
+---
+
+Conversation API POST `messages:send` for Card Message with only text choices:
+
+```json
+{
+  "message": {
+    "card_message": {
+      "title": "This is the card title",
+      "description": "This is the card description",
+      "media_message": {
+        "url": "https://clxlundrcs.s3.eu-central-1.amazonaws.com/conv-api-doc/sinch_video_example.mp4"
+      },
+      "choices": [
+        {
+          "text_message": {
+            "text": "First Reply"
+          }
+        },
+        {
+          "text_message": {
+            "text": "Second Reply"
+          }
+        },
+        {
+          "text_message": {
+            "text": "Third Reply"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+The rendered message:
+
+![Card Message With Text Choices](images/channel-support/whatsapp/WhatsApp_Card_Message_Only_Text_Choice.jpg)
 
 ###### Carousel Messages
 
@@ -603,9 +678,34 @@ The rendered message:
 
 ![Location Message](images/channel-support/whatsapp/WhatsApp_Location_Message.jpg)
 
+###### Explicit Channel Messages
+
+Conversation API provides a way to use channel specific message formats. This means that if you know the underlying channel's API (in this case the WhatsApp Business API), and you want to use a feature that is not supported by Conversation API message types, you can pass the JSON format of the WhatsApp Business API to Conversation API too.
+
+As an example, you can try the so-called [Interactive List](https://developers.facebook.com/docs/whatsapp/guides/interactive-messages) message from the WhatsApp Business API.
+
+When you want to use a channel specific format you need to pass this JSON as an escaped string to Conversation API.
+
+Conversation API POST `messages:send` with the Interactive List message from WhatsApp Business API:
+
+
+```json
+{
+  "message": {
+    "explicit_channel_message": {
+      "WHATSAPP": "{\r\n  \"to\": \"{{to}}\",\r\n  \"type\": \"interactive\",\r\n  \"recipient_type\": \"INDIVIDUAL\",\r\n  \"interactive\": {\r\n    \"type\": \"list\",\r\n    \"body\": {\r\n      \"text\": \"This is the card title\"\r\n    },\r\n    \"footer\": {\r\n      \"text\": \"This is the card description\"\r\n    },\r\n    \"action\": {\r\n      \"button\": \"Menu\",\r\n      \"sections\": [\r\n        {\r\n          \"rows\": [\r\n            {\r\n              \"id\": \"firstreply\",\r\n              \"title\": \"First Reply\"\r\n            },\r\n            {\r\n              \"id\": \"secondreply\",\r\n              \"title\": \"Second Reply\"\r\n            },\r\n            {\r\n              \"id\": \"thirdreply\",\r\n              \"title\": \"Third Reply\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
+    }
+  }
+}
+```
+
+The rendered message:
+
+![Explicit Channel Message](images/channel-support/whatsapp/WhatsApp_Explicit_Channel_Message.jpg)
+
 ##### Receiving Messages
 
-WhatsApp channel supports various kinds of contact messages - text, media, media card, location and quick replies.
+WhatsApp channel supports various kinds of contact messages - text, media, media card, location and choice response.
 All of these are delivered by Conversation API with POST to `MESSAGE_INBOUND` webhook:
 
 ---
@@ -736,7 +836,7 @@ Example location contact message:
 
 ---
 
-Example quick reply message:
+Example choice response message:
 
 ```json
 {

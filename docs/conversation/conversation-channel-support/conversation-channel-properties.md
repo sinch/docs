@@ -109,7 +109,6 @@ Example for adding the channel specific property "TELEGRAM_DISABLE_LINK_PREVIEW"
   }
 }
 ```
-
 The names of available channel specific properties indicate which channel they can be used for.
 
 Possible values for property names and values:

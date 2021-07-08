@@ -97,3 +97,9 @@ In order to send messages using the Instagram messaging service you must enable 
    ![Facebook App - Token Popup](../conversation-channel-support/images/channel-support/instagram/fb_gen_token_popup.png)
 
 Now you can use the generated Instagram Access Token to [set up your Conversation API Instagram integration](doc:conversation-instagram).
+
+### Getting the App Secret from the Facebook App
+
+You can find the App Secret for you app in the **Settings** > **Basic** > **App Secret (click in show)**
+
+![Facebook App Secret](../conversation-channel-support/images/channel-support/instagram/fb_page_app_secret.png)

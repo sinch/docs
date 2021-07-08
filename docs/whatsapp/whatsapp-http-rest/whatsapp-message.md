@@ -507,3 +507,235 @@ JSON object parameters:
 > 📘 Note
 >
 > Stickers can be organized in stickerpacks. See [Stickerpack Management](doc:whatsapp-stickerpack-management) for more on this.
+
+### Interactive message
+
+Interactive messages give the recipient options to choose from. The choices are returned in callbacks.
+
+JSON object parameters:
+
+| Name        | Description                                                             | JSON Type    | Default    | Constraints           | Required |
+| ----------- | ----------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | Constant value `interactive`                                            | String       | N/A        | N/A                   | Yes      |
+| message     | The specific interactive message, button or list                        | Object       | false      | Described below       | Yes      |
+
+#### Button message
+This message type provides the recipient with up to three buttons which can be pressed. A button press causes a response to be sent back in a callback. See [Interactive button reply message](doc:whatsapp-callback#interactive-button-reply-message)
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | Constant value `button`                                              | String       | N/A        | N/A                   | Yes      |
+| header      | See decription below                                                 | Object       | false      | Described below       | No       |
+| body        | See decription below                                                 | Object       | false      | Described below       | Yes      |
+| footer      | See decription below                                                 | Object       | false      | Described below       | No       |
+| action      | See decription below                                                 | Object       | false      | Described below       | Yes      |
+
+The button header has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | One of `text`, `document`, `video`, or `image`                       | String       | N/A        | N/A                   | Yes      |
+
+The rest of the header fields are different for different header types.
+
+- Text header
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| text        | The header text                                                      | String       | N/A        | Max 60 characters     | Yes      |
+
+
+- Document header
+
+| Name        | Description                                                            | JSON Type    | Default    | Constraints           | Required |
+| ----------- | ---------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| url         | The URL where the document is located                                  | String       | N/A        | N/A                   | Yes      |
+| filename    | The document's filename                                                | String       | N/A        | N/A                   | No       |
+| provider    | Name of a provider (see [media provider](doc:whatsapp-media-provider)) | Object       | N/A        | N/A                   | No       |
+
+- Video header
+
+| Name        | Description                                                            | JSON Type    | Default    | Constraints           | Required |
+| ----------- | ---------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| url         | The URL where the video is located                                     | String       | N/A        | N/A                   | Yes      |
+| provider    | Name of a provider (see [media provider](doc:whatsapp-media-provider)) | Object       | N/A        | N/A                   | No       |
+
+- Image header
+
+| Name        | Description                                                            | JSON Type    | Default    | Constraints           | Required |
+| ----------- | ---------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| url         | The URL where the image is located                                     | String       | N/A        | N/A                   | Yes      |
+| provider    | Name of a provider (see [media provider](doc:whatsapp-media-provider)) | Object       | N/A        | N/A                   | No       |
+
+The button body has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| text        | The body text                                                        | String       | N/A        | Max 1024 characters   | Yes      |
+
+The button footer has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| text        | The footer text                                                      | String       | N/A        | Max 60 characters     | Yes      |
+
+The button action has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| buttons     | A list of objects describing the buttons to include                  | Object array | N/A        | [1, 3] button objects | Yes      |
+
+Each button object has the following fields:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | Constant value `reply`                                               | Object array | N/A        | N/A                   | Yes      |
+| id          | The button's id                                                      | String       | N/A        | Max 230 characters    | Yes      |
+| title       | The button's title                                                   | String       | N/A        | Max 20 characters     | Yes      |
+
+
+```json
+{
+  "to" : [
+    "46732001122"
+  ],
+  "message" : {
+    "type" : "interactive",
+    "message" : {
+      "type" : "button",
+      "header" : {
+        "type" : "video",
+        "url" : "https://example.com/video.mp4"
+      },
+      "body" : {
+        "text" : "Body text"
+      },
+      "footer" : {
+        "text" : "Footer text"
+      },
+      "action" : {
+        "buttons" : [ {
+          "type" : "reply",
+          "title" : "Title 1",
+          "id" : "Id 1"
+        }, {
+          "type" : "reply",
+          "title" : "Title 2",
+          "id" : "Id 2"
+        }, {
+          "type" : "reply",
+          "title" : "Title 3",
+          "id" : "Id 3"
+        } ]
+      }
+    }
+  }
+}
+```
+
+#### List message
+This message type provides the recipient with a list of choices. Pressing one of the choices causes a response to be sent back in a callback. See [Interactive list reply message](doc:whatsapp-callback#interactive-list-reply-message)
+
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | Constant value `list`                                                | String       | N/A        | N/A                   | Yes      |
+| header      | See decription below                                                 | Object       | false      | Described below       | No       |
+| body        | See decription below                                                 | Object       | false      | Described below       | Yes      |
+| footer      | See decription below                                                 | Object       | false      | Described below       | No       |
+| action      | See decription below                                                 | Object       | false      | Described below       | Yes      |
+
+The list header has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| type        | Constant value `text`                                                | String       | N/A        | N/A                   | Yes      |
+| text        | The header text                                                      | String       | N/A        | Max 60 characters     | Yes      |
+
+The list body has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| text        | The body text                                                        | String       | N/A        | Max 1024 characters   | Yes      |
+
+The list footer has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| text        | The footer text                                                      | String       | N/A        | Max 60 characters     | Yes      |
+
+The list action has the following fields:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints             | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | ----------------------- | :------: |
+| button      | The list is shown after pressing a button which displays this text   | String       | N/A        | Max 20 characters       | Yes      |
+| sections    | A array of sections of rows                                          | Object array | N/A        | [1, 10] section objects | Yes      |
+
+Each list section has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| title       | The title of the section                                             | String       | N/A        | Max 24 characters     | Yes      |
+| rows        | Each row is an option that the recipient can choose                  | Object array | N/A        | [1, 10] row objects, but the total number of rows in all sections can be at most 10 | Yes      |
+
+> 📘 Note
+>
+> The total number of rows in all secions in a list message can be at most 10.
+>
+
+Each row object has the following field:
+
+| Name        | Description                                                          | JSON Type    | Default    | Constraints           | Required |
+| ----------- | -------------------------------------------------------------------- | ------------ | ---------- | --------------------- | :------: |
+| id          | The ID of the row                                                    | String       | N/A        | Max 174 characters. Each ID must be unique in the message. | Yes      |
+| title       | The title of the row                                                 | String       | N/A        | Max 20 characters     | Yes      |
+| description | The description of the row                                           | String       | N/A        | Max 72 characters     | No       |
+
+```json
+{
+  "to": [
+    "46732001122"
+  ],
+  "message": {
+    "type": "interactive",
+    "message": {
+      "type": "list",
+      "header": {
+        "type": "text",
+        "text": "Header text"
+      },
+      "body": {
+        "text": "Body text"
+      },
+      "footer": {
+        "text": "Footer text"
+      },
+      "action": {
+        "button": "Press me",
+        "sections": [
+          {
+            "title": "Section 1",
+            "rows": [
+              {
+                "title": "A row",
+                "id": "ID 1",
+                "description": "Description"
+              }
+            ]
+          },
+          {
+            "title": "Section 2",
+            "rows": [
+              {
+                "title": "Another row",
+                "id": "ID 2",
+                "description": "Description"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+```

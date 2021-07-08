@@ -16,7 +16,7 @@ Before you start, you will need access to the following:
 * A Facebook page connected with that account
 * A Facebook developer account that can perform tasks on that page
 * A registered Facebook app with basic settings configured
-* An Instagram Authentication Token
+* An Instagram Authentication Token and App Secret
 
 To understand how to have all the above points, you can follow the [**Instagram Getting Started guide**](doc:conversation-instagram-setup).
 
@@ -51,12 +51,12 @@ Example of the channel configuration is given in the snippet below:
 >
 > This can be done via the portal when configuring your Instagram channel, or by adding `"callback_secret": "<string>"` to the `"channel_credentials"` object in the snippet above.
 >
-> The secret for this validation in the case of Instagram is your App Secret from your Facebook App.
+> The secret for this validation in the case of Instagram is your App Secret from your Facebook App Page (see [**Instagram Getting Started guide**](doc:conversation-instagram-setup)).
 
 
 ### Setting up Instagram to forward callbacks to Conversation API
 
-Once you have created a Conversation API app, go back to **Instagram setup page** on the [Facebook Developer Page][http://developers.facebook.com/] , find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
+Once you have created a Conversation API app, go back to **Instagram setup page** on the [Facebook Developer Page](http://developers.facebook.com/), find **Webhooks** section (just below **Access Tokens**), click **Add Callback URL** button and fill in with the following data (**remember to put region (eu1 or us1) and your Conversation App ID in the callback URL**):
 
 **Callback URL:** `https://instagram-adapter.{{REGION}}.conversation-api.prod.sinch.com/adapter/v1/{{CONVERSATION_APP_ID}}/callback`
 
@@ -64,7 +64,7 @@ Once you have created a Conversation API app, go back to **Instagram setup page*
 
 After clicking **Verify and Save**, if no errors occurred, a table in the **Webhooks** section will appear, with your **Facebook Page** listed within. Click **Add Subscriptions** button, check all boxes and click **save**.
 
-This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you as end user can send messages to anyone that has been granted either the Administrator, Developer or Tester role for your app.
+This is enough for test and development purposes, you don't have to fill **Details** section nor submit it for review. Now you can send messages to anyone that has been granted either the Administrator, Developer or Tester role for your app.
 
 ### Setting up Conversation API to forward callbacks to your service
 
@@ -201,7 +201,7 @@ The rendered message:
 
 > 📘 Note
 >
-> Until Instagram enables sending other types of media other than images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
+> Until Instagram enables sending other types of media beyond images, we will transcode your "Media Message" as a “Text Message” with a plain text URL that points to the document/video file.
 
 ##### Choice Messages
 
@@ -245,7 +245,7 @@ The web client rendered message:
 
 > 📘 Note
 >
-> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on a web client. Instead, Users will see just the text message without the choice buttons.
+> `Choice Message` will only be supported on Android and iOS Instagram’s apps. Choice message will not be rendered on a web client. Instead, users will see just the text message without the choice buttons.
 
 ##### Card Messages
 
@@ -261,7 +261,26 @@ Conversation API POST `messages:send`
       "description": "This is the card description",
       "media_message": {
         "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-      }
+      },
+      "choices": [
+        {
+          "text_message": {
+            "text": "Suggested Reply"
+          }
+        },
+        {
+          "call_message": {
+            "title": "Call Someone",
+            "phone_number": "+46732000000"
+          }
+        },
+        {
+          "url_message": {
+            "title": "Sinch",
+            "url": "https://www.sinch.com"
+          }
+        }
+      ]
     }
   }
 }
@@ -272,8 +291,9 @@ The rendered message:
 ![Card Message](images/channel-support/instagram/instagram_card.jpg)
 
 > 📘 Note
-> 
-> Card messages are not supported natively by Instagram, so, we will transcode the "Card Message" as a "Text Message".
+>
+> Only image media are supported for Instagram cards.
+
 
 #### Carousel Messages
 
@@ -291,7 +311,55 @@ Conversation API POST `messages:send`
           "description": "This is the card 1 description",
           "media_message": {
             "url": "https://1vxc0v12qhrm1e72gq1mmxkf-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/Sinch-logo-Events.png"
-          }
+          },
+          "choices": [
+            {
+              "text_message": {
+                "text": "Suggested Reply 1"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 2"
+              }
+            },
+            {
+              "text_message": {
+                "text": "Suggested Reply 3"
+              }
+            }
+          ]
+        },
+        {
+          "title": "This is the card 2 title",
+          "description": "This is the card 2 description",
+          "media_message": {
+            "url": "https://latam.sinch.com/wp-content/uploads/2021/03/Sinch-Anthem-v2.png"
+          },
+          "choices": [
+            {
+              "url_message": {
+                "title": "URL Choice",
+                "url": "https://www.sinch.com"
+              }
+            },
+            {
+              "call_message": {
+                "title": "Call Choice",
+                "phone_number": "46732000000"
+              }
+            },
+            {
+              "location_message": {
+                "title": "Location Choice",
+                "label": "Enriching Engagement",
+                "coordinates": {
+                  "latitude": 55.610479,
+                  "longitude": 13.002873
+                }
+              }
+            }
+          ]
         }
       ]
     }
@@ -301,11 +369,16 @@ Conversation API POST `messages:send`
 
 The rendered message:
 
-![Carousel Message](images/channel-support/instagram/instagram_carousel.jpg)
+![Carousel Message 1](images/channel-support/instagram/instagram_carousel_1.jpg)
+
+The second card on the rendered message:
+
+![Carousel Message 2](images/channel-support/instagram/instagram_carousel_2.jpg)
+
 
 > 📘 Note
-> 
-> Carousel messages are not supported natively by Instagram, so, we will transcode the "Carousel Message" as a "Text Message".
+>
+> Carousel outer choices are not supported natively by Instagram.
 
 #### Location Messages
 
@@ -341,7 +414,7 @@ Instagram channel supports various kinds of contact messages - text, media, quic
 
 ---
 
-Example text:
+Example Text:
 
 ```json
 {
@@ -404,7 +477,7 @@ Example Media:
 
 ---
 
-Example Quick Reply:
+Example Quick Reply or card choice:
 
 ```json
 {
@@ -436,7 +509,7 @@ Example Quick Reply:
 
 ---
 
-Example icebreaker:
+Example Icebreaker:
 
 ```json
 {
@@ -467,7 +540,7 @@ Example icebreaker:
 
 ---
 
-Example story reply:
+Example Story Reply:
 
 ```json
 {
@@ -499,7 +572,7 @@ Example story reply:
 
 ---
 
-Example story mention:
+Example Story Mention:
 
 ```json
 {
@@ -531,7 +604,7 @@ Example story mention:
 
 ---
 
-Example media share:
+Example Media Share:
 
 ```json
 {
@@ -560,7 +633,7 @@ Example media share:
 }
 ```
 
-Example unsupported media:
+Example Unsupported Media:
 
 ```json
 {

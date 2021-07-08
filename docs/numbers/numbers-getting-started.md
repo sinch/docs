@@ -1,7 +1,7 @@
 ---
 title: Getting started
 excerpt: >- 
-  The Numbers API is currently run as beta testing and only selected customers will have access to this feature. If you want to participate in this testing, please reach out to [Tobias.Sellberg@sinch.com](mailto:tobias.sellberg@sinch.com)
+  The Numbers API can be enabled for any that requests it. To enable your account to use the API please reach out to your account manager.
 hidden: false
 ---
 
@@ -14,7 +14,7 @@ The Numbers API uses [client_id and secret](https://dashboard.sinch.com/settings
 Authentication to the API is performed via [HTTP Basic Auth](http://en.wikipedia.org/wiki/Basic_access_authentication). Use your client_id as the basic auth username and your secret as the password.
 
 ```curl --request GET \
- --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US' \
+ --url 'https://numbers.api.sinch.com/v1/projects/{projectId}/availableNumbers?regionCode=US' \
  --header 'Accept: application/json' \
  -u {clientId}:{clientSecret}
  ```

@@ -15,7 +15,7 @@ Search for virtual numbers that are available for you to get. In this example, y
 
 ```shell
 curl --request GET \
- --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US' \
+ --url 'https://numbers.api.sinch.com/v1/projects/{projectId}/availableNumbers?regionCode=US' \
  --header 'Accept: application/json' \
  -u {clientId}:{clientSecret}
 ```
@@ -55,7 +55,7 @@ Get a virtual number to use with SMS or Voice products.
 
 ```shell
 curl --request POST \
- --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/+12089087284:rent \
+ --url https://numbers.api.sinch.com/v1/projects/projectId/availableNumbers/+12089087284:rent \
  --header 'Accept: application/json' \
  --u {clientId}:{clientSecret} 
 ```
@@ -75,7 +75,7 @@ Get a virtual number to use with SMS or Voice products.
 
 ```shell
 curl --request POST \
- --url https://numbers.api.sinch.com/v1alpha1/projects/projectId/availableNumbers/+12089087284:rent \
+ --url https://numbers.api.sinch.com/v1/projects/projectId/availableNumbers/+12089087284:rent \
  --header 'Accept: application/json' \
  --u {clientId}:{clientSecret} 
  --d '{"smsConfiguration":{"servicePlanId":"sdfewe383408d"}}'
@@ -87,7 +87,7 @@ Replace {projectId}, {clientId} and {clientSecret}, and [servicePlanId](https://
 Take the same steps as above, but add the virtual number type you are interested in.
 ```shell
 curl --request GET \
- --url 'https://numbers.api.sinch.com/v1alpha1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
+ --url 'https://numbers.api.sinch.com/v1/projects/{projectId}/availableNumbers?regionCode=US&type=TOLL_FREE' \
  --header 'Accept: application/json' \
  -u {clientId}:{clientSecret}
 ```
