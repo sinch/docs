@@ -4,6 +4,9 @@ excerpt: >-
   See how the Sinch Conversation API is evolving and find out about new features and bug fixes.
 ---
 
+## 2021-07-08
+- Release of Telegram channel support Beta
+
 ## 2021-06-24
 - Improvements in transcoding of CardMessage and CarouselMessage for Instagram channel
 
