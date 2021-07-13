@@ -22,7 +22,7 @@ Find the host and port number used to connect to our inbound service via SMPP in
 
 #### Encoding
 
-Default encoding used for the mobile originated messages is GSM-7. If message content contains characters not included in the GSM-7 table, USC-2 will be used.
+With SMPP, Data Coding Scheme must be specified. We recommend the "data_coding" parameter be set to 0 for basic GSM-7 encoding. For better delivery of characters outside of the GSM-7 character set, we recommend the "data_coding" parameter be set to 8 for UCS-2 encoding.
 
 #### Parameters
 
