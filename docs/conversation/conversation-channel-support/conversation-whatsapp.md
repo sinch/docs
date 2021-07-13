@@ -368,7 +368,23 @@ The rendered message:
 ###### Media Messages
 
 Sending media messages is easy - simply specify the URL to the media and
-Conversation API will automatically detect what type of WhatsApp message to use - image, video, document or audio:
+Conversation API will automatically detect what type of WhatsApp message to use.
+
+**Supported Media Types**
+
+In MediaMessage you can send the following media types: 
+
+- image: image/jpeg, image/png
+  
+- video: video/mp4, video/3gpp (Only H.264 video codec and AAC audio codec is supported with a single audio stream.)
+  
+- document: any valid document MIME type 
+  
+- audio: audio/aac, audio/mp4, audio/amr, audio/mpeg, audio/ogg + codecs=opus (base audio/ogg not supported)
+
+- sticker: image/webp
+  
+Any other media type will be sent as plaintext URL. 
 
 ---
 
@@ -384,9 +400,25 @@ Conversation API POST `messages:send`
 }
 ```
 
-The rendered message:
+The rendered message with image media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Image.jpg)
+![Media Message with Image](images/channel-support/whatsapp/WhatsApp_Media_Message_Image.jpg)
+
+The rendered message with video media:
+
+![Media Message with Video](images/channel-support/whatsapp/WhatsApp_Media_Message_Video.jpg)
+
+The rendered message with audio media:
+
+![Media Message with Audio](images/channel-support/whatsapp/WhatsApp_Media_Message_Audio.jpg)
+
+The rendered message with document media:
+
+![Media Message with Document](images/channel-support/whatsapp/WhatsApp_Media_Message_Document.jpg)
+
+The rendered message with sticker media:
+
+![Media Message with Sticker](images/channel-support/whatsapp/WhatsApp_Media_Message_Sticker.jpg)
 
 ---
 
@@ -553,6 +585,16 @@ Conversation API POST `messages:send` for Card Message with only text choices:
 The rendered message:
 
 ![Card Message With Text Choices](images/channel-support/whatsapp/WhatsApp_Card_Message_Only_Text_Choice.jpg)
+
+---
+
+Media support in CardMessage:
+
+- image or video media will be displayed as rich content (see supported image and video types at [Media Messages](#media-messages))
+
+- audio or sticker media will be included as plaintext link on the card due to a limitation of the WhatsApp Business API
+  
+- document media has a conditional support, it can be displayed as rich content when all the choices are Text (see the example above), otherwise it will be a plaintext link in the card
 
 ###### Carousel Messages
 

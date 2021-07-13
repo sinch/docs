@@ -4,6 +4,11 @@ excerpt: >-
   See how the Sinch Conversation API is evolving and find out about new features and bug fixes.
 ---
 
+## 2021-07-14
+- Release of KakaoTalk channel support Beta
+- Improvements in validating content for WhatsApp message requests
+- Validation of phone number contact identities
+
 ## 2021-07-08
 - Release of Telegram channel support Beta
 
