@@ -402,23 +402,23 @@ Conversation API POST `messages:send`
 
 The rendered message with image media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Image.jpg)
+![Media Message with Image](images/channel-support/whatsapp/WhatsApp_Media_Message_Image.jpg)
 
 The rendered message with video media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Video.jpg)
+![Media Message with Video](images/channel-support/whatsapp/WhatsApp_Media_Message_Video.jpg)
 
 The rendered message with audio media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Audio.jpg)
+![Media Message with Audio](images/channel-support/whatsapp/WhatsApp_Media_Message_Audio.jpg)
 
 The rendered message with document media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Document.jpg)
+![Media Message with Document](images/channel-support/whatsapp/WhatsApp_Media_Message_Document.jpg)
 
 The rendered message with sticker media:
 
-![Media Message](images/channel-support/whatsapp/WhatsApp_Media_Message_Sticker.jpg)
+![Media Message with Sticker](images/channel-support/whatsapp/WhatsApp_Media_Message_Sticker.jpg)
 
 ---
 
